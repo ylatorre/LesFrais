@@ -43,10 +43,10 @@
 
     @yield('content')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <footer style="text-align: center; background:rgb(33, 119, 233);color:aliceblue;">
-        <p>Author:Rami KHADDOUR<br>
-            <a href="ramikhaddour@gmail.com">ramikhaddour@gmail.com</a></p>
-    </footer>
+    {{-- <footer style="text-align: center; background:rgb(33, 119, 233);color:aliceblue;"> --}}
+        {{-- <p>Author:Rami KHADDOUR<br>
+            <a href="ramikhaddour@gmail.com">ramikhaddour@gmail.com</a></p> --}}
+    {{-- </footer> --}}
     </div>
 </body>
 </html>

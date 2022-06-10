@@ -165,10 +165,10 @@
                 </div>
 
             </div>
-            <footer style="text-align: center; background:rgb(33, 119, 233);color:aliceblue;">
+            {{-- <footer style="text-align: center; background:rgb(33, 119, 233);color:aliceblue;">
                 <p>Author:Rami KHADDOUR<br>
                 <a href="ramikhaddour@gmail.com">ramikhaddour@gmail.com</a></p>
-              </footer>
+              </footer> --}}
         
         </div>
 
