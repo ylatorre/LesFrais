@@ -16,16 +16,16 @@ return new class extends Migration
     {
         Schema::create('missions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('mission');
+            $table->string('description');
             $table->string('client');
             $table->string('ville');
             $table->string('code_postal');
-            $table->float('peage');
-            $table->float('parking');
+            $table->float('peages');
+            $table->float('parkings');
             $table->float('divers');
             $table->float('repas');
-            $table->float('hotel');
-            $table->float('km');
+            $table->float('hotels');
+            $table->float('kilometrage');
             $table->timestamps();
             $table->foreignId('user_id')->nullable('users');
         });
