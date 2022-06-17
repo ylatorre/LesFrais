@@ -15,4 +15,9 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
-]);
+]).postCss('resources/css/dashboard.css', 'public/css/dashboard.css',[
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+])
+;

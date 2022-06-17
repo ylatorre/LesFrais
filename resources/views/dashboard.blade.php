@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset('/css/dashboard.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
@@ -24,9 +25,9 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Déplacements</h5>
+                        <h5 class="modal-title">Mission</h5>
 
-                       
+
 
                         <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
@@ -36,13 +37,7 @@
                         <form action= "/dashboard" method="POST">
                             @csrf
 
-                            <div class="mb-3">
-                                <label class="form-label" for="mission">
-                                 Déplacement
-                                </label>
-                                <input class="form-control" name="mission" type="text">
 
-                            </div>
                             <div class="mb-3">
                                 <label class="form-label" for="client">
                                     Client
@@ -83,7 +78,7 @@
                                     <input class="form-control" name="parking" type="number" min="0.00" step="0.01" >
 
                                 </div>
-                               
+
                                 <div class="col mb-3">
                                     <label class="form-label" for="divers">
                                         Divers
@@ -116,10 +111,17 @@
 
                                 </div>
                             </div>
-                            
+                            <div class="mb-3">
+                                <label class="form-label" for="mission">
+                                Déscription de la mission
+                                </label>
+                                <input class="form-control input-dashboard" name="mission" type="text" placeholder="...">
+
+                            </div>
+
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
                             <button type="submit" class="btn btn-primary" >Validation</button>
-                            
+
                         </form>
 
                     </div>
@@ -169,11 +171,11 @@
                 <p>Author:Rami KHADDOUR<br>
                 <a href="ramikhaddour@gmail.com">ramikhaddour@gmail.com</a></p>
               </footer> --}}
-        
+
         </div>
 
-       
-            
+
+
 
     <script>
         $.ajaxSetup({
@@ -207,5 +209,5 @@
     </script>
 
 
-    
+
 </x-app-layout>
