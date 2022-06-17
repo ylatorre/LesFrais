@@ -22,7 +22,7 @@
 
 
     <div class="container">
-        <div class="modal" id="event" role="dialog">
+         <div class="modal fade" id="event" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
