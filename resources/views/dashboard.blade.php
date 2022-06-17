@@ -69,14 +69,14 @@
                                     <label class="form-label" for="peage">Péage
 
                                     </label>
-                                    <input class="form-control" name="peage" type="number" min="0.00" step="0.01">
+                                    <input class="form-control" name="peage" type="number" min="0.00" step="0.1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="parking">
                                         Parking
                                     </label>
-                                    <input class="form-control" name="parking" type="number" min="0.00" step="0.01" >
+                                    <input class="form-control" name="parking" type="number" min="0.00" step="0.1" >
 
                                 </div>
 
@@ -84,7 +84,7 @@
                                     <label class="form-label" for="divers">
                                         Divers
                                     </label>
-                                    <input class="form-control" name="divers" type="number" min="0.00" step="0.01">
+                                    <input class="form-control" name="divers" type="number" min="0.00" step="0.1">
 
                                 </div>
                             </div>
@@ -94,21 +94,21 @@
                                     <label class="form-label" for="repas">
                                         Repas
                                     </label>
-                                    <input class="form-control" name="repas" type="number" min="0.00" step="0.01">
+                                    <input class="form-control" name="repas" type="number" min="0.00" step="0.1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="hotel">
                                         Hotel
                                     </label>
-                                    <input class="form-control" name="hotel" type="number" min="0.00" step="0.01">
+                                    <input class="form-control" name="hotel" type="number" min="0.00" step="0.1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="kilometrage">
                                         Distance
                                     </label>
-                                    <input class="form-control" name="kilometrage" type="number" min="0.00" step="0.01">
+                                    <input class="form-control" name="kilometrage" type="number" min="0.00" step="1">
 
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
 
    <script type="text/javascript">
         let success = document.querySelector('.alert-success');
-        
+
         window.addEventListener('click', ()=> {
             success.style.display = 'none';
         });
