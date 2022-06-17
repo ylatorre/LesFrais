@@ -21,7 +21,7 @@ use App\Http\Controllers\FullCalenderController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::post('/dashboard',[FullCalenderController::class,'store']);
