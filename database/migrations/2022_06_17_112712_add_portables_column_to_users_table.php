@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('salaries', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email');
-            $table->string('password');
-            $table->string('adresse');
-            $table->string('tél_portable');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('portables')->nullable(); // ne jamais ajouter de champs TEXT dans la table users utiliser STRING à la place.
         });
     }
 
@@ -32,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salaries');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

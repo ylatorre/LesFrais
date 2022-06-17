@@ -22,9 +22,9 @@
 
             <!-- Portable -->
             <div>
-                <x-label for="portable" :value="__('Portable')" />
+                <x-label for="portables" :value="__('Portable')" />
 
-                <x-input id="portable" class="block mt-1 w-full" type="text" name="portable" :value="old('portable')" required autofocus />
+                <x-input id="portable" class="block mt-1 w-full" type="text" name="portables" :value="old('portables')" required autofocus />
             </div>
             <!-- Email Address -->
             <div class="mt-4">

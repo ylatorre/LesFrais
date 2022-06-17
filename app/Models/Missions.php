@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Missions extends Model
 {
     use HasFactory;
-    
+
    public function user()
    {
        return $this->belongsTo(User::class);
    }
 
    protected $fillable =[
-    'mission',
+    'description',
     'client',
     'ville',
     'code_postal',
@@ -25,6 +25,6 @@ class Missions extends Model
     'divers',
     'repas',
     'hotel',
-    'km'
+    'kilometrage',
    ];
 }

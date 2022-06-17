@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('client');
             $table->string('ville');
             $table->string('code_postal');
-            $table->float('peages');
-            $table->float('parkings');
+            $table->float('peage');
+            $table->float('parking');
             $table->float('divers');
             $table->float('repas');
-            $table->float('hotels');
+            $table->float('hotel');
             $table->float('kilometrage');
             $table->timestamps();
             $table->foreignId('user_id')->nullable('users');

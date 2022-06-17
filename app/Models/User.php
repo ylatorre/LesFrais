@@ -27,12 +27,13 @@ class User extends Authenticatable
         'ville',
         'code_postal',
         'peage',
+        'portables',
         'parking',
         'essence',
         'divers',
         'repas',
         'hotel',
-        'km',
+        'kilometrage',
     ];
 
     public function missions()

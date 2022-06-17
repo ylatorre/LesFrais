@@ -12,22 +12,22 @@ class FullCalenderController extends Controller
 {
    public function index(Request $request)
    {
-    
-   } 
+
+   }
 
 
    public function create()
    {
      return view('mission.create');
    }
-   
+
    public function store(Request $request)
    {
-     
+
 
  $this->validate($request,[
 
-  'mission'=>'required',
+  'description'=>'required',
   'client'=>'required',
   'ville'=>'required',
   'code_postal'=>'required',
@@ -36,11 +36,11 @@ class FullCalenderController extends Controller
   'divers'=>'required',
   'repas'=>'required',
   'hotel'=>'required',
-  'km'=>'required',
-  
+  'kilometrage'=>'required',
+
  ]);
  $mission = new Missions;
- $mission->mission=$request->input('mission');
+ $mission->mission=$request->input('description');
  $mission->client=$request->input('client');
  $mission->ville=$request->input('ville');
  $mission->code_postal=$request->input('code_postal');
@@ -49,7 +49,7 @@ class FullCalenderController extends Controller
  $mission->divers=$request->input('divers');
  $mission->repas=$request->input('repas');
  $mission->hotel=$request->input('hotel');
- $mission->km=$request->input('km');
+ $mission->km=$request->input('kilometrage');
 
  $mission->save();
  return redirect('dashboard')->with('success','Data Saved');
