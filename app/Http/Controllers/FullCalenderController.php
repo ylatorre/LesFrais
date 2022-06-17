@@ -52,7 +52,7 @@ class FullCalenderController extends Controller
  $mission->kilometrage=$request->input('kilometrage');
 
  $mission->save();
- return redirect('dashboard')->with('success','Data Saved');
+ return redirect('dashboard')->with('success','Données enregistrées avec succès !');
 
    }
 }

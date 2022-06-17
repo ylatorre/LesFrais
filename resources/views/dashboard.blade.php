@@ -20,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
 
 
+
     <div class="container">
         <div class="modal" id="event" role="dialog">
             <div class="modal-dialog" role="document">
@@ -113,7 +114,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="description">
-                                Déscription de la mission
+                                Description de la mission
                                 </label>
                                 <textarea class="form-control input-dashboard" name="description" type="text" placeholder="..." rows="6"></textarea>
 
@@ -160,9 +161,9 @@
 
 
 
-                    <div id="calendar">
-
-                    </div>
+                    <livewire:calendar />
+                    @livewireScripts
+                    @stack('scripts')
 
                 </div>
 
@@ -186,27 +187,15 @@
 
     </script>
 
-    <script>
-        $(document).ready(function() {
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today'
-                    , center: 'title'
-                    , right: 'month,agendaWeek,agendaDay'
-                , }
-
-
-                , selectable: true
-                , selectHelper: true
-                , select: function(start, end, allDays) {
-                    $('#event').modal('toggle');
-
-                }
-
-            })
+   <script type="text/javascript">
+        let success = document.querySelector('.alert-success');
+        
+        window.addEventListener('click', ()=> {
+            success.style.display = 'none';
         });
 
-    </script>
+
+   </script>
 
 
 
