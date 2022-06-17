@@ -65,7 +65,7 @@
                             </div>
                             <div class="row">
                                 <div class="col mb-3">
-                                    <label class="form-label" for="peage">Peage
+                                    <label class="form-label" for="peage">Péage
 
                                     </label>
                                     <input class="form-control" name="peage" type="number" min="0.00" step="0.01">
@@ -104,18 +104,18 @@
 
                                 </div>
                                 <div class="col mb-3">
-                                    <label class="form-label" for="km">
-                                        KM
+                                    <label class="form-label" for="kilometrage">
+                                        Distance
                                     </label>
-                                    <input class="form-control" name="km" type="number" min="0.00" step="0.01">
+                                    <input class="form-control" name="kilometrage" type="number" min="0.00" step="0.01">
 
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="mission">
+                                <label class="form-label" for="description">
                                 Déscription de la mission
                                 </label>
-                                <input class="form-control input-dashboard" name="mission" type="text" placeholder="...">
+                                <textarea class="form-control input-dashboard" name="description" type="text" placeholder="..." rows="6"></textarea>
 
                             </div>
 

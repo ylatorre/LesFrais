@@ -40,7 +40,7 @@ class FullCalenderController extends Controller
 
  ]);
  $mission = new Missions;
- $mission->mission=$request->input('description');
+ $mission->description=$request->input('description');
  $mission->client=$request->input('client');
  $mission->ville=$request->input('ville');
  $mission->code_postal=$request->input('code_postal');
@@ -49,7 +49,7 @@ class FullCalenderController extends Controller
  $mission->divers=$request->input('divers');
  $mission->repas=$request->input('repas');
  $mission->hotel=$request->input('hotel');
- $mission->km=$request->input('kilometrage');
+ $mission->kilometrage=$request->input('kilometrage');
 
  $mission->save();
  return redirect('dashboard')->with('success','Data Saved');
