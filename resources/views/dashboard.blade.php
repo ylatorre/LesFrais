@@ -187,15 +187,7 @@
 
     </script>
 
-   <script type="text/javascript">
-        let success = document.querySelector('.alert-success');
-
-        window.addEventListener('click', ()=> {
-            success.style.display = 'none';
-        });
-
-
-   </script>
+   
 
 
 
