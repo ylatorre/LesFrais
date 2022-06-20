@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -14,20 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('missions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('description');
+        Schema::create('events', function (Blueprint $table) {
+
+            $table->uuid('id')->primary();
+
+            $table->string('start');
+            $table->string('end')->nullable();
+            $table->string('description')->nullable();
             $table->string('client');
             $table->string('ville');
             $table->string('code_postal');
-            $table->float('peage');
-            $table->float('parking');
-            $table->float('divers');
-            $table->float('repas');
-            $table->float('hotel');
+            $table->float('peage')->nullable();
+            $table->float('parking')->nullable();
+            $table->float('divers')->nullable();
+            $table->float('repas')->nullable();
+            $table->float('hotel')->nullable();
             $table->float('kilometrage');
-            $table->timestamps();
-            $table->foreignId('user_id')->nullable('users');
         });
     }
 
@@ -38,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('missions');
+        Schema::dropIfExists('events');
     }
 };

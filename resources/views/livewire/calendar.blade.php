@@ -24,21 +24,62 @@
     @push('scripts')
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
         <script>
+            create_UUID = () => {
+                let dt = new Date().getTime();
+                const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+                    let r = (dt + Math.random() * 16) % 16 | 0;
+                    dt = Math.floor(dt / 16);
+                    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+                });
+                return uuid;
+            }
+
             document.addEventListener('livewire:load', function() {
-                        const Calendar = FullCalendar.Calendar;
-                        const calendarEl = document.getElementById('calendar');
-                        const calendar = new Calendar(calendarEl, {
-                                locale: '{{ config('app.locale') }}',
-
-                                selectable: true,
-                                selectHelper: true,
-                                select: function(start, end, allDays) {
-                                    $('#event').modal('toggle')
-
-                                }}); calendar.render();
-
-                        });
+                const Calendar = FullCalendar.Calendar;
+                const calendarEl = document.getElementById('calendar');
+                const calendar = new Calendar(calendarEl, {
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                    },
+                    locale: '{{ config('app.locale') }}',
+                    events: JSON.parse(@this.events),
+                    editable: true,
+                    eventResize: info => @this.eventChange(info.event),
+                    eventDrop: info => @this.eventChange(info.event),
+                    selectable: true,
+                    select: arg => {
+                        const title = prompt('Titre :');
+                        const id = create_UUID();
+                        if (title) {
+                            calendar.addEvent({
+                                id: id,
+                                start: arg.start,
+                                end: arg.end,
+                                allDay: arg.allDay
+                                // description: arg.description,
+                                // client: arg.client,
+                                // ville: arg.ville,
+                                // code_postal: arg.code_postal,
+                                // peage: arg.peage,
+                                // parking: arg.parking,
+                                // divers: arg.divers,
+                                // repas: arg.repas,
+                                // hotel: arg.hotel,
+                                // kilometrage: arg.kilometrage,
+                            });
+                            @this.eventAdd(calendar.getEventById(id));
+                        };
+                        calendar.unselect();
+                    },
+                });
+                calendar.render();
+            });
         </script>
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
     @endpush
 </div>
+
+
+

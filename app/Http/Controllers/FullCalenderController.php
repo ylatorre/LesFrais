@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Event;
 
 use App\Models\Missions;
+
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class FullCalenderController extends Controller
 {
@@ -39,19 +40,20 @@ class FullCalenderController extends Controller
   'kilometrage'=>'required',
 
  ]);
- $mission = new Missions;
- $mission->description=$request->input('description');
- $mission->client=$request->input('client');
- $mission->ville=$request->input('ville');
- $mission->code_postal=$request->input('code_postal');
- $mission->peage=$request->input('peage');
- $mission->parking=$request->input('parking');
- $mission->divers=$request->input('divers');
- $mission->repas=$request->input('repas');
- $mission->hotel=$request->input('hotel');
- $mission->kilometrage=$request->input('kilometrage');
+ $events = new Event;
+ $events->id = Str::uuid();
+ $events->description=$request->input('description');
+ $events->client=$request->input('client');
+ $events->ville=$request->input('ville');
+ $events->code_postal=$request->input('code_postal');
+ $events->peage=$request->input('peage');
+ $events->parking=$request->input('parking');
+ $events->divers=$request->input('divers');
+ $events->repas=$request->input('repas');
+ $events->hotel=$request->input('hotel');
+ $events->kilometrage=$request->input('kilometrage');
 
- $mission->save();
+ $events->save();
  return redirect('dashboard')->with('success','Données enregistrées avec succès !');
 
    }

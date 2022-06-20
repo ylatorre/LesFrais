@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Missions;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Exports\MissionExport;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +20,7 @@ class MissionController extends Controller
      */
     public function index()
     {
-        $missions = Missions::paginate(30);
+        $event = Event::paginate(30);
         return view('mission.index', compact('missions'));
     }
 
@@ -40,20 +42,22 @@ class MissionController extends Controller
      */
     public function store(StoreMissionRequest $request)
     {
-        $mission = new Missions;
-        $mission->mission = $request->input('mission');
-        $mission->client = $request->input('client');
-        $mission->ville = $request->input('ville');
-        $mission->code_postal = $request->input('code_postal');
-        $mission->peage = $request->input('peage');
-        $mission->parking = $request->input('parking');
-        $mission->divers = $request->input('divers');
-        $mission->repas = $request->input('repas');
-        $mission->hotel = $request->input('hotel');
-        $mission->km = $request->input('km');
+        $events = new Event;
+        $events->id = Str::uuid();
+        
+        $events->mission = $request->input('mission');
+        $events->client = $request->input('client');
+        $events->ville = $request->input('ville');
+        $events->code_postal = $request->input('code_postal');
+        $events->peage = $request->input('peage');
+        $events->parking = $request->input('parking');
+        $events->divers = $request->input('divers');
+        $events->repas = $request->input('repas');
+        $events->hotel = $request->input('hotel');
+        $events->km = $request->input('km');
 
 
-        $mission->save();
+        $events->save();
         return redirect('mission.index')->with('success', 'Data submited successfully!');
     }
 
