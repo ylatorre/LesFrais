@@ -35,8 +35,8 @@
 
                     <div class="modal-body">
 
-                        {{-- <form>
-                            @csrf --}}
+                        <form method="POST" action="/dashboard">
+                            @csrf
 
 
                             <div class="mb-3">
@@ -116,14 +116,14 @@
                                 <label class="form-label" for="description">
                                 Description de la mission
                                 </label>
-                                <textarea class="form-control input-dashboard" id="description" name="description" type="text" placeholder="..." rows="6" ></textarea>
+                                <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea"  rows="6" ></textarea>
 
                             </div>
 
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="button" class="btn btn-primary" id="Validation" onclick="let i = 43;console.log('test',i,)" >Validation</button>
+                            <button type="button" class="btn btn-primary" id="Validation"  >Validation</button>
 
-                        {{-- </form> --}}
+                         </form>
 
                     </div>
 

@@ -55,7 +55,6 @@
 
 
                     select: function(start, end, allDays) {
-                        const id = create_UUID();
                         $('#event').modal('toggle')
 
 
@@ -63,65 +62,71 @@
                         let i = 0
 
                         // console.log($("#client").val())
-                        let description = $("#description").val();
-                        let client = $("#client").val();
-                        let ville = $("#ville").val();
-                        let code_postal = $("#code_postal").val();
-                        let peage = $("#peage").val();
-                        let parking = $("#parking").val();
-                        let divers = $("#divers").val();
-                        let repas = $("#repas").val();
-                        let hotel = $("#hotel").val();
-                        let kilometrage = $("#kilometrage").val();
+                        // let descriptionVal =  document.getElementById("descriptionArea").value
+                        let clientVal = $("#client").val();
+                        let villeVal = $("#ville").val();
+                        let code_postalVal = $("#code_postal").val();
+                        let peageVal = $("#peage").val();
+                        let parkingVal = $("#parking").val();
+                        let diversVal = $("#divers").val();
+                        let repasVal = $("#repas").val();
+                        let hotelVal = $("#hotel").val();
+                        let kilometrageVal = $("#kilometrage").val();
                         // console.log($("#Validation").on('click'));
                         $("#Validation").on('click', function() {
-                            let i = 50
+                            const id = create_UUID();
+                            let descriptionVal =  $("textarea#descriptionArea").val();
+
+                            // console.log(descriptionVal,"description")
+                            // console.log(clientVal,"client")
+                            console.log({{ Auth::user()->id}})
                             calendar.addEvent({
                                 id: id,
                                 start: start,
                                 end: end,
                                 allDay: allDays,
-                                description: description,
-                                client: client,
-                                ville: ville,
-                                code_postal: code_postal,
-                                peage: peage,
-                                parking: parking,
-                                divers: divers,
-                                repas: repas,
-                                hotel: hotel,
-                                kilometrage: kilometrage,
+                                description: descriptionVal,
+                                client: clientVal,
+                                ville: villeVal,
+                                code_postal: code_postalVal,
+                                peage: peageVal,
+                                parking: parkingVal,
+                                divers: diversVal,
+                                repas: repasVal,
+                                hotel: hotelVal,
+                                kilometrage: kilometrageVal,
+                                idUser:{{ Auth::user()->id}}
                             });
+                            // console.log(start)
+                            // return calendar
+// let eventAdd = {calendar}
+// console.log(start.start,"test54")
+                            @this.eventAdd(
+                                {
+                                id:id,
+                                start: start.start,
+                                end: start.end,
+                                allDay: start.allDays,
+                                description: descriptionVal,
+                                client: clientVal,
+                                ville: villeVal,
+                                code_postal: code_postalVal,
+                                peage: peageVal,
+                                parking: parkingVal,
+                                divers: diversVal,
+                                repas: repasVal,
+                                hotel: hotelVal,
+                                kilometrage: kilometrageVal,
+                                idUser:{{ Auth::user()->id}},
 
-                            @this.eventAdd(calendar.getEventById(id));
+
+                                }
+                                )
                             calendar.unselect();
 
                         });
 
-                        if ( i == 50) {
-                            // console.log($("#Validation").on('click'))
-                            // calendar.addEvent({
-                            //     id: id,
-                            //     start: start,
-                            //     end: end,
-                            //     allDay: allDays,
-                            //     description: description,
-                            //     client: client,
-                            //     ville: ville,
-                            //     code_postal: code_postal,
-                            //     peage: peage,
-                            //     parking: parking,
-                            //     divers: divers,
-                            //     repas: repas,
-                            //     hotel: hotel,
-                            //     kilometrage: kilometrage,
-                            // });
-
-                            // @this.eventAdd(calendar.getEventById(id));
-                            console.log("test")
-
-                        }
-                        calendar.unselect();
+                        // calendar.unselect();
                     },
 
 

@@ -34,6 +34,7 @@ class User extends Authenticatable
         'repas',
         'hotel',
         'kilometrage',
+        'idUser',
     ];
 
     public function missions()
