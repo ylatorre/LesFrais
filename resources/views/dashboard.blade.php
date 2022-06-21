@@ -35,7 +35,7 @@
 
                     <div class="modal-body">
 
-                        <form >
+                        <form>
                             @csrf
 
 
@@ -43,7 +43,7 @@
                                 <label class="form-label" for="client">
                                     Client
                                 </label>
-                                <input class="form-control" name="client" type="text">
+                                <input class="form-control" name="client" type="text" value="test">
 
                             </div>
 
@@ -53,14 +53,14 @@
                                     <label class="form-label" for="ville">
                                         Ville
                                     </label>
-                                    <input class="form-control" name="ville" type="text">
+                                    <input class="form-control" name="ville" type="text" value="test">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="code_postal">
                                         Code Postal
                                     </label>
-                                    <input class="form-control" name="code_postal" type="text">
+                                    <input class="form-control" name="code_postal" type="text" value="test">
 
                                 </div>
                             </div>
@@ -69,14 +69,14 @@
                                     <label class="form-label" for="peage">Péage
 
                                     </label>
-                                    <input class="form-control" name="peage" type="number" min="0.00" step="0.1">
+                                    <input class="form-control" name="peage" type="number" min="0.00" step="0.1" value="1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="parking">
                                         Parking
                                     </label>
-                                    <input class="form-control" name="parking" type="number" min="0.00" step="0.1" >
+                                    <input class="form-control" name="parking" type="number" min="0.00" step="0.1" value="1">
 
                                 </div>
 
@@ -84,7 +84,7 @@
                                     <label class="form-label" for="divers">
                                         Divers
                                     </label>
-                                    <input class="form-control" name="divers" type="number" min="0.00" step="0.1">
+                                    <input class="form-control" name="divers" type="number" min="0.00" step="0.1" value="1">
 
                                 </div>
                             </div>
@@ -94,21 +94,21 @@
                                     <label class="form-label" for="repas">
                                         Repas
                                     </label>
-                                    <input class="form-control" name="repas" type="number" min="0.00" step="0.1">
+                                    <input class="form-control" name="repas" type="number" min="0.00" step="0.1" value="1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="hotel">
                                         Hotel
                                     </label>
-                                    <input class="form-control" name="hotel" type="number" min="0.00" step="0.1">
+                                    <input class="form-control" name="hotel" id="" type="number" min="0.00" step="0.1" value="1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="kilometrage">
                                         Distance
                                     </label>
-                                    <input class="form-control" name="kilometrage" type="number" min="0.00" step="1">
+                                    <input class="form-control" id="kilometrage" name="kilometrage" type="number" min="0.00" step="1" value="1">
 
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <label class="form-label" for="description">
                                 Description de la mission
                                 </label>
-                                <textarea class="form-control input-dashboard" name="description" type="text" placeholder="..." rows="6"></textarea>
+                                <textarea class="form-control input-dashboard" id="description" name="description" type="text" placeholder="..." rows="6" ></textarea>
 
                             </div>
 

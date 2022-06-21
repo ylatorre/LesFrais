@@ -60,26 +60,29 @@
                     select: function(start, end, allDays) {
                         const id = create_UUID();
                         $('#event').modal('toggle')
-
-                        if (title) {
+                        const boutonVal = document.getElementById('Validation');
+                        boutonVal.addEventlistener('onclick',()=> {
                             calendar.addEvent({
                                 id: id,
                                 start: start,
                                 end: end,
                                 allDay: allDays,
-                                // description: arg.description,
-                                 // client: client,
-                                // ville: arg.ville,
-                                // code_postal: arg.code_postal,
-                                // peage: arg.peage,
-                                // parking: arg.parking,
-                                // divers: arg.divers,
-                                // repas: arg.repas,
-                                // hotel: arg.hotel,
-                                // kilometrage: arg.kilometrage,
+                                description: arg.description,
+                                client: client,
+                                ville: arg.ville,
+                                code_postal: arg.code_postal,
+                                peage: arg.peage,
+                                parking: arg.parking,
+                                divers: arg.divers,
+                                repas: arg.repas,
+                                hotel: arg.hotel,
+                                kilometrage: arg.kilometrage,
                             });
-                            @this.eventAdd(calendar.getEventById(id));
-                        }
+
+                        @this.eventAdd(calendar.getEventById(id));
+                        })
+
+
                         calendar.unselect();
                     },
 
