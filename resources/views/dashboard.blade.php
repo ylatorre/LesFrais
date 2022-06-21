@@ -69,14 +69,14 @@
                                     <label class="form-label" for="peage">Péage
 
                                     </label>
-                                    <input class="form-control" name="peage" id="peage" type="number"  value="1">
+                                    <input class="form-control" name="peage" id="peage" type="number" value="1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="parking">
                                         Parking
                                     </label>
-                                    <input class="form-control" name="parking" id="parking" type="number"  value="1">
+                                    <input class="form-control" name="parking" id="parking" type="number" value="1">
 
                                 </div>
 
@@ -84,7 +84,7 @@
                                     <label class="form-label" for="divers">
                                         Divers
                                     </label>
-                                    <input class="form-control" name="divers" id="divers" type="number"  value="1">
+                                    <input class="form-control" name="divers" id="divers" type="number" value="1">
 
                                 </div>
                             </div>
@@ -94,21 +94,21 @@
                                     <label class="form-label" for="repas">
                                         Repas
                                     </label>
-                                    <input class="form-control" name="repas" id="repas" type="number"  value="1">
+                                    <input class="form-control" name="repas" id="repas" type="number" value="1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="hotel">
                                         Hotel
                                     </label>
-                                    <input class="form-control" name="hotel" id="hotel" type="number"  value="1">
+                                    <input class="form-control" name="hotel" id="hotel" type="number" value="1">
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="kilometrage">
                                         Distance
                                     </label>
-                                    <input class="form-control" id="kilometrage" name="kilometrage" type="number" value="1">
+                                    <input class="form-control" id="kilometrage" name="kilometrage" type="number"value="1">
 
                                 </div>
                             </div>
@@ -186,9 +186,14 @@
 
     </script>
     <script type="text/javascript">
+
 let alertSuccess = document.querySelector('.alert-success');
+
 window.addEventListener('click', ()=> {
+if(alertSuccess){
     alertSuccess.style.display = 'none';
+}
+
 })
 
     </script>
