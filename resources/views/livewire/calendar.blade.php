@@ -24,6 +24,9 @@
     @push('scripts')
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
         <script>
+
+
+
             create_UUID = () => {
                 let dt = new Date().getTime();
                 const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
@@ -34,7 +37,9 @@
                 return uuid;
             }
 
+
             document.addEventListener('livewire:load', function() {
+
                 const Calendar = FullCalendar.Calendar;
                 const calendarEl = document.getElementById('calendar');
                 const calendar = new Calendar(calendarEl, {
@@ -48,18 +53,22 @@
                     editable: true,
                     eventResize: info => @this.eventChange(info.event),
                     eventDrop: info => @this.eventChange(info.event),
+
                     selectable: true,
-                    select: arg => {
-                        const title = prompt('Titre :');
+
+
+                    select: function(start, end, allDays) {
                         const id = create_UUID();
+                        $('#event').modal('toggle')
+
                         if (title) {
                             calendar.addEvent({
                                 id: id,
-                                start: arg.start,
-                                end: arg.end,
-                                // allDay: arg.allDay
+                                start: start,
+                                end: end,
+                                allDay: allDays,
                                 // description: arg.description,
-                                // client: arg.client,
+                                 // client: client,
                                 // ville: arg.ville,
                                 // code_postal: arg.code_postal,
                                 // peage: arg.peage,
@@ -70,9 +79,12 @@
                                 // kilometrage: arg.kilometrage,
                             });
                             @this.eventAdd(calendar.getEventById(id));
-                        };
+                        }
                         calendar.unselect();
                     },
+
+
+
                 });
                 calendar.render();
             });

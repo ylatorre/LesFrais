@@ -35,7 +35,7 @@
 
                     <div class="modal-body">
 
-                        <form action= "/dashboard" method="POST">
+                        <form >
                             @csrf
 
 
@@ -121,7 +121,7 @@
                             </div>
 
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-primary" >Validation</button>
+                            <button type="submit" class="btn btn-primary" id="Validation" >Validation</button>
 
                         </form>
 

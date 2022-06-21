@@ -15,6 +15,7 @@ class Calendar extends Component
     }
     public function eventAdd($event)
     {
+        dd($event);
         Event::create($event);
     }
 }
