@@ -13,4 +13,8 @@ class Calendar extends Component
         $this->events = json_encode(Event::all());
         return view('livewire.calendar');
     }
+    public function eventAdd($event)
+    {
+        Event::create($event);
+    }
 }

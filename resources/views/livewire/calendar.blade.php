@@ -57,7 +57,7 @@
                                 id: id,
                                 start: arg.start,
                                 end: arg.end,
-                                allDay: arg.allDay
+                                // allDay: arg.allDay
                                 // description: arg.description,
                                 // client: arg.client,
                                 // ville: arg.ville,
