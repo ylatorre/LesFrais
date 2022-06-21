@@ -18,11 +18,7 @@ class MissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $event = Event::paginate(30);
-        return view('mission.index', compact('missions'));
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -44,8 +40,8 @@ class MissionController extends Controller
     {
         $events = new Event;
         $events->id = Str::uuid();
-        
-        $events->mission = $request->input('mission');
+
+        $events->mission = $request->input('description');
         $events->client = $request->input('client');
         $events->ville = $request->input('ville');
         $events->code_postal = $request->input('code_postal');
@@ -54,7 +50,7 @@ class MissionController extends Controller
         $events->divers = $request->input('divers');
         $events->repas = $request->input('repas');
         $events->hotel = $request->input('hotel');
-        $events->km = $request->input('km');
+        $events->km = $request->input('kilometrage');
 
 
         $events->save();

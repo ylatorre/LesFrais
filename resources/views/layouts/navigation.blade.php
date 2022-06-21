@@ -1,7 +1,7 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="background:rgb(255, 255, 255)">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-20">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-               
+
             </div>
 
             <!-- Settings Dropdown -->

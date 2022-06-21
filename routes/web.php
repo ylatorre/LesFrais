@@ -27,13 +27,13 @@ Route::get('/', function () {
 
 Route::resource('mission', MissionController::class);
 Route::get('mission_export',[MissionController::class, 'get_mission_data'])->name('mission.export');
-Route::get('entreprise',[EntrepriseController::class,'index'])->name('entreprise');
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 Route::post('/dashboard',[FullCalenderController::class,'store']);;
+
 
 
 require __DIR__.'/auth.php';

@@ -132,10 +132,7 @@
     </div>
         <div class="container">
             <div class="row">
-                <form action="{{ route('mission.index') }}">
-                    <button type="submit" class="btn btn-primary mt-4">Regarder vos déplacements</button>
-                </form>
-
+              
                 <div class="col-12">
                     <h1 class="text-center text-primary mt-5"><u>Calendrier des Déplacements</u></h1>
 
