@@ -24,9 +24,6 @@
     @push('scripts')
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
         <script>
-
-
-
             create_UUID = () => {
                 let dt = new Date().getTime();
                 const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
@@ -60,29 +57,70 @@
                     select: function(start, end, allDays) {
                         const id = create_UUID();
                         $('#event').modal('toggle')
-                        const boutonVal = document.getElementById('Validation');
-                        boutonVal.addEventlistener('onclick',()=> {
+
+
+
+                        let i = 0
+
+                        // console.log($("#client").val())
+                        let description = $("#description").val();
+                        let client = $("#client").val();
+                        let ville = $("#ville").val();
+                        let code_postal = $("#code_postal").val();
+                        let peage = $("#peage").val();
+                        let parking = $("#parking").val();
+                        let divers = $("#divers").val();
+                        let repas = $("#repas").val();
+                        let hotel = $("#hotel").val();
+                        let kilometrage = $("#kilometrage").val();
+                        // console.log($("#Validation").on('click'));
+                        $("#Validation").on('click', function() {
+                            let i = 50
                             calendar.addEvent({
                                 id: id,
                                 start: start,
                                 end: end,
                                 allDay: allDays,
-                                description: arg.description,
+                                description: description,
                                 client: client,
-                                ville: arg.ville,
-                                code_postal: arg.code_postal,
-                                peage: arg.peage,
-                                parking: arg.parking,
-                                divers: arg.divers,
-                                repas: arg.repas,
-                                hotel: arg.hotel,
-                                kilometrage: arg.kilometrage,
+                                ville: ville,
+                                code_postal: code_postal,
+                                peage: peage,
+                                parking: parking,
+                                divers: divers,
+                                repas: repas,
+                                hotel: hotel,
+                                kilometrage: kilometrage,
                             });
 
-                        @this.eventAdd(calendar.getEventById(id));
-                        })
+                            @this.eventAdd(calendar.getEventById(id));
+                            calendar.unselect();
 
+                        });
 
+                        if ( i == 50) {
+                            // console.log($("#Validation").on('click'))
+                            // calendar.addEvent({
+                            //     id: id,
+                            //     start: start,
+                            //     end: end,
+                            //     allDay: allDays,
+                            //     description: description,
+                            //     client: client,
+                            //     ville: ville,
+                            //     code_postal: code_postal,
+                            //     peage: peage,
+                            //     parking: parking,
+                            //     divers: divers,
+                            //     repas: repas,
+                            //     hotel: hotel,
+                            //     kilometrage: kilometrage,
+                            // });
+
+                            // @this.eventAdd(calendar.getEventById(id));
+                            console.log("test")
+
+                        }
                         calendar.unselect();
                     },
 
@@ -95,6 +133,3 @@
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
     @endpush
 </div>
-
-
-

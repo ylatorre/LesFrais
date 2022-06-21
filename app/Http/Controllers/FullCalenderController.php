@@ -50,7 +50,6 @@ class FullCalenderController extends Controller
  $events->parking=$request->input('parking');
  $events->divers=$request->input('divers');
  $events->repas=$request->input('repas');
- $events->hotel=$request->input('hotel');
  $events->kilometrage=$request->input('kilometrage');
 
  $events->save();
