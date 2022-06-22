@@ -35,6 +35,8 @@ class User extends Authenticatable
         'hotel',
         'kilometrage',
         'idUser',
+        "vehicule",
+        "chevauxFiscaux"
     ];
 
     public function missions()
@@ -50,7 +52,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
     /**
      * The attributes that should be cast.
      *
