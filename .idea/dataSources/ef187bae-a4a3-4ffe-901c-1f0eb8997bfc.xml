@@ -1371,7 +1371,7 @@
       <UnderlyingIndexName>failed_jobs_uuid_unique</UnderlyingIndexName>
     </key>
     <column id="374" parent="344" name="id">
-      <AutoIncrement>28</AutoIncrement>
+      <AutoIncrement>52</AutoIncrement>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1544,7 +1544,7 @@ tokenable_id</ColNames>
       <UnderlyingIndexName>personal_access_tokens_token_unique</UnderlyingIndexName>
     </key>
     <column id="410" parent="348" name="id">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>10</AutoIncrement>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1596,17 +1596,25 @@ tokenable_id</ColNames>
       <DataType>varchar(255)|0s</DataType>
       <Position>11</Position>
     </column>
-    <index id="421" parent="348" name="users_email_unique">
+    <column id="421" parent="348" name="vehicule">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="422" parent="348" name="chevauxFiscaux">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <index id="423" parent="348" name="users_email_unique">
       <ColNames>email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="422" parent="348" name="PRIMARY">
+    <key id="424" parent="348" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="423" parent="348" name="users_email_unique">
+    <key id="425" parent="348" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>

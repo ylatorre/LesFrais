@@ -38,6 +38,7 @@ Route::post('/dashboard',[FullCalenderController::class,'store']);;
 
 Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser');
 Route::post('ajoutUser',[Controller::class, 'ajoutUser'])->name('ajoutUser');
+Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser');
 
 
 require __DIR__.'/auth.php';
