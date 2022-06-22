@@ -279,7 +279,14 @@
               </footer> --}}
 
         </div>
+        <form methode="POST" action="{{route('postPDFgenerator')}}">
+            @csrf
+                <input name="tgyvan" type="text" value="2">
 
+            <div class="h-20 w-full flex flex-row justify-around items-center" >
+                <button class="buttonPDFgenerator" type="submit"></button>
+            </div>
+        </form>
 
 
 
