@@ -15,7 +15,7 @@ class MissionExport implements FromCollection, WithHeadings
     {
         return [
             'mission',
-            'client',
+            'title',
             'ville',
             'code_postal',
             'peage',

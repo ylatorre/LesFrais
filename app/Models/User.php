@@ -23,7 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'mission',
-        'client',
+        'title',
         'ville',
         'code_postal',
         'peage',

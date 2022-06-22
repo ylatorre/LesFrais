@@ -40,10 +40,10 @@
 
 
                             <div class="mb-3">
-                                <label class="form-label" for="client">
+                                <label class="form-label" for="title">
                                     Client
                                 </label>
-                                <input class="form-control" id="client" name="client" type="text" value="test">
+                                <input class="form-control" id="title1" name="title" type="text" value="testtitre">
 
                             </div>
 
@@ -130,9 +130,118 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="modal fade" id="eventClicked" role="dialog">
+           <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title">Mission</h5>
+
+
+
+                       <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">X</button>
+                   </div>
+
+                   <div class="modal-body">
+
+                       <form method="POST" action="/dashboard">
+                           @csrf
+
+
+                           <div class="mb-3">
+                               <label class="form-label" for="title">
+                                   Client
+                               </label>
+                               <input class="form-control" id="title2" name="title" type="text" value="testtitre2">
+
+                           </div>
+
+
+                           <div class="row">
+                               <div class="col mb-3">
+                                   <label class="form-label" for="ville">
+                                       Ville
+                                   </label>
+                                   <input class="form-control" id="ville" name="ville" type="text" value="test">
+
+                               </div>
+                               <div class="col mb-3">
+                                   <label class="form-label" for="code_postal">
+                                       Code Postal
+                                   </label>
+                                   <input class="form-control" id="code_postal" name="code_postal" type="text" value="test">
+
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col mb-3">
+                                   <label class="form-label" for="peage">Péage
+
+                                   </label>
+                                   <input class="form-control" name="peage" id="peage" type="number" value="1">
+
+                               </div>
+                               <div class="col mb-3">
+                                   <label class="form-label" for="parking">
+                                       Parking
+                                   </label>
+                                   <input class="form-control" name="parking" id="parking" type="number" value="1">
+
+                               </div>
+
+                               <div class="col mb-3">
+                                   <label class="form-label" for="divers">
+                                       Divers
+                                   </label>
+                                   <input class="form-control" name="divers" id="divers" type="number" value="1">
+
+                               </div>
+                           </div>
+
+                           <div class="row">
+                               <div class="col mb-3">
+                                   <label class="form-label" for="repas">
+                                       Repas
+                                   </label>
+                                   <input class="form-control" name="repas" id="repas" type="number" value="1">
+
+                               </div>
+                               <div class="col mb-3">
+                                   <label class="form-label" for="hotel">
+                                       Hotel
+                                   </label>
+                                   <input class="form-control" name="hotel" id="hotel" type="number" value="1">
+
+                               </div>
+                               <div class="col mb-3">
+                                   <label class="form-label" for="kilometrage">
+                                       Distance
+                                   </label>
+                                   <input class="form-control" id="kilometrage" name="kilometrage" type="number"value="1">
+
+                               </div>
+                           </div>
+                           <div class="mb-3">
+                               <label class="form-label" for="description">
+                               Description de la mission
+                               </label>
+                               <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea"  rows="6" ></textarea>
+                           </div>
+
+                           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
+                           <button type="button" class="btn btn-primary" id="Validation"  >Validation</button>
+
+                        </form>
+
+                   </div>
+
+               </div>
+           </div>
+       </div>
+   </div>
         <div class="container">
             <div class="row">
-              
+
                 <div class="col-12">
                     <h1 class="text-center text-primary mt-5"><u>Calendrier des Déplacements</u></h1>
 

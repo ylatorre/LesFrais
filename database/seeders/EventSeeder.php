@@ -21,7 +21,7 @@ class EventSeeder extends Seeder
                 'id' => Str::uuid(),
                 'start' => '2022-04-02',
                 'end' => null,
-                'client' => "Bonjour",
+                'title' => "Bonjour",
                 'ville' => 'Lyon',
                 'code_postal' => "68456748",
                 'peage' => null,

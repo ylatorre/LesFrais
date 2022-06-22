@@ -15,6 +15,7 @@ class Calendar extends Component
     {
         //        $this->events = json_encode(Event::all());
         $this->events = json_encode(Event::where("idUser", "=", Auth::user()->id)->get());
+//        dd($this->events);
         return view('livewire.calendar');
     }
     public function eventAdd($event)

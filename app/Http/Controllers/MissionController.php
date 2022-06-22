@@ -42,7 +42,7 @@ class MissionController extends Controller
         $events->id = Str::uuid();
 
         $events->mission = $request->input('description');
-        $events->client = $request->input('client');
+        $events->title = $request->input('title');
         $events->ville = $request->input('ville');
         $events->code_postal = $request->input('code_postal');
         $events->peage = $request->input('peage');

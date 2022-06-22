@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('start');
             $table->string('end')->nullable();
             $table->string('description')->nullable();
-            $table->string('client');
+            $table->string('title');
             $table->string('ville');
             $table->string('code_postal');
             $table->float('peage')->nullable();

@@ -26,7 +26,7 @@ class StoreMissionRequest extends FormRequest
         return [
             
             'mission'=>'bail|required|string|max:255',
-            'client'=>'bail|required|string|max:255',
+            'title'=>'bail|required|string|max:255',
             'ville'=>'bail|required|string|max:255',
             'code_postal'=>'bail|required|string|max:255',
             'peage'=>'bail|required|double|max:8.2',

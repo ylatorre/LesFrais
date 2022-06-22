@@ -40,12 +40,29 @@
                 const Calendar = FullCalendar.Calendar;
                 const calendarEl = document.getElementById('calendar');
                 const calendar = new Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    dateClick: function() {
+                        $('#event').modal('toggle')
+
+                    },
+
+                    eventClick: function(info) {
+                        // alert('Event: ' + info.event.start);
+                        // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                        // alert('View: ' + info.view.type);
+
+                        // change the border color just for fun
+                        $('#eventClicked').modal('toggle')
+                        info.el.style.borderColor = 'red';
+                    },
+
                     headerToolbar: {
                         left: 'prev,next today',
                         center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
                     },
                     locale: '{{ config('app.locale') }}',
+                    // console.log
                     events: JSON.parse(@this.events),
                     editable: true,
                     eventResize: info => @this.eventChange(info.event),
@@ -55,7 +72,7 @@
 
 
                     select: function(start, end, allDays) {
-                        $('#event').modal('toggle')
+
 
 
 
@@ -63,7 +80,7 @@
 
                         // console.log($("#client").val())
                         // let descriptionVal =  document.getElementById("descriptionArea").value
-                        let clientVal = $("#client").val();
+                        let clientVal = $("#title1").val();
                         let villeVal = $("#ville").val();
                         let code_postalVal = $("#code_postal").val();
                         let peageVal = $("#peage").val();
@@ -75,18 +92,18 @@
                         // console.log($("#Validation").on('click'));
                         $("#Validation").on('click', function() {
                             const id = create_UUID();
-                            let descriptionVal =  $("textarea#descriptionArea").val();
+                            let descriptionVal = $("textarea#descriptionArea").val();
 
                             // console.log(descriptionVal,"description")
                             // console.log(clientVal,"client")
-                            console.log({{ Auth::user()->id}})
+                            console.log({{ Auth::user()->id }})
                             calendar.addEvent({
                                 id: id,
                                 start: start,
                                 end: end,
                                 allDay: allDays,
                                 description: descriptionVal,
-                                client: clientVal,
+                                title: clientVal,
                                 ville: villeVal,
                                 code_postal: code_postalVal,
                                 peage: peageVal,
@@ -95,20 +112,19 @@
                                 repas: repasVal,
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
-                                idUser:{{ Auth::user()->id}}
+                                idUser: {{ Auth::user()->id }}
                             });
                             // console.log(start)
                             // return calendar
-// let eventAdd = {calendar}
-// console.log(start.start,"test54")
-                            @this.eventAdd(
-                                {
-                                id:id,
+                            // let eventAdd = {calendar}
+                            // console.log(start.start,"test54")
+                            @this.eventAdd({
+                                id: id,
                                 start: start.start,
                                 end: start.end,
                                 allDay: start.allDays,
                                 description: descriptionVal,
-                                client: clientVal,
+                                title: clientVal,
                                 ville: villeVal,
                                 code_postal: code_postalVal,
                                 peage: peageVal,
@@ -117,11 +133,10 @@
                                 repas: repasVal,
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
-                                idUser:{{ Auth::user()->id}},
+                                idUser: {{ Auth::user()->id }},
 
 
-                                }
-                                )
+                            })
                             calendar.unselect();
 
                         });

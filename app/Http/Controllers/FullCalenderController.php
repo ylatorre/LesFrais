@@ -31,7 +31,7 @@ class FullCalenderController extends Controller
 //  $this->validate($request,[
 
 //   'description'=>'required',
-//   'client'=>'required',
+//   'title'=>'required',
 //   'ville'=>'required',
 //   'code_postal'=>'required',
 //   'peage'=>'required',
