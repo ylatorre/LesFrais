@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PDFgeneratorController extends Controller
 {
     public function PDFgenerator(Request $request)
     {
 
-        $utilisateurs = DB::table('users')->get();
-
+        $utilisateurs = DB::table('users')->RightJoin("events","events.idUser","users.id")->where("idUser", "=", Auth::user()->id)->get();
+dd($utilisateurs);
 
 
         // $date = 0;

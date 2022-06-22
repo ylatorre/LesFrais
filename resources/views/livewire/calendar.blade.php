@@ -80,7 +80,12 @@
 
                         // console.log($("#client").val())
                         // let descriptionVal =  document.getElementById("descriptionArea").value
-                        let clientVal = $("#title1").val();
+
+                        // console.log($("#Validation").on('click'));
+                        $("#Validation").on('click', function() {
+                            const id = create_UUID();
+                            let descriptionVal = $("textarea#descriptionArea").val();
+                            let clientVal = $("#title1").val();
                         let villeVal = $("#ville").val();
                         let code_postalVal = $("#code_postal").val();
                         let peageVal = $("#peage").val();
@@ -89,31 +94,26 @@
                         let repasVal = $("#repas").val();
                         let hotelVal = $("#hotel").val();
                         let kilometrageVal = $("#kilometrage").val();
-                        // console.log($("#Validation").on('click'));
-                        $("#Validation").on('click', function() {
-                            const id = create_UUID();
-                            let descriptionVal = $("textarea#descriptionArea").val();
-
                             // console.log(descriptionVal,"description")
                             // console.log(clientVal,"client")
-                            console.log({{ Auth::user()->id }})
-                            calendar.addEvent({
-                                id: id,
-                                start: start,
-                                end: end,
-                                allDay: allDays,
-                                description: descriptionVal,
-                                title: clientVal,
-                                ville: villeVal,
-                                code_postal: code_postalVal,
-                                peage: peageVal,
-                                parking: parkingVal,
-                                divers: diversVal,
-                                repas: repasVal,
-                                hotel: hotelVal,
-                                kilometrage: kilometrageVal,
-                                idUser: {{ Auth::user()->id }}
-                            });
+                            // console.log({{ Auth::user()->id }})
+                            // calendar.addEvent({
+                            //     id: id,
+                            //     start: start,
+                            //     end: end,
+                            //     allDay: allDays,
+                            //     description: descriptionVal,
+                            //     title: clientVal,
+                            //     ville: villeVal,
+                            //     code_postal: code_postalVal,
+                            //     peage: peageVal,
+                            //     parking: parkingVal,
+                            //     divers: diversVal,
+                            //     repas: repasVal,
+                            //     hotel: hotelVal,
+                            //     kilometrage: kilometrageVal,
+                            //     idUser: {{ Auth::user()->id }}
+                            // });
                             // console.log(start)
                             // return calendar
                             // let eventAdd = {calendar}
