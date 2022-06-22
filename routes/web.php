@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MisionController;
 use App\Http\Controllers\MissionController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\CalculerController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\FullCalenderController;
@@ -32,8 +33,10 @@ Route::get('mission_export',[MissionController::class, 'get_mission_data'])->nam
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 Route::post('/dashboard',[FullCalenderController::class,'store']);;
 
+Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser');
 
 
 require __DIR__.'/auth.php';
