@@ -132,7 +132,7 @@
     </div>
         <div class="container">
             <div class="row">
-              
+
                 <div class="col-12">
                     <h1 class="text-center text-primary mt-5"><u>Calendrier des Déplacements</u></h1>
 
@@ -170,7 +170,14 @@
               </footer> --}}
 
         </div>
+        <form methode="POST" action="{{route('postPDFgenerator')}}">
+            @csrf
+                <input name="tgyvan" type="text" value="2">
 
+            <div class="h-20 w-full flex flex-row justify-around items-center" >
+                <button class="buttonPDFgenerator" type="submit"></button>
+            </div>
+        </form>
 
 
 

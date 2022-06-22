@@ -6,6 +6,7 @@ use App\Http\Controllers\MissionController;
 use App\Http\Controllers\CalculerController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\PDFgeneratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,11 @@ Route::get('mission_export',[MissionController::class, 'get_mission_data'])->nam
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::post('/dashboard',[FullCalenderController::class,'store']);;
+Route::post('/dashboard',[FullCalenderController::class,'store']);
 
+
+Route::post('/PDFgenerator', [PDFgeneratorController::class,'PostPDFgenerator'])->name('postPDFgenerator');
+Route::get('/PDFgenerator', [PDFgeneratorController::class,'PDFgenerator'])->name('PDFgenerator');
 
 
 require __DIR__.'/auth.php';
