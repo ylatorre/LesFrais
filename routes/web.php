@@ -40,5 +40,7 @@ Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gest
 Route::post('ajoutUser',[Controller::class, 'ajoutUser'])->name('ajoutUser');
 Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser');
 
+Route::get('supuser',[Controller::class, 'supuser'])->name('supuser');
+
 
 require __DIR__.'/auth.php';

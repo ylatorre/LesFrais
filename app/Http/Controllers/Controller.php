@@ -74,18 +74,14 @@ class Controller extends BaseController
             return redirect("gestionaireUser");
         }
 
-
-
-
-
-//        if ($request->password != null && $request->password == $request->password_confirmation_passwordConfirm){
-//            DB::table("users")->where("entreprisefiltreunique",$request->entrepriseFiltre)->update(["password"=>Hash::make($request->password)]);
-//        }elseif ($request->password != null && $request->password != $request->password_confirmation_passwordConfirm){
-//            Session::flash('passwordErreur', "Le password ne correspond pas ");
-//
-//            return redirect("dashboardinfo");
-//
-//        }
         return redirect('gestionaireUser');
+    }
+
+    public function supuser(Request $request){
+//        dd("en cours de supression");
+        $modifUserDB = DB::table("users")->where("email","=","$request->email")->get();
+        $deleted = DB::table('users')->where("email", '=', $request->email)->delete();
+
+        return redirect(route("gestionaireUser"));
     }
 }
