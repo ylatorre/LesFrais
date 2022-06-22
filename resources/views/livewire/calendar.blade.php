@@ -94,7 +94,8 @@
                         let repasVal = $("#repas").val();
                         let hotelVal = $("#hotel").val();
                         let kilometrageVal = $("#kilometrage").val();
-                            // console.log(descriptionVal,"description")
+                        let essenceVal = $("#essence").val();
+                        // console.log(descriptionVal,"description")
                             // console.log(clientVal,"client")
                             // console.log({{ Auth::user()->id }})
                             // calendar.addEvent({
@@ -131,6 +132,7 @@
                                 parking: parkingVal,
                                 divers: diversVal,
                                 repas: repasVal,
+                                essence: essenceVal,
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
                                 idUser: {{ Auth::user()->id }},

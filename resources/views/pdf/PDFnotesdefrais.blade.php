@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <>{{ config('app.name', 'Laravel') }}</>
 
     <!-- Fonts -->
 
@@ -40,10 +40,17 @@
         .tablepdf{
             border:collapse
         }
+        .BGjour{
+            background : rgba(255, 187, 0, 0.7);
+        }
+        .BGhotel{
+            background : rgb(255, 251, 0, 0.7);
+        }
+
     </style>
     <table class="tablepdf">
         <thead>
-            <th class="TH-table">Jours</th>
+            <th class="TH-table BGjour">Jours</th>
             <th class="TH-table w-20">Client / Porspect</th>
             <th class="TH-table w-20">Ville</th>
             <th class="TH-table w-15">Code Postal</th>
@@ -53,24 +60,27 @@
             <th class="TH-table">Divers (sauf hotel)</th>
             <th class="TH-table">Dt TVA (20%)</th>
             <th class="TH-table">Repas</th>
-            <th class="TH-table">Hotels TTC</th>
+            <th class="TH-table BGhotel">Hotels TTC</th>
             <th class="TH-table">KM / indémnité</th>
         </thead>
         <tbody>
+            @foreach ($utilisateurs as $utilisateur)
             <tr>
-                <td class="TD-table">1</td>
-                <td class="TD-table">2</td>
-                <td class="TD-table">3</td>
-                <td class="TD-table">4</td>
-                <td class="TD-table">5</td>
-                <td class="TD-table">6</td>
-                <td class="TD-table">7</td>
-                <td class="TD-table">8</td>
-                <td class="TD-table">9</td>
-                <td class="TD-table">10</td>
-                <td class="TD-table">11</td>
-                <td class="TD-table">12</td>
+                <td class="TD-table BGjour">{{$utilisateur->start}} à {{$utilisateur->end}}</td>
+                <td class="TD-table">{{$utilisateur->title}}</td>
+                <td class="TD-table">{{$utilisateur->ville}}</td>
+                <td class="TD-table">{{$utilisateur->code_postal}}</td>
+                <td class="TD-table">{{$utilisateur->peage}}</td>
+                <td class="TD-table">{{$utilisateur->parking}}</td>
+                <td class="TD-table">{{$utilisateur->essence}}</td>
+                <td class="TD-table">{{$utilisateur->divers}}</td>
+                <td class="TD-table">Dt TVA (20%)</td>
+                <td class="TD-table">{{$utilisateur->repas}}</td>
+                <td class="TD-table">{{$utilisateur->hotel}}</td>
+                <td class="TD-table">{{$utilisateur->kilometrage}}</td>
             </tr>
+    @endforeach
+
         </tbody>
 
 

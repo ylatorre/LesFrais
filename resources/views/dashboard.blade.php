@@ -63,6 +63,13 @@
                                     <input class="form-control" id="code_postal" name="code_postal" type="text" value="test">
 
                                 </div>
+                                <div class="col mb-3">
+                                    <label class="form-label" for="essence">
+                                     essence
+                                    </label>
+                                    <input class="form-control" id="essence" name="essence" type="text" value="10">
+
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col mb-3">
@@ -170,6 +177,13 @@
                                        Code Postal
                                    </label>
                                    <input class="form-control" id="code_postal" name="code_postal" type="text" value="test">
+
+                               </div>
+                               <div class="col mb-3">
+                                   <label class="form-label" for="essence">
+                                    essence
+                                   </label>
+                                   <input class="form-control" id="essence" name="essence" type="text" value="10">
 
                                </div>
                            </div>

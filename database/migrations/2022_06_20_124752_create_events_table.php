@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('code_postal');
             $table->float('peage')->nullable();
             $table->float('parking')->nullable();
+            $table->float('essence')->nullable();
             $table->float('divers')->nullable();
             $table->float('repas')->nullable();
             $table->float('hotel')->nullable();
