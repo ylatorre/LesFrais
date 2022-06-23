@@ -22,7 +22,7 @@ class PDFgeneratorController extends Controller
         // $moisencours = Carbon::createFromFormat("m/d/Y");
 
             $pdf = PDF::loadView('pdf.PDFnotesdefrais',compact("utilisateurs"));
-            return $pdf->download('pdf.PDFnotesdefrais'.'.pdf');
+            return $pdf->stream('pdf.PDFnotesdefrais'.'.pdf');
 
 
     }
