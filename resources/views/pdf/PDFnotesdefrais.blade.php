@@ -78,6 +78,8 @@
                 <td class="TD-table">{{$utilisateur->repas}}</td>
                 <td class="TD-table">{{$utilisateur->hotel}}</td>
                 <td class="TD-table">{{$utilisateur->kilometrage}}</td>
+                <br>
+
             </tr>
     @endforeach
 
