@@ -34,6 +34,7 @@ return array(
     'App\\Http\\Requests\\StoreMissionRequest' => $baseDir . '/app/Http/Requests/StoreMissionRequest.php',
     'App\\Models\\Event' => $baseDir . '/app/Models/Event.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\historiqueEssence' => $baseDir . '/app/Models/historiqueEssence.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

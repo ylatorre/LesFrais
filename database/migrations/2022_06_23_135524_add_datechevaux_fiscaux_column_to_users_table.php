@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('chevauxFiscaux')->nullable(); // ne jamais ajouter de champs TEXT dans la table users utiliser STRING à la place.
-
+            //
+            $table->date('dateChevauxFiscaux')->nullable();
         });
     }
 

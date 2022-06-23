@@ -610,6 +610,7 @@ class ComposerStaticInitde89ce96b7969ac01bc8a9f0c8bee675
         'App\\Http\\Requests\\StoreMissionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreMissionRequest.php',
         'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\historiqueEssence' => __DIR__ . '/../..' . '/app/Models/historiqueEssence.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

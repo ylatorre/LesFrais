@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('chevauxFiscaux')->nullable(); // ne jamais ajouter de champs TEXT dans la table users utiliser STRING à la place.
-
+        Schema::create('historique_essences', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->integer("prix")->nullable();
+            $table->text("date")->nullable();
+            $table->integer("userId")->nullable();
         });
     }
 
@@ -26,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('historique_essences');
     }
 };

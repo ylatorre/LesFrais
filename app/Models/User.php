@@ -36,7 +36,8 @@ class User extends Authenticatable
         'kilometrage',
         'idUser',
         "vehicule",
-        "chevauxFiscaux"
+        "chevauxFiscaux",
+        "dateChevauxFiscaux"
     ];
 
     public function missions()

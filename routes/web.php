@@ -34,16 +34,17 @@ Route::get('mission_export',[MissionController::class, 'get_mission_data'])->nam
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::post('/dashboard',[FullCalenderController::class,'store']);
+Route::post('/dashboard',[FullCalenderController::class,'store'])->middleware(['auth']);
 
-Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser');
-Route::post('ajoutUser',[Controller::class, 'ajoutUser'])->name('ajoutUser');
-Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser');
+Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser')->middleware(['auth']);
+Route::post('ajoutUser',[Controller::class, 'ajoutUser'])->name('ajoutUser')->middleware(['auth']);
+Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser')->middleware(['auth']);
+Route::post('ajouterEssence',[Controller::class, 'ajouterEssence'])->name('ajouterEssence')->middleware(['auth']);
 
-Route::get('supuser',[Controller::class, 'supuser'])->name('supuser');
+Route::get('supuser',[Controller::class, 'supuser'])->name('supuser')->middleware(['auth']);
 
-Route::post('/PDFgenerator', [PDFgeneratorController::class,'PostPDFgenerator'])->name('postPDFgenerator');
-Route::get('/PDFgenerator', [PDFgeneratorController::class,'PDFgenerator'])->name('PDFgenerator');
+Route::post('/PDFgenerator', [PDFgeneratorController::class,'PostPDFgenerator'])->name('postPDFgenerator')->middleware(['auth']);
+Route::get('/PDFgenerator', [PDFgeneratorController::class,'PDFgenerator'])->name('PDFgenerator')->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';

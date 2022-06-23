@@ -20,12 +20,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
-
+{{--    <style>--}}
+{{--        table {--}}
+{{--            table-layout: fixed;--}}
+{{--        }--}}
+{{--    </style>--}}
     <!-- Modal toggle -->
     <div class="flex justify-center mb-3">
         <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="authentication-modal">
             Ajouter un User
         </button>
+
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -88,7 +93,7 @@
                     <td class="px-6 py-4 text-right">
                         <div class=" flex justify-center">
                             {{--                        <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>--}}
-                            <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            <button class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button" data-modal-toggle="authentication-modal{{$i}}">
                                 Edit
                             </button>
@@ -99,7 +104,7 @@
                         </div>
                     </td>
                 </tr>
-                <!-- Main modal 2 -->
+                <!-- Main modal 2 modif user-->
                 <div id="authentication-modal{{$i}}" tabindex="-1" aria-hidden="true"
                      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ">
                     <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
@@ -131,14 +136,18 @@
                                         <label for="portables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
                                         <input type="tel"  name="portable" id="portable" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="06 60 06 60 06" value="{{$user->portables}}"  autofocus>
                                     </div>
-                                    <div class="flex justify-between">
+                                    <div class="flex justify-between items-end">
                                         <div class="w-1/2">
                                             <label for="portables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type de Vehicule</label>
                                             <input type="text"  name="vehicule" id="vehicule" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="voiture" value="{{$user->vehicule}}"  autofocus>
                                         </div>
                                         <div class="w-1/2">
                                             <label for="portables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux Fiscaux</label>
-                                            <input type="text"  name="ChevauxFiscaux" id="ChevauxFiscaux" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="125" value="{{$user->chevauxFiscaux}} "  autofocus></div>
+                                            <input type="text"  name="ChevauxFiscaux" id="ChevauxFiscaux" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="125" value="{{$user->chevauxFiscaux}}"  autofocus></div>
+<div class="flex align-center items-end" style="height: 42px;">
+                                        <input type="date"  name="dateChevauxFiscaux" id="dateChevauxFiscaux" class="align-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  value="{{$user->dateChevauxFiscaux}}"
+                                              autofocus></div>
+
                                     </div>
                                     <div>
                                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
@@ -213,7 +222,7 @@
     </div>
 
 
-    <!-- Main modal -->
+    <!-- Main modal ajout user -->
     <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ">
         <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
             <!-- Modal content -->
@@ -237,14 +246,18 @@
                             <label for="portables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
                             <input type="tel"  name="portable" id="portable" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
                         </div>
-                        <div class="flex justify-between">
+                        <div class="flex justify-between items-end">
                             <div class="w-1/2">
-                            <label for="portables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type de Vehicule</label>
-                            <input type="text"  name="vehicule" id="vehicule" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="voiture" :value="old('vehicule')" required autofocus>
+                                <label for="portables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type de Vehicule</label>
+                                <input type="text"  name="vehicule" id="vehicule" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="voiture" value="{{$user->vehicule}}"  autofocus>
                             </div>
                             <div class="w-1/2">
                                 <label for="portables" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux Fiscaux</label>
-                            <input type="text"  name="ChevauxFiscaux" id="ChevauxFiscaux" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="125" :value="old('ChevauxFiscaux')" required autofocus></div>
+                                <input type="text"  name="ChevauxFiscaux" id="ChevauxFiscaux" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="125"  autofocus></div>
+                            <div class="flex align-center items-end" style="height: 42px;">
+                                <input type="date"  name="dateChevauxFiscaux" id="dateChevauxFiscaux" class="align-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  value="{{date("Y-m-d")}}"
+                                       autofocus></div>
+
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
@@ -262,6 +275,7 @@
             </div>
         </div>
     </div>
+
 
 
 

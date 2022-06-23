@@ -2,48 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\historiqueEssence;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use GuzzleHttp\Promise\Create;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     public function gestionaireUser()
     {
         $users = DB::table("users")->get();
-        return view('administration',compact("users"));
+//        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
+        $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
+//dd($prixessence);
+        return view('administration', compact("users", "prixessence"));
     }
+
     public function ajoutUser(Request $request)
     {
 //        $users = DB::table("users")->get();
 //        dd($request);
         $request->validate(
             [
-                "email"=>"unique:users,email",
+                "email" => "unique:users,email",
             ]
         );
-
+//        $chevauxnum = (int)$request->ChevauxFiscaux;
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            "portables"=>$request->portable,
-            "vehicule"=>$request->vehicule,
-            "chevauxFiscaux"=>$request->ChevauxFiscaux,
+            "portables" => $request->portable,
+            "vehicule" => $request->vehicule,
+            "chevauxFiscaux" => $request->ChevauxFiscaux,
+
 
         ]);
         return redirect("gestionaireUser");
     }
+
     public function modifUser(Request $request){
         $modifUserDB = DB::table("users")->where("email","=","$request->email")->get();
+        $iduser = DB::table("users")->where("email","=","$request->email")->select("id")->get();
 //        dump($modifUserDB);
 //        dd($request);
 //        dd($entreprises[0]);
@@ -64,9 +72,19 @@ class Controller extends BaseController
             DB::table("users")->where("email","=","$request->email")->update(["vehicule"=>$request->vehicule]);
         }
         if ($modifUserDB[0]->chevauxFiscaux != $request->ChevauxFiscaux){
+
             DB::table("users")->where("email","=","$request->email")->update(["chevauxFiscaux"=>$request->ChevauxFiscaux]);
         }
+        if ($modifUserDB[0]->dateChevauxFiscaux != $request->dateChevauxFiscaux){
+            historiqueEssence::create([
+                "date"=>$request->dateChevauxFiscaux,
+                "prix"=>$request->ChevauxFiscaux,
+                "userId"=>$iduser[0]->id,
 
+
+            ]);
+            DB::table("users")->where("email","=","$request->email")->update(["dateChevauxFiscaux"=>$request->dateChevauxFiscaux]);
+        }
 
         if ($request->password != null && $request->password == $request->password_confirmation){
             DB::table("users")->where("email",$request->email)->update(["password"=>Hash::make($request->password)]);
@@ -78,11 +96,23 @@ class Controller extends BaseController
         return redirect('gestionaireUser');
     }
 
-    public function supuser(Request $request){
+    public function supuser(Request $request)
+    {
 //        dd("en cours de supression");
-        $modifUserDB = DB::table("users")->where("email","=","$request->email")->get();
+        $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->get();
         $deleted = DB::table('users')->where("email", '=', $request->email)->delete();
 
         return redirect(route("gestionaireUser"));
+    }
+
+    public function ajouterEssence(Request $request)
+    {
+//        dd($request);
+        historiqueEssence::create([
+            "prix" => $request->prixessence,
+            "date" => date("d-M-Y H:i:s"),
+        ]);
+        return redirect('gestionaireUser');
+
     }
 }

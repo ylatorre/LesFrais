@@ -53,7 +53,7 @@
     }
 
     .tablepdf {
-        border: collapse;
+        border-collapse: collapse;
     }
 
     .BGjour {
@@ -155,7 +155,7 @@
     </tr>
     <tr>
         <td class="TD-table BGgris" colspan="4">Dt Total HT</td>
-        <td class="TD-table text-center BGgris" colspan="5" colspan="5">calcule avec la HT</td>
+        <td class="TD-table text-center BGgris" colspan="5">{{$SousTotalTransport - $totalTVA20}}</td>
         <td class="TD-table text-center BGgris" colspan="4">calcule avec la HT</td>
     </tr>
     <tr>
