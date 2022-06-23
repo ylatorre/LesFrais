@@ -35,6 +35,7 @@
          $totalKilometres = 0;
          $SousTotalTransport = 0;
          $SousTotalRepasHotels = 0;
+         $totalTVA20 = 0;
 @endphp
 <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 <style>
@@ -63,6 +64,10 @@
         background: rgb(255, 251, 0, 0.7);
     }
 
+    .BGgris {
+        background: rgba(157, 157, 157, 0.7);
+    }
+
     .BGnuit {
         background: black;
     }
@@ -84,68 +89,80 @@
     <th class="TH-table text-center BGyellow">Hotels TTC</th>
     <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
 
-    <th class="TH-table ">KM / indémnité</th>
+    <th class="TH-table text-center">KM / indémnité</th>
     </thead>
     <tbody>
     @foreach ($utilisateurs as $utilisateur)
         <tr>
-            <td class="TD-table text-center BGjour">{{$utilisateur->start}} à {{$utilisateur->end}}</td>
+            @php
+                $datedebut = explode("T",$utilisateur->start);
+                $datefin = explode("T",$utilisateur->end);
+            @endphp
+            @php
+
+                $totalPeage = $utilisateur->peage+$totalPeage;
+                $totalParking = $utilisateur->parking+$totalParking;
+                $totalEssence = $utilisateur->essence+$totalEssence;
+                $totalDivers = $utilisateur->divers+$totalDivers;
+                $totalRepas = $utilisateur->repas+$totalRepas;
+                $totalHotels = $utilisateur->hotel+$totalHotels;
+                $totalKilometres = $utilisateur->kilometrage+$totalKilometres;
+                $totalTVA20 = round(($utilisateur->divers+$utilisateur->peage+$utilisateur->essence+$utilisateur->parking)/1.2*0.2,2) + $totalTVA20;
+            @endphp
+            <td class="TD-table text-center BGjour">{{$datedebut[0] }} à {{$datefin[0]}}</td>
             <td class="TD-table text-center">{{$utilisateur->title}}</td>
             <td class="TD-table text-center">{{$utilisateur->ville}}</td>
             <td class="TD-table text-center">{{$utilisateur->code_postal}}</td>
-            <td class="TD-table text-center">{{$utilisateur->peage}}</td>
-            <td class="TD-table text-center">{{$utilisateur->parking}}</td>
-            <td class="TD-table text-center">{{$utilisateur->essence}}</td>
-            <td class="TD-table text-center">{{$utilisateur->divers}}</td>
-            <td class="TD-table text-center">Dt TVA (20%)</td>
-            <td class="TD-table text-center">{{$utilisateur->repas}}</td>
-            <td class="TD-table text-center">{{$utilisateur->hotel}}</td>
+            <td class="TD-table text-center">{{$utilisateur->peage}} €</td>
+            <td class="TD-table text-center">{{$utilisateur->parking}} €</td>
+            <td class="TD-table text-center">{{$utilisateur->essence}} €</td>
+            <td class="TD-table text-center">{{$utilisateur->divers}} €</td>
+            <td class="TD-table text-center">{{round(($utilisateur->divers+$utilisateur->peage+$utilisateur->essence+$utilisateur->parking)/1.2*0.2,2)}} €</td>
+            <td class="TD-table text-center">{{$utilisateur->repas}} €</td>
+            <td class="TD-table text-center">{{$utilisateur->hotel}} €</td>
             <td class="TD-table text-center">Dt TVA (10%)</td>
 
-            <td class="TD-table">{{$utilisateur->kilometrage}}</td>
+            <td class="TD-table text-center">{{$utilisateur->kilometrage}} km</td>
 
         </tr>
-        @php
 
-            $totalPeage = $utilisateur->peage+$totalPeage;
-            $totalParking = $utilisateur->parking+$totalParking;
-            $totalEssence = $utilisateur->essence+$totalEssence;
-            $totalDivers = $utilisateur->divers+$totalDivers;
-            $totalRepas = $utilisateur->repas+$totalRepas;
-            $totalHotels = $utilisateur->hotel+$totalHotels;
-            $totalKilometres = $utilisateur->kilometrage+$totalKilometres;
-        @endphp
     @endforeach
     @php
         $SousTotalTransport =  $totalDivers +$totalEssence +$totalPeage+$totalHotels;
         $SousTotalRepasHotels = $totalRepas +$totalHotels;
     @endphp
     <tr>
-        <td class="TD-table BGjour" rowspan="2" colspan="4">Sous Total</td>
-        <td class="TD-table text-center">{{$totalPeage}}</td>
-        <td class="TD-table text-center">{{$totalParking}}</td>
-        <td class="TD-table text-center">{{$totalEssence}}</td>
-        <td class="TD-table text-center">{{$totalDivers}}</td>
-        <td class="TD-table text-center">calculer la tva 20</td>
-        <td class="TD-table text-center">{{$totalRepas}}</td>
-        <td class="TD-table text-center">{{$totalHotels}}</td>
+        <td class="TD-table BGyellow" rowspan="2" colspan="4">Sous Total</td>
+        <td class="TD-table text-center">{{$totalPeage}} €</td>
+        <td class="TD-table text-center">{{$totalParking}} €</td>
+        <td class="TD-table text-center">{{$totalEssence}} €</td>
+        <td class="TD-table text-center">{{$totalDivers}} €</td>
+        <td class="TD-table text-center">{{$totalTVA20}} €</td>
+        <td class="TD-table text-center">{{$totalRepas}} €</td>
+        <td class="TD-table text-center">{{$totalHotels}} €</td>
         <td class="TD-table text-center">calculer la tva 10</td>
-        <td class="TD-table text-center">{{$totalHotels}}</td>
+        <td class="TD-table text-center">{{$totalKilometres}} Km</td>
 
         {{--        <td class="TD-table">{{$totalParking}}</td>--}}
         {{--        <td class="TD-table">{{$totalEssence}}</td>--}}
         {{--        <td class="TD-table">{{$totalDivers}}</td>--}}
     </tr>
     <tr>
-        <td class="TD-table text-center" colspan="5">{{$SousTotalTransport}}</td>
-        <td class="TD-table text-center" colspan="3">{{$SousTotalRepasHotels}}</td>
-        <td class="TD-table text-center" colspan="1">{{$totalKilometres}}</td>
+        <td class="TD-table text-center" colspan="5">{{$SousTotalTransport}} €</td>
+        <td class="TD-table text-center" colspan="3">{{$SousTotalRepasHotels}} €</td>
+        <td class="TD-table text-center" colspan="1">{{$totalKilometres}} * prix de l'essence</td>
 
     </tr>
-{{--    <h1>{{$totalPeage}}</h1>--}}
-{{--    <h1>{{$totalParking}}</h1>--}}
-{{--    <h1>{{$totalEssence}}</h1>--}}
-{{--    <h1>{{$totalDivers}}</h1>--}}
+    <tr>
+        <td class="TD-table BGgris" colspan="4">Dt Total HT</td>
+        <td class="TD-table text-center BGgris" colspan="5" colspan="5">calcule avec la HT</td>
+        <td class="TD-table text-center BGgris" colspan="4">calcule avec la HT</td>
+    </tr>
+    <tr>
+        <td class="TD-table BGyellow" colspan="4">Total TTC / A rembourser</td>
+        <td class="TD-table text-center" colspan="9">Total</td>
+    </tr>
+
     </tbody>
 
 
