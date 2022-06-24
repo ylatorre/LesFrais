@@ -136,21 +136,16 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="floatingInput" class="form-label">Heure</label>
-                                    <div class="timepicker form-floating"
+                                    <div class="timepicker form-floating">
+                                        <input type="text" class="form-control datetimepicker">
+                                    </div>
+                                    {{-- <div class="timepicker form-floating"
                                         data-mdb-with-icon="false" id="input-toggle-timepicker">
                                         <input type="text"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                            placeholder="Select a date" data-mdb-toggle="input-toggle-timepicker" />
-
-                                            <script>
-                                                var elementsToChange = document.getElementsByClass("timepicker-button timepicker-clear ripple")
-                                                elementsToChange.array.forEach(element => {
-                                                    switch (element.innerHTML){
-                                                        case 'clear': element.innerHTML = "effacer";break;
-                                                    }
-                                                });
-                                            </script>
+                                            placeholder="Select a date" data-mdb-toggle="input-toggle-timepicker" data-mdb-format24="true"/>
                                     </div>
+                                    <input class="datepicker" type="text" onclick="BasicTimePicker()"> --}}
                                 </div>
                             </div>
 
