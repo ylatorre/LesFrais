@@ -54,6 +54,14 @@
                         // change the border color just for fun
                         $('#eventClicked').modal('toggle')
                         info.el.style.borderColor = 'red';
+                        $("#Suppression").on('click', () => {
+                            if (confirm("Voulez-vous vraiment supprimer cet événement ?")) {
+                                info.event.remove();
+                                @this.eventRemove(info.event.id);
+                            }
+
+                            $('#eventClicked').modal('toggle');
+                        });
                     },
 
                     headerToolbar: {
@@ -86,16 +94,16 @@
                             const id = create_UUID();
                             let descriptionVal = $("textarea#descriptionArea").val();
                             let clientVal = $("#title1").val();
-                        let villeVal = $("#ville").val();
-                        let code_postalVal = $("#code_postal").val();
-                        let peageVal = $("#peage").val();
-                        let parkingVal = $("#parking").val();
-                        let diversVal = $("#divers").val();
-                        let repasVal = $("#repas").val();
-                        let hotelVal = $("#hotel").val();
-                        let kilometrageVal = $("#kilometrage").val();
-                        let essenceVal = $("#essence").val();
-                        // console.log(descriptionVal,"description")
+                            let villeVal = $("#ville").val();
+                            let code_postalVal = $("#code_postal").val();
+                            let peageVal = $("#peage").val();
+                            let parkingVal = $("#parking").val();
+                            let diversVal = $("#divers").val();
+                            let repasVal = $("#repas").val();
+                            let hotelVal = $("#hotel").val();
+                            let kilometrageVal = $("#kilometrage").val();
+                            let essenceVal = $("#essence").val();
+                            // console.log(descriptionVal,"description")
                             // console.log(clientVal,"client")
                             // console.log({{ Auth::user()->id }})
                             // calendar.addEvent({
