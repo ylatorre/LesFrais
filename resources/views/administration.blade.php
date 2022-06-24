@@ -305,21 +305,21 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
                             <input type="text" name="name" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="name" :value="old('name')" required="">
+                                placeholder="name" value="old('name')" required="">
                         </div>
                         <div>
                             <label for="email"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
                             <input type="email" name="email" id="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="name@company.com" :value="old('email')" required="">
+                                placeholder="name@company.com" value="old('email')" required="">
                         </div>
                         <div>
                             <label for="portables"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
                             <input type="tel" name="portable" id="portable"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
+                                placeholder="06 60 06 60 06" value="old('portable')" required autofocus>
                         </div>
                         <div class="flex justify-between items-end">
                             <div class="w-1/4">
@@ -331,7 +331,7 @@
                                     placeholder="voiture" value="" autofocus>
                             </div>
                             <div class="w-1/4">
-                                <label for="portables"
+                                <label for="ChevauxFiscaux"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux
                                     Fiscaux</label>
                                 <input type="text" name="ChevauxFiscaux" id="ChevauxFiscaux"
