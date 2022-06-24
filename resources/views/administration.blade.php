@@ -79,25 +79,25 @@
                             class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap text-center">
                             {{ $user->name }}
                         </th>
-                         <td class="px-6 py text-center">
+                        <td class="px-6 py text-center">
                             {{ $user->email }}
                         </td>
-                         <td class="px-6 py text-center">
+                        <td class="px-6 py text-center">
                             {{ $user->portables }}
                         </td>
-                         <td class="px-6 py text-center">
+                        <td class="px-6 py text-center">
                             {{ $user->vehicule }}
                         </td>
-                         <td class="px-6 py text-center">
+                        <td class="px-6 py text-center">
                             {{ $user->chevauxFiscaux }}
                         </td>
-                         <td class="px-6 py text-center">
+                        <td class="px-6 py text-center">
                             {{ $user->ValeurChevauxFiscaux }}
                         </td>
-                         <td class="px-6 py text-center">
+                        <td class="px-6 py text-center">
                             *******
                         </td>
-                         <td class="px-6 py text-center">
+                        <td class="px-6 py text-center">
                             *******
                         </td>
                         <td class="px-6 py-4 text-right">
@@ -133,6 +133,9 @@
                                     </svg>
                                 </button>
                                 <div class="py-6 px-6 lg:px-8">
+
+                                    <!-- MODIFIER UN USER -->
+
                                     <form class="space-y-6" action="{{ route('modifUser') }}" method="post">
                                         @csrf
 
@@ -159,23 +162,33 @@
                                                 autofocus>
                                         </div>
                                         <div class="flex justify-between items-end">
-                                            <div class="w-1/2">
-                                                <label for="portables"
+                                            <div class="w-1/4">
+                                                <label for="vehicule"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type
                                                     de Vehicule</label>
                                                 <input type="text" name="vehicule" id="vehicule"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
                                             </div>
-                                            <div class="w-1/2">
+                                            <div class="w-1/4">
                                                 <label for="portables"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux
                                                     Fiscaux</label>
                                                 <input type="text" name="ChevauxFiscaux" id="ChevauxFiscaux"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                    placeholder="125" value="{{ $user->chevauxFiscaux }}" autofocus>
+                                                    placeholder="125" value="{{ $user->chevauxFiscaux }}"
+                                                    autofocus>
                                             </div>
-                                            <div class="flex align-center items-end" style="height: 42px;">
+                                            <div class="w-1/4">
+                                                <label for="portables"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Valeur
+                                                    Chevaux Fiscaux</label>
+                                                <input type="text" name="ValeurChevauxFiscaux"
+                                                    id="ValeurChevauxFiscaux"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    placeholder="125" autofocus>
+                                            </div>
+                                            <div class="flex align-center items-end " style="height: 42px;">
                                                 <input type="date" name="dateChevauxFiscaux"
                                                     id="dateChevauxFiscaux"
                                                     class="align-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -199,11 +212,12 @@
                                                 id="password_confirmation" placeholder="••••••••"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                         </div>
-
-                                        <button type="submit"
-                                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            Modifier User
-                                        </button>
+                                        <div class="w-full mt-4 flex flex-row justify-around">
+                                            <button type="submit"
+                                                class=" w-1/3  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                Modifier Utilisateur
+                                            </button>
+                                        </div>
 
                                     </form>
                                 </div>
@@ -280,6 +294,9 @@
                     </svg>
                 </button>
                 <div class="py-6 px-6 lg:px-8">
+
+                    <!--AJOUTER UN USER-->
+
                     <form class="space-y-6" action="{{ route('ajoutUser') }}" method="post">
                         @csrf
 
@@ -305,8 +322,8 @@
                                 placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
                         </div>
                         <div class="flex justify-between items-end">
-                            <div class="w-1/2">
-                                <label for="portables"
+                            <div class="w-1/4">
+                                <label for="vehicule"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type de
                                     Vehicule</label>
                                 <input type="text" name="vehicule" id="vehicule"
@@ -323,7 +340,8 @@
                             </div>
                             <div class="w-1/4">
                                 <label for="portables"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Valeur Chevaux Fiscaux</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Valeur
+                                    Chevaux Fiscaux</label>
                                 <input type="text" name="ValeurChevauxFiscaux" id="ValeurChevauxFiscaux"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="125" autofocus>
@@ -352,9 +370,12 @@
                                 required>
                         </div>
 
-                        <button type="submit"
-                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Creer
-                            User</button>
+                        <div class="w-full mt-4 flex flex-row justify-around">
+                            <button type="submit"
+                                class=" w-1/3  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Créer un utilisateur
+                            </button>
+                        </div>
 
                     </form>
                 </div>
