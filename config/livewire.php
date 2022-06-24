@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => "https://www.carpediem.pro/LesFrais/public",
+    'asset_url' => "http://lesfrais.test",
 
     /*
     |--------------------------------------------------------------------------
