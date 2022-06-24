@@ -75,7 +75,7 @@
 <table class="tablepdf">
     <thead>
     <th class="TH-table text-center BGjour">Jours</th>
-    <th class="TH-table text-center w-20">Client / Porspect</th>
+    <th class="TH-table text-center w-20">Client / Prospect</th>
     <th class="TH-table text-center w-20">Ville</th>
     <th class="TH-table text-center w-15">Code Postal</th>
     {{--            <tr colspan="4">TTC            </tr>--}}
