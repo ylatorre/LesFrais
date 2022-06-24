@@ -154,7 +154,7 @@
                                                 placeholder="name@company.com" value="{{ $user->email }}">
                                         </div>
                                         <div>
-                                            <label for="portables"
+                                            <label for="portable"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
                                             <input type="tel" name="portable" id="portable"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -171,22 +171,22 @@
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
                                             </div>
                                             <div class="w-1/4">
-                                                <label for="portables"
+                                                <label for="ChevauxFiscaux"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux
                                                     Fiscaux</label>
                                                 <input type="text" name="ChevauxFiscaux" id="ChevauxFiscaux"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                    placeholder="125" value="{{ $user->chevauxFiscaux }}"
+                                                    placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
                                                     autofocus>
                                             </div>
                                             <div class="w-1/4">
-                                                <label for="portables"
+                                                <label for="ValeurChevauxFiscaux"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Valeur
                                                     Chevaux Fiscaux</label>
                                                 <input type="text" name="ValeurChevauxFiscaux"
                                                     id="ValeurChevauxFiscaux"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                    placeholder="125" autofocus>
+                                                    placeholder="exemple: 6" autofocus value="{{ $user->ValeurChevauxFiscaux}}">
                                             </div>
                                             <div class="flex align-center items-end " style="height: 42px;">
                                                 <input type="date" name="dateChevauxFiscaux"
