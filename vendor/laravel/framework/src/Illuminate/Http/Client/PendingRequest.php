@@ -506,15 +506,15 @@ class PendingRequest
      * Specify the number of times the request should be attempted.
      *
      * @param  int  $times
-     * @param  int  $sleep
+     * @param  int  $sleepMilliseconds
      * @param  callable|null  $when
      * @param  bool  $throw
      * @return $this
      */
-    public function retry(int $times, int $sleep = 0, ?callable $when = null, bool $throw = true)
+    public function retry(int $times, int $sleepMilliseconds = 0, ?callable $when = null, bool $throw = true)
     {
         $this->tries = $times;
-        $this->retryDelay = $sleep;
+        $this->retryDelay = $sleepMilliseconds;
         $this->retryThrow = $throw;
         $this->retryWhenCallback = $when;
 
@@ -585,6 +585,17 @@ class PendingRequest
     public function throwIf($condition)
     {
         return $condition ? $this->throw() : $this;
+    }
+
+    /**
+     * Throw an exception if a server or client error occurred and the given condition evaluates to false.
+     *
+     * @param  bool  $condition
+     * @return $this
+     */
+    public function throwUnless($condition)
+    {
+        return $this->throwIf(! $condition);
     }
 
     /**
@@ -895,6 +906,10 @@ class PendingRequest
      */
     protected function parseRequestData($method, $url, array $options)
     {
+        if ($this->bodyFormat === 'body') {
+            return [];
+        }
+
         $laravelData = $options[$this->bodyFormat] ?? $options['query'] ?? [];
 
         $urlString = Str::of($url);

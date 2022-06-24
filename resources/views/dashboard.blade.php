@@ -280,7 +280,7 @@
 
 
 
-                    <livewire:calendar />
+                    <livewire:calendar/>
                     @livewireScripts
                     @stack('scripts')
 
@@ -295,10 +295,10 @@
         </div>
         <form methode="POST" action="{{route('postPDFgenerator')}}">
             @csrf
-                <input name="tgyvan" type="text" value="2">
+                <input name="tgyvan" type="hidden" value="2">
 
             <div class="h-20 w-full flex flex-row justify-around items-center" >
-                <button class="buttonPDFgenerator" target="_blank" type="submit"></button>
+                <x-button  target="_blank" type="submit">Generer une facture</x-button>
             </div>
         </form>
 
