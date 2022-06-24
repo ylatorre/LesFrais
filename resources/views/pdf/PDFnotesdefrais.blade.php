@@ -64,7 +64,12 @@
     .BGyellow {
         background: rgb(255, 251, 0, 0.7);
     }
-
+    .BGblue {
+        background: rgba(0, 183, 255, 0.7);
+    }
+    .BGgreen {
+        background: rgba(179, 255, 0, 0.7);
+    }
     .BGgris {
         background: rgba(157, 157, 157, 0.7);
     }
@@ -81,16 +86,16 @@
     <th class="TH-table text-center w-15">Code Postal</th>
     {{--            <tr colspan="4">TTC            </tr>--}}
 
-    <th class="TH-table text-center">Péage</th>
-    <th class="TH-table text-center">Parking</th>
-    <th class="TH-table text-center">Essence</th>
-    <th class="TH-table text-center">Divers (sauf hotel)</th>
+    <th class="TH-table text-center BGblue">Péage</th>
+    <th class="TH-table text-center BGblue">Parking</th>
+    <th class="TH-table text-center BGblue">Essence</th>
+    <th class="TH-table text-center BGblue">Divers (sauf hotel)</th>
     <th class="TH-table text-center">Dt TVA (20%)</th>
     <th class="TH-table text-center BGyellow">Repas</th>
     <th class="TH-table text-center BGyellow">Hotels TTC</th>
     <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
 
-    <th class="TH-table text-center">KM / indémnité</th>
+    <th class="TH-table text-center BGgreen">KM (ici mettre valeur des cheveux fiscaux)</th>
     <th class="TH-table text-center">description</th>
     </thead>
     <tbody>
@@ -163,8 +168,9 @@
     </tr>
     <tr>
         <td class="TD-table BGgris" colspan="4">Dt Total HT</td>
-        <td class="TD-table text-center BGgris" colspan="5">{{$SousTotalTransport - $totalTVA20}}</td>
-        <td class="TD-table text-center BGgris" colspan="5">{{$DtTotalTVAHotelRepasKM}}</td>
+        <td class="TD-table text-center BGgris" colspan="5">{{$SousTotalTransport - $totalTVA20}} €</td>
+        <td class="TD-table text-center BGgris" colspan="4">{{$DtTotalTVAHotelRepasKM}} €</td>
+        <td class="TD-table text-center BGnuit" colspan="1"></td>
     </tr>
     <tr>
         <td class="TD-table BGyellow" colspan="4">Total TTC / A rembourser</td>

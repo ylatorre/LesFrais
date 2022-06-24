@@ -53,6 +53,9 @@
                     Les chevaux Fiscaux
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Valeur chevaux Fiscaux
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Password
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -83,6 +86,9 @@
                     </td>
                     <td class="px-6 py-4">
                         {{$user->chevauxFiscaux}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$user->ValeurChevauxFiscaux}}
                     </td>
                     <td class="px-6 py-4">
                         *******
