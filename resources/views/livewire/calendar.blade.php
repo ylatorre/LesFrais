@@ -84,8 +84,10 @@
 
 
 
-                        let i = 0
-
+                        let i = 0;
+                        window.addEventListener('onclick',()=>{
+                            $("#eventClicked").style.display = "none";
+                        })
                         // console.log($("#client").val())
                         // let descriptionVal =  document.getElementById("descriptionArea").value
 
@@ -160,6 +162,12 @@
                 calendar.render();
             });
         </script>
+        {{-- <script type="text/javascript">
+          window.addEventListener('onclick',()=>{
+            $("#eventClicked").style.display = "none";
+
+        })
+        </script> --}}
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
     @endpush
 </div>

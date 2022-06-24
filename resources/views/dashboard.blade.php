@@ -46,8 +46,8 @@
                                 <label class="form-label" for="title">
                                     Client
                                 </label>
-                                <input class="form-control" id="title1" name="title" type="text"
-                                    value="testtitre">
+                                <input class="form-control" id="title1" name="title" type="text" placeholder="ex: WWF"
+                                    >
 
                             </div>
 
@@ -57,24 +57,24 @@
                                     <label class="form-label" for="ville">
                                         Ville
                                     </label>
-                                    <input class="form-control" id="ville" name="ville" type="text"
-                                        value="test">
+                                    <input class="form-control" id="ville" name="ville" type="text" placeholder="ex: Paris"
+                                        >
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="code_postal">
                                         Code Postal
                                     </label>
-                                    <input class="form-control" id="code_postal" name="code_postal" type="text"
-                                        value="test">
+                                    <input class="form-control" id="code_postal" name="code_postal" type="text" placeholder="ex: 12 345"
+                                        >
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="essence">
                                         essence
                                     </label>
-                                    <input class="form-control" id="essence" name="essence" type="text"
-                                        value="10">
+                                    <input class="form-control" id="essence" name="essence" type="text" placeholder="..,..€"
+                                        >
 
                                 </div>
                             </div>
@@ -83,16 +83,16 @@
                                     <label class="form-label" for="peage">Péage
 
                                     </label>
-                                    <input class="form-control" name="peage" id="peage" type="number"
-                                        value="1">
+                                    <input class="form-control" name="peage" id="peage" type="number" placeholder="..,..€"
+                                        >
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="parking">
                                         Parking
                                     </label>
-                                    <input class="form-control" name="parking" id="parking" type="number"
-                                        value="1">
+                                    <input class="form-control" name="parking" id="parking" type="number" placeholder="..,..€"
+                                        >
 
                                 </div>
 
@@ -100,8 +100,8 @@
                                     <label class="form-label" for="divers">
                                         Divers
                                     </label>
-                                    <input class="form-control" name="divers" id="divers" type="number"
-                                        value="1">
+                                    <input class="form-control" name="divers" id="divers" type="number" placeholder="..,..€"
+                                        >
 
                                 </div>
                             </div>
@@ -111,24 +111,24 @@
                                     <label class="form-label" for="repas">
                                         Repas
                                     </label>
-                                    <input class="form-control" name="repas" id="repas" type="number"
-                                        value="1">
+                                    <input class="form-control" name="repas" id="repas" type="number" placeholder="..,..€"
+                                        >
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="hotel">
                                         Hotel
                                     </label>
-                                    <input class="form-control" name="hotel" id="hotel" type="number"
-                                        value="1">
+                                    <input class="form-control" name="hotel" id="hotel" type="number" placeholder="..,..€"
+                                        >
 
                                 </div>
                                 <div class="col mb-3">
                                     <label class="form-label" for="kilometrage">
                                         Distance
                                     </label>
-                                    <input class="form-control" id="kilometrage" name="kilometrage"
-                                        type="number"value="1">
+                                    <input class="form-control" id="kilometrage" name="kilometrage" placeholder="ex: 12km"
+                                        type="number">
 
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                 <label class="form-label" for="description">
                                     Description de la mission
                                 </label>
-                                <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea" rows="6"></textarea>
+                                <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea" rows="6" placeholder="Il était une fois..."></textarea>
                             </div>
 
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>

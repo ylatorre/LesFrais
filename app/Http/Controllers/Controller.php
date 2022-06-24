@@ -120,4 +120,4 @@ class Controller extends BaseController
 //         return redirect('gestionaireUser');
 
 //     }
-}
+};
