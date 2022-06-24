@@ -8,6 +8,8 @@ use Illuminate\Container\Container;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Conditionable;
@@ -17,6 +19,8 @@ use Throwable;
 
 /**
  * @template TModel of \Illuminate\Database\Eloquent\Model
+ *
+ * @method $this trashed()
  */
 abstract class Factory
 {
@@ -276,7 +280,7 @@ abstract class Factory
     /**
      * Create a collection of models and persist them to the database without dispatching any model events.
      *
-     * @param  array<string, mixed>  $attributes
+     * @param  (callable(array<string, mixed>): array<string, mixed>)|array<string, mixed>  $attributes
      * @param  \Illuminate\Database\Eloquent\Model|null  $parent
      * @return \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Database\Eloquent\Model|TModel>|\Illuminate\Database\Eloquent\Model|TModel
      */
@@ -837,6 +841,12 @@ abstract class Factory
     {
         if (static::hasMacro($method)) {
             return $this->macroCall($method, $parameters);
+        }
+
+        if ($method === 'trashed' && in_array(SoftDeletes::class, class_uses_recursive($this->modelName()))) {
+            return $this->state([
+                $this->newModel()->getDeletedAtColumn() => $parameters[0] ?? Carbon::now()->subDay(),
+            ]);
         }
 
         if (! Str::startsWith($method, ['for', 'has'])) {

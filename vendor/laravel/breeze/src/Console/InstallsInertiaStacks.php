@@ -27,8 +27,7 @@ trait InstallsInertiaStacks
                 '@vue/compiler-sfc' => '^3.2.31',
                 'autoprefixer' => '^10.4.2',
                 'postcss' => '^8.4.6',
-                'postcss-import' => '^14.0.2',
-                'tailwindcss' => '^3.0.18',
+                'tailwindcss' => '^3.1.0',
                 'vue' => '^3.2.31',
                 'vue-loader' => '^17.0.0',
             ] + $packages;
@@ -72,10 +71,10 @@ trait InstallsInertiaStacks
         $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
 
         // Tailwind / Webpack...
+        copy(__DIR__.'/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__.'/../../stubs/inertia-common/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__.'/../../stubs/inertia-common/webpack.mix.js', base_path('webpack.mix.js'));
         copy(__DIR__.'/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
-        copy(__DIR__.'/../../stubs/inertia-common/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__.'/../../stubs/inertia-vue/resources/js/app.js', resource_path('js/app.js'));
 
         if ($this->option('ssr')) {
@@ -83,7 +82,7 @@ trait InstallsInertiaStacks
         }
 
         $this->info('Breeze scaffolding installed successfully.');
-        $this->comment('Please execute the "npm install && npm run dev" command to build your assets.');
+        $this->comment('Please execute the "npm install" && "npm run dev" commands to build your assets.');
     }
 
     /**
@@ -134,8 +133,7 @@ trait InstallsInertiaStacks
                 '@tailwindcss/forms' => '^0.4.0',
                 'autoprefixer' => '^10.4.2',
                 'postcss' => '^8.4.6',
-                'postcss-import' => '^14.0.2',
-                'tailwindcss' => '^3.0.18',
+                'tailwindcss' => '^3.1.0',
                 'react' => '^17.0.2',
                 'react-dom' => '^17.0.2',
                 '@babel/preset-react' => '^7.16.7',
@@ -175,26 +173,28 @@ trait InstallsInertiaStacks
         copy(__DIR__.'/../../stubs/inertia-common/routes/auth.php', base_path('routes/auth.php'));
 
         // "Dashboard" Route...
-        $this->replaceInFile('/home', '/dashboard', resource_path('js/Pages/Welcome.js'));
-        $this->replaceInFile('Home', 'Dashboard', resource_path('js/Pages/Welcome.js'));
+        $this->replaceInFile('/home', '/dashboard', resource_path('js/Pages/Welcome.jsx'));
+        $this->replaceInFile('Home', 'Dashboard', resource_path('js/Pages/Welcome.jsx'));
         $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
 
         // Tailwind / Webpack...
+        copy(__DIR__.'/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__.'/../../stubs/inertia-common/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__.'/../../stubs/inertia-common/webpack.mix.js', base_path('webpack.mix.js'));
         copy(__DIR__.'/../../stubs/inertia-common/jsconfig.json', base_path('jsconfig.json'));
-        copy(__DIR__.'/../../stubs/inertia-common/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__.'/../../stubs/inertia-react/resources/js/app.js', resource_path('js/app.js'));
+        copy(__DIR__.'/../../stubs/inertia-react/resources/js/app.jsx', resource_path('js/app.jsx'));
+        unlink(resource_path('js/app.js'));
 
         $this->replaceInFile('.vue()', '.react()', base_path('webpack.mix.js'));
-        $this->replaceInFile('.vue', '.js', base_path('tailwind.config.js'));
+        $this->replaceInFile('app.js', 'app.jsx', base_path('webpack.mix.js'));
+        $this->replaceInFile('.vue', '.jsx', base_path('tailwind.config.js'));
 
         if ($this->option('ssr')) {
             $this->installInertiaReactSsrStack();
         }
 
         $this->info('Breeze scaffolding installed successfully.');
-        $this->comment('Please execute the "npm install && npm run dev" command to build your assets.');
+        $this->comment('Please execute the "npm install" && "npm run dev" commands to build your assets.');
     }
 
     /**
@@ -212,7 +212,7 @@ trait InstallsInertiaStacks
         });
 
         copy(__DIR__.'/../../stubs/inertia-react/webpack.ssr.mix.js', base_path('webpack.ssr.mix.js'));
-        copy(__DIR__.'/../../stubs/inertia-react/resources/js/ssr.js', resource_path('js/ssr.js'));
+        copy(__DIR__.'/../../stubs/inertia-react/resources/js/ssr.jsx', resource_path('js/ssr.jsx'));
 
         (new Process([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Inertia\ServiceProvider', '--force'], base_path()))
             ->setTimeout(null)
