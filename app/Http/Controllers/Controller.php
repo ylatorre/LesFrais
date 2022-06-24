@@ -29,7 +29,7 @@ class Controller extends BaseController
     public function ajoutUser(Request $request)
     {
 //        $users = DB::table("users")->get();
-//        dd($request);
+    //    dd($request);
         $request->validate(
             [
                 "email" => "unique:users,email",
@@ -43,6 +43,7 @@ class Controller extends BaseController
             "portables" => $request->portable,
             "vehicule" => $request->vehicule,
             "chevauxFiscaux" => $request->ChevauxFiscaux,
+            "ValeurChevauxFiscaux"=>$request->ValeurChevauxFiscaux
 
 
         ]);
@@ -78,8 +79,9 @@ class Controller extends BaseController
         if ($modifUserDB[0]->dateChevauxFiscaux != $request->dateChevauxFiscaux){
             historiqueEssence::create([
                 "date"=>$request->dateChevauxFiscaux,
-                "prix"=>$request->ChevauxFiscaux,
+                "chevauxFiscaux"=>$request->ChevauxFiscaux,
                 "userId"=>$iduser[0]->id,
+                "prix"=>$request->ValeurChevauxFiscaux,
 
 
             ]);
@@ -105,14 +107,14 @@ class Controller extends BaseController
         return redirect(route("gestionaireUser"));
     }
 
-    public function ajouterEssence(Request $request)
-    {
-//        dd($request);
-        historiqueEssence::create([
-            "prix" => $request->prixessence,
-            "date" => date("d-M-Y H:i:s"),
-        ]);
-        return redirect('gestionaireUser');
+//     public function ajouterEssence(Request $request)
+//     {
+// //        dd($request);
+//         historiqueEssence::create([
+//             "prix" => $request->prixessence,
+//             "date" => date("d-M-Y H:i:s"),
+//         ]);
+//         return redirect('gestionaireUser');
 
-    }
+//     }
 }
