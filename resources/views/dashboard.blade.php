@@ -324,11 +324,11 @@
     </div>
     <form methode="POST" action="{{ route('postPDFgenerator') }}">
         @csrf
-        <input name="tgyvan" type="hidden" value="2">
-        <label for="start">Start month:</label>
+{{--        <input name="tgyvan" type="hidden" value="2">--}}
+        <label for="start">Mois a telecharger:</label>
 
         <input type="month" id="mois" name="mois"
-               min="2018-03" value="{{date("m-Y")}}">
+               min="2018-03" value="{{date("Y-m")}}">
 
         <div class="h-20 w-full flex flex-row justify-around items-center">
             <x-button target="_blank" type="submit">Generer une facture</x-button>
