@@ -40,11 +40,15 @@
                 const Calendar = FullCalendar.Calendar;
                 const calendarEl = document.getElementById('calendar');
                 const calendar = new Calendar(calendarEl, {
+                    unselectAuto:true,
                     initialView: 'dayGridMonth',
                     dateClick: function() {
+                        $('#event').removeData()
                         $('#event').modal('toggle')
 
+
                     },
+
 
                     eventClick: function(info) {
                         // alert('Event: ' + info.event.start);
@@ -52,6 +56,7 @@
                         // alert('View: ' + info.view.type);
 
                         // change the border color just for fun
+                        $('#eventClicked').removeData()
                         $('#eventClicked').modal('toggle')
                         info.el.style.borderColor = 'red';
                         $("#Suppression").on('click', () => {
@@ -59,8 +64,6 @@
                                 info.event.remove();
                                 @this.eventRemove(info.event.id);
                             }
-
-                            $('#eventClicked').modal('toggle');
                         });
                     },
 
@@ -85,9 +88,9 @@
 
 
                         let i = 0;
-                        window.addEventListener('onclick',()=>{
-                            $("#eventClicked").style.display = "none";
-                        })
+                        // window.addEventListener('onclick',()=>{
+                        //     $("#eventClicked").style.display = "none";
+                        // })
                         // console.log($("#client").val())
                         // let descriptionVal =  document.getElementById("descriptionArea").value
 
@@ -149,7 +152,9 @@
 
 
                             })
+
                             calendar.unselect();
+                            $('#eventClicked').removeData();
 
                         });
 
@@ -162,12 +167,13 @@
                 calendar.render();
             });
         </script>
-        {{-- <script type="text/javascript">
+
+         <script type="text/javascript">
           window.addEventListener('onclick',()=>{
-            $("#eventClicked").style.display = "none";
+            $("#eventClicked").removeData();
 
         })
-        </script> --}}
+        </script>
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
     @endpush
 </div>
