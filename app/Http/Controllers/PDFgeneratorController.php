@@ -13,9 +13,13 @@ class PDFgeneratorController extends Controller
 {
     public function PDFgenerator(Request $request)
     {
+//    dd($request->query("mois"));
+        $debutMois = Carbon::createFromFormat('Y-m-d',$request->query("mois")."-"."01");
+        $FinMois = Carbon::createFromFormat('Y-m-d',$request->query("mois")."-"."01")->addMonth(1)->subSecond(1);
+//        dd($debutMois);
 
-        $utilisateurs = DB::table('users')->RightJoin("events","events.idUser","users.id")->where("idUser", "=", Auth::user()->id)->get();
-// dd($utilisateurs);
+        $utilisateurs = DB::table('users')->RightJoin("events","events.idUser","users.id")->where("idUser", "=", Auth::user()->id)->RightJoin("historique_essences","historique_essences.userId","users.id")->whereBetween("end",[$debutMois,$FinMois])->get();
+ dd($utilisateurs);
 
 
         // $date = 0;
