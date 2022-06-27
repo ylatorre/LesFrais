@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
 
 
 
@@ -29,8 +31,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Mission</h5>
-
-
 
                         <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal"
                             aria-label="Close">X</button>
@@ -136,33 +136,154 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="floatingInput" class="form-label">Heure</label>
-                                    <div class="timepicker form-floating">
-                                        <input type="text" class="form-control datetimepicker">
-                                    </div>
-                                    {{-- <div class="timepicker form-floating"
-                                        data-mdb-with-icon="false" id="input-toggle-timepicker">
+                                    {{-- <div class="timepicker-format form-floating" data-mdb-with-icon="false"
+                                        id="input-toggle-timepicker">
                                         <input type="text"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                            placeholder="Select a date" data-mdb-toggle="input-toggle-timepicker" data-mdb-format24="true"/>
-                                    </div>
-                                    <input class="datepicker" type="text" onclick="BasicTimePicker()"> --}}
+                                            placeholder="Select a date" data-mdb-toggle="input-toggle-timepicker" />
+                                    </div> --}}
+                                    {{-- <input class="datepicker" type="text" onclick="BasicTimePicker()"> --}}
                                 </div>
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="description">
+                                        Description de la mission
+                                    </label>
+                                    <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea" rows="6"></textarea>
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" for="description">
-                                    Description de la mission
-                                </label>
-                                <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea" rows="6"></textarea>
-                            </div>
-
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="button" class="btn btn-primary" id="Validation">Validation</button>
+                                <button type="button" class="btn btn-primary"
+                                    data-bs-dismiss="modal">Annuler</button>
+                                <button type="button" class="btn btn-primary" id="Validation">Validation</button>
 
                         </form>
 
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        {{-- modal togle --}}
+        <div id="data-modal-toggle">
+            {{-- modal fade --}}
+            <div class="z-[1055] transition transform ease-out duration-300 translate-x-0 -translate-y-2/4"
+                id="event" role="dialog">
+                {{-- modal dialog --}}
+                <div class="my-6 mx-auto max-w-[500px]" role="document">
+                    {{-- modal content --}}
+                    <div
+                        class="max-h-full overflow-hidden rounded-none border-0 h-full flex flex-col relative bg-white p-[10px]">
+                        {{-- modal header --}}
+                        <div
+                            class="rounded-none items-center flex flex-row p-2.5 box-border justify-between flex-shrink-0 before:content-[' '] before:box-border after:content-[' '] after:box-border">
+                            <h5 class="block box-border m-0 text-[rgb(79,79,79)]">Mission</h5>
+                            <button type="button"
+                                class="pointer-events-none relative z-[3] text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[#b23cfd] rounded-[2.5px] shadow-[rgba(0, 0, 0, 0.2)] box-border text-white block "
+                                data-bs-dismiss="modal">X</button>
+                        </div>
+                        {{-- modul body --}}
+                        <div class="overflow-hidden block ">
+                            <form action="/dashboard" method="POST">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label class="mb-[5px]" for="title">Client</label>
+                                    <input type="text" name="title" id="title1" value="testtitre"
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
+                                </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="ville">
+                                            Ville
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            id="ville" name="ville" type="text" value="test">
+
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="code_postal">
+                                            Code Postal
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            id="code_postal" name="code_postal" type="text" value="test">
+
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="essence">
+                                            essence
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            id="essence" name="essence" type="text" value="10">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="peage">Péage
+
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            name="peage" id="peage" type="number" value="1">
+
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="parking">
+                                            Parking
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            name="parking" id="parking" type="number" value="1">
+
+                                    </div>
+
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="divers">
+                                            Divers
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            name="divers" id="divers" type="number" value="1">
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="repas">
+                                            Repas
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            name="repas" id="repas" type="number" value="1">
+
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="hotel">
+                                            Hotel
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            name="hotel" id="hotel" type="number" value="1">
+
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label class="form-label" for="kilometrage">
+                                            Distance
+                                        </label>
+                                        <input
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            id="kilometrage" name="kilometrage" type="number"value="1">
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

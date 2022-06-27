@@ -36,7 +36,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 Route::post('/dashboard',[FullCalenderController::class,'store'])->middleware(['auth']);
 
-Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser')->middleware(['auth']);
+Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser')->middleware(['auth', 'is.admin']);
 Route::post('ajoutUser',[Controller::class, 'ajoutUser'])->name('ajoutUser')->middleware(['auth']);
 Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser')->middleware(['auth']);
 Route::post('ajouterEssence',[Controller::class, 'ajouterEssence'])->name('ajouterEssence')->middleware(['auth']);
