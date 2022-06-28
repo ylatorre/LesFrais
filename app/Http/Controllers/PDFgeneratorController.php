@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -15,13 +15,14 @@ class PDFgeneratorController extends Controller
     {
 
         $utilisateurs = DB::table('users')->RightJoin("events","events.idUser","users.id")->where("idUser", "=", Auth::user()->id)->get();
-// dd($utilisateurs);
+     //dd($utilisateurs);
 
 
         // $date = 0;
         // $moisencours = Carbon::createFromFormat("m/d/Y");
 
             $pdf = PDF::loadView('pdf.PDFnotesdefrais',compact("utilisateurs"));
+            // dd($pdf);
             return $pdf->stream('pdf.PDFnotesdefrais'.'.pdf');
 
 

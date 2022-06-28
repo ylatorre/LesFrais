@@ -377,7 +377,7 @@ class Stylesheet
 
                 $file = $realfile;
             }
-            
+
             [$css, $http_response_header] = Helpers::getFileContent($file, $this->_dompdf->getHttpContext());
 
             $good_mime_type = true;
@@ -802,27 +802,27 @@ class Stylesheet
                         $attr .= $tok[$j++];
                     }
 
-                    switch ($tok[$j]) {
+                    // switch ($tok[$j]) {
 
-                        case "~":
-                        case "|":
-                        case "$":
-                        case "^":
-                        case "*":
-                            $op .= $tok[$j++];
+                    //     case "~":
+                    //     case "|":
+                    //     case "$":
+                    //     case "^":
+                    //     case "*":
+                    //         $op .= $tok[$j++];
 
-                            if ($tok[$j] !== "=") {
-                                throw new Exception("Invalid CSS selector syntax: invalid attribute selector: $selector");
-                            }
+                    //         if ($tok[$j] !== "=") {
+                    //             throw new Exception("Invalid CSS selector syntax: invalid attribute selector: $selector");
+                    //         }
 
-                            $op .= $tok[$j];
-                            break;
+                    //         $op .= $tok[$j];
+                    //         break;
 
-                        case "=":
-                            $op = "=";
-                            break;
+                    //     case "=":
+                    //         $op = "=";
+                    //         break;
 
-                    }
+                    // }
 
                     // Read the attribute value, if required
                     if ($op != "") {

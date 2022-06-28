@@ -22,14 +22,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
-
+    <script src="{!! url('/js/jquery-clock-timepicker.js') !!}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.standard').clockTimePicker({
+                separator: 'h'
+            });
+        });
+    </script>
 
 
     <div class="container">
-        <div class="modal fade" id="event" role="dialog">
+        <div class="modal fade" id="event" role="dialog" class="hidden">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    {{-- <div class="modal-header">
                         <h5 class="modal-title">Mission</h5>
 
                         <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal"
@@ -136,13 +143,13 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="floatingInput" class="form-label">Heure</label>
-                                    {{-- <div class="timepicker-format form-floating" data-mdb-with-icon="false"
+                                    <div class="timepicker-format form-floating" data-mdb-with-icon="false"
                                         id="input-toggle-timepicker">
                                         <input type="text"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                             placeholder="Select a date" data-mdb-toggle="input-toggle-timepicker" />
-                                    </div> --}}
-                                    {{-- <input class="datepicker" type="text" onclick="BasicTimePicker()"> --}}
+                                    </div>
+                                    <input class="datepicker" type="text" onclick="BasicTimePicker()">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="description">
@@ -153,45 +160,40 @@
 
                                 <button type="button" class="btn btn-primary"
                                     data-bs-dismiss="modal">Annuler</button>
-                                <button type="button" class="btn btn-primary" id="Validation">Validation</button>
-
-                        </form>
-
-                    </div>
+                                <button type="button" class="btn btn-primary"
+                                    id="Validation">Validation</button>
+                            </form>
+                    </div> --}}
 
                 </div>
-            </div>
-        </div>
 
-        {{-- modal togle --}}
-        <div id="data-modal-toggle">
-            {{-- modal fade --}}
-            <div class="z-[1055] transition transform ease-out duration-300 translate-x-0 -translate-y-2/4"
-                id="event" role="dialog">
+            </div>
+            {{-- Modal Tailwind --}}
+            <div id="data-modal-toggle" class="z-[1055]">
                 {{-- modal dialog --}}
                 <div class="my-6 mx-auto max-w-[500px]" role="document">
                     {{-- modal content --}}
                     <div
-                        class="max-h-full overflow-hidden rounded-none border-0 h-full flex flex-col relative bg-white p-[10px]">
+                        class="max-h-full overflow-hidden rounded-[3px] border-0 h-full flex flex-col relative bg-white">
                         {{-- modal header --}}
                         <div
-                            class="rounded-none items-center flex flex-row p-2.5 box-border justify-between flex-shrink-0 before:content-[' '] before:box-border after:content-[' '] after:box-border">
-                            <h5 class="block box-border m-0 text-[rgb(79,79,79)]">Mission</h5>
+                            class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0 before:content-[' '] before:box-border after:content-[' '] after:box-border">
+                            <h5 class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]">Mission</h5>
                             <button type="button"
-                                class="pointer-events-none relative z-[3] text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[#b23cfd] rounded-[2.5px] shadow-[rgba(0, 0, 0, 0.2)] box-border text-white block "
+                                class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block "
                                 data-bs-dismiss="modal">X</button>
                         </div>
                         {{-- modul body --}}
-                        <div class="overflow-hidden block ">
+                        <div class="overflow-hidden block p-[10px]">
                             <form action="/dashboard" method="POST">
                                 @csrf
-
+                                {{-- Input client --}}
                                 <div class="mb-3">
                                     <label class="mb-[5px]" for="title">Client</label>
                                     <input type="text" name="title" id="title1" value="testtitre"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
                                 </div>
-
+                                {{-- Input Ville | Code Postal | Essence --}}
                                 <div class="row">
                                     <div class="mb-3 col">
                                         <label class="form-label" for="ville">
@@ -221,6 +223,7 @@
 
                                     </div>
                                 </div>
+                                {{-- Input Péage | Parking | Divers --}}
                                 <div class="row">
                                     <div class="mb-3 col">
                                         <label class="form-label" for="peage">Péage
@@ -251,7 +254,7 @@
 
                                     </div>
                                 </div>
-
+                                {{-- Input Repas | Hotel | Distance --}}
                                 <div class="row">
                                     <div class="mb-3 col">
                                         <label class="form-label" for="repas">
@@ -281,13 +284,47 @@
 
                                     </div>
                                 </div>
+                                {{-- Input description mission --}}
+                                <div class="row">
+                                    <div class="mb-3 col">
+                                        <label for="heureDebut" class="form-label">
+                                            Heure de début
+                                        </label>
+                                        <input
+                                            class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            name="heureDebut" id="heureDebut" type="text" value="00h00">
+                                    </div>
+                                    <div class="mb-3 col">
+                                        <label for="heureFin" class="form-label">
+                                            Heure de fin
+                                        </label>
+                                        <input
+                                            class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                            name="heureFin" id="heureFin" type="text" value="00h00">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label for="descritpion" class="mb-[5px]">Description de la mission</label>
+                                        <textarea name="descriptionArea" id="descriptionArea" rows="6"
+                                            class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"></textarea>
+                                    </div>
+                                    <button
+                                        class="bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                        data-bs-dismiss="modal">ANNULER</button>
+                                    <button
+                                        class="bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                        id="Validation">VALIDATION</button>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
     <div class="container">
         <div class="modal fade" id="eventClicked" role="dialog">
             <div class="modal-dialog" role="document">
@@ -481,9 +518,4 @@
 
         })
     </script>
-
-
-
-
-
 </x-app-layout>
