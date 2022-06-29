@@ -518,7 +518,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="ville" name="ville" type="text" value="test">
+                                            id="ville2" name="ville" type="text" value="test">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -527,7 +527,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="code_postal" name="code_postal" type="text" value="test">
+                                            id="code_postal2" name="code_postal" type="text" value="test">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -536,7 +536,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="essence" name="essence" type="text" value="10">
+                                            id="essence2" name="essence" type="text" value="10">
 
                                     </div>
                                 </div>
@@ -548,7 +548,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="peage" id="peage" type="number" value="1">
+                                            name="peage" id="peage2" type="number" value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -557,7 +557,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="parking" id="parking" type="number" value="1">
+                                            name="parking" id="parking2" type="number" value="1">
 
                                     </div>
 
@@ -567,7 +567,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="divers" id="divers" type="number" value="1">
+                                            name="divers" id="divers2" type="number" value="1">
 
                                     </div>
                                 </div>
@@ -579,7 +579,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="repas" id="repas" type="number" value="1">
+                                            name="repas" id="repas2" type="number" value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -588,7 +588,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="hotel" id="hotel" type="number" value="1">
+                                            name="hotel" id="hotel2" type="number" value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -597,7 +597,7 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="kilometrage" name="kilometrage" type="number"value="1">
+                                            id="kilometrage" name="kilometrage2" type="number"value="1">
 
                                     </div>
                                 </div>
@@ -609,7 +609,7 @@
                                         </label>
                                         <input
                                             class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="heureDebut" id="heureDebut" type="text" value="00:00">
+                                            name="heureDebut" id="heureDebut2" type="text" value="00:00">
                                     </div>
                                     <div class="mb-3 col">
                                         <label for="heureFin" class="form-label w-full">
@@ -617,7 +617,7 @@
                                         </label>
                                         <input
                                             class="time fin shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="heureFin" id="heureFin" type="text" value="00:00">
+                                            name="heureFin" id="heureFin2" type="text" value="00:00">
                                     </div>
                                     {{-- Empty div to align time input with the others --}}
                                 </div>

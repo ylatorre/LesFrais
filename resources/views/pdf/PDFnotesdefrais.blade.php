@@ -36,6 +36,7 @@
          $SousTotalTransport = 0;
          $SousTotalRepasHotels = 0;
          $totalTVA20 = 0;
+         $totalTVA10 = 0;
 @endphp
 <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 <style>
@@ -108,6 +109,7 @@
                 $totalHotels = $utilisateur->hotel+$totalHotels;
                 $totalKilometres = $utilisateur->kilometrage+$totalKilometres;
                 $totalTVA20 = round(($utilisateur->divers+$utilisateur->peage+$utilisateur->essence+$utilisateur->parking)/1.2*0.2,2) + $totalTVA20;
+                $totalTVA10 = round(($utilisateur->repas + $utilisateur->hotel)*0.1,2)+$totalTVA10;
             @endphp
             <td class="TD-table text-center BGjour">{{$datedebut[0] }} à {{$datefin[0]}}</td>
             <td class="TD-table text-center">{{$utilisateur->title}}</td>
@@ -120,7 +122,7 @@
             <td class="TD-table text-center">{{round(($utilisateur->divers+$utilisateur->peage+$utilisateur->essence+$utilisateur->parking)/1.2*0.2,2)}} €</td>
             <td class="TD-table text-center">{{$utilisateur->repas}} €</td>
             <td class="TD-table text-center">{{$utilisateur->hotel}} €</td>
-            <td class="TD-table text-center">Dt TVA (10%)</td>
+            <td class="TD-table text-center">{{$totalTVA10}} €</td>
 
             <td class="TD-table text-center">{{$utilisateur->kilometrage}} km</td>
 
@@ -140,7 +142,7 @@
         <td class="TD-table text-center">{{$totalTVA20}} €</td>
         <td class="TD-table text-center">{{$totalRepas}} €</td>
         <td class="TD-table text-center">{{$totalHotels}} €</td>
-        <td class="TD-table text-center">calculer la tva 10</td>
+        <td class="TD-table text-center">{{$totalTVA10}} €</td>
         <td class="TD-table text-center">{{$totalKilometres}} Km</td>
 
         {{--        <td class="TD-table">{{$totalParking}}</td>--}}

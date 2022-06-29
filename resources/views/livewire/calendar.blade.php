@@ -54,6 +54,20 @@
                         // change the border color just for fun
                         $('#eventClicked').modal('toggle')
                         info.el.style.borderColor = 'red';
+                        console.log(info.event);
+                        $('#title2').val(info.event.title);
+                        $('#ville2').val(info.event._def.extendedProps.ville);
+                        $('#code_postal2').val(info.event._def.extendedProps.code_postal);
+                        $('#essence2').val(info.event._def.extendedProps.essence);
+                        $('#peage2').val(info.event._def.extendedProps.peage);
+                        $('#parking2').val(info.event._def.extendedProps.parking);
+                        $('#divers2').val(info.event._def.extendedProps.divers);
+                        $('#repas2').val(info.event._def.extendedProps.repas);
+                        $('#hotel2').val(info.event._def.extendedProps.hotel);
+                        $('#kilometrage2').val(info.event._def.extendedProps.kilometrage);
+                        $('#heureDebut2').val(info.event._def.extendedProps.heure_debut);
+                        $('#heureFin2').val(info.event._def.extendedProps.heure_fin);
+
                     },
 
                     headerToolbar: {
@@ -95,6 +109,8 @@
                             let hotelVal = $("#hotel").val();
                             let kilometrageVal = $("#kilometrage").val();
                             let essenceVal = $("#essence").val();
+                            let heureDebutVal = $("#heureDebut");
+                            let heureFinVal = $("#heureFin");
                             console.log(descriptionVal, "description")
                             console.log(clientVal, "client")
                             console.log({{ Auth::user()->id }})
@@ -113,9 +129,11 @@
                                 repas: repasVal,
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
-                                idUser: {{ Auth::user()->id }}
+                                idUser: {{ Auth::user()->id }},
+                                heure_debut: heureDebutVal,
+                                heure_fin: heureFinVal,
                             });
-                            console.log(start)
+                            // console.log(start)
                             // return calendar
                             // let eventAdd = {calendar}
                             // console.log(start.start,"test54")
@@ -136,10 +154,11 @@
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
                                 idUser: {{ Auth::user()->id }},
-
-
+                                heure_debut: heureDebutVal.toString(),
+                                heure_fin:heureFinVal.toString(),
                             })
-                            calendar.unselect();
+                            console.log(heureDebutVal);
+                            //calendar.unselect();
 
                         });
 
