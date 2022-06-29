@@ -42,6 +42,8 @@ class FullCalenderController extends Controller
   'repas'=>'required',
   'hotel'=>'required',
   'kilometrage'=>'required',
+  'heureDebut'=>'required',
+  'heureFin'=>'required',
 
 
  ]);
@@ -56,6 +58,8 @@ class FullCalenderController extends Controller
  $events->divers=$request->input('divers');
  $events->repas=$request->input('repas');
  $events->kilometrage=$request->input('kilometrage');
+ $events->start=$request->input('heureDebut');
+ $events->end=$request->input('heureFin');
  $events->idUser = Auth::user()->id;
 
  $events->save();

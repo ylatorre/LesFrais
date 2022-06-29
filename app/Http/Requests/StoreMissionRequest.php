@@ -24,7 +24,7 @@ class StoreMissionRequest extends FormRequest
     public function rules()
     {
         return [
-            
+
             'mission'=>'bail|required|string|max:255',
             'title'=>'bail|required|string|max:255',
             'ville'=>'bail|required|string|max:255',

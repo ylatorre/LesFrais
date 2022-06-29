@@ -3,7 +3,7 @@
  * Plugin:  jquery-clock-timerpicker
  * Version: 2.6.2
  */
- (function($) {
+(function($) {
 
 	$.fn.clockTimePicker = function(options, _value) {
 		if (typeof options == 'string' && (options == 'value' || options == 'val') && !_value) return $(this).val();
@@ -1051,7 +1051,7 @@
 				clockInnerRadius = clockOuterRadius - 29;
 				canvasHolder.css('width', canvasSize + 'px');
 				canvasHolder.css('height', canvasSize + 'px');
-				
+
 				var dpr = window.devicePixelRatio || 1;
 				var hourCanvas = clockHourCanvas.get(0);
 				var minuteCanvas = clockMinuteCanvas.get(0);
@@ -1091,7 +1091,7 @@
 				}
 				settings.onOpen.call(element.get(0));
 			}
-			
+
 			function positionPopup() {
 				var top = element.offset().top - $(window).scrollTop() + element.outerHeight();
 				if (top + popup.outerHeight() > window.innerHeight) {

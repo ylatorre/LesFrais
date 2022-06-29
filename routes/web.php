@@ -46,5 +46,6 @@ Route::get('supuser',[Controller::class, 'supuser'])->name('supuser')->middlewar
 Route::post('/PDFgenerator', [PDFgeneratorController::class,'PostPDFgenerator'])->name('postPDFgenerator')->middleware(['auth']);
 Route::get('/PDFgenerator', [PDFgeneratorController::class,'PDFgenerator'])->name('PDFgenerator')->middleware(['auth']);
 
+Route::get('userPDFgenerator/{id}', [PDFgeneratorController::class, 'userPDFgenerator'])->name('userPDFgenerator')->middleware(['auth']);
 
 require __DIR__.'/auth.php';

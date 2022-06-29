@@ -97,6 +97,15 @@
                         <td class="px-6 py-4 text-right">
                             <div class="flex justify-center ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
+
+                                <form methode="POST" action="/userPDFgenerator/{{$user->id}}">
+                                    @csrf
+                                    <input name="tgyvan" type="hidden" value="2">
+
+                                    <x-button class=" py-[6.25px] px-[30px] border-none font-medium rounded-lg text-[8.75px] leading-[12.5px] block mr-2" target="_blank" type="submit">Generer une facture</x-button>
+
+                                </form>
+
                                 <button
                                     class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button" data-modal-toggle="authentication-modal{{ $i }}">
@@ -348,14 +357,4 @@
             </div>
         </div>
     </div>
-
-    <form methode="POST" action="{{ route('postPDFgenerator') }}">
-        @csrf
-        <input name="tgyvan" type="hidden" value="2">
-
-        <div class="flex flex-row items-center justify-around w-full h-20">
-            <x-button target="_blank" type="submit">Generer une facture</x-button>
-        </div>
-    </form>
-
 </x-app-layout>

@@ -27,4 +27,11 @@ class PDFgeneratorController extends Controller
 
 
     }
+
+    public function userPDFgenerator(Request $request, $userId){
+        $utilisateurs = DB::table('users')->rightJoin("events","events.idUser","users.id")->where('idUser', "=", $userId)->get();
+
+        $pdf = PDF::loadView('pdf.PDFnotesdefrais',compact("utilisateurs"));
+        return $pdf->stream('pdf.PDFnotesdefrais'.'.pdf');
+    }
 }

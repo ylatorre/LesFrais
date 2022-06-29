@@ -802,6 +802,8 @@ class Stylesheet
                         $attr .= $tok[$j++];
                     }
 
+                    //cause bug "Uninitialized string offset 24"
+
                     // switch ($tok[$j]) {
 
                     //     case "~":
