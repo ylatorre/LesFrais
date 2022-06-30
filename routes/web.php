@@ -8,6 +8,7 @@ use App\Http\Controllers\CalculerController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\PDFgeneratorController;
+use App\Http\Livewire\Calendar;
 
 /*
 |--------------------------------------------------------------------------

@@ -1278,7 +1278,7 @@
 				else {
 					time = '0' + (!settings.duration ? '0' : '') + settings.separator + '00';
 				}
-				return (settings.duration && settings.useDurationPlusSign && !time.match(/^\-/) && !time.match(/^0+:00$/) ? '+' : '') + time;
+				return ((settings.duration && settings.useDurationPlusSign && !time.match(/^\-/) && !time.match(/^0+:00$/) ? '+' : '') + time).toString();
 			}
 
 

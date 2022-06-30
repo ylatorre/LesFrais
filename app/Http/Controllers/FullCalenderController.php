@@ -14,55 +14,80 @@ use App\Models\User;
 
 class FullCalenderController extends Controller
 {
-   public function index(Request $request)
-   {
-
-   }
-
-
-   public function create()
-   {
-     return view('mission.create');
-   }
-
-   public function store(Request $request)
-   {
-
-// $idUser = DB::users('id')->where('email', Auth::user()->email)->first();
-
- $this->validate($request,[
-
-  'description'=>'required',
-  'title'=>'required',
-  'ville'=>'required',
-  'code_postal'=>'required',
-  'peage'=>'required',
-  'parking'=>'required',
-  'divers'=>'required',
-  'repas'=>'required',
-  'hotel'=>'required',
-  'kilometrage'=>'required',
-  'heureDebut'=>'required',
-  'heureFin'=>'required',
+    public function index(Request $request)
+    {
+    }
 
 
- ]);
- $events = new Event;
- $events->id = Str::uuid();
- $events->description=$request->input('description');
- $events->client=$request->input('client');
- $events->ville=$request->input('ville');
- $events->code_postal=$request->input('code_postal');
- $events->peage=$request->input('peage');
- $events->parking=$request->input('parking');
- $events->divers=$request->input('divers');
- $events->repas=$request->input('repas');
- $events->kilometrage=$request->input('kilometrage');
- $events->heureDebut=$request->input('heureDebut');
- $events->heureFin=$request->input('heureFin');
- $events->idUser = Auth::user()->id;
+    public function create()
+    {
+        return view('mission.create');
+    }
 
- $events->save();
- return redirect('dashboard')->with('success','Données enregistrées avec succès !');
-   }
+    public function store(Request $request)
+    {
+
+        // $idUser = DB::users('id')->where('email', Auth::user()->email)->first();
+
+        $this->validate($request, [
+
+            'description' => 'required',
+            'title' => 'required',
+            'ville' => 'required',
+            'code_postal' => 'required',
+            'peage' => 'required',
+            'parking' => 'required',
+            'divers' => 'required',
+            'repas' => 'required',
+            'hotel' => 'required',
+            'kilometrage' => 'required',
+            'heureDebut' => 'required',
+            'heureFin' => 'required',
+        ]);
+
+        // dd($request);
+        // if($request->ajax()){
+        //     $events = new Event;
+        //     $events->id = Str::uuid();
+        //     $events->description = $request->description;
+        //     $events->title = $request->title;
+        //     $events->ville = $request->ville;
+        //     $events->code_postal = $request->code_postal;
+        //     $events->peage = $request->peage;
+        //     $events->parking = $request->parking;
+        //     $events->essence = $request->essence;
+        //     $events->divers = $request->divers;
+        //     $events->repas = $request->repas;
+        //     $events->hotel = $request->hotel;
+        //     $events->kilometrage = $request->kilometrage;
+        //     $events->heure_debut = $request->heureDebut;
+        //     $events->heure_fin = $request->heureFin;
+        //     $events->idUser = Auth::user()->id;
+        //     $events->start = $request->start;
+        //     $events->end = $request->end;
+        // }
+
+        $events = new Event;
+        $events->id = Str::uuid();
+        $events->description = $request->input('description');
+        $events->title = $request->input('title');
+        $events->ville = $request->input('ville');
+        $events->code_postal = $request->input('code_postal');
+        $events->peage = $request->input('peage');
+        $events->parking = $request->input('parking');
+        $events->essence = $request->input('essence');
+        $events->divers = $request->input('divers');
+        $events->repas = $request->input('repas');
+        $events->hotel = $request->input('hotel');
+        $events->kilometrage = $request->input('kilometrage');
+        $events->heure_debut = $request->input('heureDebut');
+        $events->heure_fin = $request->input('heureFin');
+        $events->idUser = Auth::user()->id;
+        $events->start = $request->input('start');
+        $events->end = $request->input('end');
+        $events->save();
+
+        return redirect('dashboard')->with('success', 'Données enregistrées avec succès !');
+
+    }
 }

@@ -222,7 +222,9 @@
                                     <label class="mb-[5px]" for="title">Client</label>
                                     <input type="text" name="title" id="title1" value="testtitre"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
-                                </div>
+                                    <input type="text" name="start" id="start" class="hidden">
+                                    <input type="text" name="end" id="end" class="hidden">
+                                    </div>
                                 {{-- Input Ville | Code Postal | Essence --}}
                                 <div class="row">
                                     <div class="mb-3 col">
@@ -325,7 +327,7 @@
                                             name="heureDebut" id="heureDebut" type="text" value="00:00">
                                     </div>
                                     <div class="mb-3 col">
-                                        <label for="heureFin" class="form-label w-full">
+                                        <label for="heureFin" class="w-full form-label">
                                             Heure de fin
                                         </label>
                                         <input
@@ -338,7 +340,7 @@
                                 <div class="row">
                                     <div class="mb-3">
                                         <label for="descritpion" class="mb-[5px]">Description de la mission</label>
-                                        <textarea name="descriptionArea" id="description" rows="6"
+                                        <textarea name="description" id="description" rows="6"
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"></textarea>
                                     </div>
                                 </div>
@@ -612,7 +614,7 @@
                                             name="heureDebut" id="heureDebut2" type="text" value="00:00">
                                     </div>
                                     <div class="mb-3 col">
-                                        <label for="heureFin" class="form-label w-full">
+                                        <label for="heureFin" class="w-full form-label">
                                             Heure de fin
                                         </label>
                                         <input

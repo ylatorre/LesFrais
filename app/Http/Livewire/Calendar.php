@@ -15,14 +15,14 @@ class Calendar extends Component
     {
         //        $this->events = json_encode(Event::all());
         $this->events = json_encode(Event::where("idUser", "=", Auth::user()->id)->get());
-//        dd($this->events);
+        //        dd($this->events);
         return view('livewire.calendar');
     }
     public function eventAdd($event)
     {
-        //dd($event);
-
+        dd($event);
         Event::create($event);
+        // $event->save();
         return redirect('dashboard')->with('success', 'Données enregistrées avec succès !');
     }
 
@@ -30,7 +30,7 @@ class Calendar extends Component
     {
         $e = Event::find($event['id']);
         $e->start = $event['start'];
-        if(Arr::exists($event, 'end')) {
+        if (Arr::exists($event, 'end')) {
             $e->end = $event['end'];
         }
         $e->save();

@@ -87,18 +87,32 @@
 
                     select: function(start, end, allDays) {
 
-
-
-
-                        let i = 0
+                        let i = 0;
 
                         // console.log($("#client").val())
                         // let descriptionVal =  document.getElementById("descriptionArea").value
 
                         // console.log($("#Validation").on('click'));
                         $("#Validation").on('click', function() {
+                            let day = start.start.getDate();
+                            if(day < 10) { day = "0" + day};
+                            let month = start.start.getMonth() + 1;
+                            if(month < 10) { month = "0" + month};
+                            var startDate =
+                                start.start.getFullYear() + "-" +
+                                month + "-" +
+                                day + " " +
+                                $('#heureDebut').val();
+                            var endDate =
+                                start.start.getFullYear() + "-" +
+                                month + "-" +
+                                day + " " +
+                                $('#heureFin').val();
+                            $('#start').val(startDate);
+                            $('#end').val(start.end);
+
                             const id = create_UUID();
-                            let descriptionVal = $("textarea#description").val();
+                            let descriptionVal = $("description").val();
                             let clientVal = $("#title1").val();
                             let villeVal = $("#ville").val();
                             let code_postalVal = $("#code_postal").val();
@@ -109,30 +123,14 @@
                             let hotelVal = $("#hotel").val();
                             let kilometrageVal = $("#kilometrage").val();
                             let essenceVal = $("#essence").val();
-                            let heureDebutVal = $("#heureDebut");
-                            let heureFinVal = $("#heureFin");
-                            console.log(descriptionVal, "description")
-                            console.log(clientVal, "client")
-                            console.log({{ Auth::user()->id }})
-                            calendar.addEvent({
-                                id: id,
-                                start: start,
-                                end: end,
-                                allDay: allDays,
-                                description: descriptionVal,
-                                title: clientVal,
-                                ville: villeVal,
-                                code_postal: code_postalVal,
-                                peage: peageVal,
-                                parking: parkingVal,
-                                divers: diversVal,
-                                repas: repasVal,
-                                hotel: hotelVal,
-                                kilometrage: kilometrageVal,
-                                idUser: {{ Auth::user()->id }},
-                                heure_debut: heureDebutVal,
-                                heure_fin: heureFinVal,
-                            });
+                            let heureDebutVal = $("#heureDebut").val();
+                            let heureFinVal = $("#heureFin").val();
+                            // console.log(descriptionVal, "description")
+
+
+                            // console.log(clientVal, "client")
+                            // console.log({{ Auth::user()->id }})
+
                             // console.log(start)
                             // return calendar
                             // let eventAdd = {calendar}
@@ -154,11 +152,10 @@
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
                                 idUser: {{ Auth::user()->id }},
-                                heure_debut: heureDebutVal.toString(),
-                                heure_fin:heureFinVal.toString(),
+                                heure_debut: heureDebutVal,
+                                heure_fin: heureFinVal,
                             })
-                            console.log(heureDebutVal);
-                            //calendar.unselect();
+                            calendar.unselect();
 
                         });
 

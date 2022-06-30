@@ -34,7 +34,7 @@ class StoreMissionRequest extends FormRequest
             'divers'=>'bail|required|double|max:8.2',
             'repas'=>'bail|required|double|max:8.2',
             'hotel'=>'bail|required|double|max:8.2',
-            'km'=>'bail|required|double|max:8.2'
+            'km'=>'bail|required|double|max:8.2',
         ];
     }
 }

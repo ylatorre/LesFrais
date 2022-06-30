@@ -102,7 +102,7 @@
                                     @csrf
                                     <input name="tgyvan" type="hidden" value="2">
 
-                                    <x-button class=" py-[6.25px] px-[30px] border-none font-medium rounded-lg text-[8.75px] leading-[12.5px] block mr-2" target="_blank" type="submit">Generer une facture</x-button>
+                                    <x-button-generer-facture-admin target="_blank" type="submit">Generer une facture</x-button-generer-facture-admin>
 
                                 </form>
 

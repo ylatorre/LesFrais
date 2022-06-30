@@ -30,6 +30,8 @@ class EventSeeder extends Seeder
                 'repas' => null,
                 'hotel' => null,
                 'kilometrage' => '20',
+                'heure_debut' => '10:00',
+                'heure_fin' => '11:00',
             ],
 
         ]);
