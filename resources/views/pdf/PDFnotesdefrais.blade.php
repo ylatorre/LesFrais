@@ -152,7 +152,7 @@
     <tr>
         <td class="TD-table text-center" colspan="5">{{$SousTotalTransport}} €</td>
         <td class="TD-table text-center" colspan="3">{{$SousTotalRepasHotels}} €</td>
-        <td class="TD-table text-center" colspan="1">{{$totalKilometres}} * prix de l'essence</td>
+        <td class="TD-table text-center" colspan="1">{{$totalKilometres * $totalEssence}}{{-- * prix de l'essence--}}</td>
 
     </tr>
     <tr>
