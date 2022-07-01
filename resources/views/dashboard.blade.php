@@ -220,12 +220,13 @@
                                 @csrf
                                 {{-- Input client --}}
                                 <div class="mb-3">
+                                    <div id="errors" ></div>
                                     <label class="mb-[5px]" for="title">Client</label>
                                     <input type="text" name="title" id="title1" value="testtitre"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
                                     <input type="text" name="start" id="start" class="hidden">
                                     <input type="text" name="end" id="end" class="hidden">
-                                    </div>
+                                </div>
                                 {{-- Input Ville | Code Postal | Essence --}}
                                 <div class="row">
                                     <div class="mb-3 col">
@@ -243,7 +244,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="code_postal" name="code_postal" type="number" min="0" max="99999" value="00000">
+                                            id="code_postal" name="code_postal" type="text"
+                                            value="00000">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -273,7 +275,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="parking" id="parking" type="number" min="0" value="1">
+                                            name="parking" id="parking" type="number" min="0"
+                                            value="1">
 
                                     </div>
 
@@ -283,7 +286,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="divers" id="divers" type="number" min="0" value="1">
+                                            name="divers" id="divers" type="number" min="0"
+                                            value="1">
 
                                     </div>
                                 </div>
@@ -295,7 +299,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="repas" id="repas" type="number" min="0" value="1">
+                                            name="repas" id="repas" type="number" min="0"
+                                            value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -304,7 +309,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="hotel" id="hotel" type="number" min="0" value="1">
+                                            name="hotel" id="hotel" type="number" min="0"
+                                            value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -313,7 +319,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="kilometrage" name="kilometrage" type="number" min="0"value="1">
+                                            id="kilometrage" name="kilometrage" type="number"
+                                            min="0"value="1">
 
                                     </div>
                                 </div>
@@ -531,7 +538,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="code_postal2" name="code_postal" type="number" min="0" max="99999" value="test">
+                                            id="code_postal2" name="code_postal" type="text"
+                                            value="test">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -540,7 +548,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="essence2" name="essence" type="number" min="0" value="10">
+                                            id="essence2" name="essence" type="number" min="0"
+                                            value="10">
 
                                     </div>
                                 </div>
@@ -552,7 +561,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="peage" id="peage2" type="number" min="0" value="1">
+                                            name="peage" id="peage2" type="number" min="0"
+                                            value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -561,7 +571,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="parking" id="parking2" type="number" min="0" value="1">
+                                            name="parking" id="parking2" type="number" min="0"
+                                            value="1">
 
                                     </div>
 
@@ -571,7 +582,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="divers" id="divers2" type="number" min="0" value="1">
+                                            name="divers" id="divers2" type="number" min="0"
+                                            value="1">
 
                                     </div>
                                 </div>
@@ -583,7 +595,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="repas" id="repas2" type="number" min="0" value="1">
+                                            name="repas" id="repas2" type="number" min="0"
+                                            value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -592,7 +605,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            name="hotel" id="hotel2" type="number" min="0" value="1">
+                                            name="hotel" id="hotel2" type="number" min="0"
+                                            value="1">
 
                                     </div>
                                     <div class="mb-3 col">
@@ -601,7 +615,8 @@
                                         </label>
                                         <input
                                             class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                            id="kilometrage2" name="kilometrage" type="number" min="0"value="1">
+                                            id="kilometrage2" name="kilometrage" type="number"
+                                            min="0"value="1">
 
                                     </div>
                                 </div>
@@ -634,12 +649,19 @@
                                     </div>
                                 </div>
                             </form>
-                            <button
-                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                                data-bs-dismiss="modal" id="cancel_button" >ANNULER</button>
-                            <button
-                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                                id="validation2">VALIDATION</button>
+                            <div >
+                                <button
+                                    class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                    data-bs-dismiss="modal" id="cancel_button">ANNULER</button>
+                                <button
+                                    class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                    id="validation2">VALIDATION</button>
+                                @if (auth()->user()->admin)
+                                    <button
+                                        class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                        id="supprimer">SUPPRIMER</button>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

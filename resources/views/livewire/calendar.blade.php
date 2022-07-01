@@ -77,6 +77,8 @@
                         $('#heureDebut2').val(info.event._def.extendedProps.heure_debut);
                         $('#heureFin2').val(info.event._def.extendedProps.heure_fin);
 
+                        const id = info.event._def.publicId;
+
                         $('#validation2').on('click', function() {
 
                             oldStart = info.event.start;
@@ -102,7 +104,6 @@
                             newStartDate = info.event.start;
                             newEndDate = info.event.end;
 
-                            const id = info.event._def.publicId;
 
                             let descriptionVal = $("#description2").val();
                             let clientVal = $("#title2").val();
@@ -136,8 +137,12 @@
                                 idUser: {{ Auth::user()->id }},
                                 heure_debut: heureDebutVal,
                                 heure_fin: heureFinVal,
-                            })
+                            });
                         });
+
+                        $('#supprimer').on('click', function() {
+                            @this.suppressEvent(id);
+                        })
 
                     },
 
@@ -210,11 +215,8 @@
                             // return calendar
                             // let eventAdd = {calendar}
                             // console.log(start.start,"test54")
-                            @this.eventAdd({
-                                id: id,
-                                start: startDate,
-                                end: endDate,
-                                allDay: start.allDays,
+
+                            let errors = @this.checkEvent({
                                 description: descriptionVal,
                                 title: clientVal,
                                 ville: villeVal,
@@ -226,10 +228,44 @@
                                 essence: essenceVal,
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
-                                idUser: {{ Auth::user()->id }},
                                 heure_debut: heureDebutVal,
                                 heure_fin: heureFinVal,
                             })
+                            if (errors == null) {
+                                console.log(errors);
+                                @this.eventAdd({
+                                    id: id,
+                                    start: startDate,
+                                    end: endDate,
+                                    allDay: start.allDays,
+                                    description: descriptionVal,
+                                    title: clientVal,
+                                    ville: villeVal,
+                                    code_postal: code_postalVal,
+                                    peage: peageVal,
+                                    parking: parkingVal,
+                                    divers: diversVal,
+                                    repas: repasVal,
+                                    essence: essenceVal,
+                                    hotel: hotelVal,
+                                    kilometrage: kilometrageVal,
+                                    idUser: {{ Auth::user()->id }},
+                                    heure_debut: heureDebutVal,
+                                    heure_fin: heureFinVal,
+                                });
+                            } else {
+                                errors.then((value) => {
+                                    $('#errors').html('Please check that the inputs ');
+                                    value.forEach(element => {
+                                        var text = $('#errors').html();
+                                        $('#errors').html(text + " " + element);
+                                    });
+                                    let text = $('#errors').html();
+                                    $('#errors').html(text + " are correct.")
+
+                                });
+                            }
+
                             calendar.unselect();
 
                         });

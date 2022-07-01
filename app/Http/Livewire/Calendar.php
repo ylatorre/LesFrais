@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Validator;
 use App\Models\Event;
 use Livewire\Component;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 
 class Calendar extends Component
@@ -18,8 +20,44 @@ class Calendar extends Component
         //        dd($this->events);
         return view('livewire.calendar');
     }
+
+    public function checkEvent($event){
+        // dd($inputData);
+        $requirement = [
+            'description' => 'required',
+            'title' => 'required',
+            'ville' => 'required',
+            'code_postal' => 'required',
+            'peage' => 'required',
+            'parking' => 'required',
+            'divers' => 'required',
+            'repas' => 'required',
+            'essence' => 'required',
+            'hotel' => 'required',
+            'kilometrage' => 'required',
+            'heure_debut' => 'required',
+            'heure_fin' => 'required',
+        ];
+
+        $validator = Validator::make($event, $requirement);
+
+        if ($validator->fails()) {
+            $fail = $validator->failed();
+            $keys = array_keys($fail);
+            $errors = [];
+            foreach ($keys as $key) {
+                array_push($errors, $key);
+            };
+
+            return $errors;
+        }
+    }
+
     public function eventAdd($event)
     {
+
+
+
         //dd($event);
         Event::create($event);
 
@@ -55,6 +93,12 @@ class Calendar extends Component
         $e->heure_fin = $event['heure_fin'];
         $e->save();
         return redirect('dashboard')->with('success', 'Données modifiées avec succès !');
+    }
+    public function suppressEvent($id)
+    {
+        $e = Event::find($id);
 
+        $e->delete();
+        return redirect('dashboard')->with('success', 'Données supprimées avec succès !');
     }
 }
