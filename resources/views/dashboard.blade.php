@@ -218,9 +218,9 @@
                         <div class="overflow-hidden block p-[10px]">
                             <form action="/dashboard" method="POST">
                                 @csrf
-                                {{-- Input client --}}
+                                {{-- Input client | errors --}}
                                 <div class="mb-3">
-                                    <div id="errors" ></div>
+                                    <div id="errors" class="text-red-700  pt-[4px] pb-[3.28px]" style="display:none"></div>
                                     <label class="mb-[5px]" for="title">Client</label>
                                     <input type="text" name="title" id="title1" value="testtitre"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
@@ -517,6 +517,7 @@
                                 @csrf
                                 {{-- Input client --}}
                                 <div class="mb-3">
+                                    <div id="errors2" class="text-red-700  pt-[4px] pb-[3.28px]" ></div>
                                     <label class="mb-[5px]" for="title">Client</label>
                                     <input type="text" name="title" id="title2" value="testtitre"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
