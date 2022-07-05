@@ -43,7 +43,7 @@
                     unselectAuto:true,
                     initialView: 'dayGridMonth',
                     dateClick: function() {
-                        $('#event').modal('toggle');
+                        $('#event').modal('toggle')
 
 
                     },

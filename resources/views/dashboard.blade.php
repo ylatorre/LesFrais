@@ -58,6 +58,7 @@
                 'display': '',
                 'position': ''
             });
+
         });
     </script>
 
@@ -68,6 +69,7 @@
                 <div class="modal-content">
                     {{-- <div class="modal-header">
                         <h5 class="modal-title">Mission</h5>
+
                         <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal"
                             aria-label="Close">X</button>
                     </div>
@@ -200,15 +202,21 @@
                             aria-label="Close">X</button>
                     </div>
                     <div class="modal-body">
+
                         <form method="POST" action="/dashboard">
                             @csrf
+
+
                             <div class="mb-3">
                                 <label class="form-label" for="title">
                                     Client
                                 </label>
                                 <input class="form-control" id="title1" name="title" type="text"
                                     value="testtitre">
+
                             </div>
+
+
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="form-label" for="ville">
@@ -216,6 +224,7 @@
                                     </label>
                                     <input class="form-control" id="ville" name="ville" type="text"
                                         value="test">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="code_postal">
@@ -223,6 +232,7 @@
                                     </label>
                                     <input class="form-control" id="code_postal" name="code_postal" type="text"
                                         value="test">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="essence">
@@ -230,14 +240,17 @@
                                     </label>
                                     <input class="form-control" id="essence" name="essence" type="text"
                                         value="10">
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="form-label" for="peage">Péage
+
                                     </label>
                                     <input class="form-control" name="peage" id="peage" type="number"
                                         value="1">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="parking">
@@ -245,15 +258,19 @@
                                     </label>
                                     <input class="form-control" name="parking" id="parking" type="number"
                                         value="1">
+
                                 </div>
+
                                 <div class="mb-3 col">
                                     <label class="form-label" for="divers">
                                         Divers
                                     </label>
                                     <input class="form-control" name="divers" id="divers" type="number"
                                         value="1">
+
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="form-label" for="repas">
@@ -261,6 +278,7 @@
                                     </label>
                                     <input class="form-control" name="repas" id="repas" type="number"
                                         value="1">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="hotel">
@@ -268,6 +286,7 @@
                                     </label>
                                     <input class="form-control" name="hotel" id="hotel" type="number"
                                         value="1">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="kilometrage">
@@ -275,8 +294,10 @@
                                     </label>
                                     <input class="form-control" id="kilometrage" name="kilometrage"
                                         type="number"value="1">
+
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="floatingInput" class="form-label">Heure</label>
@@ -294,6 +315,7 @@
                                     </label>
                                     <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea" rows="6"></textarea>
                                 </div>
+
                                 <button type="button" class="btn btn-primary"
                                     data-bs-dismiss="modal">Annuler</button>
                                 <button type="button" class="btn btn-primary"
@@ -481,19 +503,29 @@
                 <div class="modal-content">
                     {{-- <div class="modal-header">
                         <h5 class="modal-title">Mission</h5>
+
+
+
                         <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal"
                             aria-label="Close">X</button>
                     </div>
+
                     <div class="modal-body">
+
                         <form method="POST" action="/dashboard">
                             @csrf
+
+
                             <div class="mb-3">
                                 <label class="form-label" for="title">
                                     Client
                                 </label>
                                 <input class="form-control" id="title2" name="title" type="text"
                                     value="testtitre2">
+
                             </div>
+
+
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="form-label" for="ville">
@@ -501,6 +533,7 @@
                                     </label>
                                     <input class="form-control" id="ville" name="ville" type="text"
                                         value="test">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="code_postal">
@@ -508,6 +541,7 @@
                                     </label>
                                     <input class="form-control" id="code_postal" name="code_postal" type="text"
                                         value="test">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="essence">
@@ -515,14 +549,17 @@
                                     </label>
                                     <input class="form-control" id="essence" name="essence" type="text"
                                         value="10">
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="form-label" for="peage">Péage
+
                                     </label>
                                     <input class="form-control" name="peage" id="peage" type="number"
                                         value="1">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="parking">
@@ -530,15 +567,19 @@
                                     </label>
                                     <input class="form-control" name="parking" id="parking" type="number"
                                         value="1">
+
                                 </div>
+
                                 <div class="mb-3 col">
                                     <label class="form-label" for="divers">
                                         Divers
                                     </label>
                                     <input class="form-control" name="divers" id="divers" type="number"
                                         value="1">
+
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="form-label" for="repas">
@@ -546,6 +587,7 @@
                                     </label>
                                     <input class="form-control" name="repas" id="repas" type="number"
                                         value="1">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="hotel">
@@ -553,6 +595,7 @@
                                     </label>
                                     <input class="form-control" name="hotel" id="hotel" type="number"
                                         value="1">
+
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="form-label" for="kilometrage">
@@ -560,6 +603,7 @@
                                     </label>
                                     <input class="form-control" id="kilometrage" name="kilometrage"
                                         type="number"value="1">
+
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -568,9 +612,12 @@
                                 </label>
                                 <textarea id="descriptionArea" class="form-control input-dashboard" name="descriptionArea" rows="6"></textarea>
                             </div>
+
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Annuler</button>
                             <button type="button" class="btn btn-primary" id="Validation">Validation</button>
+
                         </form>
+
                     </div> --}}
 
                 </div>
@@ -807,10 +854,12 @@
     </script>
     <script type="text/javascript">
         let alertSuccess = document.querySelector('.alert-success');
+
         window.addEventListener('click', () => {
             if (alertSuccess) {
                 alertSuccess.style.display = 'none';
             }
+
         })
     </script>
 </x-app-layout>
