@@ -42,7 +42,7 @@
                 const calendar = new Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
                     dateClick: function() {
-                        $('#event').modal('toggle')
+                        $('#event').modal('toggle');
 
                     },
 

@@ -24,7 +24,6 @@
         "typescript": "^4.7.4"
     },
     "dependencies": {
-        "jquery-clock-timepicker": "^2.6.2",
-        "tw-elements": "^1.0.0-alpha12"
+        "jquery-clock-timepicker": "^2.6.2"
     }
 }
