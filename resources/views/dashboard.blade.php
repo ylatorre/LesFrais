@@ -201,6 +201,7 @@
                         <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal"
                             aria-label="Close">X</button>
                     </div>
+
                     <div class="modal-body">
 
                         <form method="POST" action="/dashboard">

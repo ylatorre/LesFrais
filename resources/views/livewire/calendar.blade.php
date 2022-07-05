@@ -45,7 +45,6 @@
                     dateClick: function() {
                         $('#event').modal('toggle')
 
-
                     },
 
 
