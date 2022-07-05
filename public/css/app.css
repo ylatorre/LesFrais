@@ -3958,8 +3958,11 @@ textarea.form-control.is-invalid {
 .ml-1 {
   margin-left: 0.25rem;
 }
-.mr-2 {
-  margin-right: 0.5rem;
+.ml-1 {
+  margin-left: 0.25rem;
+}
+.-mr-2 {
+  margin-right: -0.5rem;
 }
 .ml-2 {
   margin-left: 0.5rem;
@@ -4235,6 +4238,9 @@ textarea.form-control.is-invalid {
 .rounded {
   border-radius: 0.25rem;
 }
+.rounded {
+  border-radius: 0.25rem;
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -4315,6 +4321,14 @@ textarea.form-control.is-invalid {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
+.bg-\[rgb\(178\2c 60\2c 253\)\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(178 60 253 / var(--tw-bg-opacity));
+}
+.bg-\[\#1266f1\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(18 102 241 / var(--tw-bg-opacity));
+}
 .bg-indigo-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
@@ -4382,9 +4396,13 @@ textarea.form-control.is-invalid {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.px-\[15px\] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.px-\[7\.5px\] {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
 }
 .py-6 {
   padding-top: 1.5rem;
@@ -4460,6 +4478,9 @@ textarea.form-control.is-invalid {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-\[7\.5px\] {
+  font-size: 7.5px;
+}
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -4520,7 +4541,7 @@ textarea.form-control.is-invalid {
 }
 .text-gray-300 {
   --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity));
+  color: rgb(79 79 79 / var(--tw-text-opacity));
 }
 .text-gray-400 {
   --tw-text-opacity: 1;
@@ -4597,6 +4618,9 @@ textarea.form-control.is-invalid {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.outline {
+  outline-style: solid;
 }
 .outline {
   outline-style: solid;
