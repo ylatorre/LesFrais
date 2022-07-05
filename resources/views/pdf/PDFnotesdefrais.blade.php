@@ -90,7 +90,7 @@
     }
 </style>
 {{--<div class="text-center">--}}
-    <h1 class="text-center">Nom : {{$utilisateurs[0]->name}} PERIODE (année + mois): {{$mois}}</h1>
+    <h1 class="text-center">Nom : {{$utilisateurs[0]->name}} {{-- PERIODE (année + mois): {{$mois}}--}}</h1>
 {{--    <h1 class="">dawd</h1>--}}
 {{--</div>--}}
 <table class="tablepdf">

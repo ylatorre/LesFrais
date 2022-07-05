@@ -65,7 +65,7 @@ class Calendar extends Component
         return redirect('dashboard')->with('success', 'Données enregistrées avec succès !');
     }
 
-    public function eventChange($event)
+    public function eventChange($event, $eventDate)
     {
         $e = Event::find($event['id']);
         // $e->start = $event['start'];
@@ -73,26 +73,32 @@ class Calendar extends Component
         //     $e->end = $event['end'];
         // }
 
-        $eventDate = substr($e->start, 0, -5);
+        // $eventDate;
 
-        $e->start = $eventDate . $event['heure_debut'];
-        $e->end = $eventDate . $event['heure_fin'];
+        $e->start = $eventDate . $event['extendedProps']['heure_debut'];
+        $e->end = $eventDate . $event['extendedProps']['heure_fin'];
 
-        $e->description = $event['description'];
+        $e->description = $event['extendedProps']['description'];
         $e->title = $event['title'];
-        $e->ville = $event['ville'];
-        $e->code_postal = $event['code_postal'];
-        $e->peage = $event['peage'];
-        $e->parking = $event['parking'];
-        $e->divers = $event['divers'];
-        $e->repas = $event['repas'];
-        $e->essence = $event['essence'];
-        $e->hotel = $event['hotel'];
-        $e->kilometrage = $event['kilometrage'];
-        $e->heure_debut = $event['heure_debut'];
-        $e->heure_fin = $event['heure_fin'];
+        $e->ville = $event['extendedProps']['ville'];
+        $e->code_postal = $event['extendedProps']['code_postal'];
+        $e->peage = $event['extendedProps']['peage'];
+        $e->parking = $event['extendedProps']['parking'];
+        $e->divers = $event['extendedProps']['divers'];
+        $e->repas = $event['extendedProps']['repas'];
+        $e->essence = $event['extendedProps']['essence'];
+        $e->hotel = $event['extendedProps']['hotel'];
+        $e->kilometrage = $event['extendedProps']['kilometrage'];
+        $e->heure_debut = $event['extendedProps']['heure_debut'];
+        $e->heure_fin = $event['extendedProps']['heure_fin'];
         $e->save();
         return redirect('dashboard')->with('success', 'Données modifiées avec succès !');
+    }
+    public function dateChange($id, $startDate){
+        $e = Event::find($id);
+        $e->start = $startDate;
+        $e->end = $startDate;
+        $e->save();
     }
     public function suppressEvent($id)
     {
