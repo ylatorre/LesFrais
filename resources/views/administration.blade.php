@@ -38,29 +38,29 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         User
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Email
                     </th>
 
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Numero de Telephone
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Type de vehicule
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Les chevaux Fiscaux
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Password
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Confirm Password
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         <span class="sr-only">Edit</span>
                     </th>
                 </tr>
@@ -121,8 +121,8 @@
                     </tr>
                     <!-- Main modal 2 modif user-->
                     <div id="authentication-modal{{ $i }}" tabindex="-1" aria-hidden="true"
-                        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full ">
-                        <div class="relative w-full h-full max-w-4xl p-4 md:h-auto">
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ">
+                        <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
                             <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <button type="button"
@@ -154,34 +154,35 @@
                                                 placeholder="name@company.com" value="{{ $user->email }}">
                                         </div>
                                         <div>
-                                            <label for="portables"
+                                            <label for="portable"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
                                             <input type="tel" name="portable" id="portable"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 placeholder="06 60 06 60 06" value="{{ $user->portables }}"
                                                 autofocus>
                                         </div>
-                                        <div class="flex items-end justify-between">
-                                            <div class="w-1/2">
-                                                <label for="portables"
+                                        <div class="flex justify-between items-end">
+                                            <div class="w-1/4">
+                                                <label for="vehicule"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type
                                                     de Vehicule</label>
                                                 <input type="text" name="vehicule" id="vehicule"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
                                             </div>
-                                            <div class="w-1/2">
-                                                <label for="portables"
+                                            <div class="w-1/4">
+                                                <label for="ChevauxFiscaux"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux
                                                     Fiscaux</label>
                                                 <input type="text" name="ChevauxFiscaux" id="ChevauxFiscaux"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                    placeholder="125" value="{{ $user->chevauxFiscaux }}" autofocus>
+                                                    placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
+                                                    autofocus>
                                             </div>
-                                            <div class="flex items-end align-center" style="height: 42px;">
+                                            <div class="flex align-center items-end " style="height: 42px;">
                                                 <input type="date" name="dateChevauxFiscaux"
                                                     id="dateChevauxFiscaux"
-                                                    class="block h-full text-sm text-gray-900 border border-gray-300 rounded-lg align-center bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    class="align-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     value="{{ $user->dateChevauxFiscaux }}" autofocus>
                                             </div>
 
@@ -217,9 +218,9 @@
 
 
                     <div id="popup-modal{{ $i }}" tabindex="-1"
-                        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full justify-center items-center"
                         aria-hidden="true">
-                        <div class="relative w-full h-full max-w-md p-4 md:h-auto">
+                        <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <button type="button"
                                     class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
@@ -232,7 +233,7 @@
                                     </svg>
                                 </button>
                                 <div class="p-6 text-center">
-                                    <svg class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
+                                    <svg class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -269,8 +270,8 @@
 
     <!-- Main modal ajout user -->
     <div id="authentication-modal" tabindex="-1" aria-hidden="true"
-        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full ">
-        <div class="relative w-full h-full max-w-4xl p-4 md:h-auto">
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ">
+        <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button type="button"
@@ -282,7 +283,10 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <div class="px-6 py-6 lg:px-8">
+                <div class="py-6 px-6 lg:px-8">
+
+                    <!--AJOUTER UN USER-->
+
                     <form class="space-y-6" action="{{ route('ajoutUser') }}" method="post">
                         @csrf
 
@@ -307,9 +311,9 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
                         </div>
-                        <div class="flex items-end justify-between">
-                            <div class="w-1/2">
-                                <label for="portables"
+                        <div class="flex justify-between items-end">
+                            <div class="w-1/4">
+                                <label for="vehicule"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type de
                                     Vehicule</label>
                                 <input type="text" name="vehicule" id="vehicule"

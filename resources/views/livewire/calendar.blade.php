@@ -40,11 +40,14 @@
                 const Calendar = FullCalendar.Calendar;
                 const calendarEl = document.getElementById('calendar');
                 const calendar = new Calendar(calendarEl, {
+                    unselectAuto:true,
                     initialView: 'dayGridMonth',
                     dateClick: function() {
                         $('#event').modal('toggle');
 
+
                     },
+
 
                     eventClick: function(info) {
                         // alert('Event: ' + info.event.start);
@@ -52,6 +55,7 @@
                         // alert('View: ' + info.view.type);
 
                         // change the border color just for fun
+                        $('#eventClicked').removeData()
                         $('#eventClicked').modal('toggle')
                         info.el.style.borderColor = 'red';
 
@@ -195,8 +199,13 @@
 
                     select: function(start, end, allDays) {
 
-                        let i = 0;
 
+
+
+                        let i = 0;
+                        // window.addEventListener('onclick',()=>{
+                        //     $("#eventClicked").style.display = "none";
+                        // })
                         // console.log($("#client").val())
                         // let descriptionVal =  document.getElementById("descriptionArea").value
 
@@ -306,6 +315,13 @@
                 });
                 calendar.render();
             });
+        </script>
+
+         <script type="text/javascript">
+          window.addEventListener('onclick',()=>{
+            $("#eventClicked").removeData();
+
+        })
         </script>
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
     @endpush

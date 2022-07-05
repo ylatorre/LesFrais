@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('historique_essences', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->float("prix")->nullable();
-            $table->float("chevauxFiscaux")->nullable();
-            $table->text("date")->nullable();
-            $table->integer("userId")->nullable();
+        Schema::table('users', function (Blueprint $table) {
+
+            $table->float('ValeurChevauxFiscaux')->nullable();
         });
     }
 
@@ -30,6 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historique_essences');
+
+
     }
 };

@@ -17,4 +17,11 @@
     transform: scale(1.1);
 }
 
+.buttonSUPPR{
+    justify-content: right;
+    background:rgb(141, 0, 0);
+    color:white;
+    padding:5px;
+    border-radius:5px;
+}
 

@@ -40,7 +40,7 @@ Route::post('/dashboard',[FullCalenderController::class,'store'])->middleware(['
 Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser')->middleware(['auth', 'is.admin']);
 Route::post('ajoutUser',[Controller::class, 'ajoutUser'])->name('ajoutUser')->middleware(['auth']);
 Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser')->middleware(['auth']);
-Route::post('ajouterEssence',[Controller::class, 'ajouterEssence'])->name('ajouterEssence')->middleware(['auth']);
+// Route::post('ajouterEssence',[Controller::class, 'ajouterEssence'])->name('ajouterEssence')->middleware(['auth']);
 
 Route::get('supuser',[Controller::class, 'supuser'])->name('supuser')->middleware(['auth']);
 
