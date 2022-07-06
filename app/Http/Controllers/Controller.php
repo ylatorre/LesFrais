@@ -35,6 +35,7 @@ class Controller extends BaseController
                 "email" => "unique:users,email",
             ]
         );
+        dd($request);
 //        $chevauxnum = (int)$request->ChevauxFiscaux;
         User::create([
             'name' => $request->name,
@@ -76,9 +77,9 @@ class Controller extends BaseController
 
             DB::table("users")->where("email","=","$request->email")->update(["chevauxFiscaux"=>$request->ChevauxFiscaux]);
         }
-        if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
-            DB::table("users")->where("email","=","$request->email")->update(["ValeurchevauxFiscaux"=>$request->ValeurChevauxFiscaux]);
-        }
+        // if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
+        //     DB::table("users")->where("email","=","$request->email")->update(["ValeurchevauxFiscaux"=>$request->ValeurChevauxFiscaux]);
+        // }
         if ($modifUserDB[0]->dateChevauxFiscaux != $request->dateChevauxFiscaux){
             historiqueEssence::create([
                 "date"=>$request->dateChevauxFiscaux,

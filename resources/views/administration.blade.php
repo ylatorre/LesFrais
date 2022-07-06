@@ -95,20 +95,20 @@
                             *******
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <div class="flex justify-center ">
+                            <div class="flex justify-end ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
+                                @if ($user->vehicule != null || $user->chevauxFiscaux != null)
+                                    <form methode="POST" action="/userPDFgenerator/{{ $user->id }}">
+                                        @csrf
+                                        <input name="tgyvan" type="hidden" value="2">
 
-                                <form methode="POST" action="/userPDFgenerator/{{ $user->id }}">
-                                    @csrf
-                                    <input name="tgyvan" type="hidden" value="2">
-
-                                    <button
-                                        class="mr-2 inline-flex items-center px-5 py-2.5 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                                        type="submit">
-                                        Generer une facture
-                                    </button>
-
-                                </form>
+                                        <button
+                                            class="mr-2 inline-flex items-center px-3.5 py-2.5 bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                            type="submit">
+                                            Generer une facture
+                                        </button>
+                                    </form>
+                                @endif
 
                                 <button
                                     class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -125,8 +125,8 @@
                     </tr>
                     <!-- Main modal 2 modif user-->
                     <div id="authentication-modal{{ $i }}" tabindex="-1" aria-hidden="true"
-                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ">
-                        <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
+                        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full ">
+                        <div class="relative w-full h-full max-w-4xl p-4 md:h-auto">
                             <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <button type="button"
@@ -165,7 +165,7 @@
                                                 placeholder="06 60 06 60 06" value="{{ $user->portables }}"
                                                 autofocus>
                                         </div>
-                                        <div class="flex justify-between items-end">
+                                        <div class="flex items-end justify-between">
                                             <div class="w-1/4">
                                                 <label for="vehicule"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type
@@ -183,10 +183,10 @@
                                                     placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
                                                     autofocus>
                                             </div>
-                                            <div class="flex align-center items-end " style="height: 42px;">
+                                            <div class="flex items-end align-center " style="height: 42px;">
                                                 <input type="date" name="dateChevauxFiscaux"
                                                     id="dateChevauxFiscaux"
-                                                    class="align-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    class="block h-full text-sm text-gray-900 border border-gray-300 rounded-lg align-center bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     value="{{ $user->dateChevauxFiscaux }}" autofocus>
                                             </div>
 
@@ -222,9 +222,9 @@
 
 
                     <div id="popup-modal{{ $i }}" tabindex="-1"
-                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full justify-center items-center"
+                        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
                         aria-hidden="true">
-                        <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                        <div class="relative w-full h-full max-w-md p-4 md:h-auto">
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <button type="button"
                                     class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
@@ -237,7 +237,7 @@
                                     </svg>
                                 </button>
                                 <div class="p-6 text-center">
-                                    <svg class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
+                                    <svg class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -274,8 +274,8 @@
 
     <!-- Main modal ajout user -->
     <div id="authentication-modal" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center ">
-        <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
+        class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full ">
+        <div class="relative w-full h-full max-w-4xl p-4 md:h-auto">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button type="button"
@@ -287,7 +287,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <div class="py-6 px-6 lg:px-8">
+                <div class="px-6 py-6 lg:px-8">
 
                     <!--AJOUTER UN USER-->
 
@@ -315,7 +315,7 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
                         </div>
-                        <div class="flex justify-between items-end">
+                        <div class="flex items-end justify-between">
                             <div class="w-1/4">
                                 <label for="vehicule"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type de

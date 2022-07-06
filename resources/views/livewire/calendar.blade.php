@@ -52,11 +52,6 @@
                     },
 
                     eventClick: function(info) {
-                        // alert('Event: ' + info.event.start);
-                        // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                        // alert('View: ' + info.view.type);
-
-                        // change the border color just for fun
                         $('#eventClicked').removeData()
                         $('#eventClicked').modal('toggle')
                         info.el.style.borderColor = 'red';
@@ -218,6 +213,7 @@
                         });
                         $('#cancel_button').on('click', function() {
                             $('#event-modal').modal('toggle');
+                            calendar.unselect();
                         });
                         $("#Validation").on('click', function() {
                             let day = start.start.getDate();
@@ -255,16 +251,6 @@
                             let essenceVal = $("#essence").val();
                             let heureDebutVal = $("#heureDebut").val();
                             let heureFinVal = $("#heureFin").val();
-                            // console.log(heureDebutVal);
-
-
-                            // console.log(clientVal, "client")
-                            // console.log({{ Auth::user()->id }})
-
-                            // console.log(start)
-                            // return calendar
-                            // let eventAdd = {calendar}
-                            // console.log(start.start,"test54")
 
                             let check = @this.checkEvent({
                                 description: descriptionVal,
