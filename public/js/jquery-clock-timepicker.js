@@ -1097,9 +1097,11 @@
 				if (top + popup.outerHeight() > window.innerHeight) {
 					var newTop = element.offset().top - $(window).scrollTop() - popup.outerHeight();
 					if (newTop >= 0) top = newTop;
-				}
-				var left = element.offset().left - $(window).scrollLeft() - parseInt((popup.outerWidth() - element.outerWidth()) / 2);
-				popup.css('left', left + 'px').css('top', top + 'px');
+				};
+				// var left = element.offset().left + $(window).scrollLeft() - parseInt((popup.outerWidth() - element.outerWidth()) /2);
+                var left = element.outerWidth() - popup.outerWidth();
+                console.log(left);
+				popup.css('left', left + 'px').css('position', 'absolute');
 			}
 
 
