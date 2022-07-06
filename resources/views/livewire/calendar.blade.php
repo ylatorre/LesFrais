@@ -44,8 +44,7 @@
                     unselectAuto: true,
                     initialView: 'dayGridMonth',
                     dateClick: function() {
-                        $('#event').modal('toggle')
-
+                        $('#event-modal').modal('toggle')
                     },
 
                     eventDrop: function(info) {
@@ -62,11 +61,11 @@
                         $('#eventClicked').modal('toggle')
                         info.el.style.borderColor = 'red';
 
-                        $('#closing_button').on('click', function() {
+                        $('#closing_button2').on('click', function() {
                             info.el.style.borderColor = 'rgb(58,135,173)';
                             $('#eventClicked').modal('toggle');
                         });
-                        $('#cancel_button').on('click', function() {
+                        $('#cancel_button2').on('click', function() {
                             info.el.style.borderColor = 'rgb(58,135,173)';
                             $('#eventClicked').modal('toggle');
                         });
@@ -166,7 +165,7 @@
                                         idUser: {{ Auth::user()->id }},
                                         heure_debut: heureDebutVal,
                                         heure_fin: heureFinVal,
-                                    })
+                                    },info.event.start)
                                 } else {
                                     $('#errors2').html('');
                                     value.forEach(element => {
@@ -185,7 +184,7 @@
 
                         $('#supprimer').on('click', function() {
                             @this.suppressEvent(id);
-                        })
+                        });
 
                     },
 
@@ -205,10 +204,7 @@
 
 
                     select: function(start, end, allDays) {
-
-
-
-
+                        $('#errors').html('');
                         let i = 0;
                         // window.addEventListener('onclick',()=>{
                         //     $("#eventClicked").style.display = "none";
@@ -218,13 +214,12 @@
 
                         // console.log($("#Validation").on('click'));
                         $('#closing_button').on('click', function() {
-                            $('#event').modal('toggle');
+                            $('#event-modal').modal('toggle');
                         });
                         $('#cancel_button').on('click', function() {
-                            $('#event').modal('toggle');
-                            
+                            $('#event-modal').modal('toggle');
+                        });
                         $("#Validation").on('click', function() {
-                            });
                             let day = start.start.getDate();
                             if (day < 10) {
                                 day = "0" + day

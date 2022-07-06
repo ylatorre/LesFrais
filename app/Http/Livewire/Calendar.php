@@ -74,23 +74,23 @@ class Calendar extends Component
         // }
 
         // $eventDate;
+        // dd($event);
+        $e->start = $eventDate;
+        $e->end = $eventDate;
 
-        $e->start = $eventDate . $event['extendedProps']['heure_debut'];
-        $e->end = $eventDate . $event['extendedProps']['heure_fin'];
-
-        $e->description = $event['extendedProps']['description'];
+        $e->description = $event['description'];
         $e->title = $event['title'];
-        $e->ville = $event['extendedProps']['ville'];
-        $e->code_postal = $event['extendedProps']['code_postal'];
-        $e->peage = $event['extendedProps']['peage'];
-        $e->parking = $event['extendedProps']['parking'];
-        $e->divers = $event['extendedProps']['divers'];
-        $e->repas = $event['extendedProps']['repas'];
-        $e->essence = $event['extendedProps']['essence'];
-        $e->hotel = $event['extendedProps']['hotel'];
-        $e->kilometrage = $event['extendedProps']['kilometrage'];
-        $e->heure_debut = $event['extendedProps']['heure_debut'];
-        $e->heure_fin = $event['extendedProps']['heure_fin'];
+        $e->ville = $event['ville'];
+        $e->code_postal = $event['code_postal'];
+        $e->peage = $event['peage'];
+        $e->parking = $event['parking'];
+        $e->divers = $event['divers'];
+        $e->repas = $event['repas'];
+        $e->essence = $event['essence'];
+        $e->hotel = $event['hotel'];
+        $e->kilometrage = $event['kilometrage'];
+        $e->heure_debut = $event['heure_debut'];
+        $e->heure_fin = $event['heure_fin'];
         $e->save();
         return redirect('dashboard')->with('success', 'Données modifiées avec succès !');
     }

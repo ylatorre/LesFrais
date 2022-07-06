@@ -4391,6 +4391,10 @@ textarea.form-control.is-invalid {
 .p-2\.5 {
   padding: 0.625rem;
 }
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
