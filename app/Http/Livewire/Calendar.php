@@ -7,6 +7,7 @@ use App\Models\Event;
 use Livewire\Component;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 
@@ -18,11 +19,22 @@ class Calendar extends Component
         //        $this->events = json_encode(Event::all());
         $this->events = json_encode(Event::where("idUser", "=", Auth::user()->id)->get());
         //        dd($this->events);
+        Calendar::checkAndDeleteDuplicates();
         return view('livewire.calendar');
     }
 
+    public function checkAndDeleteDuplicates(){
+        $events = DB::table('events')->orderBy('start', 'desc')->get();
+        for($i = 0; $i < count($events)-1; $i++){
+            if($events[$i]->start == $events[$i + 1]->start){
+                $e = Event::find($events[$i +1]->id);
+                $e->delete();
+            };
+        };
+    }
+
     public function checkEvent($event){
-        // dd($inputData);
+        // dd($event);
         $requirement = [
             'description' => 'required',
             'title' => 'required',
@@ -39,12 +51,20 @@ class Calendar extends Component
             'heure_fin' => 'required',
         ];
 
+        $errors = [];
+
+        $events = Event::where("start", '=', $event['start'])->get();
+
+
         $validator = Validator::make($event, $requirement);
 
-        if ($validator->fails()) {
+        if ($validator->fails() || count($events)) {
+            if(count($events)){
+                array_push($errors, "duplicate");
+            };
+
             $fail = $validator->failed();
             $keys = array_keys($fail);
-            $errors = [];
             foreach ($keys as $key) {
                 array_push($errors, $key);
             };
@@ -53,20 +73,14 @@ class Calendar extends Component
         }
     }
 
-    public function eventAdd($event)
-    {
-
-
-
-        //dd($event);
+    public function eventAdd($event) {
         Event::create($event);
 
         // $event->save();
         return redirect('dashboard')->with('success', 'Données enregistrées avec succès !');
     }
 
-    public function eventChange($event, $eventDate)
-    {
+    public function eventChange($event, $eventDate) {
         $e = Event::find($event['id']);
         // $e->start = $event['start'];
         // if (Arr::exists($event, 'end')) {

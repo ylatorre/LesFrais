@@ -26,6 +26,13 @@
     {{-- } --}}
     {{-- </style> --}}
     <!-- Modal toggle -->
+    <div>
+        @if (\Session::has('failure'))
+            <div class="block mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
+                <p>{{ \Session::get('failure') }}</p>
+            </div>
+        @endif
+    </div>
     <div class="flex justify-center mb-3">
         <button
             class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -103,7 +110,7 @@
                                         <input name="tgyvan" type="hidden" value="2">
 
                                         <button
-                                            class="mr-2 inline-flex items-center px-3.5 py-2.5 bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                            class="mr-2 inline-flex items-center px-3.5 py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
                                             Generer une facture
                                         </button>

@@ -35,7 +35,6 @@ class Controller extends BaseController
                 "email" => "unique:users,email",
             ]
         );
-        dd($request);
 //        $chevauxnum = (int)$request->ChevauxFiscaux;
         User::create([
             'name' => $request->name,
@@ -44,7 +43,6 @@ class Controller extends BaseController
             "portables" => $request->portable,
             "vehicule" => $request->vehicule,
             "chevauxFiscaux" => $request->ChevauxFiscaux,
-            "ValeurChevauxFiscaux"=>$request->ValeurChevauxFiscaux
 
 
         ]);

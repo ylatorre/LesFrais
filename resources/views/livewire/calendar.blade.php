@@ -42,87 +42,53 @@
                 const calendar = new Calendar(calendarEl, {
                     editable: true,
                     unselectAuto: true,
+
                     initialView: 'dayGridMonth',
-                    dateClick: function() {
+                    dateClick: function(info) {
                         $('#event-modal').modal('toggle')
-                    },
 
-                    eventDrop: function(info) {
-                        @this.dateChange(info.event.id, info.event.start);
-                    },
+                        $('#errors').html('');
+                        $('#duplicate').html('');
 
-                    eventClick: function(info) {
-                        $('#eventClicked').removeData()
-                        $('#eventClicked').modal('toggle')
-                        info.el.style.borderColor = 'red';
-
-                        $('#closing_button2').on('click', function() {
-                            info.el.style.borderColor = 'rgb(58,135,173)';
-                            $('#eventClicked').modal('toggle');
+                        $('#closing_button').on('click', function() {
+                            $('#event-modal').modal('toggle');
                         });
-                        $('#cancel_button2').on('click', function() {
-                            info.el.style.borderColor = 'rgb(58,135,173)';
-                            $('#eventClicked').modal('toggle');
+                        $('#cancel_button').on('click', function() {
+                            $('#event-modal').modal('toggle');
                         });
+                        $('#event-modal').on('hidden.bs.modal', function() {
+                            $('#Validation').unbind();
+                        });
+                        $("#validation").on('click', function() {
 
-                        console.log(info.event);
-                        $('#title2').val(info.event.title);
-                        $('#ville2').val(info.event._def.extendedProps.ville);
-                        $('#code_postal2').val(info.event._def.extendedProps.code_postal);
-                        $('#essence2').val(info.event._def.extendedProps.essence);
-                        $('#peage2').val(info.event._def.extendedProps.peage);
-                        $('#parking2').val(info.event._def.extendedProps.parking);
-                        $('#divers2').val(info.event._def.extendedProps.divers);
-                        $('#repas2').val(info.event._def.extendedProps.repas);
-                        $('#hotel2').val(info.event._def.extendedProps.hotel);
-                        $('#kilometrage2').val(info.event._def.extendedProps.kilometrage);
-                        $('#description2').val(info.event._def.extendedProps.description);
-                        $('#heureDebut2').val(info.event._def.extendedProps.heure_debut);
-                        $('#heureFin2').val(info.event._def.extendedProps.heure_fin);
+                            var startDate =
+                                info.dateStr + " " +
+                                $('#heure_debut').val();
+                            var endDate =
+                                info.dateStr + " " +
+                                $('#heure_fin').val();
+                            $('#start').val(startDate);
+                            $('#end').val(endDate);
 
-                        const id = info.event._def.publicId;
+                            const id = create_UUID();
+                            let descriptionVal = $("#description").val();
+                            let clientVal = $("#title1").val();
+                            let villeVal = $("#ville").val();
+                            let code_postalVal = $("#code_postal").val();
+                            let peageVal = $("#peage").val();
+                            let parkingVal = $("#parking").val();
+                            let diversVal = $("#divers").val();
+                            let repasVal = $("#repas").val();
+                            let hotelVal = $("#hotel").val();
+                            let kilometrageVal = $("#kilometrage").val();
+                            let essenceVal = $("#essence").val();
+                            let heureDebutVal = $("#heure_debut").val();
+                            let heureFinVal = $("#heure_fin").val();
 
-                        $('#validation2').on('click', function() {
-
-                            oldStart = info.event.start;
-                            let day = oldStart.getDate();
-                            if (day < 10) {
-                                day = "0" + day
-                            };
-                            let month = oldStart.getMonth() + 1;
-                            if (month < 10) {
-                                month = "0" + month
-                            };
-                            var newStartDate =
-                                oldStart.getFullYear() + "-" +
-                                month + "-" +
-                                day + " " +
-                                $('#heureDebut2').val();
-                            var newEndDate =
-                                oldStart.getFullYear() + "-" +
-                                month + "-" +
-                                day + " " +
-                                $('#heureFin2').val();
-
-                            newStartDate = info.event.start;
-                            newEndDate = info.event.end;
-
-
-                            let descriptionVal = $("#description2").val();
-                            let clientVal = $("#title2").val();
-                            let villeVal = $("#ville2").val();
-                            let code_postalVal = $("#code_postal2").val();
-                            let peageVal = $("#peage2").val();
-                            let parkingVal = $("#parking2").val();
-                            let diversVal = $("#divers2").val();
-                            let repasVal = $("#repas2").val();
-                            let hotelVal = $("#hotel2").val();
-                            let kilometrageVal = $("#kilometrage2").val();
-                            let essenceVal = $("#essence2").val();
-                            let heureDebutVal = $("#heureDebut2").val();
-                            let heureFinVal = $("#heureFin2").val();
-
-                            let check = @this.checkEvent({
+                            let event = {
+                                id: id,
+                                start: startDate,
+                                end: endDate,
                                 description: descriptionVal,
                                 title: clientVal,
                                 ville: villeVal,
@@ -134,46 +100,148 @@
                                 essence: essenceVal,
                                 hotel: hotelVal,
                                 kilometrage: kilometrageVal,
+                                idUser: {{ Auth::user()->id }},
                                 heure_debut: heureDebutVal,
                                 heure_fin: heureFinVal,
-                            });
+                            }
 
 
+                            let check = @this.checkEvent(event);
+
+                            $('div#error').remove();
+
+                            //console.log(event);
                             check.then((value) => {
                                 //console.log(value);
                                 if (value == null) {
-                                    @this.eventChange({
-                                        id: id,
-                                        start: newStartDate,
-                                        end: newEndDate,
-                                        description: descriptionVal,
-                                        title: clientVal,
-                                        ville: villeVal,
-                                        code_postal: code_postalVal,
-                                        peage: peageVal,
-                                        parking: parkingVal,
-                                        divers: diversVal,
-                                        repas: repasVal,
-                                        essence: essenceVal,
-                                        hotel: hotelVal,
-                                        kilometrage: kilometrageVal,
-                                        idUser: {{ Auth::user()->id }},
-                                        heure_debut: heureDebutVal,
-                                        heure_fin: heureFinVal,
-                                    },info.event.start)
+                                    @this.eventAdd(event);
                                 } else {
-                                    $('#errors2').html('');
+                                    var isDuplicate = false;
+                                    $('#errors').html('');
                                     value.forEach(element => {
-                                        let text = $('#errors2').html();
-                                        $('#errors2').html(text + " " + element +
-                                            ", ");
+                                        if (element == "duplicate") {
+                                            isDuplicate = true;
+                                            $('#duplicate').html(
+                                                'The event is a duplicate');
+                                        } else {
+                                            $("label[for='" + element + "']")
+                                                .parent().append(
+                                                    '<div class="text-[rgb(169,68,66)] text-[12px]" id="error">L\'entré n\'est pas correct</div>'
+                                                );
+                                        };
                                     });
-                                    let text = $('#errors2').html();
-                                    $('#errors2').html("Les entrées : " + text +
-                                        " ne sont pas correct");
-                                    $('#errors2').show();
+                                    $('#duplicate').show();
                                 };
                             });
+
+                            calendar.unselect();
+
+                        });
+                    },
+
+                    eventDrop: function(info) {
+                        @this.dateChange(info.event.id, info.event.start);
+                    },
+
+                    eventClick: function(info) {
+                        $('#event-modal').removeData()
+                        $('#event-modal').modal('toggle')
+                        info.el.style.borderColor = 'red';
+
+                        $('#closing_button').on('click', function() {
+                            $('#event-modal').modal('toggle');
+                        });
+                        $('#cancel_button').on('click', function() {
+                            $('#event-modal').modal('toggle');
+                        });
+                        $('#event-modal').on('hidden.bs.modal', function() {
+                            info.el.style.borderColor = 'rgb(58,135,173)';
+                            $('#Validation').unbind();
+                            $('#supprimer').remove();
+                        });
+
+                        console.log(info.event);
+                        $('#title1').val(info.event.title);
+                        $('#ville').val(info.event._def.extendedProps.ville);
+                        $('#code_postal').val(info.event._def.extendedProps.code_postal);
+                        $('#essence').val(info.event._def.extendedProps.essence);
+                        $('#peage').val(info.event._def.extendedProps.peage);
+                        $('#parking').val(info.event._def.extendedProps.parking);
+                        $('#divers').val(info.event._def.extendedProps.divers);
+                        $('#repas').val(info.event._def.extendedProps.repas);
+                        $('#hotel').val(info.event._def.extendedProps.hotel);
+                        $('#kilometrage').val(info.event._def.extendedProps.kilometrage);
+                        $('#description').val(info.event._def.extendedProps.description);
+                        $('#heure_debut').val(info.event._def.extendedProps.heure_debut);
+                        $('#heure_fin').val(info.event._def.extendedProps.heure_fin);
+
+                        const id = info.event._def.publicId;
+
+                        $("#validation").parent().append(
+                            '<button class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white" id="supprimer">SUPPRIMER</button>'
+                        );
+
+                        $('#validation').on('click', function() {
+
+                            var startDate =
+                                info.dateStr + " " +
+                                $('#heure_debut').val();
+                            var endDate =
+                                info.dateStr + " " +
+                                $('#heure_fin').val();
+
+
+                            let descriptionVal = $("#description").val();
+                            let clientVal = $("#title1").val();
+                            let villeVal = $("#ville").val();
+                            let code_postalVal = $("#code_postal").val();
+                            let peageVal = $("#peage").val();
+                            let parkingVal = $("#parking").val();
+                            let diversVal = $("#divers").val();
+                            let repasVal = $("#repas").val();
+                            let hotelVal = $("#hotel").val();
+                            let kilometrageVal = $("#kilometrage").val();
+                            let essenceVal = $("#essence").val();
+                            let heureDebutVal = $("#heure_debut").val();
+                            let heureFinVal = $("#heure_fin").val();
+
+                            let event = {
+                                id: id,
+                                start: startDate,
+                                end: endDate,
+                                description: descriptionVal,
+                                title: clientVal,
+                                ville: villeVal,
+                                code_postal: code_postalVal,
+                                peage: peageVal,
+                                parking: parkingVal,
+                                divers: diversVal,
+                                repas: repasVal,
+                                essence: essenceVal,
+                                hotel: hotelVal,
+                                kilometrage: kilometrageVal,
+                                idUser: {{ Auth::user()->id }},
+                                heure_debut: heureDebutVal,
+                                heure_fin: heureFinVal,
+                            }
+                            let check = @this.checkEvent(event);
+
+                            $('div#error').remove(),
+
+
+                                check.then((value) => {
+                                    //console.log(value);
+                                    if (value == null) {
+                                        @this.eventChange(event, info.event.start)
+                                    } else {
+                                        value.forEach(element => {
+                                            $("label[for='" + element + "']").parent()
+                                                .append(
+                                                    '<div class="text-[rgb(169,68,66)] text-[12px]" id="error">L\'entré n\'est pas correct</div>'
+                                                );
+                                        });
+                                    };
+                                });
 
                         });
 
@@ -193,128 +261,7 @@
                     events: JSON.parse(@this.events),
                     editable: true,
                     eventResize: info => @this.eventChange(info.event),
-                    //eventDrop: info => @this.eventChange(info.event),
-
-                    selectable: true,
-
-
-                    select: function(start, end, allDays) {
-                        $('#errors').html('');
-                        let i = 0;
-                        // window.addEventListener('onclick',()=>{
-                        //     $("#eventClicked").style.display = "none";
-                        // })
-                        // console.log($("#client").val())
-                        // let descriptionVal =  document.getElementById("descriptionArea").value
-
-                        // console.log($("#Validation").on('click'));
-                        $('#closing_button').on('click', function() {
-                            $('#event-modal').modal('toggle');
-                        });
-                        $('#cancel_button').on('click', function() {
-                            $('#event-modal').modal('toggle');
-                            calendar.unselect();
-                        });
-                        $("#Validation").on('click', function() {
-                            let day = start.start.getDate();
-                            if (day < 10) {
-                                day = "0" + day
-                            };
-                            let month = start.start.getMonth() + 1;
-                            if (month < 10) {
-                                month = "0" + month
-                            };
-                            var startDate =
-                                start.start.getFullYear() + "-" +
-                                month + "-" +
-                                day + " " +
-                                $('#heureDebut').val();
-                            var endDate =
-                                start.start.getFullYear() + "-" +
-                                month + "-" +
-                                day + " " +
-                                $('#heureFin').val();
-                            $('#start').val(startDate);
-                            $('#end').val(endDate);
-
-                            const id = create_UUID();
-                            let descriptionVal = $("#description").val();
-                            let clientVal = $("#title1").val();
-                            let villeVal = $("#ville").val();
-                            let code_postalVal = $("#code_postal").val();
-                            let peageVal = $("#peage").val();
-                            let parkingVal = $("#parking").val();
-                            let diversVal = $("#divers").val();
-                            let repasVal = $("#repas").val();
-                            let hotelVal = $("#hotel").val();
-                            let kilometrageVal = $("#kilometrage").val();
-                            let essenceVal = $("#essence").val();
-                            let heureDebutVal = $("#heureDebut").val();
-                            let heureFinVal = $("#heureFin").val();
-
-                            let check = @this.checkEvent({
-                                description: descriptionVal,
-                                title: clientVal,
-                                ville: villeVal,
-                                code_postal: code_postalVal,
-                                peage: peageVal,
-                                parking: parkingVal,
-                                divers: diversVal,
-                                repas: repasVal,
-                                essence: essenceVal,
-                                hotel: hotelVal,
-                                kilometrage: kilometrageVal,
-                                heure_debut: heureDebutVal,
-                                heure_fin: heureFinVal,
-                            });
-
-
-                            check.then((value) => {
-                                //console.log(value);
-                                if (value == null) {
-                                    @this.eventAdd({
-                                        id: id,
-                                        start: startDate,
-                                        end: endDate,
-                                        allDay: start.allDays,
-                                        description: descriptionVal,
-                                        title: clientVal,
-                                        ville: villeVal,
-                                        code_postal: code_postalVal,
-                                        peage: peageVal,
-                                        parking: parkingVal,
-                                        divers: diversVal,
-                                        repas: repasVal,
-                                        essence: essenceVal,
-                                        hotel: hotelVal,
-                                        kilometrage: kilometrageVal,
-                                        idUser: {{ Auth::user()->id }},
-                                        heure_debut: heureDebutVal,
-                                        heure_fin: heureFinVal,
-                                    });
-                                } else {
-                                    $('#errors').html('');
-                                    value.forEach(element => {
-                                        let text = $('#errors').html();
-                                        $('#errors').html(text + " " + element +
-                                            ", ");
-                                    });
-                                    let text = $('#errors').html();
-                                    $('#errors').html("Les entrées : " + text +
-                                        " ne sont pas correct");
-                                    $('#errors').show();
-                                };
-                            });
-
-                            calendar.unselect();
-
-                        });
-
-                        // calendar.unselect();
-                    },
-
-
-
+                    //eventDrop: info => @this.eventChange(info.event)
                 });
                 calendar.render();
             });
