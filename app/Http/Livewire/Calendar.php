@@ -80,17 +80,11 @@ class Calendar extends Component
         return redirect('dashboard')->with('success', 'Données enregistrées avec succès !');
     }
 
-    public function eventChange($event, $eventDate) {
+    public function eventChange($event) {
         $e = Event::find($event['id']);
-        // $e->start = $event['start'];
-        // if (Arr::exists($event, 'end')) {
-        //     $e->end = $event['end'];
-        // }
 
-        // $eventDate;
-        // dd($event);
-        $e->start = $eventDate;
-        $e->end = $eventDate;
+        $e->start = $event['start'];
+        $e->end = $event['end'];
 
         $e->description = $event['description'];
         $e->title = $event['title'];

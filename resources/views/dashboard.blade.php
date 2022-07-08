@@ -71,120 +71,121 @@
                 <div class="max-h-full overflow-hidden rounded-[3px] border-0 h-full flex flex-col relative bg-white">
                     {{-- modal header --}}
                     <div
-                        class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0 before:content-[' '] before:box-border after:content-[' '] after:box-border">
+                        class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0">
                         <h5 class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]">Mission</h5>
-                        <button type="button" id="closing_button"
-                            class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block ">X</button>
-                    </div>
+                        {{-- <button type="button" id="closing_button"
+                            class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block ">X</button> --}}
+                            <button type="button" id="closing_button"
+                            class="block text-[16px] leading-[20px] text-[rgb(41,43,44)] py-[8px] px-[16px] bg-[rgb(255,255,255)] border border-[rgb(204,204,204)] hover:text-[#292b2c] hover:bg-[rgb(230,230,230)] hover:border-[rgb(173,173,173)] rounded-[4px] focus:shadow-[0px_0px_0px_2px_rgba(204,204,204,0.5)] focus:outline-none">X</button>
+                        </div>
                     {{-- modul body --}}
                     <div class="overflow-hidden block p-[10px]">
                         <form action="/dashboard" method="POST">
                             @csrf
                             {{-- Input client --}}
-                            <div class="mb-3">
-                                <div id="duplicate"></div>
-                                <div id="errors"></div>
-                                <label class="mb-[5px]" for="title">Client</label><br>
-                                <input type="text" name="title" id="title1" value="testtitre" class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
-                                <input type="text" name="start" id="start" class="hidden">
-                                <input type="text" name="end" id="end" class="hidden">
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <div id="duplicate"></div>
+                                    <label class="inline-block mb-0" for="title">Client</label>
+                                    <input type="text" value="" name="title" id="title" class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
+                                </div>
                             </div>
                             {{-- Input Ville | Code Postal | Essence --}}
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="ville">
+                                    <label class="inline-block mb-0" for="ville">
                                         Ville
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="ville" name="ville" type="text" value="test">
+                                        id="ville" name="ville" type="text" value="">
 
                                 </div>
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="code_postal">
+                                    <label class="inline-block mb-0" for="code_postal">
                                         Code Postal
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="code_postal" name="code_postal" type="text" value="00000">
+                                        id="code_postal" name="code_postal" type="text" value="">
 
                                 </div>
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="essence">
+                                    <label class="inline-block mb-0" for="essence">
                                         essence
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="essence" name="essence" type="number" min="0" value="10">
+                                        id="essence" name="essence" type="number" value="1" min="0">
 
                                 </div>
                             </div>
                             {{-- Input Péage | Parking | Divers --}}
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="peage">Péage
+                                    <label class="inline-block mb-0" for="peage">Péage
 
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage" id="peage" type="number" min="0" value="1">
+                                        name="peage" id="peage" type="number" value="1" min="0">
 
                                 </div>
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="parking">
+                                    <label class="inline-block mb-0" for="parking">
                                         Parking
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="parking" id="parking" type="number" min="0" value="1">
+                                        name="parking" id="parking" type="number" value="1" min="0">
 
                                 </div>
 
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="divers">
+                                    <label class="inline-block mb-0" for="divers">
                                         Divers
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="divers" id="divers" type="number" min="0" value="1">
+                                        name="divers" id="divers" type="number" value="1" min="0">
 
                                 </div>
                             </div>
                             {{-- Input Repas | Hotel | Distance --}}
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="repas">
+                                    <label class="inline-block mb-0" for="repas">
                                         Repas
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas" id="repas" type="number" min="0" value="1">
+                                        name="repas" id="repas" type="number" value="1" min="0">
 
                                 </div>
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="hotel">
+                                    <label class="inline-block mb-0" for="hotel">
                                         Hotel
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="hotel" id="hotel" type="number" min="0" value="1">
+                                        name="hotel" id="hotel" type="number" value="1" min="0">
 
                                 </div>
                                 <div class="mb-3 col">
-                                    <label class="form-label" for="kilometrage">
+                                    <label class="inline-block mb-0" for="kilometrage">
                                         Distance
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="kilometrage" name="kilometrage" type="number"
-                                        min="0"value="1">
+                                        id="kilometrage" name="kilometrage" type="number" value="1"
+                                        min="0">
 
                                 </div>
                             </div>
                             {{-- Input heure début | heure fin --}}
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label for="heure_debut" class="form-label">
+                                    <label for="heure_debut" class="inline-block">
                                         Heure de début
                                     </label>
                                     <input
@@ -192,7 +193,7 @@
                                         name="heureDebut" id="heure_debut" type="text" value="00:00">
                                 </div>
                                 <div class="mb-3 col">
-                                    <label for="heure_fin" class="w-full form-label">
+                                    <label for="heure_fin" class="w-full inline-block">
                                         Heure de fin
                                     </label>
                                     <input
@@ -204,18 +205,18 @@
 
                             {{-- Input description mission --}}
                             <div class="row">
-                                <div class="mb-3">
+                                <div class="mb-3 col">
                                     <label for="description" class="mb-[5px]">Description de la mission</label>
                                     <textarea name="description" id="description" rows="6"
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"></textarea>
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"></textarea>
                                 </div>
                             </div>
                         </form>
                         <button
-                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                             id="cancel_button">ANNULER</button>
                         <button
-                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                             id="validation">VALIDATION</button>
                     </div>
                 </div>
