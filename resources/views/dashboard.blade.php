@@ -228,7 +228,7 @@
         <div class="row">
 
             <div class="col-12">
-                <h1 class="mt-5 text-center text-primary"><u>Calendrier des Déplacements</u></h1>
+                <h1 class="text-center text-primary"><u>Calendrier des Déplacements</u></h1>
 
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -267,7 +267,7 @@
         <input name="tgyvan" type="hidden" value="2">
 
         <div class="flex flex-row items-center justify-around w-full h-20">
-            <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Generer une facture</x-button>
+            <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Générer une note de frais</x-button>
         </div>
     </form>
 
