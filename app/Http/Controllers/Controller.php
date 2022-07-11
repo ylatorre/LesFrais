@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\historiqueEssence;
+use App\Models\Mois;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -16,6 +18,20 @@ use Illuminate\Support\Facades\Session;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function displayDashboard(){
+        $lockedMonth = DB::table('mois')->where('idUser', "=", Auth::user()->id)->orderBy("mois","desc")->get();
+        $uniqueMonth = [];
+        $prevDate = '';
+        foreach ($lockedMonth as $locked) {
+            if ($prevDate != $locked->mois) {
+                $prevDate = $locked->mois;
+                array_push($uniqueMonth, $locked->mois);
+            };
+        }
+        $uniqueMonth = implode(',', $uniqueMonth);
+        return view('dashboard', compact('uniqueMonth'));
+    }
 
     public function gestionaireUser()
     {
@@ -48,6 +64,8 @@ class Controller extends BaseController
         ]);
         return redirect("gestionaireUser");
     }
+
+
 
     public function modifUser(Request $request){
         $modifUserDB = DB::table("users")->where("email","=","$request->email")->get();
@@ -108,6 +126,8 @@ class Controller extends BaseController
 
         return redirect(route("gestionaireUser"));
     }
+
+
 
 //     public function ajouterEssence(Request $request)
 //     {

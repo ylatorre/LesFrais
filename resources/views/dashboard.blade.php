@@ -75,9 +75,9 @@
                         <h5 class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]">Mission</h5>
                         {{-- <button type="button" id="closing_button"
                             class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block ">X</button> --}}
-                            <button type="button" id="closing_button"
+                        <button type="button" id="closing_button"
                             class="block text-[16px] leading-[20px] text-[rgb(41,43,44)] py-[8px] px-[16px] bg-[rgb(255,255,255)] border border-[rgb(204,204,204)] hover:text-[#292b2c] hover:bg-[rgb(230,230,230)] hover:border-[rgb(173,173,173)] rounded-[4px] focus:shadow-[0px_0px_0px_2px_rgba(204,204,204,0.5)] focus:outline-none">X</button>
-                        </div>
+                    </div>
                     {{-- modul body --}}
                     <div class="overflow-hidden block p-[10px]">
                         <form action="/dashboard" method="POST">
@@ -87,7 +87,8 @@
                                 <div class="mb-3 col">
                                     <div id="duplicate"></div>
                                     <label class="inline-block mb-0" for="title">Client</label>
-                                    <input type="text" value="" name="title" id="title" class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
+                                    <input type="text" value="" name="title" id="title"
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
                                 </div>
                             </div>
                             {{-- Input Ville | Code Postal | Essence --}}
@@ -228,6 +229,12 @@
         <div class="row">
 
             <div class="col-12">
+                @if (\Session::has('failure'))
+                    <div
+                        class="block mb-[16px] py-3 px-5 text-[16px] text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
+                        <p>{{ \Session::get('failure') }}</p>
+                    </div>
+                @endif
                 <h1 class="text-center text-primary"><u>Calendrier des Déplacements</u></h1>
 
                 @if (count($errors) > 0)
@@ -240,6 +247,7 @@
                     </div>
 
                 @endif
+
 
                 @if (\Session::has('success'))
                     <div class="alert alert-success">
@@ -262,14 +270,33 @@
               </footer> --}}
 
     </div>
-    <form methode="POST" action="{{ route('postPDFgenerator') }}">
-        @csrf
-        <input name="tgyvan" type="hidden" value="2">
-
-        <div class="flex flex-row items-center justify-around w-full h-20">
-            <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Générer une note de frais</x-button>
+    <div class="flex flex-row items-center justify-around w-full h-20">
+        <div>
+            <form method="POST" action="{{ route('lockMonth') }}" class="block">
+                @csrf
+                <input name="actualMonth" id="actualMonthInput" type="hidden" value="Month">
+                <input type="hidden" id="locked" value="false">
+                <button
+                    class="inline-flex items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                    type="submit" id="lockMonth">Soumettre le mois à inspection</button>
+            </form>
+            
+            <form method="POST" action="{{ route('unlockMonth') }}" class="block">
+                @csrf
+                <input name="actualMonth" id="actualMonthInput2" type="hidden" value="Month">
+                <button
+                    class="inline-flex items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                    type="submit" id="unlockMonth">unlock mois</button>
+            </form>
         </div>
-    </form>
+
+        <form methode="POST" action="{{ route('postPDFgenerator') }}">
+            @csrf
+            <input name="tgyvan" type="hidden" value="2">
+            <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Générer une note de frais</x-button>
+        </form>
+        <input type="hidden" id="lockedMonth" value="{{ $uniqueMonth }}">
+    </div>
 
 
 
@@ -281,6 +308,102 @@
         })
     </script>
     <script type="text/javascript">
+        $('#lockMonth').on('click', function() {
+            let date = $('.fc-toolbar-title').html();
+            let month = date.slice(0, -5);
+            switch (month) {
+                case "janvier":
+                    month = "01";
+                    break;
+                case "février":
+                    month = "02";
+                    break;
+                case "mars":
+                    month = "03";
+                    break;
+                case "avril":
+                    month = "04";
+                    break;
+                case "mai":
+                    month = "05";
+                    break;
+                case "juin":
+                    month = "06";
+                    break;
+                case "juillet":
+                    month = "07";
+                    break;
+                case "août":
+                    month = "08";
+                    break;
+                case "septembre":
+                    month = "09";
+                    break;
+                case "octobre":
+                    month = "10";
+                    break;
+                case "novembre":
+                    month = "11";
+                    break;
+                case "décembre":
+                    month = "12";
+                    break;
+                default:
+                    break;
+            };
+            date = date.substr(date.length - 4) + "-" + month;
+            $('#isLocked').prop("checked", true);
+            $('#actualMonthInput').val(date);
+        });
+        $('#unlockMonth').on('click', function() {
+            let date = $('.fc-toolbar-title').html();
+            let month = date.slice(0, -5);
+            switch (month) {
+                case "janvier":
+                    month = "01";
+                    break;
+                case "février":
+                    month = "02";
+                    break;
+                case "mars":
+                    month = "03";
+                    break;
+                case "avril":
+                    month = "04";
+                    break;
+                case "mai":
+                    month = "05";
+                    break;
+                case "juin":
+                    month = "06";
+                    break;
+                case "juillet":
+                    month = "07";
+                    break;
+                case "août":
+                    month = "08";
+                    break;
+                case "septembre":
+                    month = "09";
+                    break;
+                case "octobre":
+                    month = "10";
+                    break;
+                case "novembre":
+                    month = "11";
+                    break;
+                case "décembre":
+                    month = "12";
+                    break;
+                default:
+                    break;
+            };
+            date = date.substr(date.length - 4) + "-" + month;
+            $('#actualMonthInput2').val(date);
+        })
+
+        // console.log($('#lockedMonth').val());
+
         let alertSuccess = document.querySelector('.alert-success');
 
         window.addEventListener('click', () => {

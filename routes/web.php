@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CalculerController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\MoisController;
 use App\Http\Controllers\PDFgeneratorController;
 use App\Http\Livewire\Calendar;
 
@@ -31,10 +32,7 @@ Route::get('/', function () {
 Route::resource('mission', MissionController::class);
 Route::get('mission_export',[MissionController::class, 'get_mission_data'])->name('mission.export');
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [Controller::class, 'displayDashboard'])->name('dashboard')->middleware(['auth']);
 Route::post('/dashboard',[FullCalenderController::class,'store'])->middleware(['auth']);
 
 Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser')->middleware(['auth', 'is.admin']);
@@ -48,5 +46,8 @@ Route::post('/PDFgenerator', [PDFgeneratorController::class,'PostPDFgenerator'])
 Route::get('/PDFgenerator', [PDFgeneratorController::class,'PDFgenerator'])->name('PDFgenerator')->middleware(['auth']);
 
 Route::get('userPDFgenerator/{id}', [PDFgeneratorController::class, 'userPDFgenerator'])->name('userPDFgenerator')->middleware(['auth']);
+
+Route::post('lockMonth', [MoisController::class, 'lockMonth'])->name('lockMonth')->middleware(['auth']);
+Route::post('unlockMonth', [MoisController::class, 'unlockMonth'])->name('unlockMonth')->middleware(['auth']);
 
 require __DIR__.'/auth.php';
