@@ -19,8 +19,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function displayDashboard(){
-        $lockedMonth = DB::table('mois')->where('idUser', "=", Auth::user()->id)->orderBy("mois","desc")->get();
+    public function displayDashboard()
+    {
+        $lockedMonth = DB::table('mois')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
         $uniqueMonth = [];
         $prevDate = '';
         foreach ($lockedMonth as $locked) {
@@ -36,22 +37,36 @@ class Controller extends BaseController
     public function gestionaireUser()
     {
         $users = DB::table("users")->get();
-//        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
+        //        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
         $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
-//dd($prixessence);
-        return view('administration', compact("users", "prixessence"));
+        //dd($prixessence);
+        $moisQuerys = DB::table("mois")->select(['mois', 'idUser'])->orderBy('idUser', 'desc')->get();
+        // dd($moisQuerys);
+        $uniqueMonth = [];
+        $uniqueUser = [];
+        $prevDate = '';
+        $prevUser = '';
+        //  dd($moisQuerys);
+        foreach ($moisQuerys as $moisQuery) {
+            array_push($uniqueMonth, $moisQuery->mois);
+            array_push($uniqueUser, $moisQuery->idUser);
+        };
+        $uniqueMonth = implode(',', $uniqueMonth);
+        $uniqueUser = implode(',', $uniqueUser);
+        // dd($uniqueMonth, $uniqueUser);
+        return view('administration', compact("users", "prixessence", 'uniqueMonth', 'uniqueUser'));
     }
 
     public function ajoutUser(Request $request)
     {
-//        $users = DB::table("users")->get();
-    //    dd($request);
+        //        $users = DB::table("users")->get();
+        //    dd($request);
         $request->validate(
             [
                 "email" => "unique:users,email",
             ]
         );
-//        $chevauxnum = (int)$request->ChevauxFiscaux;
+        //        $chevauxnum = (int)$request->ChevauxFiscaux;
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -67,50 +82,51 @@ class Controller extends BaseController
 
 
 
-    public function modifUser(Request $request){
-        $modifUserDB = DB::table("users")->where("email","=","$request->email")->get();
-        $iduser = DB::table("users")->where("email","=","$request->email")->select("id")->get();
-//        dump($modifUserDB);
-//        dd($request);
-//        dd($entreprises[0]);
-//        alert("blabla");
-//        $deleted = DB::table('entreprises')->select("id")->where("id",'=',$id)->delete();
-//    dd("test");
+    public function modifUser(Request $request)
+    {
+        $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->get();
+        $iduser = DB::table("users")->where("email", "=", "$request->email")->select("id")->get();
+        //        dump($modifUserDB);
+        //        dd($request);
+        //        dd($entreprises[0]);
+        //        alert("blabla");
+        //        $deleted = DB::table('entreprises')->select("id")->where("id",'=',$id)->delete();
+        //    dd("test");
 
-        if ($modifUserDB[0]->name != $request->name){
-            DB::table("users")->where("email","=","$request->email")->update(["name"=>$request->name]);
+        if ($modifUserDB[0]->name != $request->name) {
+            DB::table("users")->where("email", "=", "$request->email")->update(["name" => $request->name]);
         }
-        if ($modifUserDB[0]->email != $request->email){
-            DB::table("users")->where("email","=","$request->email")->update(["email"=>$request->email]);
+        if ($modifUserDB[0]->email != $request->email) {
+            DB::table("users")->where("email", "=", "$request->email")->update(["email" => $request->email]);
         }
-        if ($modifUserDB[0]->portables != $request->portable){
-            DB::table("users")->where("email","=","$request->email")->update(["portables"=>$request->portable]);
+        if ($modifUserDB[0]->portables != $request->portable) {
+            DB::table("users")->where("email", "=", "$request->email")->update(["portables" => $request->portable]);
         }
-        if ($modifUserDB[0]->vehicule != $request->vehicule){
-            DB::table("users")->where("email","=","$request->email")->update(["vehicule"=>$request->vehicule]);
+        if ($modifUserDB[0]->vehicule != $request->vehicule) {
+            DB::table("users")->where("email", "=", "$request->email")->update(["vehicule" => $request->vehicule]);
         }
-        if ($modifUserDB[0]->chevauxFiscaux != $request->ChevauxFiscaux){
+        if ($modifUserDB[0]->chevauxFiscaux != $request->ChevauxFiscaux) {
 
-            DB::table("users")->where("email","=","$request->email")->update(["chevauxFiscaux"=>$request->ChevauxFiscaux]);
+            DB::table("users")->where("email", "=", "$request->email")->update(["chevauxFiscaux" => $request->ChevauxFiscaux]);
         }
         // if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
         //     DB::table("users")->where("email","=","$request->email")->update(["ValeurchevauxFiscaux"=>$request->ValeurChevauxFiscaux]);
         // }
-        if ($modifUserDB[0]->dateChevauxFiscaux != $request->dateChevauxFiscaux){
+        if ($modifUserDB[0]->dateChevauxFiscaux != $request->dateChevauxFiscaux) {
             historiqueEssence::create([
-                "date"=>$request->dateChevauxFiscaux,
-                "chevauxFiscaux"=>$request->ChevauxFiscaux,
-                "userId"=>$iduser[0]->id,
-                "prix"=>$request->ValeurChevauxFiscaux,
+                "date" => $request->dateChevauxFiscaux,
+                "chevauxFiscaux" => $request->ChevauxFiscaux,
+                "userId" => $iduser[0]->id,
+                "prix" => $request->ValeurChevauxFiscaux,
 
 
             ]);
-            DB::table("users")->where("email","=","$request->email")->update(["dateChevauxFiscaux"=>$request->dateChevauxFiscaux]);
+            DB::table("users")->where("email", "=", "$request->email")->update(["dateChevauxFiscaux" => $request->dateChevauxFiscaux]);
         }
 
-        if ($request->password != null && $request->password == $request->password_confirmation){
-            DB::table("users")->where("email",$request->email)->update(["password"=>Hash::make($request->password)]);
-        }elseif ($request->password != null && $request->password != $request->password_confirmation){
+        if ($request->password != null && $request->password == $request->password_confirmation) {
+            DB::table("users")->where("email", $request->email)->update(["password" => Hash::make($request->password)]);
+        } elseif ($request->password != null && $request->password != $request->password_confirmation) {
             Session::flash('passwordErreur', "Le password ne correspond pas ");
             return redirect("gestionaireUser");
         }
@@ -120,7 +136,7 @@ class Controller extends BaseController
 
     public function supuser(Request $request)
     {
-//        dd("en cours de supression");
+        //        dd("en cours de supression");
         $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->get();
         $deleted = DB::table('users')->where("email", '=', $request->email)->delete();
 
@@ -129,14 +145,14 @@ class Controller extends BaseController
 
 
 
-//     public function ajouterEssence(Request $request)
-//     {
-// //        dd($request);
-//         historiqueEssence::create([
-//             "prix" => $request->prixessence,
-//             "date" => date("d-M-Y H:i:s"),
-//         ]);
-//         return redirect('gestionaireUser');
+    //     public function ajouterEssence(Request $request)
+    //     {
+    // //        dd($request);
+    //         historiqueEssence::create([
+    //             "prix" => $request->prixessence,
+    //             "date" => date("d-M-Y H:i:s"),
+    //         ]);
+    //         return redirect('gestionaireUser');
 
-//     }
+    //     }
 };

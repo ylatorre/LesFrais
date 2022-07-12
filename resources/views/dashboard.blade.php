@@ -280,7 +280,7 @@
                     class="inline-flex items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                     type="submit" id="lockMonth">Soumettre le mois à inspection</button>
             </form>
-            
+
             <form method="POST" action="{{ route('unlockMonth') }}" class="block">
                 @csrf
                 <input name="actualMonth" id="actualMonthInput2" type="hidden" value="Month">
@@ -290,7 +290,7 @@
             </form>
         </div>
 
-        <form methode="POST" action="{{ route('postPDFgenerator') }}">
+        <form methode="POST" action="/PDFgeneratorPerMonth/{{Auth::user()->id}}">
             @csrf
             <input name="tgyvan" type="hidden" value="2">
             <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Générer une note de frais</x-button>

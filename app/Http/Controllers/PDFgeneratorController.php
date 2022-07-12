@@ -33,6 +33,20 @@ class PDFgeneratorController extends Controller
         return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');
     }
 
+    public function PDFgeneratorPerMonth(Request $request, $userId)
+    {
+        $utilisateurs = DB::table('users')->RightJoin("mois", "mois.idUser", "users.id")->where("idUser", "=", $userId)->where('mois','=', $request->selectMonth)->get();
+        // dd($request, $utilisateurs);
+
+        if ($utilisateurs->isEmpty()) {
+            return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
+        };
+
+        $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact("utilisateurs"));
+        // dd($pdf);
+        return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');
+    }
+
     public function userPDFgenerator(Request $request, $userId)
     {
         $utilisateurs = DB::table('users')->rightJoin("events", "events.idUser", "users.id")->where('idUser', "=", $userId)->get();

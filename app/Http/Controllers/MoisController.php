@@ -46,9 +46,10 @@ class MoisController extends Controller
         return redirect("dashboard");
     }
 
-    public function getLockedMonth($actualMonth)
+    public function getLockedEventPerMonth(Request $request, $month)
     {
-        $months = json_encode(Mois::where("mois", "=", $actualMonth));
+        $months = Mois::where("mois", "=", $month);
+        
         return $months;
     }
 }

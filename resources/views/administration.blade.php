@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/dropdownSelect.css') }}">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
@@ -28,7 +29,8 @@
     <!-- Modal toggle -->
     <div>
         @if (\Session::has('failure'))
-            <div class="block mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
+            <div
+                class="block mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
                 <p>{{ \Session::get('failure') }}</p>
             </div>
         @endif
@@ -105,10 +107,31 @@
                             <div class="flex justify-end ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
-                                    <form methode="POST" action="/userPDFgenerator/{{ $user->id }}">
-                                        @csrf
-                                        <input name="tgyvan" type="hidden" value="2">
+                                <div class="dropdownMonth" id="{{ 'selectMonth' . strval($user->id) }}">
+                                    <button class="dropdownMonthBtn">Mois</button>
 
+                                    <div class="dropdownMonthContent" id="{{ 'dropdownMonthContent' . strval($user->id) }}"></div>
+                                </div>
+                                    <form methode="POST" action="/PDFgeneratorPerMonth/{{ $user->id }}"
+                                        class="flex justify-end">
+                                        @csrf
+                                        {{-- <div class="custom-select-dropdown">
+                                            <select name="selectMonth" id="{{ 'selectMonth' . strval($user->id) }}"
+                                                class=" px-3.5 py-2.5 mr-2 bg-gray-300 text-gray-700 focus:rounded-b-none rounded-md text-sm font-medium  focus:ring-gray-700 focus:ring-0 border border-transparent focus:border-transparent bg-none "></select>
+                                        </div> --}}
+
+
+
+                                        <input type="hidden" name="listLockedMonth" id="listLockedMonth"
+                                            value="{{ $uniqueMonth }}">
+
+                                        <input type="hidden" name="listUser" id="listUser"
+                                            value="{{ $uniqueUser }}">
+
+                                        <input type="hidden" name="userId" class="userId"
+                                            value="{{ $user->id }}">
+
+                                        <input name="tgyvan" type="hidden" value="2">
                                         <button
                                             class="mr-2 inline-flex items-center px-3.5 py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
@@ -130,6 +153,7 @@
                             </div>
                         </td>
                     </tr>
+
                     <!-- Main modal 2 modif user-->
                     <div id="authentication-modal{{ $i }}" tabindex="-1" aria-hidden="true"
                         class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full ">
@@ -226,8 +250,6 @@
                         </div>
                     </div>
 
-
-
                     <div id="popup-modal{{ $i }}" tabindex="-1"
                         class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
                         aria-hidden="true">
@@ -278,6 +300,21 @@
         </table>
     </div>
 
+    <script>
+        var arrayMonth = $('#listLockedMonth').val().split(',');
+        var arrayUser = $('#listUser').val().split(',');
+        console.log(arrayMonth);
+        console.log(arrayUser);
+        for (let i = 0; i < arrayMonth.length; i++) {
+            if (i > 0 && arrayMonth[i] == arrayMonth[i - 1] && arrayUser[i] == arrayUser[i - 1]) {
+                i += 1;
+            }
+            // $('#selectMonth' + arrayUser[i]).append('<option value="' + arrayMonth[i] + '"class="optionSelectMonth">' +
+            //     arrayMonth[i] +
+            //     '</option>');
+            $('#dropdownMonthContent' + arrayUser[i]).append('<a id="select'+arrayMonth[i]+'">' + arrayMonth[i] + '</a>');
+        }
+    </script>
 
     <!-- Main modal ajout user -->
     <div id="authentication-modal" tabindex="-1" aria-hidden="true"
