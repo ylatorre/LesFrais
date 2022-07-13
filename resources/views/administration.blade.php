@@ -43,7 +43,7 @@
         </button>
 
     </div>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="relative shadow-md sm:rounded-lg overflow-visible ">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -80,7 +80,7 @@
                 @endphp
                 @foreach ($users as $user)
                     <tr
-                        class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                        class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700 overflow-visible">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{ $user->name }}
@@ -103,15 +103,16 @@
                         <td class="px-6 py-4">
                             *******
                         </td>
-                        <td class="px-6 py-4 text-right">
-                            <div class="flex justify-end ">
+                        <td class="px-6 py-4 text-right overflow-visible">
+                            <div class="flex justify-end overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
-                                <div class="dropdownMonth" id="{{ 'selectMonth' . strval($user->id) }}">
-                                    <button class="dropdownMonthBtn">Mois</button>
+                                    <div class="dropdownMonth" id="{{ 'selectMonth' . strval($user->id) }}">
+                                        <button class="dropdownMonthBtn" id="{{'dropdownMonthBtn' . strval($user->id)}}">Mois</button>
 
-                                    <div class="dropdownMonthContent" id="{{ 'dropdownMonthContent' . strval($user->id) }}"></div>
-                                </div>
+                                        <div class="dropdownMonthContent"
+                                            id="{{ 'dropdownMonthContent' . strval($user->id) }}"></div>
+                                    </div>
                                     <form methode="POST" action="/PDFgeneratorPerMonth/{{ $user->id }}"
                                         class="flex justify-end">
                                         @csrf
@@ -120,7 +121,7 @@
                                                 class=" px-3.5 py-2.5 mr-2 bg-gray-300 text-gray-700 focus:rounded-b-none rounded-md text-sm font-medium  focus:ring-gray-700 focus:ring-0 border border-transparent focus:border-transparent bg-none "></select>
                                         </div> --}}
 
-
+                                        <input type="hidden" name="selectedMonth" id="selectedMonth">
 
                                         <input type="hidden" name="listLockedMonth" id="listLockedMonth"
                                             value="{{ $uniqueMonth }}">
@@ -302,17 +303,39 @@
 
     <script>
         var arrayMonth = $('#listLockedMonth').val().split(',');
+        var arrayYear = [];
+        arrayMonth.forEach(element => {
+            arrayYear.push(element.slice(0, -3));
+        });
         var arrayUser = $('#listUser').val().split(',');
         console.log(arrayMonth);
+        console.log(arrayYear);
         console.log(arrayUser);
         for (let i = 0; i < arrayMonth.length; i++) {
-            if (i > 0 && arrayMonth[i] == arrayMonth[i - 1] && arrayUser[i] == arrayUser[i - 1]) {
+            if (i > 0 && arrayMonth[i] == arrayMonth[i - 1] && arrayUser[i] == arrayUser[i - 1] && arrayYear[i] ==
+                arrayYear[i - 1]) {
                 i += 1;
             }
             // $('#selectMonth' + arrayUser[i]).append('<option value="' + arrayMonth[i] + '"class="optionSelectMonth">' +
             //     arrayMonth[i] +
             //     '</option>');
-            $('#dropdownMonthContent' + arrayUser[i]).append('<a id="select'+arrayMonth[i]+'">' + arrayMonth[i] + '</a>');
+            if((!!document.getElementById("user"+arrayUser[i]+"SelectYear" + arrayYear[i])) == false){
+                $('#dropdownMonthContent' + arrayUser[i]).append('<div class="dropdownYear" id="user'+arrayUser[i]+'SelectYear' + arrayYear[i] +
+                    '"> <button id="user'+arrayUser[i]+'Select' + arrayYear[i] + '" class="dropdownYearBtn">' + arrayYear[i] + '</button> <div class="dropdownYearContent" id="dropdownYearContent'+arrayYear[i]+'" > </div> </div>');
+            }
+            if((!!document.getElementById("user"+arrayUser[i]+"Select" + arrayMonth[i])) == false){
+                $('#dropdownYearContent' + arrayYear[i]).append('<button class="selectYearButton" id="user'+arrayUser[i]+'Select'+arrayMonth[i]+'">'+arrayMonth[i]+'</button>');
+                $('#user'+arrayUser[i]+'Select'+arrayYear[i]).width($('#dropdownMonthBtn' + arrayUser[i]).width());
+                var height = $('#user' + arrayUser[i] + 'SelectYear'+ arrayYear[i]).height();
+                $('#dropdownYearContent'+arrayYear[i]).css('top', height);
+
+                var yearButton = document.getElementById('user'+arrayUser[i]+'Select' + arrayMonth[i]).addEventListener('click', function(){
+                    $('#dropdownMonthBtn' + arrayUser[i]).html(arrayMonth[i]);
+                    $('#user'+arrayUser[i]+'Select'+arrayYear[i]).width($('#dropdownMonthBtn' + arrayUser[i]).width());
+                    $('#selectedMonth').val(arrayMonth[i]);
+                })
+            }
+            // $('#dropdownMonthContent' + arrayUser[i]).append('<a id="select'+arrayMonth[i]+'">' + arrayMonth[i] + '</a>');
         }
     </script>
 

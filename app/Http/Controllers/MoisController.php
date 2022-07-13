@@ -14,7 +14,7 @@ class MoisController extends Controller
     public function lockMonth(Request $request)
     {
         $events = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", Auth::user()->id)->where("mois", "=", $request->actualMonth)->get();
-        DB::table('mois')->where('mois', "=", $request->actualMonth)->delete();
+        DB::table('mois')->where('mois', "=", $request->actualMonth)->where('idUser','=', Auth::user()->id)->delete();
         foreach ($events as $event) {
             // dd($event->id);
             Mois::create([
@@ -42,14 +42,15 @@ class MoisController extends Controller
         // dd($events);
     }
     public function unlockMonth(Request $request){
-        DB::table('mois')->where('mois', "=", $request->actualMonth)->delete();
+        // dd($request->userId);
+        DB::table('mois')->where('mois', "=", $request->actualMonth)->where('idUser','=', $request->userId)->delete();
         return redirect("dashboard");
     }
 
     public function getLockedEventPerMonth(Request $request, $month)
     {
         $months = Mois::where("mois", "=", $month);
-        
+
         return $months;
     }
 }

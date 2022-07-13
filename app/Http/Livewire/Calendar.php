@@ -26,7 +26,7 @@ class Calendar extends Component
     public function checkAndDeleteDuplicates(){
         $events = DB::table('events')->orderBy('start', 'desc')->get();
         for($i = 0; $i < count($events)-1; $i++){
-            if($events[$i]->start == $events[$i + 1]->start){
+            if($events[$i]->start == $events[$i + 1]->start && $events[$i]->idUser == $events[$i + 1]->idUser){
                 $e = Event::find($events[$i +1]->id);
                 $e->delete();
             };
@@ -53,8 +53,7 @@ class Calendar extends Component
 
         $errors = [];
 
-        $events = Event::where("start", '=', $event['start'])->get();
-
+        $events = Event::where('idUser','=', $event['idUser'])->where("start", '=', $event['start'])->get();
 
         $validator = Validator::make($event, $requirement);
 

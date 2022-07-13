@@ -277,20 +277,21 @@
                 <input name="actualMonth" id="actualMonthInput" type="hidden" value="Month">
                 <input type="hidden" id="locked" value="false">
                 <button
-                    class="inline-flex items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                    class="hidden items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                     type="submit" id="lockMonth">Soumettre le mois à inspection</button>
             </form>
 
             <form method="POST" action="{{ route('unlockMonth') }}" class="block">
                 @csrf
                 <input name="actualMonth" id="actualMonthInput2" type="hidden" value="Month">
+                <input name="userId" type="hidden" id="userId" value="{{ Auth::user()->id }}">
                 <button
-                    class="inline-flex items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                    class="hidden items-center px-4 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                     type="submit" id="unlockMonth">unlock mois</button>
             </form>
         </div>
 
-        <form methode="POST" action="/PDFgeneratorPerMonth/{{Auth::user()->id}}">
+        <form methode="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}">
             @csrf
             <input name="tgyvan" type="hidden" value="2">
             <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Générer une note de frais</x-button>
@@ -308,7 +309,7 @@
         })
     </script>
     <script type="text/javascript">
-        $('#lockMonth').on('click', function() {
+        function getMonth() {
             let date = $('.fc-toolbar-title').html();
             let month = date.slice(0, -5);
             switch (month) {
@@ -352,53 +353,46 @@
                     break;
             };
             date = date.substr(date.length - 4) + "-" + month;
+            return date;
+        }
+
+        function checkLock() {
+            let date = getMonth();
+            let lockedMonth = $('#lockedMonth').val();
+            lockedMonth = lockedMonth.split(',')
+            let isChecked = false;
+            $('#unlockMonth').css('display', 'none');
+            $('#lockMonth').css('display', 'none');
+            while(isChecked != true){
+                lockedMonth.forEach(month => {
+                    if (date == month) {
+                        console.log('locked');
+                        $('#unlockMonth').css('display', 'inline-flex');
+                        isChecked = true;
+                    }
+                });
+                isChecked = true;
+            }
+            if($('#unlockMonth').css('display') == 'none'){
+                $('#lockMonth').css('display', 'inline-flex');
+            }
+        }
+        $(document).ready(function() {
+            checkLock();
+            $('#nextMonthButton').on('click', function() {
+                checkLock();
+            });
+            $('#prevMonthButton').on('click', function() {
+                checkLock();
+            });
+        })
+        $('#lockMonth').on('click', function() {
+            let date = getMonth()
             $('#isLocked').prop("checked", true);
             $('#actualMonthInput').val(date);
         });
         $('#unlockMonth').on('click', function() {
-            let date = $('.fc-toolbar-title').html();
-            let month = date.slice(0, -5);
-            switch (month) {
-                case "janvier":
-                    month = "01";
-                    break;
-                case "février":
-                    month = "02";
-                    break;
-                case "mars":
-                    month = "03";
-                    break;
-                case "avril":
-                    month = "04";
-                    break;
-                case "mai":
-                    month = "05";
-                    break;
-                case "juin":
-                    month = "06";
-                    break;
-                case "juillet":
-                    month = "07";
-                    break;
-                case "août":
-                    month = "08";
-                    break;
-                case "septembre":
-                    month = "09";
-                    break;
-                case "octobre":
-                    month = "10";
-                    break;
-                case "novembre":
-                    month = "11";
-                    break;
-                case "décembre":
-                    month = "12";
-                    break;
-                default:
-                    break;
-            };
-            date = date.substr(date.length - 4) + "-" + month;
+            let date = getMonth()
             $('#actualMonthInput2').val(date);
         })
 

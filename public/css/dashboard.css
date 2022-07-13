@@ -26,43 +26,126 @@
 }
 
 .dropdownMonth{
-    position:relative;
     display: inline-block;
+    margin-right: 0.5rem;
+    overflow: visible;
 }
 
 .dropdownMonth:hover .dropdownMonthContent{
+    overflow: visible;
     display: block;
 }
 
 .dropdownMonthBtn{
+    border-radius: 0.375rem;
     background-color: #4CAF50;
     color: white;
     padding: 16px;
-    font-size: 16px;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
   }
 
 .dropdownMonthContent{
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    overflow: visible;
     z-index: 1;
 }
 
-.dropdownMonthContent a{
+.dropdownMonthContent button:focus {
+    background-color: #3e8e41;
+    color: white;
+    outline: none;
+}
+
+.dropdownMonth:hover .dropdownMonthBtn{
+    background-color: #3e8e41;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem ;
+}
+
+.dropdownMonthBtn:focus{
+    outline: none;
+}
+
+.dropdownYear{
+    overflow: visible;
     color: black;
-    padding: 12px 16px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
     text-decoration: none;
     display: block;
 }
 
-.dropdownMonthContent a:hover {background-color: #f1f1f1;}
-
-.dropdownMonth:hover .dropdownMonthBtn{
+.dropdownYear:hover{
     background-color: #3e8e41;
+    color: white;
 }
+
+.dropdownYear:hover .dropdownYearContent{
+    overflow: visible;
+    display: block;
+    color: black;
+    right: 0;
+    margin-right: 100%;
+    margin-top: 0;
+}
+
+.dropdownYearBtn{
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+.dropdownYearContent{
+    display: none;
+    left: auto;
+    right: 0;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    overflow: visible;
+    z-index: 1;
+}
+
+.dropdownYearContent button{
+    overflow: visible;
+    color: black;
+    padding: 12px 16px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdownYearContent button:hover {
+    background-color: #3e8e41;
+    color: white;
+}
+
+.dropdownYearContent button:focus {
+    background-color: #3e8e41;
+    color: white;
+    outline: none;
+}
+
+.dropdownYear:hover .dropdownYearBtn{
+    background-color: #3e8e41;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem ;
+}
+
+.dropdownYearBtn:focus{
+   outline: none;
+}
+
+
+
 
 

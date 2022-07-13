@@ -22,7 +22,8 @@
         </div>
     </div>
     @push('scripts')
-        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
+        <script src="{{ asset('/js/fullcalendar.js') }}"></script>
+        {{-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script> --}}
         <script>
             create_UUID = () => {
                 let dt = new Date().getTime();
@@ -104,7 +105,7 @@
                                 isCurrentMonthLocked = false;
                             };
                         };
-                        if(isCurrentMonthLocked == false){
+                        if (isCurrentMonthLocked == false) {
                             $('#event-modal').modal('toggle')
 
                             $('#duplicate').html('');
