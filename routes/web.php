@@ -52,4 +52,8 @@ Route::get('userPDFgenerator/{id}', [PDFgeneratorController::class, 'userPDFgene
 Route::post('lockMonth', [MoisController::class, 'lockMonth'])->name('lockMonth')->middleware(['auth']);
 Route::post('unlockMonth', [MoisController::class, 'unlockMonth'])->name('unlockMonth')->middleware(['auth']);
 
+
+Route::get('moderation', [Controller::class, 'displayModeration'])->name('moderation')->middleware(['auth', 'is.admin']);
+Route::post('moderationPerUser', [Controller::class, 'displayModerationPerUser'])->name('moderationPerUser')->middleware(['auth', 'is.admin']);
+
 require __DIR__.'/auth.php';

@@ -31,9 +31,9 @@ class MoisFactory extends Factory
         }
 
         return [
-            'mois' => ($année . "-" . $mois),
-            'start' => ($année . "-" . $mois . "-" . $jour . " 00:00"),
-            'end' => ($année . "-" . $mois . "-" . $jour . " 00:00"),
+            'mois' => ("2022-07"),
+            'start' => ("2022-07-" . $jour ." 00:00"),
+            'end' => ("2022-07-" . $jour ." 00:00"),
             'idEvent' => fake()->uuid(),
             'description' => fake()->sentence(),
             'title' => fake()->word(),
@@ -46,7 +46,7 @@ class MoisFactory extends Factory
             'repas' => fake()->numberBetween(0, 200),
             'hotel' => fake()->numberBetween(0, 200),
             'kilometrage' => fake()->numberBetween(0, 200),
-            'idUser' => 6,
+            'idUser' => rand(1,3),
             'heure_debut' => '00:00',
             'heure_fin' => '00:00',
         ];

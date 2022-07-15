@@ -72,6 +72,7 @@
     width: fit-content;
     text-decoration: none;
     display: block;
+    position: absolute;
 }
 
 .dropdownYear:hover{
@@ -92,6 +93,7 @@
     padding: 12px 16px;
     border: none;
     cursor: pointer;
+    position: absolute;
   }
 
 .dropdownYearContent{
@@ -136,6 +138,78 @@
    outline: none;
 }
 
+.dropdownUser{
+    display: inline-block;
+    margin-right: 0.5rem;
+    overflow: visible;
+}
 
+.dropdownUser:hover .dropdownUserContent{
+    overflow: visible;
+    display: block;
+}
 
+.dropdownSelectBtn {
+    border-radius: 0.375rem;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
 
+.dropdownUserContent{
+    display: none;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    overflow: visible;
+    z-index: 1;
+    width: fit-content;
+
+}
+
+.dropdownUserContent button:focus{
+    background-color: #3e8e41;
+    color: white;
+    outline: none;
+}
+
+.dropdownUser:hover .dropdownSelectBtn{
+    background-color: #3e8e41;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem ;
+}
+
+.dropdownSelectBtn:focus{
+    outline: none;
+}
+
+.dropdownUserBtn{
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdownUserContent button{
+    overflow: visible;
+    color: black;
+    padding: 12px 16px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdownUserContent button:hover{
+    background-color: #3e8e41;
+    color: white;
+}
+
+.dropdownUserContent button:focus{
+    background-color: #3e8e41;
+    color: white;
+    outline: none;
+}

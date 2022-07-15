@@ -34,6 +34,44 @@ class Controller extends BaseController
         return view('dashboard', compact('uniqueMonth'));
     }
 
+    public function displayModeration()
+    {
+        $eventLocked = DB::table('mois')->orderBy("idUser", "desc")->get();
+        $jsonEvents = json_encode(DB::table('mois')->orderBy("idUser", "desc")->get());
+        $utilisateurs = DB::table('users')->orderBy("id", "desc")->get();
+        $usersId = [];
+        $usersName = [];
+        foreach ($utilisateurs as $user){
+            array_push($usersId, $user->id);
+            array_push($usersName, $user->name);
+        }
+        $usersId = implode(',', $usersId);
+        $usersName = implode(',', $usersName);
+
+
+        return view('moderation', compact('eventLocked', 'usersId', 'usersName', 'jsonEvents'));
+    }
+    public function displayModerationPerUser(Request $request)
+    {
+        // dd($request);
+        $eventLocked = DB::table('mois')->where("idUser","=",$request->userId)->get();
+        $jsonEvents = json_encode(DB::table('mois')->where("idUser","=",$request->userId)->get());
+
+        // dd($eventLocked);
+        $utilisateurs = DB::table('users')->orderBy("id", "desc")->get();
+        $usersId = [];
+        $usersName = [];
+        foreach ($utilisateurs as $user){
+            array_push($usersId, $user->id);
+            array_push($usersName, $user->name);
+        }
+        $usersId = implode(',', $usersId);
+        $usersName = implode(',', $usersName);
+
+
+        return view('moderation', compact('eventLocked', 'usersId', 'usersName', 'jsonEvents'));
+    }
+
     public function gestionaireUser()
     {
         $users = DB::table("users")->get();

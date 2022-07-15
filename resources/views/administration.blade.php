@@ -326,12 +326,14 @@
             if((!!document.getElementById("user"+arrayUser[i]+"Select" + arrayMonth[i])) == false){
                 $('#dropdownYearContent' + arrayYear[i]).append('<button class="selectYearButton" id="user'+arrayUser[i]+'Select'+arrayMonth[i]+'">'+arrayMonth[i]+'</button>');
                 $('#user'+arrayUser[i]+'Select'+arrayYear[i]).width($('#dropdownMonthBtn' + arrayUser[i]).width());
-                var height = $('#user' + arrayUser[i] + 'SelectYear'+ arrayYear[i]).height();
-                $('#dropdownYearContent'+arrayYear[i]).css('top', height);
+
+                var height = $('#user' + arrayUser[i] + 'Select'+ arrayYear[i]).height();
+                console.log(height)
+                $('#dropdownYearContent'+arrayYear[i]).css('margin-top', height - 20);
 
                 var yearButton = document.getElementById('user'+arrayUser[i]+'Select' + arrayMonth[i]).addEventListener('click', function(){
                     $('#dropdownMonthBtn' + arrayUser[i]).html(arrayMonth[i]);
-                    $('#user'+arrayUser[i]+'Select'+arrayYear[i]).width($('#dropdownMonthBtn' + arrayUser[i]).width());
+                    $('.dropdownYearBtn').width($('#dropdownMonthBtn' + arrayUser[i]).width());
                     $('#selectedMonth').val(arrayMonth[i]);
                 })
             }
