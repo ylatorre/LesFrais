@@ -49,6 +49,7 @@ class MoisFactory extends Factory
             'idUser' => rand(1,3),
             'heure_debut' => '00:00',
             'heure_fin' => '00:00',
+            'est_valide' => rand(0,1),
         ];
     }
 }
