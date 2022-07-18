@@ -43,7 +43,7 @@
         </button>
 
     </div>
-    <div class="relative shadow-md sm:rounded-lg overflow-visible ">
+    <div class="relative overflow-visible shadow-md sm:rounded-lg ">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -80,7 +80,7 @@
                 @endphp
                 @foreach ($users as $user)
                     <tr
-                        class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700 overflow-visible">
+                        class="overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{ $user->name }}
@@ -103,7 +103,7 @@
                         <td class="px-6 py-4">
                             *******
                         </td>
-                        <td class="px-6 py-4 text-right overflow-visible">
+                        <td class="px-6 py-4 overflow-visible text-right">
                             <div class="flex justify-end overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
@@ -316,9 +316,6 @@
                 arrayYear[i - 1]) {
                 i += 1;
             }
-            // $('#selectMonth' + arrayUser[i]).append('<option value="' + arrayMonth[i] + '"class="optionSelectMonth">' +
-            //     arrayMonth[i] +
-            //     '</option>');
             if((!!document.getElementById("user"+arrayUser[i]+"SelectYear" + arrayYear[i])) == false){
                 $('#dropdownMonthContent' + arrayUser[i]).append('<div class="dropdownYear" id="user'+arrayUser[i]+'SelectYear' + arrayYear[i] +
                     '"> <button id="user'+arrayUser[i]+'Select' + arrayYear[i] + '" class="dropdownYearBtn">' + arrayYear[i] + '</button> <div class="dropdownYearContent" id="dropdownYearContent'+arrayYear[i]+'" > </div> </div>');
@@ -326,10 +323,6 @@
             if((!!document.getElementById("user"+arrayUser[i]+"Select" + arrayMonth[i])) == false){
                 $('#dropdownYearContent' + arrayYear[i]).append('<button class="selectYearButton" id="user'+arrayUser[i]+'Select'+arrayMonth[i]+'">'+arrayMonth[i]+'</button>');
                 $('#user'+arrayUser[i]+'Select'+arrayYear[i]).width($('#dropdownMonthBtn' + arrayUser[i]).width());
-
-                var height = $('#user' + arrayUser[i] + 'Select'+ arrayYear[i]).height();
-                console.log(height)
-                $('#dropdownYearContent'+arrayYear[i]).css('margin-top', height - 20);
 
                 var yearButton = document.getElementById('user'+arrayUser[i]+'Select' + arrayMonth[i]).addEventListener('click', function(){
                     $('#dropdownMonthBtn' + arrayUser[i]).html(arrayMonth[i]);

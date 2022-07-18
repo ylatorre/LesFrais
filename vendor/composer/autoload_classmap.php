@@ -37,6 +37,7 @@ return array(
     'App\\Http\\Requests\\StoreMissionRequest' => $baseDir . '/app/Http/Requests/StoreMissionRequest.php',
     'App\\Models\\Event' => $baseDir . '/app/Models/Event.php',
     'App\\Models\\Mois' => $baseDir . '/app/Models/Mois.php',
+    'App\\Models\\Mois_valide' => $baseDir . '/app/Models/Mois_valide.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\historiqueEssence' => $baseDir . '/app/Models/historiqueEssence.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

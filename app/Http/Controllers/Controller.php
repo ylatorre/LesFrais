@@ -53,11 +53,6 @@ class Controller extends BaseController
     }
     public function displayModerationPerUser(Request $request)
     {
-        // dd($request);
-        $eventLocked = DB::table('mois')->where("idUser","=",$request->userId)->get();
-        $jsonEvents = json_encode(DB::table('mois')->where("idUser","=",$request->userId)->get());
-
-        // dd($eventLocked);
         $utilisateurs = DB::table('users')->orderBy("id", "desc")->get();
         $usersId = [];
         $usersName = [];
@@ -67,8 +62,14 @@ class Controller extends BaseController
         }
         $usersId = implode(',', $usersId);
         $usersName = implode(',', $usersName);
-
-
+        if($request->userId != '0'){
+            $eventLocked = DB::table('mois')->where("idUser","=",$request->userId)->get();
+            $jsonEvents = json_encode(DB::table('mois')->where("idUser","=",$request->userId)->get());
+        }
+        else{
+            $eventLocked = DB::table('mois')->orderBy("idUser", "desc")->get();
+            $jsonEvents = json_encode(DB::table('mois')->orderBy("idUser", "desc")->get());
+        }
         return view('moderation', compact('eventLocked', 'usersId', 'usersName', 'jsonEvents'));
     }
 
@@ -78,7 +79,7 @@ class Controller extends BaseController
         //        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
         $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
         //dd($prixessence);
-        $moisQuerys = DB::table("mois")->select(['mois', 'idUser'])->orderBy('idUser', 'desc')->get();
+        $moisQuerys = DB::table("mois_valides")->select(['mois', 'idUser'])->orderBy('idUser', 'desc')->get();
         // dd($moisQuerys);
         $uniqueMonth = [];
         $uniqueUser = [];

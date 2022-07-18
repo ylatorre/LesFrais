@@ -10,6 +10,7 @@ use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\MoisController;
 use App\Http\Controllers\PDFgeneratorController;
 use App\Http\Livewire\Calendar;
+use FontLib\Table\Type\name;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,7 @@ Route::get('userPDFgenerator/{id}', [PDFgeneratorController::class, 'userPDFgene
 Route::post('lockMonth', [MoisController::class, 'lockMonth'])->name('lockMonth')->middleware(['auth']);
 Route::post('unlockMonth', [MoisController::class, 'unlockMonth'])->name('unlockMonth')->middleware(['auth']);
 
+Route::post('validateMonth', [MoisController::class, 'validateMonth'])->name('validateMonth')->middleware(['auth', 'is.admin']);
 
 Route::get('moderation', [Controller::class, 'displayModeration'])->name('moderation')->middleware(['auth', 'is.admin']);
 Route::post('moderationPerUser', [Controller::class, 'displayModerationPerUser'])->name('moderationPerUser')->middleware(['auth', 'is.admin']);

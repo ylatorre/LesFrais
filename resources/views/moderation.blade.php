@@ -195,7 +195,7 @@
                                         name="heureDebut" id="heure_debut" type="text" value="00:00">
                                 </div>
                                 <div class="mb-3 col">
-                                    <label for="heure_fin" class="w-full inline-block">
+                                    <label for="heure_fin" class="inline-block w-full">
                                         Heure de fin
                                     </label>
                                     <input
@@ -255,7 +255,7 @@
                         <p>{{ \Session::get('success') }}</p>
                     </div>
                 @endif
-                <input type="hidden" id="jsonEvents" value="{{$jsonEvents}}">
+                <input type="hidden" id="jsonEvents" value="{{ $jsonEvents }}">
 
                 <div id="selectUser">
                     <form method="POST" action="moderationPerUser">
@@ -266,11 +266,13 @@
                             <input type="hidden" name="userId" id="userId">
                             <button class="dropdownSelectBtn" id="dropdownSelectBtn">Select user</button>
 
-                            <div class="dropdownUserContent" id="dropdownUserContent"></div>
+                            <div class="dropdownUserContent" id="dropdownUserContent">
+                                <button type="submit" id="allSelect" class="dropdownUserBtn">Tout les user</button>
+                            </div>
                         </div>
                     </form>
                     <script>
-                        // console.log({{$jsonEvents}})
+                        // console.log({{ $jsonEvents }})
                         var arrayUserId = $('#listUserId').val().split(',')
                         var arrayUserName = $('#listUserName').val().split(',')
                         console.log(arrayUserId);
@@ -289,12 +291,47 @@
                                 $('#userId').val(arrayUserId[i]);
                             });
                         }
+                        let allUserButton = document.getElementById("allSelect");
+                        allUserButton.addEventListener('click', function() {
+                            $('#userId').val('0')
+                        })
                     </script>
                 </div>
 
                 <livewire:calendar-moderation />
                 @livewireScripts
                 @stack('scripts')
+
+
+                <div class="flex flex-row items-center justify-around w-full h-20">
+                    <div>
+                        <form method="POST" action="{{ route('validateMonth') }}" class="block">
+                            @csrf
+                            <input name="valideEventID" id="validateEventID" type="hidden" value="Month">
+                            <input type="hidden" id="locked" value="false">
+                            <button
+                                class="items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                type="submit" id="validateMonth">Valider le mois</button>
+                        </form>
+                    </div>
+                    <script>
+                        let validateButton = document.getElementById('validateMonth')
+                        validateButton.addEventListener('click', function() {
+                            var arrayEventID = [];
+                            var arrayEvent =$('#jsonEvents').val().split(',');
+                            arrayEvent.forEach(element => {
+                                if(element.includes('"id":')){
+                                    if(element.includes('[')){
+                                        arrayEventID.push(element.slice(7));
+                                    }else{
+                                        arrayEventID.push(element.slice(6))
+                                    }
+                                }
+                            });
+                            $('#validateEventID').val(arrayEventID);
+                        })
+                    </script>
+                </div>
             </div>
 
         </div>
