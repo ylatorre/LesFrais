@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('mois', function (Blueprint $table) {
-            $table->boolean('est_valide');
+            $table->boolean('est_valide')->default(0);
         });
     }
 
