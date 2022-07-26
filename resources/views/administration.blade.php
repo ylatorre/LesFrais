@@ -82,28 +82,28 @@
                     <tr
                         class="overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                         <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap" style="background:white;">
                             {{ $user->name }}
                         </th>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-center" style="background:white;">
                             {{ $user->email }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-center" style="background:white;">
                             {{ $user->portables }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-center" style="background:white;">
                             {{ $user->vehicule }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-center" style="background:white;">
                             {{ $user->chevauxFiscaux }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-center" style="background:white;">
                             *******
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-center" style="background:white;">
                             *******
                         </td>
-                        <td class="px-6 py-4 overflow-visible text-right">
+                        <td class="px-6 py-4 overflow-visible text-right" style="background:white;">
                             <div class="flex justify-end overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
@@ -143,12 +143,12 @@
 
                                 <button
                                     class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button" data-modal-toggle="authentication-modal{{ $i }}">
+                                    type="button" data-modal-toggle="authentication-modal{{ $i }}" >
                                     Edit
                                 </button>
                                 <button
                                     class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button" data-modal-toggle="popup-modal{{ $i }}">
+                                    type="button" data-modal-toggle="popup-modal{{ $i }}" >
                                     Supprimer
                                 </button>
                             </div>
