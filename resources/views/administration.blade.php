@@ -107,12 +107,7 @@
                             <div class="flex justify-end overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
-                                    <div class="dropdownMonth" id="{{ 'selectMonth' . strval($user->id) }}">
-                                        <button class="dropdownMonthBtn" id="{{'dropdownMonthBtn' . strval($user->id)}}">Mois</button>
 
-                                        <div class="dropdownMonthContent"
-                                            id="{{ 'dropdownMonthContent' . strval($user->id) }}"></div>
-                                    </div>
                                     <form methode="POST" action="/PDFgeneratorPerMonth/{{ $user->id }}"
                                         class="flex justify-end">
                                         @csrf
@@ -120,7 +115,7 @@
                                             <select name="selectMonth" id="{{ 'selectMonth' . strval($user->id) }}"
                                                 class=" px-3.5 py-2.5 mr-2 bg-gray-300 text-gray-700 focus:rounded-b-none rounded-md text-sm font-medium  focus:ring-gray-700 focus:ring-0 border border-transparent focus:border-transparent bg-none "></select>
                                         </div> --}}
-
+                                        
                                         <input type="hidden" name="selectedMonth" id="selectedMonth">
 
                                         <input type="hidden" name="listLockedMonth" id="listLockedMonth"

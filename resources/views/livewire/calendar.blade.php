@@ -15,6 +15,9 @@
             max-width: 1100px;
             height: 700px;
         }
+        .col-12 h1 u{
+            display:none;
+        }
     </style>
     <div>
         <div id='calendar-container' wire:ignore>

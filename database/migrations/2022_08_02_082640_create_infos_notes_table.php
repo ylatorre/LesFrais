@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->string("mois");
+        Schema::create('infos_notes', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('Utilisateur');
+            $table->string('MoisEnCours');
+            $table->integer('NombreEvenement');
+            $table->boolean('Validation')->default(0);
+            $table->string('ChevauxFiscaux');
         });
     }
 
@@ -25,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('infos_notes');
     }
 };

@@ -15,6 +15,9 @@
             max-width: 1100px;
             height: 700px;
         }
+        .col-12 h1 u{
+            display:none;
+        }
     </style>
     <div>
         <div id='calendar-container' wire:ignore>
@@ -445,6 +448,7 @@
 
             })
         </script>
+
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
     @endpush
 </div>

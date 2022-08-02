@@ -30,6 +30,9 @@ return new class extends Migration
             $table->float('repas')->nullable();
             $table->float('hotel')->nullable();
             $table->float('kilometrage');
+            $table->string("mois");
+            $table->string("heure_debut")->nullable();
+            $table->string("heure_fin")->nullable();
             $table->integer('idUser');
         });
     }
