@@ -271,6 +271,7 @@
 
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20">
+        @if(Auth::user()->salarie == 1)
         <div>
             <form method="POST" action="{{ route('lockMonth') }}" class="block">
                 @csrf
@@ -290,7 +291,7 @@
                     type="submit" id="unlockMonth">Annuler ma demande de validation</button>
             </form>
         </div>
-
+        @endif
         <form methode="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}">
             @csrf
             <input name="tgyvan" type="hidden" value="2">

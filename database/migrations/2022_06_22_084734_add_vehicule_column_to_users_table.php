@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('vehicule')->nullable(); // ne jamais ajouter de champs TEXT dans la table users utiliser STRING à la place.
-
         });
     }
 
