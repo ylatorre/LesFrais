@@ -31,6 +31,7 @@ class Controller extends BaseController
             };
         }
         $uniqueMonth = implode(',', $uniqueMonth);
+
         return view('dashboard', compact('uniqueMonth'));
     }
 
@@ -79,17 +80,14 @@ class Controller extends BaseController
         //        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
         $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
         //dd($prixessence);
-        $moisQuerys = DB::table("mois_valides")->select(['mois', 'idUser'])->orderBy('idUser', 'desc')->get();
+
         // dd($moisQuerys);
         $uniqueMonth = [];
         $uniqueUser = [];
         $prevDate = '';
         $prevUser = '';
         //  dd($moisQuerys);
-        foreach ($moisQuerys as $moisQuery) {
-            array_push($uniqueMonth, $moisQuery->mois);
-            array_push($uniqueUser, $moisQuery->idUser);
-        };
+
         $uniqueMonth = implode(',', $uniqueMonth);
         $uniqueUser = implode(',', $uniqueUser);
         // dd($uniqueMonth, $uniqueUser);
@@ -151,17 +149,6 @@ class Controller extends BaseController
         // if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
         //     DB::table("users")->where("email","=","$request->email")->update(["ValeurchevauxFiscaux"=>$request->ValeurChevauxFiscaux]);
         // }
-        if ($modifUserDB[0]->dateChevauxFiscaux != $request->dateChevauxFiscaux) {
-            historiqueEssence::create([
-                "date" => $request->dateChevauxFiscaux,
-                "chevauxFiscaux" => $request->ChevauxFiscaux,
-                "userId" => $iduser[0]->id,
-                "prix" => $request->ValeurChevauxFiscaux,
-
-
-            ]);
-            DB::table("users")->where("email", "=", "$request->email")->update(["dateChevauxFiscaux" => $request->dateChevauxFiscaux]);
-        }
 
         if ($request->password != null && $request->password == $request->password_confirmation) {
             DB::table("users")->where("email", $request->email)->update(["password" => Hash::make($request->password)]);

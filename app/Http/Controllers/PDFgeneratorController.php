@@ -35,7 +35,9 @@ class PDFgeneratorController extends Controller
 
     public function PDFgeneratorPerMonth(Request $request, $userId)
     {
-        $utilisateurs = DB::table('users')->RightJoin("mois", "mois.idUser", "users.id")->where("idUser", "=", $userId)->where('mois','=', $request->selectedMonth)->get();
+        dd($request);
+
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $userId)->where('mois','=', $request->selectedMonth)->get();
         // dd($request, $utilisateurs);
 
         if ($utilisateurs->isEmpty()) {

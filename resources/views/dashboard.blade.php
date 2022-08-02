@@ -294,7 +294,7 @@
         @endif
         <form methode="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}">
             @csrf
-            <input name="tgyvan" type="hidden" value="2">
+            <input type="hidden" name="selectedMonth">
             <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Générer une note de frais</x-button>
         </form>
         <input type="hidden" id="lockedMonth" value="{{ $uniqueMonth }}">
@@ -309,6 +309,12 @@
             }
         })
     </script>
+    <script type="text/javascript">
+    let test = $('#calendar h2');
+
+    console.log(test);
+    </script>
+
     <script type="text/javascript">
         function getMonth() {
             let date = $('.fc-toolbar-title').html();
@@ -354,6 +360,7 @@
                     break;
             };
             date = date.substr(date.length - 4) + "-" + month;
+
             return date;
         }
 
@@ -406,6 +413,16 @@
                 alertSuccess.style.display = 'none';
             }
 
-        })
+        });
+
+        getMonth();
+
+        console.log(date);
     </script>
+    {{-- <script type="text/javascript">
+        let datation = getMonth();
+        console.log(datation);
+
+    </script> --}}
+
 </x-app-layout>

@@ -115,7 +115,7 @@
                                             <select name="selectMonth" id="{{ 'selectMonth' . strval($user->id) }}"
                                                 class=" px-3.5 py-2.5 mr-2 bg-gray-300 text-gray-700 focus:rounded-b-none rounded-md text-sm font-medium  focus:ring-gray-700 focus:ring-0 border border-transparent focus:border-transparent bg-none "></select>
                                         </div> --}}
-                                        
+
                                         <input type="hidden" name="selectedMonth" id="selectedMonth">
 
                                         <input type="hidden" name="listLockedMonth" id="listLockedMonth"
@@ -210,12 +210,7 @@
                                                     placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
                                                     autofocus>
                                             </div>
-                                            <div class="flex items-end align-center " style="height: 42px;">
-                                                <input type="date" name="dateChevauxFiscaux"
-                                                    id="dateChevauxFiscaux"
-                                                    class="block h-full text-sm text-gray-900 border border-gray-300 rounded-lg align-center bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                    value="{{ $user->dateChevauxFiscaux }}" autofocus>
-                                            </div>
+
 
                                         </div>
                                         <div>
@@ -389,11 +384,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="125" autofocus>
                             </div>
-                            <div class="flex items-end align-center" style="height: 42px;">
-                                <input type="date" name="dateChevauxFiscaux" id="dateChevauxFiscaux"
-                                    class="block h-full text-sm text-gray-900 border border-gray-300 rounded-lg align-center bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    value="{{ date('Y-m-d') }}" autofocus>
-                            </div>
+
 
                         </div>
                         <div>
