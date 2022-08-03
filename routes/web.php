@@ -44,7 +44,7 @@ Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser')->mi
 Route::get('supuser',[Controller::class, 'supuser'])->name('supuser')->middleware(['auth']);
 
 
-Route::get('PDFgeneratorPerMonth/{id}', [PDFgeneratorController::class, 'PDFgeneratorPerMonth'])->name('PDFgeneratorPerMonth')->middleware(['auth']);
+Route::post('PDFgeneratorPerMonth/{id}', [PDFgeneratorController::class, 'PDFgeneratorPerMonth'])->name('PDFgeneratorPerMonth')->middleware(['auth']);
 // Route::post('/PDFgenerator', [PDFgeneratorController::class,'PostPDFgenerator'])->name('postPDFgenerator')->middleware(['auth']);
 Route::get('/PDFgenerator', [PDFgeneratorController::class,'PDFgenerator'])->name('PDFgenerator')->middleware(['auth']);
 

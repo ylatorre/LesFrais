@@ -292,10 +292,10 @@
             </form>
         </div>
         @endif
-        <form methode="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}">
+        <form method="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}" id="formndf">
             @csrf
-            <input type="hidden" name="selectedMonth">
-            <x-button class="px-4 py-2 text-xs" target="_blank" type="submit">Générer une note de frais</x-button>
+            <input id="inputdate" type="hidden" name="selectedMonth" >
+            <x-button  type="button" id="genendf" class="px-4 py-2 text-xs" target="_blank">Générer une note de frais</x-button>
         </form>
         <input type="hidden" id="lockedMonth" value="{{ $uniqueMonth }}">
     </div>
@@ -310,15 +310,22 @@
         })
     </script>
     <script type="text/javascript">
-    let test = $('#calendar h2');
+    // let test = $('#calendar .fc-header-toolbar .fc-toolbar-chunk .fc-toolbar-title');
 
-    console.log(test);
+    // console.log(test);
+    //     test.style.color="red;"
+
+
+
+
+
     </script>
 
     <script type="text/javascript">
         function getMonth() {
             let date = $('.fc-toolbar-title').html();
             let month = date.slice(0, -5);
+
             switch (month) {
                 case "janvier":
                     month = "01";
@@ -364,8 +371,14 @@
             return date;
         }
 
+
+
+
+
+
         function checkLock() {
             let date = getMonth();
+
             let lockedMonth = $('#lockedMonth').val();
             lockedMonth = lockedMonth.split(',')
             let isChecked = false;
@@ -417,12 +430,27 @@
 
         getMonth();
 
-        console.log(date);
+
     </script>
     {{-- <script type="text/javascript">
         let datation = getMonth();
         console.log(datation);
 
     </script> --}}
+    <script type="text/javascript">
+
+            // inputDate.value = $("#calendar").fullCalendar('getDate');
+            // genendf = document.getElementById('genendf');
+            // inputdate = document.getElementById('inputdate');
+            // formndf = document.getElementById('formndf');
+
+            // genendf.addEventListener('click',()=>{
+            //     inputdate.value = $("#calendar").fullCalendar('getDate');
+            //     formndf.submit();
+            // })
+
+
+
+    </script>
 
 </x-app-layout>

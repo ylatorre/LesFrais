@@ -96,6 +96,7 @@
                         yearMonth = yearMonth.substr(yearMonth.length - 4) + "-" + selectedMonth;
                         console.log(yearMonth);
 
+
                         var lockedMonth = ($('#lockedMonth').val()).split(',');
                         console.log(lockedMonth);
                         var isCurrentMonthLocked = true;
@@ -345,6 +346,7 @@
                             $('#heure_debut').val(info.event._def.extendedProps.heure_debut);
                             $('#heure_fin').val(info.event._def.extendedProps.heure_fin);
 
+
                             const id = info.event._def.publicId;
 
                             //ajouter le bouton supprimer dans le modal
@@ -417,10 +419,12 @@
                                 });
                             });
 
+
                             //bouton de suppression d'événement
                             $('#supprimer').on('click', function() {
                                 @this.suppressEvent(id);
                             });
+
                         }
 
 
@@ -438,7 +442,10 @@
                     eventResize: info => @this.eventChange(info.event),
                     //eventDrop: info => @this.eventChange(info.event)
                 });
-
+                            $('#genendf').on('click', function(){
+                                $('#inputdate').val(getMonth());
+                                $('#formndf').submit();
+                            })
                 calendar.render();
 
             });
@@ -447,9 +454,9 @@
         <script type="text/javascript">
             window.addEventListener('onclick', () => {
                 $("#eventClicked").removeData();
-
             })
         </script>
-        <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
+        <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet'/>
+
     @endpush
 </div>
