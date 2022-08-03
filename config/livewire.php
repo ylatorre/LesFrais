@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => "http://lesfrais.local:8800",
+    'asset_url' => "https://www.carpediem.pro/LesFrais/public",
 
     /*
     |--------------------------------------------------------------------------
