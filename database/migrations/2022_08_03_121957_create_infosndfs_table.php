@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('infos_notes', function (Blueprint $table) {
+        Schema::create('infosndfs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('Utilisateur');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('infos_notes');
+        Schema::dropIfExists('infosndfs');
     }
 };

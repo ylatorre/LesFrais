@@ -6,6 +6,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\infosndf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,15 +36,27 @@ class PDFgeneratorController extends Controller
 
     public function PDFgeneratorPerMonth(Request $request, $userId)
     {
-        dd($request);
 
+
+        // - On recupère tous les événements correspondants au mois à l'ecran et au user concerné
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $userId)->where('mois','=', $request->selectedMonth)->get();
-        // dd($request, $utilisateurs);
+        $ndf = DB::table('infosndfs')->where('MoisEnCours','=',$request->selectedMonth)->where("Utilisateur", "=", $utilisateurs[0]->name)->get();
 
+        // - Gestion du cas dans lequel il n'y a pas d'évenements sur le mois
         if ($utilisateurs->isEmpty()) {
             return redirect('gestionaireUser')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
+        // - Si cette note de frais existe deja, elle ne sera pas créée en double
+    if(count($ndf) == 0)
+        infosndf::create([
+                'Utilisateur' => $utilisateurs[0]->name,
+                'MoisEnCours' => $request->selectedMonth,
+                'NombreEvenement' => count($utilisateurs),
+                'ChevauxFiscaux' => $utilisateurs[0]->chevauxFiscaux,
+                ]);
+
+        // - On load le PDF grace a DOMPDF
         $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact("utilisateurs"));
         // dd($pdf);
         return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');

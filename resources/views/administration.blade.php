@@ -108,7 +108,7 @@
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
 
-                                    <form methode="POST" action="/PDFgeneratorPerMonth/{{ $user->id }}"
+                                    <form method="POST" action="{{route('gestionnairendf')}}"
                                         class="flex justify-end">
                                         @csrf
                                         {{-- <div class="custom-select-dropdown">
@@ -127,11 +127,11 @@
                                         <input type="hidden" name="userId" class="userId"
                                             value="{{ $user->id }}">
 
-                                        <input name="tgyvan" type="hidden" value="2">
+                                        
                                         <button
                                             class="mr-2 inline-flex items-center px-3.5 py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
-                                            Générer une note de frais
+                                            Notes de frais
                                         </button>
                                     </form>
                                 @endif

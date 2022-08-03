@@ -21,7 +21,7 @@ class Controller extends BaseController
 
     public function displayDashboard()
     {
-        $lockedMonth = DB::table('mois')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
+        $lockedMonth = DB::table('events')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
         $uniqueMonth = [];
         $prevDate = '';
         foreach ($lockedMonth as $locked) {
@@ -37,8 +37,8 @@ class Controller extends BaseController
 
     public function displayModeration()
     {
-        $eventLocked = DB::table('mois')->orderBy("idUser", "desc")->get();
-        $jsonEvents = json_encode(DB::table('mois')->orderBy("idUser", "desc")->get());
+        $eventLocked = DB::table('events')->orderBy("idUser", "desc")->get();
+        $jsonEvents = json_encode(DB::table('events')->orderBy("idUser", "desc")->get());
         $utilisateurs = DB::table('users')->orderBy("id", "desc")->get();
         $usersId = [];
         $usersName = [];
@@ -64,12 +64,12 @@ class Controller extends BaseController
         $usersId = implode(',', $usersId);
         $usersName = implode(',', $usersName);
         if($request->userId != '0'){
-            $eventLocked = DB::table('mois')->where("idUser","=",$request->userId)->get();
-            $jsonEvents = json_encode(DB::table('mois')->where("idUser","=",$request->userId)->get());
+            $eventLocked = DB::table('events')->where("idUser","=",$request->userId)->get();
+            $jsonEvents = json_encode(DB::table('events')->where("idUser","=",$request->userId)->get());
         }
         else{
-            $eventLocked = DB::table('mois')->orderBy("idUser", "desc")->get();
-            $jsonEvents = json_encode(DB::table('mois')->orderBy("idUser", "desc")->get());
+            $eventLocked = DB::table('events')->orderBy("idUser", "desc")->get();
+            $jsonEvents = json_encode(DB::table('events')->orderBy("idUser", "desc")->get());
         }
         return view('moderation', compact('eventLocked', 'usersId', 'usersName', 'jsonEvents'));
     }
@@ -169,6 +169,14 @@ class Controller extends BaseController
         return redirect(route("gestionaireUser"));
     }
 
+    public function gestionnairendf(Request $request){
+
+        $employes = DB::table('users')->where('salarie','=','1')->get();
+        dd($employes);
+
+
+        return view('gestionnairendf');
+    }
 
 
     //     public function ajouterEssence(Request $request)
