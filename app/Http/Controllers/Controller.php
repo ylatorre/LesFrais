@@ -172,10 +172,19 @@ class Controller extends BaseController
     public function gestionnairendf(Request $request){
 
         $employes = DB::table('users')->where('salarie','=','1')->get();
-        dd($employes);
+
+        $ndfsemploye = DB::table('infosndfs')->where('Utilisateur',"=",$request->utilisateur)->get();
+        $utilisateurSelectionne = $request->utilisateur;
 
 
-        return view('gestionnairendf');
+        
+
+
+        return view('gestionnairendf', [
+            'utilisateurSelectionne' => $utilisateurSelectionne,
+            'employes' => $employes,
+            'ndfsemploye' => $ndfsemploye,
+        ]);
     }
 
 

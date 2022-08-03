@@ -115,6 +115,7 @@
                                             <select name="selectMonth" id="{{ 'selectMonth' . strval($user->id) }}"
                                                 class=" px-3.5 py-2.5 mr-2 bg-gray-300 text-gray-700 focus:rounded-b-none rounded-md text-sm font-medium  focus:ring-gray-700 focus:ring-0 border border-transparent focus:border-transparent bg-none "></select>
                                         </div> --}}
+                                        <input type="hidden" name="utilisateur" value="{{$user->name}}">
 
                                         <input type="hidden" name="selectedMonth" id="selectedMonth">
 
@@ -123,11 +124,11 @@
 
                                         <input type="hidden" name="listUser" id="listUser"
                                             value="{{ $uniqueUser }}">
-
+                                            
                                         <input type="hidden" name="userId" class="userId"
                                             value="{{ $user->id }}">
 
-                                        
+
                                         <button
                                             class="mr-2 inline-flex items-center px-3.5 py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
@@ -143,7 +144,7 @@
                                 </button>
                                 <button
                                     class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button" data-modal-toggle="popup-modal{{ $i }}" >
+                                    type="button" data-modal-toggle="popup-modal{{ $i }}">
                                     Supprimer
                                 </button>
                             </div>
@@ -265,7 +266,7 @@
                                     </svg>
                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure
                                         you
-                                        want to delete this product?</h3>
+                                        want to delete this product ?</h3>
                                     <form methode="post" action="{{ route('supuser') }}">
                                         @csrf
                                         <input type="hidden"value="{{ $user->email }}" name="email">
@@ -274,7 +275,7 @@
                                             Yes, Je suis sur
                                         </button>
                                     </form>
-                                    <button data-modal-toggle="popup-modal{{ $i }}" type="button"
+                                    <button data-modal-toggle="popup-modal{{$i}}" type="button"
                                         class="mt-2 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                         Non, cancel
                                     </button>

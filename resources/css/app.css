@@ -1,3 +1,31 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+.h2-top-page{
+    font-family:'nunito', sans-serif;
+    font-size: medium;
+    font-weight:bold;
+    margin-left:3%;
+    margin-top:20px;
+    margin-bottom:36px;
+}
+.h2-top-page span{
+    color:rgb(32, 59, 212);
+}
+.td-validation{
+
+    transition: 200ms ease;
+    cursor:pointer;
+}
+.td-validation:hover{
+
+    color:rgb(29, 46, 199);
+}
+
+
+.table-ndf{
+    width:100%;
+    border:4px solid rgb(55,65,81);
+}
