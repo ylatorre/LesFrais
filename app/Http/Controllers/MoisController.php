@@ -77,8 +77,8 @@ class MoisController extends Controller
     }
     public function unlockMonth(Request $request)
     {
-        // dd($request->userId);
-        DB::table('mois')->where('mois', "=", $request->actualMonth)->where('idUser', '=', $request->userId)->delete();
+        // dd($request);
+        
         return redirect("dashboard");
     }
 

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('Utilisateur');
             $table->string('MoisEnCours');
             $table->integer('NombreEvenement');
-            $table->boolean('Validation')->default(0);
+            $table->boolean('ValidationEnCours')->default(0);
+            $table->boolean('Valide')->default(0);
             $table->string('ChevauxFiscaux');
         });
     }

@@ -272,6 +272,7 @@
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20">
         @if(Auth::user()->salarie == 1)
+        
         <div>
             <form method="POST" action="{{ route('lockMonth') }}" class="block">
                 @csrf
