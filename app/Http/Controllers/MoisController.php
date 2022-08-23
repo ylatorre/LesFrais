@@ -15,38 +15,7 @@ class MoisController extends Controller
 {
 
 
-    public function validateMonth(Request $request)
-    {
-        $validateEventArray = explode(',', $request->valideEventID);
-        foreach ($validateEventArray as $valideEventID) {
-            $event = Mois::where('id', '=', $valideEventID)->first();
-            if ($event == null) {
-                return redirect('moderation')->with('failure', 'Il n\'y a pas d\'évenement à valider !');
-            }
-            Mois::where('id', '=', $valideEventID)->delete();
-            Mois_valide::create([
-                'mois' => $event->mois,
-                'idEvent' => $event->id,
-                'start' => $event->start,
-                'end' => $event->end,
-                'description' => $event->description,
-                'title' => $event->title,
-                'ville' => $event->ville,
-                'code_postal' => $event->code_postal,
-                'peage' => $event->peage,
-                'parking' => $event->parking,
-                'essence' => $event->essence,
-                'divers' => $event->divers,
-                'repas' => $event->repas,
-                'hotel' => $event->hotel,
-                'kilometrage' => $event->kilometrage,
-                'idUser' => $event->idUser,
-                'heure_debut' => $event->heure_debut,
-                'heure_fin' => $event->heure_fin,
-            ]);
-        }
-        return view('administration');
-    }
+
     public function lockMonth(Request $request)
     {
         /***  - si on clique sur soumetre le mois, il n'est plus modifiable ***/
@@ -69,12 +38,15 @@ class MoisController extends Controller
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
             ]);
         }
-
         /* - Si la note de frais à deja été créee alors ca la vérouille juste */
 
         DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->lockedmonth)->update(["ValidationEnCours" => 1]);
+        $NDFusers = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->get();
+        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
+        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
 
-        return redirect("dashboard");
+
+        return redirect("dashboard")->with(['monthlocked' => $monthlocked, 'monthvalidated' => $monthvalidated]);
         // dd($events);
     }
     public function unlockMonth(Request $request)
@@ -83,7 +55,10 @@ class MoisController extends Controller
 
         DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->update(["ValidationEnCours" => 0]);
 
-        return redirect("dashboard");
+        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
+        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
+
+        return redirect("dashboard")->with(['monthlocked' => $monthlocked, 'monthvalidated' => $monthvalidated]);
     }
 
     public function getLockedEventPerMonth(Request $request, $month)

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
+use App\Models\infosndf;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\infosndf;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PDFgeneratorController extends Controller
 {
@@ -37,9 +38,13 @@ class PDFgeneratorController extends Controller
     public function PDFgeneratorPerMonth(Request $request, $userId)
     {
 
-        dd($request);
+
         // - On recupère tous les événements correspondants au mois à l'ecran et au user concerné
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $userId)->where('mois','=', $request->selectedMonth)->get();
+        if(count($utilisateurs) == 0){
+            Session::flash("noevents","Il n'y a aucun évènements pour ce mois-ci !");
+            return redirect('dashboard');
+        }
         $ndf = DB::table('infosndfs')->where('MoisEnCours','=',$request->selectedMonth)->where("Utilisateur", "=", $utilisateurs[0]->name)->get();
 
         // - Gestion du cas dans lequel il n'y a pas d'évenements sur le mois

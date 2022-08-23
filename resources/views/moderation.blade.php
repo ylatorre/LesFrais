@@ -304,16 +304,7 @@
 
 
                 <div class="flex flex-row items-center justify-around w-full h-20">
-                    <div>
-                        <form method="POST" action="{{ route('validateMonth') }}" class="block">
-                            @csrf
-                            <input name="valideEventID" id="validateEventID" type="hidden" value="Month">
-                            <input type="hidden" id="locked" value="false">
-                            <button
-                                class="items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                                type="submit" id="validateMonth">Valider le mois</button>
-                        </form>
-                    </div>
+                   
                     <script>
                         let validateButton = document.getElementById('validateMonth')
                         validateButton.addEventListener('click', function() {
