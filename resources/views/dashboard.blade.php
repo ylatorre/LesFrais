@@ -23,6 +23,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
     <script src="{{ asset('/js/jquery-clock-timepicker.js') }}"></script>
+
+
+
+    {{-- Script permettant l'implémentation des inputs horloge --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $('.standard').clockTimePicker({
@@ -271,32 +275,32 @@
 
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20">
-        @if(Auth::user()->salarie == 1)
-        
-        <div>
-            <form method="POST" action="{{ route('lockMonth') }}" class="block">
-                @csrf
-                <input name="actualMonth" id="actualMonthInput" type="hidden" value="Month">
-                <input type="hidden" id="locked" value="false">
-                <button
-                    class="hidden items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                    type="submit" id="lockMonth">Soumettre le mois à inspection</button>
-            </form>
+        @if (Auth::user()->salarie == 1)
+            <div>
+                <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
+                    @csrf
+                    <input id="inputdatelock" type="hidden" name="lockedmonth">
+                    <input type="hidden" id="locked" value="false">
+                    <button type="button" id="lockMonth"
+                        class=" items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                        >Soumettre le mois à inspection</button>
+                </form>
 
-            <form method="POST" action="{{ route('unlockMonth') }}" class="block">
-                @csrf
-                <input name="actualMonth" id="actualMonthInput2" type="hidden" value="Month">
-                <input name="userId" type="hidden" id="userId" value="{{ Auth::user()->id }}">
-                <button
-                    class="hidden items-center px-4 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                    type="submit" id="unlockMonth">Annuler ma demande de validation</button>
-            </form>
-        </div>
+                <form method="POST" action="{{ route('unlockMonth') }}" class="block" id="formunlock">
+                    @csrf
+                    <input id="inputdateunlock" type="hidden" name="unlockedmonth">
+                    <input name="userId" type="hidden" id="userId" value="{{ Auth::user()->id }}">
+                    <button type="button" id="unlockMonth"
+                        class="items-center px-4 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler ma demande de validation
+                    </button>
+                </form>
+            </div>
         @endif
         <form method="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}" id="formndf">
             @csrf
-            <input id="inputdate" type="hidden" name="selectedMonth" >
-            <x-button  type="button" id="genendf" class="px-4 py-2 text-xs" target="_blank">Générer une note de frais</x-button>
+            <input id="inputdate" type="hidden" name="selectedMonth">
+            <x-button type="button" id="genendf" class="px-4 py-2 text-xs" target="_blank">Générer une note de
+                frais</x-button>
         </form>
         <input type="hidden" id="lockedMonth" value="{{ $uniqueMonth }}">
     </div>
@@ -311,15 +315,10 @@
         })
     </script>
     <script type="text/javascript">
-    // let test = $('#calendar .fc-header-toolbar .fc-toolbar-chunk .fc-toolbar-title');
+        // let test = $('#calendar .fc-header-toolbar .fc-toolbar-chunk .fc-toolbar-title');
 
-    // console.log(test);
-    //     test.style.color="red;"
-
-
-
-
-
+        // console.log(test);
+        //     test.style.color="red;"
     </script>
 
     <script type="text/javascript">
@@ -377,46 +376,46 @@
 
 
 
-        function checkLock() {
-            let date = getMonth();
+        // function checkLock() {
+        //     let date = getMonth();
 
-            let lockedMonth = $('#lockedMonth').val();
-            lockedMonth = lockedMonth.split(',')
-            let isChecked = false;
-            $('#unlockMonth').css('display', 'none');
-            $('#lockMonth').css('display', 'none');
-            while(isChecked != true){
-                lockedMonth.forEach(month => {
-                    if (date == month) {
-                        console.log('locked');
-                        $('#unlockMonth').css('display', 'inline-flex');
-                        isChecked = true;
-                    }
-                });
-                isChecked = true;
-            }
-            if($('#unlockMonth').css('display') == 'none'){
-                $('#lockMonth').css('display', 'inline-flex');
-            }
-        }
-        $(document).ready(function() {
-            checkLock();
-            $('#nextMonthButton').on('click', function() {
-                checkLock();
-            });
-            $('#prevMonthButton').on('click', function() {
-                checkLock();
-            });
-        })
-        $('#lockMonth').on('click', function() {
-            let date = getMonth()
-            $('#isLocked').prop("checked", true);
-            $('#actualMonthInput').val(date);
-        });
-        $('#unlockMonth').on('click', function() {
-            let date = getMonth()
-            $('#actualMonthInput2').val(date);
-        })
+        //     let lockedMonth = $('#lockedMonth').val();
+        //     lockedMonth = lockedMonth.split(',')
+        //     let isChecked = false;
+        //     $('#unlockMonth').css('display', 'none');
+        //     $('#lockMonth').css('display', 'none');
+        //     while(isChecked != true){
+        //         lockedMonth.forEach(month => {
+        //             if (date == month) {
+        //                 console.log('locked');
+        //                 $('#unlockMonth').css('display', 'inline-flex');
+        //                 isChecked = true;
+        //             }
+        //         });
+        //         isChecked = true;
+        //     }
+        //     if($('#unlockMonth').css('display') == 'none'){
+        //         $('#lockMonth').css('display', 'inline-flex');
+        //     }
+        // }
+        // $(document).ready(function() {
+        //     checkLock();
+        //     $('#nextMonthButton').on('click', function() {
+        //         checkLock();
+        //     });
+        //     $('#prevMonthButton').on('click', function() {
+        //         checkLock();
+        //     });
+        // })
+        // $('#lockMonth').on('click', function() {
+        //     let date = getMonth()
+        //     $('#isLocked').prop("checked", true);
+        //     $('#actualMonthInput').val(date);
+        // });
+        // $('#unlockMonth').on('click', function() {
+        //     let date = getMonth()
+        //     $('#actualMonthInput2').val(date);
+        // })
 
         // console.log($('#lockedMonth').val());
 
@@ -430,8 +429,6 @@
         });
 
         getMonth();
-
-
     </script>
     {{-- <script type="text/javascript">
         let datation = getMonth();
@@ -439,18 +436,19 @@
 
     </script> --}}
     <script type="text/javascript">
+        // inputDate.value = $("#calendar").fullCalendar('getDate');
+        // genendf = document.getElementById('genendf');
+        // inputdate = document.getElementById('inputdate');
+        // formndf = document.getElementById('formndf');
 
-            // inputDate.value = $("#calendar").fullCalendar('getDate');
-            // genendf = document.getElementById('genendf');
-            // inputdate = document.getElementById('inputdate');
-            // formndf = document.getElementById('formndf');
+        // genendf.addEventListener('click',()=>{
+        //     inputdate.value = $("#calendar").fullCalendar('getDate');
+        //     formndf.submit();
+        // })
+    </script>
+    {{-- Script qui vérrouille les mois en cours de validation --}}
 
-            // genendf.addEventListener('click',()=>{
-            //     inputdate.value = $("#calendar").fullCalendar('getDate');
-            //     formndf.submit();
-            // })
-
-
+    <script type="text/javascript">
 
     </script>
 

@@ -446,6 +446,15 @@
                                 $('#inputdate').val(getMonth());
                                 $('#formndf').submit();
                             })
+                            $('#unlockMonth').on('click', function(){
+                                $('#inputdateunlock').val(getMonth());
+                                $('#formunlock').submit();
+                            })
+                            $('#lockMonth').on('click', function(){
+                                $('#inputdatelock').val(getMonth());
+                                $('#formlock').submit();
+                            })
+
                 calendar.render();
 
             });

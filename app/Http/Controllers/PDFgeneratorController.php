@@ -37,7 +37,7 @@ class PDFgeneratorController extends Controller
     public function PDFgeneratorPerMonth(Request $request, $userId)
     {
 
-
+        dd($request);
         // - On recupère tous les événements correspondants au mois à l'ecran et au user concerné
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $userId)->where('mois','=', $request->selectedMonth)->get();
         $ndf = DB::table('infosndfs')->where('MoisEnCours','=',$request->selectedMonth)->where("Utilisateur", "=", $utilisateurs[0]->name)->get();
