@@ -23,7 +23,7 @@ class Controller extends BaseController
     {
         $lockedMonth = DB::table('events')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
         $moisNDF = DB::table('infosndfs')->where("Utilisateur","=",Auth::user()->name)->get(); // on recupère le mois actuel et si il n'est n'est pas valide en bdd on le grise
-        
+
         $uniqueMonth = [];
         $prevDate = '';
         foreach ($lockedMonth as $locked) {
@@ -177,13 +177,8 @@ class Controller extends BaseController
     public function gestionnairendf(Request $request){
 
         $employes = DB::table('users')->where('salarie','=','1')->get();
-
         $ndfsemploye = DB::table('infosndfs')->where('Utilisateur',"=",$request->utilisateur)->get();
         $utilisateurSelectionne = $request->utilisateur;
-
-
-
-
 
         return view('gestionnairendf', [
             'utilisateurSelectionne' => $utilisateurSelectionne,
@@ -193,14 +188,4 @@ class Controller extends BaseController
     }
 
 
-    //     public function ajouterEssence(Request $request)
-    //     {
-    // //        dd($request);
-    //         historiqueEssence::create([
-    //             "prix" => $request->prixessence,
-    //             "date" => date("d-M-Y H:i:s"),
-    //         ]);
-    //         return redirect('gestionaireUser');
-
-    //     }
 };
