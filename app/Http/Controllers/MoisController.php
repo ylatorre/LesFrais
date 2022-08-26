@@ -20,6 +20,8 @@ class MoisController extends Controller
     {
         /***  - si on clique sur soumetre le mois, il n'est plus modifiable ***/
         // dd($request);
+
+
         $events = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", Auth::user()->id)->where("mois", "=", $request->lockedmonth)->get();
 
         $chFiscaux = DB::table('users')->select('chevauxFiscaux')->where('name', '=', Auth::user()->name)->get();
@@ -38,7 +40,9 @@ class MoisController extends Controller
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
             ]);
         }
-        /* - Si la note de frais à deja été créee alors ca la vérouille juste */
+
+
+        /* - Si la note de frais à deja été créée alors ca la vérouille juste */
 
         DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->lockedmonth)->update(["ValidationEnCours" => 1]);
         $NDFusers = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->get();
@@ -46,7 +50,7 @@ class MoisController extends Controller
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
 
 
-        return redirect("dashboard")->with(['monthlocked' => $monthlocked, 'monthvalidated' => $monthvalidated]);
+        return redirect(route('dashboard'));
         // dd($events);
     }
     public function unlockMonth(Request $request)
@@ -58,7 +62,7 @@ class MoisController extends Controller
         $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
 
-        return redirect("dashboard")->with(['monthlocked' => $monthlocked, 'monthvalidated' => $monthvalidated]);
+        return redirect(route("dashboard"));
     }
 
     public function getLockedEventPerMonth(Request $request, $month)

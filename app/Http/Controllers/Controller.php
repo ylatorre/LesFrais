@@ -24,6 +24,9 @@ class Controller extends BaseController
         $lockedMonth = DB::table('events')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
         $moisNDF = DB::table('infosndfs')->where("Utilisateur","=",Auth::user()->name)->get(); // on recupère le mois actuel et si il n'est n'est pas valide en bdd on le grise
 
+        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
+        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('utilisateur',"=",Auth::user()->name)->where('ValidationEnCours',"=","1");
+
         $uniqueMonth = [];
         $prevDate = '';
         foreach ($lockedMonth as $locked) {
@@ -34,9 +37,13 @@ class Controller extends BaseController
         }
         $uniqueMonth = implode(',', $uniqueMonth);
 
+        
+
         return view('dashboard', compact([
             'uniqueMonth',
-            'moisNDF'
+            'moisNDF',
+            'monthlocked',
+            'monthvalidated',
     ]));
     }
 
