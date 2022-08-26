@@ -1044,12 +1044,12 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(235 204 204 / var(--tw-border-opacity));
 }
-.border-transparent {
-  border-color: transparent;
-}
 .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+.border-transparent {
+  border-color: transparent;
 }
 .border-gray-100 {
   --tw-border-opacity: 1;
@@ -1289,13 +1289,13 @@ select {
 .text-\[16px\] {
   font-size: 16px;
 }
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 .text-\[8\.75px\] {
   font-size: 8.75px;
@@ -1735,13 +1735,13 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
-.active\:bg-\[\#0c56d0\]:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(12 86 208 / var(--tw-bg-opacity));
-}
 .active\:bg-gray-900:active {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+.active\:bg-\[\#0c56d0\]:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 86 208 / var(--tw-bg-opacity));
 }
 .active\:bg-red-800:active {
   --tw-bg-opacity: 1;

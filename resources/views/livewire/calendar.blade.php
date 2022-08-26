@@ -99,11 +99,11 @@
 
                         var lockedMonth = ($('#lockedMonth').val()).split(',');
                         console.log(lockedMonth);
-                        var isCurrentMonthLocked = true;
+                        var isCurrentMonthLocked = false;
                         for (let i = 0; i < lockedMonth.length; i++) {
                             if (lockedMonth[i] === yearMonth) {
                                 console.log(lockedMonth[i]);
-                                isCurrentMonthLocked = true;
+                                isCurrentMonthLocked = false;
                                 break;
                             } else {
                                 isCurrentMonthLocked = false;
@@ -301,11 +301,11 @@
 
                         var lockedMonth = ($('#lockedMonth').val()).split(',');
                         console.log(lockedMonth);
-                        var isCurrentMonthLocked = true;
+                        var isCurrentMonthLocked = false;
                         for (let i = 0; i < lockedMonth.length; i++) {
                             if (lockedMonth[i] === yearMonth) {
                                 console.log(lockedMonth[i]);
-                                isCurrentMonthLocked = true;
+                                isCurrentMonthLocked =false;
                                 break;
                             } else {
                                 isCurrentMonthLocked = false;

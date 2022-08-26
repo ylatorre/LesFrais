@@ -319,12 +319,7 @@
             }
         })
     </script>
-    <script type="text/javascript">
-        // let test = $('#calendar .fc-header-toolbar .fc-toolbar-chunk .fc-toolbar-title');
 
-        // console.log(test);
-        //     test.style.color="red;"
-    </script>
 
     <script type="text/javascript">
         function getMonth() {
@@ -377,86 +372,70 @@
         }
 
 
+</script>
 
 
 
 
-        // function checkLock() {
-        //     let date = getMonth();
+    {{-- //     function checkLock() {
+    //         let date = getMonth();
 
-        //     let lockedMonth = $('#lockedMonth').val();
-        //     lockedMonth = lockedMonth.split(',')
-        //     let isChecked = false;
-        //     $('#unlockMonth').css('display', 'none');
-        //     $('#lockMonth').css('display', 'none');
-        //     while(isChecked != true){
-        //         lockedMonth.forEach(month => {
-        //             if (date == month) {
-        //                 console.log('locked');
-        //                 $('#unlockMonth').css('display', 'inline-flex');
-        //                 isChecked = true;
-        //             }
-        //         });
-        //         isChecked = true;
-        //     }
-        //     if($('#unlockMonth').css('display') == 'none'){
-        //         $('#lockMonth').css('display', 'inline-flex');
-        //     }
-        // }
-        // $(document).ready(function() {
-        //     checkLock();
-        //     $('#nextMonthButton').on('click', function() {
-        //         checkLock();
-        //     });
-        //     $('#prevMonthButton').on('click', function() {
-        //         checkLock();
-        //     });
-        // })
-        // $('#lockMonth').on('click', function() {
-        //     let date = getMonth()
-        //     $('#isLocked').prop("checked", true);
-        //     $('#actualMonthInput').val(date);
-        // });
-        // $('#unlockMonth').on('click', function() {
-        //     let date = getMonth()
-        //     $('#actualMonthInput2').val(date);
-        // })
+    //         let lockedMonth = $('#lockedMonth').val();
+    //         lockedMonth = lockedMonth.split(',')
+    //         let isChecked = false;
+    //         $('#unlockMonth').css('display', 'none');
+    //         $('#lockMonth').css('display', 'none');
+    //         while(isChecked != true){
+    //             lockedMonth.forEach(month => {
+    //                 if (date == month) {
+    //                     console.log('locked');
+    //                     $('#unlockMonth').css('display', 'inline-flex');
+    //                     isChecked = true;
+    //                 }
+    //             });
+    //             isChecked = true;
+    //         }
+    //         if($('#unlockMonth').css('display') == 'none'){
+    //             $('#lockMonth').css('display', 'inline-flex');
+    //         }
+    //     }
+    //     $(document).ready(function() {
+    //         checkLock();
+    //         $('#nextMonthButton').on('click', function() {
+    //             checkLock();
+    //         });
+    //         $('#prevMonthButton').on('click', function() {
+    //             checkLock();
+    //         });
+    //     })
+    //     $('#lockMonth').on('click', function() {
+    //         let date = getMonth()
+    //         $('#isLocked').prop("checked", true);
+    //         $('#actualMonthInput').val(date);
+    //     });
+    //     $('#unlockMonth').on('click', function() {
+    //         let date = getMonth()
+    //         $('#actualMonthInput2').val(date);
+    //     })
 
-        // console.log($('#lockedMonth').val());
+    //     console.log($('#lockedMonth').val());
 
-        let alertSuccess = document.querySelector('.alert-success');
+    //     let alertSuccess = document.querySelector('.alert-success');
 
-        window.addEventListener('click', () => {
-            if (alertSuccess) {
-                alertSuccess.style.display = 'none';
-            }
+    //     window.addEventListener('click', () => {
+    //         if (alertSuccess) {
+    //             alertSuccess.style.display = 'none';
+    //         }
 
-        });
+    //     });
 
-        getMonth();
-    </script>
-    {{-- <script type="text/javascript">
-        let datation = getMonth();
-        console.log(datation);
-
-    </script> --}}
-    <script type="text/javascript">
-        // inputDate.value = $("#calendar").fullCalendar('getDate');
-        // genendf = document.getElementById('genendf');
-        // inputdate = document.getElementById('inputdate');
-        // formndf = document.getElementById('formndf');
-
-        // genendf.addEventListener('click',()=>{
-        //     inputdate.value = $("#calendar").fullCalendar('getDate');
-        //     formndf.submit();
-        // })
-    </script>
+    //     getMonth();
+    // --}}
 
 
 
-{{-- Script qui vérrouille les mois en cours de validation --}}
-    <script type="text/javascript">
-        console.log{{}}
-    </script>
+
+
+
 
 </x-app-layout>
