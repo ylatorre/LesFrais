@@ -76,7 +76,7 @@ class Calendar extends Component
         Event::create($event);
 
         // $event->save();
-        return redirect('dashboard')->with('success', 'Données enregistrées avec succès !');
+        return redirect('dashboard')->with('success', 'Évènement enregistré avec succès !');
     }
 
     public function eventChange($event) {
@@ -99,7 +99,7 @@ class Calendar extends Component
         $e->heure_debut = $event['heure_debut'];
         $e->heure_fin = $event['heure_fin'];
         $e->save();
-        return redirect('dashboard')->with('success', 'Données modifiées avec succès !');
+        return redirect('dashboard')->with('success', 'Évènement modifié avec succès !');
     }
     public function dateChange($id, $startDate){
         $e = Event::find($id);
@@ -112,6 +112,6 @@ class Calendar extends Component
         $e = Event::find($id);
 
         $e->delete();
-        return redirect('dashboard')->with('success', 'Données supprimées avec succès !');
+        return redirect('dashboard')->with('success', 'Évènement supprimé avec succès !');
     }
 }
