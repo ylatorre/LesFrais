@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/dropdownSelect.css') }}">
+    
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
@@ -124,7 +124,7 @@
 
                                         <input type="hidden" name="listUser" id="listUser"
                                             value="{{ $uniqueUser }}">
-                                            
+
                                         <input type="hidden" name="userId" class="userId"
                                             value="{{ $user->id }}">
 
