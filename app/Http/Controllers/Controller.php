@@ -186,7 +186,7 @@ class Controller extends BaseController
         $employes = DB::table('users')->where('salarie','=','1')->get();
         $ndfsemploye = DB::table('infosndfs')->where('Utilisateur',"=",$request->utilisateur)->get();
         $utilisateurSelectionne = $request->utilisateur;
-        
+
 
         return view('gestionnairendf', [
             'utilisateurSelectionne' => $utilisateurSelectionne,
@@ -194,6 +194,28 @@ class Controller extends BaseController
             'ndfsemploye' => $ndfsemploye,
         ]);
     }
+
+    public function ValidationNDF(Request $request){
+
+
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois','=', $request->moisNDF)->get();
+
+        $user = Auth::user();
+        // dd($user);
+        if($user->vehicule == null || $user->chevauxFiscaux == null){
+            return redirect('dashboard')->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
+        };
+        if ($utilisateurs->isEmpty()) {
+            return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
+        };
+
+        return view('visualisationNDF',[
+            'utilisateurs' => $utilisateurs,
+        ]);
+    }
+
+    // public function visualisationNDF(){
+    // }
 
 
 };

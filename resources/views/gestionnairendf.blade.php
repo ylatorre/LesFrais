@@ -38,8 +38,13 @@
                             @if ($ndfsemploye[$i]->Valide == 0)
                                 <td scope="col"
                                     class="px-6 py-3 text-center flex flex-row justify-around items-center">
-                                    {{-- <img src="./images/icon-annuler.png" alt="pasencorevalidé" width="30px"
-                                        height="30px"> --}}<x-button type="submit">Valider</x-button>
+                                    <form method="POST" action="{{route("validationNDF")}}">
+                                        @csrf
+                                        <input type="hidden" name="moisNDF" value="{{ $ndfsemploye[$i]->MoisEnCours }}">
+                                        <input type="hidden" name="employe" value="{{ $ndfsemploye[$i]->Utilisateur }}">
+
+                                    <x-button type="submit">Valider la note de frais</x-button>
+                                </form>
                                 </td>
                             @elseif($ndfsemploye[$i]->Valide == 1)
                                 <td scope="col"
@@ -47,7 +52,7 @@
                                     <img src="./images/icon-checkmark.png" alt="validé" width="30px" height="30px">
                                 </td>
                             @endif
-                           
+
                     @endfor
                 @endif
             </tbody>

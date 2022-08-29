@@ -1,30 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
+    <x-slot name="header">
+    </x-slot>
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css"/>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-
-
-</head>
-
-<body>
-@php
+    @php
     // initialisation des variables
          $totalPeage = 0;
          $totalEssence = 0;
@@ -38,10 +16,12 @@
          $totalTVA20 = 0;
          $totalTVA10 = 0;
 @endphp
+<div class="w-full flex flex-row justify-around">
+    <div>
 <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 <style>
     .TH-table {
-        font-size: 10px;
+        font-size: 15px;
         border: 1px solid black;
         border-bottom: 2px solid black;
         border-top: 2px solid black;
@@ -50,13 +30,13 @@
     }
 
     .TD-table {
-        font-size: 8px;
+        font-size: 13px;
         border: 2px solid black;
         padding: 2px;
     }
 
     .col-table {
-        font-size: 8px;
+        font-size: 13px;
         border: 1px solid black;
         padding: 2px;
     }
@@ -90,9 +70,10 @@
     }
 </style>
 {{--<div class="text-center">--}}
-    <h1 class="text-center">Nom : {{$utilisateurs[0]->name}} {{-- PERIODE (année + mois): {{$mois}}--}}</h1>
+    <h1 class="text-center font-bold">Employé : {{$utilisateurs[0]->name}} {{-- PERIODE (année + mois): {{$mois}}--}}</h1>
 {{--    <h1 class="">dawd</h1>--}}
-{{--</div>--}}
+<div class="w-full flex flex-row justify-around">
+    <div>
 <table class="tablepdf">
     <thead>
     <th class="TH-table text-center BGjour" style="border-left: 2px solid black">Jours</th>
@@ -148,7 +129,7 @@
 
             <td class="col-table text-center" style="border-left: 2px solid black">{{$utilisateur->kilometrage}}km</td>
             <td class="col-table text-center"
-                style="border-left: 2px solid black;border-right: 2px solid black">{{$utilisateur->description}}</td>
+                style="border-left: 2px solid black;border-right: 2px solid black; overflow:hidden">{{$utilisateur->description}}</td>
 
         </tr>
 
@@ -218,11 +199,8 @@
     </tr>
     </tbody>
 </table>
+</div>
+</div>
 
-<div class="text-sm pt-4">Virement Bancaire</div>
-<div class="text-sm">Le .. / .. / ....</div>
+</x-app-layout>
 
-
-</body>
-
-</html>

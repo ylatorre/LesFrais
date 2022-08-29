@@ -58,6 +58,9 @@ Route::post('validateMonth', [MoisController::class, 'validateMonth'])->name('va
 Route::get('moderation', [Controller::class, 'displayModeration'])->name('moderation')->middleware(['auth', 'is.admin']);
 Route::post('moderationPerUser', [Controller::class, 'displayModerationPerUser'])->name('moderationPerUser')->middleware(['auth', 'is.admin']);
 
-Route::post('gestionnairendfs',[Controller::class, 'gestionnairendf'])->name('gestionnairendf')->middleware(['auth','is.admin']);
+Route::post('gestionnaire',[Controller::class, 'gestionnairendf'])->name('gestionnairendf')->middleware(['auth','is.admin']);
+
+// Route::get('note-de-frais',[Controller::class,'visualisationNDF'])->name('visualisationNDF')->middleware(['auth','is.admin']);
+Route::post('notes-de-frais',[Controller::class,'validationNDF'])->name('validationNDF')->middleware(['auth','is.admin']);
 
 require __DIR__.'/auth.php';
