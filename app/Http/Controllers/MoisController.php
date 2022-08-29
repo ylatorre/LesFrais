@@ -31,7 +31,8 @@ class MoisController extends Controller
 
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->lockedmonth)->get();
 
-        if (count($infosNDF) == 0) {
+
+        if (count($infosNDF) == 0 /*&& Auth::user()->admin == 0*/) {
             infosndf::create([
                 "Utilisateur" => Auth::user()->name,
                 "MoisEnCours" => $request->lockedmonth,
@@ -39,7 +40,15 @@ class MoisController extends Controller
                 "Valide" => 0,
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
             ]);
-        }
+         }//elseif(count($infosNDF) == 0 && Auth::user()->admin ==1) {
+        //     infosndf::create([
+        //         "Utilisateur" => Auth::user()->name,
+        //         "MoisEnCours" => $request->lockedmonth,
+        //         "NombreEvenement" => count($NBevents),
+        //         "Valide" => 1,
+        //         "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
+        //     ]);
+        // }
 
 
         /* - Si la note de frais à deja été créée alors ca la vérouille juste */
