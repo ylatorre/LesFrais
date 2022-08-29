@@ -38,7 +38,8 @@ class User extends Authenticatable
         "vehicule",
         "chevauxFiscaux",
         "dateChevauxFiscaux",
-        "ValeurChevauxFiscaux"
+        "ValeurChevauxFiscaux",
+        "taux",
     ];
 
     public function missions()

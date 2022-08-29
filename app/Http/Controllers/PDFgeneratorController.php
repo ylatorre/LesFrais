@@ -54,12 +54,13 @@ class PDFgeneratorController extends Controller
 
         // - Si cette note de frais existe deja, elle ne sera pas créée en double
     if(count($ndf) == 0)
-    
+
         infosndf::create([
                 'Utilisateur' => $utilisateurs[0]->name,
                 'MoisEnCours' => $request->selectedMonth,
                 'NombreEvenement' => count($utilisateurs),
                 'ChevauxFiscaux' => $utilisateurs[0]->chevauxFiscaux,
+                'tauxKM' => $utilisateurs[0]->taux
                 ]);
 
         DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['Valide' => 1]);

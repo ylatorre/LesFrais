@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('ValidationEnCours')->default(0);
             $table->boolean('Valide')->default(0);
             $table->string('ChevauxFiscaux');
+            $table->string('tauxKM');
         });
     }
 

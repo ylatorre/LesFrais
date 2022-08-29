@@ -15,5 +15,6 @@ class infosndf extends Model
         'NombreEvenement',
         'Validation',
         'ChevauxFiscaux',
+        'tauxKM'
     ];
 }

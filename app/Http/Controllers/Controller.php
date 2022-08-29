@@ -123,6 +123,7 @@ class Controller extends BaseController
             "portables" => $request->portable,
             "vehicule" => $request->vehicule,
             "chevauxFiscaux" => $request->ChevauxFiscaux,
+            "taux" => $request->taux,
 
 
         ]);
@@ -157,6 +158,9 @@ class Controller extends BaseController
         if ($modifUserDB[0]->chevauxFiscaux != $request->ChevauxFiscaux) {
 
             DB::table("users")->where("email", "=", "$request->email")->update(["chevauxFiscaux" => $request->ChevauxFiscaux]);
+        }
+        if ($modifUserDB[0]->taux != $request->taux) {
+            DB::table("users")->where("email", "=", "$request->email")->update(["taux" => $request->taux]);
         }
         // if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
         //     DB::table("users")->where("email","=","$request->email")->update(["ValeurchevauxFiscaux"=>$request->ValeurChevauxFiscaux]);
@@ -199,7 +203,7 @@ class Controller extends BaseController
 
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois','=', $request->moisNDF)->get();
-        
+
         $user = Auth::user();
         // dd($user);
         if($user->vehicule == null || $user->chevauxFiscaux == null){
