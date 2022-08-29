@@ -171,7 +171,7 @@
         <td class="TD-table text-center">{{$totalTVA20}} €</td>
         <td class="TD-table text-center">{{$totalRepas}} €</td>
         <td class="TD-table text-center">{{$totalHotels}} €</td>
-        <td class="TD-table text-center">{{$totalTVA10}} €</td>
+        <td class="TD-table text-center">{{$totalTVA10}}€</td>
         <td class="TD-table text-center">{{$totalKilometres}} Km</td>
         <td class="TD-table text-center BGnuit" colspan="1"></td>
 
