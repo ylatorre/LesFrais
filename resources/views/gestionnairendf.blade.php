@@ -18,7 +18,7 @@
                     <th scope="col" class="px-6 py-3 text-center">
                         Validation
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center"></th>
+
                 </tr>
             </thead>
             <tbody>
@@ -35,28 +35,19 @@
                             <td scope="col" class="px-6 py-3 text-center">
                                 {{ $ndfsemploye[$i]->NombreEvenement }}
                             </td>
-                            @if ($ndfsemploye[$i]->ValidationEnCours == 0)
+                            @if ($ndfsemploye[$i]->Valide == 0)
                                 <td scope="col"
                                     class="px-6 py-3 text-center flex flex-row justify-around items-center">
-                                    <img src="./images/icon-annuler.png" alt="pasencorevalidé" width="30px"
-                                        height="30px">
+                                    {{-- <img src="./images/icon-annuler.png" alt="pasencorevalidé" width="30px"
+                                        height="30px"> --}}<x-button type="submit">Valider</x-button>
                                 </td>
-                            @else
+                            @elseif($ndfsemploye[$i]->Valide == 1)
                                 <td scope="col"
                                     class="px-6 py-3 text-center flex flex-row justify-around items-center">
                                     <img src="./images/icon-checkmark.png" alt="validé" width="30px" height="30px">
                                 </td>
                             @endif
-                            @if ($ndfsemploye[$i]->ValidationEnCours == 0)
-                                <td class="td-validation px-6 py-3 text-center font-bold">
-                                    <button type="submit">Validation</button>
-                                </td>
-                            @elseif ($ndfs[$i]->Valide == 1)
-                                <td scope="col" class="px-6 py-3 text-center font-bold"
-                                    style="color:rgb(19, 151, 19);">
-                                    Validé
-                                </td>
-                            @endif
+                           
                     @endfor
                 @endif
             </tbody>

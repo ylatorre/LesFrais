@@ -1529,6 +1529,10 @@ select {
 .table-ndf{
     width:100%;
     border:4px solid rgb(55,65,81);
+    font-weight:bold;
+}
+.table-ndf tbody tr:nth-child(odd){
+    background-color:rgb(231, 231, 231);
 }
 .odd\:bg-white:nth-child(odd) {
   --tw-bg-opacity: 1;

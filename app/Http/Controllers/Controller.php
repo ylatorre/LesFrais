@@ -37,7 +37,7 @@ class Controller extends BaseController
         }
         $uniqueMonth = implode(',', $uniqueMonth);
 
-        
+
 
         return view('dashboard', compact([
             'uniqueMonth',
@@ -186,6 +186,7 @@ class Controller extends BaseController
         $employes = DB::table('users')->where('salarie','=','1')->get();
         $ndfsemploye = DB::table('infosndfs')->where('Utilisateur',"=",$request->utilisateur)->get();
         $utilisateurSelectionne = $request->utilisateur;
+        
 
         return view('gestionnairendf', [
             'utilisateurSelectionne' => $utilisateurSelectionne,
