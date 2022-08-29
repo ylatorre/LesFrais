@@ -86,7 +86,7 @@
     <th class="TH-table text-center BGblue">Parking</th>
     <th class="TH-table text-center BGblue">Essence</th>
     <th class="TH-table text-center BGblue">Divers (sauf hotel)</th>
-    <th class="TH-table text-center" style="border-left: 2px solid black">Dt TVA (20%)</th>
+    <th class="TH-table text-center BGblue" style="border-left: 2px solid black">Dt TVA (20%)</th>
     <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Repas</th>
     <th class="TH-table text-center BGyellow">Hotels TTC</th>
     <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
@@ -113,10 +113,14 @@
                 $totalKilometres = $utilisateur->kilometrage+$totalKilometres;
                 $totalTVA20 = round(($utilisateur->divers+$utilisateur->peage+$utilisateur->essence+$utilisateur->parking)/1.2*0.2,2) + $totalTVA20;
                 $totalTVA10 = round(($utilisateur->repas + $utilisateur->hotel)*0.1,2);
+                $totaltot = 0;
+                $totalTVAtot = round(($totalRepas + $totalHotels)*0.1 ,2);
+
                 /* régler le probleme de la tva et du total tva içi*/
-                $totalTVA10tot = round(($utilisateur->repas + $utilisateur->hotel)*0.1,2)+$totalTVA10;
+
+
             @endphp
-            <td class="TD-table text-center BGjour">{{$datedebut[0] }} à {{$datefin[0]}}</td>
+            <td class="TD-table text-center BGjour">{{$datedebut[0]}} à {{$datefin[0]}}</td>
             <td class="TD-table text-center">{{$utilisateur->title}}</td>
             <td class="TD-table text-center">{{$utilisateur->ville}}</td>
             <td class="TD-table text-center">{{$utilisateur->code_postal}}</td>
@@ -154,7 +158,7 @@
         <td class="TD-table text-center">{{$totalTVA20}} €</td>
         <td class="TD-table text-center">{{$totalRepas}} €</td>
         <td class="TD-table text-center">{{$totalHotels}} €</td>
-        <td class="TD-table text-center">{{$totalTVA10tot}} €</td>
+        <td class="TD-table text-center">{{$totalTVAtot}} €</td>
         <td class="TD-table text-center">{{$totalKilometres}} Km</td>
         <td class="TD-table text-center BGnuit" colspan="1"></td>
 

@@ -105,7 +105,7 @@
     <th class="TH-table text-center BGblue">Parking</th>
     <th class="TH-table text-center BGblue">Essence</th>
     <th class="TH-table text-center BGblue">Divers (sauf hotel)</th>
-    <th class="TH-table text-center" style="border-left: 2px solid black">Dt TVA (20%)</th>
+    <th class="TH-table text-center BGblue" style="border-left: 2px solid black">Dt TVA (20%)</th>
     <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Repas</th>
     <th class="TH-table text-center BGyellow">Hotels TTC</th>
     <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
