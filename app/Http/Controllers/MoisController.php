@@ -65,9 +65,7 @@ class MoisController extends Controller
     }
     public function unlockMonth(Request $request)
     {
-
-
-        DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->update(["ValidationEnCours" => 0]);
+        DB::table('infosndfs')->where('Utilisateur','=',Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->update(["ValidationEnCours" => 0]);
 
         $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");

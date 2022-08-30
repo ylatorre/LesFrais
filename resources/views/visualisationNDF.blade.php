@@ -91,7 +91,7 @@
     <th class="TH-table text-center BGyellow">Hotels TTC</th>
     <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
 
-    <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">KM
+    <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">Km et {{$utilisateurs[0]->taux}} / km
     </th>
     <th class="TH-table text-center" style="border-left: 2px solid black;border-right: 2px solid black">description</th>
     </thead>
@@ -111,8 +111,8 @@
                 $totalRepas = $utilisateur->repas+$totalRepas;
                 $totalHotels = $utilisateur->hotel+$totalHotels;
                 $totalKilometres = $utilisateur->kilometrage+$totalKilometres;
-                $totalTVA20 = round(($utilisateur->divers+$utilisateur->peage+$utilisateur->essence+$utilisateur->parking)/1.2*0.2,2) + $totalTVA20;
-                $totalTVA10 = round(($utilisateur->repas + $utilisateur->hotel)*0.1,2);
+                $totalTVA20 = round(($utilisateur->divers + $utilisateur->peage + $utilisateur->essence+$utilisateur->parking)/1.2*0.2,2) + $totalTVA20;
+                $totalTVA10 = round(($utilisateur->repas + $utilisateur->hotel)/1.1*0.1,2) + $totalTVA10;
                 $totaltot = 0;
                 $totalTVAtot = round(($totalRepas + $totalHotels)*0.1 ,2);
 
@@ -131,7 +131,7 @@
             <td class="TD-table text-center">{{round(($utilisateur->divers+$utilisateur->peage+$utilisateur->essence+$utilisateur->parking)/1.2*0.2,2)}} €</td>
             <td class="TD-table text-center">{{$utilisateur->repas}} €</td>
             <td class="TD-table text-center">{{$utilisateur->hotel}} €</td>
-            <td class="TD-table text-center">{{$totalTVA10}} €</td>
+            <td class="TD-table text-center">{{round(($utilisateur->repas + $utilisateur->hotel)/1.1*0.1,2)}} €</td>
 
             <td class="col-table text-center" style="border-left: 2px solid black">{{$utilisateur->kilometrage}}km</td>
             <td class="col-table text-center"
@@ -141,10 +141,10 @@
 
     @endforeach
     @php
-        $SousTotalTransport =  $totalDivers +$totalEssence +$totalPeage+$totalHotels +$totalParking;
-        $SousTotalRepasHotels = $totalRepas +$totalHotels;
-        $DtTotalTVAHotelRepasKM = $SousTotalRepasHotels + ($totalKilometres * $utilisateurs[0]->chevauxFiscaux) - $totalTVA10;
-        $total = $SousTotalRepasHotels + ($totalKilometres * $utilisateurs[0]->chevauxFiscaux) +  $SousTotalTransport;
+        $SousTotalTransport =  $totalDivers + $totalEssence + $totalPeage + $totalParking;
+        $SousTotalRepasHotels = $totalRepas + $totalHotels;
+        $DtTotalTVAHotelRepasKM = ($SousTotalRepasHotels + ($totalKilometres * $utilisateurs[0]->taux)) - $totalTVAtot;
+        $total = round($SousTotalTransport + $SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux ,2);
     @endphp
     <tr>
         <td class="BGyellow pt-4 "
@@ -158,7 +158,7 @@
         <td class="TD-table text-center">{{$totalTVA20}} €</td>
         <td class="TD-table text-center">{{$totalRepas}} €</td>
         <td class="TD-table text-center">{{$totalHotels}} €</td>
-        <td class="TD-table text-center">{{$totalTVAtot}} €</td>
+        <td class="TD-table text-center">{{$totalTVA10}} €</td>
         <td class="TD-table text-center">{{$totalKilometres}} Km</td>
         <td class="TD-table text-center BGnuit" colspan="1"></td>
 
@@ -171,14 +171,14 @@
 
         <td class="TD-table text-center" colspan="5">{{$SousTotalTransport}} €</td>
         <td class="TD-table text-center" colspan="3">{{$SousTotalRepasHotels}} €</td>
-        <td class="TD-table text-center" colspan="1">{{$totalKilometres * $totalEssence}} €{{-- * prix de l'essence--}}</td>
+        <td class="TD-table text-center" colspan="1">{{round($totalKilometres * $utilisateurs[0]->taux,2)}} €{{-- * prix de l'essence--}}</td>
         <td class="TD-table text-center BGnuit" colspan="1"></td>
 
     </tr>
     <tr>
         <td class="TD-table BGgris" colspan="4">Dt Total HT</td>
         <td class="TD-table text-center BGgris" colspan="5">{{$SousTotalTransport - $totalTVA20}} €</td>
-        <td class="TD-table text-center BGgris" colspan="4">{{$DtTotalTVAHotelRepasKM}} €</td>
+        <td class="TD-table text-center BGgris" colspan="4">{{round(($SousTotalRepasHotels + ($totalKilometres * $utilisateurs[0]->taux)) - $totalTVA10 , 2)}} €</td>
         <td class="TD-table text-center BGnuit" colspan="1"></td>
     </tr>
     <tr>
