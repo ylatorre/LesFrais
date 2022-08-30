@@ -39,6 +39,7 @@ class MoisController extends Controller
                 "NombreEvenement" => count($NBevents),
                 "Valide" => 0,
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
+                "tauxKM" => Auth::user()->taux,
             ]);
          }//elseif(count($infosNDF) == 0 && Auth::user()->admin ==1) {
         //     infosndf::create([
