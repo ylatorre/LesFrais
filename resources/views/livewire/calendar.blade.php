@@ -1,8 +1,29 @@
+<div id="LaravelFullCalendar">
 <div>
+    @php
+
+        $tableauDesMoisValide = array();
+            $moisValide = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('Valide','=',1)->get();
+            $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
+
+        // $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
+            $tableauDesMoisValide = array();
+            for ($i=0; $i < sizeof($moisValide) ; $i++) {
+                array_push($tableauDesMoisValide,$moisValide[$i]->MoisEnCours);
+            }
+            $tailleDuTableauValide = sizeof($tableauDesMoisValide);
+
+
+
+
+
+
+
+    @endphp
+
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     <style>
         #calendar-container {
-
             top: 0;
             left: 0;
             right: 0;
@@ -24,7 +45,13 @@
             <div id='calendar'></div>
         </div>
     </div>
+
     @push('scripts')
+    {{-- <script type="text/javascript">
+
+
+        console.log('{{$moisTest}}');
+    </script> --}}
         <script src="{{ asset('/js/fullcalendar.js') }}"></script>
         {{-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script> --}}
         <script>
@@ -455,17 +482,89 @@
                                 $('#formlock').submit();
                             })
 
+
                 calendar.render();
 
+                let LaravelFullCalendar = document.getElementById('LaravelFullCalendar');
+                let year = $('.fc-toolbar-title').html();
+                let selectedyear = year.slice(-4, 25);
+                console.log(selectedyear);
+                let yearMonth = $('.fc-toolbar-title').html();
+
+                        let selectedMonth = yearMonth.slice(0, -5);
+                        switch (selectedMonth) {
+                            case "janvier":
+                                selectedMonth = "01";
+                                break;
+                            case "février":
+                                selectedMonth = "02";
+                                break;
+                            case "mars":
+                                selectedMonth = "03";
+                                break;
+                            case "avril":
+                                selectedMonth = "04";
+                                break;
+                            case "mai":
+                                selectedMonth = "05";
+                                break;
+                            case "juin":
+                                selectedMonth = "06";
+                                break;
+                            case "juillet":
+                                selectedMonth = "07";
+                                break;
+                            case "août":
+                                selectedMonth = "08";
+                                break;
+                            case "septembre":
+                                selectedMonth = "09";
+                                break;
+                            case "octobre":
+                                selectedMonth = "10";
+                                break;
+                            case "novembre":
+                                selectedMonth = "11";
+                                break;
+                            case "décembre":
+                                selectedMonth = "12";
+                                break;
+                            default:
+                                break;
+                            }
+
+                        let dateactuelle = selectedyear + "-" + selectedMonth;
+
+
+
+                        /* transformer le tableau php en tableau javascript */
+
+                        var tabMoisValide =  <?php echo json_encode($tableauDesMoisValide); ?>;
+
+                        /*vérouiller le mois grace au tableau php que j'ai transformer en JS */
+
+
+                        console.log(tabMoisValide);
+
+
+
+
+
             });
+
+
         </script>
+
+
 
         <script type="text/javascript">
             window.addEventListener('onclick', () => {
                 $("#eventClicked").removeData();
             })
         </script>
+
         <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet'/>
 
     @endpush
+</div>
 </div>

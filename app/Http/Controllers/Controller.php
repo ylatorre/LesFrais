@@ -25,6 +25,14 @@ class Controller extends BaseController
         $lockedMonth = DB::table('events')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
         $moisNDF = DB::table('infosndfs')->where("Utilisateur","=",Auth::user()->name)->get(); // on recupère le mois actuel et si il n'est n'est pas valide en bdd on le grise
 
+
+        /* - récupération des mois à vérrouiller  */
+         $moisValide = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('Valide','=',1)->get();
+         $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
+        // $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
+
+
+
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
         $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('utilisateur',"=",Auth::user()->name)->where('ValidationEnCours',"=","1");
 
@@ -45,6 +53,9 @@ class Controller extends BaseController
             'moisNDF',
             'monthlocked',
             'monthvalidated',
+
+
+
     ]));
     }
 

@@ -263,7 +263,7 @@
 
                 <livewire:calendar />
                 @livewireScripts
-                @stack('scripts')
+                 @stack('scripts')
 
             </div>
 
@@ -275,8 +275,8 @@
 
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20 text-center">
-        @if (Auth::user()->salarie == 1)
-            <div>
+        @if (Auth::user()->salarie == 1 )
+
                 <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
                     @csrf
                     <input id="inputdatelock" type="hidden" name="lockedmonth">
@@ -294,9 +294,9 @@
                         class="items-center px-4 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler ma demande de validation
                     </button>
                 </form>
-            </div>
-        @endif
 
+        @endif
+        @if(Auth::user()->admin == 1)
         <form method="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}" id="formndf">
         @if(Session::has('noevents'))
             <div style="color:red; margin-bottom:3px; ">{{ Session::get('noevents') }}</div>
@@ -306,12 +306,21 @@
             <x-button type="button" id="genendf" class="px-4 py-2 text-xs" target="_blank">Générer une note de
                 frais</x-button>
         </form>
+        @endif
         <input type="hidden" id="lockedMonth" value="{{ $uniqueMonth }}">
     </div>
 
 
 
+    <script type="text/javascript">
 
+        let date = $('.fc-toolbar-title').html();
+        LaravelFullCalendar = document.getElementById('LaravelFullCalendar');
+
+        console.log(date);
+
+
+    </script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -319,8 +328,6 @@
             }
         })
     </script>
-
-
     <script type="text/javascript">
         function getMonth() {
             let date = $('.fc-toolbar-title').html();
@@ -373,6 +380,10 @@
 
 
 </script>
+
+
+
+
 
 
 
