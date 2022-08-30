@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\historiqueEssence;
 use App\Models\Mois;
 use App\Models\User;
+use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -199,13 +200,15 @@ class Controller extends BaseController
         ]);
     }
 
+    /* - visualisation des NDF */
+
     public function ValidationNDF(Request $request){
 
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois','=', $request->moisNDF)->get();
 
         $user = Auth::user();
-        
+
         if($user->vehicule == null || $user->chevauxFiscaux == null){
             return redirect('dashboard')->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
         };
@@ -218,8 +221,22 @@ class Controller extends BaseController
         ]);
     }
 
-    // public function visualisationNDF(){
-    // }
+    /* - Validation et suppression des NDF */
 
+    public function validerNDF(Request $request){
+
+
+            DB::table('infosndfs')->where('Utilisateur','=',$request->username)->where('MoisEnCours','=',$request->moisndf)->update(['Valide' => 1]);
+            DB::table('infosndfs')->where('Utilisateur','=',$request->username)->where('MoisEnCours','=',$request->moisndf)->update(['ValidationEnCours' => 0]);
+
+            Session::flash('validatesuccess','La note de frais à été validée !');
+        return redirect(route('gestionaireUser'));
+    }
+    public function supprimerNDF(Request $request){
+
+            DB::table('infosndfs')->where('Utilisateur','=',$request->username)->where('MoisEnCours','=',$request->moisndf)->delete();
+
+        return redirect(route('gestionaireUser'));
+    }
 
 };

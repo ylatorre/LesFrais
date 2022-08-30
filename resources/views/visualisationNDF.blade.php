@@ -2,6 +2,24 @@
     <x-slot name="header">
     </x-slot>
 
+    <div class="w-full h-20 px-4 mb-6 font-bold">Note de frais de {{$utilisateurs[0]->name}} pour le mois : {{$utilisateurs[0]->mois}}
+        <div class="flex flex-row justify-around">
+            <form method="POST" action="{{route("validerNDF")}}">
+                @csrf
+                <input type="hidden" name="moisndf" value="{{$utilisateurs[0]->mois}}">
+                <input type="hidden" name="username" value="{{$utilisateurs[0]->name}}">
+                <button type="submit" class="validerNDF">Valider la note de frais</button>
+            </form>
+            <form method="POST" action="{{route("supprimerNDF")}}">
+                @csrf
+                <input type="hidden" name="moisndf" value="{{$utilisateurs[0]->mois}}">
+                <input type="hidden" name="username" value="{{$utilisateurs[0]->name}}">
+                <button type="submit" class="supprimerNDF">supprimer la note de frais</button>
+            </form>
+
+        </div>
+    </div>
+
     @php
     // initialisation des variables
          $totalPeage = 0;
@@ -16,8 +34,8 @@
          $totalTVA20 = 0;
          $totalTVA10 = 0;
 @endphp
-<div class="w-full flex flex-row justify-around">
-    <div>
+<div class="w-full flex flex-row justify-around py-5 " style="border:4px solid black;">
+    <div class="w-full">
 <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 <style>
     .TH-table {
@@ -88,10 +106,10 @@
     <th class="TH-table text-center BGblue">Divers (sauf hotel)</th>
     <th class="TH-table text-center BGblue" style="border-left: 2px solid black">Dt TVA (20%)</th>
     <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Repas</th>
-    <th class="TH-table text-center BGyellow">Hotels TTC</th>
+    <th class="TH-table text-center BGyellow">Hotels</th>
     <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
 
-    <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">Km et {{$utilisateurs[0]->taux}} / km
+    <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">km et taux / km
     </th>
     <th class="TH-table text-center" style="border-left: 2px solid black;border-right: 2px solid black">description</th>
     </thead>
@@ -183,7 +201,7 @@
     </tr>
     <tr>
         <td class="TD-table BGyellow" colspan="4">Total TTC / A rembourser</td>
-        <td class="TD-table text-center" colspan="10">{{$total}} €</td>
+        <td class="TD-table text-center" colspan="10" style="font-size: 12px !important">{{$total}} €</td>
     </tr>
 
     </tbody>
@@ -195,14 +213,17 @@
 @endforeach
 
 
-<table class="pt-4">
+<table class="pt-4 mt-5">
 
     <tbody>
+        <tr>
+            <td class="TD-table text-center">Taux : {{$utilisateurs[0]->taux}} € / km</td>
+        </tr>
     <tr>
-        <td class="TD-table text-center">Dt TVA : {{$totalTVA20+$totalTVA10}}</td>
+        <td class="TD-table text-center">Dt TVA : {{$totalTVA20+$totalTVA10}} €</td>
     </tr>
     <tr>
-        <td class="TD-table text-center">Dt TOTAL HT: {{$total - $totalTVA10 - $totalTVA20}}</td>
+        <td class="TD-table text-center">Dt TOTAL HT: {{$total - ($totalTVA10 + $totalTVA20)}} €</td>
     </tr>
     </tbody>
 </table>

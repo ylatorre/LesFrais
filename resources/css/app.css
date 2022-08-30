@@ -32,3 +32,30 @@
 .table-ndf tbody tr:nth-child(odd){
     background-color:rgb(231, 231, 231);
 }
+.validerNDF{
+    padding:0.5rem;
+    border: 6px solid rgb(0, 151, 0);
+    background:#202020 !important;
+    color:white;
+    font-family: 'nunito',sans-serif;
+    font-weight: bold;
+    font-size:1rem;
+    transition:50ms ease;
+}
+.supprimerNDF{
+    padding:0.6rem;
+    border: 6px solid rgb(155, 11, 11);
+    background:#202020 !important;
+    color:white;
+    font-family: 'nunito',sans-serif;
+    font-weight: bold;
+    font-size:1rem;
+    transition:50ms ease;
+}
+.validerNDF:hover{
+    transform:scale(1.05);
+}
+.supprimerNDF:hover{
+    transform:scale(1.05);
+}
+

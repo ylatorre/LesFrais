@@ -63,4 +63,7 @@ Route::post('gestionnaire',[Controller::class, 'gestionnairendf'])->name('gestio
 // Route::get('note-de-frais',[Controller::class,'visualisationNDF'])->name('visualisationNDF')->middleware(['auth','is.admin']);
 Route::post('notes-de-frais',[Controller::class,'validationNDF'])->name('validationNDF')->middleware(['auth','is.admin']);
 
+Route::post('validation',[Controller::class,'validerNDF'])->name('validerNDF')->middleware(['auth','is.admin']);
+Route::post('suppression',[Controller::class,'supprimerNDF'])->name('supprimerNDF')->middleware(['auth','is.admin']);
+
 require __DIR__.'/auth.php';
