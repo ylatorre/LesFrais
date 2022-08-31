@@ -12,6 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="icon" href="..\public\images\favicon.ico">
+        <title>Notes de frais</title>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
