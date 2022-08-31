@@ -22,6 +22,10 @@
                         </x-nav-link>
 
                     @endif
+                    <x-nav-link :href="route('mesNDF')" :active="request()->routeIs('mesNDF')" style="text-decoration:none">
+                        {{ __('Mes notes de frais') }}
+                    </x-nav-link>
+
                 </div>
 
             </div>

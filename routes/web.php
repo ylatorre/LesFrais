@@ -64,4 +64,7 @@ Route::post('notes-de-frais',[Controller::class,'validationNDF'])->name('validat
 Route::post('validation',[Controller::class,'validerNDF'])->name('validerNDF')->middleware(['auth','is.admin']);
 Route::post('suppression',[Controller::class,'supprimerNDF'])->name('supprimerNDF')->middleware(['auth','is.admin']);
 
+Route::get('Mes-notes-de-frais',[Controller::class,'mesNDF'])->name('mesNDF')->middleware(['auth']);
+Route::post('visu-mes-notes-de-frais',[Controller::class,'visumesndf'])->name('visumesndf')->middleware(['auth']);
+
 require __DIR__.'/auth.php';

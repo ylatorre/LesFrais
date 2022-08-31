@@ -72,8 +72,9 @@ class PDFgeneratorController extends Controller
                 'ChevauxFiscaux' => $utilisateurs[0]->chevauxFiscaux,
                 'tauxKM' => $utilisateurs[0]->taux
                 ]);
-
+        if(Auth::user()->admin == 1){
         DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['Valide' => 1]);
+        }
 
         // - On load le PDF grace a DOMPDF
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\historiqueEssence;
+use App\Models\infosndf;
 use App\Models\Mois;
 use App\Models\User;
 use GuzzleHttp\Middleware;
@@ -210,6 +211,16 @@ class Controller extends BaseController
             DB::table('infosndfs')->where('Utilisateur','=',$request->username)->where('MoisEnCours','=',$request->moisndf)->delete();
 
         return redirect(route('gestionaireUser'));
+    }
+    public function mesNDF(){
+        $authInfosndfs = DB::table('infosndfs')->where('Utilisateur',"=",Auth::user()->name)->where('Valide','=','1')->get();
+
+        return view('mesndfs',['authInfosndfs' => $authInfosndfs]);
+    }
+    public function visumesndf(Request $request){
+        dd($request);
+
+        return redirect(route('mesNDF'));
     }
 
 };
