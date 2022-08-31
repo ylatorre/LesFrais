@@ -137,12 +137,12 @@
 
                         for (let i = 0; i < tabMoisValide.length; i++) {
                             if (tabMoisValide[i] === dateactuelle) {
-                                console.log('ce mois est vérrouillé');
+                            /* vérrouille le mois si la ndf n'ets pas validée */
                                 isCurrentMonthLocked = true;
                                 break;
 
                             } else {
-                                console.log("ce mois n'set pas vérouillé");
+                            /* sinon laisse le mois cliquable */
                                 isCurrentMonthLocked = false;
                             };
                         };
