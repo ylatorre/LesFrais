@@ -1,4 +1,4 @@
-<div id="LaravelFullCalendar">
+<div>
 <div>
     @php
 
@@ -78,7 +78,11 @@
                     // Block pour la création d'événement
 
                     dateClick: function(info) {
-                        let yearMonth = $('.fc-toolbar-title').html();
+                        let actualyear = $('.fc-toolbar-title').html();
+                let selectedyear = actualyear.slice(-4, 25);
+
+                let yearMonth = $('.fc-toolbar-title').html();
+
                         let selectedMonth = yearMonth.slice(0, -5);
                         switch (selectedMonth) {
                             case "janvier":
@@ -119,20 +123,26 @@
                                 break;
                             default:
                                 break;
-                        };
-                        yearMonth = yearMonth.substr(yearMonth.length - 4) + "-" + selectedMonth;
-                        console.log(yearMonth);
+                            }
+
+                        let dateactuelle = selectedyear + "-" + selectedMonth;
 
 
-                        var lockedMonth = ($('#lockedMonth').val()).split(',');
-                        console.log(lockedMonth);
+                        /*içi le clique influe vraiment sur les events*/
+                        /* transformer le tableau php en tableau javascript */
+
+                        var tabMoisValide =  @php echo json_encode($tableauDesMoisValide); @endphp;
+
                         var isCurrentMonthLocked = false;
-                        for (let i = 0; i < lockedMonth.length; i++) {
-                            if (lockedMonth[i] === yearMonth) {
-                                console.log(lockedMonth[i]);
-                                isCurrentMonthLocked = false;
+
+                        for (let i = 0; i < tabMoisValide.length; i++) {
+                            if (tabMoisValide[i] === dateactuelle) {
+                                console.log('ce mois est vérrouillé');
+                                isCurrentMonthLocked = true;
                                 break;
+
                             } else {
+                                console.log("ce mois n'set pas vérouillé");
                                 isCurrentMonthLocked = false;
                             };
                         };
@@ -156,9 +166,9 @@
                             //création d'événement quand le bouton validation est click
                             $("#validation").on('click', function() {
                                 //formatage des dates au format année-mois-jour heure:minute
-                                let yearMonth = info.dateStr;
-                                yearMonth = yearMonth.slice(0, -3);
-                                console.log(yearMonth);
+                                let dateactuelle = info.dateStr;
+                                dateactuelle = dateactuelle.slice(0, -3);
+                                console.log(dateactuelle);
                                 var startDate =
                                     info.dateStr + " " +
                                     $('#heure_debut').val();
@@ -281,7 +291,11 @@
                         let endDate = year + "-" + month + "-" + day + " " + $('#heure_fin')
                             .val();
 
-                        let yearMonth = $('.fc-toolbar-title').html();
+                            let actualyear = $('.fc-toolbar-title').html();
+                let selectedyear = actualyear.slice(-4, 25);
+                console.log(selectedyear);
+                let yearMonth = $('.fc-toolbar-title').html();
+
                         let selectedMonth = yearMonth.slice(0, -5);
                         switch (selectedMonth) {
                             case "janvier":
@@ -322,26 +336,31 @@
                                 break;
                             default:
                                 break;
-                        };
-                        yearMonth = yearMonth.substr(yearMonth.length - 4) + "-" + selectedMonth;
-                        console.log(yearMonth);
+                            }
 
-                        var lockedMonth = ($('#lockedMonth').val()).split(',');
-                        console.log(lockedMonth);
+                        let dateactuelle = selectedyear + "-" + selectedMonth;
+
+                        console.log(dateactuelle);
+
+                        /* transformer le tableau php en tableau javascript */
+
+                        var tabMoisValide =  @php echo json_encode($tableauDesMoisValide); @endphp;
+                        ;
                         var isCurrentMonthLocked = false;
-                        for (let i = 0; i < lockedMonth.length; i++) {
-                            if (lockedMonth[i] === yearMonth) {
-                                console.log(lockedMonth[i]);
-                                isCurrentMonthLocked =false;
+                        for (let i = 0; i < tabMoisValide.length; i++) {
+                            if (tabMoisValide[i] === dateactuelle) {
+                                console.log(tabMoisValide[i]);
+                                isCurrentMonthLocked = true;
                                 break;
                             } else {
                                 isCurrentMonthLocked = false;
                             };
                         };
-
-                        if (isCurrentMonthLocked == false) {
-                            $('#event-modal').removeData()
+                        if (isCurrentMonthLocked == true) {
                             $('#event-modal').modal('toggle')
+
+                            $('#duplicate').html('');
+
                             info.el.style.borderColor = 'red';
 
                             //gestion de fermeture d'événement
@@ -420,6 +439,9 @@
                                     heure_fin: heureFinVal,
                                     mois: yearMonth,
                                 }
+                                 if(isCurrentMonthLocked === true){
+                    console.log('ce mois est vérrouillé');
+                }
                                 //recup les erreur des input
                                 let check = @this.checkEvent(event);
 
@@ -458,9 +480,9 @@
                     },
 
                     headerToolbar: {
-                        left: 'prev,next today',
+                        left: 'prev,next',
                         center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+                        right: '',
                     },
                     locale: '{{ config('app.locale') }}',
                     // console.log
@@ -468,6 +490,7 @@
                     editable: true,
                     eventResize: info => @this.eventChange(info.event),
                     //eventDrop: info => @this.eventChange(info.event)
+
                 });
                             $('#genendf').on('click', function(){
                                 $('#inputdate').val(getMonth());
@@ -484,67 +507,6 @@
 
 
                 calendar.render();
-
-                let LaravelFullCalendar = document.getElementById('LaravelFullCalendar');
-                let year = $('.fc-toolbar-title').html();
-                let selectedyear = year.slice(-4, 25);
-                console.log(selectedyear);
-                let yearMonth = $('.fc-toolbar-title').html();
-
-                        let selectedMonth = yearMonth.slice(0, -5);
-                        switch (selectedMonth) {
-                            case "janvier":
-                                selectedMonth = "01";
-                                break;
-                            case "février":
-                                selectedMonth = "02";
-                                break;
-                            case "mars":
-                                selectedMonth = "03";
-                                break;
-                            case "avril":
-                                selectedMonth = "04";
-                                break;
-                            case "mai":
-                                selectedMonth = "05";
-                                break;
-                            case "juin":
-                                selectedMonth = "06";
-                                break;
-                            case "juillet":
-                                selectedMonth = "07";
-                                break;
-                            case "août":
-                                selectedMonth = "08";
-                                break;
-                            case "septembre":
-                                selectedMonth = "09";
-                                break;
-                            case "octobre":
-                                selectedMonth = "10";
-                                break;
-                            case "novembre":
-                                selectedMonth = "11";
-                                break;
-                            case "décembre":
-                                selectedMonth = "12";
-                                break;
-                            default:
-                                break;
-                            }
-
-                        let dateactuelle = selectedyear + "-" + selectedMonth;
-
-
-
-                        /* transformer le tableau php en tableau javascript */
-
-                        var tabMoisValide =  <?php echo json_encode($tableauDesMoisValide); ?>;
-
-                        /*vérouiller le mois grace au tableau php que j'ai transformer en JS */
-
-
-                        console.log(tabMoisValide);
 
 
 
