@@ -275,7 +275,7 @@
 
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20 text-center">
-        @if (Auth::user()->salarie == 1 && Auth::user()->admin == 0)
+        @if (Auth::user()->salarie == 1 )
 
                 <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
                     @csrf
