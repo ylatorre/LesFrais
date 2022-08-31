@@ -59,44 +59,6 @@ class Controller extends BaseController
     ]));
     }
 
-    public function displayModeration()
-    {
-        $eventLocked = DB::table('events')->orderBy("idUser", "desc")->get();
-        $jsonEvents = json_encode(DB::table('events')->orderBy("idUser", "desc")->get());
-        $utilisateurs = DB::table('users')->orderBy("id", "desc")->get();
-        $usersId = [];
-        $usersName = [];
-        foreach ($utilisateurs as $user){
-            array_push($usersId, $user->id);
-            array_push($usersName, $user->name);
-        }
-        $usersId = implode(',', $usersId);
-        $usersName = implode(',', $usersName);
-
-
-        return view('moderation', compact('eventLocked', 'usersId', 'usersName', 'jsonEvents'));
-    }
-    public function displayModerationPerUser(Request $request)
-    {
-        $utilisateurs = DB::table('users')->orderBy("id", "desc")->get();
-        $usersId = [];
-        $usersName = [];
-        foreach ($utilisateurs as $user){
-            array_push($usersId, $user->id);
-            array_push($usersName, $user->name);
-        }
-        $usersId = implode(',', $usersId);
-        $usersName = implode(',', $usersName);
-        if($request->userId != '0'){
-            $eventLocked = DB::table('events')->where("idUser","=",$request->userId)->get();
-            $jsonEvents = json_encode(DB::table('events')->where("idUser","=",$request->userId)->get());
-        }
-        else{
-            $eventLocked = DB::table('events')->orderBy("idUser", "desc")->get();
-            $jsonEvents = json_encode(DB::table('events')->orderBy("idUser", "desc")->get());
-        }
-        return view('moderation', compact('eventLocked', 'usersId', 'usersName', 'jsonEvents'));
-    }
 
     public function gestionaireUser()
     {

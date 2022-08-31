@@ -55,8 +55,6 @@ Route::post('unlockMonth', [MoisController::class, 'unlockMonth'])->name('unlock
 
 Route::post('validateMonth', [MoisController::class, 'validateMonth'])->name('validateMonth')->middleware(['auth', 'is.admin']);
 
-Route::get('moderation', [Controller::class, 'displayModeration'])->name('moderation')->middleware(['auth', 'is.admin']);
-Route::post('moderationPerUser', [Controller::class, 'displayModerationPerUser'])->name('moderationPerUser')->middleware(['auth', 'is.admin']);
 
 Route::post('gestionnaire',[Controller::class, 'gestionnairendf'])->name('gestionnairendf')->middleware(['auth','is.admin']);
 
