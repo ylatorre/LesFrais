@@ -64,7 +64,7 @@ module.exports = class Vue extends Component {
 
         let dependencies = [
             this.version === 2 ? 'vue-template-compiler' : '@vue/compiler-sfc',
-            this.version === 2 ? 'vue-loader@^15.9.7' : 'vue-loader@^16.2.0'
+            this.version === 2 ? 'vue-loader@^15.9.8' : 'vue-loader@^16.2.0'
         ];
 
         if (this.options.extractStyles && this.options.globalStyles) {
@@ -98,6 +98,40 @@ module.exports = class Vue extends Component {
 
         // Alias Vue to its ESM build if the user has not already given an alias
         config.resolve.extensions.push('.vue');
+
+        // Disable es modules for file-loader on Vue 2
+        if (this.version === 2) {
+            for (const rule of config.module.rules || []) {
+                if (typeof rule !== 'object') {
+                    continue;
+                }
+
+                let loaders = rule.use || [];
+
+                if (!Array.isArray(loaders)) {
+                    continue;
+                }
+
+                for (const loader of loaders) {
+                    if (typeof loader !== 'object') {
+                        continue;
+                    }
+
+                    // TODO: This isn't the best check
+                    // We should check that the loader itself is correct
+                    // Not that file-loader is anywhere in it's absolute path
+                    // As this can produce false positives
+                    if (
+                        loader.loader &&
+                        loader.loader.includes('file-loader') &&
+                        loader.options
+                    ) {
+                        // @ts-ignore
+                        loader.options.esModule = false;
+                    }
+                }
+            }
+        }
 
         this.updateChunks();
 
