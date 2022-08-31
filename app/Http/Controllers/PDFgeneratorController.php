@@ -35,16 +35,26 @@ class PDFgeneratorController extends Controller
         return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');
     }
 
-    public function PDFgeneratorPerMonth(Request $request, $userId)
+    public function PDFgeneratorPerMonth(Request $request)
     {
 
 
         // - On recupère tous les événements correspondants au mois à l'ecran et au user concerné
-        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $userId)->where('mois','=', $request->selectedMonth)->get();
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", Auth::user()->id)->where('mois','=', $request->selectedMonth)->get();
+
         if(count($utilisateurs) == 0){
             Session::flash("noevents","Il n'y a aucun évènements pour ce mois-ci !");
             return redirect('dashboard');
         }
+        if($utilisateurs[0]->chevauxFiscaux == null){
+            Session::flash("noCHF","Cet utilisateur n'a pas de puissance fiscal enregistrée !");
+            return redirect('dashboard');
+        }
+        if($utilisateurs[0]->vehicule == null){
+            Session::flash("novehicule","Cet utilisateur n'a pas de véhicule enregistré !");
+            return redirect('dashboard');
+        }
+
         $ndf = DB::table('infosndfs')->where('MoisEnCours','=',$request->selectedMonth)->where("Utilisateur", "=", $utilisateurs[0]->name)->get();
 
         // - Gestion du cas dans lequel il n'y a pas d'évenements sur le mois
@@ -66,6 +76,7 @@ class PDFgeneratorController extends Controller
         DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['Valide' => 1]);
 
         // - On load le PDF grace a DOMPDF
+
         $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact("utilisateurs"));
         // dd($pdf);
         return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');

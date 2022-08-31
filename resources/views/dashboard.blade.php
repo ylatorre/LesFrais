@@ -285,7 +285,11 @@
                         class=" items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                         >Soumettre le mois à inspection</button>
                 </form>
-
+                @if(Session::has('NDFcreee'))
+            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFcreee') }}</div>
+        @endif
+        @if(Session::has('NDFsuppr'))
+            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>@endif
                 <form method="POST" action="{{ route('unlockMonth') }}" class="block" id="formunlock">
                     @csrf
                     <input id="inputdateunlock" type="hidden" name="unlockedmonth">
@@ -297,12 +301,25 @@
 
         @endif
         @if(Auth::user()->admin == 1)
-        <form method="POST" action="/PDFgeneratorPerMonth/{{ Auth::user()->id }}" id="formndf">
+        <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" id="formndf">
         @if(Session::has('noevents'))
-            <div style="color:red; margin-bottom:3px; ">{{ Session::get('noevents') }}</div>
+            <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('noevents') }}</div>
+        @endif
+        @if(Session::has('noCHF'))
+            <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('noCHF') }}</div>
+        @endif
+        @if(Session::has('novehicule'))
+            <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('novehicule') }}</div>
+        @endif
+        @if(Session::has('NDFcreee'))
+            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFcreee') }}</div>
+        @endif
+        @if(Session::has('NDFsuppr'))
+            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>
         @endif
             @csrf
             <input id="inputdate" type="hidden" name="selectedMonth">
+
             <x-button type="button" id="genendf" class="px-4 py-2 text-xs" target="_blank">Générer une note de
                 frais</x-button>
         </form>

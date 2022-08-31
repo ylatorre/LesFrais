@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class MoisController extends Controller
 {
@@ -58,7 +59,7 @@ class MoisController extends Controller
         $NDFusers = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->get();
         $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
-
+        Session::flash('NDFcreee','La note de frais à été envoyée pour inspection ! ;)');
 
         return redirect(route('dashboard'));
         // dd($events);
@@ -69,6 +70,8 @@ class MoisController extends Controller
 
         $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
+
+        Session::flash('NDFsuppr','La note de frais à bien été supprimée !');
 
         return redirect(route("dashboard"));
     }

@@ -238,7 +238,7 @@
                                     idUser: {{ Auth::user()->id }},
                                     heure_debut: heureDebutVal,
                                     heure_fin: heureFinVal,
-                                    mois: yearMonth,
+                                    mois: dateactuelle,
                                 }
 
                                 //récupérer les erreur d'une request
@@ -463,7 +463,7 @@
                                     idUser: {{ Auth::user()->id }},
                                     heure_debut: heureDebutVal,
                                     heure_fin: heureFinVal,
-                                    mois: yearMonth,
+                                    mois: dateactuelle,
                                 }
                                  if(isCurrentMonthLocked === true){
                     console.log('ce mois est vérrouillé');
