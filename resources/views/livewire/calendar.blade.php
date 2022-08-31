@@ -2,20 +2,34 @@
 <div>
     @php
 
-        $tableauDesMoisValide = array();
+
+
             $moisValide = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('Valide','=',1)->get();
             $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
+            $allMonth = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->get();
 
-        // $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
+        /* - Création du tableau PHP des mois dit "Valide" */
             $tableauDesMoisValide = array();
             for ($i=0; $i < sizeof($moisValide) ; $i++) {
                 array_push($tableauDesMoisValide,$moisValide[$i]->MoisEnCours);
             }
             $tailleDuTableauValide = sizeof($tableauDesMoisValide);
 
+        /* - Création du tableau PHP des mois dit "ValidationEnCours" */
 
+            $tableauValidationEnCours = array();
+            for ($i=0; $i < sizeof($moisValidationEnCours) ; $i++) {
+                array_push($tableauValidationEnCours,$moisValidationEnCours[$i]->MoisEnCours);
+            }
+            $tailleDuTableauValidation = sizeof($tableauValidationEnCours);
 
+        /* - Création du tableau PHP contenant tous les mois du user */
 
+            $tableauAllMonth = array();
+            for ($i=0; $i < sizeof($allMonth) ; $i++) {
+                array_push($tableauAllMonth,$allMonth[$i]->MoisEnCours);
+            }
+            $tailleDuTableauAllMonth = sizeof($tableauAllMonth);
 
 
 
@@ -129,19 +143,31 @@
 
 
                         /*içi le clique influe vraiment sur les events*/
-                        /* transformer le tableau php en tableau javascript */
 
+
+                        /* - transformer les tableaux php en tableau javascript */
+
+                        var tabAllMonth = @php echo json_encode($tableauAllMonth); @endphp;
+                        var tabValidationEnCours = @php echo json_encode($tableauValidationEnCours); @endphp;
                         var tabMoisValide =  @php echo json_encode($tableauDesMoisValide); @endphp;
+
+
 
                         var isCurrentMonthLocked = false;
 
-                        for (let i = 0; i < tabMoisValide.length; i++) {
+                        for (let i = 0; i < tabAllMonth.length; i++) {
                             if (tabMoisValide[i] === dateactuelle) {
-                            /* vérrouille le mois si la ndf n'ets pas validée */
+                            /* - Vérrouille le mois si la ndf n'ets pas validée */
                                 isCurrentMonthLocked = true;
+                                $calendar
                                 break;
 
-                            } else {
+                            }else if(tabValidationEnCours[i] === dateactuelle){
+                            /* - Vérrouille le mois si la NDF est en cours de validation */
+                                isCurrentMonthLocked = true;
+                                break;
+                            }
+                            else {
                             /* sinon laisse le mois cliquable */
                                 isCurrentMonthLocked = false;
                             };
