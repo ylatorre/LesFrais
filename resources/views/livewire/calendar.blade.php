@@ -87,12 +87,13 @@
                 const calendar = new Calendar(calendarEl, {
                     editable: true,
                     unselectAuto: true,
-                    
+
 
                     initialView: 'dayGridMonth',
                     // Block pour la création d'événement
 
                     dateClick: function(info) {
+
                         let actualyear = $('.fc-toolbar-title').html();
                 let selectedyear = actualyear.slice(-4, 25);
 
@@ -174,7 +175,7 @@
                             };
                         };
                         if (isCurrentMonthLocked == false) {
-                            $('#event-modal').modal('toggle')
+                            $('#event-modal').modal('toggle');
 
                             $('#duplicate').html('');
 
@@ -195,7 +196,6 @@
                                 //formatage des dates au format année-mois-jour heure:minute
                                 let dateactuelle = info.dateStr;
                                 dateactuelle = dateactuelle.slice(0, -3);
-                                console.log(dateactuelle);
                                 var startDate =
                                     info.dateStr + " " +
                                     $('#heure_debut').val();
@@ -243,39 +243,43 @@
                                 }
 
                                 //récupérer les erreur d'une request
-                                let check = @this.checkEvent(event);
 
 
 
-                                check.then((value) => {
-                                    if (value == null) {
-                                        //si pas d'erreur ajouter l'événement
-                                        @this.eventAdd(event);
-                                    } else {
-                                        //reset les élément d'affichage d'erreur
-                                        var isDuplicate = false;
-                                        $('.errors').remove();
-                                        //récup la valeur d'où seront positioner les élément d'erreur
-                                        let bottom = ($("label[for='title']").parent()
-                                            .outerHeight()) * 0.25;
-                                        value.forEach(element => {
-                                            if (element == "duplicate") {
-                                                //afficher le messages de duplication
-                                                isDuplicate = true;
-                                                $('#duplicate').html(
-                                                    'The event is a duplicate');
-                                            } else {
-                                                //afficher les messages d'erreurs sur les input
-                                                $("#" + element).parent().append(
-                                                    '<div id="errors" class="errors text-[rgb(169,68,66)] absolute bottom-[-' +
-                                                    bottom +
-                                                    'px] w-full text-[12px]">Veuillez saisir une valeur.</div>'
-                                                );
-                                            };
-                                        });
-                                        $('#duplicate').show();
-                                    };
-                                });
+@this.eventAdd(event);
+
+
+                                // check.then((value) => {
+                                //     if (value == null) {
+                                //         //si pas d'erreur ajouter l'événement
+                                //         console.log('tu es la');
+
+                                //     } else {
+
+                                //         // reset les élément d'affichage d'erreur
+                                //         var isDuplicate = false;
+                                //         $('.errors').remove();
+                                //         //récup la valeur d'où seront positioner les élément d'erreur
+                                //         let bottom = ($("label[for='title']").parent()
+                                //             .outerHeight()) * 0.25;
+                                //         value.forEach(element => {
+                                //             if (element == "duplicate") {
+                                //                 //afficher le messages de duplication
+                                //                 isDuplicate = true;
+                                //                 $('#duplicate').html(
+                                //                     'The event is a duplicate');
+                                //             } else {
+                                //                 //afficher les messages d'erreurs sur les input
+                                //                 $("#" + element).parent().append(
+                                //                     '<div id="errors" class="errors text-[rgb(169,68,66)] absolute bottom-[-' +
+                                //                     bottom +
+                                //                     'px] w-full text-[12px]">Veuillez saisir une valeur.</div>'
+                                //                 );
+                                //             };
+                                //         });
+                                //         $('#duplicate').show();
+                                //     };
+                                //  });
 
                                 calendar.unselect();
 
@@ -304,6 +308,8 @@
                     //block de modification d'événement
                     eventClick: function(info) {
                         //formatter les date au format année-mois-jour heure:minute
+                        console.log('coucou');
+                        console.log(info.event.id);
                         let month = info.event.start.getMonth() + 1;
                         if (month < 10) {
                             month = "0" + month;
@@ -320,7 +326,7 @@
 
                             let actualyear = $('.fc-toolbar-title').html();
                 let selectedyear = actualyear.slice(-4, 25);
-                console.log(selectedyear);
+                // console.log(selectedyear);
                 let yearMonth = $('.fc-toolbar-title').html();
 
                         let selectedMonth = yearMonth.slice(0, -5);
@@ -367,7 +373,7 @@
 
                         let dateactuelle = selectedyear + "-" + selectedMonth;
 
-                        console.log(dateactuelle);
+                        // console.log(dateactuelle);
 
                         /* transformer le tableau php en tableau javascript */
 
@@ -376,7 +382,7 @@
                         var isCurrentMonthLocked = false;
                         for (let i = 0; i < tabMoisValide.length; i++) {
                             if (tabMoisValide[i] === dateactuelle) {
-                                console.log(tabMoisValide[i]);
+                                // console.log(tabMoisValide[i]);
                                 isCurrentMonthLocked = true;
                                 break;
                             } else {
@@ -404,7 +410,7 @@
                             });
 
                             //remplir les input avec les valeurs de l'événement
-                            console.log(info.event);
+                            // console.log(info.event);
                             $('#title').val(info.event.title);
                             $('#ville').val(info.event._def.extendedProps.ville);
                             $('#code_postal').val(info.event._def.extendedProps.code_postal);
@@ -420,7 +426,7 @@
                             $('#heure_fin').val(info.event._def.extendedProps.heure_fin);
 
 
-                            const id = info.event._def.publicId;
+                            const id = info.event.id;
 
                             //ajouter le bouton supprimer dans le modal
                             $("#validation").parent().append(
@@ -470,28 +476,28 @@
 
                                 //recup les erreur des input
                                 let check = @this.checkEvent(event);
+                                @this.eventChange(event);
+                                // check.then((value) => {
+                                //     if (value == null) {
+                                //         //si pas d'erreur ajouter l'événement
 
-                                check.then((value) => {
-                                    if (value == null) {
-                                        //si pas d'erreur ajouter l'événement
-                                        @this.eventChange(event);
-                                    } else {
-                                        //reset les élément d'affichage d'erreur
-                                        var isDuplicate = false;
-                                        $('.errors').remove();
-                                        //récup la valeur d'où seront positioner les élément d'erreur
-                                        let bottom = ($("label[for='title']").parent()
-                                            .outerHeight()) * 0.25;
-                                        value.forEach(element => {
-                                            //afficher les messages d'erreurs sur les input
-                                            $("#" + element).parent().append(
-                                                '<div id="errors" class="errors text-[rgb(169,68,66)] absolute bottom-[-' +
-                                                bottom +
-                                                'px] w-full text-[12px]">Veuillez saisir une valeur.</div>'
-                                            );
-                                        });
-                                    };
-                                });
+                                //     } else {
+                                //         //reset les élément d'affichage d'erreur
+                                //         var isDuplicate = false;
+                                //         $('.errors').remove();
+                                //         //récup la valeur d'où seront positioner les élément d'erreur
+                                //         let bottom = ($("label[for='title']").parent()
+                                //             .outerHeight()) * 0.25;
+                                //         value.forEach(element => {
+                                //             //afficher les messages d'erreurs sur les input
+                                //             $("#" + element).parent().append(
+                                //                 '<div id="errors" class="errors text-[rgb(169,68,66)] absolute bottom-[-' +
+                                //                 bottom +
+                                //                 'px] w-full text-[12px]">Veuillez saisir une valeur.</div>'
+                                //             );
+                                //         });
+                                //     };
+                                // });
                             });
 
 

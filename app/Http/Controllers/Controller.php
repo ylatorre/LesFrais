@@ -218,8 +218,7 @@ class Controller extends BaseController
         return view('mesndfs',['authInfosndfs' => $authInfosndfs]);
     }
     public function visumesndf(Request $request){
-        dd($request);
-
+    
         return redirect(route('mesNDF'));
     }
 
