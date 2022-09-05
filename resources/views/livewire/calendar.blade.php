@@ -382,7 +382,7 @@
                                 isCurrentMonthLocked = false;
                             };
                         };
-                        if (isCurrentMonthLocked == true) {
+                        if (isCurrentMonthLocked == false) {
                             $('#event-modal').modal('toggle')
 
                             $('#duplicate').html('');
