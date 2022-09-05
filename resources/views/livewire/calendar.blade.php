@@ -87,6 +87,7 @@
                 const calendar = new Calendar(calendarEl, {
                     editable: true,
                     unselectAuto: true,
+                    
 
                     initialView: 'dayGridMonth',
                     // Block pour la création d'événement
@@ -431,7 +432,7 @@
 
 
                                 //récup les valeurs des input
-                                let descriptionVal = $("#description").val();
+
                                 let clientVal = $("#title").val();
                                 let villeVal = $("#ville").val();
                                 let code_postalVal = $("#code_postal").val();
@@ -444,12 +445,12 @@
                                 let essenceVal = $("#essence").val();
                                 let heureDebutVal = $("#heure_debut").val();
                                 let heureFinVal = $("#heure_fin").val();
+                                let descriptionVal = $("#description").val();
 
                                 let event = {
                                     id: id,
                                     start: startDate,
                                     end: endDate,
-                                    description: descriptionVal,
                                     title: clientVal,
                                     ville: villeVal,
                                     code_postal: code_postalVal,
@@ -464,10 +465,9 @@
                                     heure_debut: heureDebutVal,
                                     heure_fin: heureFinVal,
                                     mois: dateactuelle,
+                                    description: descriptionVal,
                                 }
-                                 if(isCurrentMonthLocked === true){
-                    console.log('ce mois est vérrouillé');
-                }
+
                                 //recup les erreur des input
                                 let check = @this.checkEvent(event);
 
