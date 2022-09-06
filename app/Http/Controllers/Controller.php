@@ -63,7 +63,7 @@ class Controller extends BaseController
 
     public function gestionaireUser()
     {
-        $users = DB::table("users")->get();
+        $users = DB::table("users")->orderby('superadmin','desc')->orderby('admin','desc')->get();
         //        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
         $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
         //dd($prixessence);
