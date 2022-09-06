@@ -37,7 +37,7 @@
         @if (Session::has('validatesuccess'))
             <div
                 class="font-bold mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(30,122,30)] bg-[rgb(167,209,176)] border-[rgb(188,219,193)] border ">
-                <p>{{Session::get('validatesuccess') }}</p>
+                <p>{{ Session::get('validatesuccess') }}</p>
             </div>
         @endif
     </div>
@@ -92,7 +92,8 @@
                     <tr
                         class="overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                         <th scope="row"
-                            class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap" style="background:white;">
+                            class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                            style="background:white;">
                             {{ $user->name }}
                         </th>
                         <td class="px-6 py-4 text-center" style="background:white;">
@@ -121,15 +122,14 @@
                             <div class="flex justify-end overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
-
-                                    <form method="POST" action="{{route('gestionnairendf')}}"
+                                    <form method="POST" action="{{ route('gestionnairendf') }}"
                                         class="flex justify-end">
                                         @csrf
                                         {{-- <div class="custom-select-dropdown">
                                             <select name="selectMonth" id="{{ 'selectMonth' . strval($user->id) }}"
                                                 class=" px-3.5 py-2.5 mr-2 bg-gray-300 text-gray-700 focus:rounded-b-none rounded-md text-sm font-medium  focus:ring-gray-700 focus:ring-0 border border-transparent focus:border-transparent bg-none "></select>
                                         </div> --}}
-                                        <input type="hidden" name="utilisateur" value="{{$user->name}}">
+                                        <input type="hidden" name="utilisateur" value="{{ $user->name }}">
 
                                         <input type="hidden" name="selectedMonth" id="selectedMonth">
 
@@ -153,15 +153,21 @@
 
                                 <button
                                     class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button" data-modal-toggle="authentication-modal{{ $i }}" >
+                                    type="button" data-modal-toggle="authentication-modal{{ $i }}">
                                     Edit
                                 </button>
-                                @if($user->admin != 1)
-                                <button
-                                    class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button" data-modal-toggle="popup-modal{{ $i }}">
-                                    Supprimer
-                                </button>
+                                @if (Auth::user()->superadmin == 1 && $user->superadmin != 1)
+                                    <button
+                                        class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        type="button" data-modal-toggle="popup-modal{{ $i }}">
+                                        Supprimer
+                                    </button>
+                                @elseif(Auth::user()->admin == 1 && $user->salarie == 1)
+                                    <button
+                                        class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        type="button" data-modal-toggle="popup-modal{{ $i }}">
+                                        Supprimer
+                                    </button>
                                 @endif
                             </div>
                         </td>
@@ -221,10 +227,11 @@
                                             <div class="w-1/4">
                                                 <label for="taux"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Taux
-                                                    </label>
+                                                </label>
                                                 <input type="number" name="taux" id="taux" step="any"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                    placeholder="ex : 502" value="{{ $user->taux }}" required autofocus>
+                                                    placeholder="ex : 502" value="{{ $user->taux }}" required
+                                                    autofocus>
                                             </div>
                                             <div class="w-1/4">
                                                 <label for="ChevauxFiscaux"
@@ -299,7 +306,7 @@
                                             Yes, Je suis sur
                                         </button>
                                     </form>
-                                    <button data-modal-toggle="popup-modal{{$i}}" type="button"
+                                    <button data-modal-toggle="popup-modal{{ $i }}" type="button"
                                         class="mt-2 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                         Non, cancel
                                     </button>
@@ -331,19 +338,25 @@
                 arrayYear[i - 1]) {
                 i += 1;
             }
-            if((!!document.getElementById("user"+arrayUser[i]+"SelectYear" + arrayYear[i])) == false){
-                $('#dropdownMonthContent' + arrayUser[i]).append('<div class="dropdownYear" id="user'+arrayUser[i]+'SelectYear' + arrayYear[i] +
-                    '"> <button id="user'+arrayUser[i]+'Select' + arrayYear[i] + '" class="dropdownYearBtn">' + arrayYear[i] + '</button> <div class="dropdownYearContent" id="dropdownYearContent'+arrayYear[i]+'" > </div> </div>');
+            if ((!!document.getElementById("user" + arrayUser[i] + "SelectYear" + arrayYear[i])) == false) {
+                $('#dropdownMonthContent' + arrayUser[i]).append('<div class="dropdownYear" id="user' + arrayUser[i] +
+                    'SelectYear' + arrayYear[i] +
+                    '"> <button id="user' + arrayUser[i] + 'Select' + arrayYear[i] + '" class="dropdownYearBtn">' +
+                    arrayYear[i] + '</button> <div class="dropdownYearContent" id="dropdownYearContent' + arrayYear[i] +
+                    '" > </div> </div>');
             }
-            if((!!document.getElementById("user"+arrayUser[i]+"Select" + arrayMonth[i])) == false){
-                $('#dropdownYearContent' + arrayYear[i]).append('<button class="selectYearButton" id="user'+arrayUser[i]+'Select'+arrayMonth[i]+'">'+arrayMonth[i]+'</button>');
-                $('#user'+arrayUser[i]+'Select'+arrayYear[i]).width($('#dropdownMonthBtn' + arrayUser[i]).width());
+            if ((!!document.getElementById("user" + arrayUser[i] + "Select" + arrayMonth[i])) == false) {
+                $('#dropdownYearContent' + arrayYear[i]).append('<button class="selectYearButton" id="user' + arrayUser[i] +
+                    'Select' + arrayMonth[i] + '">' + arrayMonth[i] + '</button>');
+                $('#user' + arrayUser[i] + 'Select' + arrayYear[i]).width($('#dropdownMonthBtn' + arrayUser[i]).width());
 
-                var yearButton = document.getElementById('user'+arrayUser[i]+'Select' + arrayMonth[i]).addEventListener('click', function(){
-                    $('#dropdownMonthBtn' + arrayUser[i]).html(arrayMonth[i]);
-                    $('.dropdownYearBtn').width($('#dropdownMonthBtn' + arrayUser[i]).width());
-                    $('#selectedMonth').val(arrayMonth[i]);
-                })
+                var yearButton = document.getElementById('user' + arrayUser[i] + 'Select' + arrayMonth[i]).addEventListener(
+                    'click',
+                    function() {
+                        $('#dropdownMonthBtn' + arrayUser[i]).html(arrayMonth[i]);
+                        $('.dropdownYearBtn').width($('#dropdownMonthBtn' + arrayUser[i]).width());
+                        $('#selectedMonth').val(arrayMonth[i]);
+                    })
             }
             // $('#dropdownMonthContent' + arrayUser[i]).append('<a id="select'+arrayMonth[i]+'">' + arrayMonth[i] + '</a>');
         }
@@ -404,10 +417,10 @@
                             <div class="w-1/4">
                                 <label for="taux"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Taux
-                                    </label>
+                                </label>
                                 <input type="number" name="taux" id="taux" step="any"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    placeholder="ex : 0.542"  required autofocus>
+                                    placeholder="ex : 0.542" required autofocus>
                             </div>
                             <div class="w-1/4">
                                 <label for="ChevauxFiscaux"

@@ -67,7 +67,7 @@ class Controller extends BaseController
         //        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
         $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
         //dd($prixessence);
-
+        
         // dd($moisQuerys);
         $uniqueMonth = [];
         $uniqueUser = [];
@@ -218,7 +218,7 @@ class Controller extends BaseController
         return view('mesndfs',['authInfosndfs' => $authInfosndfs]);
     }
     public function visumesndf(Request $request){
-    
+
         return redirect(route('mesNDF'));
     }
 
