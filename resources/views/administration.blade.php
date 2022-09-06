@@ -216,7 +216,7 @@
                                                 autofocus>
                                         </div>
                                         <div class="flex items-end justify-between">
-                                            <div class="w-1/4">
+                                            <div class="w-1/5">
                                                 <label for="vehicule"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type
                                                     de Vehicule</label>
@@ -224,7 +224,7 @@
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
                                             </div>
-                                            <div class="w-1/4">
+                                            <div class="w-1/5">
                                                 <label for="taux"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Taux
                                                 </label>
@@ -233,7 +233,7 @@
                                                     placeholder="ex : 502" value="{{ $user->taux }}" required
                                                     autofocus>
                                             </div>
-                                            <div class="w-1/4">
+                                            <div class="w-1/5">
                                                 <label for="ChevauxFiscaux"
                                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux
                                                     Fiscaux</label>
@@ -242,6 +242,18 @@
                                                     placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
                                                     autofocus>
                                             </div>
+                                            <!-- si c'ets le super admin qui est connecté-->
+                                            @if (Auth::user()->superadmin == 1)
+                                            <div class="w-1/5">
+                                                <label for="admin"
+                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">admin
+                                                    </label>
+                                                <input type="number" name="admin" id="admin" min="0" max="1"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    placeholder="exemple: 0 ou 1" value="0"
+                                                    autofocus>
+                                            </div>
+                                            @endif
 
 
                                         </div>

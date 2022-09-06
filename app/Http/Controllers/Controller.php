@@ -24,18 +24,18 @@ class Controller extends BaseController
     public function displayDashboard()
     {
         $lockedMonth = DB::table('events')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
-        $moisNDF = DB::table('infosndfs')->where("Utilisateur","=",Auth::user()->name)->get(); // on recupère le mois actuel et si il n'est n'est pas valide en bdd on le grise
+        $moisNDF = DB::table('infosndfs')->where("Utilisateur", "=", Auth::user()->name)->get(); // on recupère le mois actuel et si il n'est n'est pas valide en bdd on le grise
 
 
         /* - récupération des mois à vérrouiller  */
-         $moisValide = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('Valide','=',1)->get();
-         $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
+        $moisValide = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where('Valide', '=', 1)->get();
+        $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where('ValidationEnCours', '=', 1)->get();
         // $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
 
 
 
-        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
-        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('utilisateur',"=",Auth::user()->name)->where('ValidationEnCours',"=","1");
+        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("Valide", "=", "1");
+        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('utilisateur', "=", Auth::user()->name)->where('ValidationEnCours', "=", "1");
 
         $uniqueMonth = [];
         $prevDate = '';
@@ -57,7 +57,7 @@ class Controller extends BaseController
 
 
 
-    ]));
+        ]));
     }
 
 
@@ -67,7 +67,7 @@ class Controller extends BaseController
         //        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
         $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
         //dd($prixessence);
-        
+
         // dd($moisQuerys);
         $uniqueMonth = [];
         $uniqueUser = [];
@@ -109,6 +109,7 @@ class Controller extends BaseController
 
     public function modifUser(Request $request)
     {
+
         $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->get();
         $iduser = DB::table("users")->where("email", "=", "$request->email")->select("id")->get();
         //        dump($modifUserDB);
@@ -137,6 +138,20 @@ class Controller extends BaseController
         if ($modifUserDB[0]->taux != $request->taux) {
             DB::table("users")->where("email", "=", "$request->email")->update(["taux" => $request->taux]);
         }
+        if (Auth::user()->superadmin == 1) {
+            if ($modifUserDB[0]->admin != $request->admin) {
+                DB::table("users")->where("email", "=", $request->email)->update(["admin" => $request->admin]);
+                DB::table("users")->where("email", "=", $request->email)->update(["salarie" => 0]);
+            }
+
+            $isUserAdmin = DB::table('users')->where("email", "=", $request->email)->get();
+
+  if ($isUserAdmin[0]->admin == 0) {
+                DB::table("users")->where("email", "=", $request->email)->update(["salarie" => 1]);
+            }
+
+        }
+
         // if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
         //     DB::table("users")->where("email","=","$request->email")->update(["ValeurchevauxFiscaux"=>$request->ValeurChevauxFiscaux]);
         // }
@@ -160,10 +175,11 @@ class Controller extends BaseController
         return redirect(route("gestionaireUser"));
     }
 
-    public function gestionnairendf(Request $request){
+    public function gestionnairendf(Request $request)
+    {
 
-        $employes = DB::table('users')->where('salarie','=','1')->get();
-        $ndfsemploye = DB::table('infosndfs')->where('Utilisateur',"=",$request->utilisateur)->get();
+        $employes = DB::table('users')->where('salarie', '=', '1')->get();
+        $ndfsemploye = DB::table('infosndfs')->where('Utilisateur', "=", $request->utilisateur)->get();
         $utilisateurSelectionne = $request->utilisateur;
 
 
@@ -176,50 +192,54 @@ class Controller extends BaseController
 
     /* - visualisation des NDF */
 
-    public function ValidationNDF(Request $request){
+    public function ValidationNDF(Request $request)
+    {
 
 
-        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois','=', $request->moisNDF)->get();
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->get();
 
         $user = Auth::user();
 
-        if($user->vehicule == null || $user->chevauxFiscaux == null){
+        if ($user->vehicule == null || $user->chevauxFiscaux == null) {
             return redirect('dashboard')->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
         };
         if ($utilisateurs->isEmpty()) {
             return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
-        return view('visualisationNDF',[
+        return view('visualisationNDF', [
             'utilisateurs' => $utilisateurs,
         ]);
     }
 
     /* - Validation et suppression des NDF */
 
-    public function validerNDF(Request $request){
+    public function validerNDF(Request $request)
+    {
 
 
-            DB::table('infosndfs')->where('Utilisateur','=',$request->username)->where('MoisEnCours','=',$request->moisndf)->update(['Valide' => 1]);
-            DB::table('infosndfs')->where('Utilisateur','=',$request->username)->where('MoisEnCours','=',$request->moisndf)->update(['ValidationEnCours' => 0]);
+        DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
+        DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
 
-            Session::flash('validatesuccess','La note de frais à été validée !');
+        Session::flash('validatesuccess', 'La note de frais à été validée !');
         return redirect(route('gestionaireUser'));
     }
-    public function supprimerNDF(Request $request){
+    public function supprimerNDF(Request $request)
+    {
 
-            DB::table('infosndfs')->where('Utilisateur','=',$request->username)->where('MoisEnCours','=',$request->moisndf)->delete();
+        DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->delete();
 
         return redirect(route('gestionaireUser'));
     }
-    public function mesNDF(){
-        $authInfosndfs = DB::table('infosndfs')->where('Utilisateur',"=",Auth::user()->name)->where('Valide','=','1')->get();
+    public function mesNDF()
+    {
+        $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->where('Valide', '=', '1')->get();
 
-        return view('mesndfs',['authInfosndfs' => $authInfosndfs]);
+        return view('mesndfs', ['authInfosndfs' => $authInfosndfs]);
     }
-    public function visumesndf(Request $request){
+    public function visumesndf(Request $request)
+    {
 
         return redirect(route('mesNDF'));
     }
-
 };
