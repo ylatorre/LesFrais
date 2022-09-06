@@ -27,13 +27,17 @@ class MoisController extends Controller
 
         $chFiscaux = DB::table('users')->select('chevauxFiscaux')->where('name', '=', Auth::user()->name)->get();
         $NBevents = DB::table('events')->where('mois', '=', $request->lockedmonth)->where('idUser', '=', Auth::user()->id)->get();
+        if (count($NBevents) == 0) {
+            Session::flash('pasevents', "Vous n'avez pas d'évènements enregistrés pour ce mois !");
+            return redirect('dashboard');
+        }
 
         /* - Quand on clique sur soumetre la note de frais, cela créer une note de frais et la vérouille*/
 
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->lockedmonth)->get();
 
 
-        if (count($infosNDF) == 0 /*&& Auth::user()->admin == 0*/) {
+        if (count($infosNDF) == 0) {
             infosndf::create([
                 "Utilisateur" => Auth::user()->name,
                 "MoisEnCours" => $request->lockedmonth,
@@ -42,36 +46,37 @@ class MoisController extends Controller
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
                 "tauxKM" => Auth::user()->taux,
             ]);
-         }//elseif(count($infosNDF) == 0 && Auth::user()->admin ==1) {
-        //     infosndf::create([
-        //         "Utilisateur" => Auth::user()->name,
-        //         "MoisEnCours" => $request->lockedmonth,
-        //         "NombreEvenement" => count($NBevents),
-        //         "Valide" => 1,
-        //         "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
-        //     ]);
-        // }
-
+        } else {
+            Session::flash('dejasoumis', 'Ce mois à déjà été soumis à inspection !');
+            return redirect('dashboard');
+        }
 
         /* - Si la note de frais à deja été créée alors ca la vérouille juste */
 
         DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->lockedmonth)->update(["ValidationEnCours" => 1]);
         $NDFusers = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->get();
-        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
-        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
-        Session::flash('NDFcreee','La note de frais à été envoyée pour inspection ! ;)');
+        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("ValidationEnCours", "=", "1")->where("MoisEnCours", "=", $request->lockedmonth)->get();
+        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("Valide", "=", "1");
+        Session::flash('NDFcreee', 'La note de frais à été envoyée pour inspection ! ;)');
 
         return redirect(route('dashboard'));
         // dd($events);
     }
     public function unlockMonth(Request $request)
     {
-        DB::table('infosndfs')->where('Utilisateur','=',Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->delete();
+        $valideoupas = DB::table('infosndfs')->select('Valide')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->get();
+        if($valideoupas[0]->Valide == 1){
+            Session::flash('dejavalide',"La note de frais pour ce mois à déjà été validée
+            vous pouvez la consulter dans l'onglet  'Mes notes de frais'." );
+            return redirect('dashboard');
+        }
 
-        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("ValidationEnCours","=","1")->where("MoisEnCours","=", $request->lockedmonth)->get();
-        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where("Valide","=","1");
+        DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->delete();
 
-        Session::flash('NDFsuppr','La note de frais à bien été supprimée !');
+        $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("ValidationEnCours", "=", "1")->where("MoisEnCours", "=", $request->lockedmonth)->get();
+        $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("Valide", "=", "1");
+
+        Session::flash('NDFsuppr', 'La note de frais à bien été supprimée !');
 
         return redirect(route("dashboard"));
     }

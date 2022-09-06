@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="font-bold text-xl py-5" style="border-bottom: 4px solid black">Vos notes de frais.</h1>
+        <h1 class="font-bold text-xl py-5" style="border-bottom: 4px solid black">Vos notes de frais validées : </h1>
     </x-slot>
 
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
