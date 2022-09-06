@@ -28,7 +28,7 @@ class Calendar extends Component
         for($i = 0; $i < count($events)-1; $i++){
             if($events[$i]->start == $events[$i + 1]->start && $events[$i]->idUser == $events[$i + 1]->idUser){
                 $e = Event::find($events[$i +1]->id);
-                $e->delete();
+                //avant cette fonction permettait de supprimer les evenement en double je la retire du coup
             };
         };
     }
