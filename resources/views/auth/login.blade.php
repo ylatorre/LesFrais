@@ -6,7 +6,7 @@
             </a>
 
         </x-slot>
-            <h1 class="text-center">Notes de frais</h1>
+            
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
