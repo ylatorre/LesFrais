@@ -262,9 +262,6 @@
 
 
                 <livewire:calendar />
-                    {{-- @php
-                        dd('stop !');
-                    @endphp --}}
                 @livewireScripts
                  @stack('scripts')
 
