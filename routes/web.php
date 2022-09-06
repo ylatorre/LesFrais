@@ -59,7 +59,7 @@ Route::post('validateMonth', [MoisController::class, 'validateMonth'])->name('va
 Route::post('gestionnaire',[Controller::class, 'gestionnairendf'])->name('gestionnairendf')->middleware(['auth','is.admin']);
 
 // Route::get('note-de-frais',[Controller::class,'visualisationNDF'])->name('visualisationNDF')->middleware(['auth','is.admin']);
-Route::post('notes-de-frais',[Controller::class,'validationNDF'])->name('validationNDF')->middleware(['auth','is.admin']);
+Route::post('notes-de-frais',[Controller::class,'validationNDF'])->name('validationNDF')->middleware(['auth']);
 
 Route::post('validation',[Controller::class,'validerNDF'])->name('validerNDF')->middleware(['auth','is.admin']);
 Route::post('suppression',[Controller::class,'supprimerNDF'])->name('supprimerNDF')->middleware(['auth','is.admin']);

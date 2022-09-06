@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
     </x-slot>
-
+@if(Auth::user()->admin == 1)
     <div class="w-full h-20 px-4 mb-6 font-bold">Note de frais de {{$utilisateurs[0]->name}} pour le mois : {{$utilisateurs[0]->mois}}
         <div class="flex flex-row justify-around">
             <form method="POST" action="{{route("validerNDF")}}">
@@ -19,6 +19,11 @@
 
         </div>
     </div>
+@elseif(Auth::user()->salarie == 1)
+    <div class="flex flex-row items-center justify-around w-full h-20 px-4 mb-6 font-bold">
+        <a href="{{route('dashboard')}}"><x-button>retourner à mon calendrier</x-button></a>
+    </div>
+@endif
 
     @php
     // initialisation des variables

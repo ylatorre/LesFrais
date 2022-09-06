@@ -276,7 +276,7 @@
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20 text-center">
         @if (Auth::user()->salarie == 1 && Auth::user()->admin == 0)
-
+            <!--  permet de vérouiller le mous avec le bouton "Soumettre le mois ....." -->
                 <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
                     @csrf
                     <input id="inputdatelock" type="hidden" name="lockedmonth">
@@ -284,6 +284,14 @@
                     <button type="button" id="lockMonth"
                         class=" items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                         >Soumettre le mois à inspection</button>
+                </form>
+                <!-- permet aux utilisateur de visualiser leurs note de frais et ca c'est régale -->
+                <form method="POST" action="{{route('validationNDF')}}" id="formsalarievisu">
+                @csrf
+                    <input id="inputmonthsalarie" type="hidden" name="moisNDF">
+                    <input id="inputemployesalarie" type="hidden" name="employe" value="{{Auth::user()->name}}">
+
+                    <x-button type="button" id="salarievisuNDF">Visualiser ma note de frais</x-button>
                 </form>
                 @if(Session::has('pasevents'))
                 <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('pasevents') }}</div>

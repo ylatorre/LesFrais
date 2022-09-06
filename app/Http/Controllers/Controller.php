@@ -223,10 +223,9 @@ class Controller extends BaseController
 
     public function ValidationNDF(Request $request)
     {
-
+        
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->get();
-
         $user = Auth::user();
 
         if ($user->vehicule == null || $user->chevauxFiscaux == null) {
