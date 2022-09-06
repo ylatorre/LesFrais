@@ -83,6 +83,7 @@ class Controller extends BaseController
 
     public function ajoutUser(Request $request)
     {
+
         //        $users = DB::table("users")->get();
         //    dd($request);
         $request->validate(
@@ -91,6 +92,8 @@ class Controller extends BaseController
             ]
         );
         //        $chevauxnum = (int)$request->ChevauxFiscaux;
+        if(Auth::user()->admin == 1 && Auth::user()->superadmin == 0){
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -102,6 +105,32 @@ class Controller extends BaseController
 
 
         ]);
+    }elseif(Auth::user()->superadmin == 1 && $request->admin === "1"){
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            "portables" => $request->portable,
+            "vehicule" => $request->vehicule,
+            "chevauxFiscaux" => $request->ChevauxFiscaux,
+            "taux" => $request->taux,
+        ]);
+
+        DB::table('users')->where('email','=',$request->email)->update(['admin'=>1]);
+        DB::table('users')->where('email','=',$request->email)->update(['salarie'=>0]);
+    }else{
+
+        User::create([
+        'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            "portables" => $request->portable,
+            "vehicule" => $request->vehicule,
+            "chevauxFiscaux" => $request->ChevauxFiscaux,
+            "taux" => $request->taux,
+        ]);
+    }
         return redirect("gestionaireUser");
     }
 
