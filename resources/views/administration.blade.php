@@ -43,9 +43,9 @@
     </div>
     <div class="flex justify-center mb-3">
         <button
-            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="button" data-modal-toggle="authentication-modal">
-            Ajouter un User
+            + Utilisateur
         </button>
 
     </div>
@@ -54,33 +54,36 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-center">
-                        User
+                        Rang
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Utilisateur
                     </th>
                     <th scope="col" class="px-6 py-3 text-center">
                         Email
                     </th>
 
+
+
                     <th scope="col" class="px-6 py-3 text-center">
-                        Numero de Telephone
+                        Numero de Téléphone
                     </th>
                     <th scope="col" class="px-6 py-3 text-center">
-                        Type de vehicule
+                        Type de véhicule
                     </th>
                     <th scope="col" class="px-6 py-3 text-center">
-                        Les chevaux Fiscaux
+                        chevaux Fiscaux
                     </th>
                     <th scope="col" class="px-6 py-3 text-center">
                         Taux/Km
                     </th>
                     <th scope="col" class="px-6 py-3 text-center">
-                        Password
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Confirm Password
+                        Mot de passe
                     </th>
 
+
                     <th scope="col" class="px-6 py-3 text-center">
-                        <span class="sr-only">Edit</span>
+                        <span class="sr-only">Modifier</span>
                     </th>
                 </tr>
             </thead>
@@ -91,33 +94,101 @@
                 @foreach ($users as $user)
                     <tr
                         class="overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
-                        <th scope="row"
-                            class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                            style="background:white;">
-                            {{ $user->name }}
-                        </th>
-                        <td class="px-6 py-4 text-center" style="background:white;">
-                            {{ $user->email }}
-                        </td>
-                        <td class="px-6 py-4 text-center" style="background:white;">
-                            {{ $user->portables }}
-                        </td>
-                        <td class="px-6 py-4 text-center" style="background:white;">
-                            {{ $user->vehicule }}
-                        </td>
-                        <td class="px-6 py-4 text-center" style="background:white;">
-                            {{ $user->chevauxFiscaux }}
-                        </td>
-                        <td class="px-6 py-4 text-center" style="background:white;">
-                            {{ $user->taux }} €
-                        </td>
+                        @if ($user->admin == 1 && $user->superadmin == 0)
 
-                        <td class="px-6 py-4 text-center" style="background:white;">
-                            *******
-                        </td>
-                        <td class="px-6 py-4 text-center" style="background:white;">
-                            *******
-                        </td>
+                            <th scope="row"
+                                    class="px-6 py-4 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
+                                    style="background:white;">
+                                    Admin
+                                </th>
+                            <th scope="row"
+                                class="px-6 py-4 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
+                                style="background:white;">
+                                {{ $user->name }}
+                            </th>
+                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                                {{ $user->email }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                                {{ $user->portables }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                                {{ $user->vehicule }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                                {{ $user->chevauxFiscaux }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                                {{ $user->taux }} €
+                            </td>
+
+                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                                *******
+                            </td>
+                        @elseif($user->superadmin == 1)
+
+                            <th scope="row"
+                                class="px-6 py-4 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                style="background:white;">
+                                Admin +
+                            </th>
+                            <th scope="row"
+                                class="px-6 py-4 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                style="background:white;">
+                                {{ $user->name }}
+                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                                {{ $user->email }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                                {{ $user->portables }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                                {{ $user->vehicule }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                                {{ $user->chevauxFiscaux }}
+                            </td>
+                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                                {{ $user->taux }} €
+                            </td>
+
+                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                                *******
+                            </td>
+                            </th>
+                        @else
+                            <th scope="row"
+                                    class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                    style="background:white;">
+                                    Salarié
+                                </th>
+                            <th scope="row"
+                                class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                style="background:white;">
+                                {{ $user->name }}
+                            <td class="px-6 py-4 text-center" style="background:white;">
+                                {{ $user->email }}
+                            </td>
+                            <td class="px-6 py-4 text-center" style="background:white;">
+                                {{ $user->portables }}
+                            </td>
+                            <td class="px-6 py-4 text-center" style="background:white;">
+                                {{ $user->vehicule }}
+                            </td>
+                            <td class="px-6 py-4 text-center" style="background:white;">
+                                {{ $user->chevauxFiscaux }}
+                            </td>
+                            <td class="px-6 py-4 text-center" style="background:white;">
+                                {{ $user->taux }} €
+                            </td>
+
+                            <td class="px-6 py-4 text-center" style="background:white;">
+                                *******
+                            </td>
+                            </th>
+                        @endif
+
+
                         <td class="px-6 py-4 overflow-visible text-right" style="background:white;">
                             <div class="flex justify-end overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
@@ -150,19 +221,27 @@
                                         </button>
                                     </form>
                                 @endif
+                                @if (Auth::user()->admin == 1 && $user->superadmin != 1)
+                                    <button
+                                        class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        type="button" data-modal-toggle="authentication-modal{{ $i }}">
+                                        Modifier
+                                    </button>
+                                @elseif(Auth::user()->superadmin == 1)
+                                    <button
+                                        class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        type="button" data-modal-toggle="authentication-modal{{ $i }}">
+                                        Modifier
+                                    </button>
+                                @endif
 
-                                <button
-                                    class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button" data-modal-toggle="authentication-modal{{ $i }}">
-                                    Edit
-                                </button>
-                                @if (Auth::user()->superadmin == 1 && $user->superadmin != 1)
+                                @if (Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $user->salarie == 1)
                                     <button
                                         class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
                                         Supprimer
                                     </button>
-                                @elseif(Auth::user()->admin == 1 && $user->salarie == 1)
+                                @elseif(Auth::user()->superadmin == 1 && Auth::user()->email != $user->email)
                                     <button
                                         class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
@@ -244,15 +323,15 @@
                                             </div>
                                             <!-- si c'ets le super admin qui est connecté-->
                                             @if (Auth::user()->superadmin == 1)
-                                            <div class="w-1/5">
-                                                <label for="admin"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">admin
+                                                <div class="w-1/5">
+                                                    <label for="admin"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">admin
                                                     </label>
-                                                <input type="number" name="admin" id="admin" min="0" max="1"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                    placeholder="exemple: 0 ou 1" value="0"
-                                                    autofocus>
-                                            </div>
+                                                    <input type="number" name="admin" id="admin"
+                                                        min="0" max="1"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                        placeholder="exemple: 0 ou 1" value="0" autofocus>
+                                                </div>
                                             @endif
 
 
@@ -276,7 +355,7 @@
 
                                         <button type="submit"
                                             class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            Modifier User
+                                            Modifier les informations
                                         </button>
 
                                     </form>
@@ -447,15 +526,17 @@
                         </div>
                         <div>
                             <label for="password"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mot de
+                                passe</label>
                             <input type="password" name="password" id="password" placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 required autocomplete="new-password">
                         </div>
                         <div>
                             <label for="password_confirmation"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirm
-                                Password</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirmer mot
+                                de passe
+                            </label>
                             <input type="password" name="password_confirmation" id="password_confirmation"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -463,8 +544,8 @@
                         </div>
 
                         <button type="submit"
-                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Creer
-                            User</button>
+                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Créer
+                            un utilisateur</button>
 
                     </form>
                 </div>
