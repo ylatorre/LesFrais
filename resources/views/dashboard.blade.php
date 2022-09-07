@@ -79,6 +79,9 @@
 @endif
 @if(Session::has('NDFsuppr'))
 <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>@endif
+@if(Session::has('nondf'))
+            <div style="color:red; margin-left:1%; margin-bottom:3px; font-weight:bold;">{{Session::get('nondf')}}</div>
+        @endif
 
     <div class="container">
         <div class="modal fade" id="event-modal" role="dialog">
@@ -288,7 +291,7 @@
 
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20 text-center">
-        @if (Auth::user()->salarie == 1 && Auth::user()->admin == 0)
+        @if (Auth::user()->salarie == 1 || Auth::user()->admin == 1 && Auth::user()->superadmin != 1)
             <!--  permet de vérouiller le mous avec le bouton "Soumettre le mois ....." -->
                 <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
                     @csrf
@@ -316,10 +319,20 @@
                     </button>
                 </form>
 
-        @endif
 
-        @if(Auth::user()->admin == 1)
-        <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" id="formndf">
+        @endif
+ @if(Auth::user()->superadmin == 1)
+                <form method="POST" action="{{route('validationNDF')}}" id="formsalarievisu">
+                    @csrf
+                        <input id="inputmonthsalarie" type="hidden" name="moisNDF">
+                        <input id="inputemployesalarie" type="hidden" name="employe" value="{{Auth::user()->name}}">
+
+                        <x-button type="button" id="salarievisuNDF">Visualiser ma note de frais</x-button>
+                    </form>
+                @endif
+
+        @if(Auth::user()->admin == 1 && Auth::user()->superadmin == 1)
+
         @if(Session::has('noevents'))
             <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('noevents') }}</div>
         @endif
@@ -336,13 +349,11 @@
             <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>
         @endif
 
-            @csrf
-            <input id="inputdate" type="hidden" name="selectedMonth">
 
-            <x-button type="button" id="genendf" class="px-4 py-2 text-xs" target="_blank">Générer une note de
-                frais</x-button>
-        </form>
+
+
         @endif
+
         <input type="hidden" id="lockedMonth" value="{{ $uniqueMonth }}">
     </div>
 

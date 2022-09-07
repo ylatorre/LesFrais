@@ -40,7 +40,7 @@
     font-family: 'nunito',sans-serif;
     font-weight: bold;
     font-size:1rem;
-    transition:50ms ease;
+    transition:100ms ease-in;
 }
 .supprimerNDF{
     padding:0.6rem;
@@ -50,7 +50,7 @@
     font-family: 'nunito',sans-serif;
     font-weight: bold;
     font-size:1rem;
-    transition:50ms ease;
+    transition:100ms ease-in;
 }
 .validerNDF:hover{
     transform:scale(1.05);

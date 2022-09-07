@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class MoisController extends Controller
 {
@@ -64,12 +65,21 @@ class MoisController extends Controller
     }
     public function unlockMonth(Request $request)
     {
+
+
         $valideoupas = DB::table('infosndfs')->select('Valide')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->get();
+
+         if(sizeof($valideoupas) == 0){
+            Session::flash("nondf","Ce mois n'est pas vérrouillé !");
+            return redirect('dashboard');
+         }
+
         if($valideoupas[0]->Valide == 1){
             Session::flash('dejavalide',"La note de frais pour ce mois à déjà été validée
             vous pouvez la consulter dans l'onglet  'Mes notes de frais'." );
             return redirect('dashboard');
         }
+
 
         DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->delete();
 
