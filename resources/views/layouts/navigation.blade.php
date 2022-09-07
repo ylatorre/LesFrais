@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" style="text-decoration:none">
-                        {{ __('Dashboard') }}
+                        {{ __('Calendrier') }}
                     </x-nav-link>
 
                     @if (auth()->user()->admin)
