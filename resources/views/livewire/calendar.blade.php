@@ -301,8 +301,96 @@
                         let year = info.event.start.getFullYear();
                         let startDate = year + "-" + month + "-" + day + " " + info.event._def.extendedProps
                             .heure_debut;
+
+                            let actualyear = $('.fc-toolbar-title').html();
+                let selectedyear = actualyear.slice(-4, 25);
+
+                let yearMonth = $('.fc-toolbar-title').html();
+
+                        let selectedMonth = yearMonth.slice(0, -5);
+                        switch (selectedMonth) {
+                            case "janvier":
+                                selectedMonth = "01";
+                                break;
+                            case "février":
+                                selectedMonth = "02";
+                                break;
+                            case "mars":
+                                selectedMonth = "03";
+                                break;
+                            case "avril":
+                                selectedMonth = "04";
+                                break;
+                            case "mai":
+                                selectedMonth = "05";
+                                break;
+                            case "juin":
+                                selectedMonth = "06";
+                                break;
+                            case "juillet":
+                                selectedMonth = "07";
+                                break;
+                            case "août":
+                                selectedMonth = "08";
+                                break;
+                            case "septembre":
+                                selectedMonth = "09";
+                                break;
+                            case "octobre":
+                                selectedMonth = "10";
+                                break;
+                            case "novembre":
+                                selectedMonth = "11";
+                                break;
+                            case "décembre":
+                                selectedMonth = "12";
+                                break;
+                            default:
+                                break;
+                            }
+
+                        let dateactuelle = selectedyear + "-" + selectedMonth;
+
+
+                        /*içi le clique influe vraiment sur les events*/
+
+
+                        /* - transformer les tableaux php en tableau javascript */
+
+                        var tabAllMonth = @php echo json_encode($tableauAllMonth); @endphp;
+                        var tabValidationEnCours = @php echo json_encode($tableauValidationEnCours); @endphp;
+                        var tabMoisValide =  @php echo json_encode($tableauDesMoisValide); @endphp;
+
+
+
+                        var isCurrentMonthLocked = false;
+                        var dragable = false;
+
+
+                        for (let i = 0; i < tabAllMonth.length; i++) {
+                            if (tabMoisValide[i] === dateactuelle) {
+                            /* - Vérrouille le mois si la ndf n'est pas validée */
+                                isCurrentMonthLocked = true;
+
+                                $calendar
+                                break;
+
+                            }else if(tabValidationEnCours[i] === dateactuelle){
+                            /* - Vérrouille le mois si la NDF est en cours de validation */
+                                isCurrentMonthLocked = true;
+
+                                break;
+                            }
+                            else {
+                            /* sinon laisse le mois cliquable */
+                                isCurrentMonthLocked = false;
+
+                            };
+                        };
+                        if (isCurrentMonthLocked == false) {
                         //appliquer le changement
                         @this.dateChange(info.event.id, startDate);
+                        }
                     },
 
                     //block de modification d'événement
@@ -385,22 +473,27 @@
 
 
                         var isCurrentMonthLocked = false;
+                        var dragable = false;
+
 
                         for (let i = 0; i < tabAllMonth.length; i++) {
                             if (tabMoisValide[i] === dateactuelle) {
-                            /* - Vérrouille le mois si la ndf n'ets pas validée */
+                            /* - Vérrouille le mois si la ndf n'est pas validée */
                                 isCurrentMonthLocked = true;
+
                                 $calendar
                                 break;
 
                             }else if(tabValidationEnCours[i] === dateactuelle){
                             /* - Vérrouille le mois si la NDF est en cours de validation */
                                 isCurrentMonthLocked = true;
+
                                 break;
                             }
                             else {
                             /* sinon laisse le mois cliquable */
                                 isCurrentMonthLocked = false;
+
                             };
                         };
                         if (isCurrentMonthLocked == false) {
