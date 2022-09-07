@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="essence">
-                                        essence
+                                        Essence
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
