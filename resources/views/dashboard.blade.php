@@ -65,7 +65,20 @@
 
         });
     </script>
-
+@if(Session::has('pasevents'))
+<div style="width:100%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('pasevents') }}</div>
+@endif
+@if(Session::has('dejasoumis'))
+<div style="width:100%; margin-left:1%; color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">{{ Session::get('dejasoumis') }}</div>
+@endif
+@if(Session::has('dejavalide'))
+<div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('dejavalide') }}</div>
+@endif
+@if(Session::has('NDFcreee'))
+<div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFcreee') }}</div>
+@endif
+@if(Session::has('NDFsuppr'))
+<div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>@endif
 
     <div class="container">
         <div class="modal fade" id="event-modal" role="dialog">
@@ -293,20 +306,7 @@
 
                     <x-button type="button" id="salarievisuNDF">Visualiser ma note de frais</x-button>
                 </form>
-                @if(Session::has('pasevents'))
-                <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('pasevents') }}</div>
-                @endif
-                @if(Session::has('dejasoumis'))
-                <div style="color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">{{ Session::get('dejasoumis') }}</div>
-                @endif
-                @if(Session::has('dejavalide'))
-                <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('dejavalide') }}</div>
-                @endif
-                @if(Session::has('NDFcreee'))
-            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFcreee') }}</div>
-        @endif
-        @if(Session::has('NDFsuppr'))
-            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>@endif
+
                 <form method="POST" action="{{ route('unlockMonth') }}" class="block" id="formunlock">
                     @csrf
                     <input id="inputdateunlock" type="hidden" name="unlockedmonth">
