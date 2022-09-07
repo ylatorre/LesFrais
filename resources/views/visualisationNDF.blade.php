@@ -26,7 +26,7 @@
     @elseif(Auth::user()->superadmin == 1)
     <div class="w-full h-20 px-4 mb-6 font-bold margin">Note de frais de {{$utilisateurs[0]->name}} pour le mois : {{$utilisateurs[0]->mois}}
         <div class="flex flex-row justify-around items-center">
-            <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" id="formndf">
+            <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" id="formndf" target="_blank">
                 @csrf
                 <input id="inputdate" type="hidden" name="selectedMonth" value="{{$utilisateurs[0]->mois}}">
 

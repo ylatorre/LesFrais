@@ -30,7 +30,7 @@
                         {{ $authInfosndf->tauxKM }}
                     </td>
                     <td class="px-6 py-4 text-center" style="background:white; color:black;">
-                        <form method="POST" action="{{ route('PDFgeneratorPerMonth') }}">
+                        <form method="POST" action="{{ route('PDFgeneratorPerMonth') }}" target="_blank">
                             @csrf
                             <input type="hidden" name="selectedMonth" value="{{$authInfosndf->MoisEnCours}}">
                             <button
