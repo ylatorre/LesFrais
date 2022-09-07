@@ -308,8 +308,7 @@
                     //block de modification d'événement
                     eventClick: function(info) {
                         //formatter les date au format année-mois-jour heure:minute
-                        console.log('coucou');
-                        console.log(info.event.id);
+
                         let month = info.event.start.getMonth() + 1;
                         if (month < 10) {
                             month = "0" + month;
@@ -326,7 +325,7 @@
 
                             let actualyear = $('.fc-toolbar-title').html();
                 let selectedyear = actualyear.slice(-4, 25);
-                // console.log(selectedyear);
+
                 let yearMonth = $('.fc-toolbar-title').html();
 
                         let selectedMonth = yearMonth.slice(0, -5);
@@ -373,19 +372,34 @@
 
                         let dateactuelle = selectedyear + "-" + selectedMonth;
 
-                        // console.log(dateactuelle);
 
-                        /* transformer le tableau php en tableau javascript */
+                        /*içi le clique influe vraiment sur les events*/
 
+
+                        /* - transformer les tableaux php en tableau javascript */
+
+                        var tabAllMonth = @php echo json_encode($tableauAllMonth); @endphp;
+                        var tabValidationEnCours = @php echo json_encode($tableauValidationEnCours); @endphp;
                         var tabMoisValide =  @php echo json_encode($tableauDesMoisValide); @endphp;
-                        ;
+
+
+
                         var isCurrentMonthLocked = false;
-                        for (let i = 0; i < tabMoisValide.length; i++) {
+
+                        for (let i = 0; i < tabAllMonth.length; i++) {
                             if (tabMoisValide[i] === dateactuelle) {
-                                // console.log(tabMoisValide[i]);
+                            /* - Vérrouille le mois si la ndf n'ets pas validée */
+                                isCurrentMonthLocked = true;
+                                $calendar
+                                break;
+
+                            }else if(tabValidationEnCours[i] === dateactuelle){
+                            /* - Vérrouille le mois si la NDF est en cours de validation */
                                 isCurrentMonthLocked = true;
                                 break;
-                            } else {
+                            }
+                            else {
+                            /* sinon laisse le mois cliquable */
                                 isCurrentMonthLocked = false;
                             };
                         };
