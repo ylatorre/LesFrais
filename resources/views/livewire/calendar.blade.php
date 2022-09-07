@@ -533,7 +533,7 @@
                                 $('#formunlock').submit();
                             })
                             $('#lockMonth').on('click', function(){
-                                $('#').val(getMonth());
+                                $('#inputdatelock').val(getMonth());
                                 $('#formlock').submit();
                             })
                             $('#salarievisuNDF').on('click', function(){

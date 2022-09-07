@@ -223,7 +223,7 @@ class Controller extends BaseController
 
     public function ValidationNDF(Request $request)
     {
-        
+
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->get();
         $user = Auth::user();
@@ -244,8 +244,6 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
-
-
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
 
