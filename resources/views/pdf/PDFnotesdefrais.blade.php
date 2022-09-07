@@ -172,15 +172,15 @@
             style="border-top: 2px solid black;border-left: 2px solid black;font-size: 10px;white-space:nowrap;">
             missions effectuées: {{count($utilisateurs)}} </td>
         <td class=" BGyellow pl-4 pt-4 " rowspan="1" colspan="3" style="border-top: 2px solid black">Sous Total</td>
-        <td class="TD-table text-center">{{$totalPeage}} €</td>
-        <td class="TD-table text-center">{{$totalParking}} €</td>
-        <td class="TD-table text-center">{{$totalEssence}} €</td>
-        <td class="TD-table text-center">{{$totalDivers}} €</td>
-        <td class="TD-table text-center">{{$totalTVA20}} €</td>
-        <td class="TD-table text-center">{{$totalRepas}} €</td>
-        <td class="TD-table text-center">{{$totalHotels}} €</td>
-        <td class="TD-table text-center">{{$totalTVA10}} €</td>
-        <td class="TD-table text-center">{{$totalKilometres}} Km</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalPeage}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalParking}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalEssence}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalDivers}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalTVA20}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalRepas}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalHotels}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalTVA10}} €</td>
+        <td class="TD-table text-center" style="background: rgb(175, 175, 175); !important">{{$totalKilometres}} Km</td>
         <td class="TD-table text-center BGnuit" colspan="1"></td>
 
         {{--        <td class="TD-table">{{$totalParking}}</td>--}}

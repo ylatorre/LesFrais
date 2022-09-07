@@ -34,7 +34,7 @@
                 <button type="submit" class="validerNDF" target="_blank">Générer et valider la note de
                     frais</button>
             </form>
-            
+
                 <a href="{{route('dashboard')}}"><x-button>retourner à mon calendrier</x-button></a>
 
 
@@ -191,15 +191,15 @@
             style="border-top: 2px solid black;border-left: 2px solid black;font-size: 10px;white-space:nowrap;">
             missions effectuées: {{count($utilisateurs)}} </td>
         <td class=" BGyellow pl-4 pt-4 " rowspan="1" colspan="3" style="border-top: 2px solid black">Sous Total</td>
-        <td class="TD-table text-center">{{$totalPeage}} €</td>
-        <td class="TD-table text-center">{{$totalParking}} €</td>
-        <td class="TD-table text-center">{{$totalEssence}} €</td>
-        <td class="TD-table text-center">{{$totalDivers}} €</td>
-        <td class="TD-table text-center">{{$totalTVA20}} €</td>
-        <td class="TD-table text-center">{{$totalRepas}} €</td>
-        <td class="TD-table text-center">{{$totalHotels}} €</td>
-        <td class="TD-table text-center">{{$totalTVA10}} €</td>
-        <td class="TD-table text-center">{{$totalKilometres}} Km</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalPeage}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalParking}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalEssence}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalDivers}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalTVA20}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalRepas}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalHotels}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalTVA10}} €</td>
+        <td class="TD-table text-center bg-slate-400">{{$totalKilometres}} Km</td>
         <td class="TD-table text-center BGnuit" colspan="1"></td>
 
         {{--        <td class="TD-table">{{$totalParking}}</td>--}}
