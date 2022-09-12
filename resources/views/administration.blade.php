@@ -274,10 +274,10 @@
 
                                         <div>
                                             <label for="name"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prénom et Nom</label>
                                             <input type="text" name="name" id="name"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                placeholder="name" value="{{ $user->name }}">
+                                                placeholder="Prénom puis Nom" value="{{ $user->name }}">
                                         </div>
                                         <div>
                                             <label for="email"
@@ -477,10 +477,10 @@
 
                         <div>
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prénom et Nom</label>
                             <input type="text" name="name" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="name" :value="old('name')" required="">
+                                placeholder="ex: Prénom Nom" :value="old('name')" required="">
                         </div>
                         <div>
                             <label for="email"
