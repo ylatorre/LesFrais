@@ -76,9 +76,57 @@ class PDFgeneratorController extends Controller
         DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['Valide' => 1]);
         }
 
+        $dateNDF = explode("-",$utilisateurs[0]->mois);
+
+        // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
+
+        $moisDateNDF = "";
+
+        switch($dateNDF[1]){
+            case "01";
+            $moisDateNDF = "Janvier";
+            break;
+            case "02";
+            $moisDateNDF = "Février";
+            break;
+            case "03";
+            $moisDateNDF = "Mars";
+            break;
+            case "04";
+            $moisDateNDF = "Avril";
+            break;
+            case "05";
+            $moisDateNDF = "Mai";
+            break;
+            case "06";
+            $moisDateNDF = "Juin";
+            break;
+            case "07";
+            $moisDateNDF = "Juillet";
+            break;
+            case "08";
+            $moisDateNDF = "Août ";
+            break;
+            case "09";
+            $moisDateNDF = "Septembre";
+            break;
+            case "10";
+            $moisDateNDF = "Octobre";
+            break;
+            case "11";
+            $moisDateNDF = "Novembre";
+            break;
+            case "12";
+            $moisDateNDF = "Décembre";
+            break;
+        };
+
+
+ $dateNDFpourPDFetVISU = $moisDateNDF." ".$dateNDF[0];
+
         // - On load le PDF grace a DOMPDF
 
-        $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact("utilisateurs"));
+        $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact(["utilisateurs","dateNDFpourPDFetVISU"]));
         // dd($pdf);
         return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');
     }

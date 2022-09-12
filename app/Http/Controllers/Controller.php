@@ -226,6 +226,54 @@ class Controller extends BaseController
 
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->get();
+        $dateNDF = explode("-",$utilisateurs[0]->mois);
+
+        // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
+
+        $moisDateNDF = "";
+
+        switch($dateNDF[1]){
+            case "01";
+            $moisDateNDF = "Janvier";
+            break;
+            case "02";
+            $moisDateNDF = "Février";
+            break;
+            case "03";
+            $moisDateNDF = "Mars";
+            break;
+            case "04";
+            $moisDateNDF = "Avril";
+            break;
+            case "05";
+            $moisDateNDF = "Mai";
+            break;
+            case "06";
+            $moisDateNDF = "Juin";
+            break;
+            case "07";
+            $moisDateNDF = "Juillet";
+            break;
+            case "08";
+            $moisDateNDF = "Août ";
+            break;
+            case "09";
+            $moisDateNDF = "Septembre";
+            break;
+            case "10";
+            $moisDateNDF = "Octobre";
+            break;
+            case "11";
+            $moisDateNDF = "Novembre";
+            break;
+            case "12";
+            $moisDateNDF = "Décembre";
+            break;
+        };
+
+
+ $dateNDFpourPDFetVISU = $moisDateNDF." ".$dateNDF[0];
+ 
         $user = Auth::user();
 
         if ($user->vehicule == null || $user->chevauxFiscaux == null) {
@@ -237,6 +285,7 @@ class Controller extends BaseController
 
         return view('visualisationNDF', [
             'utilisateurs' => $utilisateurs,
+            'dateNDFpourPDFetVISU' => $dateNDFpourPDFetVISU,
         ]);
     }
 

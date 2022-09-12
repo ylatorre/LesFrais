@@ -89,9 +89,25 @@
     .BGnuit {
         background: black;
     }
+    .td-top-table{
+        border:2px solid black;
+        padding:10px;
+        text-align: center;
+        font-size:12px;
+    }
 </style>
 {{--<div class="text-center">--}}
-    <h1 class="text-center font-bold">Employé : {{$utilisateurs[0]->name}} {{-- PERIODE (année + mois): {{$mois}}--}}</h1>
+    <table style=" border:2px solid black; margin-top:1%; margin-bottom:1%;">
+        <tr>
+            <td class="td-top-table">Prénom / Nom :</td>
+            <td class="td-top-table">{{$utilisateurs[0]->name}}</td>
+        </tr>
+        <tr>
+            <td class="td-top-table">Date :</td>
+            <td class="td-top-table">{{$dateNDFpourPDFetVISU}}</td>
+        </tr>
+
+    </table>
 {{--    <h1 class="">dawd</h1>--}}
 <div class="w-full flex flex-row justify-around">
     <div>
