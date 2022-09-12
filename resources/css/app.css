@@ -59,3 +59,14 @@
     transform:scale(1.05);
 }
 
+
+
+
+
+
+@media screen and(max-width:850px){
+    .responsiv-navlinks{
+        display:none !important;
+    }
+
+}

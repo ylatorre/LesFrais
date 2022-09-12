@@ -1,4 +1,5 @@
 <x-app-layout>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <x-slot name="header">
     </x-slot>
 @if(Auth::user()->admin == 1 && $utilisateurs[0]->admin == 0)
@@ -21,7 +22,7 @@
     </div>
 @elseif(Auth::user()->salarie == 1 || Auth::user()->admin == 1 && Auth::user()->superadmin != 1 )
     <div class="flex flex-row items-center justify-around w-full h-20 px-4 mb-6 font-bold">
-        <a href="{{route('dashboard')}}"><x-button>retourner à mon calendrier</x-button></a>
+        <a href="{{route('dashboard')}}"><button type="submit" class="validerNDF">retourner à mon calendrier</button></a>
     </div>
     @elseif(Auth::user()->superadmin == 1)
     <div class="w-full h-20 px-4 mb-6 font-bold margin">Note de frais de {{$utilisateurs[0]->name}} pour le mois : {{$utilisateurs[0]->mois}}
@@ -35,7 +36,7 @@
                     frais</button>
             </form>
 
-                <a href="{{route('dashboard')}}"><x-button>retourner à mon calendrier</x-button></a>
+                <a href="{{route('dashboard')}}"><button type="submit" class="validerNDF">retourner à mon calendrier</button ></a>
 
 
         </div>
@@ -115,16 +116,222 @@
         text-align: center;
         font-size:12px;
     }
-    @media screen and (max-width:1400px){
-        .TH-table{
-            font-size:10px;
-            padding:1px;
-        }
-        .TD-table{
-            font-size:8px;
-            padding:1px;
-        }
+    /* -- Responsive du site */
+@media screen and (max-width:1400px){ /* responsive sous les 1400px*/
+    .mission-effectuees{
+        font-size:10px;
     }
+    .td-top-table{
+        font-size:12px;
+    }
+
+    .TH-table{
+        font-size:10px;
+        padding:1px;
+    }
+    .TD-table{
+        font-size:8px;
+        padding:1px;
+    }
+    .td-sous-total{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:960px){ /*responsive sous-les 960px*/
+    .mission-effectuees{
+        font-size:8px;
+    }
+    .td-top-table{
+        font-size:10px;
+    }
+
+    .TH-table{
+        font-size:8px;
+
+    }
+    .TD-table{
+        font-size:6px;
+
+    }
+    .td-sous-total{
+        font-size: 9px;
+    }
+    .validerNDF{
+        padding:0.5rem;
+        border: 4px solid rgb(0, 151, 0);
+        background:#202020 !important;
+        color:white;
+        font-family: 'nunito',sans-serif;
+        font-weight: bold;
+        font-size:12px;
+        transition:100ms ease-in;
+    }
+    .supprimerNDF{
+        padding:0.6rem;
+        border: 4px solid rgb(155, 11, 11);
+        background:#202020 !important;
+        color:white;
+        font-family: 'nunito',sans-serif;
+        font-weight: bold;
+        font-size:12px;
+        transition:100ms ease-in;
+    }
+    .validerNDF:hover{
+        transform:scale(1.05);
+    }
+    .supprimerNDF:hover{
+        transform:scale(1.05);
+    }
+}
+
+@media screen and (max-width:700px){  /*responsive sous-les 700px*/
+    .mission-effectuees{
+        font-size:7px;
+    }
+    .td-top-table{
+        font-size:9px;
+    }
+
+    .TD-table-tot{
+        font-size:7px;
+    }
+    .TH-table{
+        font-size:6px;
+
+    }
+    .TD-table{
+        font-size:4px;
+
+    }
+    .td-sous-total{
+        font-size: 7px;
+    }
+    .validerNDF{
+
+        border: 4px solid rgb(0, 151, 0);
+        background:#202020 !important;
+        color:white;
+        font-family: 'nunito',sans-serif;
+        font-weight: bold;
+        font-size:10px;
+        transition:100ms ease-in;
+    }
+    .supprimerNDF{
+
+        border: 4px solid rgb(155, 11, 11);
+        background:#202020 !important;
+        color:white;
+        font-family: 'nunito',sans-serif;
+        font-weight: bold;
+        font-size:10px;
+        transition:100ms ease-in;
+    }
+    .validerNDF:hover{
+        transform:scale(1.05);
+    }
+    .supprimerNDF:hover{
+        transform:scale(1.05);
+    }
+
+}
+@media screen and (max-width:500px){ /* responsive sous le seuil des 500px*/
+    .mission-effectuees{
+        font-size:6px;
+    }
+    .td-top-table{
+        font-size:8px;
+    }
+
+    .TD-table-tot{
+        font-size:6px;
+    }
+ .TH-table{
+    font-size:5px;
+
+}
+.TD-table{
+    font-size:3px;
+
+}
+.td-sous-total{
+    font-size: 6px;
+}
+.validerNDF{
+
+    border: 2px solid rgb(0, 151, 0);
+    background:#202020 !important;
+    color:white;
+    font-family: 'nunito',sans-serif;
+    font-weight: bold;
+    font-size:8px;
+    transition:100ms ease-in;
+}
+.supprimerNDF{
+
+    border: 2px solid rgb(155, 11, 11);
+    background:#202020 !important;
+    color:white;
+    font-family: 'nunito',sans-serif;
+    font-weight: bold;
+    font-size:8px;
+    transition:100ms ease-in;
+}
+.validerNDF:hover{
+    transform:scale(1.05);
+}
+.supprimerNDF:hover{
+    transform:scale(1.05);
+}
+}
+@media screen and (max-width:400px){ /* responsive sous le seuil des 400px*/
+    .mission-effectuees{
+        font-size:4px;
+    }
+    .td-top-table{
+        font-size:6px;
+    }
+
+    .TD-table-tot{
+        font-size:4px;
+    }
+
+.TD-table{
+    font-size:2px;
+
+}
+.td-sous-total{
+    font-size: 4px;
+}
+.validerNDF{
+
+    border: 2px solid rgb(0, 151, 0);
+    background:#202020 !important;
+    color:white;
+    font-family: 'nunito',sans-serif;
+    font-weight: bold;
+    font-size:8px;
+    transition:100ms ease-in;
+}
+.supprimerNDF{
+
+    border: 2px solid rgb(155, 11, 11);
+    background:#202020 !important;
+    color:white;
+    font-family: 'nunito',sans-serif;
+    font-weight: bold;
+    font-size:8px;
+    transition:100ms ease-in;
+}
+.validerNDF:hover{
+    transform:scale(1.05);
+}
+.supprimerNDF:hover{
+    transform:scale(1.05);
+}
+}
+
+
 </style>
 {{--<div class="text-center">--}}
     <table style=" border:2px solid black; margin-top:1%; margin-bottom:1%;">
@@ -144,9 +351,9 @@
 <table class="tablepdf">
     <thead>
     <th class="TH-table text-center BGjour" style="border-left: 2px solid black">Jours</th>
-    <th class="TH-table text-center w-20" style="border-left: 2px solid black">Client / Prospect</th>
-    <th class="TH-table text-center w-20">Ville</th>
-    <th class="TH-table text-center w-14">Code Postal</th>
+    <th class="TH-table text-center " style="border-left: 2px solid black">Client / Prospect</th>
+    <th class="TH-table text-center ">Ville</th>
+    <th class="TH-table text-center ">Code Postal</th>
     <th class="TH-table text-center" style="width:5% !important; overflow:hidden; border-left: 2px solid black;border-right: 2px solid black">description</th>
     {{--            <tr colspan="4">TTC            </tr>--}}
 
@@ -188,7 +395,7 @@
 
 
             @endphp
-            <td class="TD-table text-center BGjour">{{$datedebut[0]}} à <br>{{$datefin[0]}}</td>
+            <td class="TD-table text-center BGjour pl-1 pr-1">{{$datedebut[0]}} à <br>{{$datefin[0]}}</td>
             <td class="TD-table text-center">{{$utilisateur->title}}</td>
             <td class="TD-table text-center">{{$utilisateur->ville}}</td>
             <td class="TD-table text-center">{{$utilisateur->code_postal}}</td>
@@ -216,10 +423,10 @@
         $total = round($SousTotalTransport + $SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux ,2);
     @endphp
     <tr>
-        <td class="BGyellow pt-4 "
-            style="border-top: 2px solid black;border-left: 2px solid black;font-size: 10px;white-space:nowrap;">
+        <td class="BGyellow pt-4 mission-effectuees"
+            style="border-top: 2px solid black;border-left: 2px solid black;white-space:nowrap;">
             missions effectuées: {{count($utilisateurs)}} </td>
-        <td class=" BGyellow pl-4 pt-4 " rowspan="1" colspan="4" style="border-top: 2px solid black">Sous Total</td>
+        <td class=" BGyellow pl-4 pt-4 td-sous-total" rowspan="1" colspan="4" style="border-top: 2px solid black">Sous Total</td>
         <td class="TD-table text-center bg-slate-400">{{$totalPeage}} €</td>
         <td class="TD-table text-center bg-slate-400">{{$totalParking}} €</td>
         <td class="TD-table text-center bg-slate-400">{{$totalEssence}} €</td>
@@ -252,7 +459,7 @@
     </tr>
     <tr>
         <td class="TD-table BGyellow" colspan="5">Total TTC / A rembourser</td>
-        <td class="TD-table text-center" colspan="9" style="font-size: 12px !important">{{$total}} €</td>
+        <td class="TD-table text-center TD-table-tot" colspan="9" >{{$total}} €</td>
     </tr>
 
     </tbody>

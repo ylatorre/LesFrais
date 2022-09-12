@@ -1097,11 +1097,11 @@ select {
 .border-b {
   border-bottom-width: 1px;
 }
-.border-l-4 {
-  border-left-width: 4px;
-}
 .border-b-2 {
   border-bottom-width: 2px;
+}
+.border-l-4 {
+  border-left-width: 4px;
 }
 .border-r {
   border-right-width: 1px;
@@ -1347,6 +1347,9 @@ select {
 .pt-6 {
   padding-top: 1.5rem;
 }
+.pt-1 {
+  padding-top: 0.25rem;
+}
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -1365,11 +1368,14 @@ select {
 .pr-4 {
   padding-right: 1rem;
 }
+.pl-1 {
+  padding-left: 0.25rem;
+}
+.pr-1 {
+  padding-right: 0.25rem;
+}
 .pl-4 {
   padding-left: 1rem;
-}
-.pt-1 {
-  padding-top: 0.25rem;
 }
 .text-left {
   text-align: left;
@@ -1676,6 +1682,12 @@ select {
 .supprimerNDF:hover{
     transform:scale(1.05);
 }
+@media screen and(max-width:850px){
+    .responsiv-navlinks{
+        display:none !important;
+    }
+
+}
 .odd\:bg-white:nth-child(odd) {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1687,6 +1699,10 @@ select {
 .hover\:border-\[rgb\(173\2c 173\2c 173\)\]:hover {
   --tw-border-opacity: 1;
   border-color: rgb(173 173 173 / var(--tw-border-opacity));
+}
+.hover\:border-indigo-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(129 140 248 / var(--tw-border-opacity));
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
@@ -1771,13 +1787,13 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity));
 }
-.focus\:border-gray-300:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
 .focus\:border-indigo-700:focus {
   --tw-border-opacity: 1;
   border-color: rgb(67 56 202 / var(--tw-border-opacity));
+}
+.focus\:border-gray-300:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 .focus\:border-indigo-300:focus {
   --tw-border-opacity: 1;
@@ -2120,6 +2136,10 @@ select {
     left: 0px;
   }
 
+  .md\:inline-flex {
+    display: inline-flex;
+  }
+
   .md\:h-full {
     height: 100%;
   }
@@ -2142,10 +2162,13 @@ select {
 }
 @media (min-width: 1024px) {
 
+  .lg\:inline-flex {
+    display: inline-flex;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
-
 
