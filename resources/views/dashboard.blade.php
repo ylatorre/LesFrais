@@ -26,6 +26,8 @@
 
 
 
+
+
     {{-- Script permettant l'implémentation des inputs horloge --}}
     <script type="text/javascript">
         $(document).ready(function() {
@@ -292,13 +294,13 @@
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20 text-center">
         @if (Auth::user()->salarie == 1 || Auth::user()->admin == 1 && Auth::user()->superadmin != 1)
-            <!--  permet de vérouiller le mous avec le bouton "Soumettre le mois ....." -->
+            <!--  permet de vérouiller le mous avec le bouton "Soumettre le mois ....."      -->
                 <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
                     @csrf
                     <input id="inputdatelock" type="hidden" name="lockedmonth">
                     <input type="hidden" id="locked" value="false">
                     <button type="button" id="lockMonth"
-                        class=" items-center px-4 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                        style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg  items-center px-2 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                         >Soumettre le mois à inspection</button>
                 </form>
                 <!-- permet aux utilisateur de visualiser leurs note de frais et ca c'est régale -->
@@ -307,7 +309,7 @@
                     <input id="inputmonthsalarie" type="hidden" name="moisNDF">
                     <input id="inputemployesalarie" type="hidden" name="employe" value="{{Auth::user()->name}}">
 
-                    <x-button type="button" id="salarievisuNDF">Visualiser ma note de frais</x-button>
+                    <button type="button" id="salarievisuNDF" style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-2 bg-gray-700 focus:bg-gray-800 hover:bg-gray-800  active:bg-red-gray border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Visualiser ma note de frais</button>
                 </form>
 
                 <form method="POST" action="{{ route('unlockMonth') }}" class="block" id="formunlock">
@@ -315,7 +317,7 @@
                     <input id="inputdateunlock" type="hidden" name="unlockedmonth">
                     <input name="userId" type="hidden" id="userId" value="{{ Auth::user()->id }}">
                     <button type="button" id="unlockMonth"
-                        class="items-center px-4 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler ma demande de validation
+                        style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler ma demande de validation
                     </button>
                 </form>
 

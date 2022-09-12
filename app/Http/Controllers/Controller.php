@@ -226,6 +226,10 @@ class Controller extends BaseController
 
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->get();
+        if(count($utilisateurs) == 0){
+            Session::flash('pasevents',"il n'y a pas d'évènements pour ce mois !");
+            return redirect('dashboard');
+        }
         $dateNDF = explode("-",$utilisateurs[0]->mois);
 
         // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
@@ -273,7 +277,7 @@ class Controller extends BaseController
 
 
  $dateNDFpourPDFetVISU = $moisDateNDF." ".$dateNDF[0];
- 
+
         $user = Auth::user();
 
         if ($user->vehicule == null || $user->chevauxFiscaux == null) {
