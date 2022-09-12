@@ -112,6 +112,7 @@
         border:2px solid black;
         padding:10px;
         text-align: center;
+        font-size:12px;
     }
 </style>
 {{--<div class="text-center">--}}
