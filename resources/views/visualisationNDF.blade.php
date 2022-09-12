@@ -65,20 +65,23 @@
         border: 1px solid black;
         border-bottom: 2px solid black;
         border-top: 2px solid black;
-        padding: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
         height: 40px;
     }
 
     .TD-table {
         font-size: 13px;
         border: 2px solid black;
-        padding: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
     }
 
     .col-table {
         font-size: 13px;
         border: 1px solid black;
-        padding: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
     }
 
     .tablepdf {
@@ -105,14 +108,22 @@
         background: rgba(157, 157, 157, 0.7);
     }
 
-    .BGnuit {
-        background: black;
-    }
+
     .td-top-table{
         border:2px solid black;
-        padding:10px;
+        padding:2px;
         text-align: center;
         font-size:12px;
+    }
+    @media screen and (max-width:1400px){
+        .TH-table{
+            font-size:10px;
+            padding:1px;
+        }
+        .TD-table{
+            font-size:8px;
+            padding:1px;
+        }
     }
 </style>
 {{--<div class="text-center">--}}
@@ -128,14 +139,15 @@
 
     </table>
 {{--    <h1 class="">dawd</h1>--}}
-<div class="w-full flex flex-row justify-around">
+<div class="w-full flex flex-row justify-around items-center">
     <div>
 <table class="tablepdf">
     <thead>
     <th class="TH-table text-center BGjour" style="border-left: 2px solid black">Jours</th>
     <th class="TH-table text-center w-20" style="border-left: 2px solid black">Client / Prospect</th>
     <th class="TH-table text-center w-20">Ville</th>
-    <th class="TH-table text-center w-15">Code Postal</th>
+    <th class="TH-table text-center w-14">Code Postal</th>
+    <th class="TH-table text-center" style="width:5% !important; overflow:hidden; border-left: 2px solid black;border-right: 2px solid black">description</th>
     {{--            <tr colspan="4">TTC            </tr>--}}
 
     <th class="TH-table text-center BGblue" style="border-left: 2px solid black;">Péage</th>
@@ -149,7 +161,7 @@
 
     <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">km et taux / km
     </th>
-    <th class="TH-table text-center" style="border-left: 2px solid black;border-right: 2px solid black">description</th>
+
     </thead>
     <tbody>
     @foreach ($utilisateurs as $utilisateur)
@@ -176,10 +188,12 @@
 
 
             @endphp
-            <td class="TD-table text-center BGjour">{{$datedebut[0]}} à {{$datefin[0]}}</td>
+            <td class="TD-table text-center BGjour">{{$datedebut[0]}} à <br>{{$datefin[0]}}</td>
             <td class="TD-table text-center">{{$utilisateur->title}}</td>
             <td class="TD-table text-center">{{$utilisateur->ville}}</td>
             <td class="TD-table text-center">{{$utilisateur->code_postal}}</td>
+            <td class="TD-table col-table text-center"
+                style="overflow:hidden; border-bottom:2px solid black">{{$utilisateur->description}}</td>
             <td class="TD-table text-center">{{$utilisateur->peage}} €</td>
             <td class="TD-table text-center">{{$utilisateur->parking}} €</td>
             <td class="TD-table text-center">{{$utilisateur->essence}} €</td>
@@ -189,9 +203,8 @@
             <td class="TD-table text-center">{{$utilisateur->hotel}} €</td>
             <td class="TD-table text-center">{{round(($utilisateur->repas + $utilisateur->hotel)/1.1*0.1,2)}} €</td>
 
-            <td class="col-table text-center" style="border-left: 2px solid black">{{$utilisateur->kilometrage}}km</td>
-            <td class="col-table text-center"
-                style="border-left: 2px solid black;border-right: 2px solid black; overflow:hidden">{{$utilisateur->description}}</td>
+            <td class="TD-table col-table text-center" style="border-left: 2px solid black">{{$utilisateur->kilometrage}}km</td>
+
 
         </tr>
 
@@ -206,7 +219,7 @@
         <td class="BGyellow pt-4 "
             style="border-top: 2px solid black;border-left: 2px solid black;font-size: 10px;white-space:nowrap;">
             missions effectuées: {{count($utilisateurs)}} </td>
-        <td class=" BGyellow pl-4 pt-4 " rowspan="1" colspan="3" style="border-top: 2px solid black">Sous Total</td>
+        <td class=" BGyellow pl-4 pt-4 " rowspan="1" colspan="4" style="border-top: 2px solid black">Sous Total</td>
         <td class="TD-table text-center bg-slate-400">{{$totalPeage}} €</td>
         <td class="TD-table text-center bg-slate-400">{{$totalParking}} €</td>
         <td class="TD-table text-center bg-slate-400">{{$totalEssence}} €</td>
@@ -216,30 +229,30 @@
         <td class="TD-table text-center bg-slate-400">{{$totalHotels}} €</td>
         <td class="TD-table text-center bg-slate-400">{{$totalTVA10}} €</td>
         <td class="TD-table text-center bg-slate-400">{{$totalKilometres}} Km</td>
-        <td class="TD-table text-center BGnuit" colspan="1"></td>
+
 
         {{--        <td class="TD-table">{{$totalParking}}</td>--}}
         {{--        <td class="TD-table">{{$totalEssence}}</td>--}}
         {{--        <td class="TD-table">{{$totalDivers}}</td>--}}
     </tr>
     <tr>
-        <td class="BGyellow" rowspan="1" colspan="4" style="border-left: 2px solid black"></td>
+        <td class="BGyellow" rowspan="1" colspan="5" style="border-left: 2px solid black"></td>
 
         <td class="TD-table text-center" colspan="5">{{$SousTotalTransport}} €</td>
         <td class="TD-table text-center" colspan="3">{{$SousTotalRepasHotels}} €</td>
         <td class="TD-table text-center" colspan="1">{{round($totalKilometres * $utilisateurs[0]->taux,2)}} €{{-- * prix de l'essence--}}</td>
-        <td class="TD-table text-center BGnuit" colspan="1"></td>
+
 
     </tr>
     <tr>
-        <td class="TD-table BGgris" colspan="4">Dt Total HT</td>
+        <td class="TD-table BGgris" colspan="5">Dt Total HT</td>
         <td class="TD-table text-center BGgris" colspan="5">{{$SousTotalTransport - $totalTVA20}} €</td>
         <td class="TD-table text-center BGgris" colspan="4">{{round(($SousTotalRepasHotels + ($totalKilometres * $utilisateurs[0]->taux)) - $totalTVA10 , 2)}} €</td>
-        <td class="TD-table text-center BGnuit" colspan="1"></td>
+
     </tr>
     <tr>
-        <td class="TD-table BGyellow" colspan="4">Total TTC / A rembourser</td>
-        <td class="TD-table text-center" colspan="10" style="font-size: 12px !important">{{$total}} €</td>
+        <td class="TD-table BGyellow" colspan="5">Total TTC / A rembourser</td>
+        <td class="TD-table text-center" colspan="9" style="font-size: 12px !important">{{$total}} €</td>
     </tr>
 
     </tbody>
@@ -267,6 +280,7 @@
 </table>
 </div>
 </div>
+
 
 </x-app-layout>
 
