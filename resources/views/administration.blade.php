@@ -325,12 +325,13 @@
                                             @if (Auth::user()->superadmin == 1)
                                                 <div class="w-1/5">
                                                     <label for="admin"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">admin
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rôle
                                                     </label>
-                                                    <input type="number" name="admin" id="admin"
-                                                        min="0" max="1"
-                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                        placeholder="exemple: 0 ou 1" value="0" autofocus>
+                                                    <select type="select" name="admin" id="admin"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                <option value="0">Salarié</option>
+                                <option value="1">Admin</option>
+                                </select>
                                                 </div>
                                             @endif
 
@@ -525,10 +526,12 @@
                             <div class="w-1/5">
                                 <label for="admin"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                    admin</label>
-                                <input type="number" name="admin" id="admin" min="0" max="1"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    placeholder="ex : 0 ou 1" autofocus>
+                                    Rôle</label>
+                                <select type="select" name="admin" id="admin"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                <option value="0">Salarié</option>
+                                <option value="1">Admin</option>
+                                </select>
                             </div>
                         @endif
 
