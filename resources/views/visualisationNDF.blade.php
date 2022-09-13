@@ -30,6 +30,7 @@
             <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" id="formndf" target="_blank">
                 @csrf
                 <input id="inputdate" type="hidden" name="selectedMonth" value="{{$utilisateurs[0]->mois}}">
+                <input type="hidden" name="idUser" value="{{$utilisateurs[0]->idUser}}">
 
 
                 <button type="submit" class="validerNDF" target="_blank">Générer et valider la note de

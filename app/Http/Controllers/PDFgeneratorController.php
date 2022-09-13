@@ -40,8 +40,8 @@ class PDFgeneratorController extends Controller
 
 
         // - On recupère tous les événements correspondants au mois à l'ecran et au user concerné
-        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", Auth::user()->id)->where('mois','=', $request->selectedMonth)->get();
-
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $request->idUser)->where('mois','=', $request->selectedMonth)->get();
+        
         if(count($utilisateurs) == 0){
             Session::flash("noevents","Il n'y a aucun évènements pour ce mois-ci !");
             return redirect('dashboard');

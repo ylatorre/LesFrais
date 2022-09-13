@@ -1,13 +1,33 @@
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="font-bold text-xl py-5" style="border-bottom: 4px solid black">Vos notes de frais validées : </h1>
+        <h1 class="font-bold text-base py-5" style="border-bottom: 4px solid black">Vos notes de frais validées : </h1>
     </x-slot>
+<style>
+    td{
+        font-size:0.75rem;
+    }
+    th{
+        font-size:.75rem;
+    }
+    @media screen and (max-width:860px){
+        td{
+            font-size: 0.5rem;
 
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+        }
+        th{
+            font-size: 0.5rem;
+        }
+        .bye860{
+            display:none;
+        }
+    }
+</style>
+    <table class=" w-full text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 text-center">Date de la note de frais</th>
-                <th scope="col" class="px-6 py-3 text-center">Nombre d'évènements</th>
+                <th scope="col" class="bye860 px-6 py-3 text-center">Nombre d'évènements</th>
                 <th scope="col" class="px-6 py-3 text-center">Chevaux fiscaux</th>
                 <th scope="col" class="px-6 py-3 text-center">Votre taux/km</th>
                 <th scope="col" class="px-6 py-3 text-center"></th>
@@ -20,7 +40,7 @@
                     <td class="px-6 py-4 text-center" style="background:white; color:black;">
                         {{ $authInfosndf->MoisEnCours }}
                     </td>
-                    <td class="px-6 py-4 text-center" style="background:white; color:black;">
+                    <td class="bye860 px-6 py-4 text-center" style="background:white; color:black;">
                         {{ $authInfosndf->NombreEvenement }}
                     </td>
                     <td class="px-6 py-4 text-center" style="background:white; color:black;">
@@ -33,6 +53,7 @@
                         <form method="POST" action="{{ route('PDFgeneratorPerMonth') }}" target="_blank">
                             @csrf
                             <input type="hidden" name="selectedMonth" value="{{$authInfosndf->MoisEnCours}}">
+                            <input type="hidden" name="idUser" value="{{$idUser}}">
                             <button
                                 class="mr-2 inline-flex items-center px-3.5 py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                 type="submit">

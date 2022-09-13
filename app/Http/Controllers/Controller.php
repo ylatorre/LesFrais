@@ -287,6 +287,7 @@ class Controller extends BaseController
             return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
+
         return view('visualisationNDF', [
             'utilisateurs' => $utilisateurs,
             'dateNDFpourPDFetVISU' => $dateNDFpourPDFetVISU,
@@ -313,8 +314,10 @@ class Controller extends BaseController
     public function mesNDF()
     {
         $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->where('Valide', '=', '1')->get();
+        $idUser = Auth::user()->id;
 
-        return view('mesndfs', ['authInfosndfs' => $authInfosndfs]);
+
+        return view('mesndfs', ['authInfosndfs' => $authInfosndfs , 'idUser' => $idUser]);
     }
     public function visumesndf(Request $request)
     {
