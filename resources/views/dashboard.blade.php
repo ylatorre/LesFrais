@@ -139,7 +139,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="essence" name="essence" type="number" value="1" min="0">
+                                        id="essence" name="essence" type="number" value="0" min="0">
 
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage" id="peage" type="number" value="1" min="0">
+                                        name="peage" id="peage" type="number" value="0" min="0">
 
                                 </div>
                                 <div class="mb-3 col">
@@ -160,7 +160,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="parking" id="parking" type="number" value="1" min="0">
+                                        name="parking" id="parking" type="number" value="0" min="0">
 
                                 </div>
 
@@ -170,7 +170,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="divers" id="divers" type="number" value="1" min="0">
+                                        name="divers" id="divers" type="number" value="0" min="0">
 
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas" id="repas" type="number" value="1" min="0">
+                                        name="repas" id="repas" type="number" value="0" min="0">
 
                                 </div>
                                 <div class="mb-3 col">
@@ -191,7 +191,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="hotel" id="hotel" type="number" value="1" min="0">
+                                        name="hotel" id="hotel" type="number" value="0" min="0">
 
                                 </div>
                                 <div class="mb-3 col">
@@ -200,7 +200,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="kilometrage" name="kilometrage" type="number" value="1"
+                                        id="kilometrage" name="kilometrage" type="number" value="0"
                                         min="0">
 
                                 </div>

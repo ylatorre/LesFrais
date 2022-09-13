@@ -32,6 +32,10 @@
 
 
         /* responsive administration buttons*/
+        .responsiv-administration-buttons{
+            padding-left:8px;
+            padding-right:8px;
+        }
 
 @media screen and (max-width:1450px){/* 1450PX */
     td{
