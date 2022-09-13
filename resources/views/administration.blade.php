@@ -27,6 +27,188 @@
     {{-- } --}}
     {{-- </style> --}}
     <!-- Modal toggle -->
+    <style>
+
+
+
+        /* responsive administration buttons*/
+
+@media screen and (max-width:1450px){/* 1450PX */
+    td{
+        font-size:15px;
+        width:10%;
+
+    }
+    th{
+        font-size:15px;
+        width:10%;
+
+    }
+    .responsiv-administration-buttons{
+        font-size:12px ;
+        padding:6px;
+    }
+    .th-table-admin{
+        font-size:10px;
+        padding-left:10px;
+        padding-right:10px;
+        padding-top:6px;
+        padding-bottom:6px;
+        max-width:10%;
+    }
+}
+@media screen and (max-width:1240px){/*--------------------------------- 1240PX */
+    td{
+        font-size:12px;
+        width:10%;
+
+    }
+    th{
+        font-size:12px;
+        width:10%;
+
+    }
+    .responsiv-administration-buttons{
+        font-size:12px ;
+        padding:6px;
+    }
+    .th-table-admin{
+        font-size:10px;
+        padding-left:10px;
+        padding-right:10px;
+        padding-top:6px;
+        padding-bottom:6px;
+        max-width:10%;
+    }
+}
+@media screen and (max-width:1062px){/*--------------------------------- 1062PX */
+    .tchao1062{
+        display:none;
+    }
+    td{
+        font-size:12px;
+        width:10%;
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+    th{
+        font-size:12px;
+        width:10%;
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+
+   .responsiv-administration-buttons{
+        font-size:10px ;
+        padding-left:6px;
+        padding-right:6px;
+        padding-top:2px;
+        padding-bottom:2px;
+    6
+    .th-table-admin{
+        font-size:10px;
+        padding-left:8px;
+        padding-right:8px;
+        padding-top:4px;
+        padding-bottom:4px;
+        max-width:10%;
+    }
+}
+@media screen and (max-width:780px){/*--------------------------------- 780PX */
+
+.tchao780{
+    display:none;
+}
+    td{
+        font-size:12px;
+        width:10%;
+        padding-top:8px;
+        padding-bottom:8px;
+    }
+    th{
+        font-size:12px;
+        width:10%;
+        padding-top:8px;
+        padding-bottom:8px;
+    }
+
+   .responsiv-administration-buttons{
+        font-size:9px ;
+        padding-left:6px;
+        padding-right:6px;
+        padding-top:2px;
+        padding-bottom:2px;
+    }
+    .th-table-admin{
+        font-size:8px;
+        padding-left:6px;
+        padding-right:6px;
+        padding-top:2px;
+        padding-bottom:2px;
+        max-width:10%;
+    }
+}
+@media screen and (max-width:540px){/*--------------------------------- 540PX */
+    td{
+        font-size:8px;
+        width:10%;
+        padding-top:5px;
+        padding-bottom:5px;
+    }
+    th{
+        font-size:8px;
+        width:10%;
+        padding-top:5px;
+        padding-bottom:5px;
+    }
+
+      .responsiv-administration-buttons{
+        font-size:8px ;
+        padding-left:5px;
+        padding-right:5px;
+        padding-top:2px;
+        padding-bottom:2px;
+    }
+    .th-table-admin{
+
+        padding-left:4px;
+        padding-right:4px;
+        padding-top:2px;
+        padding-bottom:2px;
+        max-width:10%;
+    }
+}
+@media screen and (max-width:420px){/*--------------------------------- 420PX */
+    td{
+        font-size:8px;
+        width:10%;
+        padding-top:4px;
+        padding-bottom:4px;
+    }
+    th{
+        font-size:8px;
+        width:10%;
+        padding-top:4px;
+        padding-bottom:4px;
+    }
+
+   .responsiv-administration-buttons{
+        font-size:6px;
+        padding-left:5px;
+        padding-right:5px;
+        padding-top:2px;
+        padding-bottom:2px;
+    }
+    .th-table-admin{
+
+        padding-left:2px;
+        padding-right:2px;
+        padding-top:1px;
+        padding-bottom:1px;
+        max-width:10%;
+    }
+}
+    </style>
     <div>
         @if (\Session::has('failure'))
             <div
@@ -50,34 +232,34 @@
 
     </div>
     <div class="relative overflow-visible shadow-md sm:rounded-lg ">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="table-text-responsiv w-full text-left text-gray-500 dark:text-gray-400">
+            <thead class=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="th-table-admin text-center">
                         Rang
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="th-table-admin text-center">
                         Utilisateur
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="tchao1062 th-table-admin text-center">
                         Email
                     </th>
 
 
 
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="tchao780 th-table-admin  text-center">
                         Numero de Téléphone
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="th-table-admin  text-center">
                         Type de véhicule
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="tchao780 th-table-admin  text-center">
                         chevaux Fiscaux
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="th-table-admin  text-center">
                         Taux/Km
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="tchao780 th-table-admin  text-center">
                         Mot de passe
                     </th>
 
@@ -97,100 +279,100 @@
                         @if ($user->admin == 1 && $user->superadmin == 0)
 
                             <th scope="row"
-                                    class="px-6 py-4 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
+                                    class="px-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                     style="background:white;">
                                     Modérateur
                                 </th>
                             <th scope="row"
-                                class="px-6 py-4 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
+                                class="px-2 py-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
                             </th>
-                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                            <td class="tchao1062 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                            <td class=" py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                            <td class=" py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="px-6 py-4 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 *******
                             </td>
                         @elseif($user->superadmin == 1)
 
                             <th scope="row"
-                                class="px-6 py-4 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 Administrateur
                             </th>
                             <th scope="row"
-                                class="px-6 py-4 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao1062 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                            <td class=" py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                            <td class=" py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="px-6 py-4 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 *******
                             </td>
                             </th>
                         @else
                             <th scope="row"
-                                    class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                    class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                     style="background:white;">
                                     Salarié
                                 </th>
                             <th scope="row"
-                                class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            <td class="px-6 py-4 text-center" style="background:white;">
+                            <td class="tchao1062 py-2 text-center" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="px-6 py-4 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="px-6 py-4 text-center" style="background:white;">
+                            <td class="py-2 text-center" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="px-6 py-4 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class="px-6 py-4 text-center" style="background:white;">
+                            <td class="py-2 text-center" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="px-6 py-4 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center" style="background:white;">
                                 *******
                             </td>
                             </th>
                         @endif
 
 
-                        <td class="px-6 py-4 overflow-visible text-right" style="background:white;">
-                            <div class="flex justify-end overflow-visible ">
+                        <td class="py-2 overflow-visible text-right" style="background:white;">
+                            <div class=" flex justify-start overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
                                     <form method="POST" action="{{ route('gestionnairendf') }}"
@@ -215,7 +397,7 @@
 
 
                                         <button
-                                            class="mr-2 inline-flex items-center px-3.5 py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-sm text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                            class="responsiv-administration-buttons block mr-2 items-center px-1 py-1.5 sm:py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
                                             Notes de frais
                                         </button>
@@ -223,13 +405,13 @@
                                 @endif
                                 @if (Auth::user()->admin == 1 && $user->superadmin != 1)
                                     <button
-                                        class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="responsiv-administration-buttons block mr-2   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="authentication-modal{{ $i }}">
                                         Modifier
                                     </button>
                                 @elseif(Auth::user()->superadmin == 1)
                                     <button
-                                        class="block mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="responsiv-administration-buttons block mr-2   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="authentication-modal{{ $i }}">
                                         Modifier
                                     </button>
@@ -237,13 +419,13 @@
 
                                 @if (Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $user->salarie == 1)
                                     <button
-                                        class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
                                         Supprimer
                                     </button>
                                 @elseif(Auth::user()->superadmin == 1 && Auth::user()->email != $user->email)
                                     <button
-                                        class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
                                         Supprimer
                                     </button>
