@@ -251,7 +251,7 @@
 
 }
 .TD-table{
-    font-size:3px;
+    font-size:5px;
 
 }
 .td-sous-total{
@@ -297,11 +297,11 @@
     }
 
 .TD-table{
-    font-size:2px;
+    font-size:5px;
 
 }
 .td-sous-total{
-    font-size: 4px;
+    font-size: 5px;
 }
 .validerNDF{
 
