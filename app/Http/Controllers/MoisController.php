@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Mois;
 use App\Models\Event;
+use App\Mail\MailNotif;
 use App\Models\infosndf;
 use App\Models\Mois_valide;
+use App\Mail\MailNotifAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -33,6 +36,15 @@ class MoisController extends Controller
             return redirect('dashboard');
         }
 
+        /* - Variables utilisées dans les mails*/
+
+        $moderators = DB::table('users')->where('admin','=','1')->get();
+        $superadmin = DB::table('users')->where('superadmin','=','1')->get();
+        $actualUser = Auth::user()->name;
+        $monthNDF = $request->lockedmonth;
+
+
+
         /* - Quand on clique sur soumetre la note de frais, cela créer une note de frais et la vérouille*/
 
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->lockedmonth)->get();
@@ -47,6 +59,19 @@ class MoisController extends Controller
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
                 "tauxKM" => Auth::user()->taux,
             ]);
+
+/* - envois des mails suite à la validation */
+        if(Auth::user()->salarie == 1){
+            for ($i=0; $i < count($moderators) ; $i++) {
+                Mail::to($moderators[$i]->email)->send(new MailNotif($moderators,$i,$actualUser,$monthNDF));
+            }
+        }elseif(Auth::user()->admin == 1 && Auth::user()->superadmin == 0){
+            Mail::to($superadmin[0]->email)->send(new MailNotifAdmin($superadmin,$actualUser,$monthNDF));
+        }
+
+
+
+
         } else {
             Session::flash('dejasoumis', 'Ce mois à déjà été soumis à inspection !');
             return redirect('dashboard');
