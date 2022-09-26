@@ -60,7 +60,8 @@ class MoisController extends Controller
                 "tauxKM" => Auth::user()->taux,
             ]);
 
-/* - envois des mails suite à la validation */
+/* - envois des mails suite à la validation de la note de frais */
+
         if(Auth::user()->salarie == 1){
             for ($i=0; $i < count($moderators) ; $i++) {
                 Mail::to($moderators[$i]->email)->send(new MailNotif($moderators,$i,$actualUser,$monthNDF));
@@ -69,10 +70,10 @@ class MoisController extends Controller
             Mail::to($superadmin[0]->email)->send(new MailNotifAdmin($superadmin,$actualUser,$monthNDF));
         }
 
-
-
-
         } else {
+
+            /* - Si la note de frais à deja été créée le mail n'est pas envoyé pour évitéer le spam */
+
             Session::flash('dejasoumis', 'Ce mois à déjà été soumis à inspection !');
             return redirect('dashboard');
         }

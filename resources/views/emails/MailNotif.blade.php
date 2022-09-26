@@ -17,18 +17,18 @@
             font-weight:bold;
         }
         h1{
-            font-size:1rem;
+            font-size:16px;
         }
     </style>
 
 
 
 <br>
-    <h1> Bonjour {{$modo->name}},</h1><br>
+    <h1>Bonjour {{$modo->name}},</h1><br>
 
-    <p>     L'utilisateur {{$actualUser}} à demandé la validation de sa note de frais de <strong>{{$monthNDF}}</strong> </p><br>
+    <p>     L'utilisateur {{$actualUser}} à demandé la validation de sa note de frais de <strong>{{$monthNDF}}.</strong></p><br>
 
-    <p>     Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a>afin de la valider dans votre espace Administration.</p><br>
+    <p>     Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace Administration.</p><br>
 
     <footer>
         <p>Très cordialement,</p><br>
