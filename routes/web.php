@@ -67,4 +67,6 @@ Route::post('suppression',[Controller::class,'supprimerNDF'])->name('supprimerND
 Route::get('Mes-notes-de-frais',[Controller::class,'mesNDF'])->name('mesNDF')->middleware(['auth']);
 Route::post('visu-mes-notes-de-frais',[Controller::class,'visumesndf'])->name('visumesndf')->middleware(['auth']);
 
+Route::post('repas',[Controller::class,'repas'])->name('repas')->middleware(['auth']);
+
 require __DIR__.'/auth.php';

@@ -388,6 +388,8 @@
                                         </div> --}}
                                         <input type="hidden" name="utilisateur" value="{{ $user->name }}">
 
+                                        <input type="hidden" name="salarie" value="{{$user->salarie}}">
+
                                         <input type="hidden" name="selectedMonth" id="selectedMonth">
 
                                         <input type="hidden" name="listLockedMonth" id="listLockedMonth"

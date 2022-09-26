@@ -19,6 +19,15 @@
                         Validation
                     </th>
                      @if (Auth::user()->superadmin == 1)
+
+                        <th class="px-6 py-3 text-center">Note de frais</th>
+                        <th class="px-6 py-3 text-center">Suppression</th>
+
+                        <!-- * permet a l'admin de pouvoir voir les ndfs validé des salariés ainsi que ces propres NDFs mais pas celles du super admin ni celles des autres admins -->
+
+                        @elseif ((Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $isSalarie == 1 && count($ndfsemploye) != 0)||($utilisateurSelectionne == Auth::user()->name && Auth::user()->admin == 1 && Auth::user()->superadmin == 0))
+
+                        <th class="px-6 py-3 text-center">Note de frais</th>
                         <th class="px-6 py-3 text-center">Suppression</th>
                     @endif
 
@@ -60,6 +69,18 @@
 
                                 @endif
                                 @if(Auth::user()->superadmin == 1)
+                                    @if($ndfsemploye[$i]->Valide == 1)
+                                        <td>
+                                            <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" class="flex flex-row items-center justify-around">
+                                                @csrf
+                                                <input type="hidden" value="{{ $userId }}" name="idUser">
+                                                <input type="hidden" value="{{ $ndfsemploye[$i]->MoisEnCours }}" name="selectedMonth">
+                                                <button type ="submit" class="text-blue-600 text-bold border-4 border-blue-600  py-1 px-1">Voir la note de frais</button>
+                                            </form>
+                                        </td>
+                                        @else
+                                        <td class="text-center">. . .</td>
+                                    @endif
                                 <td
                                     class="px-6 py-3 text-center">
                                     <form method="POST" action="{{ route('supprimerNDF') }}">
@@ -72,6 +93,32 @@
                                     </form>
                                 </td>
                                 @endif
+                                <!-- * permet a l'admin de pouvoir voir les ndfs validé des salariés ainsi que ces propres NDFs mais pas celles du super admin ni celles des autres admins -->
+                                @if((Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $isSalarie == 1)||($utilisateurSelectionne == Auth::user()->name && Auth::user()->admin == 1 && Auth::user()->superadmin == 0))
+                                @if($ndfsemploye[$i]->Valide == 1)
+                                    <td>
+                                        <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" class="flex flex-row items-center justify-around">
+                                            @csrf
+                                            <input type="hidden" value="{{ $userId }}" name="idUser">
+                                            <input type="hidden" value="{{ $ndfsemploye[$i]->MoisEnCours }}" name="selectedMonth">
+                                            <button type ="submit" class="text-blue-600 text-bold border-4 border-blue-600  py-1 px-1">Voir la note de frais</button>
+                                        </form>
+                                    </td>
+                                    @else
+                                    <td class="text-center">. . .</td>
+                                @endif
+                            <td
+                                class="px-6 py-3 text-center">
+                                <form method="POST" action="{{ route('supprimerNDF') }}">
+                                    @csrf
+                                    <input type="hidden" name="username"
+                                        value="{{ $ndfsemploye[$i]->Utilisateur }}">
+                                    <input type="hidden" name="moisNDF"
+                                        value="{{ $ndfsemploye[$i]->MoisEnCours }}">
+                                    <button type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1">Supprimer</button>
+                                </form>
+                            </td>
+                            @endif
 
 
 
