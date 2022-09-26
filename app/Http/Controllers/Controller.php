@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class Controller extends BaseController
 {
@@ -210,12 +211,16 @@ class Controller extends BaseController
         $employes = DB::table('users')->where('salarie', '=', '1')->get();
         $ndfsemploye = DB::table('infosndfs')->where('Utilisateur', "=", $request->utilisateur)->get();
         $utilisateurSelectionne = $request->utilisateur;
+        $userId = $request->userId;
+        $isSalarie = $request->salarie;
 
 
         return view('gestionnairendf', [
             'utilisateurSelectionne' => $utilisateurSelectionne,
             'employes' => $employes,
             'ndfsemploye' => $ndfsemploye,
+            'userId' => $userId,
+            'isSalarie' => $isSalarie
         ]);
     }
 
@@ -306,7 +311,7 @@ class Controller extends BaseController
     }
     public function supprimerNDF(Request $request)
     {
-
+        
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->delete();
 
         return redirect(route('gestionaireUser'));
@@ -314,7 +319,7 @@ class Controller extends BaseController
     public function mesNDF()
     {
         $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->get();
-        
+
         $idUser = Auth::user()->id;
 
 
@@ -324,5 +329,9 @@ class Controller extends BaseController
     {
 
         return redirect(route('mesNDF'));
+    }
+    public function repas(Request $request){
+        dd('interception');
+        return redirect("/dashboard");
     }
 };
