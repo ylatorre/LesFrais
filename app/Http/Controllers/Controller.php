@@ -313,7 +313,8 @@ class Controller extends BaseController
     }
     public function mesNDF()
     {
-        $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->where('Valide', '=', '1')->get();
+        $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->get();
+        
         $idUser = Auth::user()->id;
 
 
