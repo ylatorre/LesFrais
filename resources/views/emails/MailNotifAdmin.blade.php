@@ -30,7 +30,7 @@
     <p>    Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace Administration.</p><br>
 
     <footer>
-    <p>Très cordialement,</p><br>
+    <p>Très cordialement.</p><br>
     </footer>
 
 
