@@ -87,7 +87,7 @@
                                         @csrf
                                         <input type="hidden" name="username"
                                             value="{{ $ndfsemploye[$i]->Utilisateur }}">
-                                        <input type="hidden" name="moisNDF"
+                                        <input type="hidden" name="moisndf"
                                             value="{{ $ndfsemploye[$i]->MoisEnCours }}">
                                         <button type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1">Supprimer</button>
                                     </form>
@@ -113,7 +113,7 @@
                                     @csrf
                                     <input type="hidden" name="username"
                                         value="{{ $ndfsemploye[$i]->Utilisateur }}">
-                                    <input type="hidden" name="moisNDF"
+                                    <input type="hidden" name="moisndf"
                                         value="{{ $ndfsemploye[$i]->MoisEnCours }}">
                                     <button type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1">Supprimer</button>
                                 </form>
