@@ -48,12 +48,13 @@ class MoisController extends Controller
         /* - Quand on clique sur soumetre la note de frais, cela créer une note de frais et la vérouille*/
 
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->lockedmonth)->get();
-
+        $dateDuJour = date('d/m/Y');
 
         if (count($infosNDF) == 0) {
             infosndf::create([
                 "Utilisateur" => Auth::user()->name,
                 "MoisEnCours" => $request->lockedmonth,
+                "DateSoumission" => $dateDuJour,
                 "NombreEvenement" => count($NBevents),
                 "Valide" => 0,
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,

@@ -12,9 +12,13 @@ class infosndf extends Model
     protected $fillable = [
         'Utilisateur',
         'MoisEnCours',
+        'DateSoumission',
+        'ValideePar',
+        'DateValidation',
         'NombreEvenement',
         'Validation',
         'ChevauxFiscaux',
+        'ValidationEnCours',
         'Valide',
         'tauxKM'
     ];

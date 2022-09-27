@@ -178,13 +178,34 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="repas">
-                                        Repas
+                                        Repas 1
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="repas" id="repas" type="number" value="0" min="0">
 
                                 </div>
+                            <form id="formRepas" method="POST" action="{{route('repas')}}">
+                                @csrf
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="repas">
+                                        Repas 2
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="repas2" id="repas2" type="number" value="0" min="0">
+
+                                </div>
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="repas">
+                                        Repas 3
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="repas3" id="repas3" type="number" value="0" min="0">
+
+                                </div>
+                            </form>
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="hotel">
                                         Hôtel
@@ -430,7 +451,11 @@
 
 </script>
 
+<script type="text/javascript">
 
+    const formRepas = document.getElementById('formRepas');
+    console.log(formRepas);
+</script>
 
 
 

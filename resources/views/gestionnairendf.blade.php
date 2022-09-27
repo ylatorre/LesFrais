@@ -58,7 +58,7 @@
                                         <input type="hidden" name="employe"
                                             value="{{ $ndfsemploye[$i]->Utilisateur }}">
 
-                                        <x-button type="submit">Valider la note de frais</x-button>
+                                        <x-button type="submit">voir la note de frais</x-button>
                                     </form>
                                 </td>
                             @elseif($ndfsemploye[$i]->Valide == 1)

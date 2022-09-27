@@ -292,10 +292,12 @@ class Controller extends BaseController
             return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
+        $infosNDF = DB::table('infosndfs')->where('Utilisateur','=', $request->employe)->where('MoisEnCours','=',$request->moisNDF)->get();
 
         return view('visualisationNDF', [
             'utilisateurs' => $utilisateurs,
             'dateNDFpourPDFetVISU' => $dateNDFpourPDFetVISU,
+            'infosNDF' => $infosNDF,
         ]);
     }
 
@@ -303,15 +305,17 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
-        DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
+        DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
+        DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValideePar' => Auth::user()->name]);
+        DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['DateValidation' => date('d/m/Y')]);
 
         Session::flash('validatesuccess', 'La note de frais à été validée !');
         return redirect(route('gestionaireUser'));
     }
     public function supprimerNDF(Request $request)
     {
-        
+
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->delete();
 
         return redirect(route('gestionaireUser'));
@@ -321,7 +325,6 @@ class Controller extends BaseController
         $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->get();
 
         $idUser = Auth::user()->id;
-
 
         return view('mesndfs', ['authInfosndfs' => $authInfosndfs , 'idUser' => $idUser]);
     }

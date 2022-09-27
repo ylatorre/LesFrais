@@ -41,7 +41,8 @@ class PDFgeneratorController extends Controller
 
         // - On recupère tous les événements correspondants au mois à l'ecran et au user concerné
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $request->idUser)->where('mois','=', $request->selectedMonth)->get();
-        
+
+
         if(count($utilisateurs) == 0){
             Session::flash("noevents","Il n'y a aucun évènements pour ce mois-ci !");
             return redirect('dashboard');
@@ -56,6 +57,7 @@ class PDFgeneratorController extends Controller
         }
 
         $ndf = DB::table('infosndfs')->where('MoisEnCours','=',$request->selectedMonth)->where("Utilisateur", "=", $utilisateurs[0]->name)->get();
+        $dateDuJour = date('d/m/Y');
 
         // - Gestion du cas dans lequel il n'y a pas d'évenements sur le mois
         if ($utilisateurs->isEmpty()) {
@@ -68,15 +70,23 @@ class PDFgeneratorController extends Controller
         infosndf::create([
                 'Utilisateur' => $utilisateurs[0]->name,
                 'MoisEnCours' => $request->selectedMonth,
+                'DateSoumission' => $dateDuJour,
                 'NombreEvenement' => count($utilisateurs),
                 'ChevauxFiscaux' => $utilisateurs[0]->chevauxFiscaux,
                 'tauxKM' => $utilisateurs[0]->taux
                 ]);
-        if(Auth::user()->admin == 1){
+        if(Auth::user()->superadmin == 1){
         DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['Valide' => 1]);
+        DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['ValidationEnCours' => 0]);
+        DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['ValideePar' => Auth::user()->name]);
+        DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->update(['DateValidation' => date('d/m/Y')]);
         }
 
+        $infosNDF = DB::table('infosndfs')->where('Utilisateur','=', $utilisateurs[0]->name)->where('MoisEnCours','=',$request->selectedMonth)->get();
+
         $dateNDF = explode("-",$utilisateurs[0]->mois);
+
+
 
         // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
 
@@ -124,9 +134,11 @@ class PDFgeneratorController extends Controller
 
  $dateNDFpourPDFetVISU = $moisDateNDF." ".$dateNDF[0];
 
+
+
         // - On load le PDF grace a DOMPDF
 
-        $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact(["utilisateurs","dateNDFpourPDFetVISU"]));
+        $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact(["utilisateurs","dateNDFpourPDFetVISU","infosNDF"]));
         // dd($pdf);
         return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');
     }
