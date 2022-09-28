@@ -71,7 +71,7 @@
                                 @if(Auth::user()->superadmin == 1)
                                     @if($ndfsemploye[$i]->Valide == 1)
                                         <td>
-                                            <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" class="flex flex-row items-center justify-around">
+                                            <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" class="flex flex-row items-center justify-around" target="_blank">
                                                 @csrf
                                                 <input type="hidden" value="{{ $userId }}" name="idUser">
                                                 <input type="hidden" value="{{ $ndfsemploye[$i]->MoisEnCours }}" name="selectedMonth">
@@ -97,7 +97,7 @@
                                 @if((Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $isSalarie == 1)||($utilisateurSelectionne == Auth::user()->name && Auth::user()->admin == 1 && Auth::user()->superadmin == 0))
                                 @if($ndfsemploye[$i]->Valide == 1)
                                     <td>
-                                        <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" class="flex flex-row items-center justify-around">
+                                        <form method="POST" action="{{route('PDFgeneratorPerMonth')}}" class="flex flex-row items-center justify-around" target="_blank">
                                             @csrf
                                             <input type="hidden" value="{{ $userId }}" name="idUser">
                                             <input type="hidden" value="{{ $ndfsemploye[$i]->MoisEnCours }}" name="selectedMonth">
