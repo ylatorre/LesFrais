@@ -344,15 +344,15 @@
 
 
         @endif
- @if(Auth::user()->superadmin == 1)
+        @if(Auth::user()->superadmin == 1)
                 <form method="POST" action="{{route('validationNDF')}}" id="formsalarievisu">
                     @csrf
                         <input id="inputmonthsalarie" type="hidden" name="moisNDF">
                         <input id="inputemployesalarie" type="hidden" name="employe" value="{{Auth::user()->name}}">
 
                         <x-button type="button" id="salarievisuNDF">Visualiser ma note de frais</x-button>
-                    </form>
-                @endif
+                </form>
+        @endif
 
         @if(Auth::user()->admin == 1 && Auth::user()->superadmin == 1)
 

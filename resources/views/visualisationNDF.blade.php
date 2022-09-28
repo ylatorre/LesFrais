@@ -490,10 +490,16 @@
                                 $total = round($SousTotalTransport + $SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux, 2);
                             @endphp
                            <tr>
-                            <td class="BGyellow pl-1" style="border:2px solid black; font-size:10px;" colspan="2">Taux:
+                            <td class="BGyellow pl-1" style="border:2px solid black; font-size:10px;" colspan="2">Taux :
                                 {{ $utilisateurs[0]->taux }} € / km</td>
-                            <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">Soumise
-                                le: {{ $infosNDF[0]->DateSoumission }}</td>
+
+
+                                @if(count($infosNDF) == 0)
+                                    <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">Pas encore soumise</td>
+                                @else
+                                    <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">Soumise le : {{ $infosNDF[0]->DateSoumission }}</td>
+                                @endif
+
 
 
                             <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
@@ -524,10 +530,13 @@
                         </tr>
                         <tr>
                             <td class="BGyellow pl-1" rowspan="1" colspan="2"
-                                style="border-left: 2px solid black; font-size:10px;">TVA: {{ $totalTVA20 + $totalTVA10 }} €
+                                style="border-left: 2px solid black; font-size:10px;">TVA : {{ $totalTVA20 + $totalTVA10 }} €
                             </td>
-                            <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">
-                                Validée le: {{ $infosNDF[0]->DateValidation }}</td>
+                                @if(count($infosNDF) == 0)
+                                    <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">Pas encore soumise</td>
+                                @else
+                                    <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">Validée le : {{ $infosNDF[0]->DateValidation }}</td>
+                                @endif
 
                             <td class="TD-table text-center" colspan="4">{{ $SousTotalTransport }} €</td>
                             <td class="TD-table text-center BGnuit" colspan="1"></td>
@@ -541,10 +550,15 @@
                         </tr>
                         <tr>
                             <td class="BGyellow pl-1" style="border:2px solid black; font-size:10px;" colspan="2">
-                                TOTAL HT: {{ $total - ($totalTVA10 + $totalTVA20) }} €</td>
-                            <td class="BGyellow pl-1" colspan="3" rowspan="1"
-                                style="border:2px solid black; font-size:10px;">Validée par:
+                                TOTAL HT : {{ $total - ($totalTVA10 + $totalTVA20) }} €</td>
+                                @if(count($infosNDF) == 0)
+                                <td class="BGyellow pl-1" colspan="3" rowspan="1"
+                                style="border:2px solid black; font-size:10px;">Pas encore soumise</td>
+                                @else
+                                <td class="BGyellow pl-1" colspan="3" rowspan="1"
+                                style="border:2px solid black; font-size:10px;">Validée par :
                                 {{ $infosNDF[0]->ValideePar }}</td>
+                                @endif
                             <td class="TD-table text-center BGgris" colspan="4">
                                 {{ $SousTotalTransport - $totalTVA20 }} € HT</td>
                             <td class="TD-table text-center BGnuit" colspan="1"></td>
