@@ -31,6 +31,11 @@
                 <th scope="col" class="px-6 py-3 text-center">Chevaux fiscaux</th>
                 <th scope="col" class="px-6 py-3 text-center">Votre taux/km</th>
                 <th scope="col" class="px-6 py-3 text-center"></th>
+                @if(Auth::user()->superadmin == 1)
+                        <th scope="col" class="px-6 py-3 text-center">
+                            Suppression
+                        </th>
+                    @endif
             </tr>
         </thead>
         <tbody>
@@ -64,6 +69,18 @@
                             </button>
                         </form>
                     </td>
+                    @if(Auth::user()->superadmin == 1)
+                        <td class="px-6 py-4 text-center" style="background:white; color:black;">
+                            <form method="POST" action="{{ route('supprimerNDF') }}">
+                                @csrf
+                                <input type="hidden" name="username"
+                                            value="{{$authInfosndfs[$i]->Utilisateur }}">
+                                        <input type="hidden" name="moisndf"
+                                            value="{{$authInfosndfs[$i]->MoisEnCours}}">
+                                        <button type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1">Supprimer</button>
+                            </form>
+                        </td>
+                    @endif
                 </tr>
                 @else
                 <tr
