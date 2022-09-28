@@ -52,6 +52,11 @@
 
         .TD-table {
             font-size: 7px;
+            border: 1px solid black;
+            padding: 2px;
+        }
+        .TD-table-2 {
+            font-size: 7px;
             border: 2px solid black;
             padding: 2px;
         }
@@ -104,8 +109,8 @@
             <td class="td-top-table">{{ $utilisateurs[0]->name }}</td>
         </tr>
         <tr>
-            <td class="td-top-table">Frais de</td>
-            <td class="td-top-table">{{ $dateNDFpourPDFetVISU }}</td>
+
+            <td colspan="2" class="td-top-table">Note de frais pour {{ $dateNDFpourPDFetVISU }}</td>
         </tr>
 
     </table>
@@ -139,7 +144,7 @@
                     @foreach ($utilisateurs as $utilisateur)
                         <tr>
                             @php
-                            
+
                                 // - formatage de la date de début
                                 $dateFormatedStart = explode('-', $utilisateur->start);
                                 $dayStart = explode(' ', $dateFormatedStart[2]);
@@ -168,18 +173,19 @@
                                 /* régler le probleme de la tva et du total tva içi*/
 
                             @endphp
-                            <td class="TD-table text-center BGjour" style="white-space: nowrap;">du
+                            <!-- Valeurs dans le tableau -->
+                            <td class="TD-table-2 text-center BGjour" style="white-space: nowrap;">du
                                 {{ $datedebut }}<br> au {{ $datefin }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->title }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
-                            <td class="col-table text-center" style="border:2px solid black; overflow:hidden">
+                            <td class="TD-table col-table text-center" style=" overflow:hidden; border-right:2px solid black;">
                                 {{ $utilisateur->description }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->parking }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
-                            <td class="TD-table text-center">
+                            <td class="TD-table text-center" style="border-right:2px solid black;">
                                 {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                 €</td>
                             <td class="TD-table text-center">{{ $utilisateur->repas }} €</td>
@@ -200,30 +206,36 @@
                         $total = round($SousTotalTransport + $SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux, 2);
                     @endphp
                     <tr>
-                        <td class="BGyellow pl-1" style="border:2px solid black; font-size:10px;" colspan="2">Taux:
+                        <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:10px;"
+                            colspan="2" rowspan="3">Pour une puissance fiscale de
+                            {{ $utilisateurs[0]->chevauxFiscaux }} chevaux fiscaux <br>Taux :
                             {{ $utilisateurs[0]->taux }} € / km</td>
-                        <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">Soumise
-                            le: {{ $infosNDF[0]->DateSoumission }}</td>
+
+                        <td class="BGyellow pl-1 text-center" colspan="3"
+                            rowspan="3"style="border:2px solid black; font-size:10px;">Note de frais soumise le
+                            {{ $infosNDF[0]->DateSoumission }}<br>et validée le {{ $infosNDF[0]->DateValidation }}<br>
+                            par {{ $infosNDF[0]->ValideePar }}</td>
 
 
-                        <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+
+                        <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                             {{ $totalPeage }} €</td>
-                        <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                        <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                             {{ $totalParking }} €</td>
-                        <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                        <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                             {{ $totalEssence }} €</td>
-                        <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                        <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                             {{ $totalDivers }} €</td>
-                        <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                        <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                             {{ $totalTVA20 }} €</td>
-                        <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                        <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                             {{ $totalRepas }} €</td>
-                        <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                        <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                             {{ $totalHotels }} €</td>
-                        <td class="TD-table text-center"
+                        <td class="TD-table-2 text-center"
                             style="background: rgb(175, 175, 175) !important; border-bottom:2px solid red;">
                             {{ $totalTVA10 }} €</td>
-                        <td class="TD-table text-center"
+                        <td class="TD-table-2 text-center"
                             style="background: rgb(175, 175, 175) !important; border-bottom:2px solid red;">
                             {{ $totalKilometres }} Km</td>
 
@@ -233,53 +245,78 @@
                         {{--        <td class="TD-table">{{$totalDivers}}</td> --}}
                     </tr>
                     <tr>
-                        <td class="BGyellow pl-1" rowspan="1" colspan="2"
-                            style="border-left: 2px solid black; font-size:10px;">TVA: {{ $totalTVA20 + $totalTVA10 }} €
-                        </td>
-                        <td class="BGyellow pl-1" colspan="3" style="border:2px solid black; font-size:10px;">
-                            Validée le: {{ $infosNDF[0]->DateValidation }}</td>
 
-                        <td class="TD-table text-center" colspan="4">{{ $SousTotalTransport }} €</td>
-                        <td class="TD-table text-center BGnuit" colspan="1"></td>
-                        <td class="TD-table text-center" colspan="2" style="border-right:2px solid red">
+
+
+                        <td class="TD-table-2 text-center" colspan="4">{{ $SousTotalTransport }} €</td>
+                        <td class="TD-table-2 text-center BGnuit" colspan="1"></td>
+                        <td class="TD-table-2 text-center" colspan="2" style="border-right:2px solid red">
                             {{ $SousTotalRepasHotels }} €</td>
-                        <td class="TD-table text-center" colspan="2" style="border:2px solid red">Remboursement
-                            essence {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €{{-- * prix de l'essence --}}
+                        <td class="TD-table-2 text-center" colspan="1" style="border:2px solid red">Remboursement
+                            carburant {{-- * prix de l'essence --}}
+                        </td>
+                        <td class="TD-table-2 text-center" colspan="1" style="border:2px solid red">{{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €{{-- * prix de l'essence --}}
                         </td>
 
 
                     </tr>
                     <tr>
-                        <td class="BGyellow pl-1" style="border:2px solid black; font-size:10px;" colspan="2">
-                            TOTAL HT: {{ $total - ($totalTVA10 + $totalTVA20) }} €</td>
-                        <td class="BGyellow pl-1" colspan="3" rowspan="1"
-                            style="border:2px solid black; font-size:10px;">Validée par:
-                            {{ $infosNDF[0]->ValideePar }}</td>
-                        <td class="TD-table text-center BGgris" colspan="4">
+
+
+
+                        <td class="TD-table-2 text-center BGgris" colspan="4">
                             {{ $SousTotalTransport - $totalTVA20 }} € HT</td>
-                        <td class="TD-table text-center BGnuit" colspan="1"></td>
-                        <td class="TD-table text-center BGgris" colspan="2">
+                        <td class="TD-table-2 text-center BGnuit" colspan="1"></td>
+                        <td class="TD-table-2 text-center BGgris" colspan="2">
                             {{ round($SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux - $totalTVA10, 2) }}
                             € HT</td>
-                        <td class="TD-table text-center BGnuit" colspan="2"></td>
+                        <td class="TD-table-2 text-center BGnuit" colspan="2"></td>
 
                     </tr>
                     <tr>
-                        <td class="BGyellow pl-1 text-center" colspan="5"
-                            style="border:2px solid black; font-size:10px;">{{ count($utilisateurs) }} déplacements
-                        </td>
+                        @if ((explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
+                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
+                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre') &&
+                            count($utilisateurs) == 1)
+                            <td class="BGyellow pl-1 text-center" colspan="5"
+                                style="border:2px solid black; font-size:10px;">Votre déplacement pour le mois
+                                d'{{ $dateNDFpourPDFetVISU }}
+                            </td>
+                        @elseif(explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
+                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
+                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
+                            <td class="BGyellow pl-1 text-center" colspan="5"
+                                style="border:2px solid black; font-size:10px;">Vos {{ count($utilisateurs) }}
+                                déplacements pour le mois d'{{ $dateNDFpourPDFetVISU }}
+                            </td>
+                        @elseif(count($utilisateurs) == 1)
+                            <td class="BGyellow pl-1 text-center" colspan="5"
+                                style="border:2px solid black; font-size:10px;">Votre déplacement pour le mois de
+                                {{ $dateNDFpourPDFetVISU }}
+                            </td>
+                        @else
+                            <td class="BGyellow pl-1 text-center" colspan="5"
+                                style="border:2px solid black; font-size:10px;">Vos {{count($utilisateurs)}} déplacements pour le mois de
+                                {{ $dateNDFpourPDFetVISU }}
+                            </td>
+                        @endif
 
-                        <td class="TD-table text-center" colspan="9" style="font-size: 10px !important;">Total
-                            {{ $total }} € TTC</td>
+                        <td class="TD-table-2 text-center" colspan="3" style="font-size: 10px !important;">Total HT
+                            : {{ $total }} €</td>
+
+                        <td class="TD-table-2 text-center" colspan="3" style="font-size: 10px !important;">Total TVA
+                            : {{ $totalTVA20 + $totalTVA10 }} €</td>
+
+                        <td class="TD-table-2 text-center" colspan="3" style="font-size: 10px !important;">Total TTC
+                            : {{ $total }} €</td>
                     </tr>
 
                 </tbody>
 
 
             </table>
-            @foreach ($utilisateurs as $utilisateur)
-                {{-- <div class="flex justify-around items-center">ouais le pdf appartenant a {{ $utilisateur->name }}</div> --}}
-            @endforeach
+            {{-- <h1 style="color:grey; font-size:8px; text-align:center; ">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 -
+                Bâtiment A2 - 69130 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1> --}}
 
 
             {{-- <table class="pt-4">

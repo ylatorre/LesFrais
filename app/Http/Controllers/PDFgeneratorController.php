@@ -134,7 +134,7 @@ class PDFgeneratorController extends Controller
 
  $dateNDFpourPDFetVISU = $moisDateNDF." ".$dateNDF[0];
 
-
+    
 
         // - On load le PDF grace a DOMPDF
 
