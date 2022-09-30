@@ -218,12 +218,13 @@
                         @php
                             $compteur = $compteur+1;
                         @endphp
-                                @if($compteur >= 29)
+                                @if($compteur > 26)
 
                 </tbody>
             </table>
-                                <h1 class="text-center  " style="margin-top:18px;break-after:always; white-space:nowrap; font-size: 8px; color:#202020;">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 - Bâtiment A2 - 69130 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1>
 
+            <h1 class="text-center " style="margin-top:50px; position:relative;  white-space:nowrap; font-size: 7px; bottom:0px; color:#202020; bottom:0px;">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 - Bâtiment A2 - 69130 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1>
+                                            <div style="page-break-after: always;"></div>
             <table class="tablepdf">
                 <thead>
                     <th class="TH-table text-center BGjour" style="border: 2px solid black">Jours</th>
