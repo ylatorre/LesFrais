@@ -61,15 +61,15 @@ class MoisController extends Controller
                 "tauxKM" => Auth::user()->taux,
             ]);
 
-/* - envois des mails suite à la validation de la note de frais */
+/* - Envois des mails suite à la validation de la note de frais */
 
         if(Auth::user()->salarie == 1){
             for ($i=0; $i < count($moderators) ; $i++) {
                 Mail::to($moderators[$i]->email)->send(new MailNotif($moderators,$i,$actualUser,$monthNDF));
             }
         }elseif(Auth::user()->admin == 1 && Auth::user()->superadmin == 0){
-            Mail::to($superadmin[0]->email)->send(new MailNotifAdmin($superadmin,$actualUser,$monthNDF));
-        }
+                Mail::to($superadmin[0]->email)->send(new MailNotifAdmin($superadmin,$actualUser,$monthNDF));
+            }
 
         } else {
 
@@ -93,6 +93,7 @@ class MoisController extends Controller
     public function unlockMonth(Request $request)
     {
 
+        /* - fonction permettant le dévérouillage des mois lorceque la note de frais n'est plus validée */
 
         $valideoupas = DB::table('infosndfs')->select('Valide')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->get();
 

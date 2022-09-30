@@ -6,7 +6,7 @@
             </a>
 
         </x-slot>
-            
+
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -47,7 +47,7 @@
                         {{ __('Mot de passe oublié ?') }}
                     </a>
                 @endif
-                <a href="{{route('register')}}">{{__("S'enregistrer")}}</a>
+                {{-- <a href="{{route('register')}}">{{__("S'enregistrer")}}</a> --}}
 
                 <x-button class="ml-3">
                     {{ __('Se connecter') }}
