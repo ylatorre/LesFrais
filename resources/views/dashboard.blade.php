@@ -251,7 +251,7 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="description" class="mb-[5px]">Description de la mission</label>
-                                    <textarea name="description" id="description" rows="6"
+                                    <textarea name="description" id="description" rows="3" maxlength="100";
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"></textarea>
                                 </div>
                             </div>

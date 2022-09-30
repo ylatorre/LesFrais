@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title> Note de frais </title>
 
     <!-- Fonts -->
 
@@ -54,6 +54,9 @@
             font-size: 7px;
             border: 1px solid black;
             padding: 2px;
+            max-height: 43px;
+            max-width:80px;
+            overflow: hidden;
         }
         .TD-table-2 {
             font-size: 7px;
@@ -120,10 +123,10 @@
             <table class="tablepdf">
                 <thead>
                     <th class="TH-table text-center BGjour" style="border: 2px solid black">Jours</th>
-                    <th class="TH-table text-center w-20" style="border: 2px solid black">Client / Prospect</th>
-                    <th class="TH-table text-center w-20" style="border: 2px solid black">Ville</th>
-                    <th class="TH-table text-center w-15" style="border: 2px solid black">Code Postal</th>
-                    <th class="TH-table text-center" style="border: 2px solid black">description</th>
+                    <th class="TH-table text-center w-10" style="border: 2px solid black">Client / Prospect</th>
+                    <th class="TH-table text-center w-10" style="border: 2px solid black">Ville</th>
+                    <th class="TH-table text-center w-14" style="border: 2px solid black">Code Postal</th>
+                    <th class="TH-table text-center w-32" style="border: 2px solid black">description</th>
                     {{--            <tr colspan="4">TTC            </tr> --}}
 
                     <th class="TH-table text-center BGblue" style="border: 2px solid black;">Péage</th>
@@ -141,8 +144,17 @@
 
                 </thead>
                 <tbody>
+
+
+                    @php
+                        $compteur = 0;
+                    @endphp
+
+
+
+
                     @foreach ($utilisateurs as $utilisateur)
-                        <tr>
+
                             @php
 
                                 // - formatage de la date de début
@@ -170,16 +182,21 @@
                                 $totaltot = 0;
                                 $totalTVAtot = round(($totalRepas + $totalHotels) * 0.1, 2);
 
+
                                 /* régler le probleme de la tva et du total tva içi*/
 
                             @endphp
+
+
+
+                            <tr>
                             <!-- Valeurs dans le tableau -->
                             <td class="TD-table-2 text-center BGjour" style="white-space: nowrap;">du
                                 {{ $datedebut }}<br> au {{ $datefin }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->title }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
-                            <td class="TD-table col-table text-center" style=" overflow:hidden; border-right:2px solid black;">
+                            <td class="TD-table col-table text-center" style="max-width: 10px; overflow:hidden; border-right:2px solid black;">
                                 {{ $utilisateur->description }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->parking }} €</td>
@@ -197,8 +214,47 @@
                                 {{ $utilisateur->kilometrage }}km</td>
 
 
-                        </tr>
-                    @endforeach
+                            </tr>
+                        @php
+                            $compteur = $compteur+1;
+                        @endphp
+                                @if($compteur >= 29)
+
+                </tbody>
+            </table>
+                                <h1 class="text-center  " style="margin-top:18px;break-after:always; white-space:nowrap; font-size: 8px; color:#202020;">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 - Bâtiment A2 - 69130 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1>
+
+            <table class="tablepdf">
+                <thead>
+                    <th class="TH-table text-center BGjour" style="border: 2px solid black">Jours</th>
+                    <th class="TH-table text-center w-10" style="border: 2px solid black">Client / Prospect</th>
+                    <th class="TH-table text-center w-10" style="border: 2px solid black">Ville</th>
+                    <th class="TH-table text-center w-14" style="border: 2px solid black">Code Postal</th>
+                    <th class="TH-table text-center w-32" style="border: 2px solid black">description</th>
+                    {{--            <tr colspan="4">TTC            </tr> --}}
+
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black;">Péage</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black">Parking</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black">Essence</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black">Divers</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black">Dt TVA (20%)</th>
+                    <th class="TH-table text-center BGyellow" style="border: 2px solid black">Repas</th>
+                    <th class="TH-table text-center BGyellow" style="border: 2px solid black">Hotels</th>
+                    <th class="TH-table text-center BGyellow" style="border: 2px solid black">Dt TVA (10%)</th>
+
+                    <th class="TH-table text-center BGgreen" style="border:2px solid black;">{{ $infosNDF[0]->tauxKM }}
+                        € / km
+                    </th>
+                </thead>
+            </tbody>
+                                    @php
+                                        $compteur = 0;
+                                    @endphp
+
+                                @endif
+                        @endforeach
+
+
                     @php
                         $SousTotalTransport = $totalDivers + $totalEssence + $totalPeage + $totalParking;
                         $SousTotalRepasHotels = $totalRepas + $totalHotels;
@@ -315,6 +371,7 @@
 
 
             </table>
+            <h1 class="text-center" style="position:fixed; margin-top:18px;  white-space:nowrap; font-size: 8px; bottom:0px; left:8%; color:#202020;">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 - Bâtiment A2 - 69130 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1>
             {{-- <h1 style="color:grey; font-size:8px; text-align:center; ">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 -
                 Bâtiment A2 - 69130 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1> --}}
 
