@@ -421,7 +421,7 @@
                             <th class="TH-table text-center BGyellow">Hotels</th>
                             <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
 
-                            <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">km et taux /
+                            <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">km et {{$utilisateurs[0]->taux}} /
                                 km
                             </th>
 
