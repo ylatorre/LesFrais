@@ -94,6 +94,9 @@
 
                     dateClick: function(info) {
 
+                        $("#repas2").show();
+                        $("#repas3").show();
+                        
                         let actualyear = $('.fc-toolbar-title').html();
                 let selectedyear = actualyear.slice(-4, 25);
 
