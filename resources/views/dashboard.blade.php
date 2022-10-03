@@ -182,7 +182,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas" id="repas" type="number" value="0" min="0" >
+                                        name="repas" id="repas" type="number" value="0" min="0"  required>
 
                                 </div>
 
@@ -193,7 +193,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas2" id="repas2" type="number" value="0" min="0">
+                                        name="repas2" id="repas2" type="number" value="0" min="0" required>
 
                                 </div>
                                 <div class="mb-3 col" id="repas3">
@@ -202,7 +202,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas3" id="repas3" type="number" value="0" min="0">
+                                        name="repas3" id="repas3" type="number" value="0" min="0" required>
 
                                 </div>
 
@@ -212,7 +212,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="hotel" id="hotel" type="number" value="0" min="0">
+                                        name="hotel" id="hotel" type="number" value="0" min="0" required>
 
                                 </div>
                                 <div class="mb-3 col">
