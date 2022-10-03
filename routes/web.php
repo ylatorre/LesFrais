@@ -35,8 +35,9 @@ Route::get('mission_export',[MissionController::class, 'get_mission_data'])->nam
 
 Route::get('/dashboard', [Controller::class, 'displayDashboard'])->name('dashboard')->middleware(['auth']);
 Route::post('/dashboard',[FullCalenderController::class,'store'])->middleware(['auth']);
+Route::post('creationevenement',[Controller::class,'createEvent'])->name('createEvent')->middleware(['auth']);
 
-Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser')->middleware(['auth', 'is.admin']);
+Route::get('gestionaireUser',[Controller::class, 'gestionaireUser'])->name('gestionaireUser')->middleware(['auth','is.admin']);
 Route::post('ajoutUser',[Controller::class, 'ajoutUser'])->name('ajoutUser')->middleware(['auth']);
 Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser')->middleware(['auth']);
 // Route::post('ajouterEssence',[Controller::class, 'ajouterEssence'])->name('ajouterEssence')->middleware(['auth']);

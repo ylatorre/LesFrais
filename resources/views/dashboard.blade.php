@@ -102,7 +102,7 @@
                     </div>
                     {{-- modul body --}}
                     <div class="overflow-hidden block p-[10px]">
-                        <form action="/dashboard" method="POST">
+                        <form action="{{route('createEvent')}}" method="POST" id="formEvent">
                             @csrf
                             {{-- Input client --}}
                             <div class="row">
@@ -110,7 +110,7 @@
                                     <div id="duplicate"></div>
                                     <label class="inline-block mb-0" for="title">Client</label>
                                     <input type="text" value="" name="title" id="title"
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]">
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]" required>
                                 </div>
                             </div>
                             {{-- Input Ville | Code Postal | Essence --}}
@@ -121,7 +121,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="ville" name="ville" type="text" value="">
+                                        id="ville" name="ville" type="text" value="" required>
 
                                 </div>
                                 <div class="mb-3 col">
@@ -130,7 +130,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="code_postal" name="code_postal" type="text" value="">
+                                        id="code_postal" name="code_postal" type="text" value="" required>
 
                                 </div>
                                 <div class="mb-3 col">
@@ -139,7 +139,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="essence" name="essence" type="number" value="0" min="0">
+                                        id="essence" name="essence" type="number" value="0" min="0" required>
 
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage" id="peage" type="number" value="0" min="0">
+                                        name="peage" id="peage" type="number" value="0" min="0" required>
 
                                 </div>
                                 <div class="mb-3 col">
@@ -160,7 +160,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="parking" id="parking" type="number" value="0" min="0">
+                                        name="parking" id="parking" type="number" value="0" min="0" required>
 
                                 </div>
 
@@ -170,7 +170,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="divers" id="divers" type="number" value="0" min="0">
+                                        name="divers" id="divers" type="number" value="0" min="0" required>
 
                                 </div>
                             </div>
@@ -178,16 +178,16 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="repas">
-                                        Repas 1
+                                        Repas
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas" id="repas" type="number" value="0" min="0">
+                                        name="repas" id="repas" type="number" value="0" min="0" >
 
                                 </div>
-                            <form id="formRepas" method="POST" action="{{route('repas')}}">
+
                                 @csrf
-                                <div class="mb-3 col">
+                                <div class="mb-3 col" id="repas2">
                                     <label class="inline-block mb-0" for="repas">
                                         Repas 2
                                     </label>
@@ -196,7 +196,7 @@
                                         name="repas2" id="repas2" type="number" value="0" min="0">
 
                                 </div>
-                                <div class="mb-3 col">
+                                <div class="mb-3 col" id="repas3">
                                     <label class="inline-block mb-0" for="repas">
                                         Repas 3
                                     </label>
@@ -205,7 +205,7 @@
                                         name="repas3" id="repas3" type="number" value="0" min="0">
 
                                 </div>
-                            </form>
+
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="hotel">
                                         Hôtel
@@ -222,7 +222,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         id="kilometrage" name="kilometrage" type="number" value="0"
-                                        min="0">
+                                        min="0" required>
 
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                                     </label>
                                     <input
                                         class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="heureDebut" id="heure_debut" type="text" value="00:00">
+                                        name="heureDebut" id="heure_debut" type="text" value="00:00" required>
                                 </div>
                                 <div class="mb-3 col">
                                     <label for="heure_fin" class="w-full inline-block">
@@ -242,7 +242,7 @@
                                     </label>
                                     <input
                                         class="time fin shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="heureFin" id="heure_fin" type="text" value="00:00">
+                                        name="heureFin" id="heure_fin" type="text" value="00:00" required>
                                 </div>
                                 {{-- Empty div to align time input with the others --}}
                             </div>
@@ -251,17 +251,24 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="description" class="mb-[5px]">Description de la mission</label>
-                                    <textarea name="description" id="description" rows="3" maxlength="100";
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"></textarea>
+                                    <textarea name="description" id="description" rows="3" maxlength="100"
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
                                 </div>
                             </div>
-                        </form>
+                            <input name="start" id="starting" type="hidden" >
+                            <input name="end" id="ending" type="hidden" >
+                            <input name="iding" id="iding" type="hidden">
+                            <input name="iding2" id="iding2" type="hidden">
+                            <input name="iding3" id="iding3" type="hidden">
+                            <input name="moisActuel" id="monthing" type="hidden">
                         <button
                             class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                             id="cancel_button">ANNULER</button>
                         <button
                             class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                            id="validation">VALIDATION</button>
+                            id="validation" >VALIDATION</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

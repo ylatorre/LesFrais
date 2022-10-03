@@ -194,6 +194,7 @@
                             //création d'événement quand le bouton validation est click
                             $("#validation").on('click', function() {
                                 //formatage des dates au format année-mois-jour heure:minute
+
                                 let dateactuelle = info.dateStr;
                                 dateactuelle = dateactuelle.slice(0, -3);
                                 var startDate =
@@ -204,6 +205,15 @@
                                     $('#heure_fin').val();
                                 $('#start').val(startDate);
                                 $('#end').val(endDate);
+
+                                /* - ajout des valeurs des inpout pour créer l'evenement lorceque repas 2 est saisie*/
+
+                                $('#starting').val(startDate) ;
+                                $('#ending').val(endDate) ;
+                                $('#iding').val(create_UUID());
+                                $('#iding2').val(create_UUID());
+                                $('#iding3').val(create_UUID());
+                                $('#monthing').val(dateactuelle);
 
                                 //récupération des input
                                 const id = create_UUID();
@@ -220,6 +230,7 @@
                                 let essenceVal = $("#essence").val();
                                 let heureDebutVal = $("#heure_debut").val();
                                 let heureFinVal = $("#heure_fin").val();
+
 
                                 let event = {
                                     id: id,
@@ -245,8 +256,9 @@
                                 //récupérer les erreur d'une request
 
 
+                                $("#validation").submit();
+// @this.eventAdd(event);
 
-@this.eventAdd(event);
 
 
                                 // check.then((value) => {
@@ -397,6 +409,9 @@
                     eventClick: function(info) {
                         //formatter les date au format année-mois-jour heure:minute
 
+                        $('#repas2').hide();
+                        $('#repas3').hide();
+
                         let month = info.event.start.getMonth() + 1;
                         if (month < 10) {
                             month = "0" + month;
@@ -537,7 +552,7 @@
 
                             //ajouter le bouton supprimer dans le modal
                             $("#validation").parent().append(
-                                '<button class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white" id="supprimer">SUPPRIMER</button>'
+                                '<button type="button" class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white" id="supprimer">SUPPRIMER</button>'
                             );
 
                             //appliquer les changement

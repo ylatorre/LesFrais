@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\historiqueEssence;
-use App\Models\infosndf;
 use App\Models\Mois;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\infosndf;
 use GuzzleHttp\Middleware;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Auth;
+use App\Models\historiqueEssence;
+use Faker\Core\Uuid;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class Controller extends BaseController
@@ -24,6 +26,7 @@ class Controller extends BaseController
 
     public function displayDashboard()
     {
+        //dd($request);
         $lockedMonth = DB::table('events')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
         $moisNDF = DB::table('infosndfs')->where("Utilisateur", "=", Auth::user()->name)->get(); // on recupère le mois actuel et si il n'est n'est pas valide en bdd on le grise
 
@@ -31,8 +34,6 @@ class Controller extends BaseController
         /* - récupération des mois à vérrouiller  */
         $moisValide = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where('Valide', '=', 1)->get();
         $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where('ValidationEnCours', '=', 1)->get();
-        // $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur','=', Auth::user()->name)->where('ValidationEnCours','=',1)->get();
-
 
 
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("Valide", "=", "1");
@@ -55,16 +56,86 @@ class Controller extends BaseController
             'moisNDF',
             'monthlocked',
             'monthvalidated',
-
-
-
         ]));
+    }
+
+    public function createEvent(Request $request)
+    {
+
+        Event::create([
+            "id" => $request->iding,
+            "start" => $request->start,
+            "end" => $request->end,
+            "description" => $request->description,
+            "title" => $request->title,
+            "ville" => $request->ville,
+            "code_postal" => $request->code_postal,
+            "peage" => $request->peage,
+            "parking" => $request->parking,
+            "essence" => $request->essence,
+            "divers" => $request->divers,
+            "repas" => $request->repas2,
+            "hotel" => $request->hotel,
+            "kilometrage" => $request->kilometrage,
+            "mois" => $request->moisActuel,
+            "heure_debut" => $request->heureDebut,
+            "heure_fin" => $request->heureFin,
+            "idUser" => Auth::user()->id,
+        ]);
+
+        if ($request->repas2 != '0') {
+             Event::create([
+                "id" => $request->iding2,
+                "start" => $request->start,
+                "end" => $request->end,
+                "description" => "",
+                "title" => $request->title." repas2",
+                "ville" => $request->ville,
+                "code_postal" => $request->code_postal,
+                "peage" => "0.00",
+                "parking" => "0.00",
+                "essence" => "0.00",
+                "divers" => "0.00",
+                "repas" => $request->repas2,
+                "hotel" => "0.00",
+                "kilometrage" => "0.00",
+                "mois" => $request->moisActuel,
+                "heure_debut" => $request->heureDebut,
+                "heure_fin" => $request->heureFin,
+                "idUser" => Auth::user()->id,
+            ]);
+        }
+
+        if($request->repas3 != '0'){
+
+            Event::create([
+                "id" => $request->iding3,
+                "start" => $request->start,
+                "end" => $request->end,
+                "description" => "",
+                "title" => $request->title." repas3",
+                "ville" => $request->ville,
+                "code_postal" => $request->code_postal,
+                "peage" => "0.00",
+                "parking" => "0.00",
+                "essence" => "0.00",
+                "divers" => "0.00",
+                "repas" => $request->repas3,
+                "hotel" => "0.00",
+                "kilometrage" => "0.00",
+                "mois" => $request->moisActuel,
+                "heure_debut" => $request->heureDebut,
+                "heure_fin" => $request->heureFin,
+                "idUser" => Auth::user()->id,
+            ]);
+        }
+        return redirect(route('dashboard'));
     }
 
 
     public function gestionaireUser()
     {
-        $users = DB::table("users")->orderby('superadmin','desc')->orderby('admin','desc')->get();
+        $users = DB::table("users")->orderby('superadmin', 'desc')->orderby('admin', 'desc')->get();
         //        $prixessence = DB::table("historique_essences")->select("prix")->max("date");
         $prixessence = DB::table("historique_essences")->select("prix")->orderBy("date", "desc")->get();
         //dd($prixessence);
@@ -93,45 +164,45 @@ class Controller extends BaseController
             ]
         );
         //        $chevauxnum = (int)$request->ChevauxFiscaux;
-        if(Auth::user()->admin == 1 && Auth::user()->superadmin == 0){
+        if (Auth::user()->admin == 1 && Auth::user()->superadmin == 0) {
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            "portables" => $request->portable,
-            "vehicule" => $request->vehicule,
-            "chevauxFiscaux" => $request->ChevauxFiscaux,
-            "taux" => $request->taux,
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                "portables" => $request->portable,
+                "vehicule" => $request->vehicule,
+                "chevauxFiscaux" => $request->ChevauxFiscaux,
+                "taux" => $request->taux,
 
 
-        ]);
-    }elseif(Auth::user()->superadmin == 1 && $request->admin === "1"){
+            ]);
+        } elseif (Auth::user()->superadmin == 1 && $request->admin === "1") {
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            "portables" => $request->portable,
-            "vehicule" => $request->vehicule,
-            "chevauxFiscaux" => $request->ChevauxFiscaux,
-            "taux" => $request->taux,
-        ]);
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                "portables" => $request->portable,
+                "vehicule" => $request->vehicule,
+                "chevauxFiscaux" => $request->ChevauxFiscaux,
+                "taux" => $request->taux,
+            ]);
 
-        DB::table('users')->where('email','=',$request->email)->update(['admin'=>1]);
-        DB::table('users')->where('email','=',$request->email)->update(['salarie'=>0]);
-    }else{
+            DB::table('users')->where('email', '=', $request->email)->update(['admin' => 1]);
+            DB::table('users')->where('email', '=', $request->email)->update(['salarie' => 0]);
+        } else {
 
-        User::create([
-        'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            "portables" => $request->portable,
-            "vehicule" => $request->vehicule,
-            "chevauxFiscaux" => $request->ChevauxFiscaux,
-            "taux" => $request->taux,
-        ]);
-    }
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                "portables" => $request->portable,
+                "vehicule" => $request->vehicule,
+                "chevauxFiscaux" => $request->ChevauxFiscaux,
+                "taux" => $request->taux,
+            ]);
+        }
         return redirect("gestionaireUser");
     }
 
@@ -176,10 +247,9 @@ class Controller extends BaseController
 
             $isUserAdmin = DB::table('users')->where("email", "=", $request->email)->get();
 
-  if ($isUserAdmin[0]->admin == 0) {
+            if ($isUserAdmin[0]->admin == 0) {
                 DB::table("users")->where("email", "=", $request->email)->update(["salarie" => 1]);
             }
-
         }
 
         // if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
@@ -231,57 +301,57 @@ class Controller extends BaseController
 
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->get();
-        if(count($utilisateurs) == 0){
-            Session::flash('pasevents',"il n'y a pas d'évènements pour ce mois !");
+        if (count($utilisateurs) == 0) {
+            Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect('dashboard');
         }
-        $dateNDF = explode("-",$utilisateurs[0]->mois);
+        $dateNDF = explode("-", $utilisateurs[0]->mois);
 
         // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
 
         $moisDateNDF = "";
 
-        switch($dateNDF[1]){
+        switch ($dateNDF[1]) {
             case "01";
-            $moisDateNDF = "Janvier";
-            break;
+                $moisDateNDF = "Janvier";
+                break;
             case "02";
-            $moisDateNDF = "Février";
-            break;
+                $moisDateNDF = "Février";
+                break;
             case "03";
-            $moisDateNDF = "Mars";
-            break;
+                $moisDateNDF = "Mars";
+                break;
             case "04";
-            $moisDateNDF = "Avril";
-            break;
+                $moisDateNDF = "Avril";
+                break;
             case "05";
-            $moisDateNDF = "Mai";
-            break;
+                $moisDateNDF = "Mai";
+                break;
             case "06";
-            $moisDateNDF = "Juin";
-            break;
+                $moisDateNDF = "Juin";
+                break;
             case "07";
-            $moisDateNDF = "Juillet";
-            break;
+                $moisDateNDF = "Juillet";
+                break;
             case "08";
-            $moisDateNDF = "Août ";
-            break;
+                $moisDateNDF = "Août ";
+                break;
             case "09";
-            $moisDateNDF = "Septembre";
-            break;
+                $moisDateNDF = "Septembre";
+                break;
             case "10";
-            $moisDateNDF = "Octobre";
-            break;
+                $moisDateNDF = "Octobre";
+                break;
             case "11";
-            $moisDateNDF = "Novembre";
-            break;
+                $moisDateNDF = "Novembre";
+                break;
             case "12";
-            $moisDateNDF = "Décembre";
-            break;
+                $moisDateNDF = "Décembre";
+                break;
         };
 
 
- $dateNDFpourPDFetVISU = $moisDateNDF." ".$dateNDF[0];
+        $dateNDFpourPDFetVISU = $moisDateNDF . " " . $dateNDF[0];
 
         $user = Auth::user();
 
@@ -292,7 +362,7 @@ class Controller extends BaseController
             return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
-        $infosNDF = DB::table('infosndfs')->where('Utilisateur','=', $request->employe)->where('MoisEnCours','=',$request->moisNDF)->get();
+        $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', $request->employe)->where('MoisEnCours', '=', $request->moisNDF)->get();
 
         return view('visualisationNDF', [
             'utilisateurs' => $utilisateurs,
@@ -326,14 +396,15 @@ class Controller extends BaseController
 
         $idUser = Auth::user()->id;
 
-        return view('mesndfs', ['authInfosndfs' => $authInfosndfs , 'idUser' => $idUser]);
+        return view('mesndfs', ['authInfosndfs' => $authInfosndfs, 'idUser' => $idUser]);
     }
     public function visumesndf(Request $request)
     {
 
         return redirect(route('mesNDF'));
     }
-    public function repas(Request $request){
+    public function repas(Request $request)
+    {
         dd('interception');
         return redirect("/dashboard");
     }
