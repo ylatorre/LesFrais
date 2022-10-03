@@ -142,6 +142,15 @@
                                         id="essence" name="essence" type="number" value="0" min="0" required>
 
                                 </div>
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="parking">
+                                        Parking
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="parking" id="parking" type="number" value="0" min="0" required>
+
+                                </div>
                             </div>
                             {{-- Input Péage | Parking | Divers --}}
                             <div class="row">
@@ -154,15 +163,32 @@
                                         name="peage" id="peage" type="number" value="0" min="0" required>
 
                                 </div>
-                                <div class="mb-3 col">
-                                    <label class="inline-block mb-0" for="parking">
-                                        Parking
+                                <div class="mb-3 col " id="peage2">
+                                    <label class="inline-block mb-0 " for="repas">
+                                        Péage 2
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="parking" id="parking" type="number" value="0" min="0" required>
-
+                                        name="peage2" id="peage2" type="number" value="0" min="0" required>
                                 </div>
+                                <div class="mb-3 col " id="peage3">
+                                    <label class="inline-block mb-0" for="repas">
+                                        Péage 3
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="peage3" id="peage3" type="number" value="0" min="0" required>
+                                </div>
+                                <div class="mb-3 col" id="peage4">
+                                    <label class="inline-block mb-0" for="repas">
+                                        Péage 4
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="peage4" id="peage4" type="number" value="0" min="0" required>
+                                </div>
+
+
 
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="divers">
@@ -194,7 +220,6 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="repas2" id="repas2" type="number" value="0" min="0" required>
-
                                 </div>
                                 <div class="mb-3 col" id="repas3">
                                     <label class="inline-block mb-0" for="repas">
@@ -260,6 +285,9 @@
                             <input name="iding" id="iding" type="hidden">
                             <input name="iding2" id="iding2" type="hidden">
                             <input name="iding3" id="iding3" type="hidden">
+                            <input name="iding4" id="iding4" type="hidden">
+                            <input name="iding5" id="iding5" type="hidden">
+                            <input name="iding6" id="iding6" type="hidden">
                             <input name="moisActuel" id="monthing" type="hidden">
                         <button
                             class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"

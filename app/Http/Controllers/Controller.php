@@ -61,7 +61,7 @@ class Controller extends BaseController
 
     public function createEvent(Request $request)
     {
-
+            // EVENT DE BASE
         Event::create([
             "id" => $request->iding,
             "start" => $request->start,
@@ -82,14 +82,14 @@ class Controller extends BaseController
             "heure_fin" => $request->heureFin,
             "idUser" => Auth::user()->id,
         ]);
-
+            // REPAS 2
         if ($request->repas2 != '0') {
              Event::create([
                 "id" => $request->iding2,
                 "start" => $request->start,
                 "end" => $request->end,
                 "description" => "",
-                "title" => $request->title." repas2",
+                "title" => $request->title." Repas 2",
                 "ville" => $request->ville,
                 "code_postal" => $request->code_postal,
                 "peage" => "0.00",
@@ -105,7 +105,7 @@ class Controller extends BaseController
                 "idUser" => Auth::user()->id,
             ]);
         }
-
+            //REPAS 3
         if($request->repas3 != '0'){
 
             Event::create([
@@ -113,7 +113,7 @@ class Controller extends BaseController
                 "start" => $request->start,
                 "end" => $request->end,
                 "description" => "",
-                "title" => $request->title." repas3",
+                "title" => $request->title." Repas 3",
                 "ville" => $request->ville,
                 "code_postal" => $request->code_postal,
                 "peage" => "0.00",
@@ -129,6 +129,79 @@ class Controller extends BaseController
                 "idUser" => Auth::user()->id,
             ]);
         }
+        //PEAGE 2
+        if($request->peage2 != '0'){
+
+            Event::create([
+                "id" => $request->iding4,
+                "start" => $request->start,
+                "end" => $request->end,
+                "description" => "",
+                "title" => $request->title." Péage 2",
+                "ville" => $request->ville,
+                "code_postal" => $request->code_postal,
+                "peage" => $request->peage2,
+                "parking" => "0.00",
+                "essence" => "0.00",
+                "divers" => "0.00",
+                "repas" => "0.00",
+                "hotel" => "0.00",
+                "kilometrage" => "0.00",
+                "mois" => $request->moisActuel,
+                "heure_debut" => $request->heureDebut,
+                "heure_fin" => $request->heureFin,
+                "idUser" => Auth::user()->id,
+            ]);
+        }
+        //PEAGE 3
+        if($request->peage3 != '0'){
+
+            Event::create([
+                "id" => $request->iding5,
+                "start" => $request->start,
+                "end" => $request->end,
+                "description" => "",
+                "title" => $request->title." Péage 3",
+                "ville" => $request->ville,
+                "code_postal" => $request->code_postal,
+                "peage" => $request->peage3,
+                "parking" => "0.00",
+                "essence" => "0.00",
+                "divers" => "0.00",
+                "repas" => "0.00",
+                "hotel" => "0.00",
+                "kilometrage" => "0.00",
+                "mois" => $request->moisActuel,
+                "heure_debut" => $request->heureDebut,
+                "heure_fin" => $request->heureFin,
+                "idUser" => Auth::user()->id,
+            ]);
+        }
+        //PEAGE 4
+        if($request->peage4 != '0'){
+
+            Event::create([
+                "id" => $request->iding6,
+                "start" => $request->start,
+                "end" => $request->end,
+                "description" => "",
+                "title" => $request->title." Péage 4",
+                "ville" => $request->ville,
+                "code_postal" => $request->code_postal,
+                "peage" => $request->peage4,
+                "parking" => "0.00",
+                "essence" => "0.00",
+                "divers" => "0.00",
+                "repas" => "0.00",
+                "hotel" => "0.00",
+                "kilometrage" => "0.00",
+                "mois" => $request->moisActuel,
+                "heure_debut" => $request->heureDebut,
+                "heure_fin" => $request->heureFin,
+                "idUser" => Auth::user()->id,
+            ]);
+        }
+
         return redirect(route('dashboard'));
     }
 
@@ -300,7 +373,7 @@ class Controller extends BaseController
     {
 
 
-        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->get();
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start","asc")->get();
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect('dashboard');

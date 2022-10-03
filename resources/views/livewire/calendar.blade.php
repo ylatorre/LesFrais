@@ -87,6 +87,8 @@
                 const calendar = new Calendar(calendarEl, {
                     editable: true,
                     unselectAuto: true,
+                    dayMaxEventRows: true,
+                    
 
 
                     initialView: 'dayGridMonth',
@@ -96,7 +98,10 @@
 
                         $("#repas2").show();
                         $("#repas3").show();
-                        
+                        $("#peage2").show();
+                        $("#peage3").show();
+                        $("#peage4").show();
+
                         let actualyear = $('.fc-toolbar-title').html();
                 let selectedyear = actualyear.slice(-4, 25);
 
@@ -214,8 +219,16 @@
                                 $('#starting').val(startDate) ;
                                 $('#ending').val(endDate) ;
                                 $('#iding').val(create_UUID());
+
+                                //ID des events repas
                                 $('#iding2').val(create_UUID());
                                 $('#iding3').val(create_UUID());
+
+                                //ID des events péages
+                                $('#iding4').val(create_UUID());
+                                $('#iding5').val(create_UUID());
+                                $('#iding6').val(create_UUID());
+
                                 $('#monthing').val(dateactuelle);
 
                                 //récupération des input
@@ -414,6 +427,9 @@
 
                         $('#repas2').hide();
                         $('#repas3').hide();
+                        $('#peage2').hide();
+                        $('#peage3').hide();
+                        $('#peage4').hide();
 
                         let month = info.event.start.getMonth() + 1;
                         if (month < 10) {
