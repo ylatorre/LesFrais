@@ -67,23 +67,29 @@
 
         });
     </script>
-@if(Session::has('pasevents'))
-<div style="width:100%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('pasevents') }}</div>
-@endif
-@if(Session::has('dejasoumis'))
-<div style="width:100%; margin-left:1%; color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">{{ Session::get('dejasoumis') }}</div>
-@endif
-@if(Session::has('dejavalide'))
-<div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('dejavalide') }}</div>
-@endif
-@if(Session::has('NDFcreee'))
-<div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFcreee') }}</div>
-@endif
-@if(Session::has('NDFsuppr'))
-<div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>@endif
-@if(Session::has('nondf'))
-            <div style="color:red; margin-left:1%; margin-bottom:3px; font-weight:bold;">{{Session::get('nondf')}}</div>
-        @endif
+    @if (Session::has('pasevents'))
+        <div style="width:100%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('pasevents') }}</div>
+    @endif
+    @if (Session::has('dejasoumis'))
+        <div style="width:100%; margin-left:1%; color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('dejasoumis') }}</div>
+    @endif
+    @if (Session::has('dejavalide'))
+        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('dejavalide') }}</div>
+    @endif
+    @if (Session::has('NDFcreee'))
+        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('NDFcreee') }}</div>
+    @endif
+    @if (Session::has('NDFsuppr'))
+        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('NDFsuppr') }}</div>
+    @endif
+    @if (Session::has('nondf'))
+        <div style="color:red; margin-left:1%; margin-bottom:3px; font-weight:bold;">{{ Session::get('nondf') }}</div>
+    @endif
 
     <div class="container">
         <div class="modal fade" id="event-modal" role="dialog">
@@ -102,7 +108,7 @@
                     </div>
                     {{-- modul body --}}
                     <div class="overflow-hidden block p-[10px]">
-                        <form action="{{route('createEvent')}}" method="POST" id="formEvent">
+                        <form action="{{ route('createEvent') }}" method="POST" id="formEvent">
                             @csrf
                             {{-- Input client --}}
                             <div class="row">
@@ -110,20 +116,12 @@
                                     <div id="duplicate"></div>
                                     <label class="inline-block mb-0" for="title">Client</label>
                                     <input type="text" value="" name="title" id="title"
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]" required>
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        required>
                                 </div>
                             </div>
                             {{-- Input Ville | Code Postal | Essence --}}
                             <div class="row">
-                                <div class="mb-3 col">
-                                    <label class="inline-block mb-0" for="ville">
-                                        Ville
-                                    </label>
-                                    <input
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="ville" name="ville" type="text" value="" required>
-
-                                </div>
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="code_postal">
                                         Code Postal
@@ -134,12 +132,23 @@
 
                                 </div>
                                 <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="ville">
+                                        Ville
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        id="ville" name="ville" type="text" value="" required>
+
+                                </div>
+
+                                <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="essence">
                                         Essence
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="essence" name="essence" type="number" value="0" min="0" required>
+                                        id="essence" name="essence" type="number" value="0" min="0"
+                                        required>
 
                                 </div>
                                 <div class="mb-3 col">
@@ -148,7 +157,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="parking" id="parking" type="number" value="0" min="0" required>
+                                        name="parking" id="parking" type="number" value="0" min="0"
+                                        required>
 
                                 </div>
                             </div>
@@ -160,7 +170,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage" id="peage" type="number" value="0" min="0" required>
+                                        name="peage" id="peage" type="number" value="0" min="0"
+                                        required>
 
                                 </div>
                                 <div class="mb-3 col " id="peage2">
@@ -169,7 +180,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage2" id="peage2" type="number" value="0" min="0" required>
+                                        name="peage2" id="peage2" type="number" value="0" min="0"
+                                        required>
                                 </div>
                                 <div class="mb-3 col " id="peage3">
                                     <label class="inline-block mb-0" for="repas">
@@ -177,7 +189,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage3" id="peage3" type="number" value="0" min="0" required>
+                                        name="peage3" id="peage3" type="number" value="0" min="0"
+                                        required>
                                 </div>
                                 <div class="mb-3 col" id="peage4">
                                     <label class="inline-block mb-0" for="repas">
@@ -185,7 +198,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage4" id="peage4" type="number" value="0" min="0" required>
+                                        name="peage4" id="peage4" type="number" value="0" min="0"
+                                        required>
                                 </div>
 
 
@@ -196,7 +210,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="divers" id="divers" type="number" value="0" min="0" required>
+                                        name="divers" id="divers" type="number" value="0" min="0"
+                                        required>
 
                                 </div>
                             </div>
@@ -208,7 +223,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas" id="repas" type="number" value="0" min="0"  required>
+                                        name="repas" id="repas" type="number" value="0" min="0"
+                                        required>
 
                                 </div>
 
@@ -219,7 +235,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas2" id="repas2" type="number" value="0" min="0" required>
+                                        name="repas2" id="repas2" type="number" value="0" min="0"
+                                        required>
                                 </div>
                                 <div class="mb-3 col" id="repas3">
                                     <label class="inline-block mb-0" for="repas">
@@ -227,7 +244,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas3" id="repas3" type="number" value="0" min="0" required>
+                                        name="repas3" id="repas3" type="number" value="0" min="0"
+                                        required>
 
                                 </div>
 
@@ -237,7 +255,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="hotel" id="hotel" type="number" value="0" min="0" required>
+                                        name="hotel" id="hotel" type="number" value="0" min="0"
+                                        required>
 
                                 </div>
                                 <div class="mb-3 col">
@@ -280,8 +299,8 @@
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
                                 </div>
                             </div>
-                            <input name="start" id="starting" type="hidden" >
-                            <input name="end" id="ending" type="hidden" >
+                            <input name="start" id="starting" type="hidden">
+                            <input name="end" id="ending" type="hidden">
                             <input name="iding" id="iding" type="hidden">
                             <input name="iding2" id="iding2" type="hidden">
                             <input name="iding3" id="iding3" type="hidden">
@@ -289,12 +308,12 @@
                             <input name="iding5" id="iding5" type="hidden">
                             <input name="iding6" id="iding6" type="hidden">
                             <input name="moisActuel" id="monthing" type="hidden">
-                        <button
-                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                            id="cancel_button">ANNULER</button>
-                        <button
-                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                            id="validation" >VALIDATION</button>
+                            <button
+                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                id="cancel_button">ANNULER</button>
+                            <button
+                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                id="validation">VALIDATION</button>
                         </form>
 
                     </div>
@@ -337,7 +356,7 @@
 
                 <livewire:calendar />
                 @livewireScripts
-                 @stack('scripts')
+                @stack('scripts')
 
             </div>
 
@@ -349,63 +368,66 @@
 
     </div>
     <div class="flex flex-row items-center justify-around w-full h-20 text-center">
-        @if (Auth::user()->salarie == 1 || Auth::user()->admin == 1 && Auth::user()->superadmin != 1)
+        @if (Auth::user()->salarie == 1 || (Auth::user()->admin == 1 && Auth::user()->superadmin != 1))
             <!--  permet de vérouiller le mous avec le bouton "Soumettre le mois ....."      -->
-                <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
-                    @csrf
-                    <input id="inputdatelock" type="hidden" name="lockedmonth">
-                    <input type="hidden" id="locked" value="false">
-                    <button type="button" id="lockMonth"
-                        style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg  items-center px-2 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                        >Soumettre le mois à inspection</button>
-                </form>
-                <!-- permet aux utilisateur de visualiser leurs note de frais et ca c'est régale -->
-                <form method="POST" action="{{route('validationNDF')}}" id="formsalarievisu">
+            <form method="POST" action="{{ route('lockMonth') }}" class="block" id="formlock">
                 @csrf
-                    <input id="inputmonthsalarie" type="hidden" name="moisNDF">
-                    <input id="inputemployesalarie" type="hidden" name="employe" value="{{Auth::user()->name}}">
+                <input id="inputdatelock" type="hidden" name="lockedmonth">
+                <input type="hidden" id="locked" value="false">
+                <button type="button" id="lockMonth"
+                    style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg  items-center px-2 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Soumettre
+                    le mois à inspection</button>
+            </form>
+            <!-- permet aux utilisateur de visualiser leurs note de frais et ca c'est régale -->
+            <form method="POST" action="{{ route('validationNDF') }}" id="formsalarievisu">
+                @csrf
+                <input id="inputmonthsalarie" type="hidden" name="moisNDF">
+                <input id="inputemployesalarie" type="hidden" name="employe" value="{{ Auth::user()->name }}">
 
-                    <button type="button" id="salarievisuNDF" style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-2 bg-gray-700 focus:bg-gray-800 hover:bg-gray-800  active:bg-red-gray border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Visualiser ma note de frais</button>
-                </form>
+                <button type="button" id="salarievisuNDF"
+                    style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-2 bg-gray-700 focus:bg-gray-800 hover:bg-gray-800  active:bg-red-gray border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Visualiser
+                    ma note de frais</button>
+            </form>
 
-                <form method="POST" action="{{ route('unlockMonth') }}" class="block" id="formunlock">
-                    @csrf
-                    <input id="inputdateunlock" type="hidden" name="unlockedmonth">
-                    <input name="userId" type="hidden" id="userId" value="{{ Auth::user()->id }}">
-                    <button type="button" id="unlockMonth"
-                        style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler ma demande de validation
-                    </button>
-                </form>
+            <form method="POST" action="{{ route('unlockMonth') }}" class="block" id="formunlock">
+                @csrf
+                <input id="inputdateunlock" type="hidden" name="unlockedmonth">
+                <input name="userId" type="hidden" id="userId" value="{{ Auth::user()->id }}">
+                <button type="button" id="unlockMonth"
+                    style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-2 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler
+                    ma demande de validation
+                </button>
+            </form>
+        @endif
+        @if (Auth::user()->superadmin == 1)
+            <form method="POST" action="{{ route('validationNDF') }}" id="formsalarievisu">
+                @csrf
+                <input id="inputmonthsalarie" type="hidden" name="moisNDF">
+                <input id="inputemployesalarie" type="hidden" name="employe" value="{{ Auth::user()->name }}">
 
-
-        @endif
-        @if(Auth::user()->superadmin == 1)
-                <form method="POST" action="{{route('validationNDF')}}" id="formsalarievisu">
-                    @csrf
-                        <input id="inputmonthsalarie" type="hidden" name="moisNDF">
-                        <input id="inputemployesalarie" type="hidden" name="employe" value="{{Auth::user()->name}}">
-
-                        <x-button type="button" id="salarievisuNDF">Visualiser ma note de frais</x-button>
-                </form>
+                <x-button type="button" id="salarievisuNDF">Visualiser ma note de frais</x-button>
+            </form>
         @endif
 
-        @if(Auth::user()->admin == 1 && Auth::user()->superadmin == 1)
+        @if (Auth::user()->admin == 1 && Auth::user()->superadmin == 1)
 
-        @if(Session::has('noevents'))
-            <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('noevents') }}</div>
-        @endif
-        @if(Session::has('noCHF'))
-            <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('noCHF') }}</div>
-        @endif
-        @if(Session::has('novehicule'))
-            <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('novehicule') }}</div>
-        @endif
-        @if(Session::has('NDFcreee'))
-            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFcreee') }}</div>
-        @endif
-        @if(Session::has('NDFsuppr'))
-            <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">{{ Session::get('NDFsuppr') }}</div>
-        @endif
+            @if (Session::has('noevents'))
+                <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('noevents') }}</div>
+            @endif
+            @if (Session::has('noCHF'))
+                <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('noCHF') }}</div>
+            @endif
+            @if (Session::has('novehicule'))
+                <div style="color:red; margin-bottom:3px; font-weight:bold;">{{ Session::get('novehicule') }}</div>
+            @endif
+            @if (Session::has('NDFcreee'))
+                <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+                    {{ Session::get('NDFcreee') }}</div>
+            @endif
+            @if (Session::has('NDFsuppr'))
+                <div style="color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+                    {{ Session::get('NDFsuppr') }}</div>
+            @endif
 
 
 
@@ -418,13 +440,10 @@
 
 
     <script type="text/javascript">
-
         let date = $('.fc-toolbar-title').html();
         LaravelFullCalendar = document.getElementById('LaravelFullCalendar');
 
         console.log(date);
-
-
     </script>
     <script>
         $.ajaxSetup({
@@ -482,15 +501,12 @@
 
             return date;
         }
+    </script>
 
-
-</script>
-
-<script type="text/javascript">
-
-    const formRepas = document.getElementById('formRepas');
-    console.log(formRepas);
-</script>
+    <script type="text/javascript">
+        const formRepas = document.getElementById('formRepas');
+        console.log(formRepas);
+    </script>
 
 
 

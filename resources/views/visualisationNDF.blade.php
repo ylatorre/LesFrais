@@ -404,8 +404,8 @@
                             <th class="TH-table text-center BGjour" style="border-left: 2px solid black">Jours</th>
                             <th class="TH-table text-center " style="border-left: 2px solid black">Client / Prospect
                             </th>
-                            <th class="TH-table text-center ">Ville</th>
                             <th class="TH-table text-center ">Code Postal</th>
+                            <th class="TH-table text-center ">Ville</th>
                             <th class="TH-table text-center"
                                 style="width:5% !important; overflow:hidden; border-left: 2px solid black;border-right: 2px solid black">
                                 description</th>
@@ -460,8 +460,8 @@
                                     <td class="TD-table text-center BGjour pl-1 pr-1">du {{ $datedebut }}<br> au
                                         {{ $datefin }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->title }}</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                                     <td class="TD-table col-table text-center"
                                         style=" max-width:120px; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>

@@ -124,8 +124,8 @@
                 <thead>
                     <th class="TH-table text-center BGjour" style="border: 2px solid black">Jours</th>
                     <th class="TH-table text-center w-10" style="border: 2px solid black">Client / Prospect</th>
-                    <th class="TH-table text-center w-10" style="border: 2px solid black">Ville</th>
                     <th class="TH-table text-center w-14" style="border: 2px solid black">Code Postal</th>
+                    <th class="TH-table text-center w-10" style="border: 2px solid black">Ville</th>
                     <th class="TH-table text-center w-32" style="border: 2px solid black">description</th>
                     {{--            <tr colspan="4">TTC            </tr> --}}
 
@@ -194,8 +194,8 @@
                             <td class="TD-table-2 text-center BGjour" style="white-space: nowrap;">du
                                 {{ $datedebut }}<br> au {{ $datefin }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->title }}</td>
-                            <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                             <td class="TD-table col-table text-center" style="max-width: 10px; overflow:hidden; border-right:2px solid black;">
                                 {{ $utilisateur->description }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
