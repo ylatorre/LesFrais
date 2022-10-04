@@ -114,6 +114,8 @@
                             $("#peage3").show();
                             $("#peage4").show();
 
+
+
                            inputEssence.addEventListener('click', () => {
                                 inputDistance.style.display = 'none';
 
@@ -124,7 +126,18 @@
                             });
 
 
+
+
                             let actualyear = $('.fc-toolbar-title').html();
+
+                            nombreDuJour = info.dateStr.slice(8)
+
+                            dateFormatedClicked = nombreDuJour+" "+actualyear;
+
+                            document.getElementById('TitreEvenement').innerHTML = "Déplacement du " + dateFormatedClicked;
+
+
+
                             let selectedyear = actualyear.slice(-4, 25);
 
                             let yearMonth = $('.fc-toolbar-title').html();
@@ -171,7 +184,6 @@
                                     break;
                             }
 
-                            let dateactuelle = selectedyear + "-" + selectedMonth;
 
 
                             /*içi le clique influe vraiment sur les events*/
@@ -463,6 +475,13 @@
                             $('#peage3').hide();
                             $('#peage4').hide();
 
+                            let actualyearEvent = $('.fc-toolbar-title').html();
+
+
+
+
+
+
 
 
 
@@ -479,6 +498,11 @@
                                 .val();
                             let endDate = year + "-" + month + "-" + day + " " + $('#heure_fin')
                                 .val();
+
+
+                                nombreDuDay = startDate.slice(8,11);
+                                document.getElementById('TitreEvenement').innerHTML = "Déplacement du " + nombreDuDay + " " + actualyearEvent;
+                                
 
                             let actualyear = $('.fc-toolbar-title').html();
                             let selectedyear = actualyear.slice(-4, 25);

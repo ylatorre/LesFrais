@@ -104,7 +104,7 @@
                     {{-- modal header --}}
                     <div
                         class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0">
-                        <h5 class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]">Déplacement</h5>
+                        <h5 id="TitreEvenement" class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]"></h5>
                         {{-- <button type="button" id="closing_button"
                             class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block ">X</button> --}}
                         <button type="button" id="closing_button"
