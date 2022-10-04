@@ -226,5 +226,40 @@
     background-color: #3e8e41;
     color: white;
     outline: none;
+
 }
+
+/* responsive administration buttons*/
+
+@media screen and (max-width:1450px){
+    .responsiv-administration-buttons{
+        font-size:12px ;
+    }
+}
+
+@media screen and (max-width:1024px){
+   .responsiv-administration-buttons{
+        font-size:10px ;
+    }
+}
+
+@media screen and (max-width:780px){
+   .responsiv-administration-buttons{
+        font-size:9px ;
+    }
+}
+
+@media screen and (max-width:540px){
+   .responsiv-administration-buttons{
+        font-size:8px ;
+    }
+}
+
+@media screen and (max-width:420px){
+   .responsiv-administration-buttons{
+        font-size:7px;
+    }
+}
+
+
 
