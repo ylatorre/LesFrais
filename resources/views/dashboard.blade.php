@@ -28,8 +28,12 @@
 
 
 
+
+
     {{-- Script permettant l'implémentation des inputs horloge --}}
     <script type="text/javascript">
+
+
         $(document).ready(function() {
             $('.standard').clockTimePicker({
                 colors: {
@@ -100,7 +104,7 @@
                     {{-- modal header --}}
                     <div
                         class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0">
-                        <h5 class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]">Mission</h5>
+                        <h5 class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]">Déplacement</h5>
                         {{-- <button type="button" id="closing_button"
                             class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block ">X</button> --}}
                         <button type="button" id="closing_button"
@@ -120,7 +124,7 @@
                                         required>
                                 </div>
                             </div>
-                            {{-- Input Ville | Code Postal | Essence --}}
+                            {{-- Input Ville | Code Postal --}}
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="code_postal">
@@ -141,16 +145,7 @@
 
                                 </div>
 
-                                <div class="mb-3 col">
-                                    <label class="inline-block mb-0" for="essence">
-                                        Essence
-                                    </label>
-                                    <input
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="essence" name="essence" type="number" value="0" min="0"
-                                        required>
 
-                                </div>
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="parking">
                                         Parking
@@ -175,7 +170,7 @@
 
                                 </div>
                                 <div class="mb-3 col " id="peage2">
-                                    <label class="inline-block mb-0 " for="repas">
+                                    <label class="inline-block mb-0 " for="peage2">
                                         Péage 2
                                     </label>
                                     <input
@@ -184,7 +179,7 @@
                                         required>
                                 </div>
                                 <div class="mb-3 col " id="peage3">
-                                    <label class="inline-block mb-0" for="repas">
+                                    <label class="inline-block mb-0" for="peage3">
                                         Péage 3
                                     </label>
                                     <input
@@ -193,7 +188,7 @@
                                         required>
                                 </div>
                                 <div class="mb-3 col" id="peage4">
-                                    <label class="inline-block mb-0" for="repas">
+                                    <label class="inline-block mb-0" for="peage4">
                                         Péage 4
                                     </label>
                                     <input
@@ -219,7 +214,7 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="repas">
-                                        Repas
+                                        Petit déjeuner
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -231,7 +226,7 @@
                                 @csrf
                                 <div class="mb-3 col" id="repas2">
                                     <label class="inline-block mb-0" for="repas">
-                                        Repas 2
+                                        Déjeuner
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -240,7 +235,7 @@
                                 </div>
                                 <div class="mb-3 col" id="repas3">
                                     <label class="inline-block mb-0" for="repas">
-                                        Repas 3
+                                        Dîner
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -248,6 +243,10 @@
                                         required>
 
                                 </div>
+
+
+                            </div>
+                            <div class="row">
 
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="hotel">
@@ -259,13 +258,23 @@
                                         required>
 
                                 </div>
-                                <div class="mb-3 col">
+                                 <div id="inputEssence"class="mb-3 col">
+                                    <label class="inline-block mb-0" for="essence">
+                                        Essence
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        id="essence" name="essence" type="number"  min="0"
+                                        required>
+                                </div>
+                                <div id="inputDistance" class="mb-3 col">
                                     <label class="inline-block mb-0" for="kilometrage">
                                         Distance
                                     </label>
                                     <input
+
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="kilometrage" name="kilometrage" type="number" value="0"
+                                        id="kilometrage" name="kilometrage" type="number"
                                         min="0" required>
 
                                 </div>
@@ -294,7 +303,7 @@
                             {{-- Input description mission --}}
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label for="description" class="mb-[5px]">Description de la mission</label>
+                                    <label for="description" class="mb-[5px]">Description du déplacement</label>
                                     <textarea name="description" id="description" rows="3" maxlength="100"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
                                 </div>
@@ -344,7 +353,6 @@
                     </div>
 
                 @endif
-
 
                 @if (\Session::has('success'))
                     <div class="alert alert-success">
@@ -438,13 +446,6 @@
     </div>
 
 
-
-    <script type="text/javascript">
-        let date = $('.fc-toolbar-title').html();
-        LaravelFullCalendar = document.getElementById('LaravelFullCalendar');
-
-        console.log(date);
-    </script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -502,11 +503,16 @@
             return date;
         }
     </script>
+    <script type='text/javascript'>
 
-    <script type="text/javascript">
-        const formRepas = document.getElementById('formRepas');
-        console.log(formRepas);
-    </script>
+
+
+
+
+
+</script>
+
+
 
 
 
