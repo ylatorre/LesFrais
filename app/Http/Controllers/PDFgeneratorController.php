@@ -40,7 +40,7 @@ class PDFgeneratorController extends Controller
 
 
         // - On recupère tous les événements correspondants au mois à l'ecran et au user concerné
-        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $request->idUser)->where('mois','=', $request->selectedMonth)->orderBy("start","asc")->get();
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("idUser", "=", $request->idUser)->where('mois','=', $request->selectedMonth)->orderBy("start","asc")->orderBy("title","asc")->get();
 
 
         if(count($utilisateurs) == 0){
