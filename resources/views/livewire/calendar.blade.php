@@ -127,13 +127,11 @@
 
 
 
-
+            /* - création du titre lorceque l'utilisateur clique sur une date */
                             let actualyear = $('.fc-toolbar-title').html();
 
                             nombreDuJour = info.dateStr.slice(8)
-
                             dateFormatedClicked = nombreDuJour+" "+actualyear;
-
                             document.getElementById('TitreEvenement').innerHTML = "Déplacement du " + dateFormatedClicked;
 
 
@@ -499,10 +497,11 @@
                             let endDate = year + "-" + month + "-" + day + " " + $('#heure_fin')
                                 .val();
 
-
+                        /* - création du titre lorceque l'utilisateur clique sur l'évènement*/
                                 nombreDuDay = startDate.slice(8,11);
                                 document.getElementById('TitreEvenement').innerHTML = "Déplacement du " + nombreDuDay + " " + actualyearEvent;
-                                
+
+                        /* formatage de la date*/
 
                             let actualyear = $('.fc-toolbar-title').html();
                             let selectedyear = actualyear.slice(-4, 25);
