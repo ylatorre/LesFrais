@@ -478,7 +478,7 @@
                                         {{ round((($utilisateur->repas + $utilisateur->hotel) / 1.1) * 0.1, 2) }} €</td>
 
                                     <td class="TD-table col-table text-center" style="border-left: 2px solid black">
-                                        {{ $utilisateur->kilometrage }}km</td>
+                                        {{ $utilisateur->kilometrage }} km</td>
 
 
                                 </tr>

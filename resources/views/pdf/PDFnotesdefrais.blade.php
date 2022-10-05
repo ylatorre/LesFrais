@@ -211,7 +211,7 @@
                                 {{ round((($utilisateur->repas + $utilisateur->hotel) / 1.1) * 0.1, 2) }} €</td>
 
                             <td class=" col-table text-center" style="border: 2px solid black">
-                                {{ $utilisateur->kilometrage }}km</td>
+                                {{ $utilisateur->kilometrage }} km</td>
 
 
                             </tr>
@@ -305,10 +305,10 @@
 
 
 
-                        <td class="TD-table-2 text-center" colspan="4">{{ $SousTotalTransport }} €</td>
+                        <td class="TD-table-2 text-center" colspan="4">{{ $SousTotalTransport }} € TTC</td>
                         <td class="TD-table-2 text-center BGnuit" colspan="1"></td>
                         <td class="TD-table-2 text-center" colspan="2" style="border-right:2px solid red">
-                            {{ $SousTotalRepasHotels }} €</td>
+                            {{ $SousTotalRepasHotels }} € TTC</td>
                         <td class="TD-table-2 text-center" colspan="1" style="border:2px solid red">Remboursement
                             carburant {{-- * prix de l'essence --}}
                         </td>
@@ -359,7 +359,7 @@
                         @endif
 
                         <td class="TD-table-2 text-center" colspan="3" style="font-size: 10px !important;">Total HT
-                            : {{ $total }} €</td>
+                            : {{ $total - ($totalTVA20 + $totalTVA10) }} €</td>
 
                         <td class="TD-table-2 text-center" colspan="3" style="font-size: 10px !important;">Total TVA
                             : {{ $totalTVA20 + $totalTVA10 }} €</td>

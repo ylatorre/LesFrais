@@ -61,7 +61,7 @@ class Controller extends BaseController
 
     public function createEvent(Request $request)
     {
-        
+
             // EVENT DE BASE
         Event::create([
             "id" => $request->iding,
@@ -374,7 +374,7 @@ class Controller extends BaseController
     {
 
 
-        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start","asc")->get();
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start","asc")->orderBy("title","asc")->get();
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect('dashboard');
