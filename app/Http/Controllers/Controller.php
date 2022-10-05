@@ -481,4 +481,8 @@ class Controller extends BaseController
         dd('interception');
         return redirect("/dashboard");
     }
+    public function supprimerEvent(Request $request){
+        DB::table('events')->where('id','=',$request->eventID)->delete();
+        return redirect("/dashboard");
+    }
 };

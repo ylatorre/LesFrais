@@ -331,6 +331,255 @@
         </div>
     </div>
 
+<!--/////////////////////////////////////////////////////////////////-->
+
+<!-- MODALE 2 POUR LA MODIFICATION -->
+
+<!--/////////////////////////////////////////////////////////////////-->
+
+<div class="container">
+    <div class="modal fade" id="event-modal2" role="dialog">
+        {{-- modal dialog --}}
+        <div class="modal-dialog" role="document">
+            {{-- modal content --}}
+            <div class="max-h-full overflow-hidden rounded-[3px] border-0 h-full flex flex-col relative bg-white">
+                {{-- modal header --}}
+                <div
+                    class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0">
+                    <h5 id="TitreEvenement2" class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]"></h5>
+                    {{-- <button type="button" id="closing_button"
+                        class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block ">X</button> --}}
+                    <button type="button" id="closing_button2"
+                        class="block text-[16px] leading-[20px] text-[rgb(41,43,44)] py-[8px] px-[16px] bg-[rgb(255,255,255)] border border-[rgb(204,204,204)] hover:text-[#292b2c] hover:bg-[rgb(230,230,230)] hover:border-[rgb(173,173,173)] rounded-[4px] focus:shadow-[0px_0px_0px_2px_rgba(204,204,204,0.5)] focus:outline-none">X</button>
+                </div>
+                {{-- modul body --}}
+                <div class="overflow-hidden block p-[10px]">
+                    <form action="{{ route('createEvent') }}" method="POST" id="formEvent">
+                        @csrf
+                        {{-- Input client --}}
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <div id="duplicate"></div>
+                                <label class="inline-block mb-0" for="title">Client</label>
+                                <input type="text" value="" name="title" id="2title"
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    required>
+                            </div>
+                        </div>
+                        {{-- Input Ville | Code Postal --}}
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label class="inline-block mb-0" for="code_postal">
+                                    Code Postal
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    id="2code_postal" name="code_postal" type="text" value="" required>
+
+                            </div>
+                            <div class="mb-3 col">
+                                <label class="inline-block mb-0" for="ville">
+                                    Ville
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    id="2ville" name="ville" type="text" value="" required>
+
+                            </div>
+
+
+                            <div class="mb-3 col">
+                                <label class="inline-block mb-0" for="parking">
+                                    Parking
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="2parking" id="parking" type="number" value="0" min="0"
+                                    required>
+
+                            </div>
+                        </div>
+                        {{-- Input Péage | Parking | Divers --}}
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label class="inline-block mb-0" for="peage">Péage
+
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="peage" id="2peage" type="number" value="0" min="0"
+                                    required>
+
+                            </div>
+                            <div class="mb-3 col " id="2peage2">
+                                <label class="inline-block mb-0 " for="peage2">
+                                    Péage 2
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="peage2" id="2peage2" type="number" value="0" min="0"
+                                    required>
+                            </div>
+                            <div class="mb-3 col " id="2peage3">
+                                <label class="inline-block mb-0" for="peage3">
+                                    Péage 3
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="peage3" id="2peage3" type="number" value="0" min="0"
+                                    required>
+                            </div>
+                            <div class="mb-3 col" id="2peage4">
+                                <label class="inline-block mb-0" for="peage4">
+                                    Péage 4
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="peage4" id="2peage4" type="number" value="0" min="0"
+                                    required>
+                            </div>
+
+
+
+                            <div class="mb-3 col">
+                                <label class="inline-block mb-0" for="divers">
+                                    Divers
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="divers" id="2divers" type="number" value="0" min="0"
+                                    required>
+
+                            </div>
+                        </div>
+                        {{-- Input Repas | Hotel | Distance --}}
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label class="inline-block mb-0" for="repas">
+                                    Petit déjeuner
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="repas" id="2repas" type="number" value="0" min="0"
+                                    required>
+
+                            </div>
+
+                            @csrf
+                            <div class="mb-3 col" id="2repas2">
+                                <label class="inline-block mb-0" for="repas">
+                                    Déjeuner
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="repas2" id="2repas2" type="number" value="0" min="0"
+                                    required>
+                            </div>
+                            <div class="mb-3 col" id="2repas3">
+                                <label class="inline-block mb-0" for="repas">
+                                    Dîner
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="repas3" id="2repas3" type="number" value="0" min="0"
+                                    required>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="mb-3 col">
+                                <label class="inline-block mb-0" for="hotel">
+                                    Hôtel
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="hotel" id="2hotel" type="number" value="0" min="0"
+                                    required>
+
+                            </div>
+                             <div id="divEssence"class="mb-3 col">
+                                <label class="inline-block mb-0" for="2essence">
+                                    Essence
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    id="2essence" name="essence" type="number"  min="0"
+                                    required>
+                            </div>
+                            <div id="divKilometrage" class="mb-3 col">
+                                <label class="inline-block mb-0" for="2kilometrage">
+                                    Distance( km )
+                                </label>
+                                <input
+
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    id="2kilometrage" name="kilometrage" type="number"
+                                    min="0" required>
+
+                            </div>
+                        </div>
+                        {{-- Input heure début | heure fin --}}
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label for="heure_debut" class="inline-block">
+                                    Heure de début
+                                </label>
+                                <input
+                                    class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="heureDebut" id="2heure_debut" type="text" value="00:00" required>
+                            </div>
+                            <div class="mb-3 col">
+                                <label for="heure_fin" class="w-full inline-block">
+                                    Heure de fin
+                                </label>
+                                <input
+                                    class="time fin shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="heureFin" id="2heure_fin" type="text" value="00:00" required>
+                            </div>
+                            {{-- Empty div to align time input with the others --}}
+                        </div>
+
+                        {{-- Input description mission --}}
+                        <div class="row">
+                            <div class="mb-3 col">
+                                <label for="description" class="mb-[5px]">Description du déplacement</label>
+                                <textarea name="description" id="2description" rows="3" maxlength="100"
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
+                            </div>
+                        </div>
+
+                        <button
+                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                            id="cancel_button2">ANNULER</button>
+                        <button
+                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                            id="2validation">VALIDATION</button>
+                            <button type="button" class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                            id="supprimer">SUPPRIMER</button>
+                    </form>
+
+                    <form method="POST" action="{{route('SupprimerEvent')}}" id="formSupprimerEvent">
+                        @csrf
+                        <input type="hidden" id="eventID" name="eventID">
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
     <div class="container">
         <div class="row">
 

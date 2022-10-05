@@ -44,9 +44,19 @@
 
         {{-- Close your eyes. Count to one. That is how long forever feels. --}}
         <style>
-            input:disabled{
-                border:2px solid red !important;
+            input:disabled {
+                border: 1px solid red !important;
             }
+
+            #essence {
+                transition: 100ms;
+
+            }
+
+            #kilometrage {
+                transition: 100ms;
+            }
+
             #calendar-container {
                 top: 0;
                 left: 0;
@@ -82,14 +92,14 @@
                 const essenceDiv = document.getElementById('divEssence');
                 const kmDiv = document.getElementById('divKilometrage');
 
-                essenceDiv.addEventListener('click',()=>{
-                    if(kmInput.value == 0){
+                essenceDiv.addEventListener('click', () => {
+                    if (kmInput.value == 0) {
                         essenceInput.disabled = false;
                     }
                 })
 
-                kmDiv.addEventListener('click',()=>{
-                    if(essenceInput.value == 0){
+                kmDiv.addEventListener('click', () => {
+                    if (essenceInput.value == 0) {
                         kmInput.disabled = false;
                     }
                 })
@@ -269,7 +279,7 @@
                                 });
                                 $('#event-modal').on('hidden.bs.modal', function() {
                                     $('#validation').unbind();
-
+                                    console.log('je suis dans le date click');
 
 
                                 });
@@ -501,21 +511,13 @@
 
 
 
-                            $('#repas2').hide();
-                            $('#repas3').hide();
-                            $('#peage2').hide();
-                            $('#peage3').hide();
-                            $('#peage4').hide();
+                            $('#2repas2').hide();
+                            $('#2repas3').hide();
+                            $('#2peage2').hide();
+                            $('#2peage3').hide();
+                            $('#2peage4').hide();
 
                             let actualyearEvent = $('.fc-toolbar-title').html();
-
-
-
-
-
-
-
-
 
                             let month = info.event.start.getMonth() + 1;
                             if (month < 10) {
@@ -533,7 +535,7 @@
 
                             /* - création du titre lorceque l'utilisateur clique sur l'évènement*/
                             nombreDuDay = startDate.slice(8, 11);
-                            document.getElementById('TitreEvenement').innerHTML = "Déplacement du " +
+                            document.getElementById('TitreEvenement2').innerHTML = "Déplacement du " +
                                 nombreDuDay + " " + actualyearEvent;
 
                             /* formatage de la date*/
@@ -623,30 +625,32 @@
                                 };
                             };
                             if (isCurrentMonthLocked == false) {
-                                $('#event-modal').modal('toggle')
+                                $('#event-modal2').modal('toggle')
 
                                 $('#duplicate').html('');
 
                                 info.el.style.borderColor = 'red';
 
                                 //gestion de fermeture d'événement
-                                $('#closing_button').on('click', function() {
-                                    $('#event-modal').modal('toggle');
-                                    $("#essence").prop('disabled', false);
-                                    $("#kilometrage").prop('disabled', false);
-                                });
-                                $('#cancel_button').on('click', function() {
-                                    $('#event-modal').modal('toggle');
-                                    $("#essence").prop('disabled', false);
-                                    $("#kilometrage").prop('disabled', false);
+                                $('#closing_button2').on('click', function() {
+                                    $('#event-modal2').modal('toggle');
 
                                 });
-                                $('#event-modal').on('hidden.bs.modal', function() {
+                                $('#cancel_button2').on('click', function() {
+                                    $('#event-modal2').modal('toggle');
+
+
+                                });
+                                $('#event-modal2').on('hidden.bs.modal', function() {
                                     info.el.style.borderColor = 'rgb(58,135,173)';
-                                    $("#essence").prop('disabled', false);
-                                    $("#kilometrage").prop('disabled', false);
-                                    $('#validation').unbind();
-                                    $('#supprimer').remove();
+
+                                    $("#2essence").prop('disabled', false);
+                                    $("#2kilometrage").prop('disabled', false);
+
+
+                                    console.log('je suis dans le event click');
+
+
 
 
 
@@ -654,29 +658,30 @@
 
                                 //remplir les input avec les valeurs de l'événement
                                 // console.log(info.event);
-                                $('#title').val(info.event.title);
-                                $('#ville').val(info.event._def.extendedProps.ville);
-                                $('#code_postal').val(info.event._def.extendedProps.code_postal);
-                                $('#essence').val(info.event._def.extendedProps.essence);
-                                $('#peage').val(info.event._def.extendedProps.peage);
-                                $('#parking').val(info.event._def.extendedProps.parking);
-                                $('#divers').val(info.event._def.extendedProps.divers);
-                                $('#repas').val(info.event._def.extendedProps.repas);
-                                $('#hotel').val(info.event._def.extendedProps.hotel);
-                                $('#kilometrage').val(info.event._def.extendedProps.kilometrage);
-                                $('#description').val(info.event._def.extendedProps.description);
-                                $('#heure_debut').val(info.event._def.extendedProps.heure_debut);
-                                $('#heure_fin').val(info.event._def.extendedProps.heure_fin);
+                                $("#eventID").val(info.event.id);
+                                $('#2title').val(info.event.title);
+                                $('#2ville').val(info.event._def.extendedProps.ville);
+                                $('#2code_postal').val(info.event._def.extendedProps.code_postal);
+                                $('#2essence').val(info.event._def.extendedProps.essence);
+                                $('#2peage').val(info.event._def.extendedProps.peage);
+                                $('#2parking').val(info.event._def.extendedProps.parking);
+                                $('#2divers').val(info.event._def.extendedProps.divers);
+                                $('#2repas').val(info.event._def.extendedProps.repas);
+                                $('#2hotel').val(info.event._def.extendedProps.hotel);
+                                $('#2kilometrage').val(info.event._def.extendedProps.kilometrage);
+                                $('#2description').val(info.event._def.extendedProps.description);
+                                $('#2heure_debut').val(info.event._def.extendedProps.heure_debut);
+                                $('#2heure_fin').val(info.event._def.extendedProps.heure_fin);
 
 
-
+                                $('#supprimer').on('click', function(){
+                                    $("#formSupprimerEvent").submit();
+                                });
 
                                 const id = info.event.id;
 
                                 //ajouter le bouton supprimer dans le modal
-                                $("#validation").parent().append(
-                                    '<button type="button" class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white" id="supprimer">SUPPRIMER</button>'
-                                );
+
 
                                 //appliquer les changement
                                 $('#validation').on('click', function() {
@@ -684,19 +689,19 @@
 
                                     //récup les valeurs des input
 
-                                    let clientVal = $("#title").val();
-                                    let villeVal = $("#ville").val();
-                                    let code_postalVal = $("#code_postal").val();
-                                    let peageVal = $("#peage").val();
-                                    let parkingVal = $("#parking").val();
-                                    let diversVal = $("#divers").val();
-                                    let repasVal = $("#repas").val();
-                                    let hotelVal = $("#hotel").val();
-                                    let kilometrageVal = $("#kilometrage").val();
-                                    let essenceVal = $("#essence").val();
-                                    let heureDebutVal = $("#heure_debut").val();
-                                    let heureFinVal = $("#heure_fin").val();
-                                    let descriptionVal = $("#description").val();
+                                    let clientVal = $("#2title").val();
+                                    let villeVal = $("#2ville").val();
+                                    let code_postalVal = $("#2code_postal").val();
+                                    let peageVal = $("#2peage").val();
+                                    let parkingVal = $("#2parking").val();
+                                    let diversVal = $("#2divers").val();
+                                    let repasVal = $("#2repas").val();
+                                    let hotelVal = $("#2hotel").val();
+                                    let kilometrageVal = $("#2kilometrage").val();
+                                    let essenceVal = $("#2essence").val();
+                                    let heureDebutVal = $("#2heure_debut").val();
+                                    let heureFinVal = $("#2heure_fin").val();
+                                    let descriptionVal = $("#2description").val();
 
                                     let event = {
                                         id: id,
@@ -747,9 +752,7 @@
 
 
                                 //bouton de suppression d'événement
-                                $('#supprimer').on('click', function() {
-                                    @this.suppressEvent(id);
-                                });
+
 
                             }
 

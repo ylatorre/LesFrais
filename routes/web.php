@@ -69,5 +69,6 @@ Route::get('Mes-notes-de-frais',[Controller::class,'mesNDF'])->name('mesNDF')->m
 Route::post('visu-mes-notes-de-frais',[Controller::class,'visumesndf'])->name('visumesndf')->middleware(['auth']);
 
 Route::post('repas',[Controller::class,'repas'])->name('repas')->middleware(['auth']);
+Route::post('Suppression-event',[Controller::class,'SupprimerEvent'])->name('SupprimerEvent')->middleware(['auth']);
 
 require __DIR__.'/auth.php';
