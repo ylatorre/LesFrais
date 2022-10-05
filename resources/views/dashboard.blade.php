@@ -91,6 +91,14 @@
         <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('NDFsuppr') }}</div>
     @endif
+    @if (Session::has('supprEvent'))
+        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('supprEvent') }}</div>
+    @endif
+    @if (Session::has('modifEvent'))
+        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('modifEvent') }}</div>
+    @endif
     @if (Session::has('nondf'))
         <div style="color:red; margin-left:1%; margin-bottom:3px; font-weight:bold;">{{ Session::get('nondf') }}</div>
     @endif
@@ -264,7 +272,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="essence" name="essence" type="number"  min="0"
+                                        id="essence" name="essence" type="number" min="0" value="0"
                                         required>
                                 </div>
                                 <div id="divKilometrage" class="mb-3 col">
@@ -274,7 +282,7 @@
                                     <input
 
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="kilometrage" name="kilometrage" type="number"
+                                        id="kilometrage" name="kilometrage" type="number" value="0"
                                         min="0" required>
 
                                 </div>
@@ -354,7 +362,7 @@
                 </div>
                 {{-- modul body --}}
                 <div class="overflow-hidden block p-[10px]">
-                    <form action="{{ route('createEvent') }}" method="POST" id="formEvent">
+                    <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent">
                         @csrf
                         {{-- Input client --}}
                         <div class="row">
@@ -394,7 +402,7 @@
                                 </label>
                                 <input
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="2parking" id="parking" type="number" value="0" min="0"
+                                    name="parking" id="2parking" type="number" value="0" min="0"
                                     required>
 
                             </div>
@@ -547,16 +555,23 @@
                             <div class="mb-3 col">
                                 <label for="description" class="mb-[5px]">Description du déplacement</label>
                                 <textarea name="description" id="2description" rows="3" maxlength="100"
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"></textarea>
                             </div>
                         </div>
+                        <input type="hidden" name="eventID" id="2eventID">
+                        <input type="hidden" name="start" id="2start">
+                        <input type="hidden" name="end" id="2end">
+                        <input type="hidden" name="mois" id="2mois">
+                        <input type="hidden" name="idUser" id="2idUSer" value="{{Auth::user()->id}}">
+
 
                         <button
                             class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                             id="cancel_button2">ANNULER</button>
                         <button
+                            type="submit"
                             class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                            id="2validation">VALIDATION</button>
+                            id="2validation">MODIFIER</button>
                             <button type="button" class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                             id="supprimer">SUPPRIMER</button>
                     </form>

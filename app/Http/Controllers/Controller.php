@@ -61,6 +61,7 @@ class Controller extends BaseController
 
     public function createEvent(Request $request)
     {
+        
             // EVENT DE BASE
         Event::create([
             "id" => $request->iding,
@@ -476,6 +477,11 @@ class Controller extends BaseController
 
         return redirect(route('mesNDF'));
     }
+
+    /*/////////////////////////
+    - Gestion des évènements
+    *//////////////////////////
+
     public function repas(Request $request)
     {
         dd('interception');
@@ -483,6 +489,38 @@ class Controller extends BaseController
     }
     public function supprimerEvent(Request $request){
         DB::table('events')->where('id','=',$request->eventID)->delete();
+
+        Session::flash("supprEvent","L'évènement à bien été modifié");
+        return redirect("/dashboard");
+    }
+    public function ModifierEvent(Request $request){
+
+       $eventEnQuestion = DB::table('events')->where('id','=', $request->eventID)->update([
+            'start'=>$request->start,
+            'end'=>$request->end,
+            'description'=>$request->description,
+            'title'=>$request->title,
+            'ville'=>$request->ville,
+            'code_postal'=>$request->code_postal,
+            'peage'=>$request->peage,
+            'parking'=>$request->parking,
+            'essence'=>$request->essence,
+            'divers'=>$request->divers,
+            'repas'=>$request->repas,
+            'hotel'=>$request->hotel,
+            'kilometrage'=>$request->kilometrage,
+            'mois'=>$request->mois,
+            'heure_debut'=>$request->heureDebut,
+            'heure_fin'=>$request->heureFin,
+            'idUser'=>$request->idUser,
+
+        ]);
+
+
+        Session::flash("modifEvent","L'évènement à bien été modifié !");
+
+
+
         return redirect("/dashboard");
     }
 };

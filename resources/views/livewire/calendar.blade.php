@@ -44,7 +44,7 @@
 
         {{-- Close your eyes. Count to one. That is how long forever feels. --}}
         <style>
-            input:disabled {
+            input:read-only {
                 border: 1px solid red !important;
             }
 
@@ -94,13 +94,13 @@
 
                 essenceDiv.addEventListener('click', () => {
                     if (kmInput.value == 0) {
-                        essenceInput.disabled = false;
+                        essenceInput.readOnly = false;
                     }
                 })
 
                 kmDiv.addEventListener('click', () => {
                     if (essenceInput.value == 0) {
-                        kmInput.disabled = false;
+                        kmInput.readOnly = false;
                     }
                 })
 
@@ -108,11 +108,11 @@
 
 
                 $('#essence').change(function() {
-                    $("#kilometrage").prop('disabled', true);
+                    $("#kilometrage").prop('readonly', true);
                 });
 
                 $('#kilometrage').change(function() {
-                    $("#essence").prop('disabled', true);
+                    $("#essence").prop('readonly', true);
                 });
 
                 /*------------------*/
@@ -156,11 +156,11 @@
 
 
                             $('#essence').change(function() {
-                                $("#kilometrage").prop('disabled', true);
+                                $("#kilometrage").prop('readonly', true);
                             });
 
                             $('#kilometrage').change(function() {
-                                $("#essence").prop('disabled', true);
+                                $("#essence").prop('readonly', true);
                             });
 
 
@@ -260,8 +260,8 @@
                             if (isCurrentMonthLocked == false) {
                                 $('#event-modal').modal('toggle');
 
-                                $("#essence").prop('disabled', false);
-                                $("#kilometrage").prop('disabled', false);
+                                $("#essence").prop('readonly', false);
+                                $("#kilometrage").prop('readonly', false);
 
 
 
@@ -644,8 +644,8 @@
                                 $('#event-modal2').on('hidden.bs.modal', function() {
                                     info.el.style.borderColor = 'rgb(58,135,173)';
 
-                                    $("#2essence").prop('disabled', false);
-                                    $("#2kilometrage").prop('disabled', false);
+                                    $("#2essence").prop('readonly', false);
+                                    $("#2kilometrage").prop('readonly', false);
 
 
                                     console.log('je suis dans le event click');
@@ -658,7 +658,11 @@
 
                                 //remplir les input avec les valeurs de l'événement
                                 // console.log(info.event);
+                                $('#2start').val(startDate);
+                                $('#2end').val(endDate);
+                                $('#2mois').val(dateactuelle);
                                 $("#eventID").val(info.event.id);
+                                $("#2eventID").val(info.event.id);
                                 $('#2title').val(info.event.title);
                                 $('#2ville').val(info.event._def.extendedProps.ville);
                                 $('#2code_postal').val(info.event._def.extendedProps.code_postal);
@@ -725,8 +729,9 @@
                                     }
 
                                     //recup les erreur des input
-                                    let check = @this.checkEvent(event);
-                                    @this.eventChange(event);
+                                    $("#2validation").on('click',()=>{
+                                        $("#formModificationEvent").submit();
+                                    });
                                     // check.then((value) => {
                                     //     if (value == null) {
                                     //         //si pas d'erreur ajouter l'événement
