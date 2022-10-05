@@ -44,6 +44,9 @@
 
         {{-- Close your eyes. Count to one. That is how long forever feels. --}}
         <style>
+            input:disabled{
+                border:2px solid red !important;
+            }
             #calendar-container {
                 top: 0;
                 left: 0;
@@ -69,14 +72,40 @@
         </div>
 
         @push('scripts')
-
-
             <script src="{{ asset('/js/fullcalendar.js') }}"></script>
             {{-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script> --}}
             <script>
-                const inputEssence = document.getElementById('inputEssence');
-                const inputDistance = document.getElementById('inputDistance');
+                /* - permet le verrouillage / déverrouillage des input essence et distance en fonction de la valeur saisie */
 
+                const essenceInput = document.getElementById('essence');
+                const kmInput = document.getElementById('kilometrage');
+                const essenceDiv = document.getElementById('divEssence');
+                const kmDiv = document.getElementById('divKilometrage');
+
+                essenceDiv.addEventListener('click',()=>{
+                    if(kmInput.value == 0){
+                        essenceInput.disabled = false;
+                    }
+                })
+
+                kmDiv.addEventListener('click',()=>{
+                    if(essenceInput.value == 0){
+                        kmInput.disabled = false;
+                    }
+                })
+
+
+
+
+                $('#essence').change(function() {
+                    $("#kilometrage").prop('disabled', true);
+                });
+
+                $('#kilometrage').change(function() {
+                    $("#essence").prop('disabled', true);
+                });
+
+                /*------------------*/
 
                 create_UUID = () => {
                     let dt = new Date().getTime();
@@ -116,23 +145,28 @@
 
 
 
-                           inputEssence.addEventListener('click', () => {
-                                inputDistance.style.display = 'none';
-
-                            });
-                            inputDistance.addEventListener('click', () => {
-                                inputEssence.style.display = 'none';
-
+                            $('#essence').change(function() {
+                                $("#kilometrage").prop('disabled', true);
                             });
 
+                            $('#kilometrage').change(function() {
+                                $("#essence").prop('disabled', true);
+                            });
 
 
-            /* - création du titre lorceque l'utilisateur clique sur une date */
+
+
+
+
+
+
+                            /* - création du titre lorceque l'utilisateur clique sur une date */
                             let actualyear = $('.fc-toolbar-title').html();
 
                             nombreDuJour = info.dateStr.slice(8)
-                            dateFormatedClicked = nombreDuJour+" "+actualyear;
-                            document.getElementById('TitreEvenement').innerHTML = "Déplacement du " + dateFormatedClicked;
+                            dateFormatedClicked = nombreDuJour + " " + actualyear;
+                            document.getElementById('TitreEvenement').innerHTML = "Déplacement du " +
+                                dateFormatedClicked;
 
 
 
@@ -216,8 +250,8 @@
                             if (isCurrentMonthLocked == false) {
                                 $('#event-modal').modal('toggle');
 
-                                        inputDistance.style.display = "block";
-                                        inputEssence.style.display = "block";
+                                $("#essence").prop('disabled', false);
+                                $("#kilometrage").prop('disabled', false);
 
 
 
@@ -283,8 +317,8 @@
                                     let diversVal = $("#divers").val();
                                     let repasVal = $("#repas").val();
                                     let hotelVal = $("#hotel").val();
-                                    let kilometrageVal = $("#inputDistance").val();
-                                    let essenceVal = $("#inputEssence").val();
+                                    let kilometrageVal = $("#kilometrage").val();
+                                    let essenceVal = $("#essence").val();
                                     let heureDebutVal = $("#heure_debut").val();
                                     let heureFinVal = $("#heure_fin").val();
 
@@ -497,11 +531,12 @@
                             let endDate = year + "-" + month + "-" + day + " " + $('#heure_fin')
                                 .val();
 
-                        /* - création du titre lorceque l'utilisateur clique sur l'évènement*/
-                                nombreDuDay = startDate.slice(8,11);
-                                document.getElementById('TitreEvenement').innerHTML = "Déplacement du " + nombreDuDay + " " + actualyearEvent;
+                            /* - création du titre lorceque l'utilisateur clique sur l'évènement*/
+                            nombreDuDay = startDate.slice(8, 11);
+                            document.getElementById('TitreEvenement').innerHTML = "Déplacement du " +
+                                nombreDuDay + " " + actualyearEvent;
 
-                        /* formatage de la date*/
+                            /* formatage de la date*/
 
                             let actualyear = $('.fc-toolbar-title').html();
                             let selectedyear = actualyear.slice(-4, 25);
@@ -597,20 +632,24 @@
                                 //gestion de fermeture d'événement
                                 $('#closing_button').on('click', function() {
                                     $('#event-modal').modal('toggle');
-                                    $("#inputEssence").show();
-                                    $("#inputDistance").show();
+                                    $("#essence").prop('disabled', false);
+                                    $("#kilometrage").prop('disabled', false);
                                 });
                                 $('#cancel_button').on('click', function() {
                                     $('#event-modal').modal('toggle');
-                                    $("#inputEssence").show();
-                                    $("#inputDistance").show();
+                                    $("#essence").prop('disabled', false);
+                                    $("#kilometrage").prop('disabled', false);
+
                                 });
                                 $('#event-modal').on('hidden.bs.modal', function() {
                                     info.el.style.borderColor = 'rgb(58,135,173)';
-                                    $("#inputEssence").show();
-                                    $("#inputDistance").show();
+                                    $("#essence").prop('disabled', false);
+                                    $("#kilometrage").prop('disabled', false);
                                     $('#validation').unbind();
                                     $('#supprimer').remove();
+
+
+
                                 });
 
                                 //remplir les input avec les valeurs de l'événement
@@ -630,12 +669,6 @@
                                 $('#heure_fin').val(info.event._def.extendedProps.heure_fin);
 
 
-                                if($("#essence").val() != 0){
-                                    $("#inputDistance").hide();
-                                };
-                                if($("#kilometrage").val() != 0){
-                                    $("#inputEssence").hide();
-                                };
 
 
                                 const id = info.event.id;
@@ -659,8 +692,8 @@
                                     let diversVal = $("#divers").val();
                                     let repasVal = $("#repas").val();
                                     let hotelVal = $("#hotel").val();
-                                    let kilometrageVal = $("#inputDistance").val();
-                                    let essenceVal = $("#inputEssence").val();
+                                    let kilometrageVal = $("#kilometrage").val();
+                                    let essenceVal = $("#essence").val();
                                     let heureDebutVal = $("#heure_debut").val();
                                     let heureFinVal = $("#heure_fin").val();
                                     let descriptionVal = $("#description").val();

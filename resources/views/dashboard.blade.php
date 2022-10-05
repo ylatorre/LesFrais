@@ -258,7 +258,7 @@
                                         required>
 
                                 </div>
-                                 <div id="inputEssence"class="mb-3 col">
+                                 <div id="divEssence"class="mb-3 col">
                                     <label class="inline-block mb-0" for="essence">
                                         Essence
                                     </label>
@@ -267,9 +267,9 @@
                                         id="essence" name="essence" type="number"  min="0"
                                         required>
                                 </div>
-                                <div id="inputDistance" class="mb-3 col">
+                                <div id="divKilometrage" class="mb-3 col">
                                     <label class="inline-block mb-0" for="kilometrage">
-                                        Distance
+                                        Distance( km )
                                     </label>
                                     <input
 
