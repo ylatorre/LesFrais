@@ -7,10 +7,10 @@
         @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-            <div class="w-full h-20 px-4 mb-6 font-bold">Note de frais de {{ $utilisateurs[0]->name }} pour le mois
+            <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
                 d'{{ $dateNDFpourPDFetVISU }}
             @else
-                <div class="w-full h-20 px-4 mb-6 font-bold">Note de frais de {{ $utilisateurs[0]->name }} pour le mois
+                <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
                     de {{ $dateNDFpourPDFetVISU }}
         @endif
         <div class="flex flex-row justify-around">
@@ -38,10 +38,10 @@
         @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-            <div class="w-full h-20 px-4 mb-6 font-bold">Note de frais de {{ $utilisateurs[0]->name }} pour le mois
+            <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
                 d'{{ $dateNDFpourPDFetVISU }}
             @else
-                <div class="w-full h-20 px-4 mb-6 font-bold">Note de frais de {{ $utilisateurs[0]->name }} pour le mois
+                <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
                     de {{ $dateNDFpourPDFetVISU }}
         @endif
         <div class="flex flex-row justify-around items-center">
@@ -399,11 +399,12 @@
     </style>
     <div class="w-full flex flex-row justify-around py-5 " style="border:4px solid black;">
         <div class="w-full">
-             <div class="w-full flex items-center justify-around">
+        <div class="w-full flex items-center justify-around mb-5">
+            <div class="flex flex-row">
             <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 
 
-            <table style=" border:2px solid black; margin-top:1%; margin-bottom:1%;">
+            <table style="margin-left:10px; border:2px solid black; margin-top:1%; margin-bottom:1%;">
                 <tr>
                     <td class="td-top-table">Prénom / Nom :</td>
                     <td class="td-top-table">{{ $utilisateurs[0]->name }}</td>
@@ -414,6 +415,7 @@
                 </tr>
 
             </table>
+        </div>
         </div>
 
             {{--    <h1 class="">dawd</h1> --}}
