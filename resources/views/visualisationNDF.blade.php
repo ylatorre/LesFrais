@@ -493,7 +493,7 @@
                                     <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                                     <td class="TD-table col-table text-center"
-                                        style=" max-width:120px; overflow:hidden; border-bottom:2px solid black">
+                                        style="white-space:nowrap; max-width:120px; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->peage2 }} €</td>
@@ -582,10 +582,10 @@
                                         {{ $infosNDF[0]->DateValidation }}</td>
                                 @endif
 
-                                <td class="TD-table text-center" colspan="7">{{ $SousTotalTransport }} €</td>
+                                <td class="TD-table text-center" colspan="7">{{ $SousTotalTransport }} € TTC</td>
                                 <td class="TD-table text-center BGnuit" colspan="1"></td>
                                 <td class="TD-table text-center" colspan="4" style="border-right:2px solid red">
-                                    {{ $SousTotalRepasHotels }} €</td>
+                                    {{ $SousTotalRepasHotels }} € TTC</td>
                                 <td class="TD-table text-center" colspan="2" style="border:2px solid red">
                                     Remboursement
                                     essence {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }}
