@@ -140,7 +140,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="code_postal" name="code_postal" type="text" value="" required>
+                                        id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}" required>
 
                                 </div>
                                 <div class="mb-3 col">
