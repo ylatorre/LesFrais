@@ -410,7 +410,7 @@
                     <td class="td-top-table">{{ $utilisateurs[0]->name }}</td>
                 </tr>
                 <tr>
-                    <td class="td-top-table">Frais de:</td>
+                    <td class="td-top-table">Frais de :</td>
                     <td class="td-top-table">{{ $dateNDFpourPDFetVISU }}</td>
                 </tr>
 
@@ -430,18 +430,23 @@
                             <th class="TH-table text-center ">Ville</th>
                             <th class="TH-table text-center"
                                 style="width:5% !important; overflow:hidden; border-left: 2px solid black;border-right: 2px solid black">
-                                description</th>
+                                Description</th>
                             {{--            <tr colspan="4">TTC            </tr> --}}
 
-                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black;">Péage</th>
+                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black;">P1</th>
+                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black;">P2</th>
+                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black;">P3</th>
+                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black;">P4</th>
                             <th class="TH-table text-center BGblue">Parking</th>
                             <th class="TH-table text-center BGblue">Essence</th>
                             <th class="TH-table text-center BGblue">Divers</th>
                             <th class="TH-table text-center BGblue" style="border-left: 2px solid black">Dt TVA
                                 (20%)
                             </th>
-                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Repas
-                            </th>
+                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Petit déjeuner</th>
+                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Déjeuner</th>
+                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Dîner</th>
+
                             <th class="TH-table text-center BGyellow">Hotels</th>
                             <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
 
@@ -467,15 +472,15 @@
                                     @endphp
                                     @php
 
-                                        $totalPeage = $utilisateur->peage + $totalPeage;
+                                        $totalPeage = $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $totalPeage;
                                         $totalParking = $utilisateur->parking + $totalParking;
                                         $totalEssence = $utilisateur->essence + $totalEssence;
                                         $totalDivers = $utilisateur->divers + $totalDivers;
-                                        $totalRepas = $utilisateur->repas + $totalRepas;
+                                        $totalRepas = ($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner) + $totalRepas;
                                         $totalHotels = $utilisateur->hotel + $totalHotels;
                                         $totalKilometres = $utilisateur->kilometrage + $totalKilometres;
-                                        $totalTVA20 = round((($utilisateur->divers + $utilisateur->peage + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) + $totalTVA20;
-                                        $totalTVA10 = round((($utilisateur->repas + $utilisateur->hotel) / 1.1) * 0.1, 2) + $totalTVA10;
+                                        $totalTVA20 = round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) + $totalTVA20;
+                                        $totalTVA10 = round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) + $totalTVA10;
                                         $totaltot = 0;
                                         $totalTVAtot = round(($totalRepas + $totalHotels) * 0.1, 2);
 
@@ -491,16 +496,21 @@
                                         style=" max-width:120px; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->peage2 }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->peage3 }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->peage4 }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->parking }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
                                     <td class="TD-table text-center">
-                                        {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
+                                        {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 +$utilisateur->peage4 +$utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                         €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->repas }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->petitDej }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->dejeuner }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->diner }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->hotel }} €</td>
                                     <td class="TD-table text-center">
-                                        {{ round((($utilisateur->repas + $utilisateur->hotel) / 1.1) * 0.1, 2) }} €
+                                        {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner +$utilisateur->hotel) / 1.1) * 0.1, 2) }} €
                                     </td>
 
                                     <td class="TD-table col-table text-center" style="border-left: 2px solid black">
@@ -532,7 +542,7 @@
 
 
 
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                                <td colspan="4" class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalPeage }} €</td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalParking }} €</td>
@@ -542,7 +552,7 @@
                                     {{ $totalDivers }} €</td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalTVA20 }} €</td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                                <td colspan="3" class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalRepas }} €</td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalHotels }} €</td>
@@ -572,9 +582,9 @@
                                         {{ $infosNDF[0]->DateValidation }}</td>
                                 @endif
 
-                                <td class="TD-table text-center" colspan="4">{{ $SousTotalTransport }} €</td>
+                                <td class="TD-table text-center" colspan="7">{{ $SousTotalTransport }} €</td>
                                 <td class="TD-table text-center BGnuit" colspan="1"></td>
-                                <td class="TD-table text-center" colspan="2" style="border-right:2px solid red">
+                                <td class="TD-table text-center" colspan="4" style="border-right:2px solid red">
                                     {{ $SousTotalRepasHotels }} €</td>
                                 <td class="TD-table text-center" colspan="2" style="border:2px solid red">
                                     Remboursement
@@ -596,10 +606,10 @@
                                         style="border:2px solid black; font-size:10px;">Validée par :
                                         {{ $infosNDF[0]->ValideePar }}</td>
                                 @endif
-                                <td class="TD-table text-center BGgris" colspan="4">
+                                <td class="TD-table text-center BGgris" colspan="7">
                                     {{ $SousTotalTransport - $totalTVA20 }} € HT</td>
                                 <td class="TD-table text-center BGnuit" colspan="1"></td>
-                                <td class="TD-table text-center BGgris" colspan="2">
+                                <td class="TD-table text-center BGgris" colspan="4">
                                     {{ round($SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux - $totalTVA10, 2) }}
                                     € HT</td>
                                 <td class="TD-table text-center BGnuit" colspan="2"></td>
@@ -611,7 +621,7 @@
                                     déplacements
                                 </td>
 
-                                <td class="TD-table text-center" colspan="9" style="font-size: 16px !important;">
+                                <td class="TD-table text-center" colspan="15" style="font-size: 16px !important;">
                                     Total
                                     {{ $total }} € TTC</td>
                             </tr>

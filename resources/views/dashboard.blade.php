@@ -221,33 +221,33 @@
                             {{-- Input Repas | Hotel | Distance --}}
                             <div class="row">
                                 <div class="mb-3 col">
-                                    <label class="inline-block mb-0" for="repas">
+                                    <label class="inline-block mb-0" for="petitDej">
                                         Petit déjeuner
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas" id="repas" type="number" value="0" min="0"
+                                        name="petitDej" id="petitDej" type="number" value="0" min="0"
                                         required>
 
                                 </div>
 
                                 @csrf
-                                <div class="mb-3 col" id="repas2">
-                                    <label class="inline-block mb-0" for="repas">
+                                <div class="mb-3 col" id="dejeuner">
+                                    <label class="inline-block mb-0" for="dejeuner">
                                         Déjeuner
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas2" id="repas2" type="number" value="0" min="0"
+                                        name="dejeuner" id="dejeuner" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col" id="repas3">
-                                    <label class="inline-block mb-0" for="repas">
+                                <div class="mb-3 col" id="diner">
+                                    <label class="inline-block mb-0" for="diner">
                                         Dîner
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="repas3" id="repas3" type="number" value="0" min="0"
+                                        name="diner" id="diner" type="number" value="0" min="0"
                                         required>
 
                                 </div>
@@ -319,11 +319,11 @@
                             <input name="start" id="starting" type="hidden">
                             <input name="end" id="ending" type="hidden">
                             <input name="iding" id="iding" type="hidden">
-                            <input name="iding2" id="iding2" type="hidden">
+                            {{-- <input name="iding2" id="iding2" type="hidden">
                             <input name="iding3" id="iding3" type="hidden">
                             <input name="iding4" id="iding4" type="hidden">
                             <input name="iding5" id="iding5" type="hidden">
-                            <input name="iding6" id="iding6" type="hidden">
+                            <input name="iding6" id="iding6" type="hidden"> --}}
                             <input name="moisActuel" id="monthing" type="hidden">
                             <button
                                 class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
@@ -419,7 +419,7 @@
                                     required>
 
                             </div>
-                            <div class="mb-3 col " id="2peage2">
+                            <div class="mb-3 col " id="div2peage2">
                                 <label class="inline-block mb-0 " for="peage2">
                                     Péage 2
                                 </label>
@@ -428,7 +428,7 @@
                                     name="peage2" id="2peage2" type="number" value="0" min="0"
                                     required>
                             </div>
-                            <div class="mb-3 col " id="2peage3">
+                            <div class="mb-3 col " id="div2peage3">
                                 <label class="inline-block mb-0" for="peage3">
                                     Péage 3
                                 </label>
@@ -437,7 +437,7 @@
                                     name="peage3" id="2peage3" type="number" value="0" min="0"
                                     required>
                             </div>
-                            <div class="mb-3 col" id="2peage4">
+                            <div class="mb-3 col" id="div2peage4">
                                 <label class="inline-block mb-0" for="peage4">
                                     Péage 4
                                 </label>
@@ -460,36 +460,36 @@
 
                             </div>
                         </div>
-                        {{-- Input Repas | Hotel | Distance --}}
+                        {{-- Input | Hotel | Distance --}}
                         <div class="row">
                             <div class="mb-3 col">
-                                <label class="inline-block mb-0" for="repas">
+                                <label class="inline-block mb-0" for="2petitDej">
                                     Petit déjeuner
                                 </label>
                                 <input
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="repas" id="2repas" type="number" value="0" min="0"
+                                    name="petitDej" id="2petitDej" type="number" value="0" min="0"
                                     required>
 
                             </div>
 
                             @csrf
-                            <div class="mb-3 col" id="2repas2">
+                            <div class="mb-3 col" id="div2dejeuner">
                                 <label class="inline-block mb-0" for="repas">
                                     Déjeuner
                                 </label>
                                 <input
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="repas2" id="2repas2" type="number" value="0" min="0"
+                                    name="dejeuner" id="2dejeuner" type="number" value="0" min="0"
                                     required>
                             </div>
-                            <div class="mb-3 col" id="2repas3">
+                            <div class="mb-3 col" id="div2diner3">
                                 <label class="inline-block mb-0" for="repas">
                                     Dîner
                                 </label>
                                 <input
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="repas3" id="2repas3" type="number" value="0" min="0"
+                                    name="diner" id="2diner" type="number" value="0" min="0"
                                     required>
 
                             </div>
@@ -508,16 +508,16 @@
                                     required>
 
                             </div>
-                             <div id="divEssence"class="mb-3 col">
+                             <div id="div2Essence"class="mb-3 col">
                                 <label class="inline-block mb-0" for="2essence">
                                     Essence
                                 </label>
                                 <input
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    id="2essence" name="essence" type="number"  min="0"
+                                    id="2essence" name="essence" type="number"  min="0" value="0"
                                     required>
                             </div>
-                            <div id="divKilometrage" class="mb-3 col">
+                            <div id="div2Kilometrage" class="mb-3 col">
                                 <label class="inline-block mb-0" for="2kilometrage">
                                     Distance( km )
                                 </label>
@@ -525,7 +525,7 @@
 
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                     id="2kilometrage" name="kilometrage" type="number"
-                                    min="0" required>
+                                    min="0" value="0" required>
 
                             </div>
                         </div>
@@ -569,7 +569,7 @@
                             class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                             id="cancel_button2">ANNULER</button>
                         <button
-                            type="submit"
+                            type="button"
                             class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                             id="2validation">MODIFIER</button>
                             <button type="button" class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"

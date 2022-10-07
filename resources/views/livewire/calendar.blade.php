@@ -91,6 +91,8 @@
                 const kmInput = document.getElementById('kilometrage');
                 const essenceDiv = document.getElementById('divEssence');
                 const kmDiv = document.getElementById('divKilometrage');
+                const modifKilometrage = document.getElementById('2kilometrage');
+                const modifEssence = document.getElementById('2essence');
 
                 essenceDiv.addEventListener('click', () => {
                     if (kmInput.value == 0) {
@@ -105,6 +107,21 @@
                 })
 
 
+                modifKilometrage.addEventListener('click', () => {
+                    if (modifEssence.value == 0) {
+                        modifKilometrage.readOnly = false;
+                    }
+                })
+                modifEssence.addEventListener('click', () => {
+                    if (modifKilometrage.value == 0) {
+                        modifEssence.readOnly = false;
+                    }
+                })
+
+
+
+
+
 
 
                 $('#essence').change(function() {
@@ -113,6 +130,14 @@
 
                 $('#kilometrage').change(function() {
                     $("#essence").prop('readonly', true);
+                });
+
+                $('#2essence').change(function() {
+                    $("#2kilometrage").prop('readonly', true);
+                });
+
+                $('#2kilometrage').change(function() {
+                    $("#2essence").prop('readonly', true);
                 });
 
                 /*------------------*/
@@ -147,11 +172,7 @@
                             $("#essence").val(zero);
                             $("#kilometrage").val(zero);
 
-                            $("#repas2").show();
-                            $("#repas3").show();
-                            $("#peage2").show();
-                            $("#peage3").show();
-                            $("#peage4").show();
+
 
 
 
@@ -279,7 +300,7 @@
                                 });
                                 $('#event-modal').on('hidden.bs.modal', function() {
                                     $('#validation').unbind();
-                                    console.log('je suis dans le date click');
+
 
 
                                 });
@@ -287,6 +308,12 @@
                                 //création d'événement quand le bouton validation est click
                                 $("#validation").on('click', function() {
                                     //formatage des dates au format année-mois-jour heure:minute
+                                    if (kmInput.value == "") {
+                                        $('#kilometrage').val(0);
+                                    }
+                                    if (essenceInput.value == "") {
+                                        $('#essence').val(0);
+                                    }
 
                                     let dateactuelle = info.dateStr;
                                     dateactuelle = dateactuelle.slice(0, -3);
@@ -507,15 +534,11 @@
 
                         //block de modification d'événement
                         eventClick: function(info) {
+
+
+
+
                             //formatter les date au format année-mois-jour heure:minute
-
-
-
-                            $('#2repas2').hide();
-                            $('#2repas3').hide();
-                            $('#2peage2').hide();
-                            $('#2peage3').hide();
-                            $('#2peage4').hide();
 
                             let actualyearEvent = $('.fc-toolbar-title').html();
 
@@ -646,18 +669,12 @@
 
                                     $("#2essence").prop('readonly', false);
                                     $("#2kilometrage").prop('readonly', false);
-
-
-                                    console.log('je suis dans le event click');
-
-
-
-
-
                                 });
 
                                 //remplir les input avec les valeurs de l'événement
                                 // console.log(info.event);
+
+
                                 $('#2start').val(startDate);
                                 $('#2end').val(endDate);
                                 $('#2mois').val(dateactuelle);
@@ -668,17 +685,35 @@
                                 $('#2code_postal').val(info.event._def.extendedProps.code_postal);
                                 $('#2essence').val(info.event._def.extendedProps.essence);
                                 $('#2peage').val(info.event._def.extendedProps.peage);
+                                $('#2peage2').val(info.event._def.extendedProps.peage2);
+                                $('#2peage3').val(info.event._def.extendedProps.peage3);
+                                $('#2peage4').val(info.event._def.extendedProps.peage4);
                                 $('#2parking').val(info.event._def.extendedProps.parking);
                                 $('#2divers').val(info.event._def.extendedProps.divers);
-                                $('#2repas').val(info.event._def.extendedProps.repas);
+                                $('#2petitDej').val(info.event._def.extendedProps.petitDej);
+                                $('#2dejeuner').val(info.event._def.extendedProps.dejeuner);
+                                $('#2diner').val(info.event._def.extendedProps.diner);
                                 $('#2hotel').val(info.event._def.extendedProps.hotel);
                                 $('#2kilometrage').val(info.event._def.extendedProps.kilometrage);
                                 $('#2description').val(info.event._def.extendedProps.description);
                                 $('#2heure_debut').val(info.event._def.extendedProps.heure_debut);
                                 $('#2heure_fin').val(info.event._def.extendedProps.heure_fin);
 
+                                /* permet la gestion des input dans la modale de modification */
 
-                                $('#supprimer').on('click', function(){
+                                const modifKilometrage = document.getElementById('2kilometrage');
+                                const modifEssence = document.getElementById('2essence');
+
+                                if (modifKilometrage.value == 0) {
+                                    modifKilometrage.readOnly = "true";
+                                }
+                                if (modifEssence.value == 0) {
+                                    modifEssence.readOnly = "true";
+                                }
+
+
+
+                                $('#supprimer').on('click', function() {
                                     $("#formSupprimerEvent").submit();
                                 });
 
@@ -688,71 +723,18 @@
 
 
                                 //appliquer les changement
-                                $('#validation').on('click', function() {
+                                $('#2validation').on('click', function() {
 
-
-                                    //récup les valeurs des input
-
-                                    let clientVal = $("#2title").val();
-                                    let villeVal = $("#2ville").val();
-                                    let code_postalVal = $("#2code_postal").val();
-                                    let peageVal = $("#2peage").val();
-                                    let parkingVal = $("#2parking").val();
-                                    let diversVal = $("#2divers").val();
-                                    let repasVal = $("#2repas").val();
-                                    let hotelVal = $("#2hotel").val();
-                                    let kilometrageVal = $("#2kilometrage").val();
-                                    let essenceVal = $("#2essence").val();
-                                    let heureDebutVal = $("#2heure_debut").val();
-                                    let heureFinVal = $("#2heure_fin").val();
-                                    let descriptionVal = $("#2description").val();
-
-                                    let event = {
-                                        id: id,
-                                        start: startDate,
-                                        end: endDate,
-                                        title: clientVal,
-                                        ville: villeVal,
-                                        code_postal: code_postalVal,
-                                        peage: peageVal,
-                                        parking: parkingVal,
-                                        divers: diversVal,
-                                        repas: repasVal,
-                                        essence: essenceVal,
-                                        hotel: hotelVal,
-                                        kilometrage: kilometrageVal,
-                                        idUser: {{ Auth::user()->id }},
-                                        heure_debut: heureDebutVal,
-                                        heure_fin: heureFinVal,
-                                        mois: dateactuelle,
-                                        description: descriptionVal,
+                                    if(modifEssence.value == ""){
+                                        $("#2essence").val(0);
+                                    }
+                                    if(modifKilometrage.value == ""){
+                                        $("#2kilometrage").val(0);
                                     }
 
-                                    //recup les erreur des input
-                                    $("#2validation").on('click',()=>{
-                                        $("#formModificationEvent").submit();
-                                    });
-                                    // check.then((value) => {
-                                    //     if (value == null) {
-                                    //         //si pas d'erreur ajouter l'événement
 
-                                    //     } else {
-                                    //         //reset les élément d'affichage d'erreur
-                                    //         var isDuplicate = false;
-                                    //         $('.errors').remove();
-                                    //         //récup la valeur d'où seront positioner les élément d'erreur
-                                    //         let bottom = ($("label[for='title']").parent()
-                                    //             .outerHeight()) * 0.25;
-                                    //         value.forEach(element => {
-                                    //             //afficher les messages d'erreurs sur les input
-                                    //             $("#" + element).parent().append(
-                                    //                 '<div id="errors" class="errors text-[rgb(169,68,66)] absolute bottom-[-' +
-                                    //                 bottom +
-                                    //                 'px] w-full text-[12px]">Veuillez saisir une valeur.</div>'
-                                    //             );
-                                    //         });
-                                    //     };
-                                    // });
+                                 $("#formModificationEvent").submit();
+
                                 });
 
 

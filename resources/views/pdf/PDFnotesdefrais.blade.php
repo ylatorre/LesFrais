@@ -170,17 +170,17 @@
                             @endphp
                             @php
 
-                                $totalPeage = $utilisateur->peage + $totalPeage;
-                                $totalParking = $utilisateur->parking + $totalParking;
-                                $totalEssence = $utilisateur->essence + $totalEssence;
-                                $totalDivers = $utilisateur->divers + $totalDivers;
-                                $totalRepas = $utilisateur->repas + $totalRepas;
-                                $totalHotels = $utilisateur->hotel + $totalHotels;
-                                $totalKilometres = $utilisateur->kilometrage + $totalKilometres;
-                                $totalTVA20 = round((($utilisateur->divers + $utilisateur->peage + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) + $totalTVA20;
-                                $totalTVA10 = round((($utilisateur->repas + $utilisateur->hotel) / 1.1) * 0.1, 2) + $totalTVA10;
-                                $totaltot = 0;
-                                $totalTVAtot = round(($totalRepas + $totalHotels) * 0.1, 2);
+                                        $totalPeage = $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $totalPeage;
+                                        $totalParking = $utilisateur->parking + $totalParking;
+                                        $totalEssence = $utilisateur->essence + $totalEssence;
+                                        $totalDivers = $utilisateur->divers + $totalDivers;
+                                        $totalRepas = ($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner) + $totalRepas;
+                                        $totalHotels = $utilisateur->hotel + $totalHotels;
+                                        $totalKilometres = $utilisateur->kilometrage + $totalKilometres;
+                                        $totalTVA20 = round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) + $totalTVA20;
+                                        $totalTVA10 = round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) + $totalTVA10;
+                                        $totaltot = 0;
+                                        $totalTVAtot = round(($totalRepas + $totalHotels) * 0.1, 2);
 
 
                                 /* régler le probleme de la tva et du total tva içi*/

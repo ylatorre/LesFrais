@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
 
             $table->uuid('id')->primary();
-
             $table->string('start');
             $table->string('end')->nullable();
             $table->string('description')->nullable();
@@ -24,10 +23,15 @@ return new class extends Migration
             $table->string('ville');
             $table->string('code_postal');
             $table->float('peage')->default('0');
+            $table->float('peage2')->default('0');
+            $table->float('peage3')->default('0');
+            $table->float('peage4')->default('0');
             $table->float('parking')->default('0');
             $table->float('essence')->default('0');
             $table->float('divers')->default('0');
-            $table->float('repas')->default('0');
+            $table->float('petitDej')->default('0');
+            $table->float('dejeuner')->default('0');
+            $table->float('diner')->default('0');
             $table->float('hotel')->default('0');
             $table->float('kilometrage')->default('0');
             $table->string("mois");
