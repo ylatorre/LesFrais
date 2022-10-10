@@ -205,7 +205,7 @@
                             <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                             <td class="TD-table col-table text-center"
-                                style="white-space:nowrap; max-width: 10px; overflow:hidden; border-right:2px solid black;">
+                                style="white-space:nowrap; max-width: 10px; text-overflow:ellipsis; border-right:2px solid black;">
                                 {{ $utilisateur->description }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->peage2 }} €</td>
