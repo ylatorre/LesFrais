@@ -83,8 +83,8 @@
             border: 1px solid black;
             border-bottom: 2px solid black;
             border-top: 2px solid black;
-            padding-left: 2px;
-            padding-right: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
             height: 40px;
         }
 
@@ -152,7 +152,8 @@
 
             .TH-table {
                 font-size: 10px;
-                padding: 1px;
+                padding-left: 4px;
+                padding-right: 4px;
             }
 
             .TD-table {
@@ -175,15 +176,12 @@
             .td-top-table {
                 font-size: 10px;
             }
-
             .TH-table {
                 font-size: 8px;
-
             }
 
             .TD-table {
                 font-size: 6px;
-
             }
 
             .td-sous-total {
@@ -621,9 +619,8 @@
                                     déplacements
                                 </td>
 
-                                <td class="TD-table text-center" colspan="15" style="font-size: 16px !important;">
-                                    Total
-                                    {{ $total }} € TTC</td>
+                                <td class="TD-table text-center" colspan="15" >
+                                    Total{{ $total }} € TTC</td>
                             </tr>
 
                         </tbody>

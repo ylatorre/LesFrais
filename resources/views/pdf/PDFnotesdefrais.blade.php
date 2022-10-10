@@ -393,7 +393,7 @@
 
             </table>
             <h1 class="text-center"
-                style="position:fixed; margin-top:18px;  white-space:nowrap; font-size: 8px; bottom:0px; left:8%; color:#202020;">
+                style="position:fixed; margin-top:18px;  white-space:nowrap; font-size: 8px; bottom:0px; left:21%; color:#202020;">
                 Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 - Bâtiment A2 - 69130
                 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1>
             {{-- <h1 style="color:grey; font-size:8px; text-align:center; ">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 -
