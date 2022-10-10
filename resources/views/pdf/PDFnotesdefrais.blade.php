@@ -144,7 +144,7 @@
                     <th class="TH-table text-center BGblue" style="white-space:nowrap; border: 2px solid black">TVA (20%)</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Petit Déjeuner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Déjeuner</th>
-                    <th class="TH-table text-center BGyellow" style="border: 2px solid black">Diner</th>
+                    <th class="TH-table text-center BGyellow" style="border: 2px solid black">Dîner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Hotels</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">TVA (10%)</th>
 

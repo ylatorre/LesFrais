@@ -127,7 +127,7 @@
         }
 
         .BGnuit {
-            background: black;
+            background: rgba(157, 157, 157, 0.7);
         }
 
 
