@@ -189,7 +189,7 @@
                             $totalTVA20 = round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) + $totalTVA20;
                             $totalTVA10 = round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) + $totalTVA10;
                             $totaltot = 0;
-                            $totalTVAtot = round(($totalRepas + $totalHotels) * 0.1, 2);
+                            $totalTVAtot = round((($totalRepas + $totalHotels)/1.1) * 0.1, 2);
 
                             /* régler le probleme de la tva et du total tva içi*/
 
@@ -215,7 +215,7 @@
                             <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
                             <td class="TD-table text-center" style="border-right:2px solid black;">
-                                {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
+                                {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                 €</td>
                             <td class="TD-table text-center">{{ $utilisateur->petitDej }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->dejeuner }} €</td>

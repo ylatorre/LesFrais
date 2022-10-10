@@ -501,7 +501,7 @@
                                     <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
                                     <td class="TD-table text-center">
-                                        {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 +$utilisateur->peage4 +$utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
+                                        {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                         €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->petitDej }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->dejeuner }} €</td>
@@ -620,7 +620,7 @@
                                 </td>
 
                                 <td class="TD-table text-center" colspan="15" >
-                                    Total{{ $total }} € TTC</td>
+                                    Total {{ $total }} € TTC</td>
                             </tr>
 
                         </tbody>
