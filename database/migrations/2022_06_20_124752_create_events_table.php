@@ -32,6 +32,7 @@ return new class extends Migration
             $table->float('petitDej')->default('0');
             $table->float('dejeuner')->default('0');
             $table->float('diner')->default('0');
+            $table->float('aEmporter')->default('0');
             $table->float('hotel')->default('0');
             $table->float('kilometrage')->default('0');
             $table->string("mois");
