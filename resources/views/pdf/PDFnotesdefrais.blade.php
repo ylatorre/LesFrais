@@ -232,7 +232,7 @@
                         @php
                             $compteur = $compteur + 1;
                         @endphp
-                        @if ($compteur > 26)
+                        @if ($compteur > 14)
                 </tbody>
             </table>
 
@@ -250,7 +250,10 @@
                     <th class="TH-table text-center w-16" style="border: 2px solid black">description</th>
                     {{--            <tr colspan="4">TTC            </tr> --}}
 
-                    <th class="TH-table text-center BGblue" style="border: 2px solid black;">Péage</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black;">P1</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black;">P2</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black;">P3</th>
+                    <th class="TH-table text-center BGblue" style="border: 2px solid black;">P4</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Parking</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Essence</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Divers</th>
