@@ -201,27 +201,27 @@
                             <!-- Valeurs dans le tableau -->
                             <td class="TD-table-2 text-center BGjour" style="white-space: nowrap;">du
                                 {{ $datedebut }}<br> au {{ $datefin }}</td>
-                            <td class="TD-table text-center">{{ $utilisateur->title }}</td>
-                            <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->title }}</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->code_postal }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                             <td class="TD-table col-table text-center"
                                 style="white-space:nowrap; max-width: 10px; text-overflow:ellipsis; border-right:2px solid black;">
                                 {{ $utilisateur->description }}</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage2 }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage3 }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage4 }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->parking }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
-                            <td class="TD-table text-center" style="border-right:2px solid black;">
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->peage }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->peage2 }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->peage3 }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->peage4 }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->parking }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->essence }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->divers }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap" style="border-right:2px solid black;">
                                 {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                 €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->petitDej }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->dejeuner }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->diner }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->hotel }} €</td>
-                            <td class="TD-table text-center">
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->petitDej }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->dejeuner }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->diner }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">{{ $utilisateur->hotel }} €</td>
+                            <td class="TD-table text-center whitespace-nowrap">
                                 {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }} €</td>
 
                             <td class=" col-table text-center" style="border: 2px solid black">
