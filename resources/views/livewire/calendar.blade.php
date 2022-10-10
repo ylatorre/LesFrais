@@ -693,6 +693,7 @@
                                 $('#2petitDej').val(info.event._def.extendedProps.petitDej);
                                 $('#2dejeuner').val(info.event._def.extendedProps.dejeuner);
                                 $('#2diner').val(info.event._def.extendedProps.diner);
+                                $('#2aEmporter').val(info.event._def.extendedProps.aEmporter);
                                 $('#2hotel').val(info.event._def.extendedProps.hotel);
                                 $('#2kilometrage').val(info.event._def.extendedProps.kilometrage);
                                 $('#2description').val(info.event._def.extendedProps.description);

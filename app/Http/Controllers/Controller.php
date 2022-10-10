@@ -81,6 +81,7 @@ class Controller extends BaseController
             "petitDej" => $request->petitDej,
             "dejeuner" => $request->dejeuner,
             "diner" => $request->diner,
+            "aEmporter" => $request->aEmporter,
             "hotel" => $request->hotel,
             "kilometrage" => $request->kilometrage,
             "mois" => $request->moisActuel,
@@ -88,125 +89,7 @@ class Controller extends BaseController
             "heure_fin" => $request->heureFin,
             "idUser" => Auth::user()->id,
         ]);
-            // REPAS 2
-        // if ($request->repas2 != '0') {
-        //      Event::create([
-        //         "id" => $request->iding2,
-        //         "start" => $request->start,
-        //         "end" => $request->end,
-        //         "description" => "",
-        //         "title" => $request->title." Déjeuner",
-        //         "ville" => $request->ville,
-        //         "code_postal" => $request->code_postal,
-        //         "peage" => "0.00",
-        //         "parking" => "0.00",
-        //         "essence" => "0.00",
-        //         "divers" => "0.00",
-        //         "repas" => $request->repas2,
-        //         "hotel" => "0.00",
-        //         "kilometrage" => "0.00",
-        //         "mois" => $request->moisActuel,
-        //         "heure_debut" => $request->heureDebut,
-        //         "heure_fin" => $request->heureFin,
-        //         "idUser" => Auth::user()->id,
-        //     ]);
-        // }
-        //     //REPAS 3
-        // if($request->repas3 != '0'){
 
-        //     Event::create([
-        //         "id" => $request->iding3,
-        //         "start" => $request->start,
-        //         "end" => $request->end,
-        //         "description" => "",
-        //         "title" => $request->title." Diner",
-        //         "ville" => $request->ville,
-        //         "code_postal" => $request->code_postal,
-        //         "peage" => "0.00",
-        //         "parking" => "0.00",
-        //         "essence" => "0.00",
-        //         "divers" => "0.00",
-        //         "repas" => $request->repas3,
-        //         "hotel" => "0.00",
-        //         "kilometrage" => "0.00",
-        //         "mois" => $request->moisActuel,
-        //         "heure_debut" => $request->heureDebut,
-        //         "heure_fin" => $request->heureFin,
-        //         "idUser" => Auth::user()->id,
-        //     ]);
-        // }
-        // //PEAGE 2
-        // if($request->peage2 != '0'){
-
-        //     Event::create([
-        //         "id" => $request->iding4,
-        //         "start" => $request->start,
-        //         "end" => $request->end,
-        //         "description" => "",
-        //         "title" => $request->title." Péage 2",
-        //         "ville" => $request->ville,
-        //         "code_postal" => $request->code_postal,
-        //         "peage" => $request->peage2,
-        //         "parking" => "0.00",
-        //         "essence" => "0.00",
-        //         "divers" => "0.00",
-        //         "repas" => "0.00",
-        //         "hotel" => "0.00",
-        //         "kilometrage" => "0.00",
-        //         "mois" => $request->moisActuel,
-        //         "heure_debut" => $request->heureDebut,
-        //         "heure_fin" => $request->heureFin,
-        //         "idUser" => Auth::user()->id,
-        //     ]);
-        // }
-        // //PEAGE 3
-        // if($request->peage3 != '0'){
-
-        //     Event::create([
-        //         "id" => $request->iding5,
-        //         "start" => $request->start,
-        //         "end" => $request->end,
-        //         "description" => "",
-        //         "title" => $request->title." Péage 3",
-        //         "ville" => $request->ville,
-        //         "code_postal" => $request->code_postal,
-        //         "peage" => $request->peage3,
-        //         "parking" => "0.00",
-        //         "essence" => "0.00",
-        //         "divers" => "0.00",
-        //         "repas" => "0.00",
-        //         "hotel" => "0.00",
-        //         "kilometrage" => "0.00",
-        //         "mois" => $request->moisActuel,
-        //         "heure_debut" => $request->heureDebut,
-        //         "heure_fin" => $request->heureFin,
-        //         "idUser" => Auth::user()->id,
-        //     ]);
-        // }
-        // //PEAGE 4
-        // if($request->peage4 != '0'){
-
-        //     Event::create([
-        //         "id" => $request->iding6,
-        //         "start" => $request->start,
-        //         "end" => $request->end,
-        //         "description" => "",
-        //         "title" => $request->title." Péage 4",
-        //         "ville" => $request->ville,
-        //         "code_postal" => $request->code_postal,
-        //         "peage" => $request->peage4,
-        //         "parking" => "0.00",
-        //         "essence" => "0.00",
-        //         "divers" => "0.00",
-        //         "repas" => "0.00",
-        //         "hotel" => "0.00",
-        //         "kilometrage" => "0.00",
-        //         "mois" => $request->moisActuel,
-        //         "heure_debut" => $request->heureDebut,
-        //         "heure_fin" => $request->heureFin,
-        //         "idUser" => Auth::user()->id,
-        //     ]);
-        // }
 
         return redirect(route('dashboard'));
     }
@@ -380,7 +263,7 @@ class Controller extends BaseController
 
 
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start","asc")->orderBy("title","asc")->get();
-        
+
 
 
         if (count($utilisateurs) == 0) {
@@ -520,6 +403,7 @@ class Controller extends BaseController
             'petitDej'=>$request->petitDej,
             'dejeuner'=>$request->dejeuner,
             'diner'=>$request->diner,
+            'aEmporter'=>$request->aEmporter,
             'hotel'=>$request->hotel,
             'kilometrage'=>$request->kilometrage,
             'mois'=>$request->mois,

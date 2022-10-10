@@ -35,10 +35,12 @@
         $totalKilometres = 0;
         $SousTotalTransport = 0;
         $SousTotalRepasHotels = 0;
+        $totalaEmporter = 0;
         $totalTVA20 = 0;
         $totalTVA10 = 0;
+        $totalTVA55 = 0;
     @endphp
-    <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
+
 
     <style>
         .TH-table {
@@ -46,8 +48,8 @@
             border: 1px solid black;
             border-bottom: 2px solid black;
             border-top: 2px solid black;
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-left: 6px;
+            padding-right: 6px;
             height: 30px;
         }
 
@@ -63,6 +65,13 @@
 
         .TD-table-2 {
             font-size: 7px;
+            border: 2px solid black;
+            padding-right: 6px;
+            padding-left: 6px;
+        }
+
+        .TD-table-3 {
+            font-size: 10px;
             border: 2px solid black;
             padding-right: 6px;
             padding-left: 6px;
@@ -103,6 +112,10 @@
             background: black;
         }
 
+        .BGred {
+            background: rgba(255, 0, 0, 0.3);
+        }
+
         .td-top-table {
             border: 2px solid black;
             padding: 10px;
@@ -111,17 +124,20 @@
         }
     </style>
     {{-- <div class="text-center"> --}}
-    <table style=" border:2px solid black; margin-top:1%; margin-bottom:1%;">
+    <table style="margin-bottom:20px; width:100%;" >
         <tr>
-            <td class="td-top-table">Prénom / Nom</td>
-            <td class="td-top-table">{{ $utilisateurs[0]->name }}</td>
-        </tr>
-        <tr>
+            <td>
+                <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
+            </td>
 
-            <td colspan="2" class="td-top-table">Note de frais pour {{ $dateNDFpourPDFetVISU }}</td>
+
+
+
         </tr>
 
     </table>
+     <h1 style="position:fixed; right:0px; top:20px;">Note de frais de {{ $utilisateurs[0]->name }} pour {{ $dateNDFpourPDFetVISU }}</h1>
+
     {{--    <h1 class="">dawd</h1> --}}
     <div class="w-full flex flex-row justify-around">
         <div>
@@ -141,14 +157,19 @@
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Parking</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Essence</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Divers</th>
-                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border: 2px solid black">TVA (20%)</th>
+                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border: 2px solid black">TVA
+                        (20%)</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Petit Déjeuner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Déjeuner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Dîner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Hotels</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">TVA (10%)</th>
 
-                    <th class="TH-table text-center BGgreen w-16" style="white-space:nowrap;border:2px solid black;">{{ $infosNDF[0]->tauxKM }}
+                    <th class="TH-table text-center BGred" style="border: 2px solid black">à emporter</th>
+                    <th class="TH-table text-center BGred" style="border: 2px solid black">TVA (5,5%)</th>
+
+                    <th class="TH-table text-center BGgreen w-16" style="white-space:nowrap;border:2px solid black;">
+                        {{ $infosNDF[0]->tauxKM }}
                         € / km
                     </th>
 
@@ -185,11 +206,13 @@
                             $totalDivers = $utilisateur->divers + $totalDivers;
                             $totalRepas = $utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $totalRepas;
                             $totalHotels = $utilisateur->hotel + $totalHotels;
+                            $totalaEmporter = $utilisateur->aEmporter + $totalaEmporter;
                             $totalKilometres = $utilisateur->kilometrage + $totalKilometres;
                             $totalTVA20 = round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) + $totalTVA20;
                             $totalTVA10 = round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) + $totalTVA10;
+                            $totalTVA55 = round(($utilisateur->aEmporter / 1.055) * 0.055, 2) + $totalTVA55;
                             $totaltot = 0;
-                            $totalTVAtot = round((($totalRepas + $totalHotels)/1.1) * 0.1, 2);
+                            $totalTVAtot = round((($totalRepas + $totalHotels) / 1.1) * 0.1, 2);
 
                             /* régler le probleme de la tva et du total tva içi*/
 
@@ -214,15 +237,21 @@
                             <td class="TD-table text-center">{{ $utilisateur->parking }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
-                            <td class="TD-table text-center" style="border-right:2px solid black;">
+                            <td class="TD-table text-center"
+                                style="border-right:2px solid black; border-left:2px solid black;">
                                 {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                 €</td>
                             <td class="TD-table text-center">{{ $utilisateur->petitDej }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->dejeuner }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->diner }} €</td>
                             <td class="TD-table text-center">{{ $utilisateur->hotel }} €</td>
-                            <td class="TD-table text-center">
-                                {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }} €</td>
+                            <td class="TD-table text-center" style="border-left:2px solid black; border-right:2px solid black;">
+                                {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
+                                €</td>
+
+                            <td class="TD-table text-center">{{ $utilisateur->aEmporter }} €</td>
+                            <td class="TD-table text-center" style="border:2px solid black;">
+                                {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} €</td>
 
                             <td class=" col-table text-center" style="border: 2px solid black">
                                 {{ $utilisateur->kilometrage }} km</td>
@@ -257,12 +286,15 @@
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Parking</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Essence</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black">Divers</th>
-                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border: 2px solid black">TVA (20%)</th>
+                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border: 2px solid black">TVA
+                        (20%)</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Petit Déjeuner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Déjeuner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Diner</th>
                     <th class="TH-table text-center BGyellow" style="border: 2px solid black">Hotels</th>
-                    <th class="TH-table text-center BGyellow" style="border: 2px solid black">Dt TVA (10%)</th>
+                    <th class="TH-table text-center BGyellow" style="border: 2px solid black">TVA (10%)</th>
+                    <th class="TH-table text-center BGred" style="border: 2px solid black">à emporter</th>
+                    <th class="TH-table text-center BGred" style="border: 2px solid black">TVA (5,5%)</th>
 
                     <th class="TH-table text-center BGgreen" style="border:2px solid black;">
                         {{ $infosNDF[0]->tauxKM }}
@@ -284,19 +316,20 @@
                     $total = round($SousTotalTransport + $SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux, 2);
                 @endphp
                 <tr>
-                    <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:10px;"
-                        colspan="3" rowspan="3">Pour une puissance fiscale de
+                    <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:8px;"
+                        colspan="3" rowspan="2">Pour une puissance fiscale de
                         {{ $utilisateurs[0]->chevauxFiscaux }} chevaux fiscaux <br>Taux :
                         {{ $utilisateurs[0]->taux }} € / km</td>
 
                     <td class="BGyellow pl-1 text-center" colspan="2"
-                        rowspan="3"style="border:2px solid black; font-size:10px;">Note de frais soumise le
-                        {{ $infosNDF[0]->DateSoumission }}<br>et validée le {{ $infosNDF[0]->DateValidation }}<br>
+                        rowspan="2"style="border:2px solid black; font-size:8px;">Note de frais soumise le
+                        {{ $infosNDF[0]->DateSoumission }}<br>et validée le {{ $infosNDF[0]->DateValidation }}
                         par {{ $infosNDF[0]->ValideePar }}</td>
 
 
 
-                    <td colspan="4" class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
+                    <td colspan="4" class="TD-table-2 text-center"
+                        style="background: rgb(175, 175, 175) !important;">
                         {{ $totalPeage }} €</td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                         {{ $totalParking }} €</td>
@@ -306,15 +339,22 @@
                         {{ $totalDivers }} €</td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                         {{ $totalTVA20 }} €</td>
-                    <td colspan="3" class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
+                    <td colspan="3" class="TD-table-2 text-center"
+                        style="background: rgb(175, 175, 175) !important;">
                         {{ $totalRepas }} €</td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
                         {{ $totalHotels }} €</td>
                     <td class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid red;">
+                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
                         {{ $totalTVA10 }} €</td>
+                    <td class="TD-table text-center"
+                        style="background: rgb(175, 175, 175) !important; border:2px solid black;">
+                        {{ $totalaEmporter }} €</td>
+                    <td class="TD-table text-center"
+                        style="background: rgb(175, 175, 175) !important; border-top:2px solid black;">
+                        {{ $totalTVA55 }} €</td>
                     <td class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid red;">
+                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
                         {{ $totalKilometres }} Km</td>
 
 
@@ -323,35 +363,23 @@
                     {{--        <td class="TD-table">{{$totalDivers}}</td> --}}
                 </tr>
                 <tr>
-
-
-
-                    <td class="TD-table-2 text-center" colspan="7">{{ $SousTotalTransport }} € TTC</td>
-                    <td class="TD-table-2 text-center BGnuit" colspan="1"></td>
-                    <td class="TD-table-2 text-center" colspan="4" style="border-right:2px solid red">
-                        {{ $SousTotalRepasHotels }} € TTC</td>
-                    <td class="TD-table-2 text-center" colspan="1" style="border:2px solid red">Remboursement
-                        carburant {{-- * prix de l'essence --}}
+                    <td class="TD-table-3 text-center" rowspan="2" colspan="5">Total HT :
+                        {{ $SousTotalTransport - $totalTVA20 + ($SousTotalRepasHotels - $totalTVA10) + ($totalaEmporter - $totalTVA55) }}
+                        €</td>
+                    <td class="TD-table-3 text-center" rowspan="2" colspan="3">Total TVA :
+                        {{ $totalTVA20 + $totalTVA10 + $totalTVA55 }} €</td>
+                    <td class="TD-table-3 text-center" rowspan="2" colspan="3"
+                        style="border-right:2px solid black">Total TTC :
+                        {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter }} € </td>
+                    <td class="TD-table-3 text-center" rowspan="2" colspan="3" style="border:2px solid black">
+                        Indemn. Km : {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €</td>
+                    <td class="TD-table-3 text-center" rowspan="2" colspan="2" style="border:2px solid black">
+                        Total dû :
+                        {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter + $totalKilometres * $utilisateurs[0]->taux }}
+                        €
                     </td>
-                    <td class="TD-table-2 text-center" colspan="1" style="border:2px solid red">
-                        {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €{{-- * prix de l'essence --}}
-                    </td>
-
-
                 </tr>
-                <tr>
 
-
-
-                    <td class="TD-table-2 text-center BGgris" colspan="7">
-                        {{ $SousTotalTransport - $totalTVA20 }} € HT</td>
-                    <td class="TD-table-2 text-center BGnuit" colspan="1"></td>
-                    <td class="TD-table-2 text-center BGgris" colspan="4">
-                        {{ round($SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux - $totalTVA10, 2) }}
-                        € HT</td>
-                    <td class="TD-table-2 text-center BGnuit" colspan="2"></td>
-
-                </tr>
                 <tr>
                     @if ((explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
                         explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
@@ -381,14 +409,14 @@
                         </td>
                     @endif
 
-                    <td class="TD-table-2 text-center" colspan="6" style="font-size: 10px !important;">Total HT
+                    {{-- <td class="TD-table-2 text-center" colspan="6" style="font-size: 10px !important;">Total HT
                         : {{ $total - ($totalTVA20 + $totalTVA10) }} €</td>
 
-                    <td class="TD-table-2 text-center" colspan="4" style="font-size: 10px !important;">Total TVA
+                    <td class="TD-table-2 text-center" colspan="5" style="font-size: 10px !important;">Total TVA
                         : {{ $totalTVA20 + $totalTVA10 }} €</td>
 
-                    <td class="TD-table-2 text-center" colspan="4" style="font-size: 10px !important;">Total TTC
-                        : {{ $total }} €</td>
+                    <td class="TD-table-2 text-center" colspan="5" style="font-size: 10px !important;">Total TTC
+                        : {{ $total }} €</td> --}}
                 </tr>
 
                 </tbody>

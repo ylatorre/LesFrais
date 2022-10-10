@@ -140,7 +140,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}" required>
+                                        id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}" placeholder="ex : 75 000" required>
 
                                 </div>
                                 <div class="mb-3 col">
@@ -149,7 +149,7 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="ville" name="ville" type="text" value="" required>
+                                        id="ville" name="ville" type="text" value="" placeholder="ex : Paris" required>
 
                                 </div>
 
@@ -222,7 +222,7 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label class="inline-block mb-0" for="petitDej">
-                                        Petit déjeuner
+                                        Pt déjeuner
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -248,6 +248,16 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="diner" id="diner" type="number" value="0" min="0"
+                                        required>
+
+                                </div>
+                                <div class="mb-3 col" id="aEmporter">
+                                    <label class="inline-block mb-0" for="aEmporter">
+                                        à emporter
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="aEmporter" id="aEmporter" type="number" value="0" min="0"
                                         required>
 
                                 </div>
@@ -312,7 +322,7 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="description" class="mb-[5px]">Description du déplacement</label>
-                                    <textarea name="description" id="description" rows="3" maxlength="100"
+                                    <textarea name="description" id="description" rows="3" maxlength="100" placeholder="ex : Câblage de baie de brassage"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
                                 </div>
                             </div>
@@ -464,7 +474,7 @@
                         <div class="row">
                             <div class="mb-3 col">
                                 <label class="inline-block mb-0" for="2petitDej">
-                                    Petit déjeuner
+                                    Pt déjeuner
                                 </label>
                                 <input
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -483,13 +493,23 @@
                                     name="dejeuner" id="2dejeuner" type="number" value="0" min="0"
                                     required>
                             </div>
-                            <div class="mb-3 col" id="div2diner3">
+                            <div class="mb-3 col" id="div2diner">
                                 <label class="inline-block mb-0" for="repas">
                                     Dîner
                                 </label>
                                 <input
                                     class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                     name="diner" id="2diner" type="number" value="0" min="0"
+                                    required>
+
+                            </div>
+                            <div class="mb-3 col" id="div2aEmporter">
+                                <label class="inline-block mb-0" for="2aEmporter">
+                                    à emporter
+                                </label>
+                                <input
+                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                    name="aEmporter" id="2aEmporter" type="number" value="0" min="0"
                                     required>
 
                             </div>
