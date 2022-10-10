@@ -46,14 +46,16 @@
             border: 1px solid black;
             border-bottom: 2px solid black;
             border-top: 2px solid black;
-            padding: 2px;
-            height: 40px;
+            padding-left: 8px;
+            padding-right: 8px;
+            height: 30px;
         }
 
         .TD-table {
             font-size: 7px;
             border: 1px solid black;
-            padding: 2px;
+            padding-right: 6px;
+            padding-left: 6px;
             max-height: 43px;
             max-width: 80px;
             overflow: hidden;
@@ -62,7 +64,8 @@
         .TD-table-2 {
             font-size: 7px;
             border: 2px solid black;
-            padding: 2px;
+            padding-right: 6px;
+            padding-left: 6px;
         }
 
         .col-table {
@@ -73,6 +76,7 @@
 
         .tablepdf {
             border-collapse: collapse;
+
         }
 
         .BGjour {
@@ -127,7 +131,7 @@
                     <th class="TH-table text-center w-10" style="border: 2px solid black">Client / Prospect</th>
                     <th class="TH-table text-center w-10" style="border: 2px solid black">Code Postal</th>
                     <th class="TH-table text-center w-10" style="border: 2px solid black">Ville</th>
-                    <th class="TH-table text-center w-16" style="border: 2px solid black">description</th>
+                    <th class="TH-table text-center " style="border: 2px solid black;width:100px;">description</th>
                     {{--            <tr colspan="4">TTC            </tr> --}}
 
                     <th class="TH-table text-center BGblue" style="border: 2px solid black;">P1</th>
@@ -278,11 +282,11 @@
                 @endphp
                 <tr>
                     <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:10px;"
-                        colspan="2" rowspan="3">Pour une puissance fiscale de
+                        colspan="3" rowspan="3">Pour une puissance fiscale de
                         {{ $utilisateurs[0]->chevauxFiscaux }} chevaux fiscaux <br>Taux :
                         {{ $utilisateurs[0]->taux }} € / km</td>
 
-                    <td class="BGyellow pl-1 text-center" colspan="3"
+                    <td class="BGyellow pl-1 text-center" colspan="2"
                         rowspan="3"style="border:2px solid black; font-size:10px;">Note de frais soumise le
                         {{ $infosNDF[0]->DateSoumission }}<br>et validée le {{ $infosNDF[0]->DateValidation }}<br>
                         par {{ $infosNDF[0]->ValideePar }}</td>

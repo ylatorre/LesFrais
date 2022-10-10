@@ -138,8 +138,8 @@ class PDFgeneratorController extends Controller
 
         // - On load le PDF grace a DOMPDF
 
-        $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact(["utilisateurs","dateNDFpourPDFetVISU","infosNDF"]));
-        // dd($pdf);
+        $pdf = PDF::loadView('pdf.PDFnotesdefrais', compact(["utilisateurs","dateNDFpourPDFetVISU","infosNDF"]))->setPaper('a4','landscape');
+
         return $pdf->stream('pdf.PDFnotesdefrais' . '.pdf');
     }
 
