@@ -313,3 +313,60 @@
         height:300px;
     }
 }
+
+/*/////////////////////////////////////////////////////////////////////////////*/
+/* RESPONSIVE DE L'ADMINISTRATION"*/
+/*/////////////////////////////////////////////////////////////////////////////*/
+
+.button-visu{
+    height:100%;
+    font-size:16px;
+    border:4px solid rgb(24, 111, 192);
+    padding:6px;
+    border-radius:10px;
+    transition:200ms ease;
+}
+.check{
+    margin-top: 12px;
+}
+@media screen and (max-width:1260px){
+    .button-visu{
+        font-size:14px;
+    }
+}
+@media screen and (max-width:900px){
+    .button-visu{
+        font-size:10px;
+    }
+    .tchao900{
+        display:none;
+    }
+
+}
+@media screen and (max-width:900px){
+    .TH-gestion{
+        font-size:8px;
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .TD-gestion{
+        font-size:8px;
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .check{
+        margin-top:4px;
+    }
+}
+@media screen and (max-width:340px){
+    .TH-gestion{
+        font-size:6px;
+    }
+    .TD-gestion{
+        font-size:6px;
+    }
+}

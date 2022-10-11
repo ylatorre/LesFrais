@@ -451,7 +451,6 @@
             }
 
             .validerNDF {
-
                 border: 2px solid rgb(0, 151, 0);
                 background: #202020 !important;
                 color: white;
