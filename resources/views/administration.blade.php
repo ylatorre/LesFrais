@@ -40,6 +40,9 @@
             transition:200ms ease;
 
         }
+        .evenodd :nth-child(even){
+            background:grey;
+        }
 
 @media screen and (max-width:1450px){/* 1450PX */
     td{
@@ -112,7 +115,7 @@
         padding-right:6px;
         padding-top:2px;
         padding-bottom:2px;
-    6
+   }
     .th-table-admin{
         font-size:10px;
         padding-left:8px;
@@ -281,25 +284,25 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 @php
                     $i = 1;
                 @endphp
                 @foreach ($users as $user)
                     <tr
-                        class="overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                        class=" overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                         @if ($user->admin == 1 && $user->superadmin == 0)
 
-                            <th scope="row"
+                            <td scope="row"
                                     class="px-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                     style="background:white;">
                                     Modérateur
-                                </th>
-                            <th scope="row"
+                                </td>
+                            <td scope="row"
                                 class="px-2 py-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            </th>
+                            </td>
                             <td class="tchao1062 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->email }}
                             </td>
@@ -321,12 +324,12 @@
                             </td>
                         @elseif($user->superadmin == 1)
 
-                            <th scope="row"
+                            <td scope="row"
                                 class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 Administrateur
-                            </th>
-                            <th scope="row"
+                            </td>
+                            <td scope="row"
                                 class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
@@ -349,14 +352,14 @@
                             <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 *******
                             </td>
-                            </th>
+
                         @else
-                            <th scope="row"
+                            <td scope="row"
                                     class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                     style="background:white;">
                                     Salarié
-                                </th>
-                            <th scope="row"
+                                </td>
+                            <td scope="row"
                                 class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
@@ -379,7 +382,7 @@
                             <td class="tchao780 py-2 text-center" style="background:white;">
                                 *******
                             </td>
-                            </th>
+
                         @endif
 
 
