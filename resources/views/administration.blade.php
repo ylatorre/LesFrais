@@ -29,12 +29,19 @@
     <!-- Modal toggle -->
     <style>
 
-
+        body{
+            font-family: 'nunito',sans-serif;
+        }
 
         /* responsive administration buttons*/
         .responsiv-administration-buttons{
-            padding-left:8px;
-            padding-right:8px;
+            padding:15px;
+            font-family: 'nunito',sans-serif;
+            transition:200ms ease;
+
+        }
+        .evenodd :nth-child(even){
+            background:grey;
         }
 
 @media screen and (max-width:1450px){/* 1450PX */
@@ -108,7 +115,7 @@
         padding-right:6px;
         padding-top:2px;
         padding-bottom:2px;
-    6
+   }
     .th-table-admin{
         font-size:10px;
         padding-left:8px;
@@ -181,6 +188,10 @@
         padding-bottom:2px;
         max-width:10%;
     }
+    .tchao540{
+        display: none;
+    }
+
 }
 @media screen and (max-width:420px){/*--------------------------------- 420PX */
     td{
@@ -229,7 +240,7 @@
     </div>
     <div class="flex justify-center mb-3">
         <button
-            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="responsiv-administration-buttons block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="button" data-modal-toggle="authentication-modal">
             + Utilisateur
         </button>
@@ -254,7 +265,7 @@
                     <th scope="col" class="tchao780 th-table-admin  text-center">
                         Numero de Téléphone
                     </th>
-                    <th scope="col" class="th-table-admin  text-center">
+                    <th scope="col" class="tchao540 th-table-admin  text-center">
                         Type de véhicule
                     </th>
                     <th scope="col" class="tchao780 th-table-admin  text-center">
@@ -273,32 +284,32 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 @php
                     $i = 1;
                 @endphp
                 @foreach ($users as $user)
                     <tr
-                        class="overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                        class=" overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                         @if ($user->admin == 1 && $user->superadmin == 0)
 
-                            <th scope="row"
+                            <td scope="row"
                                     class="px-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                     style="background:white;">
                                     Modérateur
-                                </th>
-                            <th scope="row"
+                                </td>
+                            <td scope="row"
                                 class="px-2 py-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            </th>
+                            </td>
                             <td class="tchao1062 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->email }}
                             </td>
                             <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class=" py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao540 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
                             <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
@@ -313,12 +324,12 @@
                             </td>
                         @elseif($user->superadmin == 1)
 
-                            <th scope="row"
+                            <td scope="row"
                                 class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 Administrateur
-                            </th>
-                            <th scope="row"
+                            </td>
+                            <td scope="row"
                                 class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
@@ -328,7 +339,7 @@
                             <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class=" py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao540 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
                             <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
@@ -341,14 +352,14 @@
                             <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 *******
                             </td>
-                            </th>
+
                         @else
-                            <th scope="row"
+                            <td scope="row"
                                     class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                     style="background:white;">
                                     Salarié
-                                </th>
-                            <th scope="row"
+                                </td>
+                            <td scope="row"
                                 class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
@@ -358,7 +369,7 @@
                             <td class="tchao780 py-2 text-center" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="py-2 text-center" style="background:white;">
+                            <td class="tchao540 py-2 text-center" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
                             <td class="tchao780 py-2 text-center" style="background:white;">
@@ -371,7 +382,7 @@
                             <td class="tchao780 py-2 text-center" style="background:white;">
                                 *******
                             </td>
-                            </th>
+
                         @endif
 
 
@@ -403,7 +414,7 @@
 
 
                                         <button
-                                            class="responsiv-administration-buttons block mr-2 items-center px-1 py-1.5 sm:py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                            class=" responsiv-administration-buttons block mr-1 items-center sm:py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
                                             Notes de frais
                                         </button>
@@ -411,13 +422,13 @@
                                 @endif
                                 @if (Auth::user()->admin == 1 && $user->superadmin != 1)
                                     <button
-                                        class="responsiv-administration-buttons block mr-2   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="responsiv-administration-buttons block mr-1   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="authentication-modal{{ $i }}">
                                         Modifier
                                     </button>
                                 @elseif(Auth::user()->superadmin == 1)
                                     <button
-                                        class="responsiv-administration-buttons block mr-2   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class=" responsiv-administration-buttons block mr-2   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="authentication-modal{{ $i }}">
                                         Modifier
                                     </button>
@@ -425,7 +436,7 @@
 
                                 @if (Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $user->salarie == 1)
                                     <button
-                                        class="responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class=" responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
                                         Supprimer
                                     </button>

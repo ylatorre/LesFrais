@@ -3,4 +3,4 @@
 </svg> --}}
 
 
-<img src="./images/logoCDIT.png" alt="logocarpediem">
+<img src="./images/logoCDIT.png" alt="logocarpediem" class="w-40 xl:w-52" >

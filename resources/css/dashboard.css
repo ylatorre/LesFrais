@@ -216,8 +216,25 @@
     background-color: #3e8e41;
     color: white;
     outline: none;
-
 }
+.modal-dialog input{
+    width:100%
+}
+.modal-dialog2 input{
+    width:100%
+}
+#prevMonthButton{
+    align-items: center;
+    display: flex;
+    padding-top:10px;
+}
+#nextMonthButton{
+    display:flex;
+    align-items: center;
+    padding-top:10px;
+}
+
+
 /* responsive administration buttons*/
 
 @media screen and (max-width:1450px){
@@ -234,16 +251,65 @@
    .responsiv-administration-buttons{
         font-size:9px ;
     }
+    .modal-dialog{
+        font-size:14px;
+
+}
+    .modal-dialog2{
+        font-size:14px;
+
+}
 }
 @media screen and (max-width:540px){
    .responsiv-administration-buttons{
         font-size:8px ;
     }
+    #calendar-container {
+
+        height:500px;
+        width:100%;
+        font-size:10px;
+    }
+    #calendar{
+        height:500px;
+    }
+    .fc-daygrid{
+        height:400px;
+    }
+    /* .row div{
+        padding:4px;
+        margin:4px;
+    } */
+
 }
 @media screen and (max-width:420px){
    .responsiv-administration-buttons{
         font-size:7px;
     }
+    .modal-dialog{
+        font-size:10px;
 }
+    .modal-dialog input{
+        height:40px;
+}
+    .modal-dialog2{
+        font-size:10px;
+}
+    .modal-dialog2 input{
+        height:40px;
+}
+}
+@media screen and (max-width:300px){
+    #calendar-container {
 
-
+        height:400px;
+        width:100%;
+        font-size:8px;
+    }
+    #calendar{
+        height:400px;
+    }
+    .fc-daygrid{
+        height:300px;
+    }
+}
