@@ -62,7 +62,7 @@ class Controller extends BaseController
     public function createEvent(Request $request)
     {
 
-            // EVENT DE BASE
+        // EVENT DE BASE
         Event::create([
             "id" => $request->iding,
             "start" => $request->start,
@@ -262,7 +262,7 @@ class Controller extends BaseController
     {
 
 
-        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start","asc")->orderBy("title","asc")->get();
+        $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start", "asc")->orderBy("title", "asc")->get();
 
 
 
@@ -327,6 +327,9 @@ class Controller extends BaseController
             return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
+        
+
+
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', $request->employe)->where('MoisEnCours', '=', $request->moisNDF)->get();
 
         return view('visualisationNDF', [
@@ -371,50 +374,52 @@ class Controller extends BaseController
 
     /*/////////////////////////
     - Gestion des évènements
-    *//////////////////////////
+    */ /////////////////////////
 
     public function repas(Request $request)
     {
         dd('interception');
         return redirect("/dashboard");
     }
-    public function supprimerEvent(Request $request){
-        DB::table('events')->where('id','=',$request->eventID)->delete();
+    public function supprimerEvent(Request $request)
+    {
+        DB::table('events')->where('id', '=', $request->eventID)->delete();
 
-        Session::flash("supprEvent","L'évènement à bien été modifié");
+        Session::flash("supprEvent", "L'évènement à bien été modifié");
         return redirect("/dashboard");
     }
-    public function ModifierEvent(Request $request){
+    public function ModifierEvent(Request $request)
+    {
 
-       $eventEnQuestion = DB::table('events')->where('id','=', $request->eventID)->update([
-            'start'=>$request->start,
-            'end'=>$request->end,
-            'description'=>$request->description,
-            'title'=>$request->title,
-            'ville'=>$request->ville,
-            'code_postal'=>$request->code_postal,
-            'peage'=>$request->peage,
-            'peage2'=>$request->peage2,
-            'peage3'=>$request->peage3,
-            'peage4'=>$request->peage4,
-            'parking'=>$request->parking,
-            'essence'=>$request->essence,
-            'divers'=>$request->divers,
-            'petitDej'=>$request->petitDej,
-            'dejeuner'=>$request->dejeuner,
-            'diner'=>$request->diner,
-            'aEmporter'=>$request->aEmporter,
-            'hotel'=>$request->hotel,
-            'kilometrage'=>$request->kilometrage,
-            'mois'=>$request->mois,
-            'heure_debut'=>$request->heureDebut,
-            'heure_fin'=>$request->heureFin,
-            'idUser'=>$request->idUser,
+        $eventEnQuestion = DB::table('events')->where('id', '=', $request->eventID)->update([
+            'start' => $request->start,
+            'end' => $request->end,
+            'description' => $request->description,
+            'title' => $request->title,
+            'ville' => $request->ville,
+            'code_postal' => $request->code_postal,
+            'peage' => $request->peage,
+            'peage2' => $request->peage2,
+            'peage3' => $request->peage3,
+            'peage4' => $request->peage4,
+            'parking' => $request->parking,
+            'essence' => $request->essence,
+            'divers' => $request->divers,
+            'petitDej' => $request->petitDej,
+            'dejeuner' => $request->dejeuner,
+            'diner' => $request->diner,
+            'aEmporter' => $request->aEmporter,
+            'hotel' => $request->hotel,
+            'kilometrage' => $request->kilometrage,
+            'mois' => $request->mois,
+            'heure_debut' => $request->heureDebut,
+            'heure_fin' => $request->heureFin,
+            'idUser' => $request->idUser,
 
         ]);
 
 
-        Session::flash("modifEvent","L'évènement à bien été modifié !");
+        Session::flash("modifEvent", "L'évènement à bien été modifié !");
 
 
 
