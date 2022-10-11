@@ -324,7 +324,7 @@
 
 
                     <td class="BGyellow pl-1 text-center" colspan="3"
-                        rowspan="2"style="border:2px solid black; font-size:8px;">Vous avez soumise cette note de frais le
+                        rowspan="2"style="border:2px solid black; font-size:8px;">Vous avez soumis cette note de frais le
                         {{ $infosNDF[0]->DateSoumission }}<br>et elle a été validée le {{ $infosNDF[0]->DateValidation }}
                         par {{ $infosNDF[0]->ValideePar }}</td>
 
