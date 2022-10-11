@@ -100,7 +100,9 @@
         .TD-table-3 {
             font-size: 13px;
             border: 2px solid black;
-            padding:4px;
+
+            padding-top:6px;
+            padding-bottom:6px;
             white-space: nowrap;
         }
 
@@ -113,6 +115,10 @@
 
         .tablepdf {
             border-collapse: collapse;
+        }
+        .th-peages{
+            padding-left:40px;
+            padding-right:40px;
         }
 
         .BGjour {
@@ -181,6 +187,35 @@
                 font-size: 11px;
             }
         }
+        @media screen and (max-width:1200px) {
+
+            /* responsive sous les 1200px*/
+            .TD-table-3{
+                font-size:10px;
+
+            }
+            .phrases{
+                font-size:8px;
+            }
+            .mission-effectuees {
+                font-size: 10px;
+            }
+            .td-top-table {
+                font-size: 12px;
+            }
+            .TH-table {
+                font-size: 10px;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+            .TD-table {
+                font-size: 8px;
+                padding: 1px;
+            }
+            .td-sous-total {
+                font-size: 11px;
+            }
+            }
 
         @media screen and (max-width:960px) {
 
@@ -190,10 +225,13 @@
             }
 
             .td-top-table {
-                font-size: 10px;
+                font-size: 7px;
             }
             .TH-table {
-                font-size: 8px;
+                font-size: 7px;
+            }
+            .TD-table-3{
+                font-size:8px;
             }
 
             .TD-table {
@@ -238,6 +276,10 @@
         @media screen and (max-width:700px) {
 
             /*responsive sous-les 700px*/
+
+            .phrases{
+                font-size:6px;
+            }
             .mission-effectuees {
                 font-size: 7px;
             }
@@ -252,6 +294,11 @@
 
             .TH-table {
                 font-size: 6px;
+                padding-left:2px;
+                padding-right:2px;
+            }
+            .TD-table-3{
+                font-size:5px;
 
             }
 
@@ -295,10 +342,22 @@
             }
 
         }
+        @media screen and (max-width:560px) {
+            .TH-table {
+                font-size: 5px;
+
+            }
+        }
 
         @media screen and (max-width:500px) {
 
             /* responsive sous le seuil des 500px*/
+            .TH-description{
+                width:40px;
+            }
+            .TD-description{
+                max-width:40px;
+            }
             .mission-effectuees {
                 font-size: 6px;
             }
@@ -306,18 +365,21 @@
             .td-top-table {
                 font-size: 8px;
             }
+            .TD-table-3{
+                font-size:4px;
+            }
 
             .TD-table-tot {
                 font-size: 6px;
             }
 
             .TH-table {
-                font-size: 5px;
+                font-size: 4px;
 
             }
 
             .TD-table {
-                font-size: 5px;
+                font-size: 4px;
 
             }
 
@@ -358,26 +420,34 @@
 
         @media screen and (max-width:400px) {
 
+            .phrases{
+                font-size:3px;
+            }
+
             /* responsive sous le seuil des 400px*/
             .mission-effectuees {
-                font-size: 4px;
+                font-size: 2px;
             }
 
             .td-top-table {
-                font-size: 6px;
+                font-size: 3px;
             }
 
             .TD-table-tot {
-                font-size: 4px;
+                font-size: 2px;
             }
 
             .TD-table {
-                font-size: 5px;
-
+                font-size: 2px;
+                padding:0;
+            }
+            .TH-table {
+                font-size: 4px;
+                padding:0;
             }
 
             .td-sous-total {
-                font-size: 5px;
+                font-size: 3px;
             }
 
             .validerNDF {
@@ -442,17 +512,17 @@
                             </th>
                             <th class="TH-table text-center ">Code Postal</th>
                             <th class="TH-table text-center ">Ville</th>
-                            <th class="TH-table text-center"
-                                style="width:5% !important; overflow:hidden; border-left: 2px solid black;border-right: 2px solid black">
+                            <th class="TH-table text-center TH-description"
+                                style=" overflow:hidden; border-left: 2px solid black;border-right: 2px solid black">
                                 Description</th>
                             {{--            <tr colspan="4">TTC            </tr> --}}
 
 
-                            <th colspan="4" class="TH-table text-center BGblue" style="padding-left:40px; padding-right:40px; border-left: 2px solid black;">Péages</th>
+                            <th colspan="4" class="TH-table text-center BGblue th-peages" style=" border-left: 2px solid black;">Péages</th>
                             <th class="TH-table text-center BGblue">Parking</th>
                             <th class="TH-table text-center BGblue">Essence</th>
                             <th class="TH-table text-center BGblue">Divers</th>
-                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black">Dt TVA
+                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black">TVA
                                 (20%)
                             </th>
                             <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Petit déjeuner</th>
@@ -460,12 +530,11 @@
                             <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Dîner</th>
 
                             <th class="TH-table text-center BGyellow">Hotels</th>
-                            <th class="TH-table text-center BGyellow">Dt TVA (10%)</th>
+                            <th class="TH-table text-center BGyellow">TVA (10%)</th>
                             <th class="TH-table text-center BGred">A emporter</th>
-                            <th class="TH-table text-center BGred">Dt TVA (5,5%)</th>
+                            <th class="TH-table text-center BGred">TVA (5,5%)</th>
 
-                            <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">km et
-                                {{ $utilisateurs[0]->taux }} /
+                            <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">
                                 km
                             </th>
 
@@ -508,8 +577,8 @@
                                     <td class="TD-table text-center">{{ $utilisateur->title }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
-                                    <td class="TD-table col-table text-center"
-                                        style="white-space:nowrap; max-width:120px; overflow:hidden; border-bottom:2px solid black">
+                                    <td class="TD-table col-table text-center TD-description"
+                                        style="white-space:nowrap; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->peage2 }} €</td>
@@ -544,13 +613,13 @@
                                 $total = round($SousTotalTransport + $SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux, 2);
                             @endphp
                             <tr>
-                                <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:12px;"
+                                <td class="BGyellow pl-1 text-center phrases" style="border:2px solid black;"
                                 colspan="2" rowspan="2">Puissance fiscale de
                                 {{ $utilisateurs[0]->chevauxFiscaux }} ch. fiscaux <br> pour un taux de
                                 {{ $utilisateurs[0]->taux }} € / km</td>
 
-                                <td class="BGyellow pl-1 text-center" colspan="3"
-                                rowspan="2"style="border:2px solid black; font-size:12px;">Cette note de frais n'a pas encore été soumise à inspection</td>
+                                <td class="BGyellow pl-1 text-center phrases" colspan="3"
+                                rowspan="2" style="border:2px solid black;">Cette note de frais n'a pas encore été soumise à inspection</td>
 
 
 
