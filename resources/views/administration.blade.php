@@ -471,7 +471,7 @@
                                     </svg>
                                 </button>
                                 <div class="px-6 py-6 lg:px-8">
-                                    <form class="space-y-6" action="{{ route('modifUser') }}" method="post">
+                                    <form class="space-y-6" action="{{ route('modifUser') }}" method="POST">
                                         @csrf
 
                                         <div>
@@ -488,6 +488,12 @@
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 placeholder="name@company.com" value="{{ $user->email }}">
                                         </div>
+
+
+                                            <input type="hidden" name="actualemail" id="actualemail"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                placeholder="name@company.com" value="{{ $user->email }}">
+
                                         <div>
                                             <label for="portable"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
@@ -539,23 +545,7 @@
 
 
                                         </div>
-                                        <div>
-                                            <label for="password"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
-                                            <input type="password" name="password" id="password"
-                                                placeholder="••••••••"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                autocomplete="new-password">
-                                        </div>
-                                        <div>
-                                            <label for="password_confirmation"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirm
-                                                Password</label>
-                                            <input type="password" name="password_confirmation"
-                                                id="password_confirmation" placeholder="••••••••"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                        </div>
-
+                                        
                                         <button type="submit"
                                             class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             Modifier les informations
