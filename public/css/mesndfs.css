@@ -1332,14 +1332,6 @@ select {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 }
-.px-3\.5 {
-  padding-left: 0.875rem;
-  padding-right: 0.875rem;
-}
-.py-2\.5 {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-}
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1347,6 +1339,14 @@ select {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
 }
 .pt-\[4px\] {
   padding-top: 4px;
@@ -1640,6 +1640,20 @@ select {
 .TH-mesndfs{
    padding-top: 10px;
    padding-bottom: 10px;
+}
+.button-note-de-frais{
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:8px;
+    padding-bottom:8px;
+}
+@media screen and (max-width:600px){
+    .TH-mesndfs{
+        font-size:6px;
+    }
+    .button-note-de-frais{
+        font-size:10px;
+    }
 }
 .odd\:bg-white:nth-child(odd) {
   --tw-bg-opacity: 1;
