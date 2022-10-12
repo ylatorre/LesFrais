@@ -278,8 +278,6 @@
                     <th class="TH-table text-center w-10" style="border: 2px solid black">Ville</th>
                     <th class="TH-table text-center w-10" style="border: 2px solid black">Code Postal</th>
                     <th class="TH-table text-center w-16" style="border: 2px solid black">description</th>
-                    {{--            <tr colspan="4">TTC            </tr> --}}
-
                     <th class="TH-table text-center BGblue" style="border: 2px solid black;">P1</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black;">P2</th>
                     <th class="TH-table text-center BGblue" style="border: 2px solid black;">P3</th>
@@ -328,7 +326,7 @@
                         {{ $infosNDF[0]->DateSoumission }}<br>et elle a été validée le {{ $infosNDF[0]->DateValidation }}
                         par {{ $infosNDF[0]->ValideePar }}</td>
 
-
+{{-- Totaux par input --}}
 
                     <td colspan="4" class="TD-table-2 text-center"
                         style="background: rgb(175, 175, 175) !important;">
@@ -359,10 +357,8 @@
                         style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
                         {{ $totalKilometres }} Km</td>
 
+{{-- Bas du tableau du PDF avec les totaux --}}
 
-                    {{--        <td class="TD-table">{{$totalParking}}</td> --}}
-                    {{--        <td class="TD-table">{{$totalEssence}}</td> --}}
-                    {{--        <td class="TD-table">{{$totalDivers}}</td> --}}
                 </tr>
                 <tr>
                     <td class="TD-table-3 text-center" rowspan="2" colspan="5">Total HT :
@@ -405,27 +401,6 @@
                 style="position:fixed; margin-top:18px;  white-space:nowrap; font-size: 8px; bottom:0px; left:21%; color:#202020;">
                 Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 - Bâtiment A2 - 69130
                 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1>
-            {{-- <h1 style="color:grey; font-size:8px; text-align:center; ">Carpe Diem SARL au capital de 16 640 € | 42 Chemin du Moulin Carron - Le Norly 1 -
-                Bâtiment A2 - 69130 ECULLY | Siret : 403 030 349 00050 | Tél : 0170.809.809</h1> --}}
-
-
-            {{-- <table class="pt-4">
-
-    <tbody>
-        <tr>
-            <td class="TD-table text-center">Taux : {{$utilisateurs[0]->taux}} € / km</td>
-        </tr>
-    <tr>
-        <td class="TD-table text-center">Dt TVA : {{$totalTVA20+$totalTVA10}} €</td>
-    </tr>
-    <tr>
-        <td class="TD-table text-center">Dt TOTAL HT: {{$total - ($totalTVA10 + $totalTVA20)}} €</td>
-    </tr>
-    </tbody>
-</table> --}}
-
-
-
 
 </body>
 

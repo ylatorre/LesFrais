@@ -282,12 +282,12 @@
     }
     #calendar-container {
 
-        height:500px;
+        height:450px;
         width:100%;
         font-size:10px;
     }
     #calendar{
-        height:500px;
+        height:450px;
     }
     .fc-daygrid{
         height:400px;
@@ -320,12 +320,12 @@
 @media screen and (max-width:300px){
     #calendar-container {
 
-        height:400px;
+        height:350px;
         width:100%;
         font-size:8px;
     }
     #calendar{
-        height:400px;
+        height:350px;
     }
     .fc-daygrid{
         height:300px;

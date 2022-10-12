@@ -222,6 +222,9 @@
         padding-bottom:1px;
         max-width:10%;
     }
+    .tchao400{
+        display:none;
+    }
 }
     </style>
     <div>
@@ -271,7 +274,7 @@
                     <th scope="col" class="tchao780 th-table-admin  text-center">
                         chevaux Fiscaux
                     </th>
-                    <th scope="col" class="th-table-admin  text-center">
+                    <th scope="col" class="th-table-admin  text-center tchao400 ">
                         Taux/Km
                     </th>
                     <th scope="col" class="tchao780 th-table-admin  text-center">
@@ -315,7 +318,7 @@
                             <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-2 text-center text-blue-600" style="background:white;">
+                            <td class=" py-2 text-center text-blue-600 tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
@@ -345,7 +348,7 @@
                             <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class=" py-2 text-center text-red-400 font-bold tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
@@ -375,7 +378,7 @@
                             <td class="tchao780 py-2 text-center" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class="py-2 text-center" style="background:white;">
+                            <td class="py-2 text-center tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
