@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailNotifSalarie;
 use App\Models\Mois;
 use App\Models\User;
+use Faker\Core\Uuid;
 use App\Models\Event;
 use App\Models\infosndf;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use App\Models\historiqueEssence;
-use Faker\Core\Uuid;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -327,7 +329,7 @@ class Controller extends BaseController
             return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
-        
+
 
 
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', $request->employe)->where('MoisEnCours', '=', $request->moisNDF)->get();
@@ -343,18 +345,82 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
+
+
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValideePar' => Auth::user()->name]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['DateValidation' => date('d/m/Y')]);
 
+        $salarie = DB::table('users')->where('name','=',$request->username)->get();
+
+
+        $dateNDF = explode("-", $request->moisndf);
+
+        // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
+
+        $moisDateNDF = "";
+
+        switch ($dateNDF[1]) {
+            case "01";
+                $moisDateNDF = "Janvier";
+                break;
+            case "02";
+                $moisDateNDF = "Février";
+                break;
+            case "03";
+                $moisDateNDF = "Mars";
+                break;
+            case "04";
+                $moisDateNDF = "Avril";
+                break;
+            case "05";
+                $moisDateNDF = "Mai";
+                break;
+            case "06";
+                $moisDateNDF = "Juin";
+                break;
+            case "07";
+                $moisDateNDF = "Juillet";
+                break;
+            case "08";
+                $moisDateNDF = "Août ";
+                break;
+            case "09";
+                $moisDateNDF = "Septembre";
+                break;
+            case "10";
+                $moisDateNDF = "Octobre";
+                break;
+            case "11";
+                $moisDateNDF = "Novembre";
+                break;
+            case "12";
+                $moisDateNDF = "Décembre";
+                break;
+        };
+
+
+        $moisNDF = $moisDateNDF . " " . $dateNDF[0];
+
+
+        $moderator = DB::table('users')->where('id','=',Auth::user()->id)->get();
+
+
+
+
+        Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator,$salarie,$moisNDF));
+
+
         Session::flash('validatesuccess', 'La note de frais à été validée !');
+
         return redirect(route('gestionaireUser'));
     }
     public function supprimerNDF(Request $request)
     {
 
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->delete();
+
 
         return redirect(route('gestionaireUser'));
     }

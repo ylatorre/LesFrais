@@ -20,21 +20,13 @@
             font-size:16px;
         }
     </style>
+        <h1>Bonjour {{$salarie[0]->name}} ,</h1><br>
+        <p>Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée par <em>{{$moderator[0]->name}}</em> .</p> <br>
+        <p>Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> . </p><br>
 
-
-<br>
-    <h1>Bonjour {{$superadmin[0]->name}},</h1><br>
-
-    <p>    L'utilisateur <em>{{$actualUser}}</em> a demandé la validation de sa note de frais de <em>{{$monthNDF}}.</em></p><br>
-
-    <p>    Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace Administration.</p><br>
-
-    <footer>
-    <p>Très cordialement.</p><br>
-    </footer>
-
-
-
+        <footer>
+            Très cordialement,
+        </footer>
 
 </body>
 </html>

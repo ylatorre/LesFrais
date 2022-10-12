@@ -41,7 +41,7 @@ class MoisController extends Controller
         $moderators = DB::table('users')->where('admin','=','1')->get();
         $superadmin = DB::table('users')->where('superadmin','=','1')->get();
         $actualUser = Auth::user()->name;
-        $monthNDF = $request->lockedmonth;
+        
 
 
 
@@ -62,6 +62,54 @@ class MoisController extends Controller
             ]);
 
 /* - Envois des mails suite à la validation de la note de frais */
+
+ $dateNDF = explode("-", $request->lockedmonth);
+
+        // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
+
+        $moisDateNDF = "";
+
+        switch ($dateNDF[1]) {
+            case "01";
+                $moisDateNDF = "Janvier";
+                break;
+            case "02";
+                $moisDateNDF = "Février";
+                break;
+            case "03";
+                $moisDateNDF = "Mars";
+                break;
+            case "04";
+                $moisDateNDF = "Avril";
+                break;
+            case "05";
+                $moisDateNDF = "Mai";
+                break;
+            case "06";
+                $moisDateNDF = "Juin";
+                break;
+            case "07";
+                $moisDateNDF = "Juillet";
+                break;
+            case "08";
+                $moisDateNDF = "Août ";
+                break;
+            case "09";
+                $moisDateNDF = "Septembre";
+                break;
+            case "10";
+                $moisDateNDF = "Octobre";
+                break;
+            case "11";
+                $moisDateNDF = "Novembre";
+                break;
+            case "12";
+                $moisDateNDF = "Décembre";
+                break;
+        };
+
+
+        $monthNDF = $moisDateNDF . " " . $dateNDF[0];
 
         if(Auth::user()->salarie == 1){
             for ($i=0; $i < count($moderators) ; $i++) {
