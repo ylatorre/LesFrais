@@ -97,7 +97,7 @@
                 <x-responsive-nav-link :href="route('gestionaireUser')" :active="request()->routeIs('gestionnaireUser')">
                     {{ __('Administration') }}
             @endif
-            
+
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('mesNDF')" :active="request()->routeIs('mesNDF')">
                 {{ __('Mes notes de frais') }}
