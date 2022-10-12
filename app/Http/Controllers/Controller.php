@@ -175,8 +175,12 @@ class Controller extends BaseController
     public function modifUser(Request $request)
     {
 
-        $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->get();
-        $iduser = DB::table("users")->where("email", "=", "$request->email")->select("id")->get();
+
+        $modifUserDB = DB::table("users")->where("email", "=", $request->actualemail)->get();
+
+
+        $iduser = DB::table("users")->where("email", "=", $request->actualemail)->select("id")->get();
+
         //        dump($modifUserDB);
         //        dd($request);
         //        dd($entreprises[0]);
@@ -185,28 +189,31 @@ class Controller extends BaseController
         //    dd("test");
 
         if ($modifUserDB[0]->name != $request->name) {
-            DB::table("users")->where("email", "=", "$request->email")->update(["name" => $request->name]);
+            DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["name" => $request->name]);
         }
+
+
         if ($modifUserDB[0]->email != $request->email) {
-            DB::table("users")->where("email", "=", "$request->email")->update(["email" => $request->email]);
+            DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["email" => $request->email]);
         }
         if ($modifUserDB[0]->portables != $request->portable) {
-            DB::table("users")->where("email", "=", "$request->email")->update(["portables" => $request->portable]);
+            DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["portables" => $request->portable]);
         }
         if ($modifUserDB[0]->vehicule != $request->vehicule) {
-            DB::table("users")->where("email", "=", "$request->email")->update(["vehicule" => $request->vehicule]);
+            DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["vehicule" => $request->vehicule]);
         }
         if ($modifUserDB[0]->chevauxFiscaux != $request->ChevauxFiscaux) {
 
-            DB::table("users")->where("email", "=", "$request->email")->update(["chevauxFiscaux" => $request->ChevauxFiscaux]);
+            DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["chevauxFiscaux" => $request->ChevauxFiscaux]);
         }
         if ($modifUserDB[0]->taux != $request->taux) {
-            DB::table("users")->where("email", "=", "$request->email")->update(["taux" => $request->taux]);
+            DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["taux" => $request->taux]);
         }
+
         if (Auth::user()->superadmin == 1) {
             if ($modifUserDB[0]->admin != $request->admin) {
-                DB::table("users")->where("email", "=", $request->email)->update(["admin" => $request->admin]);
-                DB::table("users")->where("email", "=", $request->email)->update(["salarie" => 0]);
+                DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["admin" => $request->admin]);
+                DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["salarie" => 0]);
             }
 
             $isUserAdmin = DB::table('users')->where("email", "=", $request->email)->get();
@@ -216,16 +223,10 @@ class Controller extends BaseController
             }
         }
 
-        // if ($modifUserDB[0]->ValeurChevauxFiscaux != $request->ValeurChevauxFiscaux){
-        //     DB::table("users")->where("email","=","$request->email")->update(["ValeurchevauxFiscaux"=>$request->ValeurChevauxFiscaux]);
-        // }
 
-        if ($request->password != null && $request->password == $request->password_confirmation) {
-            DB::table("users")->where("email", $request->email)->update(["password" => Hash::make($request->password)]);
-        } elseif ($request->password != null && $request->password != $request->password_confirmation) {
-            Session::flash('passwordErreur', "Le password ne correspond pas ");
-            return redirect("gestionaireUser");
-        }
+
+
+
 
         return redirect('gestionaireUser');
     }
