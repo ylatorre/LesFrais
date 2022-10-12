@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    
+
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="background:rgb(255, 255, 255)">
         <div class="flex justify-between h-20">
@@ -92,8 +92,12 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Calendrier') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('gestionaireUser')" :active="request()->routeIs('gestionnaireUser')">
-                {{ __('Administration') }}
+
+            @if(Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
+                <x-responsive-nav-link :href="route('gestionaireUser')" :active="request()->routeIs('gestionnaireUser')">
+                    {{ __('Administration') }}
+            @endif
+            
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('mesNDF')" :active="request()->routeIs('mesNDF')">
                 {{ __('Mes notes de frais') }}
