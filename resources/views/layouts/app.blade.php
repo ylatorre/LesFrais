@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="..\public\images\favicon.ico">
 
-    
+
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -57,7 +57,7 @@
 
         <!-- Page Heading -->
         <header class="">
-            <div class="px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="px-2 py-1 max-w-7xl sm:px-2 lg:px-2">
                 {{ $header }}
             </div>
         </header>
