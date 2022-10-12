@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* CSS de la vue mesndfs */
+
+.TH-mesndfs{
+   padding-top: 10px;
+   padding-bottom: 10px;
+}

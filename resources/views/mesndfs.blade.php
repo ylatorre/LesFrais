@@ -1,4 +1,5 @@
 <x-app-layout>
+    <link rel="stylesheet" href="{{asset('css/mesndfs.css')}}">
     <x-slot name="header">
         <h1 class="font-bold text-base py-5" style="border-bottom: 4px solid black">Vos notes de frais : </h1>
     </x-slot>
@@ -26,11 +27,11 @@
     <table class=" w-full text-left text-gray-500 dark:text-gray-400">
         <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3 text-center">Date de la note de frais</th>
-                <th scope="col" class="bye860 px-6 py-3 text-center">Nombre d'évènements</th>
-                <th scope="col" class="px-6 py-3 text-center">Chevaux fiscaux</th>
-                <th scope="col" class="px-6 py-3 text-center">Votre taux/km</th>
-                <th scope="col" class="px-6 py-3 text-center"></th>
+                <th scope="col" class="TH-mesndfs  text-center">Date de la note de frais</th>
+                <th scope="col" class="bye860 TH-mesndfs   text-center">Nombre d'évènements</th>
+                <th scope="col" class="TH-mesndfs  text-center">Chevaux fiscaux</th>
+                <th scope="col" class="TH-mesndfs  text-center">Votre taux/km</th>
+                <th scope="col" class="TH-mesndfs  text-center"></th>
                 @if(Auth::user()->superadmin == 1)
                         <th scope="col" class="px-6 py-3 text-center">
                             Suppression
