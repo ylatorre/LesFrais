@@ -163,8 +163,8 @@
     td{
         font-size:8px;
         width:10%;
-        padding-top:5px;
-        padding-bottom:5px;
+        padding-top:2px !important;
+        padding-bottom:2px !important;
     }
     th{
         font-size:8px;
@@ -174,11 +174,12 @@
     }
 
       .responsiv-administration-buttons{
-        font-size:8px ;
+        font-size:9px ;
         padding-left:5px;
         padding-right:5px;
-        padding-top:2px;
-        padding-bottom:2px;
+        padding-top:4px;
+        padding-bottom:4px;
+        margin-right:2px !important;
     }
     .th-table-admin{
 
@@ -208,7 +209,7 @@
     }
 
    .responsiv-administration-buttons{
-        font-size:6px;
+        font-size:8px;
         padding-left:5px;
         padding-right:5px;
         padding-top:2px;
@@ -243,7 +244,7 @@
     </div>
     <div class="flex justify-center mb-3">
         <button
-            class="responsiv-administration-buttons block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="responsiv-administration-buttons block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="button" data-modal-toggle="authentication-modal">
             + Utilisateur
         </button>
@@ -302,94 +303,94 @@
                                     Modérateur
                                 </td>
                             <td scope="row"
-                                class="px-2 py-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
+                                class="px-2 py-1 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
                             </td>
-                            <td class="tchao1062 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao1062 py-1 text-center text-blue-600" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-1 text-center text-blue-600" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao540 py-1 text-center text-blue-600" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-1 text-center text-blue-600" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-2 text-center text-blue-600 tchao400" style="background:white;">
+                            <td class=" py-1 text-center text-blue-600 tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-1 text-center text-blue-600" style="background:white;">
                                 *******
                             </td>
                         @elseif($user->superadmin == 1)
 
                             <td scope="row"
-                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                class=" py-1 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 Administrateur
                             </td>
                             <td scope="row"
-                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                class=" py-1 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            <td class="tchao1062 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao1062 py-1 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-1 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao540 py-1 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-1 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-2 text-center text-red-400 font-bold tchao400" style="background:white;">
+                            <td class=" py-1 text-center text-red-400 font-bold tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-1 text-center text-red-400 font-bold" style="background:white;">
                                 *******
                             </td>
 
                         @else
                             <td scope="row"
-                                    class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                    class=" py-1 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                     style="background:white;">
                                     Salarié
                                 </td>
                             <td scope="row"
-                                class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                class=" py-1 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            <td class="tchao1062 py-2 text-center" style="background:white;">
+                            <td class="tchao1062 py-1 text-center" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-2 text-center" style="background:white;">
+                            <td class="tchao780 py-1 text-center" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-2 text-center" style="background:white;">
+                            <td class="tchao540 py-1 text-center" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-2 text-center" style="background:white;">
+                            <td class="tchao780 py-1 text-center" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class="py-2 text-center tchao400" style="background:white;">
+                            <td class="py-1 text-center tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-2 text-center" style="background:white;">
+                            <td class="tchao780 py-1 text-center" style="background:white;">
                                 *******
                             </td>
 
                         @endif
 
 
-                        <td class="py-2 overflow-visible text-right" style="background:white;">
+                        <td class="py-1 overflow-visible text-right" style="background:white;">
                             <div class=" flex justify-start overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
