@@ -496,7 +496,7 @@
                 <div class="flex flex-row mb-5">
                     <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 
-                    @if (Auth::user()->superadmin == 1)
+
                         @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
                             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
                             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
@@ -511,7 +511,8 @@
                                 </div>
 
                         @endif
-                    @endif
+                    
+
 
 
 
