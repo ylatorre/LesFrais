@@ -7,11 +7,9 @@
         @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-            <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
-                d'{{ $dateNDFpourPDFetVISU }}
+            <div class="w-full h-20 px-4 mb-6 font-bold text-center">
             @else
-                <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
-                    de {{ $dateNDFpourPDFetVISU }}
+                <div class="w-full h-20 px-4 mb-6 font-bold text-center">
         @endif
         <div class="flex flex-row justify-around">
             <form method="POST" action="{{ route('validerNDF') }}">
@@ -38,11 +36,9 @@
         @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-            <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
-                d'{{ $dateNDFpourPDFetVISU }}
+            <div class="w-full h-20 px-4 mb-6 font-bold text-center">
             @else
-                <div class="w-full h-20 px-4 mb-6 font-bold text-center">Prévisualisation de la note de frais de {{ $utilisateurs[0]->name }} pour le mois
-                    de {{ $dateNDFpourPDFetVISU }}
+                <div class="w-full h-20 px-4 mb-6 font-bold text-center">
         @endif
         <div class="flex flex-row justify-around items-center">
             <form method="POST" action="{{ route('PDFgeneratorPerMonth') }}" id="formndf" target="_blank">
@@ -97,12 +93,13 @@
             padding-right: 2px;
             white-space: nowrap;
         }
+
         .TD-table-3 {
             font-size: 13px;
             border: 2px solid black;
 
-            padding-top:6px;
-            padding-bottom:6px;
+            padding-top: 6px;
+            padding-bottom: 6px;
             white-space: nowrap;
         }
 
@@ -116,9 +113,10 @@
         .tablepdf {
             border-collapse: collapse;
         }
-        .th-peages{
-            padding-left:40px;
-            padding-right:40px;
+
+        .th-peages {
+            padding-left: 40px;
+            padding-right: 40px;
         }
 
         .BGjour {
@@ -140,16 +138,18 @@
         .BGgris {
             background: rgba(157, 157, 157, 0.7);
         }
-        .BGgrisclair{
-            background : rgb(190,190,190);
+
+        .BGgrisclair {
+            background: rgb(190, 190, 190);
         }
 
 
         .BGnuit {
             background: rgba(157, 157, 157, 0.7);
         }
-        .BGred{
-            background: rgba(255 , 0 , 0 , 0.3);
+
+        .BGred {
+            background: rgba(255, 0, 0, 0.3);
         }
 
 
@@ -187,35 +187,42 @@
                 font-size: 11px;
             }
         }
+
         @media screen and (max-width:1200px) {
 
             /* responsive sous les 1200px*/
-            .TD-table-3{
-                font-size:10px;
+            .TD-table-3 {
+                font-size: 10px;
 
             }
-            .phrases{
-                font-size:8px;
+
+            .phrases {
+                font-size: 8px;
             }
+
             .mission-effectuees {
                 font-size: 10px;
             }
+
             .td-top-table {
                 font-size: 12px;
             }
+
             .TH-table {
                 font-size: 10px;
                 padding-left: 4px;
                 padding-right: 4px;
             }
+
             .TD-table {
                 font-size: 8px;
                 padding: 1px;
             }
+
             .td-sous-total {
                 font-size: 11px;
             }
-            }
+        }
 
         @media screen and (max-width:960px) {
 
@@ -227,11 +234,13 @@
             .td-top-table {
                 font-size: 7px;
             }
+
             .TH-table {
                 font-size: 7px;
             }
-            .TD-table-3{
-                font-size:8px;
+
+            .TD-table-3 {
+                font-size: 8px;
             }
 
             .TD-table {
@@ -277,9 +286,10 @@
 
             /*responsive sous-les 700px*/
 
-            .phrases{
-                font-size:6px;
+            .phrases {
+                font-size: 6px;
             }
+
             .mission-effectuees {
                 font-size: 7px;
             }
@@ -294,11 +304,12 @@
 
             .TH-table {
                 font-size: 6px;
-                padding-left:2px;
-                padding-right:2px;
+                padding-left: 2px;
+                padding-right: 2px;
             }
-            .TD-table-3{
-                font-size:5px;
+
+            .TD-table-3 {
+                font-size: 5px;
 
             }
 
@@ -342,6 +353,7 @@
             }
 
         }
+
         @media screen and (max-width:560px) {
             .TH-table {
                 font-size: 5px;
@@ -352,12 +364,14 @@
         @media screen and (max-width:500px) {
 
             /* responsive sous le seuil des 500px*/
-            .TH-description{
-                width:40px;
+            .TH-description {
+                width: 40px;
             }
-            .TD-description{
-                max-width:40px;
+
+            .TD-description {
+                max-width: 40px;
             }
+
             .mission-effectuees {
                 font-size: 6px;
             }
@@ -365,8 +379,9 @@
             .td-top-table {
                 font-size: 8px;
             }
-            .TD-table-3{
-                font-size:4px;
+
+            .TD-table-3 {
+                font-size: 4px;
             }
 
             .TD-table-tot {
@@ -420,8 +435,8 @@
 
         @media screen and (max-width:400px) {
 
-            .phrases{
-                font-size:3px;
+            .phrases {
+                font-size: 3px;
             }
 
             /* responsive sous le seuil des 400px*/
@@ -439,11 +454,12 @@
 
             .TD-table {
                 font-size: 2px;
-                padding:0;
+                padding: 0;
             }
+
             .TH-table {
                 font-size: 4px;
-                padding:0;
+                padding: 0;
             }
 
             .td-sous-total {
@@ -482,24 +498,31 @@
     </style>
     <div class="w-full flex flex-row justify-around py-5 " style="border:4px solid black;">
         <div class="w-full">
-        <div class="w-full flex items-center justify-around mb-5">
-            <div class="flex flex-row">
-            <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
+            <div class="w-full flex items-center justify-around text-center">
+                <div class="flex flex-row mb-5">
+                    <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
+
+                    @if (Auth::user()->superadmin == 1)
+                        @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
+                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
+                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
+                            <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
+                                frais de {{ $utilisateurs[0]->name }} pour le mois
+                                d'{{ $dateNDFpourPDFetVISU }}</h1>
+                            </div>
+                            @else
+                                <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
+                                    frais de {{ $utilisateurs[0]->name }} pour le mois
+                                    de {{ $dateNDFpourPDFetVISU }}</h1>
+                                </div>
+
+                        @endif
+                    @endif
 
 
-            <table style="margin-left:10px; border:2px solid black; margin-top:1%; margin-bottom:1%;">
-                <tr>
-                    <td class="td-top-table">Prénom / Nom :</td>
-                    <td class="td-top-table">{{ $utilisateurs[0]->name }}</td>
-                </tr>
-                <tr>
-                    <td class="td-top-table">Frais de :</td>
-                    <td class="td-top-table">{{ $dateNDFpourPDFetVISU }}</td>
-                </tr>
 
-            </table>
-        </div>
-        </div>
+                </div>
+            </div>
 
             {{--    <h1 class="">dawd</h1> --}}
             <div class="w-full flex flex-row justify-around items-center">
@@ -517,14 +540,16 @@
                             {{--            <tr colspan="4">TTC            </tr> --}}
 
 
-                            <th colspan="4" class="TH-table text-center BGblue th-peages" style=" border-left: 2px solid black;">Péages</th>
+                            <th colspan="4" class="TH-table text-center BGblue th-peages"
+                                style=" border-left: 2px solid black;">Péages</th>
                             <th class="TH-table text-center BGblue">Parking</th>
                             <th class="TH-table text-center BGblue">Essence</th>
                             <th class="TH-table text-center BGblue">Divers</th>
                             <th class="TH-table text-center BGblue" style="border-left: 2px solid black">TVA
                                 (20%)
                             </th>
-                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Petit déjeuner</th>
+                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Petit
+                                déjeuner</th>
                             <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Déjeuner</th>
                             <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Dîner</th>
 
@@ -558,13 +583,13 @@
                                         $totalParking = $utilisateur->parking + $totalParking;
                                         $totalEssence = $utilisateur->essence + $totalEssence;
                                         $totalDivers = $utilisateur->divers + $totalDivers;
-                                        $totalRepas = ($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner) + $totalRepas;
+                                        $totalRepas = $utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $totalRepas;
                                         $totalHotels = $utilisateur->hotel + $totalHotels;
                                         $totalaEmporter = $utilisateur->aEmporter + $totalaEmporter;
                                         $totalKilometres = $utilisateur->kilometrage + $totalKilometres;
                                         $totalTVA20 = round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) + $totalTVA20;
                                         $totalTVA10 = round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) + $totalTVA10;
-                                        $totalTVA55 = round(($utilisateur->aEmporter / 1.055) * 0.055 , 2) + $totalTVA55;
+                                        $totalTVA55 = round(($utilisateur->aEmporter / 1.055) * 0.055, 2) + $totalTVA55;
                                         $totaltot = 0;
                                         $totalTVAtot = round(($totalRepas + $totalHotels) * 0.1, 2);
 
@@ -594,10 +619,12 @@
                                     <td class="TD-table text-center">{{ $utilisateur->diner }} €</td>
                                     <td class="TD-table text-center">{{ $utilisateur->hotel }} €</td>
                                     <td class="TD-table text-center BGgrisclair">
-                                        {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner +$utilisateur->hotel) / 1.1) * 0.1, 2) }} €
+                                        {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
+                                        €
                                     </td>
                                     <td class="TD-table text-center">{{ $utilisateur->aEmporter }} €</td>
-                                    <td class="TD-table text-center BGgrisclair">{{ round(($utilisateur->aEmporter / 1.055) * 0.055 , 2) }} €</td>
+                                    <td class="TD-table text-center BGgrisclair">
+                                        {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} €</td>
 
                                     <td class="TD-table col-table text-center" style="border-left: 2px solid black">
                                         {{ $utilisateur->kilometrage }} km</td>
@@ -613,17 +640,19 @@
                             @endphp
                             <tr>
                                 <td class="BGyellow pl-1 text-center phrases" style="border:2px solid black;"
-                                colspan="2" rowspan="2">Puissance fiscale de
-                                {{ $utilisateurs[0]->chevauxFiscaux }} ch. fiscaux <br> pour un taux de
-                                {{ $utilisateurs[0]->taux }} € / km</td>
+                                    colspan="2" rowspan="2">Puissance fiscale de
+                                    {{ $utilisateurs[0]->chevauxFiscaux }} ch. fiscaux <br> pour un taux de
+                                    {{ $utilisateurs[0]->taux }} € / km</td>
 
-                                <td class="BGyellow pl-1 text-center phrases" colspan="3"
-                                rowspan="2" style="border:2px solid black;">Cette note de frais n'a pas encore été soumise à inspection</td>
+                                <td class="BGyellow pl-1 text-center phrases" colspan="3" rowspan="2"
+                                    style="border:2px solid black;">Cette note de frais n'a pas encore été soumise à
+                                    inspection</td>
 
 
 
 
-                                <td colspan="4" class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                                <td colspan="4" class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalPeage }} €</td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalParking }} €</td>
@@ -633,7 +662,8 @@
                                     {{ $totalDivers }} €</td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalTVA20 }} €</td>
-                                <td colspan="3" class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                                <td colspan="3" class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalRepas }} €</td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalHotels }} €</td>
@@ -641,7 +671,7 @@
                                 <td class="TD-table text-center"
                                     style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
                                     {{ $totalTVA10 }} €</td>
-                                     <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
+                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalaEmporter }} €</td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
                                     {{ $totalTVA55 }} €</td>
@@ -663,9 +693,11 @@
                                 <td class="TD-table-3 text-center" rowspan="2" colspan="3"
                                     style="border-right:2px solid black">Total TTC :
                                     {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter }} € </td>
-                                <td class="TD-table-3 text-center" rowspan="2" colspan="3" style="border:2px solid black">
+                                <td class="TD-table-3 text-center" rowspan="2" colspan="3"
+                                    style="border:2px solid black">
                                     Indemn. Km : {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €</td>
-                                <td class="TD-table-3 text-center font-bold" rowspan="2" colspan="2" style="border:2px solid black">
+                                <td class="TD-table-3 text-center font-bold" rowspan="2" colspan="2"
+                                    style="border:2px solid black">
                                     Total dû :
                                     {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter + $totalKilometres * $utilisateurs[0]->taux }}
                                     €
