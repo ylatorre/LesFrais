@@ -244,6 +244,19 @@
     padding-top:10px;
 }
 
+@media screen and(max-width:300px){
+    input{
+        font-size:6px;
+        padding:0px;
+    }
+    .divEssence {
+        padding:4px;
+    }
+    body{
+        background : red;
+    }
+}
+
 /* responsive administration buttons*/
 
 @media screen and (max-width:1450px){

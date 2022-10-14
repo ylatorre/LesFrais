@@ -71,6 +71,23 @@
 
         });
     </script>
+    <style>
+        .divInput{
+            padding:4px;
+        }
+        @media screen and (max-width:300px){
+            input{
+                font-size:6px;
+                padding:0px;
+            }
+            .divInput {
+                padding:4px;
+                margin-bottom:8px !important;
+            }
+
+        }
+    </style>
+
     @if (Session::has('pasevents'))
         <div style="width:100%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('pasevents') }}</div>
@@ -134,7 +151,7 @@
                             </div>
                             {{-- Input Ville | Code Postal --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2 ">
                                     <label class="inline-block mb-0" for="code_postal">
                                         Code Postal
                                     </label>
@@ -143,7 +160,7 @@
                                         id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}" placeholder="ex : 75 000" required>
 
                                 </div>
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput">
                                     <label class="inline-block mb-0" for="ville">
                                         Ville
                                     </label>
@@ -154,7 +171,7 @@
                                 </div>
 
 
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pr-2">
                                     <label class="inline-block mb-0" for="parking">
                                         Parking
                                     </label>
@@ -167,7 +184,7 @@
                             </div>
                             {{-- Input Péage | Parking | Divers --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2">
                                     <label class="inline-block mb-0" for="peage">Péage
 
                                     </label>
@@ -177,7 +194,7 @@
                                         required>
 
                                 </div>
-                                <div class="mb-3 col " id="peage2">
+                                <div class="mb-3 col divInput " id="peage2">
                                     <label class="inline-block mb-0 " for="peage2">
                                         Péage 2
                                     </label>
@@ -186,7 +203,7 @@
                                         name="peage2" id="peage2" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col " id="peage3">
+                                <div class="mb-3 col divInput " id="peage3">
                                     <label class="inline-block mb-0" for="peage3">
                                         Péage 3
                                     </label>
@@ -195,7 +212,7 @@
                                         name="peage3" id="peage3" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col" id="peage4">
+                                <div class="mb-3 col divInput" id="peage4">
                                     <label class="inline-block mb-0" for="peage4">
                                         Péage 4
                                     </label>
@@ -207,7 +224,7 @@
 
 
 
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pr-2">
                                     <label class="inline-block mb-0" for="divers">
                                         Divers
                                     </label>
@@ -220,7 +237,7 @@
                             </div>
                             {{-- Input Repas | Hotel | Distance --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2">
                                     <label class="inline-block mb-0" for="petitDej">
                                         Pt déjeuner
                                     </label>
@@ -232,7 +249,7 @@
                                 </div>
 
                                 @csrf
-                                <div class="mb-3 col" id="dejeuner">
+                                <div class="mb-3 col divInput" id="dejeuner">
                                     <label class="inline-block mb-0" for="dejeuner">
                                         Déjeuner
                                     </label>
@@ -241,7 +258,7 @@
                                         name="dejeuner" id="dejeuner" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col" id="diner">
+                                <div class="mb-3 col divInput" id="diner">
                                     <label class="inline-block mb-0" for="diner">
                                         Dîner
                                     </label>
@@ -251,13 +268,13 @@
                                         required>
 
                                 </div>
-                                <div class="mb-3 col" id="aEmporter">
+                                <div class="mb-3 col divInput pr-2" id="aEmporter">
                                     <label class="inline-block mb-0" for="aEmporter">
                                         à emporter
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="aEmporter" id="aEmporter" type="number" value="0" min="0"
+                                        name="aEmporter" id="aEmporter" type="number" lang="en" value="0" min="0"
                                         required>
 
                                 </div>
@@ -266,7 +283,7 @@
                             </div>
                             <div class="row">
 
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2">
                                     <label class="inline-block mb-0" for="hotel">
                                         Hôtel
                                     </label>
@@ -276,7 +293,7 @@
                                         required>
 
                                 </div>
-                                 <div id="divEssence"class="mb-3 col">
+                                 <div id="divEssence"class="mb-3 col divInput">
                                     <label class="inline-block mb-0" for="essence">
                                         Essence
                                     </label>
@@ -285,7 +302,7 @@
                                         id="essence" name="essence" type="number" min="0" value="0"
                                         required>
                                 </div>
-                                <div id="divKilometrage" class="mb-3 col">
+                                <div id="divKilometrage" class="mb-3 col divInput pr-2">
                                     <label class="inline-block mb-0" for="kilometrage">
                                         Distance( km )
                                     </label>
@@ -406,7 +423,7 @@
                             </div>
 
 
-                            <div class="mb-3 col">
+                            <div class="mb-3 col pr-2">
                                 <label class="inline-block mb-0" for="parking">
                                     Parking
                                 </label>
@@ -459,7 +476,7 @@
 
 
 
-                            <div class="mb-3 col">
+                            <div class="mb-3 col divInput pr-2">
                                 <label class="inline-block mb-0" for="divers">
                                     Divers
                                 </label>
@@ -503,7 +520,7 @@
                                     required>
 
                             </div>
-                            <div class="mb-3 col" id="div2aEmporter">
+                            <div class="mb-3 col pr-2" id="div2aEmporter">
                                 <label class="inline-block mb-0" for="2aEmporter">
                                     à emporter
                                 </label>
@@ -537,7 +554,7 @@
                                     id="2essence" name="essence" type="number"  min="0" value="0"
                                     required>
                             </div>
-                            <div id="div2Kilometrage" class="mb-3 col">
+                            <div id="div2Kilometrage" class="mb-3 col pr-2">
                                 <label class="inline-block mb-0" for="2kilometrage">
                                     Distance( km )
                                 </label>
