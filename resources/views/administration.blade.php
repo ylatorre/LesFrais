@@ -39,9 +39,18 @@
             transition: 200ms ease;
 
         }
-
         .evenodd :nth-child(even) {
             background: grey;
+        }
+        .buttonUtilisateur{
+            width:100%;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom:12px;
+            transition:200ms ease;
+
         }
 
         @media screen and (max-width:1450px) {
@@ -210,6 +219,10 @@
                 padding-bottom: 4px;
                 margin-right: 2px !important;
             }
+            .buttonUtilisateur{
+                align-items: flex-end;
+                margin-right:20px;
+            }
 
             .th-table-admin {
 
@@ -279,7 +292,7 @@
             </div>
         @endif
     </div>
-    <div class="flex justify-center mb-3">
+    <div class="buttonUtilisateur">
         <button
             class="responsiv-administration-buttons block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="button" data-modal-toggle="authentication-modal">
