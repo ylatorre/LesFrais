@@ -3,6 +3,13 @@
     <x-slot name="header">
     </x-slot>
     @if (Auth::user()->admin == 1 && $utilisateurs[0]->admin == 0)
+    @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
+            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
+            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
+            <div class="w-full h-20 px-4 mb-6 font-bold text-center">
+            @else
+                <div class="w-full h-20 px-4 mb-6 font-bold text-center">
+        @endif
 
 
         <div class="flex flex-row justify-around">
