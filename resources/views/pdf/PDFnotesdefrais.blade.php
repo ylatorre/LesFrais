@@ -140,7 +140,7 @@
         </tr>
 
     </table>
-     <h1 style="position:fixed; right:0px; top:20px;">Note de frais de {{ $utilisateurs[0]->name }} pour {{ $dateNDFpourPDFetVISU }}</h1>
+     <h1 style="position:fixed; right:0px; top:20px; text-center">Note de frais de {{ $utilisateurs[0]->name }} pour {{ $dateNDFpourPDFetVISU }} <br><em style="font-size:10px;">( Les valeurs sont exprimées en euros )</em></h1>
 
     {{--    <h1 class="">dawd</h1> --}}
     <div class="w-full flex flex-row justify-around">
@@ -231,31 +231,31 @@
                             <td class="TD-table col-table text-center"
                                 style="white-space:nowrap; max-width: 10px; overflow:hidden; border-right:2px solid black;">
                                 {{ $utilisateur->description }}</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage2 }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage3 }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->peage4 }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->parking }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
+                            <td class="TD-table text-center">{{ $utilisateur->peage }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->peage2 }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->peage3 }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->peage4 }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->parking }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->essence }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->divers }}</td>
                             <td class="TD-table text-center BGgrisclair"
                                 style="border-right:2px solid black; border-left:2px solid black;">
                                 {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
-                                €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->petitDej }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->dejeuner }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->diner }} €</td>
-                            <td class="TD-table text-center">{{ $utilisateur->hotel }} €</td>
+                            </td>
+                            <td class="TD-table text-center">{{ $utilisateur->petitDej }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->dejeuner }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->diner }}</td>
+                            <td class="TD-table text-center">{{ $utilisateur->hotel }}</td>
                             <td class="TD-table text-center BGgrisclair" style="border-left:2px solid black; border-right:2px solid black;">
                                 {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
-                                €</td>
+                            </td>
 
-                            <td class="TD-table text-center">{{ $utilisateur->aEmporter }} €</td>
+                            <td class="TD-table text-center">{{ $utilisateur->aEmporter }}</td>
                             <td class="TD-table text-center BGgrisclair" style="border:2px solid black;">
-                                {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} €</td>
+                                {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }}</td>
 
                             <td class=" col-table text-center" style="width:60px; border: 2px solid black">
-                                {{ $utilisateur->kilometrage}} Km</td>
+                                {{ $utilisateur->kilometrage}} </td>
 
 
                         </tr>
@@ -330,32 +330,32 @@
 
                     <td colspan="4" class="TD-table-2 text-center"
                         style="background: rgb(175, 175, 175) !important;">
-                        {{ $totalPeage }} €</td>
+                        {{ $totalPeage }} </td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
-                        {{ $totalParking }} €</td>
+                        {{ $totalParking }} </td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
-                        {{ $totalEssence }} €</td>
+                        {{ $totalEssence }} </td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
-                        {{ $totalDivers }} €</td>
+                        {{ $totalDivers }} </td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
-                        {{ $totalTVA20 }} €</td>
+                        {{ $totalTVA20 }} </td>
                     <td colspan="3" class="TD-table-2 text-center"
                         style="background: rgb(175, 175, 175) !important;">
-                        {{ $totalRepas }} €</td>
+                        {{ $totalRepas }} </td>
                     <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
-                        {{ $totalHotels }} €</td>
+                        {{ $totalHotels }} </td>
                     <td class="TD-table-2 text-center"
                         style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
-                        {{ $totalTVA10 }} €</td>
+                        {{ $totalTVA10 }} </td>
                     <td class="TD-table text-center"
                         style="background: rgb(175, 175, 175) !important; border:2px solid black;">
-                        {{ $totalaEmporter }} €</td>
+                        {{ $totalaEmporter }} </td>
                     <td class="TD-table text-center"
                         style="background: rgb(175, 175, 175) !important; border-top:2px solid black;">
-                        {{ $totalTVA55 }} €</td>
+                        {{ $totalTVA55 }} </td>
                     <td class="TD-table-2 text-center"
                         style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
-                        {{ $totalKilometres }} Km</td>
+                        {{ $totalKilometres }} </td>
 
 {{-- Bas du tableau du PDF avec les totaux --}}
 
