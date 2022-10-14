@@ -194,7 +194,7 @@
                                         required>
 
                                 </div>
-                                <div class="mb-3 col divInput " id="peage2">
+                                <div class="mb-3 col divInput " >
                                     <label class="inline-block mb-0 " for="peage2">
                                         Péage 2
                                     </label>
@@ -203,7 +203,7 @@
                                         name="peage2" id="peage2" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col divInput " id="peage3">
+                                <div class="mb-3 col divInput ">
                                     <label class="inline-block mb-0" for="peage3">
                                         Péage 3
                                     </label>
@@ -212,7 +212,7 @@
                                         name="peage3" id="peage3" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col divInput" id="peage4">
+                                <div class="mb-3 col divInput">
                                     <label class="inline-block mb-0" for="peage4">
                                         Péage 4
                                     </label>

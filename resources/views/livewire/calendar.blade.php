@@ -50,7 +50,6 @@
 
             #essence {
                 transition: 100ms;
-
             }
 
             #kilometrage {
@@ -140,6 +139,52 @@
                     $("#2essence").prop('readonly', true);
                 });
 
+
+                /* vérrouillage des inputs de péages */
+
+                const peage = document.getElementById('peage');
+                const peage2 = document.getElementById('peage2');
+                const peage3 = document.getElementById('peage3');
+                const peage4 = document.getElementById('peage4');
+
+                peage.addEventListener('change',()=>{
+                    $('#peage2').val(0);
+                    $('#peage3').val(0);
+                    $('#peage4').val(0);
+                })
+                peage2.addEventListener('change',()=>{
+                    $('#peage3').val(0);
+                    $('#peage4').val(0);
+                })
+                peage3.addEventListener('change',()=>{
+                    $('#peage4').val(0);
+                })
+
+
+                peage2.addEventListener('click',()=>{
+                    if( peage.value == 0 || peage.value == null){
+                        peage2.readOnly = true;
+                    }else{
+                        peage2.readOnly = false;
+                    }
+                })
+                peage3.addEventListener('click',()=>{
+                    if (peage.value == 0 || peage.value == null || peage2.value == 0 || peage2.value == null){
+                        peage3.readOnly = true;
+                    }else{
+                        peage3.readOnly = false;
+                    }
+                })
+                peage4.addEventListener('click',()=>{
+                    if (peage.value == 0 || peage.value == null || peage2.value == 0 || peage2.value == null || peage3.value == 0 || peage3.value == null){
+                        peage4.readOnly = true;
+                    }else{
+                        peage4.readOnly = false;
+                    }
+                })
+
+
+
                 /*------------------*/
 
                 create_UUID = () => {
@@ -187,7 +232,7 @@
 
 
 
-                            
+
 
 
 
