@@ -4,13 +4,7 @@
     </x-slot>
     @if (Auth::user()->admin == 1 && $utilisateurs[0]->admin == 0)
 
-        @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
-            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
-            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-            <div class="w-full h-20 px-4 mb-6 font-bold text-center">
-            @else
-                <div class="w-full h-20 px-4 mb-6 font-bold text-center">
-        @endif
+
         <div class="flex flex-row justify-around">
             <form method="POST" action="{{ route('validerNDF') }}">
                 @csrf
@@ -28,7 +22,7 @@
         </div>
         </div>
     @elseif(Auth::user()->salarie == 1 || (Auth::user()->admin == 1 && Auth::user()->superadmin != 1))
-        <div class="flex flex-row items-center justify-around w-full h-20 px-4 mb-6 font-bold">
+        <div class="flex flex-row items-center justify-around w-full h-20 px-4 font-bold">
             <a href="{{ route('dashboard') }}"><button type="submit" class="validerNDF">retourner à mon
                     calendrier</button></a>
         </div>
@@ -36,11 +30,11 @@
         @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-            <div class="w-full h-20 px-4 mb-6 font-bold text-center">
+            <div class="w-full h-20 px-4 font-bold text-center">
             @else
-                <div class="w-full h-20 px-4 mb-6 font-bold text-center">
+                <div class="w-full h-20 px-4  font-bold text-center">
         @endif
-        <div class="flex flex-row justify-around items-center">
+        <div class="flex flex-row justify-around items-center mt-6">
             <form method="POST" action="{{ route('PDFgeneratorPerMonth') }}" id="formndf" target="_blank">
                 @csrf
                 <input id="inputdate" type="hidden" name="selectedMonth" value="{{ $utilisateurs[0]->mois }}">
