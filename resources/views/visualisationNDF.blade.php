@@ -502,16 +502,16 @@
                             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
                             <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
                                 frais de {{ $utilisateurs[0]->name }} pour le mois
-                                d'{{ $dateNDFpourPDFetVISU }}</h1>
+                                d'{{ $dateNDFpourPDFetVISU }} (les valeur sont exprimées en euros)</h1>
                             </div>
                             @else
                                 <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
                                     frais de {{ $utilisateurs[0]->name }} pour le mois
-                                    de {{ $dateNDFpourPDFetVISU }}</h1>
+                                     de {{ $dateNDFpourPDFetVISU }} (les valeur sont exprimées en euros)</h1>
                                 </div>
 
                         @endif
-                    
+
 
 
 
@@ -599,30 +599,30 @@
                                     <td class="TD-table col-table text-center TD-description"
                                         style="white-space:nowrap; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage2 }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage3 }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage4 }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->parking }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->essence }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->divers }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->peage }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->peage2 }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->peage3 }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->peage4 }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->parking }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->essence }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->divers }} </td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
-                                        €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->petitDej }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->dejeuner }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->diner }} €</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->hotel }} €</td>
+                                        </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->petitDej }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->dejeuner }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->diner }} </td>
+                                    <td class="TD-table text-center">{{ $utilisateur->hotel }} </td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
-                                        €
+
                                     </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->aEmporter }} €</td>
+                                    <td class="TD-table text-center">{{ $utilisateur->aEmporter }} </td>
                                     <td class="TD-table text-center BGgrisclair">
-                                        {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} €</td>
+                                        {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} </td>
 
                                     <td class="TD-table col-table text-center" style="border-left: 2px solid black">
-                                        {{ $utilisateur->kilometrage }} km</td>
+                                        {{ $utilisateur->kilometrage }} </td>
 
 
                                 </tr>
@@ -648,31 +648,31 @@
 
                                 <td colspan="4" class="TD-table text-center"
                                     style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalPeage }} €</td>
+                                    {{ $totalPeage }} </td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalParking }} €</td>
+                                    {{ $totalParking }} </td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalEssence }} €</td>
+                                    {{ $totalEssence }} </td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalDivers }} €</td>
+                                    {{ $totalDivers }} </td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalTVA20 }} €</td>
+                                    {{ $totalTVA20 }} </td>
                                 <td colspan="3" class="TD-table text-center"
                                     style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalRepas }} €</td>
+                                    {{ $totalRepas }} </td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalHotels }} €</td>
+                                    {{ $totalHotels }} </td>
 
                                 <td class="TD-table text-center"
                                     style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
-                                    {{ $totalTVA10 }} €</td>
+                                    {{ $totalTVA10 }} </td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalaEmporter }} €</td>
+                                    {{ $totalaEmporter }} </td>
                                 <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalTVA55 }} €</td>
+                                    {{ $totalTVA55 }} </td>
                                 <td class="TD-table text-center"
                                     style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
-                                    {{ $totalKilometres }} Km</td>
+                                    {{ $totalKilometres }} </td>
 
 
                                 {{--        <td class="TD-table">{{$totalParking}}</td> --}}
