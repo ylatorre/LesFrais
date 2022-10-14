@@ -140,12 +140,16 @@
                 });
 
 
-                /* vérrouillage des inputs de péages */
+                /* vérrouillage des inputs de péages dans la création d'évènement*/
 
                 const peage = document.getElementById('peage');
                 const peage2 = document.getElementById('peage2');
                 const peage3 = document.getElementById('peage3');
                 const peage4 = document.getElementById('peage4');
+                const ipeage = document.getElementById('2peage');
+                const ipeage2 = document.getElementById('2peage2');
+                const ipeage3 = document.getElementById('2peage3');
+                const ipeage4 = document.getElementById('2peage4');
 
                 peage.addEventListener('change',()=>{
                     $('#peage2').val(0);
@@ -180,6 +184,43 @@
                         peage4.readOnly = true;
                     }else{
                         peage4.readOnly = false;
+                    }
+                })
+                /* gestion des input dans la modale de modification de l'évènement */
+
+                ipeage.addEventListener('change',()=>{
+                    $('#2peage2').val(0);
+                    $('#2peage3').val(0);
+                    $('#2peage4').val(0);
+                })
+                ipeage2.addEventListener('change',()=>{
+                    $('#2peage3').val(0);
+                    $('#2peage4').val(0);
+                })
+                ipeage3.addEventListener('change',()=>{
+                    $('#2peage4').val(0);
+                })
+
+
+                ipeage2.addEventListener('click',()=>{
+                    if( ipeage.value == 0 || ipeage.value == null){
+                        ipeage2.readOnly = true;
+                    }else{
+                        ipeage2.readOnly = false;
+                    }
+                })
+                ipeage3.addEventListener('click',()=>{
+                    if (ipeage.value == 0 || ipeage.value == null || ipeage2.value == 0 || ipeage2.value == null){
+                        ipeage3.readOnly = true;
+                    }else{
+                        ipeage3.readOnly = false;
+                    }
+                })
+                ipeage4.addEventListener('click',()=>{
+                    if (ipeage.value == 0 || ipeage.value == null || ipeage2.value == 0 || ipeage2.value == null || ipeage3.value == 0 || ipeage3.value == null){
+                        ipeage4.readOnly = true;
+                    }else{
+                        ipeage4.readOnly = false;
                     }
                 })
 
