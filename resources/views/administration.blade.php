@@ -28,205 +28,242 @@
     {{-- </style> --}}
     <!-- Modal toggle -->
     <style>
-
-        body{
-            font-family: 'nunito',sans-serif;
+        body {
+            font-family: 'nunito', sans-serif;
         }
 
         /* responsive administration buttons*/
-        .responsiv-administration-buttons{
-            padding:15px;
-            font-family: 'nunito',sans-serif;
-            transition:200ms ease;
+        .responsiv-administration-buttons {
+            padding: 15px;
+            font-family: 'nunito', sans-serif;
+            transition: 200ms ease;
 
         }
-        .evenodd :nth-child(even){
-            background:grey;
+
+        .evenodd :nth-child(even) {
+            background: grey;
         }
 
-@media screen and (max-width:1450px){/* 1450PX */
-    td{
-        font-size:15px;
-        width:10%;
+        @media screen and (max-width:1450px) {
 
-    }
-    th{
-        font-size:15px;
-        width:10%;
+            /* 1450PX */
+            td {
+                font-size: 15px;
+                width: 10%;
 
-    }
-    .responsiv-administration-buttons{
-        font-size:12px ;
-        padding:6px;
-    }
-    .th-table-admin{
-        font-size:10px;
-        padding-left:10px;
-        padding-right:10px;
-        padding-top:6px;
-        padding-bottom:6px;
-        max-width:10%;
-    }
-}
-@media screen and (max-width:1240px){/*--------------------------------- 1240PX */
-    td{
-        font-size:12px;
-        width:10%;
+            }
 
-    }
-    th{
-        font-size:12px;
-        width:10%;
+            th {
+                font-size: 15px;
+                width: 10%;
 
-    }
-    .responsiv-administration-buttons{
-        font-size:12px ;
-        padding:6px;
-    }
-    .th-table-admin{
-        font-size:10px;
-        padding-left:10px;
-        padding-right:10px;
-        padding-top:6px;
-        padding-bottom:6px;
-        max-width:10%;
-    }
-}
-@media screen and (max-width:1062px){/*--------------------------------- 1062PX */
-    .tchao1062{
-        display:none;
-    }
-    td{
-        font-size:12px;
-        width:10%;
-        padding-top:10px;
-        padding-bottom:10px;
-    }
-    th{
-        font-size:12px;
-        width:10%;
-        padding-top:10px;
-        padding-bottom:10px;
-    }
+            }
 
-   .responsiv-administration-buttons{
-        font-size:10px ;
-        padding-left:6px;
-        padding-right:6px;
-        padding-top:2px;
-        padding-bottom:2px;
-   }
-    .th-table-admin{
-        font-size:10px;
-        padding-left:8px;
-        padding-right:8px;
-        padding-top:4px;
-        padding-bottom:4px;
-        max-width:10%;
-    }
-}
-@media screen and (max-width:780px){/*--------------------------------- 780PX */
+            .responsiv-administration-buttons {
+                font-size: 12px;
+                padding: 6px;
+            }
 
-.tchao780{
-    display:none;
-}
-    td{
-        font-size:12px;
-        width:10%;
-        padding-top:8px;
-        padding-bottom:8px;
-    }
-    th{
-        font-size:12px;
-        width:10%;
-        padding-top:8px;
-        padding-bottom:8px;
-    }
+            .th-table-admin {
+                font-size: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                max-width: 10%;
+            }
+        }
 
-   .responsiv-administration-buttons{
-        font-size:9px ;
-        padding-left:6px;
-        padding-right:6px;
-        padding-top:2px;
-        padding-bottom:2px;
-    }
-    .th-table-admin{
-        font-size:8px;
-        padding-left:6px;
-        padding-right:6px;
-        padding-top:2px;
-        padding-bottom:2px;
-        max-width:10%;
-    }
-}
-@media screen and (max-width:540px){/*--------------------------------- 540PX */
-    td{
-        font-size:8px;
-        width:10%;
-        padding-top:2px !important;
-        padding-bottom:2px !important;
-    }
-    th{
-        font-size:8px;
-        width:10%;
-        padding-top:5px;
-        padding-bottom:5px;
-    }
+        @media screen and (max-width:1240px) {
 
-      .responsiv-administration-buttons{
-        font-size:9px ;
-        padding-left:5px;
-        padding-right:5px;
-        padding-top:4px;
-        padding-bottom:4px;
-        margin-right:2px !important;
-    }
-    .th-table-admin{
+            /*--------------------------------- 1240PX */
+            td {
+                font-size: 12px;
+                width: 10%;
 
-        padding-left:4px;
-        padding-right:4px;
-        padding-top:2px;
-        padding-bottom:2px;
-        max-width:10%;
-    }
-    .tchao540{
-        display: none;
-    }
+            }
 
-}
-@media screen and (max-width:420px){/*--------------------------------- 420PX */
-    td{
-        font-size:8px;
-        width:10%;
-        padding-top:4px;
-        padding-bottom:4px;
-    }
-    th{
-        font-size:8px;
-        width:10%;
-        padding-top:4px;
-        padding-bottom:4px;
-    }
+            th {
+                font-size: 12px;
+                width: 10%;
 
-   .responsiv-administration-buttons{
-        font-size:8px;
-        padding-left:5px;
-        padding-right:5px;
-        padding-top:2px;
-        padding-bottom:2px;
-    }
-    .th-table-admin{
+            }
 
-        padding-left:2px;
-        padding-right:2px;
-        padding-top:1px;
-        padding-bottom:1px;
-        max-width:10%;
-    }
-    .tchao400{
-        display:none;
-    }
-}
+            .responsiv-administration-buttons {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            .th-table-admin {
+                font-size: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                max-width: 10%;
+            }
+        }
+
+        @media screen and (max-width:1062px) {
+
+            /*--------------------------------- 1062PX */
+            .tchao1062 {
+                display: none;
+            }
+
+            td {
+                font-size: 12px;
+                width: 10%;
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+            }
+
+            th {
+                font-size: 12px;
+                width: 10%;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .responsiv-administration-buttons {
+                font-size: 10px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+
+            .th-table-admin {
+                font-size: 10px;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                max-width: 10%;
+            }
+        }
+
+        @media screen and (max-width:780px) {
+            /*--------------------------------- 780PX */
+
+            .tchao780 {
+                display: none;
+            }
+
+            td {
+                font-size: 12px;
+                width: 10%;
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+
+            th {
+                font-size: 12px;
+                width: 10%;
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+
+            .responsiv-administration-buttons {
+                font-size: 9px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+
+            .th-table-admin {
+                font-size: 8px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                max-width: 10%;
+            }
+        }
+
+        @media screen and (max-width:540px) {
+
+            /*--------------------------------- 540PX */
+            td {
+                font-size: 8px;
+                width: 10%;
+                padding-top: 2px !important;
+                padding-bottom: 2px !important;
+            }
+            label{
+                font-size:10px;
+            }
+
+            th {
+                font-size: 8px;
+                width: 10%;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            .responsiv-administration-buttons {
+                font-size: 9px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                margin-right: 2px !important;
+            }
+
+            .th-table-admin {
+
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                max-width: 10%;
+            }
+
+            .tchao540 {
+                display: none;
+            }
+
+        }
+
+        @media screen and (max-width:420px) {
+
+            /*--------------------------------- 420PX */
+            td {
+                font-size: 8px;
+                width: 10%;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+
+            th {
+                font-size: 8px;
+                width: 10%;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+
+            .responsiv-administration-buttons {
+                font-size: 8px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+
+            .th-table-admin {
+
+                padding-left: 2px;
+                padding-right: 2px;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                max-width: 10%;
+            }
+
+            .tchao400 {
+                display: none;
+            }
+        }
     </style>
     <div>
         @if (\Session::has('failure'))
@@ -270,7 +307,7 @@
                         Numero de Téléphone
                     </th>
                     <th scope="col" class="tchao540 th-table-admin  text-center">
-                        Type de véhicule
+                        Véhicule
                     </th>
                     <th scope="col" class="tchao780 th-table-admin  text-center">
                         chevaux Fiscaux
@@ -288,7 +325,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody>
                 @php
                     $i = 1;
                 @endphp
@@ -296,97 +333,93 @@
                     <tr
                         class=" overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                         @if ($user->admin == 1 && $user->superadmin == 0)
-
                             <td scope="row"
-                                    class="px-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
-                                    style="background:white;">
-                                    Modérateur
-                                </td>
+                                class="px-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
+                                style="background:white;">
+                                Modérateur
+                            </td>
                             <td scope="row"
-                                class="px-2 py-1 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
+                                class="px-2 py-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
                             </td>
-                            <td class="tchao1062 py-1 text-center text-blue-600" style="background:white;">
+                            <td class="tchao1062 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-1 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-1 text-center text-blue-600" style="background:white;">
+                            <td class="tchao540 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-1 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-1 text-center text-blue-600 tchao400" style="background:white;">
+                            <td class=" py-2 text-center text-blue-600 tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-1 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
                                 *******
                             </td>
                         @elseif($user->superadmin == 1)
-
                             <td scope="row"
-                                class=" py-1 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 Administrateur
                             </td>
                             <td scope="row"
-                                class=" py-1 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
+                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            <td class="tchao1062 py-1 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao1062 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-1 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-1 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao540 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-1 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-1 text-center text-red-400 font-bold tchao400" style="background:white;">
+                            <td class=" py-2 text-center text-red-400 font-bold tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-1 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
                                 *******
                             </td>
-
                         @else
                             <td scope="row"
-                                    class=" py-1 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                                    style="background:white;">
-                                    Salarié
-                                </td>
+                                class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                style="background:white;">
+                                Salarié
+                            </td>
                             <td scope="row"
-                                class=" py-1 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                                class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                 style="background:white;">
                                 {{ $user->name }}
-                            <td class="tchao1062 py-1 text-center" style="background:white;">
+                            <td class="tchao1062 py-2 text-center" style="background:white;">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-1 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center" style="background:white;">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-1 text-center" style="background:white;">
+                            <td class="tchao540 py-2 text-center" style="background:white;">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-1 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center" style="background:white;">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class="py-1 text-center tchao400" style="background:white;">
+                            <td class="py-2 text-center tchao400" style="background:white;">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-1 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center" style="background:white;">
                                 *******
                             </td>
-
                         @endif
 
 
@@ -403,7 +436,7 @@
                                         </div> --}}
                                         <input type="hidden" name="utilisateur" value="{{ $user->name }}">
 
-                                        <input type="hidden" name="salarie" value="{{$user->salarie}}">
+                                        <input type="hidden" name="salarie" value="{{ $user->salarie }}">
 
                                         <input type="hidden" name="selectedMonth" id="selectedMonth">
 
@@ -462,7 +495,7 @@
                             <!-- Modal content -->
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <button type="button"
-                                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                                     data-modal-toggle="authentication-modal{{ $i }}">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -471,78 +504,80 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </button>
-                                <div class="px-6 py-6 lg:px-8">
+                                <div class="px-2 py-2 lg:px-8">
                                     <form class="space-y-6" action="{{ route('modifUser') }}" method="POST">
                                         @csrf
 
                                         <div>
                                             <label for="name"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prénom et Nom</label>
+                                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Prénom
+                                                et Nom</label>
                                             <input type="text" name="name" id="name"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 placeholder="Prénom puis Nom" value="{{ $user->name }}">
                                         </div>
                                         <div>
                                             <label for="email"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
+                                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Email</label>
                                             <input type="email" name="email" id="email"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 placeholder="name@company.com" value="{{ $user->email }}">
                                         </div>
 
 
-                                            <input type="hidden" name="actualemail" id="actualemail"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                placeholder="name@company.com" value="{{ $user->email }}">
+                                        <input type="hidden" name="actualemail" id="actualemail"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            placeholder="name@company.com" value="{{ $user->email }}">
 
                                         <div>
                                             <label for="portable"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
+                                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Portable</label>
                                             <input type="tel" name="portable" id="portable"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 placeholder="06 60 06 60 06" value="{{ $user->portables }}"
                                                 autofocus>
+                                            @if (Auth::user()->superadmin == 1)
+                                                <div class="flex flex-col">
+                                                    <label for="admin"
+                                                        class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Rôle
+                                                    </label>
+                                                    <select type="select" name="admin" id="admin"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                                        <option value="0">Salarié</option>
+                                                        <option value="1">Admin</option>
+                                                    </select>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="flex items-end justify-between">
-                                            <div class="w-1/5">
+                                            <div class="w-1/3 pr-1">
                                                 <label for="vehicule"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type
-                                                    de Vehicule</label>
+                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle
+                                                    du Vehicule</label>
                                                 <input type="text" name="vehicule" id="vehicule"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
                                             </div>
-                                            <div class="w-1/5">
+                                            <div class="w-1/3">
                                                 <label for="taux"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Taux
+                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Taux
                                                 </label>
                                                 <input type="number" name="taux" id="taux" step="any"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="ex : 502" value="{{ $user->taux }}" required
                                                     autofocus>
                                             </div>
-                                            <div class="w-1/5">
+                                            <div class="w-1/3 pl-1">
                                                 <label for="ChevauxFiscaux"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux
+                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Chevaux
                                                     Fiscaux</label>
                                                 <input type="number" name="ChevauxFiscaux" id="ChevauxFiscaux"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
                                                     autofocus>
                                             </div>
                                             <!-- si c'ets le super admin qui est connecté-->
-                                            @if (Auth::user()->superadmin == 1)
-                                                <div class="w-1/5">
-                                                    <label for="admin"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rôle
-                                                    </label>
-                                                    <select type="select" name="admin" id="admin"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                <option value="0">Salarié</option>
-                                <option value="1">Admin</option>
-                                </select>
-                                                </div>
-                                            @endif
+
 
 
                                         </div>
@@ -662,7 +697,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <div class="px-6 py-6 lg:px-8">
+                <div class="px-2 py-2 lg:px-8">
 
                     <!--AJOUTER UN USER-->
 
@@ -671,68 +706,72 @@
 
                         <div>
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prénom et Nom</label>
+                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Prénom et
+                                Nom</label>
                             <input type="text" name="name" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="ex: Prénom Nom" :value="old('name')" required="">
                         </div>
                         <div>
                             <label for="email"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
+                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Email</label>
                             <input type="email" name="email" id="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="name@company.com" :value="old('email')" required="">
                         </div>
-                        <div>
+                        <div class="flex flex-row justify-between">
+                            <div class="flex flex-col w-1/2 mr-1">
                             <label for="portables"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Portable</label>
+                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Portable</label>
                             <input type="tel" name="portable" id="portable"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
+                            </div>
+                                @if (Auth::user()->superadmin == 1)
+                                <div class="flex flex-col w-1/2 ml-1">
+                                    <label for="admin"
+                                        class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">
+                                        Rôle</label>
+                                    <select type="select" name="admin" id="admin"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                        <option value="0">Salarié</option>
+                                        <option value="1">Admin</option>
+                                    </select>
+                                </div>
+                            @endif
                         </div>
                         <div class="flex items-end justify-between">
-                            <div class="w-1/5">
+                            <div class="w-1/3 pr-1">
                                 <label for="vehicule"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Type de
+                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle du
                                     Vehicule</label>
                                 <input type="text" name="vehicule" id="vehicule"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    placeholder="ex : peugeot 308" value="{{ $user->vehicule }}" autofocus>
+                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    placeholder="ex : 308" required autofocus>
                             </div>
-                            <div class="w-1/5">
+                            <div class="w-1/3">
                                 <label for="taux"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Taux
+                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Taux
                                 </label>
                                 <input type="number" name="taux" id="taux" step="any"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="ex : 0.542" required autofocus>
                             </div>
-                            <div class="w-1/5">
+                            <div class="w-1/3 pl-1">
                                 <label for="ChevauxFiscaux"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chevaux
+                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Chevaux
                                     Fiscaux</label>
                                 <input type="text" name="ChevauxFiscaux" id="ChevauxFiscaux"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="ex : 6" autofocus>
                             </div>
-                        @if (Auth::user()->superadmin == 1)
-                            <div class="w-1/5">
-                                <label for="admin"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                    Rôle</label>
-                                <select type="select" name="admin" id="admin"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                <option value="0">Salarié</option>
-                                <option value="1">Admin</option>
-                                </select>
-                            </div>
-                        @endif
+
 
 
                         </div>
                         <div>
                             <label for="password"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mot de
+                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Mot de
                                 passe</label>
                             <input type="password" name="password" id="password" placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -740,7 +779,7 @@
                         </div>
                         <div>
                             <label for="password_confirmation"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirmer mot
+                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Confirmer mot
                                 de passe
                             </label>
                             <input type="password" name="password_confirmation" id="password_confirmation"
