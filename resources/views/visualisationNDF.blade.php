@@ -509,12 +509,12 @@
                             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
                             <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
                                 frais de {{ $utilisateurs[0]->name }} pour le mois
-                                d'{{ $dateNDFpourPDFetVISU }} (les valeur sont exprimées en euros)</h1>
+                                d'{{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
                             </div>
                             @else
                                 <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
                                     frais de {{ $utilisateurs[0]->name }} pour le mois
-                                     de {{ $dateNDFpourPDFetVISU }} (les valeur sont exprimées en euros)</h1>
+                                     de {{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
                                 </div>
 
                         @endif
