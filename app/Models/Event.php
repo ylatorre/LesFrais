@@ -11,5 +11,43 @@ class Event extends Model
     public $timestamps = false;
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $fillable = ['id','start','end','test','description','title','ville','code_postal','peage','peage2','peage3','peage4','parking','essence', 'divers','petitDej','dejeuner','diner','aEmporter','hotel','kilometrage','idUser', 'heure_debut', 'heure_fin', 'mois'];
+    protected $fillable = [
+    'id',
+    'start',
+    'end',
+    'test',
+    'description',
+    'title',
+    'ville',
+    'code_postal',
+    'peage',
+    'peage2',
+    'peage3',
+    'peage4',
+    'parking',
+    'essence',
+    'divers',
+    'petitDej',
+    'dejeuner','diner',
+    'aEmporter',
+    'hotel',
+    'kilometrage',
+    'idUser',
+    'heure_debut',
+    'heure_fin',
+    'mois',
+
+    'pathParking',
+    'pathPeage',
+    'pathPeage2',
+    'pathPeage3',
+    'pathPeage4',
+    'pathDivers',
+    'pathPetitDej',
+    'pathDejeuner',
+    'pathDiner',
+    'pathAemporter',
+    'pathHotel',
+    'pathEssence',
+];
 }

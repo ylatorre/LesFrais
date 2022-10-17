@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\MailNotifSalarie;
 use App\Models\Mois;
 use App\Models\User;
 use Faker\Core\Uuid;
@@ -10,12 +9,14 @@ use App\Models\Event;
 use App\Models\infosndf;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
+use App\Mail\MailNotifSalarie;
 use App\Models\historiqueEssence;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -64,6 +65,74 @@ class Controller extends BaseController
     public function createEvent(Request $request)
     {
 
+        /* - création du nom du dossier dans lequel les images seront stockées */
+        $folderName = Auth::user()->name."-".$request->moisActuel;
+
+        /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
+        if($request->hasFile('factureParking')){
+        $pathParking = Storage::disk('public')->put($folderName ,$request->file("factureParking"));
+        }else{
+            $pathParking = "0";
+        }
+        if($request->hasFile('facturePeage')){
+        $pathPeage = Storage::disk('public')->put($folderName ,$request->file("facturePeage"));
+        }else{
+            $pathPeage = "0";
+        }
+        if($request->hasFile('facturePeage2')){
+        $pathPeage2 = Storage::disk('public')->put($folderName ,$request->file("facturePeage2"));
+        }else{
+            $pathPeage2 = "0";
+        }
+        if($request->hasFile('facturePeage3')){
+        $pathPeage3 = Storage::disk('public')->put($folderName ,$request->file("facturePeage3"));
+        }else{
+            $pathPeage3 = "0";
+        }
+        if($request->hasFile('facturePeage4')){
+        $pathPeage4 = Storage::disk('public')->put($folderName ,$request->file("facturePeage4"));
+        }else{
+            $pathPeage4 = "0";
+        }
+        if($request->hasFile('factureDivers')){
+        $pathDivers = Storage::disk('public')->put($folderName ,$request->file("factureDivers"));
+        }else{
+            $pathDivers = "0";
+        }
+        if($request->hasFile('facturePetitDej')){
+        $pathPetitDej = Storage::disk('public')->put($folderName ,$request->file("facturePetitDej"));
+        }else{
+            $pathPetitDej = "0";
+        }
+        if($request->hasFile('factureDejeuner')){
+        $pathDejeuner = Storage::disk('public')->put($folderName ,$request->file("factureDejeuner"));
+        }else{
+            $pathDejeuner = "0";
+        }
+        if($request->hasFile('factureDiner')){
+        $pathDiner = Storage::disk('public')->put($folderName ,$request->file("factureDiner"));
+        }else{
+            $pathDiner = "0";
+        }
+        if($request->hasFile('factureAemporter')){
+        $pathAemporter = Storage::disk('public')->put($folderName ,$request->file("factureAemporter"));
+        }else{
+            $pathAemporter = "0";
+        }
+        if($request->hasFile('factureHotel')){
+        $pathHotel = Storage::disk('public')->put($folderName ,$request->file("factureHotel"));
+        }else{
+            $pathHotel = "0";
+        }
+        if($request->hasFile('factureEssence')){
+        $pathEssence = Storage::disk('public')->put($folderName ,$request->file("factureEssence"));
+        }
+        else{
+        $pathEssence = "0";
+        }
+
+/* - Importation des données en base de donnée */
+
         // EVENT DE BASE
         Event::create([
             "id" => $request->iding,
@@ -90,6 +159,19 @@ class Controller extends BaseController
             "heure_debut" => $request->heureDebut,
             "heure_fin" => $request->heureFin,
             "idUser" => Auth::user()->id,
+
+            "pathParking" => $pathParking,
+            "pathPeage" => $pathPeage,
+            "pathPeage2" => $pathPeage2,
+            "pathPeage3" => $pathPeage3,
+            "pathPeage4" => $pathPeage4,
+            "pathDivers" => $pathDivers,
+            "pathPetitDej" => $pathPetitDej,
+            "pathDejeuner" => $pathDejeuner,
+            "pathDiner" => $pathDiner,
+            "pathAemporter" => $pathAemporter,
+            "pathHotel" => $pathHotel,
+            "pathEssence" => $pathEssence,
         ]);
 
 

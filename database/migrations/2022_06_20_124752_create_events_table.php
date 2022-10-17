@@ -39,6 +39,20 @@ return new class extends Migration
             $table->string("heure_debut")->nullable();
             $table->string("heure_fin")->nullable();
             $table->integer('idUser');
+
+            $table->tinyText('pathParking');
+            $table->tinyText('pathPeage');
+            $table->tinyText('pathPeage2');
+            $table->tinyText('pathPeage3');
+            $table->tinyText('pathPeage4');
+            $table->tinyText('pathDivers');
+            $table->tinyText('pathPetitDej');
+            $table->tinyText('pathDejeuner');
+            $table->tinyText('pathDiner');
+            $table->tinyText('pathAemporter');
+            $table->tinyText('pathHotel');
+            $table->tinyText('pathEssence');
+            
         });
     }
 
