@@ -248,6 +248,56 @@
     cursor: pointer;
 }
 
+.inputFacture{
+    width: 20px !important;
+    height: 20px !important;
+    background:no-repeat url(/images/iconDL.png?3c03fd3348466088ec894662e1e57a44);
+    margin-top:4px;
+    cursor:pointer;
+}
+
+/* inputs peage -readonly */
+
+#peage:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage2:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage2:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage3:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage3:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage4:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage4:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+.peagemodif:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+.peagemodif:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
 /* - responsive du calendrier */
 
 @media screen and(max-width:300px){

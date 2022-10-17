@@ -32,8 +32,6 @@
 
     {{-- Script permettant l'implémentation des inputs horloge --}}
     <script type="text/javascript">
-
-
         $(document).ready(function() {
             $('.standard').clockTimePicker({
                 colors: {
@@ -72,17 +70,19 @@
         });
     </script>
     <style>
-        .divInput{
-            padding:4px;
+        .divInput {
+            padding: 4px;
         }
-        @media screen and (max-width:300px){
-            input{
-                font-size:6px;
-                padding:0px;
+
+        @media screen and (max-width:300px) {
+            input {
+                font-size: 6px;
+                padding: 0px;
             }
+
             .divInput {
-                padding:4px;
-                margin-bottom:8px !important;
+                padding: 4px;
+                margin-bottom: 8px !important;
             }
 
         }
@@ -157,7 +157,8 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}" placeholder="ex : 75 000" required>
+                                        id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}"
+                                        placeholder="ex : 75 000" required>
 
                                 </div>
                                 <div class="mb-3 col divInput">
@@ -166,15 +167,22 @@
                                     </label>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        id="ville" name="ville" type="text" value="" placeholder="ex : Paris" required>
+                                        id="ville" name="ville" type="text" value=""
+                                        placeholder="ex : Paris" required>
 
                                 </div>
 
 
                                 <div class="mb-3 col divInput pr-2">
-                                    <label class="inline-block mb-0" for="parking">
-                                        Parking
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="parking">
+                                            Parking
+                                        </label>
+                                        <input type="file" name="factureParking" id="factureParking"
+                                            accept=".png, .jpg, .jpeg" style="display:none;" class="inputFacture">
+                                        <input id="buttonFactureParking" type="button" class="inputFacture"
+                                            onclick="document.getElementById('factureParking').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="parking" id="parking" type="number" value="0" min="0"
@@ -185,37 +193,56 @@
                             {{-- Input Péage | Parking | Divers --}}
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2">
-                                    <label class="inline-block mb-0" for="peage">Péage
-
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="peage">Péage</label>
+                                        <input type="file" name="facturePeage" id="facturePeage"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFacturePeage" class="inputFacture" type="button"
+                                            onclick="document.getElementById('facturePeage').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage" id="peage" type="number" value="0" min="0"
                                         required>
 
                                 </div>
-                                <div class="mb-3 col divInput " >
-                                    <label class="inline-block mb-0 " for="peage2">
-                                        Péage 2
-                                    </label>
+                                <div class="mb-3 col divInput ">
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0 " for="peage2">
+                                            Péage 2</label>
+                                        <input type="file" name="facturePeage2" id="facturePeage2"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFacturePeage2" class="inputFacture" type="button"
+                                            onclick="document.getElementById('facturePeage2').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage2" id="peage2" type="number" value="0" min="0"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput ">
-                                    <label class="inline-block mb-0" for="peage3">
-                                        Péage 3
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="peage3">
+                                            Péage 3</label>
+                                        <input type="file" name="facturePeage3" id="facturePeage3"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFacturePeage3" class="inputFacture" type="button"
+                                            onclick="document.getElementById('facturePeage3').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage3" id="peage3" type="number" value="0" min="0"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput">
-                                    <label class="inline-block mb-0" for="peage4">
-                                        Péage 4
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="peage4">
+                                            Péage 4</label>
+                                        <input type="file" name="facturePeage4" id="facturePeage4"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFacturePeage4" class="inputFacture" type="button"
+                                            onclick="document.getElementById('facturePeage4').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage4" id="peage4" type="number" value="0" min="0"
@@ -225,9 +252,16 @@
 
 
                                 <div class="mb-3 col divInput pr-2">
-                                    <label class="inline-block mb-0" for="divers">
-                                        Divers
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="divers">
+                                            Divers
+                                        </label>
+                                        <input type="file" name="factureDivers" id="factureDivers"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFactureDivers" class="inputFacture" type="button"
+                                            onclick="document.getElementById('factureDivers').click();">
+
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="divers" id="divers" type="number" value="0" min="0"
@@ -235,12 +269,20 @@
 
                                 </div>
                             </div>
-                            {{-- Input Repas | Hotel | Distance --}}
+
+                            {{-- Input Repas | Hotel | Essence | Distance --}}
+
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2">
-                                    <label class="inline-block mb-0" for="petitDej">
-                                        Pt déjeuner
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="petitDej">
+                                            Pt déjeuner
+                                        </label>
+                                        <input type="file" name="facturePetitDej" id="facturePetitDej"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFacturePetitDej" class="inputFacture" type="button"
+                                            onclick="document.getElementById('facturePetitDej').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="petitDej" id="petitDej" type="number" value="0" min="0"
@@ -250,18 +292,30 @@
 
                                 @csrf
                                 <div class="mb-3 col divInput" id="dejeuner">
-                                    <label class="inline-block mb-0" for="dejeuner">
-                                        Déjeuner
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="dejeuner">
+                                            Déjeuner
+                                        </label>
+                                        <input type="file" name="factureDejeuner" id="factureDejeuner"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFactureDejeuner" class="inputFacture" type="button"
+                                            onclick="document.getElementById('factureDejeuner').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="dejeuner" id="dejeuner" type="number" value="0" min="0"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput" id="diner">
-                                    <label class="inline-block mb-0" for="diner">
-                                        Dîner
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="diner">
+                                            Dîner
+                                        </label>
+                                        <input type="file" name="factureDiner" id="factureDiner"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFactureDiner" class="inputFacture" type="button"
+                                            onclick="document.getElementById('factureDiner').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="diner" id="diner" type="number" value="0" min="0"
@@ -269,13 +323,19 @@
 
                                 </div>
                                 <div class="mb-3 col divInput pr-2" id="aEmporter">
-                                    <label class="inline-block mb-0" for="aEmporter">
-                                        à emporter
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="aEmporter">
+                                            à emporter
+                                        </label>
+                                        <input type="file" name="factureAemporter" id="factureAemporter"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFactureAemporter" class="inputFacture" type="button"
+                                            onclick="document.getElementById('factureAemporter').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="aEmporter" id="aEmporter" type="number" lang="en" value="0" min="0"
-                                        required>
+                                        name="aEmporter" id="aEmporter" type="number" lang="en"
+                                        value="0" min="0" required>
 
                                 </div>
 
@@ -284,21 +344,33 @@
                             <div class="row">
 
                                 <div class="mb-3 col divInput pl-2">
-                                    <label class="inline-block mb-0" for="hotel">
-                                        Hôtel
-                                    </label>
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="hotel">
+                                            Hôtel
+                                        </label>
+                                        <input type="file" name="factureHotel" id="factureHotel"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFactureHotel" class="inputFacture" type="button"
+                                            onclick="document.getElementById('factureHotel').click();">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="hotel" id="hotel" type="number" value="0" min="0"
                                         required>
 
                                 </div>
-                                 <div id="divEssence"class="mb-3 col divInput">
-                                    <label class="inline-block mb-0" for="essence">
-                                        Essence
-                                    </label>
+                                <div id="divEssence"class="mb-3 col divInput">
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="essence">
+                                            Essence
+                                        </label>
+                                        <input type="file" name="factureEssence" id="factureEssence"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonFactureEssence" class="inputFacture" type="button"
+                                            onclick="document.getElementById('factureEssence').click();">
+                                    </div>
                                     <input
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         id="essence" name="essence" type="number" min="0" value="0"
                                         required>
                                 </div>
@@ -307,14 +379,15 @@
                                         Distance( km )
                                     </label>
                                     <input
-
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         id="kilometrage" name="kilometrage" type="number" value="0"
                                         min="0" required>
 
                                 </div>
                             </div>
+
                             {{-- Input heure début | heure fin --}}
+
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="heure_debut" class="inline-block">
@@ -339,7 +412,8 @@
                             <div class="row">
                                 <div class="mb-3 col">
                                     <label for="description" class="mb-[5px]">Description du déplacement</label>
-                                    <textarea name="description" id="description" rows="3" maxlength="100" placeholder="ex : Câblage de baie de brassage"
+                                    <textarea name="description" id="description" rows="3" maxlength="100"
+                                        placeholder="ex : Câblage de baie de brassage"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
                                 </div>
                             </div>
@@ -366,264 +440,264 @@
         </div>
     </div>
 
-<!--/////////////////////////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////////////////////////-->
 
-<!-- MODALE 2 POUR LA MODIFICATION -->
+    <!-- MODALE 2 POUR LA MODIFICATION -->
 
-<!--/////////////////////////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////////////////////////-->
 
-<div class="container">
-    <div class="modal fade" id="event-modal2" role="dialog">
-        {{-- modal dialog --}}
-        <div class="modal-dialog" role="document">
-            {{-- modal content --}}
-            <div class="max-h-full overflow-hidden rounded-[3px] border-0 h-full flex flex-col relative bg-white">
-                {{-- modal header --}}
-                <div
-                    class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0">
-                    <h5 id="TitreEvenement2" class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]"></h5>
-                    {{-- <button type="button" id="closing_button"
+    <div class="container">
+        <div class="modal fade" id="event-modal2" role="dialog">
+            {{-- modal dialog --}}
+            <div class="modal-dialog" role="document">
+                {{-- modal content --}}
+                <div class="max-h-full overflow-hidden rounded-[3px] border-0 h-full flex flex-col relative bg-white">
+                    {{-- modal header --}}
+                    <div
+                        class="rounded-none items-center flex flex-row p-[10px] box-border border-b-[rgb(224,224,224)] border-b-[1px] justify-between flex-shrink-0">
+                        <h5 id="TitreEvenement2" class="block box-border m-0 text-[rgb(79,79,79)] leading-[20px]">
+                        </h5>
+                        {{-- <button type="button" id="closing_button"
                         class="relative leading-[11.25px] font-medium text-[7.5px] items-start px-[15px] pb-[5px] pt-[6.25px] bg-[rgb(178,60,253)] hover:bg-[#a316fd] overflow-hidden border-none rounded-[2.5px] shadow-[0_4px_10px_0_rgba(0,0,0,0.2)] box-border text-white block ">X</button> --}}
-                    <button type="button" id="closing_button2"
-                        class="block text-[16px] leading-[20px] text-[rgb(41,43,44)] py-[8px] px-[16px] bg-[rgb(255,255,255)] border border-[rgb(204,204,204)] hover:text-[#292b2c] hover:bg-[rgb(230,230,230)] hover:border-[rgb(173,173,173)] rounded-[4px] focus:shadow-[0px_0px_0px_2px_rgba(204,204,204,0.5)] focus:outline-none">X</button>
-                </div>
-                {{-- modul body --}}
-                <div class="overflow-hidden block p-[10px]">
-                    <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent">
-                        @csrf
-                        {{-- Input client --}}
-                        <div class="row">
-                            <div class="mb-3 col">
-                                <div id="duplicate"></div>
-                                <label class="inline-block mb-0" for="title">Client</label>
-                                <input type="text" value="" name="title" id="2title"
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    required>
-                            </div>
-                        </div>
-                        {{-- Input Ville | Code Postal --}}
-                        <div class="row">
-                            <div class="mb-3 col">
-                                <label class="inline-block mb-0" for="code_postal">
-                                    Code Postal
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    id="2code_postal" name="code_postal" type="text" value="" required>
-
-                            </div>
-                            <div class="mb-3 col">
-                                <label class="inline-block mb-0" for="ville">
-                                    Ville
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    id="2ville" name="ville" type="text" value="" required>
-
-                            </div>
-
-
-                            <div class="mb-3 col pr-2">
-                                <label class="inline-block mb-0" for="parking">
-                                    Parking
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="parking" id="2parking" type="number" value="0" min="0"
-                                    required>
-
-                            </div>
-                        </div>
-                        {{-- Input Péage | Parking | Divers --}}
-                        <div class="row">
-                            <div class="mb-3 col">
-                                <label class="inline-block mb-0" for="peage">Péage
-
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="peage" id="2peage" type="number" value="0" min="0"
-                                    required>
-
-                            </div>
-                            <div class="mb-3 col " id="div2peage2">
-                                <label class="inline-block mb-0 " for="peage2">
-                                    Péage 2
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="peage2" id="2peage2" type="number" value="0" min="0"
-                                    required>
-                            </div>
-                            <div class="mb-3 col " id="div2peage3">
-                                <label class="inline-block mb-0" for="peage3">
-                                    Péage 3
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="peage3" id="2peage3" type="number" value="0" min="0"
-                                    required>
-                            </div>
-                            <div class="mb-3 col" id="div2peage4">
-                                <label class="inline-block mb-0" for="peage4">
-                                    Péage 4
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="peage4" id="2peage4" type="number" value="0" min="0"
-                                    required>
-                            </div>
-
-
-
-                            <div class="mb-3 col divInput pr-2">
-                                <label class="inline-block mb-0" for="divers">
-                                    Divers
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="divers" id="2divers" type="number" value="0" min="0"
-                                    required>
-
-                            </div>
-                        </div>
-                        {{-- Input | Hotel | Distance --}}
-                        <div class="row">
-                            <div class="mb-3 col">
-                                <label class="inline-block mb-0" for="2petitDej">
-                                    Pt déjeuner
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="petitDej" id="2petitDej" type="number" value="0" min="0"
-                                    required>
-
-                            </div>
-
+                        <button type="button" id="closing_button2"
+                            class="block text-[16px] leading-[20px] text-[rgb(41,43,44)] py-[8px] px-[16px] bg-[rgb(255,255,255)] border border-[rgb(204,204,204)] hover:text-[#292b2c] hover:bg-[rgb(230,230,230)] hover:border-[rgb(173,173,173)] rounded-[4px] focus:shadow-[0px_0px_0px_2px_rgba(204,204,204,0.5)] focus:outline-none">X</button>
+                    </div>
+                    {{-- modul body --}}
+                    <div class="overflow-hidden block p-[10px]">
+                        <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent">
                             @csrf
-                            <div class="mb-3 col" id="div2dejeuner">
-                                <label class="inline-block mb-0" for="repas">
-                                    Déjeuner
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="dejeuner" id="2dejeuner" type="number" value="0" min="0"
-                                    required>
+                            {{-- Input client --}}
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <div id="duplicate"></div>
+                                    <label class="inline-block mb-0" for="title">Client</label>
+                                    <input type="text" value="" name="title" id="2title"
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        required>
+                                </div>
                             </div>
-                            <div class="mb-3 col" id="div2diner">
-                                <label class="inline-block mb-0" for="repas">
-                                    Dîner
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="diner" id="2diner" type="number" value="0" min="0"
-                                    required>
+                            {{-- Input Ville | Code Postal --}}
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="code_postal">
+                                        Code Postal
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        id="2code_postal" name="code_postal" type="text" value="" required>
+
+                                </div>
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="ville">
+                                        Ville
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        id="2ville" name="ville" type="text" value="" required>
+
+                                </div>
+
+
+                                <div class="mb-3 col pr-2">
+                                    <label class="inline-block mb-0" for="parking">
+                                        Parking
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="parking" id="2parking" type="number" value="0" min="0"
+                                        required>
+
+                                </div>
+                            </div>
+                            {{-- Input Péage | Parking | Divers --}}
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="peage">Péage
+
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
+                                        name="peage" id="2peage" type="number" value="0" min="0"
+                                        required>
+
+                                </div>
+                                <div class="mb-3 col " id="div2peage2">
+                                    <label class="inline-block mb-0 " for="peage2">
+                                        Péage 2
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
+                                        name="peage2" id="2peage2" type="number" value="0" min="0"
+                                        required>
+                                </div>
+                                <div class="mb-3 col " id="div2peage3">
+                                    <label class="inline-block mb-0" for="peage3">
+                                        Péage 3
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
+                                        name="peage3" id="2peage3" type="number" value="0" min="0"
+                                        required>
+                                </div>
+                                <div class="mb-3 col" id="div2peage4">
+                                    <label class="inline-block mb-0" for="peage4">
+                                        Péage 4
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
+                                        name="peage4" id="2peage4" type="number" value="0" min="0"
+                                        required>
+                                </div>
+
+
+
+                                <div class="mb-3 col divInput pr-2">
+                                    <label class="inline-block mb-0" for="divers">
+                                        Divers
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="divers" id="2divers" type="number" value="0" min="0"
+                                        required>
+
+                                </div>
+                            </div>
+                            {{-- Input | Hotel | Distance --}}
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="2petitDej">
+                                        Pt déjeuner
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="petitDej" id="2petitDej" type="number" value="0" min="0"
+                                        required>
+
+                                </div>
+
+                                @csrf
+                                <div class="mb-3 col" id="div2dejeuner">
+                                    <label class="inline-block mb-0" for="repas">
+                                        Déjeuner
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="dejeuner" id="2dejeuner" type="number" value="0" min="0"
+                                        required>
+                                </div>
+                                <div class="mb-3 col" id="div2diner">
+                                    <label class="inline-block mb-0" for="repas">
+                                        Dîner
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="diner" id="2diner" type="number" value="0" min="0"
+                                        required>
+
+                                </div>
+                                <div class="mb-3 col pr-2" id="div2aEmporter">
+                                    <label class="inline-block mb-0" for="2aEmporter">
+                                        à emporter
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="aEmporter" id="2aEmporter" type="number" value="0"
+                                        min="0" required>
+
+                                </div>
+
 
                             </div>
-                            <div class="mb-3 col pr-2" id="div2aEmporter">
-                                <label class="inline-block mb-0" for="2aEmporter">
-                                    à emporter
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="aEmporter" id="2aEmporter" type="number" value="0" min="0"
-                                    required>
+                            <div class="row">
 
+                                <div class="mb-3 col">
+                                    <label class="inline-block mb-0" for="hotel">
+                                        Hôtel
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="hotel" id="2hotel" type="number" value="0" min="0"
+                                        required>
+
+                                </div>
+                                <div id="div2Essence"class="mb-3 col">
+                                    <label class="inline-block mb-0" for="2essence">
+                                        Essence
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
+                                        id="2essence" name="essence" type="number" min="0" value="0"
+                                        required>
+                                </div>
+                                <div id="div2Kilometrage" class="mb-3 col pr-2">
+                                    <label class="inline-block mb-0" for="2kilometrage">
+                                        Distance( km )
+                                    </label>
+                                    <input
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
+                                        id="2kilometrage" name="kilometrage" type="number" min="0"
+                                        value="0" required>
+
+                                </div>
+                            </div>
+                            {{-- Input heure début | heure fin --}}
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label for="heure_debut" class="inline-block">
+                                        Heure de début
+                                    </label>
+                                    <input
+                                        class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="heureDebut" id="2heure_debut" type="text" value="00:00" required>
+                                </div>
+                                <div class="mb-3 col">
+                                    <label for="heure_fin" class="w-full inline-block">
+                                        Heure de fin
+                                    </label>
+                                    <input
+                                        class="time fin shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
+                                        name="heureFin" id="2heure_fin" type="text" value="00:00" required>
+                                </div>
+                                {{-- Empty div to align time input with the others --}}
                             </div>
 
-
-                        </div>
-                        <div class="row">
-
-                            <div class="mb-3 col">
-                                <label class="inline-block mb-0" for="hotel">
-                                    Hôtel
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="hotel" id="2hotel" type="number" value="0" min="0"
-                                    required>
-
+                            {{-- Input description mission --}}
+                            <div class="row">
+                                <div class="mb-3 col">
+                                    <label for="description" class="mb-[5px]">Description du déplacement</label>
+                                    <textarea name="description" id="2description" rows="3" maxlength="100"
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"></textarea>
+                                </div>
                             </div>
-                             <div id="div2Essence"class="mb-3 col">
-                                <label class="inline-block mb-0" for="2essence">
-                                    Essence
-                                </label>
-                                <input
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    id="2essence" name="essence" type="number"  min="0" value="0"
-                                    required>
-                            </div>
-                            <div id="div2Kilometrage" class="mb-3 col pr-2">
-                                <label class="inline-block mb-0" for="2kilometrage">
-                                    Distance( km )
-                                </label>
-                                <input
-
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    id="2kilometrage" name="kilometrage" type="number"
-                                    min="0" value="0" required>
-
-                            </div>
-                        </div>
-                        {{-- Input heure début | heure fin --}}
-                        <div class="row">
-                            <div class="mb-3 col">
-                                <label for="heure_debut" class="inline-block">
-                                    Heure de début
-                                </label>
-                                <input
-                                    class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="heureDebut" id="2heure_debut" type="text" value="00:00" required>
-                            </div>
-                            <div class="mb-3 col">
-                                <label for="heure_fin" class="w-full inline-block">
-                                    Heure de fin
-                                </label>
-                                <input
-                                    class="time fin shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                    name="heureFin" id="2heure_fin" type="text" value="00:00" required>
-                            </div>
-                            {{-- Empty div to align time input with the others --}}
-                        </div>
-
-                        {{-- Input description mission --}}
-                        <div class="row">
-                            <div class="mb-3 col">
-                                <label for="description" class="mb-[5px]">Description du déplacement</label>
-                                <textarea name="description" id="2description" rows="3" maxlength="100"
-                                    class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"></textarea>
-                            </div>
-                        </div>
-                        <input type="hidden" name="eventID" id="2eventID">
-                        <input type="hidden" name="start" id="2start">
-                        <input type="hidden" name="end" id="2end">
-                        <input type="hidden" name="mois" id="2mois">
-                        <input type="hidden" name="idUser" id="2idUSer" value="{{Auth::user()->id}}">
+                            <input type="hidden" name="eventID" id="2eventID">
+                            <input type="hidden" name="start" id="2start">
+                            <input type="hidden" name="end" id="2end">
+                            <input type="hidden" name="mois" id="2mois">
+                            <input type="hidden" name="idUser" id="2idUSer" value="{{ Auth::user()->id }}">
 
 
-                        <button
-                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                            id="cancel_button2">ANNULER</button>
-                        <button
-                            type="button"
-                            class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                            id="2validation">MODIFIER</button>
-                            <button type="button" class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                            id="supprimer">SUPPRIMER</button>
-                    </form>
+                            <button
+                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                id="cancel_button2">ANNULER</button>
+                            <button type="button"
+                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                id="2validation">MODIFIER</button>
+                            <button type="button"
+                                class="inline-flex justify-end items-start bg-red-700 focus:bg-red-800 hover:bg-red-800 shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
+                                id="supprimer">SUPPRIMER</button>
+                        </form>
 
-                    <form method="POST" action="{{route('SupprimerEvent')}}" id="formSupprimerEvent">
-                        @csrf
-                        <input type="hidden" id="eventID" name="eventID">
-                    </form>
+                        <form method="POST" action="{{ route('SupprimerEvent') }}" id="formSupprimerEvent">
+                            @csrf
+                            <input type="hidden" id="eventID" name="eventID">
+                        </form>
 
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
@@ -804,14 +878,7 @@
             return date;
         }
     </script>
-    <script type='text/javascript'>
-
-
-
-
-
-
-</script>
+    <script type='text/javascript'></script>
 
 
 

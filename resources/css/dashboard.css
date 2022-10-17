@@ -236,6 +236,32 @@
 #calendar-container {
     cursor: pointer;
 }
+.inputFacture{
+    width: 20px !important;
+    height: 20px !important;
+    background:no-repeat url('../../public/images/iconDL.png');
+    margin-top:4px;
+    cursor:pointer;
+}
+/* inputs peage -readonly */
+#peage:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+#peage2:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+#peage3:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+#peage4:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+.peagemodif:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+
+
 
 /* - responsive du calendrier */
 

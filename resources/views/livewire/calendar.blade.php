@@ -44,9 +44,7 @@
 
         {{-- Close your eyes. Count to one. That is how long forever feels. --}}
         <style>
-            input:read-only {
-                border: 1px solid red !important;
-            }
+
 
             #essence {
                 transition: 100ms;
@@ -223,6 +221,84 @@
                         ipeage4.readOnly = false;
                     }
                 })
+
+
+                /* -- changement de logo quand l'input type="file" est saisi -- */
+
+                const inputFactureParking = document.getElementById('factureParking');
+                const buttonFactureParking = document.getElementById('buttonFactureParking');
+
+                const inputFacturePeage = document.getElementById('facturePeage');
+                const buttonFacturePeage = document.getElementById('buttonFacturePeage');
+
+                const inputFacturePeage2 = document.getElementById('facturePeage2');
+                const buttonFacturePeage2 = document.getElementById('buttonFacturePeage2');
+
+                const inputFacturePeage3 = document.getElementById('facturePeage3');
+                const buttonFacturePeage3 = document.getElementById('buttonFacturePeage3');
+
+                const inputFacturePeage4 = document.getElementById('facturePeage4');
+                const buttonFacturePeage4 = document.getElementById('buttonFacturePeage4');
+
+                const inputFactureDivers = document.getElementById('factureDivers');
+                const buttonFactureDivers = document.getElementById('buttonFactureDivers');
+
+                const inputFacturePetitDej = document.getElementById('facturePetitDej');
+                const buttonFacturePetitDej = document.getElementById('buttonFacturePetitDej');
+
+                const inputFactureDejeuner = document.getElementById('factureDejeuner');
+                const buttonFactureDejeuner = document.getElementById('buttonFactureDejeuner');
+
+                const inputFactureDiner = document.getElementById('factureDiner');
+                const buttonFactureDiner = document.getElementById('buttonFactureDiner');
+
+                const inputFactureAemporter = document.getElementById('factureAemporter');
+                const buttonFactureAemporter = document.getElementById('buttonFactureAemporter');
+
+                const inputFactureHotel = document.getElementById('factureHotel');
+                const buttonFactureHotel = document.getElementById('buttonFactureHotel');
+
+                const inputFactureEssence = document.getElementById('factureEssence');
+                const buttonFactureEssence = document.getElementById('buttonFactureEssence');
+
+
+                inputFactureParking.addEventListener('change',()=>{
+                    buttonFactureParking.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFacturePeage.addEventListener('change',()=>{
+                    buttonFacturePeage.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFacturePeage2.addEventListener('change',()=>{
+                    buttonFacturePeage2.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFacturePeage3.addEventListener('change',()=>{
+                    buttonFacturePeage3.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFacturePeage4.addEventListener('change',()=>{
+                    buttonFacturePeage4.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFactureDivers.addEventListener('change',()=>{
+                    buttonFactureDivers.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFacturePetitDej.addEventListener('change',()=>{
+                    buttonFacturePetitDej.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFactureDejeuner.addEventListener('change',()=>{
+                    buttonFactureDejeuner.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFactureDiner.addEventListener('change',()=>{
+                    buttonFactureDiner.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFactureAemporter.addEventListener('change',()=>{
+                    buttonFactureAemporter.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFactureHotel.addEventListener('change',()=>{
+                    buttonFactureHotel.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+                inputFactureEssence.addEventListener('change',()=>{
+                    buttonFactureEssence.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
 
 
 
