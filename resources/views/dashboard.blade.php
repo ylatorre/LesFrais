@@ -137,7 +137,7 @@
                     </div>
                     {{-- modul body --}}
                     <div class="overflow-hidden block p-[10px]">
-                        <form action="{{ route('createEvent') }}" method="POST" id="formEvent">
+                        <form action="{{ route('createEvent') }}" method="POST" id="formEvent" enctype="multipart/form-data">
                             @csrf
                             {{-- Input client --}}
                             <div class="row">
