@@ -244,6 +244,12 @@
     padding-top:10px;
 }
 
+#calendar-container {
+    cursor: pointer;
+}
+
+/* - responsive du calendrier */
+
 @media screen and(max-width:300px){
     input{
         font-size:6px;
