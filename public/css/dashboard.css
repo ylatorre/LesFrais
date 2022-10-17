@@ -249,10 +249,10 @@
 }
 
 .inputFacture{
-    width: 20px !important;
-    height: 20px !important;
-    background:no-repeat url(/images/iconDL.png?3c03fd3348466088ec894662e1e57a44);
-    margin-top:4px;
+    width: 24px !important;
+    height: 24px !important;
+    background:no-repeat url(/images/iconDL.png?f864bd777f13c61ffe959e85862a642c);
+
     cursor:pointer;
 }
 
