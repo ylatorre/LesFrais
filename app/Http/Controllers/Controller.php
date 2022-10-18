@@ -174,6 +174,7 @@ class Controller extends BaseController
             "pathEssence" => $pathEssence,
         ]);
 
+        Session::flash('createEvent',"L'évènement ajouté à votre calendrier !");
 
         return redirect(route('dashboard'));
     }
@@ -351,10 +352,13 @@ class Controller extends BaseController
 
 
 
+
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect('dashboard');
         }
+
+
         $dateNDF = explode("-", $utilisateurs[0]->mois);
 
         // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
@@ -530,13 +534,31 @@ class Controller extends BaseController
         dd('interception');
         return redirect("/dashboard");
     }
+
+
     public function supprimerEvent(Request $request)
     {
-        DB::table('events')->where('id', '=', $request->eventID)->delete();
+       $eventSelected = DB::table('events')->where('id', '=', $request->eventID)->get();
 
-        Session::flash("supprEvent", "L'évènement à bien été modifié");
+        Storage::disk('public')->delete($eventSelected[0]->pathParking);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage2);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage3);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage4);
+        Storage::disk('public')->delete($eventSelected[0]->pathDivers);
+        Storage::disk('public')->delete($eventSelected[0]->pathPetitDej);
+        Storage::disk('public')->delete($eventSelected[0]->pathDejeuner);
+        Storage::disk('public')->delete($eventSelected[0]->pathDiner);
+        Storage::disk('public')->delete($eventSelected[0]->pathAemporter);
+        Storage::disk('public')->delete($eventSelected[0]->pathHotel);
+        Storage::disk('public')->delete($eventSelected[0]->pathEssence);
+
+        DB::table('events')->where('id', '=', $request->eventID)->delete();
+        Session::flash("supprEvent", "L'évènement à bien été supprimé");
         return redirect("/dashboard");
     }
+
+
     public function ModifierEvent(Request $request)
     {
 

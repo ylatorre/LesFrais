@@ -81,6 +81,7 @@
         }
 
         .TD-table {
+            play:flex; */
             font-size: 13px;
             border: 2px solid black;
             padding-left: 2px;
@@ -152,6 +153,17 @@
             padding: 2px;
             text-align: center;
             font-size: 12px;
+        }
+        .disparait{
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:300px;
+            height:300px;
+            background:rgb(39, 39, 39);
+            border:6px solid rgb(39, 39, 39);
+            display:none;
+            cursor: pointer;
         }
 
         /* -- Responsive du site */
@@ -488,6 +500,9 @@
             .supprimerNDF:hover {
                 transform: scale(1.05);
             }
+            .button-image{
+                background: url('./images/iconDL.png');
+            }
         }
     </style>
     <div class="w-full flex flex-row justify-around py-5 " style="border:4px solid black;">
@@ -502,12 +517,12 @@
                             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
                             <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
                                 frais de {{ $utilisateurs[0]->name }} pour le mois
-                                d'{{ $dateNDFpourPDFetVISU }} (les valeur sont exprimées en euros)</h1>
+                                d'{{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
                             </div>
                             @else
                                 <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
                                     frais de {{ $utilisateurs[0]->name }} pour le mois
-                                     de {{ $dateNDFpourPDFetVISU }} (les valeur sont exprimées en euros)</h1>
+                                     de {{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
                                 </div>
 
                         @endif
@@ -599,25 +614,25 @@
                                     <td class="TD-table col-table text-center TD-description"
                                         style="white-space:nowrap; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage2 }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage3 }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage4 }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->parking }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->essence }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->divers }} </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage }} @if($utilisateur->pathPeage != '0')<button id="button{{$utilisateur->pathPeage}}" onclick="document.getElementById('{{$utilisateur->pathPeage}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage2 }} @if($utilisateur->pathPeage2 != '0')<button id="button{{$utilisateur->pathPeage2}}" onclick="document.getElementById('{{$utilisateur->pathPeage2}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage3 }} @if($utilisateur->pathPeage3 != '0')<button id="button{{$utilisateur->pathPeage3}}" onclick="document.getElementById('{{$utilisateur->pathPeage3}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage4 }} @if($utilisateur->pathPeage4 != '0')<button id="button{{$utilisateur->pathPeage4}}" onclick="document.getElementById('{{$utilisateur->pathPeage4}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->parking }} @if($utilisateur->pathParking != '0')<button id="button{{$utilisateur->pathParking}}" onclick="document.getElementById('{{$utilisateur->pathParking}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->essence }} @if($utilisateur->pathEssence != '0')<button id="button{{$utilisateur->pathEssence}}" onclick="document.getElementById('{{$utilisateur->pathEssence}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->divers }} @if($utilisateur->pathDivers != '0')<button id="button{{$utilisateur->pathDivers}}" onclick="document.getElementById('{{$utilisateur->pathDivers}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                         </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->petitDej }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->dejeuner }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->diner }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->hotel }} </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->petitDej }} @if($utilisateur->pathPetitDej != '0')<button id="button{{$utilisateur->pathPetitDej}}" onclick="document.getElementById('{{$utilisateur->pathPetitDej}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->dejeuner }} @if($utilisateur->pathDejeuner != '0')<button id="button{{$utilisateur->pathDejeuner}}" onclick="document.getElementById('{{$utilisateur->pathDejeuner}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->diner }} @if($utilisateur->pathDiner != '0')<button id="button{{$utilisateur->pathDiner}}" onclick="document.getElementById('{{$utilisateur->pathDiner}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->hotel }} @if($utilisateur->pathHotel != '0')<button id="button{{$utilisateur->pathHotel}}" onclick="document.getElementById('{{$utilisateur->pathHotel}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
 
                                     </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->aEmporter }} </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->aEmporter }} @if($utilisateur->pathAemporter != '0')<button id="button{{$utilisateur->pathAemporter}}" onclick="document.getElementById('{{$utilisateur->pathAemporter}}').style.display = 'block'"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} </td>
 
@@ -625,7 +640,129 @@
                                         {{ $utilisateur->kilometrage }} </td>
 
 
+
                                 </tr>
+                                {{-- modale d'affichage des images --}}
+
+                                    @if($utilisateur->pathPeage != '0')
+                                     <div id="{{$utilisateur->pathPeage}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathPeage}}').style.display = 'none'  ; "><img src="{{Storage::url($utilisateur->pathPeage) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathPeage2 != '0')
+                                     <div id="{{$utilisateur->pathPeage2}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathPeage2}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathPeage2) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathPeage3 != '0')
+                                     <div id="{{$utilisateur->pathPeage3}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathPeage3}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathPeage3) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathPeage4 != '0')
+                                     <div id="{{$utilisateur->pathPeage4}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathPeage4}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathPeage4) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathParking != '0')
+                                     <div id="{{$utilisateur->pathParking}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathParking}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathParking) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathEssence != '0')
+                                     <div id="{{$utilisateur->pathEssence}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathEssence}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathEssence) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathDivers != '0')
+                                     <div id="{{$utilisateur->pathDivers}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathDivers}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathDivers) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathPetitDej != '0')
+                                     <div id="{{$utilisateur->pathPetitDej}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathPetitDej}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathPetitDej) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathDejeuner != '0')
+                                     <div id="{{$utilisateur->pathDejeuner}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathDejeuner}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathDejeuner) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathDiner != '0')
+                                     <div id="{{$utilisateur->pathDiner}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathDiner}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathDiner) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathHotel != '0')
+                                     <div id="{{$utilisateur->pathHotel}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathHotel}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathHotel) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+                                    @if($utilisateur->pathAemporter != '0')
+                                     <div id="{{$utilisateur->pathAemporter}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathAemporter}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathAemporter) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
+                                     @endif
+
+                                    <script>
+
+                                        
+
+                                        // const buttonPeage = document.getElementById('button{{$utilisateur->pathPeage}}');
+                                        // const buttonPeage2 = document.getElementById('button{{$utilisateur->pathPeage2}}');
+                                        // const buttonPeage3 = document.getElementById('button{{$utilisateur->pathPeage3}}');
+                                        // const buttonPeage4 = document.getElementById('button{{$utilisateur->pathPeage4}}');
+                                        // const buttonParking = document.getElementById('button{{$utilisateur->pathParking}}');
+                                        // const buttonEssence = document.getElementById('button{{$utilisateur->pathEssence}}');
+                                        // const buttonDivers = document.getElementById('button{{$utilisateur->pathDivers}}');
+                                        // const buttonPetitDej = document.getElementById('button{{$utilisateur->pathPetitDej}}');
+                                        // const buttonDejeuner = document.getElementById('button{{$utilisateur->pathDejeuner}}');
+                                        // const buttonDiner = document.getElementById('button{{$utilisateur->pathDiner}}');
+                                        // const buttonHotel = document.getElementById('button{{$utilisateur->pathHotel}}');
+                                        // const buttonAemporter = document.getElementById('button{{$utilisateur->pathAemporter}}');
+
+                                        // const peage  = document.getElementById('{{$utilisateur->pathPeage}}');
+                                        // const peage2 = document.getElementById('{{$utilisateur->pathPeage2}}');
+                                        // const peage3 = document.getElementById('{{$utilisateur->pathPeage3}}');
+                                        // const peage4 = document.getElementById('{{$utilisateur->pathPeage4}}');
+                                        // const parking = document.getElementById('{{$utilisateur->pathParking}}');
+                                        // const essence = document.getElementById('{{$utilisateur->pathEssence}}');
+                                        // const divers= document.getElementById('{{$utilisateur->pathDivers}}');
+                                        // const petitDej = document.getElementById('{{$utilisateur->pathPetitDej}}');
+                                        // const dejeuner = document.getElementById('{{$utilisateur->pathDejeuner}}');
+                                        // const diner = document.getElementById('{{$utilisateur->pathDiner}}');
+                                        // const dotel= document.getElementById('{{$utilisateur->pathHotel}}');
+                                        // const aEmporter= document.getElementById('{{$utilisateur->pathAemporter}}');
+
+                                        // buttonPeage.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     peage.style.display ='block'
+                                        // });
+                                        // buttonPeage2.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     peage2.style.display ='block'
+                                        // });
+                                        // buttonPeage3.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     peage3.style.display ='block'
+                                        // });
+                                        // buttonPeage4.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     peage4.style.display ='block'
+                                        // });
+                                        // buttonParking.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     parking.style.display ='block'
+                                        // });
+                                        // buttonEssence.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     essence.style.display ='block'
+                                        // });
+                                        // buttonDivers.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     divers.style.display ='block'
+                                        // });
+                                        // buttonPetitDej.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     petitDej.style.display ='block'
+                                        // });
+                                        // buttonDejeuner.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     dejeuner.style.display ='block'
+                                        // });
+                                        // buttonDiner.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     diner.style.display ='block'
+                                        // });
+                                        // buttonHotel.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     hotel.style.display ='block'
+                                        // });
+                                        // buttonAemporter.addEventListener('click',()=>{
+                                        //     image.style.display = 'none';
+                                        //     aEmporter.style.display ='block'
+                                        // });
+
+
+                                    </script>
+{{-- <img src="{{Storage::url($utilisateur->pathParking) }}"> --}}
                             @endforeach
                             @php
                                 $SousTotalTransport = $totalDivers + $totalEssence + $totalPeage + $totalParking;
@@ -727,6 +864,15 @@
                     </table> --}}
                 </div>
             </div>
+            {{-- <script>
+                const disparait = document.querySelectorAll('.disparait');
+
+                 disparait.addEventListener('click',()=>{
+                            disparait.style.display = 'none'
+                 });
+
+
+            </script> --}}
 
 
 </x-app-layout>

@@ -112,6 +112,10 @@
         <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('supprEvent') }}</div>
     @endif
+    @if (Session::has('createEvent'))
+        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('createEvent') }}</div>
+    @endif
     @if (Session::has('modifEvent'))
         <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('modifEvent') }}</div>
@@ -158,7 +162,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}"
-                                        placeholder="ex : 75 000" required>
+                                        placeholder="ex : 75000" required>
 
                                 </div>
                                 <div class="mb-3 col divInput">
@@ -426,9 +430,7 @@
                             <input name="iding5" id="iding5" type="hidden">
                             <input name="iding6" id="iding6" type="hidden"> --}}
                             <input name="moisActuel" id="monthing" type="hidden">
-                            <button
-                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                                id="cancel_button">ANNULER</button>
+
                             <button
                                 class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                                 id="validation">VALIDATION</button>
@@ -440,11 +442,11 @@
         </div>
     </div>
 
-    <!--/////////////////////////////////////////////////////////////////-->
+   {{-- <!--/////////////////////////////////////////////////////////////////-->
 
     <!-- MODALE 2 POUR LA MODIFICATION -->
 
-    <!--/////////////////////////////////////////////////////////////////-->
+    <!--/////////////////////////////////////////////////////////////////-->--}}
 
     <div class="container">
         <div class="modal fade" id="event-modal2" role="dialog">
@@ -462,7 +464,7 @@
                         <button type="button" id="closing_button2"
                             class="block text-[16px] leading-[20px] text-[rgb(41,43,44)] py-[8px] px-[16px] bg-[rgb(255,255,255)] border border-[rgb(204,204,204)] hover:text-[#292b2c] hover:bg-[rgb(230,230,230)] hover:border-[rgb(173,173,173)] rounded-[4px] focus:shadow-[0px_0px_0px_2px_rgba(204,204,204,0.5)] focus:outline-none">X</button>
                     </div>
-                    {{-- modul body --}}
+                    {{-- modal body --}}
                     <div class="overflow-hidden block p-[10px]">
                         <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent">
                             @csrf
@@ -676,9 +678,7 @@
                             <input type="hidden" name="idUser" id="2idUSer" value="{{ Auth::user()->id }}">
 
 
-                            <button
-                                class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
-                                id="cancel_button2">ANNULER</button>
+
                             <button type="button"
                                 class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                                 id="2validation">MODIFIER</button>
