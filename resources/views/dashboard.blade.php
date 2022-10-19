@@ -513,7 +513,7 @@
                             </div>
                             {{-- Input Péage | Parking | Divers --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2" id="div2peage">
                                     <label class="inline-block mb-0" for="peage">Péage
 
                                     </label>
@@ -523,7 +523,7 @@
                                         required>
 
                                 </div>
-                                <div class="mb-3 col " id="div2peage2">
+                                <div class="mb-3 col divInput " id="div2peage2">
                                     <label class="inline-block mb-0 " for="peage2">
                                         Péage 2
                                     </label>
@@ -532,7 +532,7 @@
                                         name="peage2" id="2peage2" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col " id="div2peage3">
+                                <div class="mb-3 col divInput " id="div2peage3">
                                     <label class="inline-block mb-0" for="peage3">
                                         Péage 3
                                     </label>
@@ -541,7 +541,7 @@
                                         name="peage3" id="2peage3" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col" id="div2peage4">
+                                <div class="mb-3 col divInput" id="div2peage4">
                                     <label class="inline-block mb-0" for="peage4">
                                         Péage 4
                                     </label>
@@ -566,7 +566,7 @@
                             </div>
                             {{-- Input | Hotel | Distance --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2">
                                     <label class="inline-block mb-0" for="2petitDej">
                                         Pt déjeuner
                                     </label>
@@ -578,7 +578,7 @@
                                 </div>
 
                                 @csrf
-                                <div class="mb-3 col" id="div2dejeuner">
+                                <div class="mb-3 col divInput" id="div2dejeuner">
                                     <label class="inline-block mb-0" for="repas">
                                         Déjeuner
                                     </label>
@@ -587,7 +587,7 @@
                                         name="dejeuner" id="2dejeuner" type="number" value="0" min="0"
                                         required>
                                 </div>
-                                <div class="mb-3 col" id="div2diner">
+                                <div class="mb-3 col divInput" id="div2diner">
                                     <label class="inline-block mb-0" for="repas">
                                         Dîner
                                     </label>
@@ -597,7 +597,7 @@
                                         required>
 
                                 </div>
-                                <div class="mb-3 col pr-2" id="div2aEmporter">
+                                <div class="mb-3 col divInput pr-2" id="div2aEmporter">
                                     <label class="inline-block mb-0" for="2aEmporter">
                                         à emporter
                                     </label>
@@ -612,7 +612,7 @@
                             </div>
                             <div class="row">
 
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2">
                                     <label class="inline-block mb-0" for="hotel">
                                         Hôtel
                                     </label>
@@ -622,7 +622,7 @@
                                         required>
 
                                 </div>
-                                <div id="div2Essence"class="mb-3 col">
+                                <div id="div2Essence"class="mb-3 col divInput">
                                     <label class="inline-block mb-0" for="2essence">
                                         Essence
                                     </label>
@@ -631,7 +631,7 @@
                                         id="2essence" name="essence" type="number" min="0" value="0"
                                         required>
                                 </div>
-                                <div id="div2Kilometrage" class="mb-3 col pr-2">
+                                <div id="div2Kilometrage" class="mb-3 col divInput pr-2">
                                     <label class="inline-block mb-0" for="2kilometrage">
                                         Distance( km )
                                     </label>
@@ -644,7 +644,7 @@
                             </div>
                             {{-- Input heure début | heure fin --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2">
                                     <label for="heure_debut" class="inline-block">
                                         Heure de début
                                     </label>
@@ -652,7 +652,7 @@
                                         class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="heureDebut" id="2heure_debut" type="text" value="00:00" required>
                                 </div>
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pr-2">
                                     <label for="heure_fin" class="w-full inline-block">
                                         Heure de fin
                                     </label>
@@ -665,7 +665,7 @@
 
                             {{-- Input description mission --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2 pr-2">
                                     <label for="description" class="mb-[5px]">Description du déplacement</label>
                                     <textarea name="description" id="2description" rows="3" maxlength="100"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"></textarea>

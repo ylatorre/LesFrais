@@ -222,7 +222,6 @@ class Controller extends BaseController
                 "chevauxFiscaux" => $request->ChevauxFiscaux,
                 "taux" => $request->taux,
 
-
             ]);
         } elseif (Auth::user()->superadmin == 1 && $request->admin === "1") {
 
