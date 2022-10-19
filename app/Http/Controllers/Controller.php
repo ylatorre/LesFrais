@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\MailNotifSalarie;
 use App\Models\Mois;
 use App\Models\User;
 use Faker\Core\Uuid;
@@ -10,12 +9,14 @@ use App\Models\Event;
 use App\Models\infosndf;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
+use App\Mail\MailNotifSalarie;
 use App\Models\historiqueEssence;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -64,6 +65,74 @@ class Controller extends BaseController
     public function createEvent(Request $request)
     {
 
+        /* - création du nom du dossier dans lequel les images seront stockées */
+        $folderName = Auth::user()->name."-".$request->moisActuel;
+
+        /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
+        if($request->hasFile('factureParking')){
+        $pathParking = Storage::disk('public')->put($folderName ,$request->file("factureParking"));
+        }else{
+            $pathParking = "0";
+        }
+        if($request->hasFile('facturePeage')){
+        $pathPeage = Storage::disk('public')->put($folderName ,$request->file("facturePeage"));
+        }else{
+            $pathPeage = "0";
+        }
+        if($request->hasFile('facturePeage2')){
+        $pathPeage2 = Storage::disk('public')->put($folderName ,$request->file("facturePeage2"));
+        }else{
+            $pathPeage2 = "0";
+        }
+        if($request->hasFile('facturePeage3')){
+        $pathPeage3 = Storage::disk('public')->put($folderName ,$request->file("facturePeage3"));
+        }else{
+            $pathPeage3 = "0";
+        }
+        if($request->hasFile('facturePeage4')){
+        $pathPeage4 = Storage::disk('public')->put($folderName ,$request->file("facturePeage4"));
+        }else{
+            $pathPeage4 = "0";
+        }
+        if($request->hasFile('factureDivers')){
+        $pathDivers = Storage::disk('public')->put($folderName ,$request->file("factureDivers"));
+        }else{
+            $pathDivers = "0";
+        }
+        if($request->hasFile('facturePetitDej')){
+        $pathPetitDej = Storage::disk('public')->put($folderName ,$request->file("facturePetitDej"));
+        }else{
+            $pathPetitDej = "0";
+        }
+        if($request->hasFile('factureDejeuner')){
+        $pathDejeuner = Storage::disk('public')->put($folderName ,$request->file("factureDejeuner"));
+        }else{
+            $pathDejeuner = "0";
+        }
+        if($request->hasFile('factureDiner')){
+        $pathDiner = Storage::disk('public')->put($folderName ,$request->file("factureDiner"));
+        }else{
+            $pathDiner = "0";
+        }
+        if($request->hasFile('factureAemporter')){
+        $pathAemporter = Storage::disk('public')->put($folderName ,$request->file("factureAemporter"));
+        }else{
+            $pathAemporter = "0";
+        }
+        if($request->hasFile('factureHotel')){
+        $pathHotel = Storage::disk('public')->put($folderName ,$request->file("factureHotel"));
+        }else{
+            $pathHotel = "0";
+        }
+        if($request->hasFile('factureEssence')){
+        $pathEssence = Storage::disk('public')->put($folderName ,$request->file("factureEssence"));
+        }
+        else{
+        $pathEssence = "0";
+        }
+
+/* - Importation des données en base de donnée */
+
         // EVENT DE BASE
         Event::create([
             "id" => $request->iding,
@@ -90,8 +159,22 @@ class Controller extends BaseController
             "heure_debut" => $request->heureDebut,
             "heure_fin" => $request->heureFin,
             "idUser" => Auth::user()->id,
+
+            "pathParking" => $pathParking,
+            "pathPeage" => $pathPeage,
+            "pathPeage2" => $pathPeage2,
+            "pathPeage3" => $pathPeage3,
+            "pathPeage4" => $pathPeage4,
+            "pathDivers" => $pathDivers,
+            "pathPetitDej" => $pathPetitDej,
+            "pathDejeuner" => $pathDejeuner,
+            "pathDiner" => $pathDiner,
+            "pathAemporter" => $pathAemporter,
+            "pathHotel" => $pathHotel,
+            "pathEssence" => $pathEssence,
         ]);
 
+        Session::flash('createEvent',"L'évènement ajouté à votre calendrier !");
 
         return redirect(route('dashboard'));
     }
@@ -138,7 +221,6 @@ class Controller extends BaseController
                 "vehicule" => $request->vehicule,
                 "chevauxFiscaux" => $request->ChevauxFiscaux,
                 "taux" => $request->taux,
-
 
             ]);
         } elseif (Auth::user()->superadmin == 1 && $request->admin === "1") {
@@ -269,10 +351,13 @@ class Controller extends BaseController
 
 
 
+
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect('dashboard');
         }
+
+
         $dateNDF = explode("-", $utilisateurs[0]->mois);
 
         // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
@@ -448,13 +533,31 @@ class Controller extends BaseController
         dd('interception');
         return redirect("/dashboard");
     }
+
+
     public function supprimerEvent(Request $request)
     {
-        DB::table('events')->where('id', '=', $request->eventID)->delete();
+       $eventSelected = DB::table('events')->where('id', '=', $request->eventID)->get();
 
-        Session::flash("supprEvent", "L'évènement à bien été modifié");
+        Storage::disk('public')->delete($eventSelected[0]->pathParking);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage2);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage3);
+        Storage::disk('public')->delete($eventSelected[0]->pathPeage4);
+        Storage::disk('public')->delete($eventSelected[0]->pathDivers);
+        Storage::disk('public')->delete($eventSelected[0]->pathPetitDej);
+        Storage::disk('public')->delete($eventSelected[0]->pathDejeuner);
+        Storage::disk('public')->delete($eventSelected[0]->pathDiner);
+        Storage::disk('public')->delete($eventSelected[0]->pathAemporter);
+        Storage::disk('public')->delete($eventSelected[0]->pathHotel);
+        Storage::disk('public')->delete($eventSelected[0]->pathEssence);
+
+        DB::table('events')->where('id', '=', $request->eventID)->delete();
+        Session::flash("supprEvent", "L'évènement à bien été supprimé");
         return redirect("/dashboard");
     }
+
+
     public function ModifierEvent(Request $request)
     {
 

@@ -244,6 +244,67 @@
     padding-top:10px;
 }
 
+#calendar-container {
+    cursor: pointer;
+}
+
+.inputFacture{
+    width: 24px !important;
+    height: 24px !important;
+    background:no-repeat url(/images/iconDL.png?f864bd777f13c61ffe959e85862a642c);
+    cursor:pointer;
+}
+
+#calendrier-externe{
+    border:4px solid transparent;
+    border-radius: 0.75rem;
+    transition:200ms ease;
+}
+
+/* inputs peage -readonly */
+
+#peage:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage2:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage2:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage3:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage3:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage4:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+#peage4:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+.peagemodif:-moz-read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+.peagemodif:read-only{
+    border:1px solid rgb(192, 44, 44);
+}
+
+/* - responsive du calendrier */
+
 @media screen and(max-width:300px){
     input{
         font-size:6px;

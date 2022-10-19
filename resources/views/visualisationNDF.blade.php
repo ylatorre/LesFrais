@@ -3,31 +3,25 @@
     <x-slot name="header">
     </x-slot>
     @if (Auth::user()->admin == 1 && $utilisateurs[0]->admin == 0)
-    @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
-            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
-            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-            <div class="w-full h-20 px-4 mb-6 font-bold text-center">
-            @else
-                <div class="w-full h-20 px-4 mb-6 font-bold text-center">
-        @endif
 
 
         <div class="flex flex-row justify-around">
-            <form method="POST" action="{{ route('validerNDF') }}">
-                @csrf
-                <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
-                <input type="hidden" name="username" value="{{ $utilisateurs[0]->name }}">
-                <button type="submit" class="validerNDF">Valider la note de frais</button>
-            </form>
             <form method="POST" action="{{ route('supprimerNDF') }}">
                 @csrf
                 <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
                 <input type="hidden" name="username" value="{{ $utilisateurs[0]->name }}">
                 <button type="submit" class="supprimerNDF">supprimer la note de frais</button>
             </form>
+            <form method="POST" action="{{ route('validerNDF') }}">
+                @csrf
+                <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
+                <input type="hidden" name="username" value="{{ $utilisateurs[0]->name }}">
+                <button type="submit" class="validerNDF">Valider la note de frais</button>
+            </form>
+
 
         </div>
-        </div>
+
     @elseif(Auth::user()->salarie == 1 || (Auth::user()->admin == 1 && Auth::user()->superadmin != 1))
         <div class="flex flex-row items-center justify-around w-full h-20 px-4 font-bold">
             <a href="{{ route('dashboard') }}"><button type="submit" class="validerNDF">retourner à mon
@@ -88,7 +82,8 @@
         }
 
         .TD-table {
-            font-size: 13px;
+            play: flex;
+            */ font-size: 13px;
             border: 2px solid black;
             padding-left: 2px;
             padding-right: 2px;
@@ -159,6 +154,57 @@
             padding: 2px;
             text-align: center;
             font-size: 12px;
+        }
+
+        .validerNDF {
+            padding: 0.7rem;
+            margin-bottom:5px;
+            border: 4px solid rgb(0, 151, 0);
+            border-radius: 0.75rem;
+            background: #202020 !important;
+            color: white;
+            font-family: 'nunito', sans-serif;
+            font-weight: bold;
+            font-size: 12px;
+            transition: 100ms ease-in;
+        }
+
+        .supprimerNDF {
+            padding: 0.7rem;
+            margin-bottom:5px;
+            border: 4px solid rgb(155, 11, 11);
+            border-radius: 0.75rem;
+            background: #202020 !important;
+            color: white;
+            font-family: 'nunito', sans-serif;
+            font-weight: bold;
+            font-size: 12px;
+            transition: 100ms ease-in;
+        }
+
+        .validerNDF:hover {
+            border: 4px solid rgb(56, 56, 56);
+        }
+
+        .supprimerNDF:hover {
+            border: 4px solid rgb(56, 56, 56);
+        }
+
+        .disparait {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 300px;
+            height: 300px;
+            background: rgb(39, 39, 39);
+            border: 6px solid rgb(39, 39, 39);
+            display: none;
+            cursor: pointer;
+            transition: 200ms ease;
+        }
+
+        .disparait:hover {
+            border: 6px solid rgb(122, 16, 16);
         }
 
         /* -- Responsive du site */
@@ -252,35 +298,9 @@
                 font-size: 9px;
             }
 
-            .validerNDF {
-                padding: 0.5rem;
-                border: 4px solid rgb(0, 151, 0);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
-                font-size: 12px;
-                transition: 100ms ease-in;
-            }
 
-            .supprimerNDF {
-                padding: 0.6rem;
-                border: 4px solid rgb(155, 11, 11);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
-                font-size: 12px;
-                transition: 100ms ease-in;
-            }
 
-            .validerNDF:hover {
-                transform: scale(1.05);
-            }
 
-            .supprimerNDF:hover {
-                transform: scale(1.05);
-            }
         }
 
         @media screen and (max-width:700px) {
@@ -324,7 +344,6 @@
             }
 
             .validerNDF {
-
                 border: 4px solid rgb(0, 151, 0);
                 background: #202020 !important;
                 color: white;
@@ -345,13 +364,7 @@
                 transition: 100ms ease-in;
             }
 
-            .validerNDF:hover {
-                transform: scale(1.05);
-            }
 
-            .supprimerNDF:hover {
-                transform: scale(1.05);
-            }
 
         }
 
@@ -425,13 +438,7 @@
                 transition: 100ms ease-in;
             }
 
-            .validerNDF:hover {
-                transform: scale(1.05);
-            }
 
-            .supprimerNDF:hover {
-                transform: scale(1.05);
-            }
         }
 
         @media screen and (max-width:400px) {
@@ -488,36 +495,35 @@
                 transition: 100ms ease-in;
             }
 
-            .validerNDF:hover {
-                transform: scale(1.05);
-            }
 
-            .supprimerNDF:hover {
-                transform: scale(1.05);
+
+            .button-image {
+                background: url('./images/iconDL.png');
             }
         }
     </style>
     <div class="w-full flex flex-row justify-around py-5 " style="border:4px solid black;">
         <div class="w-full">
-            <div class="w-full flex items-center justify-around text-center">
+            <div class="w-full flex items-center justify-around text-center ">
                 <div class="flex flex-row mb-5">
                     <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 
 
-                        @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
-                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
-                            explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
-                            <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
+                    @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
+                        <div class="flex flex-col justify-around px-4 font-bold text-center">
+                            <h1>Prévisualisation de la note de
                                 frais de {{ $utilisateurs[0]->name }} pour le mois
                                 d'{{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
-                            </div>
-                            @else
-                                <div class="flex flex-col justify-around px-4 font-bold text-center"><h1>Prévisualisation de la note de
-                                    frais de {{ $utilisateurs[0]->name }} pour le mois
-                                     de {{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
-                                </div>
-
-                        @endif
+                        </div>
+                    @else
+                        <div class="flex flex-col justify-around px-4 font-bold text-center">
+                            <h1>Prévisualisation de la note de
+                                frais de {{ $utilisateurs[0]->name }} pour le mois
+                                de {{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
+                        </div>
+                    @endif
 
 
 
@@ -566,6 +572,9 @@
 
                         </thead>
                         <tbody>
+                            @php
+                                $i = 0;
+                            @endphp
                             @foreach ($utilisateurs as $utilisateur)
                                 <tr>
                                     @php
@@ -606,25 +615,130 @@
                                     <td class="TD-table col-table text-center TD-description"
                                         style="white-space:nowrap; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage2 }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage3 }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->peage4 }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->parking }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->essence }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->divers }} </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->peage }}
+                                            @if ($utilisateur->pathPeage != '0')
+                                                <button class="buttonsImage" id="button{{ $utilisateur->pathPeage }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathPeage }}').style.display = 'block'; "><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->peage2 }}
+                                            @if ($utilisateur->pathPeage2 != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathPeage2 }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathPeage2 }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->peage3 }}
+                                            @if ($utilisateur->pathPeage3 != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathPeage3 }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathPeage3 }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->peage4 }}
+                                            @if ($utilisateur->pathPeage4 != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathPeage4 }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathPeage4 }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->parking }}
+                                            @if ($utilisateur->pathParking != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathParking }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathParking }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->essence }}
+                                            @if ($utilisateur->pathEssence != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathEssence }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathEssence }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->divers }}
+                                            @if ($utilisateur->pathDivers != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathDivers }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathDivers }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
-                                        </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->petitDej }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->dejeuner }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->diner }} </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->hotel }} </td>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->petitDej }}
+                                            @if ($utilisateur->pathPetitDej != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathPetitDej }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathPetitDej }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->dejeuner }}
+                                            @if ($utilisateur->pathDejeuner != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathDejeuner }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathDejeuner }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->diner }}
+                                            @if ($utilisateur->pathDiner != '0')
+                                                <button class="buttonsImage" id="button{{ $utilisateur->pathDiner }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathDiner }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->hotel }}
+                                            @if ($utilisateur->pathHotel != '0')
+                                                <button class="buttonsImage" id="button{{ $utilisateur->pathHotel }}"
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathHotel }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
 
                                     </td>
-                                    <td class="TD-table text-center">{{ $utilisateur->aEmporter }} </td>
+                                    <td class="TD-table text-center">
+                                        <div class="flex flex-row justify-center">{{ $utilisateur->aEmporter }}
+                                            @if ($utilisateur->pathAemporter != '0')
+                                                <button class="buttonsImage"
+                                                    id="button{{ $utilisateur->pathAemporter }}"
+                                                    onclick="$('.disparait').hide(); setTimeout(document.getElementById('{{ $utilisateur->pathAemporter }}').style.display = 'block';"><img
+                                                        src="./images/iconDL.png" alt='iconDL'></button>
+                                            @endif
+                                        </div>
+                                    </td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} </td>
 
@@ -632,8 +746,126 @@
                                         {{ $utilisateur->kilometrage }} </td>
 
 
+
                                 </tr>
+                                {{-- modale d'affichage des images --}}
+
+                                @if ($utilisateur->pathPeage != '0')
+                                    <div id="{{ $utilisateur->pathPeage }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathPeage }}').style.display = 'none'  ; ">
+                                        <img src="{{ Storage::url($utilisateur->pathPeage) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathPeage2 != '0')
+                                    <div id="{{ $utilisateur->pathPeage2 }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathPeage2 }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathPeage2) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathPeage3 != '0')
+                                    <div id="{{ $utilisateur->pathPeage3 }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathPeage3 }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathPeage3) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathPeage4 != '0')
+                                    <div id="{{ $utilisateur->pathPeage4 }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathPeage4 }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathPeage4) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathParking != '0')
+                                    <div id="{{ $utilisateur->pathParking }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathParking }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathParking) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathEssence != '0')
+                                    <div id="{{ $utilisateur->pathEssence }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathEssence }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathEssence) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathDivers != '0')
+                                    <div id="{{ $utilisateur->pathDivers }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathDivers }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathDivers) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathPetitDej != '0')
+                                    <div id="{{ $utilisateur->pathPetitDej }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathPetitDej }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathPetitDej) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathDejeuner != '0')
+                                    <div id="{{ $utilisateur->pathDejeuner }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathDejeuner }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathDejeuner) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathDiner != '0')
+                                    <div id="{{ $utilisateur->pathDiner }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathDiner }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathDiner) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathHotel != '0')
+                                    <div id="{{ $utilisateur->pathHotel }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathHotel }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathHotel) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+                                @if ($utilisateur->pathAemporter != '0')
+                                    <div id="{{ $utilisateur->pathAemporter }}" class="disparait"
+                                        onclick="document.getElementById('{{ $utilisateur->pathAemporter }}').style.display = 'none'">
+                                        <img src="{{ Storage::url($utilisateur->pathAemporter) }}" alt="facture"
+                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                @endif
+
+
+
+                                <script>
+                                    buttonsImage{{ $i }} = document.querySelectorAll('.buttonsImage');
+
+
+                                    const peage{{ $i }} = document.getElementById('{{ $utilisateur->pathPeage }}');
+                                    const peage2{{ $i }} = document.getElementById('{{ $utilisateur->pathPeage2 }}');
+                                    const peage3{{ $i }} = document.getElementById('{{ $utilisateur->pathPeage3 }}');
+                                    const peage4{{ $i }} = document.getElementById('{{ $utilisateur->pathPeage4 }}');
+                                    const parking{{ $i }} = document.getElementById('{{ $utilisateur->pathParking }}');
+                                    const essence{{ $i }} = document.getElementById('{{ $utilisateur->pathEssence }}');
+                                    const divers{{ $i }} = document.getElementById('{{ $utilisateur->pathDivers }}');
+                                    const petitDej{{ $i }} = document.getElementById('{{ $utilisateur->pathPetitDej }}');
+                                    const dejeuner{{ $i }} = document.getElementById('{{ $utilisateur->pathDejeuner }}');
+                                    const diner{{ $i }} = document.getElementById('{{ $utilisateur->pathDiner }}');
+                                    const hotel{{ $i }} = document.getElementById('{{ $utilisateur->pathHotel }}');
+                                    const aEmporter{{ $i }} = document.getElementById('{{ $utilisateur->pathAemporter }}');
+
+                                    const buttonPeage{{ $i }} = document.getElementById('button{{ $utilisateur->pathPeage }}');
+                                    const buttonPeage2{{ $i }} = document.getElementById('button{{ $utilisateur->pathPeage2 }}');
+                                    const buttonPeage3{{ $i }} = document.getElementById('button{{ $utilisateur->pathPeage3 }}');
+                                    const buttonPeage4{{ $i }} = document.getElementById('button{{ $utilisateur->pathPeage4 }}');
+                                    const buttonParking{{ $i }} = document.getElementById('button{{ $utilisateur->pathParking }}');
+                                    const buttonEssence{{ $i }} = document.getElementById('button{{ $utilisateur->pathEssence }}');
+                                    const buttonDivers{{ $i }} = document.getElementById('button{{ $utilisateur->pathDivers }}');
+                                    const buttonPetitDej{{ $i }} = document.getElementById('button{{ $utilisateur->pathPetitDej }}');
+                                    const buttonDejeuner{{ $i }} = document.getElementById('button{{ $utilisateur->pathDejeuner }}');
+                                    const buttonDiner{{ $i }} = document.getElementById('button{{ $utilisateur->pathDiner }}');
+                                    const buttonHotel{{ $i }} = document.getElementById('button{{ $utilisateur->pathHotel }}');
+                                    const buttonAemporter{{ $i }} = document.getElementById('button{{ $utilisateur->pathAemporter }}');
+
+                                </script>
+                                @php
+                                    $i++;
+                                @endphp
+                                {{-- <img src="{{Storage::url($utilisateur->pathParking) }}"> --}}
                             @endforeach
+                            <script>
+                                image = document.querySelectorAll('.disparait');
+                                tailleImage = image.arraylenght;
+                                console.log(tailleImage);
+                            </script>
                             @php
                                 $SousTotalTransport = $totalDivers + $totalEssence + $totalPeage + $totalParking;
                                 $SousTotalRepasHotels = $totalRepas + $totalHotels;
@@ -734,6 +966,15 @@
                     </table> --}}
                 </div>
             </div>
+            {{-- <script>
+                const disparait = document.querySelectorAll('.disparait');
+
+                 disparait.addEventListener('click',()=>{
+                            disparait.style.display = 'none'
+                 });
+
+
+            </script> --}}
 
 
 </x-app-layout>
