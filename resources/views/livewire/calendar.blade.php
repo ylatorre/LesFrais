@@ -356,7 +356,7 @@
                             /* - création du titre lorceque l'utilisateur clique sur une date */
                             let actualyear = $('.fc-toolbar-title').html();
 
-                            nombreDuJour = info.dateStr.slice(8)
+                            nombreDuJour = info.dateStr.slice(8);
                             dateFormatedClicked = nombreDuJour + " " + actualyear;
                             document.getElementById('TitreEvenement').innerHTML = "Déplacement du " +
                                 dateFormatedClicked;
@@ -409,7 +409,7 @@
                                     break;
                             }
 
-
+                            let dateactuelle = selectedyear + "-" + selectedMonth;
 
                             /*içi le clique influe vraiment sur les events*/
 
@@ -420,19 +420,28 @@
                             var tabValidationEnCours = @php echo json_encode($tableauValidationEnCours); @endphp;
                             var tabMoisValide = @php echo json_encode($tableauDesMoisValide); @endphp;
 
-
+                            let calendarExterne = document.getElementById('calendrier-externe');
 
                             var isCurrentMonthLocked = false;
 
                             for (let i = 0; i < tabAllMonth.length; i++) {
                                 if (tabMoisValide[i] === dateactuelle) {
                                     /* - Vérrouille le mois si la ndf n'ets pas validée */
+                                    calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
+                                    setTimeout(() => {
+                                        calendarExterne.style.borderColor = "transparent";
+                                    }, 200);
+
                                     isCurrentMonthLocked = true;
-                                    $calendar
                                     break;
 
                                 } else if (tabValidationEnCours[i] === dateactuelle) {
                                     /* - Vérrouille le mois si la NDF est en cours de validation */
+
+                                    calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
+                                    setTimeout(() => {
+                                        calendarExterne.style.borderColor = "transparent";
+                                    }, 200);
                                     isCurrentMonthLocked = true;
                                     break;
                                 } else {
@@ -674,7 +683,7 @@
                                     /* - Vérrouille le mois si la ndf n'est pas validée */
                                     isCurrentMonthLocked = true;
 
-                                    $calendar
+
                                     break;
 
                                 } else if (tabValidationEnCours[i] === dateactuelle) {
@@ -788,19 +797,29 @@
 
                             var isCurrentMonthLocked = false;
                             var dragable = false;
+                            let calendarExterne = document.getElementById('calendrier-externe');
 
 
                             for (let i = 0; i < tabAllMonth.length; i++) {
                                 if (tabMoisValide[i] === dateactuelle) {
                                     /* - Vérrouille le mois si la ndf n'est pas validée */
-                                    isCurrentMonthLocked = true;
+                                    calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
+                                    setTimeout(() => {
+                                        calendarExterne.style.borderColor = "transparent";
+                                    }, 200);
 
-                                    $calendar
+                                    isCurrentMonthLocked = true;
                                     break;
 
                                 } else if (tabValidationEnCours[i] === dateactuelle) {
                                     /* - Vérrouille le mois si la NDF est en cours de validation */
+                                    calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
+                                    setTimeout(() => {
+                                        calendarExterne.style.borderColor = "transparent";
+                                    }, 200);
                                     isCurrentMonthLocked = true;
+
+
 
                                     break;
                                 } else {

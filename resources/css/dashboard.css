@@ -242,6 +242,11 @@
     background:no-repeat url('../../public/images/iconDL.png');
     cursor:pointer;
 }
+#calendrier-externe{
+    border:4px solid transparent;
+    border-radius: 0.75rem;
+    transition:200ms ease;
+}
 /* inputs peage -readonly */
 
 #peage:read-only{

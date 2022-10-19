@@ -709,7 +709,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-12">
+            <div id="calendrier-externe" class="col-12" >
                 @if (\Session::has('failure'))
                     <div
                         class="block mb-[16px] py-3 px-5 text-[16px] text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
