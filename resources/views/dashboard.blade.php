@@ -480,7 +480,7 @@
                             </div>
                             {{-- Input Ville | Code Postal --}}
                             <div class="row">
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput pl-2">
                                     <label class="inline-block mb-0" for="code_postal">
                                         Code Postal
                                     </label>
@@ -489,7 +489,7 @@
                                         id="2code_postal" name="code_postal" type="text" value="" required>
 
                                 </div>
-                                <div class="mb-3 col">
+                                <div class="mb-3 col divInput">
                                     <label class="inline-block mb-0" for="ville">
                                         Ville
                                     </label>
@@ -500,7 +500,7 @@
                                 </div>
 
 
-                                <div class="mb-3 col pr-2">
+                                <div class="mb-3 col divInput pr-2">
                                     <label class="inline-block mb-0" for="parking">
                                         Parking
                                     </label>
