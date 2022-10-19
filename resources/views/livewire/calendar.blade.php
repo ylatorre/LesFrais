@@ -430,7 +430,7 @@
                                     calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
                                     setTimeout(() => {
                                         calendarExterne.style.borderColor = "transparent";
-                                    }, 200);
+                                    }, 300);
 
                                     isCurrentMonthLocked = true;
                                     break;
@@ -441,7 +441,7 @@
                                     calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
                                     setTimeout(() => {
                                         calendarExterne.style.borderColor = "transparent";
-                                    }, 200);
+                                    }, 300);
                                     isCurrentMonthLocked = true;
                                     break;
                                 } else {
@@ -806,7 +806,7 @@
                                     calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
                                     setTimeout(() => {
                                         calendarExterne.style.borderColor = "transparent";
-                                    }, 200);
+                                    }, 300);
 
                                     isCurrentMonthLocked = true;
                                     break;
@@ -816,7 +816,7 @@
                                     calendarExterne.style.borderColor = "rgba(192, 44, 44, 0.7)";
                                     setTimeout(() => {
                                         calendarExterne.style.borderColor = "transparent";
-                                    }, 200);
+                                    }, 300);
                                     isCurrentMonthLocked = true;
 
 
