@@ -164,6 +164,10 @@
             border:6px solid rgb(39, 39, 39);
             display:none;
             cursor: pointer;
+            transition:200ms ease;
+        }
+        .disparait:hover{
+            border:6px solid rgb(122, 16, 16);
         }
 
         /* -- Responsive du site */
@@ -329,7 +333,6 @@
             }
 
             .validerNDF {
-
                 border: 4px solid rgb(0, 151, 0);
                 background: #202020 !important;
                 color: white;
@@ -507,7 +510,7 @@
     </style>
     <div class="w-full flex flex-row justify-around py-5 " style="border:4px solid black;">
         <div class="w-full">
-            <div class="w-full flex items-center justify-around text-center">
+            <div class="w-full flex items-center justify-around text-center ">
                 <div class="flex flex-row mb-5">
                     <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
 
