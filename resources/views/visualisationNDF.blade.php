@@ -574,6 +574,9 @@
 
                         </thead>
                         <tbody>
+                            @php
+                            $i = 0;
+                         @endphp
                             @foreach ($utilisateurs as $utilisateur)
                                 <tr>
                                     @php
@@ -614,25 +617,25 @@
                                     <td class="TD-table col-table text-center TD-description"
                                         style="white-space:nowrap; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage }} @if($utilisateur->pathPeage != '0')<button id="button{{$utilisateur->pathPeage}}" onclick="document.getElementById('{{$utilisateur->pathPeage}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage2 }} @if($utilisateur->pathPeage2 != '0')<button id="button{{$utilisateur->pathPeage2}}" onclick="document.getElementById('{{$utilisateur->pathPeage2}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage3 }} @if($utilisateur->pathPeage3 != '0')<button id="button{{$utilisateur->pathPeage3}}" onclick="document.getElementById('{{$utilisateur->pathPeage3}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage4 }} @if($utilisateur->pathPeage4 != '0')<button id="button{{$utilisateur->pathPeage4}}" onclick="document.getElementById('{{$utilisateur->pathPeage4}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->parking }} @if($utilisateur->pathParking != '0')<button id="button{{$utilisateur->pathParking}}" onclick="document.getElementById('{{$utilisateur->pathParking}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->essence }} @if($utilisateur->pathEssence != '0')<button id="button{{$utilisateur->pathEssence}}" onclick="document.getElementById('{{$utilisateur->pathEssence}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->divers }} @if($utilisateur->pathDivers != '0')<button id="button{{$utilisateur->pathDivers}}" onclick="document.getElementById('{{$utilisateur->pathDivers}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage }} @if($utilisateur->pathPeage != '0')<button class="buttonsImage" id="button{{$utilisateur->pathPeage}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathPeage}}').style.display = 'block'; "><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage2 }} @if($utilisateur->pathPeage2 != '0')<button class="buttonsImage" id="button{{$utilisateur->pathPeage2}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathPeage2}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage3 }} @if($utilisateur->pathPeage3 != '0')<button class="buttonsImage" id="button{{$utilisateur->pathPeage3}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathPeage3}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->peage4 }} @if($utilisateur->pathPeage4 != '0')<button class="buttonsImage" id="button{{$utilisateur->pathPeage4}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathPeage4}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->parking }} @if($utilisateur->pathParking != '0')<button class="buttonsImage" id="button{{$utilisateur->pathParking}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathParking}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->essence }} @if($utilisateur->pathEssence != '0')<button class="buttonsImage" id="button{{$utilisateur->pathEssence}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathEssence}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->divers }} @if($utilisateur->pathDivers != '0')<button class="buttonsImage" id="button{{$utilisateur->pathDivers}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathDivers}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div> </td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                         </td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->petitDej }} @if($utilisateur->pathPetitDej != '0')<button id="button{{$utilisateur->pathPetitDej}}" onclick="document.getElementById('{{$utilisateur->pathPetitDej}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->dejeuner }} @if($utilisateur->pathDejeuner != '0')<button id="button{{$utilisateur->pathDejeuner}}" onclick="document.getElementById('{{$utilisateur->pathDejeuner}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->diner }} @if($utilisateur->pathDiner != '0')<button id="button{{$utilisateur->pathDiner}}" onclick="document.getElementById('{{$utilisateur->pathDiner}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->hotel }} @if($utilisateur->pathHotel != '0')<button id="button{{$utilisateur->pathHotel}}" onclick="document.getElementById('{{$utilisateur->pathHotel}}').style.display = 'block' ;"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->petitDej }} @if($utilisateur->pathPetitDej != '0')<button class="buttonsImage" id="button{{$utilisateur->pathPetitDej}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathPetitDej}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->dejeuner }} @if($utilisateur->pathDejeuner != '0')<button class="buttonsImage" id="button{{$utilisateur->pathDejeuner}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathDejeuner}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->diner }} @if($utilisateur->pathDiner != '0')<button class="buttonsImage" id="button{{$utilisateur->pathDiner}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathDiner}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->hotel }} @if($utilisateur->pathHotel != '0')<button class="buttonsImage" id="button{{$utilisateur->pathHotel}}" onclick="$('.disparait').hide(); document.getElementById('{{$utilisateur->pathHotel}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
 
                                     </td>
-                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->aEmporter }} @if($utilisateur->pathAemporter != '0')<button id="button{{$utilisateur->pathAemporter}}" onclick="document.getElementById('{{$utilisateur->pathAemporter}}').style.display = 'block'"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
+                                    <td class="TD-table text-center"><div class="flex flex-row justify-center">{{ $utilisateur->aEmporter }} @if($utilisateur->pathAemporter != '0')<button class="buttonsImage" id="button{{$utilisateur->pathAemporter}}" onclick="$('.disparait').hide(); setTimeout(document.getElementById('{{$utilisateur->pathAemporter}}').style.display = 'block';"><img src="./images/iconDL.png" alt='iconDL'></button>@endif</div></td>
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} </td>
 
@@ -681,35 +684,216 @@
                                      <div id="{{$utilisateur->pathAemporter}}" class="disparait" onclick="document.getElementById('{{$utilisateur->pathAemporter}}').style.display = 'none'"><img src="{{Storage::url($utilisateur->pathAemporter) }}" alt="facture" class="w-full h-full" style="object-fit:contain;"></div>
                                      @endif
 
+
+
                                     <script>
 
-                                        
+                                    buttonsImage{{$i}} = document.querySelectorAll('.buttonsImage');
 
-                                        // const buttonPeage = document.getElementById('button{{$utilisateur->pathPeage}}');
-                                        // const buttonPeage2 = document.getElementById('button{{$utilisateur->pathPeage2}}');
-                                        // const buttonPeage3 = document.getElementById('button{{$utilisateur->pathPeage3}}');
-                                        // const buttonPeage4 = document.getElementById('button{{$utilisateur->pathPeage4}}');
-                                        // const buttonParking = document.getElementById('button{{$utilisateur->pathParking}}');
-                                        // const buttonEssence = document.getElementById('button{{$utilisateur->pathEssence}}');
-                                        // const buttonDivers = document.getElementById('button{{$utilisateur->pathDivers}}');
-                                        // const buttonPetitDej = document.getElementById('button{{$utilisateur->pathPetitDej}}');
-                                        // const buttonDejeuner = document.getElementById('button{{$utilisateur->pathDejeuner}}');
-                                        // const buttonDiner = document.getElementById('button{{$utilisateur->pathDiner}}');
-                                        // const buttonHotel = document.getElementById('button{{$utilisateur->pathHotel}}');
-                                        // const buttonAemporter = document.getElementById('button{{$utilisateur->pathAemporter}}');
 
-                                        // const peage  = document.getElementById('{{$utilisateur->pathPeage}}');
-                                        // const peage2 = document.getElementById('{{$utilisateur->pathPeage2}}');
-                                        // const peage3 = document.getElementById('{{$utilisateur->pathPeage3}}');
-                                        // const peage4 = document.getElementById('{{$utilisateur->pathPeage4}}');
-                                        // const parking = document.getElementById('{{$utilisateur->pathParking}}');
-                                        // const essence = document.getElementById('{{$utilisateur->pathEssence}}');
-                                        // const divers= document.getElementById('{{$utilisateur->pathDivers}}');
-                                        // const petitDej = document.getElementById('{{$utilisateur->pathPetitDej}}');
-                                        // const dejeuner = document.getElementById('{{$utilisateur->pathDejeuner}}');
-                                        // const diner = document.getElementById('{{$utilisateur->pathDiner}}');
-                                        // const dotel= document.getElementById('{{$utilisateur->pathHotel}}');
-                                        // const aEmporter= document.getElementById('{{$utilisateur->pathAemporter}}');
+                                        const peage{{$i}}  = document.getElementById('{{$utilisateur->pathPeage}}');
+                                        const peage2{{$i}} = document.getElementById('{{$utilisateur->pathPeage2}}');
+                                        const peage3{{$i}} = document.getElementById('{{$utilisateur->pathPeage3}}');
+                                        const peage4{{$i}} = document.getElementById('{{$utilisateur->pathPeage4}}');
+                                        const parking{{$i}} = document.getElementById('{{$utilisateur->pathParking}}');
+                                        const essence{{$i}} = document.getElementById('{{$utilisateur->pathEssence}}');
+                                        const divers{{$i}} = document.getElementById('{{$utilisateur->pathDivers}}');
+                                        const petitDej{{$i}} = document.getElementById('{{$utilisateur->pathPetitDej}}');
+                                        const dejeuner{{$i}} = document.getElementById('{{$utilisateur->pathDejeuner}}');
+                                        const diner{{$i}} = document.getElementById('{{$utilisateur->pathDiner}}');
+                                        const hotel{{$i}} = document.getElementById('{{$utilisateur->pathHotel}}');
+                                        const aEmporter{{$i}} = document.getElementById('{{$utilisateur->pathAemporter}}');
+
+                                        const buttonPeage{{$i}} = document.getElementById('button{{$utilisateur->pathPeage}}');
+                                        const buttonPeage2{{$i}} = document.getElementById('button{{$utilisateur->pathPeage2}}');
+                                        const buttonPeage3{{$i}} = document.getElementById('button{{$utilisateur->pathPeage3}}');
+                                        const buttonPeage4{{$i}} = document.getElementById('button{{$utilisateur->pathPeage4}}');
+                                        const buttonParking{{$i}} = document.getElementById('button{{$utilisateur->pathParking}}');
+                                        const buttonEssence{{$i}} = document.getElementById('button{{$utilisateur->pathEssence}}');
+                                        const buttonDivers{{$i}} = document.getElementById('button{{$utilisateur->pathDivers}}');
+                                        const buttonPetitDej{{$i}} = document.getElementById('button{{$utilisateur->pathPetitDej}}');
+                                        const buttonDejeuner{{$i}} = document.getElementById('button{{$utilisateur->pathDejeuner}}');
+                                        const buttonDiner{{$i}} = document.getElementById('button{{$utilisateur->pathDiner}}');
+                                        const buttonHotel{{$i}} = document.getElementById('button{{$utilisateur->pathHotel}}');
+                                        const buttonAemporter{{$i}} = document.getElementById('button{{$utilisateur->pathAemporter}}');
+
+
+
+
+
+
+
+                            //    buttonPeage{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "block";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonPeage2{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "block";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonPeage3{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "block";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonPeage4{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "block";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonParking{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "block";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonEssence{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "block";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonDivers{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "block";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonPetitDej{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "block";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonDejeuner{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "block";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonDiner{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "block";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonHotel{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "block";
+                            //     aEmporter{{$i}}.style.display = "none";
+                            //    });
+                            //    buttonAemporter{{$i}}.addEventListener('click',()=>{
+                            //     peage{{$i}}.style.display = "none";
+                            //     peage2{{$i}}.style.display = "none";
+                            //     peage3{{$i}}.style.display = "none";
+                            //     peage4{{$i}}.style.display = "none";
+                            //     parking{{$i}}.style.display = "none";
+                            //     essence{{$i}}.style.display = "none";
+                            //     divers{{$i}}.style.display = "none";
+                            //     petitDej{{$i}}.style.display = "none";
+                            //     dejeuner{{$i}}.style.display = "none";
+                            //     diner{{$i}}.style.display = "none";
+                            //     hotel{{$i}}.style.display = "none";
+                            //     aEmporter{{$i}}.style.display = "block";
+                            //    });
+
+
+
 
                                         // buttonPeage.addEventListener('click',()=>{
                                         //     image.style.display = 'none';
@@ -762,8 +946,20 @@
 
 
                                     </script>
+                                    @php
+                                    $i++;
+                                    @endphp
 {{-- <img src="{{Storage::url($utilisateur->pathParking) }}"> --}}
                             @endforeach
+                            <script>
+
+                                image = document.querySelectorAll('.disparait');
+                                tailleImage = image.arraylenght;
+                                console.log(tailleImage);
+
+
+
+                            </script>
                             @php
                                 $SousTotalTransport = $totalDivers + $totalEssence + $totalPeage + $totalParking;
                                 $SousTotalRepasHotels = $totalRepas + $totalHotels;
