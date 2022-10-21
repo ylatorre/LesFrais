@@ -880,9 +880,127 @@
                                 $('#2description').val(info.event._def.extendedProps.description);
                                 $('#2heure_debut').val(info.event._def.extendedProps.heure_debut);
                                 $('#2heure_fin').val(info.event._def.extendedProps.heure_fin);
-                                
 
+                                /////////////////////////////////
+                                // - JS pour la modification des images
+                                /////////////////////////////////
+
+
+                                $('#pathFactureParking').val(info.event._def.extendedProps.pathParking);
+                                const pathFactureParking = document.getElementById('pathFactureParking');
+                                const buttonModifFactureParking = document.getElementById('buttonModifFactureParking');
+                                if(pathFactureParking.value != '0'){
+                                    buttonModifFactureParking.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFactureParking.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFacturePeage').val(info.event._def.extendedProps.pathPeage);
+                                const pathFacturePeage = document.getElementById('pathFacturePeage');
+                                const buttonModifFacturePeage = document.getElementById('buttonModifFacturePeage');
+                                if(pathFacturePeage.value != '0'){
+                                    buttonModifFacturePeage.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFacturePeage.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFacturePeage2').val(info.event._def.extendedProps.pathPeage2);
+                                const pathFacturePeage2 = document.getElementById('pathFacturePeage2');
+                                const buttonModifFacturePeage2 = document.getElementById('buttonModifFacturePeage2');
+                                if(pathFacturePeage2.value != '0'){
+                                    buttonModifFacturePeage2.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFacturePeage2.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFacturePeage3').val(info.event._def.extendedProps.pathPeage3);
+                                const pathFacturePeage3 = document.getElementById('pathFacturePeage3');
+                                const buttonModifFacturePeage3 = document.getElementById('buttonModifFacturePeage3');
+                                if(pathFacturePeage3.value != '0'){
+                                    buttonModifFacturePeage3.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFacturePeage3.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFacturePeage4').val(info.event._def.extendedProps.pathPeage4);
+                                const pathFacturePeage4 = document.getElementById('pathFacturePeage4');
+                                const buttonModifFacturePeage4 = document.getElementById('buttonModifFacturePeage4');
+                                if(pathFacturePeage4.value != '0'){
+                                    buttonModifFacturePeage4.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFacturePeage4.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFactureDivers').val(info.event._def.extendedProps.pathDivers);
+                                const pathFactureDivers = document.getElementById('pathFactureDivers');
+                                const buttonModifFactureDivers = document.getElementById('buttonModifFactureDivers');
+                                if(pathFactureDivers.value != '0'){
+                                    buttonModifFactureDivers.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFactureDivers.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFacturePetitDej').val(info.event._def.extendedProps.pathPetitDej);
+                                const pathFacturePetitDej = document.getElementById('pathFacturePetitDej');
+                                const buttonModifFacturePetitDej = document.getElementById('buttonModifFacturePetitDej');
+                                if(pathFacturePetitDej.value != '0'){
+                                    buttonModifFacturePetitDej.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFacturePetitDej.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFactureDejeuner').val(info.event._def.extendedProps.pathDejeuner);
+                                const pathFactureDejeuner = document.getElementById('pathFactureDejeuner');
+                                const buttonModifFactureDejeuner = document.getElementById('buttonModifFactureDejeuner');
+                                if(pathFactureDejeuner.value != '0'){
+                                    buttonModifFactureDejeuner.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFactureDejeuner.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFactureDiner').val(info.event._def.extendedProps.pathDiner);
+                                const pathFactureDiner = document.getElementById('pathFactureDiner');
+                                const buttonModifFactureDiner = document.getElementById('buttonModifFactureDiner');
+                                if(pathFactureDiner.value != '0'){
+                                    buttonModifFactureDiner.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFactureDiner.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFactureAemporter').val(info.event._def.extendedProps.pathAemporter);
+                                const pathFactureAemporter = document.getElementById('pathFactureAemporter');
+                                const buttonModifFactureAemporter = document.getElementById('buttonModifFactureAemporter');
+                                if(pathFactureAemporter.value != '0'){
+                                    buttonModifFactureAemporter.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFactureAemporter.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFactureHotel').val(info.event._def.extendedProps.pathHotel);
+                                const pathFactureHotel = document.getElementById('pathFactureHotel');
+                                const buttonModifFactureHotel = document.getElementById('buttonModifFactureHotel');
+                                if(pathFactureHotel.value != '0'){
+                                    buttonModifFactureHotel.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFactureHotel.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+                                $('#pathFactureEssence').val(info.event._def.extendedProps.pathEssence);
+                                const pathFactureEssence = document.getElementById('pathFactureEssence');
+                                const buttonModifFactureEssence = document.getElementById('buttonModifFactureEssence');
+                                if(pathFactureEssence.value != '0'){
+                                    buttonModifFactureEssence.style.background = "no-repeat url('./images/mini-check.png')";
+                                }else{
+                                    buttonModifFactureEssence.style.background = "no-repeat url('./images/iconDL.png')";
+                                }
+
+
+
+
+
+                                //////////////////////////////////////////
                                 /* permet la gestion des input dans la modale de modification */
+                                //////////////////////////////////////////
 
                                 const modifKilometrage = document.getElementById('2kilometrage');
                                 const modifEssence = document.getElementById('2essence');

@@ -499,16 +499,16 @@
 
                                 </div>
 
-
+<!--llllll-->
                                 <div class="mb-3 col divInput pr-2">
                                 <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="parking">
                                         Parking
                                     </label>
-                                        <input type="file" name="factureEssence" id="modifFactureEssence"
-                                            accept=".png, .jpg, .jpeg" style="display:none;">
-                                        <input id="buttonModifFactureEssence" class="inputFacture" type="button" 
-                                            onclick="document.getElementById('modifFactureEssence').click();">
+                                        <input id="pathFactureParking" type="hidden" name="pathFactureParking"  value="0">
+                                        <input id="buttonModifFactureParking" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFactureParking').click();">
+                                        <input type="file" id="modifFactureParking" name="modiFactureParking" style="display:none;">
                                 </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -520,9 +520,14 @@
                             {{-- Input Péage | Parking | Divers --}}
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2" id="div2peage">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="peage">Péage
-
                                     </label>
+                                    <input id="pathFacturePeage" type="hidden" name="pathFacturePeage"  value="0">
+                                        <input id="buttonModifFacturePeage" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFacturePeage').click();">
+                                        <input type="file" id="modifFacturePeage" name="modiFacturePeage" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         name="peage" id="2peage" type="number" value="0" min="0"
@@ -530,27 +535,45 @@
 
                                 </div>
                                 <div class="mb-3 col divInput " id="div2peage2">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0 " for="peage2">
                                         Péage 2
                                     </label>
+                                    <input id="pathFacturePeage2" type="hidden" name="pathFacturePeage2"  value="0">
+                                        <input id="buttonModifFacturePeage2" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFacturePeage2').click();">
+                                        <input type="file" id="modifFacturePeage2" name="modiFacturePeage2" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         name="peage2" id="2peage2" type="number" value="0" min="0"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput " id="div2peage3">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="peage3">
                                         Péage 3
                                     </label>
+                                    <input id="pathFacturePeage3" type="hidden" name="pathFacturePeage3"  value="0">
+                                        <input id="buttonModifFacturePeage3" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFacturePeage3').click();">
+                                        <input type="file" id="modifFacturePeage3" name="modiFacturePeage3" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         name="peage3" id="2peage3" type="number" value="0" min="0"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput" id="div2peage4">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="peage4">
                                         Péage 4
                                     </label>
+                                    <input id="pathFacturePeage4" type="hidden" name="pathFacturePeage4"  value="0">
+                                        <input id="buttonModifFacturePeage4" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFacturePeage4').click();">
+                                        <input type="file" id="modifFacturePeage4" name="modiFacturePeage4" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         name="peage4" id="2peage4" type="number" value="0" min="0"
@@ -560,9 +583,15 @@
 
 
                                 <div class="mb-3 col divInput pr-2">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="divers">
                                         Divers
                                     </label>
+                                    <input id="pathFactureDivers" type="hidden" name="pathFactureDivers"  value="0">
+                                        <input id="buttonModifFactureDivers" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFactureDivers').click();">
+                                        <input type="file" id="modifFactureDivers" name="modiFactureDivers" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="divers" id="2divers" type="number" value="0" min="0"
@@ -573,9 +602,15 @@
                             {{-- Input | Hotel | Distance --}}
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="2petitDej">
                                         Pt déjeuner
                                     </label>
+                                    <input id="pathFacturePetitDej" type="hidden" name="pathFacturePetitDej"  value="0">
+                                        <input id="buttonModifFacturePetitDej" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFacturePetitDej').click();">
+                                        <input type="file" id="modifFacturePetitDej" name="modiFacturePetitDej" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="petitDej" id="2petitDej" type="number" value="0" min="0"
@@ -585,18 +620,30 @@
 
                                 @csrf
                                 <div class="mb-3 col divInput" id="div2dejeuner">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="repas">
                                         Déjeuner
                                     </label>
+                                    <input id="pathFactureDejeuner" type="hidden" name="pathFactureDejeuner"  value="0">
+                                        <input id="buttonModifFactureDejeuner" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFactureDejeuner').click();">
+                                        <input type="file" id="modifFactureDejeuner" name="modiFactureDejeuner" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="dejeuner" id="2dejeuner" type="number" value="0" min="0"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput" id="div2diner">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="repas">
                                         Dîner
                                     </label>
+                                    <input id="pathFactureDiner" type="hidden" name="pathFactureDiner"  value="0">
+                                        <input id="buttonModifFactureDiner" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFactureDiner').click();">
+                                        <input type="file" id="modifFactureDiner" name="modiFactureDiner" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="diner" id="2diner" type="number" value="0" min="0"
@@ -604,24 +651,33 @@
 
                                 </div>
                                 <div class="mb-3 col divInput pr-2" id="div2aEmporter">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="2aEmporter">
                                         à emporter
                                     </label>
+                                    <input id="pathFactureAemporter" type="hidden" name="pathFactureAemporter"  value="0">
+                                        <input id="buttonModifFactureAemporter" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFactureAemporter').click();">
+                                        <input type="file" id="modifFactureAemporter" name="modiFactureAemporter" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="aEmporter" id="2aEmporter" type="number" value="0"
                                         min="0" required>
-
                                 </div>
-
-
                             </div>
                             <div class="row">
 
                                 <div class="mb-3 col divInput pl-2">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="hotel">
                                         Hôtel
                                     </label>
+                                    <input id="pathFactureHotel" type="hidden" name="pathFactureHotel"  value="0">
+                                        <input id="buttonModifFactureHotel" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFactureHotel').click();">
+                                        <input type="file" id="modifFactureHotel" name="modiFactureHotel" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="hotel" id="2hotel" type="number" value="0" min="0"
@@ -629,9 +685,15 @@
 
                                 </div>
                                 <div id="div2Essence"class="mb-3 col divInput">
+                                    <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="2essence">
                                         Essence
                                     </label>
+                                    <input id="pathFactureEssence" type="hidden" name="pathFactureEssence"  value="0">
+                                        <input id="buttonModifFactureEssence" class="inputFacture" type="button"
+                                            onclick="document.getElementById('modifFactureEssence').click();">
+                                        <input type="file" id="modifFactureEssence" name="modiFactureEssence" style="display:none;">
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         id="2essence" name="essence" type="number" min="0" value="0"
@@ -641,6 +703,7 @@
                                     <label class="inline-block mb-0" for="2kilometrage">
                                         Distance( km )
                                     </label>
+
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         id="2kilometrage" name="kilometrage" type="number" min="0"
