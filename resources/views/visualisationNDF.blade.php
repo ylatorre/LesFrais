@@ -159,10 +159,10 @@
         .validerNDF {
             padding: 0.7rem;
             margin-bottom:5px;
-            border: 4px solid rgb(0, 151, 0);
+            border: 3px solid black;
             border-radius: 0.75rem;
-            background: #202020 !important;
-            color: white;
+            background: #c5c5c5 !important;
+            color:black;
             font-family: 'nunito', sans-serif;
             font-weight: bold;
             font-size: 12px;
@@ -172,10 +172,10 @@
         .supprimerNDF {
             padding: 0.7rem;
             margin-bottom:5px;
-            border: 4px solid rgb(155, 11, 11);
+            border: 3px solid black;
             border-radius: 0.75rem;
-            background: #202020 !important;
-            color: white;
+            background: #c5c5c5  !important;
+            color:black;
             font-family: 'nunito', sans-serif;
             font-weight: bold;
             font-size: 12px;
@@ -344,28 +344,12 @@
             }
 
             .validerNDF {
-                border: 4px solid rgb(0, 151, 0);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
                 font-size: 10px;
-                transition: 100ms ease-in;
             }
 
             .supprimerNDF {
-
-                border: 4px solid rgb(155, 11, 11);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
                 font-size: 10px;
-                transition: 100ms ease-in;
-            }
-
-
-
+        }
         }
 
         @media screen and (max-width:560px) {
@@ -417,25 +401,11 @@
             }
 
             .validerNDF {
-
-                border: 2px solid rgb(0, 151, 0);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
                 font-size: 8px;
-                transition: 100ms ease-in;
             }
 
             .supprimerNDF {
-
-                border: 2px solid rgb(155, 11, 11);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
                 font-size: 8px;
-                transition: 100ms ease-in;
             }
 
 
@@ -475,24 +445,11 @@
             }
 
             .validerNDF {
-                border: 2px solid rgb(0, 151, 0);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
                 font-size: 8px;
-                transition: 100ms ease-in;
             }
 
             .supprimerNDF {
-
-                border: 2px solid rgb(155, 11, 11);
-                background: #202020 !important;
-                color: white;
-                font-family: 'nunito', sans-serif;
-                font-weight: bold;
                 font-size: 8px;
-                transition: 100ms ease-in;
             }
 
 
