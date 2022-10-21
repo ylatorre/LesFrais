@@ -299,6 +299,81 @@
                     buttonFactureEssence.style.background = "no-repeat url('./images/mini-check.png')";
                 });
 
+///////////////////////////////
+// - Gestion des inputs file dans la modale de modification
+///////////////////////////////
+
+                const buttonModifFactureParking = document.getElementById('buttonModifFactureParking');
+                const modifFactureParking = document.getElementById('modifFactureParking');
+                modifFactureParking.addEventListener('change',()=>{
+                    buttonModifFactureParking.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFacturePeage = document.getElementById('buttonModifFacturePeage');
+                const modifFacturePeage = document.getElementById('modifFacturePeage');
+                modifFacturePeage.addEventListener('change',()=>{
+                    buttonModifFacturePeage.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFacturePeage2 = document.getElementById('buttonModifFacturePeage2');
+                const modifFacturePeage2 = document.getElementById('modifFacturePeage2');
+                modifFacturePeage2.addEventListener('change',()=>{
+                    buttonModifFacturePeage2.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFacturePeage3 = document.getElementById('buttonModifFacturePeage3');
+                const modifFacturePeage3 = document.getElementById('modifFacturePeage3');
+                modifFacturePeage3.addEventListener('change',()=>{
+                    buttonModifFacturePeage3.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFacturePeage4 = document.getElementById('buttonModifFacturePeage4');
+                const modifFacturePeage4 = document.getElementById('modifFacturePeage4');
+                modifFacturePeage4.addEventListener('change',()=>{
+                    buttonModifFacturePeage4.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFactureDivers = document.getElementById('buttonModifFactureDivers');
+                const modifFactureDivers = document.getElementById('modifFactureDivers');
+                modifFactureDivers.addEventListener('change',()=>{
+                    buttonModifFactureDivers.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFacturePetitDej = document.getElementById('buttonModifFacturePetitDej');
+                const modifFacturePetitDej = document.getElementById('modifFacturePetitDej');
+                modifFacturePetitDej.addEventListener('change',()=>{
+                    buttonModifFacturePetitDej.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFactureDejeuner = document.getElementById('buttonModifFactureDejeuner');
+                const modifFactureDejeuner = document.getElementById('modifFactureDejeuner');
+                modifFactureDejeuner.addEventListener('change',()=>{
+                    buttonModifFactureDejeuner.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFactureDiner = document.getElementById('buttonModifFactureDiner');
+                const modifFactureDiner = document.getElementById('modifFactureDiner');
+                modifFactureDiner.addEventListener('change',()=>{
+                    buttonModifFactureDiner.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFactureAemporter = document.getElementById('buttonModifFactureAemporter');
+                const modifFactureAemporter = document.getElementById('modifFactureAemporter');
+                modifFactureAemporter.addEventListener('change',()=>{
+                    buttonModifFactureAemporter.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFactureHotel = document.getElementById('buttonModifFactureHotel');
+                const modifFactureHotel = document.getElementById('modifFactureHotel');
+                modifFactureHotel.addEventListener('change',()=>{
+                    buttonModifFactureHotel.style.background = "no-repeat url('./images/mini-check.png')";
+                });
+
+                const buttonModifFactureEssence = document.getElementById('buttonModifFactureEssence');
+                const modifFactureEssence = document.getElementById('modifFactureEssence');
+                modifFactureEssence.addEventListener('change',()=>{
+                    buttonModifFactureEssence.style.background = "no-repeat url('./images/mini-check.png')";
+                });
 
 
 
@@ -888,7 +963,6 @@
 
                                 $('#pathFactureParking').val(info.event._def.extendedProps.pathParking);
                                 const pathFactureParking = document.getElementById('pathFactureParking');
-                                const buttonModifFactureParking = document.getElementById('buttonModifFactureParking');
                                 if(pathFactureParking.value != '0'){
                                     buttonModifFactureParking.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -897,7 +971,6 @@
 
                                 $('#pathFacturePeage').val(info.event._def.extendedProps.pathPeage);
                                 const pathFacturePeage = document.getElementById('pathFacturePeage');
-                                const buttonModifFacturePeage = document.getElementById('buttonModifFacturePeage');
                                 if(pathFacturePeage.value != '0'){
                                     buttonModifFacturePeage.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -906,7 +979,6 @@
 
                                 $('#pathFacturePeage2').val(info.event._def.extendedProps.pathPeage2);
                                 const pathFacturePeage2 = document.getElementById('pathFacturePeage2');
-                                const buttonModifFacturePeage2 = document.getElementById('buttonModifFacturePeage2');
                                 if(pathFacturePeage2.value != '0'){
                                     buttonModifFacturePeage2.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -915,7 +987,6 @@
 
                                 $('#pathFacturePeage3').val(info.event._def.extendedProps.pathPeage3);
                                 const pathFacturePeage3 = document.getElementById('pathFacturePeage3');
-                                const buttonModifFacturePeage3 = document.getElementById('buttonModifFacturePeage3');
                                 if(pathFacturePeage3.value != '0'){
                                     buttonModifFacturePeage3.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -924,7 +995,6 @@
 
                                 $('#pathFacturePeage4').val(info.event._def.extendedProps.pathPeage4);
                                 const pathFacturePeage4 = document.getElementById('pathFacturePeage4');
-                                const buttonModifFacturePeage4 = document.getElementById('buttonModifFacturePeage4');
                                 if(pathFacturePeage4.value != '0'){
                                     buttonModifFacturePeage4.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -933,7 +1003,6 @@
 
                                 $('#pathFactureDivers').val(info.event._def.extendedProps.pathDivers);
                                 const pathFactureDivers = document.getElementById('pathFactureDivers');
-                                const buttonModifFactureDivers = document.getElementById('buttonModifFactureDivers');
                                 if(pathFactureDivers.value != '0'){
                                     buttonModifFactureDivers.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -942,7 +1011,6 @@
 
                                 $('#pathFacturePetitDej').val(info.event._def.extendedProps.pathPetitDej);
                                 const pathFacturePetitDej = document.getElementById('pathFacturePetitDej');
-                                const buttonModifFacturePetitDej = document.getElementById('buttonModifFacturePetitDej');
                                 if(pathFacturePetitDej.value != '0'){
                                     buttonModifFacturePetitDej.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -951,7 +1019,6 @@
 
                                 $('#pathFactureDejeuner').val(info.event._def.extendedProps.pathDejeuner);
                                 const pathFactureDejeuner = document.getElementById('pathFactureDejeuner');
-                                const buttonModifFactureDejeuner = document.getElementById('buttonModifFactureDejeuner');
                                 if(pathFactureDejeuner.value != '0'){
                                     buttonModifFactureDejeuner.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -960,7 +1027,6 @@
 
                                 $('#pathFactureDiner').val(info.event._def.extendedProps.pathDiner);
                                 const pathFactureDiner = document.getElementById('pathFactureDiner');
-                                const buttonModifFactureDiner = document.getElementById('buttonModifFactureDiner');
                                 if(pathFactureDiner.value != '0'){
                                     buttonModifFactureDiner.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -969,7 +1035,6 @@
 
                                 $('#pathFactureAemporter').val(info.event._def.extendedProps.pathAemporter);
                                 const pathFactureAemporter = document.getElementById('pathFactureAemporter');
-                                const buttonModifFactureAemporter = document.getElementById('buttonModifFactureAemporter');
                                 if(pathFactureAemporter.value != '0'){
                                     buttonModifFactureAemporter.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -978,7 +1043,6 @@
 
                                 $('#pathFactureHotel').val(info.event._def.extendedProps.pathHotel);
                                 const pathFactureHotel = document.getElementById('pathFactureHotel');
-                                const buttonModifFactureHotel = document.getElementById('buttonModifFactureHotel');
                                 if(pathFactureHotel.value != '0'){
                                     buttonModifFactureHotel.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
@@ -987,7 +1051,7 @@
 
                                 $('#pathFactureEssence').val(info.event._def.extendedProps.pathEssence);
                                 const pathFactureEssence = document.getElementById('pathFactureEssence');
-                                const buttonModifFactureEssence = document.getElementById('buttonModifFactureEssence');
+
                                 if(pathFactureEssence.value != '0'){
                                     buttonModifFactureEssence.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
