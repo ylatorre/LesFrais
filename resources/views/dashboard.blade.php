@@ -466,7 +466,7 @@
                     </div>
                     {{-- modal body --}}
                     <div class="overflow-hidden block p-[10px]">
-                        <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent">
+                        <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent" enctype="multipart/form-data">
                             @csrf
                             {{-- Input client --}}
                             <div class="row">
@@ -508,7 +508,7 @@
                                         <input id="pathFactureParking" type="hidden" name="pathFactureParking"  value="0">
                                         <input id="buttonModifFactureParking" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureParking').click();">
-                                        <input type="file" id="modifFactureParking" name="modiFactureParking" style="display:none;">
+                                        <input type="file" id="modifFactureParking" accept=".png, .jpeg, .jpg" name="modifFactureParking" style="display:none;">
                                 </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -526,7 +526,7 @@
                                     <input id="pathFacturePeage" type="hidden" name="pathFacturePeage"  value="0">
                                         <input id="buttonModifFacturePeage" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFacturePeage').click();">
-                                        <input type="file" id="modifFacturePeage" name="modiFacturePeage" style="display:none;">
+                                        <input type="file" id="modifFacturePeage" accept=".png, .jpeg, .jpg" name="modifFacturePeage" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -542,7 +542,7 @@
                                     <input id="pathFacturePeage2" type="hidden" name="pathFacturePeage2"  value="0">
                                         <input id="buttonModifFacturePeage2" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFacturePeage2').click();">
-                                        <input type="file" id="modifFacturePeage2" name="modiFacturePeage2" style="display:none;">
+                                        <input type="file" id="modifFacturePeage2" accept=".png, .jpeg, .jpg" name="modifFacturePeage2" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -557,7 +557,7 @@
                                     <input id="pathFacturePeage3" type="hidden" name="pathFacturePeage3"  value="0">
                                         <input id="buttonModifFacturePeage3" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFacturePeage3').click();">
-                                        <input type="file" id="modifFacturePeage3" name="modiFacturePeage3" style="display:none;">
+                                        <input type="file" id="modifFacturePeage3" accept=".png, .jpeg, .jpg" name="modifFacturePeage3" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -572,7 +572,7 @@
                                     <input id="pathFacturePeage4" type="hidden" name="pathFacturePeage4"  value="0">
                                         <input id="buttonModifFacturePeage4" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFacturePeage4').click();">
-                                        <input type="file" id="modifFacturePeage4" name="modiFacturePeage4" style="display:none;">
+                                        <input type="file" id="modifFacturePeage4" accept=".png, .jpeg, .jpg" name="modifFacturePeage4" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -590,7 +590,7 @@
                                     <input id="pathFactureDivers" type="hidden" name="pathFactureDivers"  value="0">
                                         <input id="buttonModifFactureDivers" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureDivers').click();">
-                                        <input type="file" id="modifFactureDivers" name="modiFactureDivers" style="display:none;">
+                                        <input type="file" id="modifFactureDivers" accept=".png, .jpeg, .jpg" name="modifFactureDivers" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -609,7 +609,7 @@
                                     <input id="pathFacturePetitDej" type="hidden" name="pathFacturePetitDej"  value="0">
                                         <input id="buttonModifFacturePetitDej" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFacturePetitDej').click();">
-                                        <input type="file" id="modifFacturePetitDej" name="modiFacturePetitDej" style="display:none;">
+                                        <input type="file" id="modifFacturePetitDej" accept=".png, .jpeg, .jpg" name="modifFacturePetitDej" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -627,7 +627,7 @@
                                     <input id="pathFactureDejeuner" type="hidden" name="pathFactureDejeuner"  value="0">
                                         <input id="buttonModifFactureDejeuner" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureDejeuner').click();">
-                                        <input type="file" id="modifFactureDejeuner" name="modiFactureDejeuner" style="display:none;">
+                                        <input type="file" id="modifFactureDejeuner" accept=".png, .jpeg, .jpg" name="modifFactureDejeuner" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -642,7 +642,7 @@
                                     <input id="pathFactureDiner" type="hidden" name="pathFactureDiner"  value="0">
                                         <input id="buttonModifFactureDiner" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureDiner').click();">
-                                        <input type="file" id="modifFactureDiner" name="modiFactureDiner" style="display:none;">
+                                        <input type="file" id="modifFactureDiner" accept=".png, .jpeg, .jpg" name="modifFactureDiner" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -658,7 +658,7 @@
                                     <input id="pathFactureAemporter" type="hidden" name="pathFactureAemporter"  value="0">
                                         <input id="buttonModifFactureAemporter" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureAemporter').click();">
-                                        <input type="file" id="modifFactureAemporter" name="modiFactureAemporter" style="display:none;">
+                                        <input type="file" id="modifFactureAemporter" accept=".png, .jpeg, .jpg" name="modifFactureAemporter" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -676,7 +676,7 @@
                                     <input id="pathFactureHotel" type="hidden" name="pathFactureHotel"  value="0">
                                         <input id="buttonModifFactureHotel" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureHotel').click();">
-                                        <input type="file" id="modifFactureHotel" name="modiFactureHotel" style="display:none;">
+                                        <input type="file" id="modifFactureHotel" accept=".png, .jpeg, .jpg" name="modifFactureHotel" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -692,7 +692,7 @@
                                     <input id="pathFactureEssence" type="hidden" name="pathFactureEssence"  value="0">
                                         <input id="buttonModifFactureEssence" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureEssence').click();">
-                                        <input type="file" id="modifFactureEssence" name="modiFactureEssence" style="display:none;">
+                                        <input type="file" id="modifFactureEssence" accept=".png, .jpeg, .jpg" name="modifFactureEssence" style="display:none;">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"

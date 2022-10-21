@@ -560,7 +560,7 @@ class Controller extends BaseController
 
     public function ModifierEvent(Request $request)
     {
-
+        dd($request);
         $eventEnQuestion = DB::table('events')->where('id', '=', $request->eventID)->update([
             'start' => $request->start,
             'end' => $request->end,
