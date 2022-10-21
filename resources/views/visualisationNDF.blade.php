@@ -159,35 +159,37 @@
         .validerNDF {
             padding: 0.7rem;
             margin-bottom:5px;
-            border: 3px solid black;
+            border: 4px solid black;
             border-radius: 0.75rem;
-            background: #c5c5c5 !important;
-            color:black;
+            background: #17458a;
+            color:white;
             font-family: 'nunito', sans-serif;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 16px;
             transition: 100ms ease-in;
         }
 
         .supprimerNDF {
             padding: 0.7rem;
             margin-bottom:5px;
-            border: 3px solid black;
+            border: 4px solid black;
             border-radius: 0.75rem;
-            background: #c5c5c5  !important;
-            color:black;
+            background: #a51818;
+            color:white;
             font-family: 'nunito', sans-serif;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 16px;
             transition: 100ms ease-in;
         }
 
         .validerNDF:hover {
-            border: 4px solid rgb(56, 56, 56);
+
+            background: rgb(64, 61, 233);
         }
 
         .supprimerNDF:hover {
-            border: 4px solid rgb(56, 56, 56);
+            
+            background: #ca3e3e;
         }
 
         .disparait {

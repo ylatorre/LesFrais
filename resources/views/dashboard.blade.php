@@ -501,9 +501,15 @@
 
 
                                 <div class="mb-3 col divInput pr-2">
+                                <div class="flex flex-row justify-between">
                                     <label class="inline-block mb-0" for="parking">
                                         Parking
                                     </label>
+                                        <input type="file" name="factureEssence" id="modifFactureEssence"
+                                            accept=".png, .jpg, .jpeg" style="display:none;">
+                                        <input id="buttonModifFactureEssence" class="inputFacture" type="button" 
+                                            onclick="document.getElementById('modifFactureEssence').click();">
+                                </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="parking" id="2parking" type="number" value="0" min="0"

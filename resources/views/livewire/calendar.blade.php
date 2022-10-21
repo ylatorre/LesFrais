@@ -880,6 +880,7 @@
                                 $('#2description').val(info.event._def.extendedProps.description);
                                 $('#2heure_debut').val(info.event._def.extendedProps.heure_debut);
                                 $('#2heure_fin').val(info.event._def.extendedProps.heure_fin);
+                                
 
                                 /* permet la gestion des input dans la modale de modification */
 
