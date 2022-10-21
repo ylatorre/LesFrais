@@ -753,31 +753,31 @@
                                 @if ($utilisateur->pathPeage != '0')
                                     <div id="{{ $utilisateur->pathPeage }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage }}').style.display = 'none'  ; ">
-                                        <img src="{{ Storage::url($utilisateur->pathPeage) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathPeage2 != '0')
                                     <div id="{{ $utilisateur->pathPeage2 }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage2 }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathPeage2) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage2) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathPeage3 != '0')
                                     <div id="{{ $utilisateur->pathPeage3 }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage3 }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathPeage3) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage3) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathPeage4 != '0')
                                     <div id="{{ $utilisateur->pathPeage4 }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage4 }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathPeage4) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage4) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathParking != '0')
                                     <div id="{{ $utilisateur->pathParking }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathParking }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathParking) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathParking) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathEssence != '0')
@@ -789,37 +789,37 @@
                                 @if ($utilisateur->pathDivers != '0')
                                     <div id="{{ $utilisateur->pathDivers }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathDivers }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathDivers) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDivers) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathPetitDej != '0')
                                     <div id="{{ $utilisateur->pathPetitDej }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPetitDej }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathPetitDej) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPetitDej) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathDejeuner != '0')
                                     <div id="{{ $utilisateur->pathDejeuner }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathDejeuner }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathDejeuner) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDejeuner) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathDiner != '0')
                                     <div id="{{ $utilisateur->pathDiner }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathDiner }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathDiner) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDiner) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathHotel != '0')
                                     <div id="{{ $utilisateur->pathHotel }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathHotel }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathHotel) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathHotel) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathAemporter != '0')
                                     <div id="{{ $utilisateur->pathAemporter }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathAemporter }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathAemporter) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathAemporter) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
 

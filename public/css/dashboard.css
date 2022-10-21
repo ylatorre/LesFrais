@@ -251,7 +251,7 @@
 .inputFacture{
     width: 24px !important;
     height: 24px !important;
-    background:no-repeat url(/images/iconDL.png?f864bd777f13c61ffe959e85862a642c);
+    background:no-repeat url('/LesFrais/public/images/iconDL.png');
     cursor:pointer;
 }
 
