@@ -544,50 +544,74 @@ class Controller extends BaseController
         if($request->modifFactureParking != null ){
             Storage::disk('public')->delete($request->pathFactureParking);
             $newPathParking = Storage::disk('public')->put($folderName,$request->file('modifFactureParking'));
+        }else{
+            $newPathParking = "0";
         }
         if($request->modifFacturePeage != null ){
             Storage::disk('public')->delete($request->pathFacturePeage);
             $newPathPeage = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage'));
+        }else{
+            $newPathPeage = "0";
         }
         if($request->modifFacturePeage2 != null ){
             Storage::disk('public')->delete($request->pathFacturePeage2);
             $newPathPeage2 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage2'));
+        }else{
+            $newPathPeage2 = "0";
         }
         if($request->modifFacturePeage3 != null ){
             Storage::disk('public')->delete($request->pathFacturePeage3);
             $newPathPeage3 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage3'));
+        }else{
+            $newPathPeage3= "0";
         }
         if($request->modifFacturePeage4 != null ){
             Storage::disk('public')->delete($request->pathFacturePeage4);
             $newPathPeage4 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage4'));
+        }else{
+            $newPathPeage4 = "0";
         }
         if($request->modifFactureDivers != null ){
             Storage::disk('public')->delete($request->pathFactureDivers);
             $newPathDivers = Storage::disk('public')->put($folderName,$request->file('modifFactureDivers'));
+        }else{
+            $newPathDivers = "0";
         }
         if($request->modifFacturePetitDej != null ){
             Storage::disk('public')->delete($request->pathFacturePetitDej);
             $newPathPetitDej = Storage::disk('public')->put($folderName,$request->file('modifFacturePetitDej'));
+        }else{
+            $newPathPetitDej = "0";
         }
         if($request->modifFactureDejeuner != null ){
             Storage::disk('public')->delete($request->pathFactureDejeuner);
             $newPathDejeuner = Storage::disk('public')->put($folderName,$request->file('modifFactureDejeuner'));
+        }else{
+            $newPathDejeuner = "0";
         }
         if($request->modifFactureDiner != null ){
             Storage::disk('public')->delete($request->pathFactureDiner);
             $newPathDiner = Storage::disk('public')->put($folderName,$request->file('modifFactureDiner'));
+        }else{
+            $newPathDiner = "0";
         }
         if($request->modifFactureAemporter != null ){
             Storage::disk('public')->delete($request->pathFactureAemporter);
             $newPathAemporter = Storage::disk('public')->put($folderName,$request->file('modifFactureAemporter'));
+        }else{
+            $newPathAemporter = "0";
         }
         if($request->modifFactureHotel != null ){
             Storage::disk('public')->delete($request->pathFactureHotel);
             $newPathHotel = Storage::disk('public')->put($folderName,$request->file('modifFactureHotel'));
+        }else{
+            $newPathHotel = "0";
         }
         if($request->modifFactureEssence != null ){
             Storage::disk('public')->delete($request->pathFactureEssence);
             $newPathEssence = Storage::disk('public')->put($folderName,$request->file('modifFactureEssence'));
+        }else{
+            $newPathEssence = "0";
         }
 
         $eventEnQuestion = DB::table('events')->where('id', '=', $request->eventID)->update([
@@ -627,8 +651,6 @@ class Controller extends BaseController
             'pathAemporter' => $newPathAemporter,
             'pathHotel' => $newPathHotel,
             'pathEssence' => $newPathEssence,
-
-
 
         ]);
 
