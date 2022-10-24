@@ -222,7 +222,6 @@
                     }
                 })
 
-
                 /* -- changement de logo quand l'input type="file" est saisi -- */
 
                 const inputFactureParking = document.getElementById('factureParking');
@@ -306,73 +305,73 @@
                 const buttonModifFactureParking = document.getElementById('buttonModifFactureParking');
                 const modifFactureParking = document.getElementById('modifFactureParking');
                 modifFactureParking.addEventListener('change',()=>{
-                    buttonModifFactureParking.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFactureParking.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFacturePeage = document.getElementById('buttonModifFacturePeage');
                 const modifFacturePeage = document.getElementById('modifFacturePeage');
                 modifFacturePeage.addEventListener('change',()=>{
-                    buttonModifFacturePeage.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFacturePeage.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFacturePeage2 = document.getElementById('buttonModifFacturePeage2');
                 const modifFacturePeage2 = document.getElementById('modifFacturePeage2');
                 modifFacturePeage2.addEventListener('change',()=>{
-                    buttonModifFacturePeage2.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFacturePeage2.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFacturePeage3 = document.getElementById('buttonModifFacturePeage3');
                 const modifFacturePeage3 = document.getElementById('modifFacturePeage3');
                 modifFacturePeage3.addEventListener('change',()=>{
-                    buttonModifFacturePeage3.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFacturePeage3.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFacturePeage4 = document.getElementById('buttonModifFacturePeage4');
                 const modifFacturePeage4 = document.getElementById('modifFacturePeage4');
                 modifFacturePeage4.addEventListener('change',()=>{
-                    buttonModifFacturePeage4.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFacturePeage4.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFactureDivers = document.getElementById('buttonModifFactureDivers');
                 const modifFactureDivers = document.getElementById('modifFactureDivers');
                 modifFactureDivers.addEventListener('change',()=>{
-                    buttonModifFactureDivers.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFactureDivers.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFacturePetitDej = document.getElementById('buttonModifFacturePetitDej');
                 const modifFacturePetitDej = document.getElementById('modifFacturePetitDej');
                 modifFacturePetitDej.addEventListener('change',()=>{
-                    buttonModifFacturePetitDej.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFacturePetitDej.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFactureDejeuner = document.getElementById('buttonModifFactureDejeuner');
                 const modifFactureDejeuner = document.getElementById('modifFactureDejeuner');
                 modifFactureDejeuner.addEventListener('change',()=>{
-                    buttonModifFactureDejeuner.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFactureDejeuner.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFactureDiner = document.getElementById('buttonModifFactureDiner');
                 const modifFactureDiner = document.getElementById('modifFactureDiner');
                 modifFactureDiner.addEventListener('change',()=>{
-                    buttonModifFactureDiner.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFactureDiner.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFactureAemporter = document.getElementById('buttonModifFactureAemporter');
                 const modifFactureAemporter = document.getElementById('modifFactureAemporter');
                 modifFactureAemporter.addEventListener('change',()=>{
-                    buttonModifFactureAemporter.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFactureAemporter.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFactureHotel = document.getElementById('buttonModifFactureHotel');
                 const modifFactureHotel = document.getElementById('modifFactureHotel');
                 modifFactureHotel.addEventListener('change',()=>{
-                    buttonModifFactureHotel.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFactureHotel.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
                 const buttonModifFactureEssence = document.getElementById('buttonModifFactureEssence');
                 const modifFactureEssence = document.getElementById('modifFactureEssence');
                 modifFactureEssence.addEventListener('change',()=>{
-                    buttonModifFactureEssence.style.background = "no-repeat url('./images/mini-check.png')";
+                    buttonModifFactureEssence.style.background = "no-repeat url('./images/remplacer.png')";
                 });
 
 
@@ -930,7 +929,6 @@
                                 //remplir les input avec les valeurs de l'événement
                                 // console.log(info.event);
 
-
                                 $('#2start').val(startDate);
                                 $('#2end').val(endDate);
                                 $('#2mois').val(dateactuelle);
@@ -957,7 +955,7 @@
                                 $('#2heure_fin').val(info.event._def.extendedProps.heure_fin);
 
                                 /////////////////////////////////
-                                // - JS pour la modification des images
+                                // - JS pour la modification des images - //
                                 /////////////////////////////////
 
 
@@ -1051,20 +1049,13 @@
 
                                 $('#pathFactureEssence').val(info.event._def.extendedProps.pathEssence);
                                 const pathFactureEssence = document.getElementById('pathFactureEssence');
-
                                 if(pathFactureEssence.value != '0'){
                                     buttonModifFactureEssence.style.background = "no-repeat url('./images/mini-check.png')";
                                 }else{
                                     buttonModifFactureEssence.style.background = "no-repeat url('./images/iconDL.png')";
                                 }
 
-
-
-
-
-                                //////////////////////////////////////////
-                                /* permet la gestion des input dans la modale de modification */
-                                //////////////////////////////////////////
+                                ///////////////////////////////////////////////////////////////////////////////////////////////
 
                                 const modifKilometrage = document.getElementById('2kilometrage');
                                 const modifEssence = document.getElementById('2essence');
@@ -1076,8 +1067,6 @@
                                     modifEssence.readOnly = "true";
                                 }
 
-
-
                                 $('#supprimer').on('click', function() {
                                     $("#formSupprimerEvent").submit();
                                 });
@@ -1085,7 +1074,6 @@
                                 const id = info.event.id;
 
                                 //ajouter le bouton supprimer dans le modal
-
 
                                 //appliquer les changement
                                 $('#2validation').on('click', function() {
@@ -1097,14 +1085,11 @@
                                         $("#2kilometrage").val(0);
                                     }
 
-
                                  $("#formModificationEvent").submit();
 
                                 });
 
-
                                 //bouton de suppression d'événement
-
 
                             }
 
