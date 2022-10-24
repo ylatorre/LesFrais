@@ -33,11 +33,9 @@ class Controller extends BaseController
         $lockedMonth = DB::table('events')->where('idUser', "=", Auth::user()->id)->orderBy("mois", "desc")->get();
         $moisNDF = DB::table('infosndfs')->where("Utilisateur", "=", Auth::user()->name)->get(); // on recupère le mois actuel et si il n'est n'est pas valide en bdd on le grise
 
-
         /* - récupération des mois à vérrouiller  */
         $moisValide = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where('Valide', '=', 1)->get();
         $moisValidationEnCours = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where('ValidationEnCours', '=', 1)->get();
-
 
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("Valide", "=", "1");
         $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('utilisateur', "=", Auth::user()->name)->where('ValidationEnCours', "=", "1");
@@ -51,8 +49,6 @@ class Controller extends BaseController
             };
         }
         $uniqueMonth = implode(',', $uniqueMonth);
-
-
 
         return view('dashboard', compact([
             'uniqueMonth',
@@ -345,18 +341,12 @@ class Controller extends BaseController
 
     public function ValidationNDF(Request $request)
     {
-
-
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start", "asc")->orderBy("title", "asc")->get();
-
-
-
 
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect('dashboard');
         }
-
 
         $dateNDF = explode("-", $utilisateurs[0]->mois);
 
@@ -415,9 +405,6 @@ class Controller extends BaseController
             return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
-
-
-
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', $request->employe)->where('MoisEnCours', '=', $request->moisNDF)->get();
 
         return view('visualisationNDF', [
@@ -431,15 +418,12 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
-
-
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValideePar' => Auth::user()->name]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['DateValidation' => date('d/m/Y')]);
 
         $salarie = DB::table('users')->where('name','=',$request->username)->get();
-
 
         $dateNDF = explode("-", $request->moisndf);
 
@@ -486,17 +470,11 @@ class Controller extends BaseController
                 break;
         };
 
-
         $moisNDF = $moisDateNDF . " " . $dateNDF[0];
-
 
         $moderator = DB::table('users')->where('id','=',Auth::user()->id)->get();
 
-
-
-
         Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator,$salarie,$moisNDF));
-
 
         Session::flash('validatesuccess', 'La note de frais à été validée !');
 
@@ -507,20 +485,17 @@ class Controller extends BaseController
 
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->delete();
 
-
         return redirect(route('gestionaireUser'));
     }
     public function mesNDF()
     {
         $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->get();
-
         $idUser = Auth::user()->id;
 
         return view('mesndfs', ['authInfosndfs' => $authInfosndfs, 'idUser' => $idUser]);
     }
     public function visumesndf(Request $request)
     {
-
         return redirect(route('mesNDF'));
     }
 
@@ -533,7 +508,6 @@ class Controller extends BaseController
         dd('interception');
         return redirect("/dashboard");
     }
-
 
     public function supprimerEvent(Request $request)
     {
@@ -557,10 +531,65 @@ class Controller extends BaseController
         return redirect("/dashboard");
     }
 
-
     public function ModifierEvent(Request $request)
     {
-        dd($request);
+
+        $userEvent = DB::table('users')->where('id','=',$request->idUser)->get();
+        $folderName = $userEvent[0]->name."-".$request->mois;
+
+/////////////////////////
+// - Si une image a été entrée dans la modif, on supprime l'ancienne, on sauvegarde la nouvelle avec storage puis on modifie le chemin en BDD //
+/////////////////////////
+
+        if($request->modifFactureParking != null ){
+            Storage::disk('public')->delete($request->pathFactureParking);
+            $newPathParking = Storage::disk('public')->put($folderName,$request->file('modifFactureParking'));
+        }
+        if($request->modifFacturePeage != null ){
+            Storage::disk('public')->delete($request->pathFacturePeage);
+            $newPathPeage = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage'));
+        }
+        if($request->modifFacturePeage2 != null ){
+            Storage::disk('public')->delete($request->pathFacturePeage2);
+            $newPathPeage2 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage2'));
+        }
+        if($request->modifFacturePeage3 != null ){
+            Storage::disk('public')->delete($request->pathFacturePeage3);
+            $newPathPeage3 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage3'));
+        }
+        if($request->modifFacturePeage4 != null ){
+            Storage::disk('public')->delete($request->pathFacturePeage4);
+            $newPathPeage4 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage4'));
+        }
+        if($request->modifFactureDivers != null ){
+            Storage::disk('public')->delete($request->pathFactureDivers);
+            $newPathDivers = Storage::disk('public')->put($folderName,$request->file('modifFactureDivers'));
+        }
+        if($request->modifFacturePetitDej != null ){
+            Storage::disk('public')->delete($request->pathFacturePetitDej);
+            $newPathPetitDej = Storage::disk('public')->put($folderName,$request->file('modifFacturePetitDej'));
+        }
+        if($request->modifFactureDejeuner != null ){
+            Storage::disk('public')->delete($request->pathFactureDejeuner);
+            $newPathDejeuner = Storage::disk('public')->put($folderName,$request->file('modifFactureDejeuner'));
+        }
+        if($request->modifFactureDiner != null ){
+            Storage::disk('public')->delete($request->pathFactureDiner);
+            $newPathDiner = Storage::disk('public')->put($folderName,$request->file('modifFactureDiner'));
+        }
+        if($request->modifFactureAemporter != null ){
+            Storage::disk('public')->delete($request->pathFactureAemporter);
+            $newPathAemporter = Storage::disk('public')->put($folderName,$request->file('modifFactureAemporter'));
+        }
+        if($request->modifFactureHotel != null ){
+            Storage::disk('public')->delete($request->pathFactureHotel);
+            $newPathHotel = Storage::disk('public')->put($folderName,$request->file('modifFactureHotel'));
+        }
+        if($request->modifFactureEssence != null ){
+            Storage::disk('public')->delete($request->pathFactureEssence);
+            $newPathEssence = Storage::disk('public')->put($folderName,$request->file('modifFactureEssence'));
+        }
+
         $eventEnQuestion = DB::table('events')->where('id', '=', $request->eventID)->update([
             'start' => $request->start,
             'end' => $request->end,
@@ -586,12 +615,24 @@ class Controller extends BaseController
             'heure_fin' => $request->heureFin,
             'idUser' => $request->idUser,
 
+            'pathParking' => $newPathParking,
+            'pathPeage' => $newPathPeage,
+            'pathPeage2' => $newPathPeage2,
+            'pathPeage3' => $newPathPeage3,
+            'pathPeage4' => $newPathPeage4,
+            'pathDivers' => $newPathDivers,
+            'pathPetitDej' => $newPathPetitDej,
+            'pathDejeuner' => $newPathDejeuner,
+            'pathDiner' => $newPathDiner,
+            'pathAemporter' => $newPathAemporter,
+            'pathHotel' => $newPathHotel,
+            'pathEssence' => $newPathEssence,
+
+
+
         ]);
 
-
-        Session::flash("modifEvent", "L'évènement à bien été modifié !");
-
-
+        Session::flash("modifEvent", "L'évènement a bien été modifié !");
 
         return redirect("/dashboard");
     }
