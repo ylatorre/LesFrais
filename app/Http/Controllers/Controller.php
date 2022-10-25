@@ -10,7 +10,9 @@ use App\Models\infosndf;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use App\Mail\MailNotifSalarie;
+use App\Mail\PDFmail;
 use App\Models\historiqueEssence;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -418,6 +420,23 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
+
+
+
+        $concernedUser = DB::table('users')->select('id')->where('name','=',$request->username)->get();
+
+        $concernedEvents = DB::table('events')->where('idUser','=',$concernedUser[0]->id)->where("mois","=",$request->moisndf);
+
+        $PDF = PDF::loadView('pdf.PDFtableauFacture', [$concernedEvents,$concernedUser]);
+
+
+        Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.'.pdf' , $PDF->output());
+
+
+
+        Mail::to(Auth::user()->email)->send(new PDFmail($request->username,$request->moisndf));
+
+
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValideePar' => Auth::user()->name]);
@@ -474,9 +493,13 @@ class Controller extends BaseController
 
         $moderator = DB::table('users')->where('id','=',Auth::user()->id)->get();
 
+
+
+
+
         Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator,$salarie,$moisNDF));
 
-        Session::flash('validatesuccess', 'La note de frais à été validée !');
+        Session::flash('validatesuccess', "La note de frais à été validée ! Un mail vous a été envoyé avec les factures de cette note de frais !");
 
         return redirect(route('gestionaireUser'));
     }

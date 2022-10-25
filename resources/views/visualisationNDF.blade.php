@@ -188,7 +188,7 @@
         }
 
         .supprimerNDF:hover {
-            
+
             background: #ca3e3e;
         }
 
@@ -693,7 +693,7 @@
                                             @if ($utilisateur->pathAemporter != '0')
                                                 <button class="buttonsImage"
                                                     id="button{{ $utilisateur->pathAemporter }}"
-                                                    onclick="$('.disparait').hide(); setTimeout(document.getElementById('{{ $utilisateur->pathAemporter }}').style.display = 'block';"><img
+                                                    onclick="$('.disparait').hide(); document.getElementById('{{ $utilisateur->pathAemporter }}').style.display = 'block';"><img
                                                         src="./images/iconDL.png" alt='iconDL'></button>
                                             @endif
                                         </div>
