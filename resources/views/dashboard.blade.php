@@ -389,8 +389,7 @@ input::-o-outer-spin-button {
                                         </label>
                                         <input type="file" name="factureEssence" id="factureEssence"
                                             accept=".png, .jpg, .jpeg" style="display:none;">
-                                        <input id="buttonFactureEssence" class="inputFacture" type="button"
-                                            onclick="document.getElementById('factureEssence').click();">
+                                        <input id="buttonFactureEssence" class="inputFacture" type="button">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -560,8 +559,7 @@ input::-o-outer-spin-button {
                                         Péage 2
                                     </label>
                                     <input id="pathFacturePeage2" type="hidden" name="pathFacturePeage2"  value="0">
-                                        <input id="buttonModifFacturePeage2" class="inputFacture" type="button"
-                                            onclick="document.getElementById('modifFacturePeage2').click();">
+                                        <input id="buttonModifFacturePeage2" class="inputFacture" type="button">
                                         <input type="file" id="modifFacturePeage2" accept=".png, .jpeg, .jpg" name="modifFacturePeage2" style="display:none;">
                                     </div>
                                     <input
@@ -575,8 +573,7 @@ input::-o-outer-spin-button {
                                         Péage 3
                                     </label>
                                     <input id="pathFacturePeage3" type="hidden" name="pathFacturePeage3"  value="0">
-                                        <input id="buttonModifFacturePeage3" class="inputFacture" type="button"
-                                            onclick="document.getElementById('modifFacturePeage3').click();">
+                                        <input id="buttonModifFacturePeage3" class="inputFacture" type="button">
                                         <input type="file" id="modifFacturePeage3" accept=".png, .jpeg, .jpg" name="modifFacturePeage3" style="display:none;">
                                     </div>
                                     <input
@@ -590,8 +587,7 @@ input::-o-outer-spin-button {
                                         Péage 4
                                     </label>
                                     <input id="pathFacturePeage4" type="hidden" name="pathFacturePeage4"  value="0">
-                                        <input id="buttonModifFacturePeage4" class="inputFacture" type="button"
-                                            onclick="document.getElementById('modifFacturePeage4').click();">
+                                        <input id="buttonModifFacturePeage4" class="inputFacture" type="button">
                                         <input type="file" id="modifFacturePeage4" accept=".png, .jpeg, .jpg" name="modifFacturePeage4" style="display:none;">
                                     </div>
                                     <input
@@ -710,8 +706,7 @@ input::-o-outer-spin-button {
                                         Essence
                                     </label>
                                     <input id="pathFactureEssence" type="hidden" name="pathFactureEssence"  value="0">
-                                        <input id="buttonModifFactureEssence" class="inputFacture" type="button"
-                                            onclick="document.getElementById('modifFactureEssence').click();">
+                                        <input id="buttonModifFactureEssence" class="inputFacture" type="button">
                                         <input type="file" id="modifFactureEssence" accept=".png, .jpeg, .jpg" name="modifFactureEssence" style="display:none;">
                                     </div>
                                     <input

@@ -104,6 +104,7 @@
                 })
 
 
+
                 modifKilometrage.addEventListener('click', () => {
                     if (modifEssence.value == 0) {
                         modifKilometrage.readOnly = false;
@@ -154,9 +155,9 @@
                 const buttonPeage3 = document.getElementById('buttonFacturePeage3');
                 const buttonPeage4 = document.getElementById('buttonFacturePeage4');
 
-                const buttonIpeage2 = document.getElementById('2peage2');
-                const buttonIpeage3 = document.getElementById('2peage3');
-                const buttonIpeage4 = document.getElementById('2peage4');
+                const buttonIpeage2 = document.getElementById('buttonModifFacturePeage2');
+                const buttonIpeage3 = document.getElementById('buttonModifFacturePeage3');
+                const buttonIpeage4 = document.getElementById('buttonModifFacturePeage4');
 
 
 
@@ -208,13 +209,19 @@
                     $('#2peage2').val(0);
                     $('#2peage3').val(0);
                     $('#2peage4').val(0);
+                    $('#buttonModifFacturePeage2').val(null);
+                    $('#buttonModifFacturePeage3').val(null);
+                    $('#buttonModifFacturePeage4').val(null);
                 })
                 ipeage2.addEventListener('change',()=>{
                     $('#2peage3').val(0);
                     $('#2peage4').val(0);
+                    $('#buttonModifFacturePeage3').val(null);
+                    $('#buttonModifFacturePeage4').val(null);
                 })
                 ipeage3.addEventListener('change',()=>{
                     $('#2peage4').val(0);
+                    $('#buttonModifFacturePeage4').val(null);
                 })
 
 
@@ -398,17 +405,53 @@
                     if( peage.value != 0 ){
                         document.getElementById('facturePeage2').click();
                     }
-                })
+                });
                 buttonPeage3.addEventListener('click',()=>{
                     if (peage.value != 0 && peage2.value != 0 ){
                         document.getElementById('facturePeage3').click();
                     }
-                })
+                });
                 buttonPeage4.addEventListener('click',()=>{
                     if (peage.value != 0 && peage2.value != 0 && peage3.value != 0 ){
                         document.getElementById('facturePeage4').click();
                     }
-                })
+                });
+
+                buttonIpeage2.addEventListener('click',()=>{
+                    if(ipeage.value != 0 ){
+                        document.getElementById('modifFacturePeage2').click();
+                    }
+                });
+                buttonIpeage3.addEventListener('click',()=>{
+                    if(ipeage.value != 0 && ipeage2.value != 0){
+                        document.getElementById('modifFacturePeage3').click();
+                    }
+                });
+                buttonIpeage4.addEventListener('click',()=>{
+                    if(ipeage.value != 0 && ipeage2.value != 0 && ipeage3.value != 0){
+                        document.getElementById('modifFacturePeage4').click();
+                    }
+                });
+
+                buttonFactureEssence.addEventListener('click',()=>{
+                    if(kmInput.value == 0){
+                        inputFactureEssence.click()
+                    }
+                });
+                buttonModifFactureEssence.addEventListener('click',()=>{
+                    if(modifKilometrage.value == 0){
+                        $('#modifFactureEssence').click();
+                    }
+                });
+
+                modifKilometrage.addEventListener('change',()=>{
+                    $('#modifFactureEssence').val(null);
+                    buttonModifFactureEssence.style.background = "no-repeat url('./images/iconDL.png')";
+                });
+                kmInput.addEventListener('change',()=>{
+                    $('#factureEssence').val(null);
+                    buttonFactureEssence.style.background = "no-repeat url('./images/iconDL.png')";
+                });
 
 
 
@@ -1095,6 +1138,7 @@
 
                                 const modifKilometrage = document.getElementById('2kilometrage');
                                 const modifEssence = document.getElementById('2essence');
+
 
                                 if (modifKilometrage.value == 0) {
                                     modifKilometrage.readOnly = "true";
