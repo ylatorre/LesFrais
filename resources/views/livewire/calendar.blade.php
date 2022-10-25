@@ -164,13 +164,20 @@
                     $('#peage2').val(0);
                     $('#peage3').val(0);
                     $('#peage4').val(0);
+                    $('#facturePeage2').val(null);
+                    $('#facturePeage3').val(null);
+                    $('#facturePeage4').val(null);
+
                 })
                 peage2.addEventListener('change',()=>{
                     $('#peage3').val(0);
                     $('#peage4').val(0);
+                    $('#facturePeage3').val(null);
+                    $('#facturePeage4').val(null);
                 })
                 peage3.addEventListener('change',()=>{
                     $('#peage4').val(0);
+                    $('#facturePeage4').val(null);
                 })
 
 
