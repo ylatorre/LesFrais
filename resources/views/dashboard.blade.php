@@ -86,6 +86,27 @@
             }
 
         }
+
+        /*permet de cacher les petites fleches présent sur les inpout type number*/
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button {
+	-o-appearance: none;
+	margin:0
+}
     </style>
 
     @if (Session::has('pasevents'))
@@ -148,9 +169,9 @@
                                 <div class="mb-3 col">
                                     <div id="duplicate"></div>
                                     <label class="inline-block mb-0" for="title">Client</label>
-                                    <input type="text" value="" name="title" id="title"
+                                    <input type="text" name="title" id="title"
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        required>
+                                        required="required">
                                 </div>
                             </div>
                             {{-- Input Ville | Code Postal --}}
@@ -162,7 +183,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         id="code_postal" name="code_postal" type="text" pattern="[0-9]{5}"
-                                        placeholder="ex : 75000" required>
+                                        placeholder="ex : 75000" required="required">
 
                                 </div>
                                 <div class="mb-3 col divInput">
@@ -172,7 +193,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         id="ville" name="ville" type="text" value=""
-                                        placeholder="ex : Paris" required>
+                                        placeholder="ex : Paris" required="required">
 
                                 </div>
 
@@ -190,7 +211,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="parking" id="parking" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
 
                                 </div>
                             </div>
@@ -207,7 +228,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage" id="peage" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
 
                                 </div>
                                 <div class="mb-3 col divInput ">
@@ -217,12 +238,12 @@
                                         <input type="file" name="facturePeage2" id="facturePeage2"
                                             accept=".png, .jpg, .jpeg" style="display:none;">
                                         <input id="buttonFacturePeage2" class="inputFacture" type="button"
-                                            onclick="document.getElementById('facturePeage2').click();">
+                                             >
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage2" id="peage2" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
                                 </div>
                                 <div class="mb-3 col divInput ">
                                     <div class="flex flex-row justify-between">
@@ -230,13 +251,12 @@
                                             Péage 3</label>
                                         <input type="file" name="facturePeage3" id="facturePeage3"
                                             accept=".png, .jpg, .jpeg" style="display:none;">
-                                        <input id="buttonFacturePeage3" class="inputFacture" type="button"
-                                            onclick="document.getElementById('facturePeage3').click();">
+                                        <input id="buttonFacturePeage3" class="inputFacture" type="button">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage3" id="peage3" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
                                 </div>
                                 <div class="mb-3 col divInput">
                                     <div class="flex flex-row justify-between">
@@ -244,13 +264,12 @@
                                             Péage 4</label>
                                         <input type="file" name="facturePeage4" id="facturePeage4"
                                             accept=".png, .jpg, .jpeg" style="display:none;">
-                                        <input id="buttonFacturePeage4" class="inputFacture" type="button"
-                                            onclick="document.getElementById('facturePeage4').click();">
+                                        <input id="buttonFacturePeage4" class="inputFacture" type="button">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="peage4" id="peage4" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
                                 </div>
 
 
@@ -269,7 +288,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="divers" id="divers" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
 
                                 </div>
                             </div>
@@ -290,7 +309,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="petitDej" id="petitDej" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
 
                                 </div>
 
@@ -308,7 +327,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="dejeuner" id="dejeuner" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
                                 </div>
                                 <div class="mb-3 col divInput" id="diner">
                                     <div class="flex flex-row justify-between">
@@ -323,7 +342,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="diner" id="diner" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
 
                                 </div>
                                 <div class="mb-3 col divInput pr-2" id="aEmporter">
@@ -339,7 +358,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="aEmporter" id="aEmporter" type="number" lang="en"
-                                        value="0" min="0" required>
+                                        value="0" min="0" required="required">
 
                                 </div>
 
@@ -360,7 +379,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="hotel" id="hotel" type="number" value="0" min="0"
-                                        required>
+                                        required="required">
 
                                 </div>
                                 <div id="divEssence"class="mb-3 col divInput">
@@ -376,7 +395,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         id="essence" name="essence" type="number" min="0" value="0"
-                                        required>
+                                        required="required">
                                 </div>
                                 <div id="divKilometrage" class="mb-3 col divInput pr-2">
                                     <label class="inline-block mb-0" for="kilometrage">
@@ -385,7 +404,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
                                         id="kilometrage" name="kilometrage" type="number" value="0"
-                                        min="0" required>
+                                        min="0" required="required">
 
                                 </div>
                             </div>
@@ -399,7 +418,7 @@
                                     </label>
                                     <input
                                         class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="heureDebut" id="heure_debut" type="text" value="00:00" required>
+                                        name="heureDebut" id="heure_debut" type="text" value="00:00" required="required">
                                 </div>
                                 <div class="mb-3 col">
                                     <label for="heure_fin" class="w-full inline-block">
@@ -407,7 +426,7 @@
                                     </label>
                                     <input
                                         class="time fin shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="heureFin" id="heure_fin" type="text" value="00:00" required>
+                                        name="heureFin" id="heure_fin" type="text" value="00:00" required="required">
                                 </div>
                                 {{-- Empty div to align time input with the others --}}
                             </div>
@@ -418,7 +437,7 @@
                                     <label for="description" class="mb-[5px]">Description du déplacement</label>
                                     <textarea name="description" id="description" rows="3" maxlength="100"
                                         placeholder="ex : Câblage de baie de brassage"
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required="required"></textarea>
                                 </div>
                             </div>
                             <input name="start" id="starting" type="hidden">
@@ -432,6 +451,7 @@
                             <input name="moisActuel" id="monthing" type="hidden">
 
                             <button
+                                type="submit"
                                 class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                                 id="validation">VALIDATION</button>
                         </form>

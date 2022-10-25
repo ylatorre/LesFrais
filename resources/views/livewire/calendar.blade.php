@@ -149,6 +149,17 @@
                 const ipeage3 = document.getElementById('2peage3');
                 const ipeage4 = document.getElementById('2peage4');
 
+
+                const buttonPeage2 = document.getElementById('buttonFacturePeage2');
+                const buttonPeage3 = document.getElementById('buttonFacturePeage3');
+                const buttonPeage4 = document.getElementById('buttonFacturePeage4');
+
+                const buttonIpeage2 = document.getElementById('2peage2');
+                const buttonIpeage3 = document.getElementById('2peage3');
+                const buttonIpeage4 = document.getElementById('2peage4');
+
+
+
                 peage.addEventListener('change',()=>{
                     $('#peage2').val(0);
                     $('#peage3').val(0);
@@ -373,6 +384,24 @@
                 modifFactureEssence.addEventListener('change',()=>{
                     buttonModifFactureEssence.style.background = "no-repeat url('./images/remplacer.png')";
                 });
+
+
+
+                buttonPeage2.addEventListener('click',()=>{
+                    if( peage.value != 0 ){
+                        document.getElementById('facturePeage2').click();
+                    }
+                })
+                buttonPeage3.addEventListener('click',()=>{
+                    if (peage.value != 0 && peage2.value != 0 ){
+                        document.getElementById('facturePeage3').click();
+                    }
+                })
+                buttonPeage4.addEventListener('click',()=>{
+                    if (peage.value != 0 && peage2.value != 0 && peage3.value != 0 ){
+                        document.getElementById('facturePeage4').click();
+                    }
+                })
 
 
 
