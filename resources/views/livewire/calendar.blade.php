@@ -168,6 +168,9 @@
                     $('#facturePeage2').val(null);
                     $('#facturePeage3').val(null);
                     $('#facturePeage4').val(null);
+                    document.getElementById('buttonFacturePeage2').style.background = "no-repeat url('./images/iconDL.png')";
+                    document.getElementById('buttonFacturePeage3').style.background = "no-repeat url('./images/iconDL.png')";
+                    document.getElementById('buttonFacturePeage4').style.background = "no-repeat url('./images/iconDL.png')";
 
                 })
                 peage2.addEventListener('change',()=>{
@@ -175,10 +178,13 @@
                     $('#peage4').val(0);
                     $('#facturePeage3').val(null);
                     $('#facturePeage4').val(null);
+                    document.getElementById('buttonFacturePeage3').style.background = "no-repeat url('./images/iconDL.png')";
+                    document.getElementById('buttonFacturePeage4').style.background = "no-repeat url('./images/iconDL.png')";
                 })
                 peage3.addEventListener('change',()=>{
                     $('#peage4').val(0);
                     $('#facturePeage4').val(null);
+                    document.getElementById('buttonFacturePeage4').style.background = "no-repeat url('./images/iconDL.png')";
                 })
 
 
@@ -209,19 +215,27 @@
                     $('#2peage2').val(0);
                     $('#2peage3').val(0);
                     $('#2peage4').val(0);
-                    $('#buttonModifFacturePeage2').val(null);
-                    $('#buttonModifFacturePeage3').val(null);
-                    $('#buttonModifFacturePeage4').val(null);
+
+                    $('#modifFacturePeage2').val(null);
+                    $('#modifFacturePeage3').val(null);
+                    $('#modifFacturePeage4').val(null);
+
+                    document.getElementById('buttonModifFacturePeage2').style.background = "no-repeat url('./images/iconDL.png')";
+                    document.getElementById('buttonModifFacturePeage3').style.background = "no-repeat url('./images/iconDL.png')";
+                    document.getElementById('buttonModifFacturePeage4').style.background = "no-repeat url('./images/iconDL.png')";
                 })
                 ipeage2.addEventListener('change',()=>{
                     $('#2peage3').val(0);
                     $('#2peage4').val(0);
-                    $('#buttonModifFacturePeage3').val(null);
-                    $('#buttonModifFacturePeage4').val(null);
+                    $('#ModifFacturePeage3').val(null);
+                    $('#ModifFacturePeage4').val(null);
+                    document.getElementById('buttonModifFacturePeage3').style.background = "no-repeat url('./images/iconDL.png')";
+                    document.getElementById('buttonModifFacturePeage4').style.background = "no-repeat url('./images/iconDL.png')";
                 })
                 ipeage3.addEventListener('change',()=>{
                     $('#2peage4').val(0);
-                    $('#buttonModifFacturePeage4').val(null);
+                    $('#ModifFacturePeage4').val(null);
+                    document.getElementById('buttonModifFacturePeage4').style.background = "no-repeat url('./images/iconDL.png')";
                 })
 
 
