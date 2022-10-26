@@ -28,5 +28,5 @@
     }
 </style>
 <body>
-    <h1>Importer içi les images de la facture dans un tableau </h1>
+    <h1></h1>
 </body>

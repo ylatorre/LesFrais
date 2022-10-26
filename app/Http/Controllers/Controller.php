@@ -394,8 +394,6 @@ class Controller extends BaseController
                 $moisDateNDF = "Décembre";
                 break;
         };
-
-
         $dateNDFpourPDFetVISU = $moisDateNDF . " " . $dateNDF[0];
 
         $user = Auth::user();
@@ -420,34 +418,28 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
-
-
-
         $concernedUser = DB::table('users')->select('id')->where('name','=',$request->username)->get();
-
         $concernedEvents = DB::table('events')->where('idUser','=',$concernedUser[0]->id)->where("mois","=",$request->moisndf);
 
+        // - On charge la vue  en PDF avec DOMPDF
         $PDF = PDF::loadView('pdf.PDFtableauFacture', [$concernedEvents,$concernedUser]);
 
-
+        // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
         Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.'.pdf' , $PDF->output());
 
-
-
+        // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de validé
         Mail::to(Auth::user()->email)->send(new PDFmail($request->username,$request->moisndf));
 
-
+        // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValideePar' => Auth::user()->name]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['DateValidation' => date('d/m/Y')]);
 
         $salarie = DB::table('users')->where('name','=',$request->username)->get();
-
         $dateNDF = explode("-", $request->moisndf);
 
-        // - Le switch case permet d'écrire sur la note de frais le mois en fonction du numéro du mois
-
+        // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
         $moisDateNDF = "";
 
         switch ($dateNDF[1]) {
@@ -490,12 +482,7 @@ class Controller extends BaseController
         };
 
         $moisNDF = $moisDateNDF . " " . $dateNDF[0];
-
         $moderator = DB::table('users')->where('id','=',Auth::user()->id)->get();
-
-
-
-
 
         Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator,$salarie,$moisNDF));
 
