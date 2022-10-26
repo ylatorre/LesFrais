@@ -418,17 +418,54 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
-        $concernedUser = DB::table('users')->select('id')->where('name','=',$request->username)->get();
-        $concernedEvents = DB::table('events')->where('idUser','=',$concernedUser[0]->id)->where("mois","=",$request->moisndf);
+        $concernedUser = DB::table('users')->where('name','=',$request->username)->get();
+        $concernedEvents = DB::table('events')->where('idUser','=',$concernedUser[0]->id)->where("mois","=",$request->moisndf)->get();
+        $longueurEvents = sizeof($concernedEvents);
 
-        // - On charge la vue  en PDF avec DOMPDF
-        $PDF = PDF::loadView('pdf.PDFtableauFacture', [$concernedEvents,$concernedUser]);
 
-        // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
-        Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.'.pdf' , $PDF->output());
+
+    // pour chaque évènement, on génère un pdf et on le joint au mail
+            for ($i=0; $i < $longueurEvents ; $i++) {
+
+                $PDFpathParking = $concernedEvents[$i]->pathParking;
+                $PDFpathPeage = $concernedEvents[$i]->pathPeage;
+                $PDFpathPeage2 = $concernedEvents[$i]->pathPeage2;
+                $PDFpathPeage3 = $concernedEvents[$i]->pathPeage3;
+                $PDFpathPeage4 = $concernedEvents[$i]->pathPeage4;
+                $PDFpathDivers = $concernedEvents[$i]->pathDivers;
+                $PDFpathPetitDej = $concernedEvents[$i]->pathPetitDej;
+                $PDFpathDejeuner = $concernedEvents[$i]->pathDejeuner;
+                $PDFpathDiner = $concernedEvents[$i]->pathDiner;
+                $PDFpathAemporter = $concernedEvents[$i]->pathAemporter;
+                $PDFpathHotel = $concernedEvents[$i]->pathHotel;
+                $PDFpathEssence = $concernedEvents[$i]->pathEssence;
+
+                $PDF = PDF::loadView('pdf.PDFtableauFacture',
+                compact([
+                    'concernedEvents',
+                    'concernedUser',
+                    'PDFpathParking',
+                    'PDFpathPeage',
+                    'PDFpathPeage2',
+                    'PDFpathPeage3',
+                    'PDFpathPeage4',
+                    'PDFpathDivers',
+                    'PDFpathPetitDej',
+                    'PDFpathDejeuner',
+                    'PDFpathDiner',
+                    'PDFpathAemporter',
+                    'PDFpathHotel',
+                    'PDFpathEssence',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.$i.'.pdf' , $PDF->output());
+            }
+    // - On charge la vue  en PDF avec DOMPDF
+
+
 
         // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de validé
-        Mail::to(Auth::user()->email)->send(new PDFmail($request->username,$request->moisndf));
+        Mail::to(Auth::user()->email)->send(new PDFmail($request->username,$request->moisndf,$i));
 
         // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
