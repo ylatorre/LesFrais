@@ -48,7 +48,7 @@ class PDFmail extends Mailable
         }
         // - On génère le mail
         $email = $this->from('compta@carpediem.pro')
-                    ->view('emails.mailDuPDF')
+                    ->view('emails.MailDuPDF')
                     ->subject('PDF de post-vadidation');
 
         // on lui attache tous les chemi présents dans le tableau que l'on a implémenté précédement

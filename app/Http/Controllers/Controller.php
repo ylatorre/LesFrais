@@ -467,6 +467,7 @@ class Controller extends BaseController
         // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de validé
         Mail::to(Auth::user()->email)->send(new PDFmail($request->username,$request->moisndf,$i));
 
+
         // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['Valide' => 1]);
