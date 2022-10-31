@@ -367,6 +367,150 @@
     .fc-daygrid{
         height:400px;
     }
+    #buttonFactureParking{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFacturePeage{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFacturePeage2{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFacturePeage3{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFacturePeage4{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFactureDivers{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFacturePetitDej{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFactureDejeuner{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFactureDiner{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFactureAemporter{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFactureHotel{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonFactureEssence{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFactureParking{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFacturePeage{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFacturePeage2{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFacturePeage3{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFacturePeage4{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFactureDivers{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFacturePetitDej{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFactureDejeuner{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFactureDiner{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFactureAemporter{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFactureHotel{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
+    #buttonModifFactureEssence{
+        width:16px;
+        height:16px;
+        -o-object-fit: contain;
+           object-fit: contain;
+    }
     /* .row div{
         padding:4px;
         margin:4px;
