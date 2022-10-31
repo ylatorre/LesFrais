@@ -33,7 +33,7 @@
                 <th scope="col" class="TH-mesndfs  text-center">Votre taux/km</th>
                 <th scope="col" class="TH-mesndfs  text-center"></th>
                 @if(Auth::user()->superadmin == 1)
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 TH-mesndfs text-center">
                             Suppression
                         </th>
                     @endif
