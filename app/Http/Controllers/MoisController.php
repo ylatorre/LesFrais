@@ -41,7 +41,7 @@ class MoisController extends Controller
         $moderators = DB::table('users')->where('admin','=','1')->get();
         $superadmin = DB::table('users')->where('superadmin','=','1')->get();
         $actualUser = Auth::user()->name;
-        
+
 
 
 
@@ -146,7 +146,7 @@ class MoisController extends Controller
         $valideoupas = DB::table('infosndfs')->select('Valide')->where('Utilisateur', '=', Auth::user()->name)->where('MoisEnCours', '=', $request->unlockedmonth)->get();
 
          if(sizeof($valideoupas) == 0){
-            Session::flash("nondf","Ce mois n'est pas vérrouillé !");
+            Session::flash("nondf","Ce mois n'a pas encore été soumis à inspection!");
             return redirect('dashboard');
          }
 

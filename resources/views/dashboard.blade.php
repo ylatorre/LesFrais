@@ -845,7 +845,7 @@ input::-o-outer-spin-button {
                     style="font-size:8px;"class="sm:text-sm md:text-base lg:text-lg  items-center px-2 py-2 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Soumettre
                     le mois à inspection</button>
             </form>
-            <!-- permet aux utilisateur de visualiser leurs note de frais et ca c'est régale -->
+            <!-- permet aux utilisateurs de visualiser leurs note de frais et ca c'est régale -->
             <form method="POST" action="{{ route('validationNDF') }}" id="formsalarievisu">
                 @csrf
                 <input id="inputmonthsalarie" type="hidden" name="moisNDF">
