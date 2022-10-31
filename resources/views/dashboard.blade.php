@@ -109,36 +109,139 @@ input::-o-outer-spin-button {
 }
     </style>
 
+    <!-- ensembles des erreurs possibles lorceque l'utilisateur admin ou employé soumet sa note de frais pour inspection-->
+
+        @if(Session::has("noPathParking"))
+        <div style="width:90%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathParking') }}</div>
+        @endif
+        @if(Session::has("noPathPeage"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathPeage') }}</div>
+        @endif
+        @if(Session::has("noPathPeage2"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathPeage2') }}</div>
+        @endif
+        @if(Session::has("noPathPeage3"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathPeage3') }}</div>
+        @endif
+        @if(Session::has("noPathPeage4"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathPeage4') }}</div>
+        @endif
+        @if(Session::has("noPathDivers"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathDivers') }}</div>
+        @endif
+        @if(Session::has("noPathPetitDej"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathPetitDej') }}</div>
+        @endif
+        @if(Session::has("noPathDejeuner"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathDejeuner') }}</div>
+        @endif
+        @if(Session::has("noPathDiner"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathiner') }}</div>
+        @endif
+        @if(Session::has("noPathAemporter"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathPAemporter') }}</div>
+        @endif
+        @if(Session::has("noPathHotel"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathHotel') }}</div>
+        @endif
+        @if(Session::has("noPathEssence"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathEssence') }}</div>
+        @endif
+
+        @if(Session::has("noParking"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noParking') }}</div>
+        @endif
+        @if(Session::has("noPeage"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPeage') }}</div>
+        @endif
+        @if(Session::has("noPeage2"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPeage2') }}</div>
+        @endif
+        @if(Session::has("noPeage3"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPeage3') }}</div>
+        @endif
+        @if(Session::has("noPeage4"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPeage4') }}</div>
+        @endif
+        @if(Session::has("noDivers"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noDivers') }}</div>
+        @endif
+        @if(Session::has("noPetitDej"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPetitDej') }}</div>
+        @endif
+        @if(Session::has("noDejeuner"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noDejeuner') }}</div>
+        @endif
+        @if(Session::has("noDiner"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noDiner') }}</div>
+        @endif
+        @if(Session::has("noAemporter"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noAemporter') }}</div>
+        @endif
+        @if(Session::has("noHotel"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noPathHotel') }}</div>
+        @endif
+        @if(Session::has("noEssence"))
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('noEssence') }}</div>
+        @endif
+
+
+    <!---------------------------------->
+
     @if (Session::has('pasevents'))
-        <div style="width:100%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('pasevents') }}</div>
     @endif
     @if (Session::has('dejasoumis'))
-        <div style="width:100%; margin-left:1%; color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('dejasoumis') }}</div>
     @endif
     @if (Session::has('dejavalide'))
-        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('dejavalide') }}</div>
     @endif
     @if (Session::has('NDFcreee'))
-        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('NDFcreee') }}</div>
     @endif
     @if (Session::has('NDFsuppr'))
-        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('NDFsuppr') }}</div>
     @endif
     @if (Session::has('supprEvent'))
-        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('supprEvent') }}</div>
     @endif
     @if (Session::has('createEvent'))
-        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('createEvent') }}</div>
     @endif
     @if (Session::has('modifEvent'))
-        <div style="width:100%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('modifEvent') }}</div>
     @endif
     @if (Session::has('nondf'))

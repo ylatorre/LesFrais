@@ -323,6 +323,9 @@
         width:100%;
 
     }
+    .errorsDashboard{
+        font-size: 10px;
+    }
 
     .fc-daygrid{
         height:400px;
