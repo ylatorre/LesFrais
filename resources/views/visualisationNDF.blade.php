@@ -742,7 +742,7 @@
                                 @if ($utilisateur->pathEssence != '0')
                                     <div id="{{ $utilisateur->pathEssence }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathEssence }}').style.display = 'none'">
-                                        <img src="{{ Storage::url($utilisateur->pathEssence) }}" alt="facture"
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathEssence) }}" alt="facture"
                                             class="w-full h-full" style="object-fit:contain;"></div>
                                 @endif
                                 @if ($utilisateur->pathDivers != '0')
