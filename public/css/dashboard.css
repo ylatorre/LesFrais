@@ -257,6 +257,10 @@ label{
        object-fit: contain;
 }
 
+.labels-responsiv{
+    height:24px;
+}
+
 #calendrier-externe{
     border:4px solid transparent;
     border-radius: 0.75rem;
@@ -350,6 +354,9 @@ label{
     width: 24px !important;
     height: 24px !important;
 }
+.labels-responsiv{
+    height:24px;
+}
 }
 
 @media screen and (max-width:540px){
@@ -376,6 +383,9 @@ label{
     .inputFacture{
         width: 22px !important;
         height: 20px !important;
+    }
+    .labels-responsiv{
+        height:20px;
     }
 
 }

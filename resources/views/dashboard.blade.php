@@ -280,7 +280,7 @@ input::-o-outer-spin-button {
                             {{-- Input Ville | Code Postal --}}
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2 ">
-                                    <label class="inline-block mb-0 labels" for="code_postal" >
+                                    <label class="inline-block mb-0 labels-responsiv" for="code_postal" >
                                         Code Postal
                                     </label>
                                     <input
@@ -290,7 +290,7 @@ input::-o-outer-spin-button {
 
                                 </div>
                                 <div class="mb-3 col divInput">
-                                    <label class="inline-block mb-0" for="ville">
+                                    <label class="inline-block mb-0 labels-responsiv" for="ville">
                                         Ville
                                     </label>
                                     <input
@@ -500,7 +500,7 @@ input::-o-outer-spin-button {
                                         required="required">
                                 </div>
                                 <div id="divKilometrage" class="mb-3 col divInput pr-2">
-                                    <label class="inline-block mb-0" for="kilometrage">
+                                    <label class="inline-block mb-0 labels-responsiv" for="kilometrage">
                                         Distance( km )
                                     </label>
                                     <input
@@ -603,7 +603,7 @@ input::-o-outer-spin-button {
                             {{-- Input Ville | Code Postal --}}
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2">
-                                    <label class="inline-block mb-0" for="code_postal">
+                                    <label class="inline-block mb-0 labels-responsiv" for="code_postal">
                                         Code Postal
                                     </label>
                                     <input
@@ -612,7 +612,7 @@ input::-o-outer-spin-button {
 
                                 </div>
                                 <div class="mb-3 col divInput">
-                                    <label class="inline-block mb-0" for="ville">
+                                    <label class="inline-block mb-0 labels-responsiv" for="ville">
                                         Ville
                                     </label>
                                     <input
@@ -818,7 +818,7 @@ input::-o-outer-spin-button {
                                         required>
                                 </div>
                                 <div id="div2Kilometrage" class="mb-3 col divInput pr-2">
-                                    <label class="inline-block mb-0" for="2kilometrage">
+                                    <label class="inline-block mb-0 labels-responsiv" for="2kilometrage">
                                         Distance( km )
                                     </label>
 
