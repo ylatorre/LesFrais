@@ -109,7 +109,7 @@ input::-o-outer-spin-button {
 }
     </style>
 
-    <!-- ensembles des erreurs possibles lorceque l'utilisateur admin ou employé soumet sa note de frais pour inspection-->
+    {{-- ensembles des erreurs possibles lorceque l'utilisateur admin ou employé soumet sa note de frais pour inspection --}}
 
         @if(Session::has("noPathParking"))
         <div style="width:90%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
@@ -280,7 +280,7 @@ input::-o-outer-spin-button {
                             {{-- Input Ville | Code Postal --}}
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2 ">
-                                    <label class="inline-block mb-0" for="code_postal">
+                                    <label class="inline-block mb-0 labels" for="code_postal" >
                                         Code Postal
                                     </label>
                                     <input
