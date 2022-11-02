@@ -113,6 +113,11 @@
             @if (Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
                 <x-responsive-nav-link :href="route('gestionaireUser')" :active="request()->routeIs('gestionnaireUser')">
                     {{ __('Administration') }}
+                    @if (count($infosEnCoursValidation) != 0)
+                                <div class="flex flex-row justify-around items-center"
+                                    style="color:white; font-size:10px;  width:20px; height:20px; right:0px; bottom:0px; background: rgb(255, 52, 52); margin-left:5px; border:2px solid black; border-radius:0.75rem; ">
+                                    <p style="margin-bottom: 0px; margin-top font-family:'nunito',sans-serif; font-weight:bold;">{{ count($infosEnCoursValidation) }}</p></div>
+                            @endif
             @endif
 
             </x-responsive-nav-link>

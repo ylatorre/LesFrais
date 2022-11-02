@@ -213,6 +213,7 @@
             height:24px;
         }
 
+
         /* -- Responsive du site */
         @media screen and (max-width:1400px) {
 
@@ -326,6 +327,10 @@
             .phrases {
                 font-size: 6px;
             }
+            .logoCDIT{
+                width:130px;
+                height:40px;
+            }
 
             .mission-effectuees {
                 font-size: 7px;
@@ -365,6 +370,9 @@
 
             .supprimerNDF {
                 font-size: 10px;
+           }
+           .H1ndf{
+            font-size:10px;
            }
         }
 
@@ -473,26 +481,29 @@
             .button-image {
                 background: url('./images/iconDL.png');
             }
+            .H1ndf{
+                font-size:8px;
+            }
         }
     </style>
     <div class="w-full flex flex-row justify-around py-5 " style="border:4px solid black;">
         <div class="w-full">
             <div class="w-full flex items-center justify-around text-center ">
                 <div class="flex flex-row mb-5">
-                    <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
+                    <img src="./images/logoCDIT.png" alt="logoCDIT" class="logoCDIT">
 
 
                     @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
                         explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
                         explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
                         <div class="flex flex-col justify-around px-4 font-bold text-center">
-                            <h1>Prévisualisation de la note de
+                            <h1 class="H1ndf">Prévisualisation de la note de
                                 frais de {{ $utilisateurs[0]->name }} pour le mois
                                 d'{{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
                         </div>
                     @else
                         <div class="flex flex-col justify-around px-4 font-bold text-center">
-                            <h1>Prévisualisation de la note de
+                            <h1 class="H1ndf">Prévisualisation de la note de
                                 frais de {{ $utilisateurs[0]->name }} pour le mois
                                 de {{ $dateNDFpourPDFetVISU }} (les valeurs sont exprimées en euros)</h1>
                         </div>
