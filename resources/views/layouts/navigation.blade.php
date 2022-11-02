@@ -9,31 +9,45 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center" id="logoAPP">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo  class="block h-10 w-auto fill-current text-gray-600 " />
+                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600 " />
                     </a>
                 </div>
 
 
                 <!-- Navigation Links -->
                 <style>
-                    @media screen and(max-width:850px){
-                        .responsiv-navlinks{
-                            display:none !important;
+                    @media screen and(max-width:850px) {
+                        .responsiv-navlinks {
+                            display: none !important;
                         }
 
                     }
                 </style>
                 @php
-                    $infosEnCoursValidation = DB::table('infosndfs')->where('ValidationEnCours','=','1')->get();
-                    
+                    $infosEnCoursValidation = DB::table('infosndfs')
+                        ->where('ValidationEnCours', '=', '1')
+                        ->get();
+
                 @endphp
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
-                    <a href="{{route('dashboard')}}" style="text-decoration:none;" class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"> Calendrier</a>
-                    @if(Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
-                     <a href="{{route('gestionaireUser')}}" style="text-decoration:none;" class="hidden  md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"> Administration <div class="flex flex-row justify-around items-center text-center font-bold" style="color:rgb(139, 13, 13);font-size:10px; font-family:'nunito'; width:15px; height:15px; right:0px; bottom:0px; background:rgb(255, 255, 255); margin-left:5px; border:2px solid rgb(163, 43, 43); border-radius:0.75rem; ">{{count($infosEnCoursValidation)}}</div></a>
+                    <a href="{{ route('dashboard') }}" style="text-decoration:none;"
+                        class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                        Calendrier</a>
+                    @if (Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
+                        <a href="{{ route('gestionaireUser') }}" style="text-decoration:none;"
+                            class="hidden  md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                            Administration
+                            @if (count($infosEnCoursValidation) != 0)
+                                <div class="flex flex-row justify-around items-center"
+                                    style="color:white; font-size:10px;  width:20px; height:20px; right:0px; bottom:0px; background: rgb(255, 52, 52); margin-left:5px; border:2px solid black; border-radius:0.75rem; ">
+                                    <p style="margin-bottom: 0px; margin-top font-family:'nunito',sans-serif; font-weight:bold;">{{ count($infosEnCoursValidation) }}</p></div>
+                            @endif
+                        </a>
                     @endif
-                    <a href="{{route('mesNDF')}}" style="text-decoration:none;" class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">Mes Notes de frais</a>
+                    <a href="{{ route('mesNDF') }}" style="text-decoration:none;"
+                        class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">Mes
+                        Notes de frais</a>
 
                 </div>
 
@@ -97,7 +111,7 @@
                 {{ __('Calendrier') }}
             </x-responsive-nav-link>
 
-            @if(Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
+            @if (Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
                 <x-responsive-nav-link :href="route('gestionaireUser')" :active="request()->routeIs('gestionnaireUser')">
                     {{ __('Administration') }}
             @endif

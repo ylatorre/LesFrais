@@ -65,7 +65,6 @@
             th {
                 font-size: 15px;
                 width: 10%;
-
             }
 
             .responsiv-administration-buttons {
@@ -81,6 +80,7 @@
                 padding-bottom: 6px;
                 max-width: 10%;
             }
+            
         }
 
         @media screen and (max-width:1240px) {
@@ -89,13 +89,11 @@
             td {
                 font-size: 12px;
                 width: 10%;
-
             }
 
             th {
                 font-size: 12px;
                 width: 10%;
-
             }
 
             .responsiv-administration-buttons {

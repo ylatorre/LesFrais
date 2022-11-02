@@ -85,8 +85,6 @@
     overflow: visible;
     display: block;
     color: black;
-
-
 }
 
 .dropdownYearBtn{
@@ -94,7 +92,6 @@
     padding: 12px 16px;
     border: none;
     cursor: pointer;
-
   }
 
 .dropdownYearContent{
@@ -117,7 +114,6 @@
     text-decoration: none;
     display: block;
     white-space: nowrap;
-
 }
 
 .dropdownYearContent button:hover {

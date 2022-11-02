@@ -172,7 +172,7 @@ class Controller extends BaseController
             "pathEssence" => $pathEssence,
         ]);
 
-        Session::flash('createEvent',"L'évènement ajouté à votre calendrier !");
+        Session::flash('createEvent',"L'évènement à été ajouté à votre calendrier !");
 
         return redirect(route('dashboard'));
     }

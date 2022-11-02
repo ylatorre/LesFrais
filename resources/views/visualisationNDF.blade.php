@@ -208,6 +208,10 @@
         .disparait:hover {
             border: 6px solid rgb(122, 16, 16);
         }
+        .buttonsImage{
+            width:24px;
+            height:24px;
+        }
 
         /* -- Responsive du site */
         @media screen and (max-width:1400px) {
@@ -235,6 +239,10 @@
             .td-sous-total {
                 font-size: 11px;
             }
+            .buttonsImage{
+            width:20px;
+            height:20px;
+        }
         }
 
         @media screen and (max-width:1200px) {
@@ -271,6 +279,10 @@
             .td-sous-total {
                 font-size: 11px;
             }
+            .buttonsImage{
+            width:16px;
+            height:16px;
+            }
         }
 
         @media screen and (max-width:960px) {
@@ -299,14 +311,16 @@
             .td-sous-total {
                 font-size: 9px;
             }
-
+            .buttonsImage{
+            width:12px;
+            height:12px;
+            }
 
 
 
         }
 
         @media screen and (max-width:700px) {
-
             /*responsive sous-les 700px*/
 
             .phrases {
@@ -351,7 +365,7 @@
 
             .supprimerNDF {
                 font-size: 10px;
-        }
+           }
         }
 
         @media screen and (max-width:560px) {
