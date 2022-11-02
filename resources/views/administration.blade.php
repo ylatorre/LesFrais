@@ -80,7 +80,7 @@
                 padding-bottom: 6px;
                 max-width: 10%;
             }
-            
+
         }
 
         @media screen and (max-width:1240px) {
@@ -339,8 +339,10 @@
             <tbody>
                 @php
                     $i = 1;
+                    $NDFaValider = 0;
                 @endphp
                 @foreach ($users as $user)
+
                     <tr
                         class=" overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                         @if ($user->admin == 1 && $user->superadmin == 0)
@@ -459,12 +461,17 @@
 
                                         <input type="hidden" name="userId" class="userId"
                                             value="{{ $user->id }}">
-
+                                        @php
+                                            $NDFaValider = count(DB::table('infosndfs')->where('Utilisateur','=',$user->name)->where('ValidationEnCours','=','1')->get())
+                                        @endphp
 
                                         <button
                                             class=" responsiv-administration-buttons block mr-1 items-center sm:py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
                                             Notes de frais
+                                            @if($NDFaValider != 0)
+                                            ({{$NDFaValider}})
+                                            @endif
                                         </button>
                                     </form>
                                 @endif
@@ -648,6 +655,7 @@
 
                     @php
                         $i = $i + 1;
+                        $NDFaValider = 0;
                     @endphp
                 @endforeach
             </tbody>
