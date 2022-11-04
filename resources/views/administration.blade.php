@@ -37,6 +37,7 @@
             padding: 15px;
             font-family: 'nunito', sans-serif;
             transition: 200ms ease;
+            width:155px;
 
         }
         .evenodd :nth-child(even) {
@@ -70,6 +71,7 @@
             .responsiv-administration-buttons {
                 font-size: 12px;
                 padding: 6px;
+                width:140px;
             }
 
             .th-table-admin {
@@ -99,6 +101,7 @@
             .responsiv-administration-buttons {
                 font-size: 12px;
                 padding: 6px;
+                width:90px;
             }
 
             .th-table-admin {
@@ -136,8 +139,8 @@
                 font-size: 10px;
                 padding-left: 6px;
                 padding-right: 6px;
-                padding-top: 2px;
-                padding-bottom: 2px;
+                padding-top: 6px;
+                padding-bottom: 6px;
             }
 
             .th-table-admin {
@@ -175,8 +178,8 @@
                 font-size: 9px;
                 padding-left: 6px;
                 padding-right: 6px;
-                padding-top: 2px;
-                padding-bottom: 2px;
+                padding-top: 4px;
+                padding-bottom: 4px;
             }
 
             .th-table-admin {
@@ -216,6 +219,7 @@
                 padding-top: 4px;
                 padding-bottom: 4px;
                 margin-right: 2px !important;
+                width:80px;
             }
             .buttonUtilisateur{
                 align-items: flex-end;
@@ -258,8 +262,9 @@
                 font-size: 8px;
                 padding-left: 5px;
                 padding-right: 5px;
-                padding-top: 2px;
-                padding-bottom: 2px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                width:70px;
             }
 
             .th-table-admin {
@@ -467,6 +472,7 @@
 
                                         <button
                                             class=" responsiv-administration-buttons block mr-1 items-center sm:py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                            style="width:"
                                             type="submit">
                                             Notes de frais
                                             @if($NDFaValider != 0)
