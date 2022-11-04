@@ -172,7 +172,7 @@ class Controller extends BaseController
             "pathEssence" => $pathEssence,
         ]);
 
-        Session::flash('createEvent',"L'évènement à été ajouté à votre calendrier !");
+        Session::flash('createEvent',"L'évènement a été ajouté à votre calendrier !");
 
         return redirect(route('dashboard'));
     }
@@ -308,13 +308,13 @@ class Controller extends BaseController
     public function supuser(Request $request)
     {
         $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->update(['locked'=>'1']);
-        Session::flash('lockedUser',"L'utilisateur à été désactivé avec succès.");
+        Session::flash('lockedUser',"L'utilisateur a été désactivé avec succès.");
         return redirect(route("gestionaireUser"));
     }
     public function activerUser(Request $request){
 
         DB::table("users")->where("email", "=", $request->email)->where("id" , "=" , $request->id)->update(['locked'=>'0']);
-        Session::flash('unlockedUser',"L'utilisateur à été activé avec succès.");
+        Session::flash('unlockedUser',"L'utilisateur a été activé avec succès.");
         return redirect(route('gestionaireUser'));
     }
 
@@ -522,7 +522,7 @@ class Controller extends BaseController
 
         Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator,$salarie,$moisNDF));
 
-        Session::flash('validatesuccess', "La note de frais à été validée ! Un mail vous a été envoyé avec les factures de cette note de frais !");
+        Session::flash('validatesuccess', "La note de frais a été validée ! Un mail vous a été envoyé avec les factures de cette note de frais !");
 
         return redirect(route('gestionaireUser'));
     }
