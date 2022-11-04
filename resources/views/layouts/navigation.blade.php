@@ -37,7 +37,7 @@
                     @if (Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
                         <a href="{{ route('gestionaireUser') }}" style="text-decoration:none;"
                             class="hidden  md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
-                            Administration
+                            Gestion
                             @if (count($infosEnCoursValidation) != 0)
                                 <div class="flex flex-row justify-around items-center"
                                     style="color:white; font-size:10px;  width:20px; height:20px; right:0px; bottom:0px; background: rgb(255, 52, 52); margin-left:5px; border:2px solid black; border-radius:0.75rem; ">
@@ -112,7 +112,7 @@
 
             @if (Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
                 <x-responsive-nav-link :href="route('gestionaireUser')" :active="request()->routeIs('gestionnaireUser')">
-                    {{ __('Administration') }}
+                    {{ __('Gestion') }}
                     @if (count($infosEnCoursValidation) != 0)
                                 <div class="flex flex-row justify-around items-center"
                                     style="color:white; font-size:10px;  width:20px; height:20px; right:0px; bottom:0px; background: rgb(255, 52, 52); margin-left:5px; border:2px solid black; border-radius:0.75rem; ">
