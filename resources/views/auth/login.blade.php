@@ -13,6 +13,10 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        @if(Session::has('locked'))
+        <div class="font-medium text-red-600 mb-4">{{Session::get('locked')}}</div>
+        @endif
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

@@ -80,17 +80,23 @@
                                         @else
                                         <td class="text-center">. . .</td>
                                     @endif
-                                <td
-                                    class=" text-center">
-                                    <form method="POST" action="{{ route('supprimerNDF') }}">
-                                        @csrf
-                                        <input type="hidden" name="username"
-                                            value="{{ $ndfsemploye[$i]->Utilisateur }}">
-                                        <input type="hidden" name="moisndf"
-                                            value="{{ $ndfsemploye[$i]->MoisEnCours }}">
-                                        <button type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1 TD-gestion">Supprimer</button>
-                                    </form>
-                                </td>
+                                    @if($ndfsemploye[$i]->Valide == 1)
+                                        <td
+                                        class=" text-center">
+                                        <form method="POST" action="{{ route('supprimerNDF') }}">
+                                            @csrf
+                                            <input type="hidden" name="username"
+                                                value="{{ $ndfsemploye[$i]->Utilisateur }}">
+                                            <input type="hidden" name="moisndf"
+                                                value="{{ $ndfsemploye[$i]->MoisEnCours }}">
+                                            <button type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1 TD-gestion">Supprimer</button>
+                                        </form>
+                                    </td>
+                                    @else
+                                    <td>
+                                        <h5 class="text-center">Pas encore validé</h5>
+                                    </td>
+                                    @endif
                                 @endif
                                 <!-- * permet a l'admin de pouvoir voir les ndfs validé des salariés ainsi que ces propres NDFs mais pas celles du super admin ni celles des autres admins -->
                                 @if((Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $isSalarie == 1)||($utilisateurSelectionne == Auth::user()->name && Auth::user()->admin == 1 && Auth::user()->superadmin == 0))

@@ -40,6 +40,7 @@ class User extends Authenticatable
         "dateChevauxFiscaux",
         "ValeurChevauxFiscaux",
         "taux",
+        "locked",
     ];
 
     public function missions()

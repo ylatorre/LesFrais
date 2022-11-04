@@ -302,22 +302,20 @@ class Controller extends BaseController
                 DB::table("users")->where("email", "=", $request->email)->update(["salarie" => 1]);
             }
         }
-
-
-
-
-
-
         return redirect('gestionaireUser');
     }
 
     public function supuser(Request $request)
     {
-        //        dd("en cours de supression");
-        $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->get();
-        $deleted = DB::table('users')->where("email", '=', $request->email)->delete();
-
+        $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->update(['locked'=>'1']);
+        Session::flash('lockedUser',"L'utilisateur à été désactivé avec succès.");
         return redirect(route("gestionaireUser"));
+    }
+    public function activerUser(Request $request){
+
+        DB::table("users")->where("email", "=", $request->email)->where("id" , "=" , $request->id)->update(['locked'=>'0']);
+        Session::flash('unlockedUser',"L'utilisateur à été activé avec succès.");
+        return redirect(route('gestionaireUser'));
     }
 
     public function gestionnairendf(Request $request)

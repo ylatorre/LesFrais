@@ -294,6 +294,18 @@
                 <p>{{ Session::get('validatesuccess') }}</p>
             </div>
         @endif
+        @if (Session::has('lockedUser'))
+            <div
+                class="font-bold mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(30,122,30)] bg-[rgb(167,209,176)] border-[rgb(188,219,193)] border ">
+                <p>{{ Session::get('lockedUser') }}</p>
+            </div>
+        @endif
+        @if (Session::has('unlockedUser'))
+            <div
+                class="font-bold mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(30,122,30)] bg-[rgb(167,209,176)] border-[rgb(188,219,193)] border ">
+                <p>{{ Session::get('unlockedUser') }}</p>
+            </div>
+        @endif
     </div>
     <div class="buttonUtilisateur">
         <button
@@ -495,18 +507,29 @@
                                     </button>
                                 @endif
 
-                                @if (Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $user->salarie == 1)
+                                @if (Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $user->salarie == 1 && $user->locked == 0)
                                     <button
                                         class=" responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
-                                        Supprimer
+                                        Désactiver
                                     </button>
-                                @elseif(Auth::user()->superadmin == 1 && Auth::user()->email != $user->email)
+                                @elseif(Auth::user()->superadmin == 1 && Auth::user()->email != $user->email  && $user->locked == 0)
                                     <button
                                         class="responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
-                                        Supprimer
+                                        Désactiver
                                     </button>
+                                    @elseif ((Auth::user()->admin == 1 || Auth::user()->superadmin == 1) && $user->locked == 1)
+                                    <form method="POST" action="{{route('activerUser')}}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                        <input type="hidden" name="email" value="{{$user->email}}">
+                                        <button
+                                            class="responsiv-administration-buttons block text-white bg-gray-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            type="submit">
+                                            Activer
+                                        </button>
+                                    </form>
                                 @endif
                             </div>
                         </td>
@@ -641,7 +664,7 @@
                                     </svg>
                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Etes-vous sur
                                         de bien
-                                        vouloir supprimer cet utilisateur ?</h3>
+                                        vouloir désactiver cet utilisateur ?</h3>
                                     <form methode="post" action="{{ route('supuser') }}">
                                         @csrf
                                         <input type="hidden"value="{{ $user->email }}" name="email">

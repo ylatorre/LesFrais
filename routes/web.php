@@ -43,6 +43,8 @@ Route::post('modifUser',[Controller::class, 'modifUser'])->name('modifUser')->mi
 // Route::post('ajouterEssence',[Controller::class, 'ajouterEssence'])->name('ajouterEssence')->middleware(['auth']);
 
 Route::get('supuser',[Controller::class, 'supuser'])->name('supuser')->middleware(['auth']);
+Route::post('activerUser',[Controller::class, 'activerUser'])->name('activerUser')->middleware(['auth']);
+
 
 
 Route::post('/PDFgeneratorPerMonth', [PDFgeneratorController::class, 'PDFgeneratorPerMonth'])->name('PDFgeneratorPerMonth')->middleware(['auth']);
