@@ -57,7 +57,7 @@
 
         <!-- Page Heading -->
         <header class="">
-            <div class="px-2 py-1 max-w-7xl sm:px-2 lg:px-2">
+            <div class="px-2 py-1 w-full sm:px-2 lg:px-2">
                 {{ $header }}
             </div>
         </header>
