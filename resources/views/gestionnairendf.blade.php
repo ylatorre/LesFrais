@@ -62,7 +62,7 @@
                                     </form>
                                 </td>
                             @elseif($ndfsemploye[$i]->Valide == 1)
-                                <td class="flex flex-col items-center justify-around check">
+                                <td class="flex flex-col items-center justify-around check mt-1 mb-1">
                                     <img src="./images/icon-checkmark.png" alt="validé" width="30px" height="30px">
                                 </td>
 
