@@ -32,8 +32,6 @@ class MoisController extends Controller
 
         // dd($NBevents);
 
-
-
         if (count($NBevents) == 0) {
             Session::flash('pasevents', "Vous n'avez pas d'évènements enregistrés pour ce mois !");
             return redirect('dashboard');
@@ -42,6 +40,11 @@ class MoisController extends Controller
         /* - On parcours l'ensemble du des évènements de l'utilisateur connécté pour ce mois */
         for ($i = 0; $i < count($NBevents); $i++) {
             /* - on vérifi que pour chaque image entré, une valeur y est liée. */
+            if($NBevents[$i]->pathParking == 0 && $NBevents[$i]->pathPeage == 0 && $NBevents[$i]->pathPeage2 == 0 && $NBevents[$i]->pathPeage3 == 0 && $NBevents[$i]->pathPeage4 == 0 && $NBevents[$i]->pathDivers == 0 && $NBevents[$i]->pathPetitDej == 0 && $NBevents[$i]->pathDejeuner == 0 && $NBevents[$i]->pathDiner == 0 && $NBevents[$i]->pathAemporter == 0 && $NBevents[$i]->pathHotel == 0 && $NBevents[$i]->pathEssence == 0 && $NBevents[$i]->parking == 0 && $NBevents[$i]->peage == 0 && $NBevents[$i]->peage2 == 0 && $NBevents[$i]->peage3 == 0 && $NBevents[$i]->peage4 == 0 && $NBevents[$i]->divers == 0 && $NBevents[$i]->petitDej == 0 && $NBevents[$i]->dejeuner == 0 && $NBevents[$i]->diner == 0 && $NBevents[$i]->aEmporter == 0 && $NBevents[$i]->hotel == 0 && $NBevents[$i]->essence == 0)
+            {
+                Session::flash('emptyInput',"Merci de rentrer au moins une valeur pour votre déplacement du " . $NBevents[$i]->end . 'chez' . $NBevents[$i]->title);
+                return redirect('dashboard');
+            }
             if ($NBevents[$i]->parking != 0 && $NBevents[$i]->pathParking == 0) {
                 Session::flash('noPathParking',"Merci d'entrer la facture de parking pour votre évènement du " . $NBevents[$i]->end . " chez " . $NBevents[$i]->title);
                 return redirect('dashboard');

@@ -509,6 +509,9 @@ class Controller extends BaseController
 
     public function createEvent(Request $request)
     {
+        
+
+
 
         /* - création du nom du dossier dans lequel les images seront stockées */
         $folderName = Auth::user()->name."-".$request->moisActuel;

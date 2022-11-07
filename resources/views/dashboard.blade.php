@@ -110,7 +110,10 @@ input::-o-outer-spin-button {
     </style>
 
     {{-- ensembles des erreurs possibles lorceque l'utilisateur admin ou employé soumet sa note de frais pour inspection --}}
-
+        @if(Session::has("emptyInput"))
+        <div style="width:90%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
+            {{ Session::get('emptyInput') }}</div>
+        @endif
         @if(Session::has("noPathParking"))
         <div style="width:90%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathParking') }}</div>
