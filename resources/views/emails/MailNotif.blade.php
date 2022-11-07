@@ -18,17 +18,20 @@
         }
         h1{
             font-size:16px;
+            margin-bottom:10px;
+        }
+        footer{
+            margin-top:10px;
         }
     </style>
 
 
 
 <br>
-    <h1>Bonjour {{$modo->name}},</h1><br>
+    <h1>Bonjour {{$modo->name}},</h1>
 
-    <p>     L'utilisateur <em>{{$actualUser}}</em> a demandé la validation de sa note de frais de <strong>{{$monthNDF}}.</strong></p><br>
-
-    <p>     Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace Administration.</p><br>
+    <p>     L'utilisateur <em>{{$actualUser}}</em> a demandé la validation de sa note de frais de <strong>{{$monthNDF}}.</strong></p>
+    <p>     Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace Administration.</p>
 
     <footer>
         <p>Très cordialement.</p><br>

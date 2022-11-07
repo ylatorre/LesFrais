@@ -18,14 +18,18 @@
         }
         h1{
             font-size:16px;
+            margin-bottom:10px;
+        }
+        footer{
+            margin-top:10px;
         }
     </style>
-        <h1>Bonjour {{$salarie[0]->name}} ,</h1><br>
-        <p>Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée par <em>{{$moderator[0]->name}}</em> .</p> <br>
-        <p>Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public/Mes-notes-de-frais">Carpe Diem</a> . </p><br><br>
+        <h1>Bonjour {{$salarie[0]->name}} ,</h1>
 
+        <p>Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée par <em>{{$moderator[0]->name}}</em> .</p>
+        <p>Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public/Mes-notes-de-frais">Carpe Diem</a> . </p><br>
 
-        <footer>
+        <footer style>
             Très cordialement,
         </footer>
 

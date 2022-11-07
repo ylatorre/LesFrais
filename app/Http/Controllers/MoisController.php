@@ -261,7 +261,7 @@ class MoisController extends Controller
         }
 
         if ($valideoupas[0]->Valide == 1) {
-            Session::flash('dejavalide', "La note de frais pour ce mois à déjà été validée
+            Session::flash('dejavalide', "La note de frais pour ce mois à déjà été validée,
             vous pouvez la consulter dans l'onglet  'Mes notes de frais'.");
             return redirect('dashboard');
         }
@@ -272,7 +272,7 @@ class MoisController extends Controller
         $monthlocked = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("ValidationEnCours", "=", "1")->where("MoisEnCours", "=", $request->lockedmonth)->get();
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("Valide", "=", "1");
 
-        Session::flash('NDFsuppr', 'La note de frais à bien été supprimée !');
+        Session::flash('NDFsuppr', 'Votre demande de validation a bien été annulée !');
 
         return redirect(route("dashboard"));
     }
