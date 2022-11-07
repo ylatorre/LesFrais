@@ -18,10 +18,10 @@
         }
         h1{
             font-size:16px;
-            margin-bottom:10px;
+            margin-bottom:20px;
         }
         footer{
-            margin-top:10px;
+            margin-top:20px;
         }
     </style>
 
