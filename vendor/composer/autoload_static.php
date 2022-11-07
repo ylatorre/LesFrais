@@ -618,6 +618,7 @@ class ComposerStaticInitde89ce96b7969ac01bc8a9f0c8bee675
         'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
         'App\\Models\\Mois' => __DIR__ . '/../..' . '/app/Models/Mois.php',
         'App\\Models\\Mois_valide' => __DIR__ . '/../..' . '/app/Models/Mois_valide.php',
+        'App\\Models\\Rejet' => __DIR__ . '/../..' . '/app/Models/Rejet.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\historiqueEssence' => __DIR__ . '/../..' . '/app/Models/historiqueEssence.php',
         'App\\Models\\infosndf' => __DIR__ . '/../..' . '/app/Models/infosndf.php',

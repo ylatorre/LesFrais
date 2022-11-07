@@ -42,6 +42,7 @@
                     <td></td>
                 @else
                     @for ($i = 0; $i < count($ndfsemploye); $i++)
+                     <tr>
 
                             <td class=" text-center TD-gestion">
                                 {{ $ndfsemploye[$i]->MoisEnCours }}
@@ -62,6 +63,7 @@
                                     </form>
                                 </td>
                             @elseif($ndfsemploye[$i]->Valide == 1)
+
                                 <td class="flex flex-col items-center justify-around check mt-1 mb-1">
                                     <img src="./images/icon-checkmark.png" alt="validé" width="30px" height="30px">
                                 </td>
@@ -94,7 +96,7 @@
                                     </td>
                                     @else
                                     <td>
-                                        <h5 class="text-center">Pas encore validé</h5>
+                                        <h5 class="text-center">Pas encore validée</h5>
                                     </td>
                                     @endif
                                 @endif
@@ -112,7 +114,8 @@
                                     @else
                                     <td class="text-center">. . .</td>
                                 @endif
-                            <td
+                                @if($ndfsemploye[$i]->Valide == 1)
+                                <td
                                 class=" text-center">
                                 <form method="POST" action="{{ route('supprimerNDF') }}">
                                     @csrf
@@ -120,10 +123,16 @@
                                         value="{{ $ndfsemploye[$i]->Utilisateur }}">
                                     <input type="hidden" name="moisndf"
                                         value="{{ $ndfsemploye[$i]->MoisEnCours }}">
-                                    <button  type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1">Supprimer</button>
+                                    <button type="submit" class="text-red-600 text-bold border-4 border-red-600  py-1 px-1 TD-gestion">Supprimer</button>
                                 </form>
                             </td>
+                            @else
+                            <td>
+                                <h5 class="text-center">Pas encore validée</h5>
+                            </td>
                             @endif
+                            @endif
+                        </tr>
 
 
 

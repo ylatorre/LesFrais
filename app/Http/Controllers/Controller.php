@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Mois;
 use App\Models\User;
 use Faker\Core\Uuid;
+use App\Mail\PDFmail;
 use App\Models\Event;
+use App\Models\Rejet;
 use App\Models\infosndf;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use App\Mail\MailNotifSalarie;
-use App\Mail\PDFmail;
-use App\Models\historiqueEssence;
+use App\Mail\MailRejet;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\historiqueEssence;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +30,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                                                                                                                       //
+    //    Ce controller centraliser les fonctionnalitées liées aux évènement ainsi qu'à la gestion des notes de frais et aux utilisateus     //
+    //                                                                                                                                       //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function displayDashboard()
     {
@@ -60,122 +68,7 @@ class Controller extends BaseController
         ]));
     }
 
-    public function createEvent(Request $request)
-    {
 
-        /* - création du nom du dossier dans lequel les images seront stockées */
-        $folderName = Auth::user()->name."-".$request->moisActuel;
-
-        /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
-        if($request->hasFile('factureParking')){
-        $pathParking = Storage::disk('public')->put($folderName ,$request->file("factureParking"));
-        }else{
-            $pathParking = "0";
-        }
-        if($request->hasFile('facturePeage')){
-        $pathPeage = Storage::disk('public')->put($folderName ,$request->file("facturePeage"));
-        }else{
-            $pathPeage = "0";
-        }
-        if($request->hasFile('facturePeage2')){
-        $pathPeage2 = Storage::disk('public')->put($folderName ,$request->file("facturePeage2"));
-        }else{
-            $pathPeage2 = "0";
-        }
-        if($request->hasFile('facturePeage3')){
-        $pathPeage3 = Storage::disk('public')->put($folderName ,$request->file("facturePeage3"));
-        }else{
-            $pathPeage3 = "0";
-        }
-        if($request->hasFile('facturePeage4')){
-        $pathPeage4 = Storage::disk('public')->put($folderName ,$request->file("facturePeage4"));
-        }else{
-            $pathPeage4 = "0";
-        }
-        if($request->hasFile('factureDivers')){
-        $pathDivers = Storage::disk('public')->put($folderName ,$request->file("factureDivers"));
-        }else{
-            $pathDivers = "0";
-        }
-        if($request->hasFile('facturePetitDej')){
-        $pathPetitDej = Storage::disk('public')->put($folderName ,$request->file("facturePetitDej"));
-        }else{
-            $pathPetitDej = "0";
-        }
-        if($request->hasFile('factureDejeuner')){
-        $pathDejeuner = Storage::disk('public')->put($folderName ,$request->file("factureDejeuner"));
-        }else{
-            $pathDejeuner = "0";
-        }
-        if($request->hasFile('factureDiner')){
-        $pathDiner = Storage::disk('public')->put($folderName ,$request->file("factureDiner"));
-        }else{
-            $pathDiner = "0";
-        }
-        if($request->hasFile('factureAemporter')){
-        $pathAemporter = Storage::disk('public')->put($folderName ,$request->file("factureAemporter"));
-        }else{
-            $pathAemporter = "0";
-        }
-        if($request->hasFile('factureHotel')){
-        $pathHotel = Storage::disk('public')->put($folderName ,$request->file("factureHotel"));
-        }else{
-            $pathHotel = "0";
-        }
-        if($request->hasFile('factureEssence')){
-        $pathEssence = Storage::disk('public')->put($folderName ,$request->file("factureEssence"));
-        }
-        else{
-        $pathEssence = "0";
-        }
-
-/* - Importation des données en base de donnée */
-
-        // EVENT DE BASE
-        Event::create([
-            "id" => $request->iding,
-            "start" => $request->start,
-            "end" => $request->end,
-            "description" => $request->description,
-            "title" => $request->title,
-            "ville" => $request->ville,
-            "code_postal" => $request->code_postal,
-            "peage" => $request->peage,
-            "peage2" => $request->peage2,
-            "peage3" => $request->peage3,
-            "peage4" => $request->peage4,
-            "parking" => $request->parking,
-            "essence" => $request->essence,
-            "divers" => $request->divers,
-            "petitDej" => $request->petitDej,
-            "dejeuner" => $request->dejeuner,
-            "diner" => $request->diner,
-            "aEmporter" => $request->aEmporter,
-            "hotel" => $request->hotel,
-            "kilometrage" => $request->kilometrage,
-            "mois" => $request->moisActuel,
-            "heure_debut" => $request->heureDebut,
-            "heure_fin" => $request->heureFin,
-            "idUser" => Auth::user()->id,
-
-            "pathParking" => $pathParking,
-            "pathPeage" => $pathPeage,
-            "pathPeage2" => $pathPeage2,
-            "pathPeage3" => $pathPeage3,
-            "pathPeage4" => $pathPeage4,
-            "pathDivers" => $pathDivers,
-            "pathPetitDej" => $pathPetitDej,
-            "pathDejeuner" => $pathDejeuner,
-            "pathDiner" => $pathDiner,
-            "pathAemporter" => $pathAemporter,
-            "pathHotel" => $pathHotel,
-            "pathEssence" => $pathEssence,
-        ]);
-
-        Session::flash('createEvent',"L'évènement a été ajouté à votre calendrier !");
-
-        return redirect(route('dashboard'));
-    }
 
 
     public function gestionaireUser()
@@ -255,18 +148,9 @@ class Controller extends BaseController
     public function modifUser(Request $request)
     {
 
-
         $modifUserDB = DB::table("users")->where("email", "=", $request->actualemail)->get();
 
-
         $iduser = DB::table("users")->where("email", "=", $request->actualemail)->select("id")->get();
-
-        //        dump($modifUserDB);
-        //        dd($request);
-        //        dd($entreprises[0]);
-        //        alert("blabla");
-        //        $deleted = DB::table('entreprises')->select("id")->where("id",'=',$id)->delete();
-        //    dd("test");
 
         if ($modifUserDB[0]->name != $request->name) {
             DB::table("users")->where("email", "=", $modifUserDB[0]->email)->update(["name" => $request->name]);
@@ -420,8 +304,6 @@ class Controller extends BaseController
         $concernedEvents = DB::table('events')->where('idUser','=',$concernedUser[0]->id)->where("mois","=",$request->moisndf)->get();
         $longueurEvents = sizeof($concernedEvents);
 
-
-
     // pour chaque évènement, on génère un pdf et on le joint au mail
             for ($i=0; $i < $longueurEvents ; $i++) {
 
@@ -458,13 +340,9 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.$i.'.pdf' , $PDF->output());
             }
-    // - On charge la vue  en PDF avec DOMPDF
 
-
-
-        // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de validé
+        // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de valider
         Mail::to(Auth::user()->email)->send(new PDFmail($request->username,$request->moisndf,$i));
-
 
         // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
@@ -520,7 +398,9 @@ class Controller extends BaseController
         $moisNDF = $moisDateNDF . " " . $dateNDF[0];
         $moderator = DB::table('users')->where('id','=',Auth::user()->id)->get();
 
+        // - notification au salarié de la validation de sa note de frais
         Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator,$salarie,$moisNDF));
+
 
         Session::flash('validatesuccess', "La note de frais a été validée ! Un mail vous a été envoyé avec les factures de cette note de frais !");
 
@@ -533,6 +413,84 @@ class Controller extends BaseController
 
         return redirect(route('gestionaireUser'));
     }
+
+
+    public function rejeterNDF(Request $request){
+
+        // - on créer un rejet dans la base de donnée
+            Rejet::create([
+                'TextRejet' => $request->rejetText,
+                'UserID' => $request->userID,
+                'UserName' => $request->username,
+                'MoisNDF' => $request->moisndf,
+                'RejectedBy' => Auth::user()->name,
+            ]);
+
+        // - on récupère en base de données le dernier rejet que l'on viens de créer
+            $rejet = DB::table("rejets")->where("UserID","=",$request->userID)->where("MoisNDF","=",$request->moisndf)->get();
+            $dernierRejet = $rejet[sizeof($rejet) - 1];
+
+        // - on récupère également le user concerné et surtout son adresse email pour l'envoi
+
+            $rejetUser = DB::table('users')->where("id","=",$request->userID)->get();
+
+            $dateNDF = explode("-", $request->moisndf);
+
+        // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
+        $moisDateNDF = "";
+
+        switch ($dateNDF[1]) {
+            case "01";
+                $moisDateNDF = "Janvier";
+                break;
+            case "02";
+                $moisDateNDF = "Février";
+                break;
+            case "03";
+                $moisDateNDF = "Mars";
+                break;
+            case "04";
+                $moisDateNDF = "Avril";
+                break;
+            case "05";
+                $moisDateNDF = "Mai";
+                break;
+            case "06";
+                $moisDateNDF = "Juin";
+                break;
+            case "07";
+                $moisDateNDF = "Juillet";
+                break;
+            case "08";
+                $moisDateNDF = "Août ";
+                break;
+            case "09";
+                $moisDateNDF = "Septembre";
+                break;
+            case "10";
+                $moisDateNDF = "Octobre";
+                break;
+            case "11";
+                $moisDateNDF = "Novembre";
+                break;
+            case "12";
+                $moisDateNDF = "Décembre";
+                break;
+        };
+
+        $moisNDF = $moisDateNDF . " " . $dateNDF[0];
+
+        // - on envoie un mail a l'utilisateur en question dans lequel on joint le text écrit par le moderateur
+        Mail::to($rejetUser[0]->email)->send(new MailRejet($dernierRejet,$rejetUser,$moisNDF));
+
+        // - on récupère la note de frais concernée et on la supprime pour dévérrouiller le mois de l'utilisateur
+        DB::table('infosndfs')->where('MoisEnCours','=',$request->moisndf)->where('Utilisateur','=',$rejetUser[0]->name)->delete();
+        Session::flash('rejetValidate',"La note de frais a bien été rejetée et l'utilisateur a été prévenu par mail.");
+
+        return redirect(route('gestionaireUser'));
+    }
+
+
     public function mesNDF()
     {
         $authInfosndfs = DB::table('infosndfs')->where('Utilisateur', "=", Auth::user()->name)->get();
@@ -545,14 +503,125 @@ class Controller extends BaseController
         return redirect(route('mesNDF'));
     }
 
-    /*/////////////////////////
-    - Gestion des évènements
-    */ /////////////////////////
+    ////////////////////////////
+    // Gestion des évènements //
+    ////////////////////////////
 
-    public function repas(Request $request)
+    public function createEvent(Request $request)
     {
-        dd('interception');
-        return redirect("/dashboard");
+
+        /* - création du nom du dossier dans lequel les images seront stockées */
+        $folderName = Auth::user()->name."-".$request->moisActuel;
+
+        /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
+        if($request->hasFile('factureParking')){
+        $pathParking = Storage::disk('public')->put($folderName ,$request->file("factureParking"));
+        }else{
+            $pathParking = "0";
+        }
+        if($request->hasFile('facturePeage')){
+        $pathPeage = Storage::disk('public')->put($folderName ,$request->file("facturePeage"));
+        }else{
+            $pathPeage = "0";
+        }
+        if($request->hasFile('facturePeage2')){
+        $pathPeage2 = Storage::disk('public')->put($folderName ,$request->file("facturePeage2"));
+        }else{
+            $pathPeage2 = "0";
+        }
+        if($request->hasFile('facturePeage3')){
+        $pathPeage3 = Storage::disk('public')->put($folderName ,$request->file("facturePeage3"));
+        }else{
+            $pathPeage3 = "0";
+        }
+        if($request->hasFile('facturePeage4')){
+        $pathPeage4 = Storage::disk('public')->put($folderName ,$request->file("facturePeage4"));
+        }else{
+            $pathPeage4 = "0";
+        }
+        if($request->hasFile('factureDivers')){
+        $pathDivers = Storage::disk('public')->put($folderName ,$request->file("factureDivers"));
+        }else{
+            $pathDivers = "0";
+        }
+        if($request->hasFile('facturePetitDej')){
+        $pathPetitDej = Storage::disk('public')->put($folderName ,$request->file("facturePetitDej"));
+        }else{
+            $pathPetitDej = "0";
+        }
+        if($request->hasFile('factureDejeuner')){
+        $pathDejeuner = Storage::disk('public')->put($folderName ,$request->file("factureDejeuner"));
+        }else{
+            $pathDejeuner = "0";
+        }
+        if($request->hasFile('factureDiner')){
+        $pathDiner = Storage::disk('public')->put($folderName ,$request->file("factureDiner"));
+        }else{
+            $pathDiner = "0";
+        }
+        if($request->hasFile('factureAemporter')){
+        $pathAemporter = Storage::disk('public')->put($folderName ,$request->file("factureAemporter"));
+        }else{
+            $pathAemporter = "0";
+        }
+        if($request->hasFile('factureHotel')){
+        $pathHotel = Storage::disk('public')->put($folderName ,$request->file("factureHotel"));
+        }else{
+            $pathHotel = "0";
+        }
+        if($request->hasFile('factureEssence')){
+        $pathEssence = Storage::disk('public')->put($folderName ,$request->file("factureEssence"));
+        }
+        else{
+        $pathEssence = "0";
+        }
+
+/* - Importation des données en base de donnée */
+
+        // EVENT DE BASE
+        Event::create([
+            "id" => $request->iding,
+            "start" => $request->start,
+            "end" => $request->end,
+            "description" => $request->description,
+            "title" => $request->title,
+            "ville" => $request->ville,
+            "code_postal" => $request->code_postal,
+            "peage" => $request->peage,
+            "peage2" => $request->peage2,
+            "peage3" => $request->peage3,
+            "peage4" => $request->peage4,
+            "parking" => $request->parking,
+            "essence" => $request->essence,
+            "divers" => $request->divers,
+            "petitDej" => $request->petitDej,
+            "dejeuner" => $request->dejeuner,
+            "diner" => $request->diner,
+            "aEmporter" => $request->aEmporter,
+            "hotel" => $request->hotel,
+            "kilometrage" => $request->kilometrage,
+            "mois" => $request->moisActuel,
+            "heure_debut" => $request->heureDebut,
+            "heure_fin" => $request->heureFin,
+            "idUser" => Auth::user()->id,
+
+            "pathParking" => $pathParking,
+            "pathPeage" => $pathPeage,
+            "pathPeage2" => $pathPeage2,
+            "pathPeage3" => $pathPeage3,
+            "pathPeage4" => $pathPeage4,
+            "pathDivers" => $pathDivers,
+            "pathPetitDej" => $pathPetitDej,
+            "pathDejeuner" => $pathDejeuner,
+            "pathDiner" => $pathDiner,
+            "pathAemporter" => $pathAemporter,
+            "pathHotel" => $pathHotel,
+            "pathEssence" => $pathEssence,
+        ]);
+
+        Session::flash('createEvent',"L'évènement a été ajouté à votre calendrier !");
+
+        return redirect(route('dashboard'));
     }
 
     public function supprimerEvent(Request $request)

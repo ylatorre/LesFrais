@@ -306,6 +306,12 @@
                 <p>{{ Session::get('unlockedUser') }}</p>
             </div>
         @endif
+        @if (Session::has('rejetValidate'))
+            <div
+                class="font-bold mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(30,122,30)] bg-[rgb(167,209,176)] border-[rgb(188,219,193)] border ">
+                <p>{{ Session::get('rejetValidate') }}</p>
+            </div>
+        @endif
     </div>
     <div class="buttonUtilisateur">
         <button

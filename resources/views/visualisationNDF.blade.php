@@ -6,12 +6,9 @@
 
 
         <div class="flex flex-row justify-around">
-            <form method="POST" action="{{ route('supprimerNDF') }}">
-                @csrf
-                <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
-                <input type="hidden" name="username" value="{{ $utilisateurs[0]->name }}">
-                <button type="submit" class="supprimerNDF">supprimer la note de frais</button>
-            </form>
+            <button class="supprimerNDF" type="button" data-modal-toggle="modalRejet">
+                Rejeter la note de frais
+              </button>
             <form method="POST" action="{{ route('validerNDF') }}">
                 @csrf
                 <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
@@ -21,6 +18,47 @@
 
 
         </div>
+        {{--modal tailwind pour ajouter du text au rejet de la ndf--}}
+
+
+          <!-- Main modal -->
+          <div id="modalRejet" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+              <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                  <!-- Modal content -->
+                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                      <!-- Modal header -->
+                      <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                              Rejet de note de frais
+                          </h3>
+                          <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="modalRejet">
+                              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                              <span class="sr-only">Close modal</span>
+                          </button>
+                      </div>
+                      <!-- Modal body -->
+                       <form method="POST" action="{{ route('rejeterNDF') }}" id="rejeterNDF">
+                      <div class="p-6 space-y-6">
+
+                            @csrf
+                            <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
+                            <input type="hidden" name="username" value="{{ $utilisateurs[0]->name }}">
+                            <input type="hidden" name="userID" value="{{ $utilisateurs[0]->idUser }}">
+                            <textarea name="rejetText" rows="3"
+                                        placeholder="Contenu du mail de rejet..."
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
+
+                      </div>
+                      <!-- Modal footer -->
+                      <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+                          <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" >Rejeter</button>
+                          <button data-modal-toggle="modalRejet" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Annuler</button>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+
 
     @elseif(Auth::user()->salarie == 1 || (Auth::user()->admin == 1 && Auth::user()->superadmin != 1))
         <div class="flex flex-row items-center justify-around w-full h-20 px-4 font-bold">
@@ -93,12 +131,10 @@
         .TD-table-3 {
             font-size: 13px;
             border: 2px solid black;
-
             padding-top: 6px;
             padding-bottom: 6px;
             white-space: nowrap;
         }
-
         .col-table {
             font-size: 13px;
             border: 1px solid black;

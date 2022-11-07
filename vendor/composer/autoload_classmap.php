@@ -42,6 +42,7 @@ return array(
     'App\\Models\\Event' => $baseDir . '/app/Models/Event.php',
     'App\\Models\\Mois' => $baseDir . '/app/Models/Mois.php',
     'App\\Models\\Mois_valide' => $baseDir . '/app/Models/Mois_valide.php',
+    'App\\Models\\Rejet' => $baseDir . '/app/Models/Rejet.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\historiqueEssence' => $baseDir . '/app/Models/historiqueEssence.php',
     'App\\Models\\infosndf' => $baseDir . '/app/Models/infosndf.php',
