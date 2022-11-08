@@ -67,8 +67,8 @@
                 max-width: 10%;
                 border-bottom:2px solid black;
         }
-        .table-text-responsive td{
-            font-family: 'nunito',sans-serif;
+        tbody tr td{
+            font-family:'nunito',sans-serif;
         }
 
         @media screen and (max-width:1450px) {
@@ -331,7 +331,7 @@
     </div>
     <div class="buttonUtilisateur">
         <button
-            class="responsiv-administration-buttons block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="responsiv-administration-buttons block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="button" data-modal-toggle="authentication-modal">
             + Utilisateur
         </button>
