@@ -28,30 +28,47 @@
     {{-- </style> --}}
     <!-- Modal toggle -->
     <style>
-        body {
-            font-family: 'nunito', sans-serif;
-        }
+
 
         /* responsive administration buttons*/
         .responsiv-administration-buttons {
-            padding: 15px;
+            padding: 8px;
             font-family: 'nunito', sans-serif;
-            transition: 200ms ease;
-            width:155px;
+            transition: 50ms;
+            width: 155px;
+        }
+        .responsiv-administration-buttons:hover {
+            transform: scale(1.04);
+        }
 
+        .unSurDeux tr:nth-child(even) {
+            background: rgb(233, 233, 233);
         }
-        .evenodd :nth-child(even) {
-            background: grey;
-        }
-        .buttonUtilisateur{
-            width:100%;
-            display:flex;
+
+
+        .buttonUtilisateur {
+            width: 100%;
+            display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            margin-bottom:12px;
-            transition:200ms ease;
+            margin-bottom: 12px;
+            transition: 200ms ease;
 
+        }
+        .th-table-admin {
+            font-family:'nunito',sans-serif;
+            font-weight: 900;
+                font-size: 12px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                max-width: 10%;
+                border-bottom:2px solid black;
+        }
+        .table-text-responsive td{
+            font-family: 'nunito',sans-serif;
         }
 
         @media screen and (max-width:1450px) {
@@ -69,9 +86,9 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 12px;
+                font-size: 8px;
                 padding: 6px;
-                width:140px;
+                width: 140px;
             }
 
             .th-table-admin {
@@ -99,9 +116,9 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 12px;
+                font-size: 8px;
                 padding: 6px;
-                width:90px;
+                width: 80px
             }
 
             .th-table-admin {
@@ -137,10 +154,7 @@
 
             .responsiv-administration-buttons {
                 font-size: 10px;
-                padding-left: 6px;
-                padding-right: 6px;
-                padding-top: 6px;
-                padding-bottom: 6px;
+                padding:6px;
             }
 
             .th-table-admin {
@@ -201,8 +215,9 @@
                 padding-top: 2px !important;
                 padding-bottom: 2px !important;
             }
-            label{
-                font-size:10px;
+
+            label {
+                font-size: 10px;
             }
 
             th {
@@ -219,11 +234,12 @@
                 padding-top: 4px;
                 padding-bottom: 4px;
                 margin-right: 2px !important;
-                width:80px;
+                width: 80px;
             }
-            .buttonUtilisateur{
+
+            .buttonUtilisateur {
                 align-items: flex-end;
-                margin-right:20px;
+                margin-right: 20px;
             }
 
             .th-table-admin {
@@ -264,7 +280,7 @@
                 padding-right: 5px;
                 padding-top: 4px;
                 padding-bottom: 4px;
-                width:70px;
+                width: 70px;
             }
 
             .th-table-admin {
@@ -354,112 +370,98 @@
                     </th>
 
 
-                    <th scope="col" class="px-6 py-3 text-center">
-                        <span class="sr-only">Modifier</span>
+                    <th scope="col" class="px-6 py-3 text-center" style="border-bottom:2px solid black;">
+
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="unSurDeux">
                 @php
                     $i = 1;
                     $NDFaValider = 0;
                 @endphp
                 @foreach ($users as $user)
-
-                    <tr
-                        class=" overflow-visible border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                    <tr class=" overflow-visible border-b">
                         @if ($user->admin == 1 && $user->superadmin == 0)
-                            <td scope="row"
-                                class="px-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
-                                style="background:white;">
+                            <td scope="row" class="px-2 text-center font-medium whitespace-nowrap">
                                 Modérateur
                             </td>
-                            <td scope="row"
-                                class="px-2 py-2 text-center font-medium text-blue-600 dark:text-white whitespace-nowrap"
-                                style="background:white;">
+                            <td scope="row" class="px-2 py-2 text-center font-medium whitespace-nowrap">
                                 {{ $user->name }}
                             </td>
-                            <td class="tchao1062 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao1062 py-2 text-center font-medium">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center font-medium">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao540 py-2 text-center font-medium">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center font-medium">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-2 text-center text-blue-600 tchao400" style="background:white;">
+                            <td class=" py-2 text-center font-medium tchao400">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-2 text-center text-blue-600" style="background:white;">
+                            <td class="tchao780 py-2 text-center font-medium">
                                 *******
                             </td>
                         @elseif($user->superadmin == 1)
-                            <td scope="row"
-                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
-                                style="background:white;">
+                            <td scope="row" class="py-2 text-center font-medium text-gray-900 whitespace-nowrap">
                                 Administrateur
                             </td>
-                            <td scope="row"
-                                class=" py-2 text-center font-bold text-red-400 dark:text-white whitespace-nowrap"
-                                style="background:white;">
+                            <td scope="row" class="py-2 text-center font-medium text-gray-900 whitespace-nowrap">
                                 {{ $user->name }}
-                            <td class="tchao1062 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao1062 py-2 text-center font-medium text-gray-900">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center font-medium text-gray-900">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao540 py-2 text-center font-medium text-gray-900">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center font-medium text-gray-900">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class=" py-2 text-center text-red-400 font-bold tchao400" style="background:white;">
+                            <td class=" py-2 text-center font-medium text-gray-900 tchao400">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-2 text-center text-red-400 font-bold" style="background:white;">
+                            <td class="tchao780 py-2 text-center font-medium text-gray-900 ">
                                 *******
                             </td>
                         @else
-                            <td scope="row"
-                                class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                                style="background:white;">
+                            <td scope="row" class=" py-2 text-center whitespace-nowrap">
                                 Salarié
                             </td>
-                            <td scope="row"
-                                class=" py-2 text-center font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                                style="background:white;">
+                            <td scope="row" class=" py-2 text-center whitespace-nowrap">
                                 {{ $user->name }}
-                            <td class="tchao1062 py-2 text-center" style="background:white;">
+                            <td class="tchao1062 py-2 text-center">
                                 {{ $user->email }}
                             </td>
-                            <td class="tchao780 py-2 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center">
                                 {{ $user->portables }}
                             </td>
-                            <td class="tchao540 py-2 text-center" style="background:white;">
+                            <td class="tchao540 py-2 text-center">
                                 {{ $user->vehicule }}
                             </td>
-                            <td class="tchao780 py-2 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center">
                                 {{ $user->chevauxFiscaux }}
                             </td>
-                            <td class="py-2 text-center tchao400" style="background:white;">
+                            <td class="py-2 text-center tchao400">
                                 {{ $user->taux }} €
                             </td>
 
-                            <td class="tchao780 py-2 text-center" style="background:white;">
+                            <td class="tchao780 py-2 text-center">
                                 *******
                             </td>
                         @endif
 
 
-                        <td class="py-1 overflow-visible text-right" style="background:white;">
+                        <td class="py-1 overflow-visible text-right">
                             <div class=" flex justify-start overflow-visible ">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
@@ -485,29 +487,33 @@
                                         <input type="hidden" name="userId" class="userId"
                                             value="{{ $user->id }}">
                                         @php
-                                            $NDFaValider = count(DB::table('infosndfs')->where('Utilisateur','=',$user->name)->where('ValidationEnCours','=','1')->get())
+                                            $NDFaValider = count(
+                                                DB::table('infosndfs')
+                                                    ->where('Utilisateur', '=', $user->name)
+                                                    ->where('ValidationEnCours', '=', '1')
+                                                    ->get(),
+                                            );
                                         @endphp
 
                                         <button
-                                            class=" responsiv-administration-buttons block mr-1 items-center sm:py-2.5 whitespace-nowrap bg-gray-800 border border-transparent rounded-md font-medium text-white hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                                            style="width:"
+                                            class="responsiv-administration-buttons block mr-1 items-center sm:py-2.5 whitespace-nowrap border-4 border-gray-900 text-gray-900 rounded-md font-bold  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                                             type="submit">
                                             Notes de frais
-                                            @if($NDFaValider != 0)
-                                            ({{$NDFaValider}})
+                                            @if ($NDFaValider != 0)
+                                                ({{ $NDFaValider }})
                                             @endif
                                         </button>
                                     </form>
                                 @endif
                                 @if (Auth::user()->admin == 1 && $user->superadmin != 1)
                                     <button
-                                        class="responsiv-administration-buttons block mr-1   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="responsiv-administration-buttons block mr-1 border-4 border-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-md text-blue-900 text-center dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="authentication-modal{{ $i }}">
                                         Modifier
                                     </button>
                                 @elseif(Auth::user()->superadmin == 1)
                                     <button
-                                        class=" responsiv-administration-buttons block mr-2   text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class=" responsiv-administration-buttons block mr-2 border-4 border-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-md text-blue-900 text-center dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="authentication-modal{{ $i }}">
                                         Modifier
                                     </button>
@@ -515,21 +521,21 @@
 
                                 @if (Auth::user()->admin == 1 && Auth::user()->superadmin == 0 && $user->salarie == 1 && $user->locked == 0)
                                     <button
-                                        class=" responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class=" responsiv-administration-buttons block focus:ring-4 border-4 border-rose-900 font-bold rounded-md focus:outline-none text-rose-900 focus:ring-blue-300 text-center dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
                                         Désactiver
                                     </button>
-                                @elseif(Auth::user()->superadmin == 1 && Auth::user()->email != $user->email  && $user->locked == 0)
+                                @elseif(Auth::user()->superadmin == 1 && Auth::user()->email != $user->email && $user->locked == 0)
                                     <button
-                                        class="responsiv-administration-buttons block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="responsiv-administration-buttons block focus:ring-4 border-4 border-rose-900 font-bold rounded-md focus:outline-none text-rose-900 focus:ring-blue-300 text-center dark:focus:ring-blue-800"
                                         type="button" data-modal-toggle="popup-modal{{ $i }}">
                                         Désactiver
                                     </button>
-                                    @elseif ((Auth::user()->admin == 1 || Auth::user()->superadmin == 1) && $user->locked == 1)
-                                    <form method="POST" action="{{route('activerUser')}}">
+                                @elseif ((Auth::user()->admin == 1 || Auth::user()->superadmin == 1) && $user->locked == 1)
+                                    <form method="POST" action="{{ route('activerUser') }}">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{$user->id}}">
-                                        <input type="hidden" name="email" value="{{$user->email}}">
+                                        <input type="hidden" name="id" value="{{ $user->id }}">
+                                        <input type="hidden" name="email" value="{{ $user->email }}">
                                         <button
                                             class="responsiv-administration-buttons block text-white bg-gray-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="submit">
@@ -773,13 +779,13 @@
                         </div>
                         <div class="flex flex-row justify-between">
                             <div class="flex flex-col w-1/2 mr-1">
-                            <label for="portables"
-                                class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Portable</label>
-                            <input type="tel" name="portable" id="portable"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
+                                <label for="portables"
+                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Portable</label>
+                                <input type="tel" name="portable" id="portable"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    placeholder="06 60 06 60 06" :value="old('portable')" required autofocus>
                             </div>
-                                @if (Auth::user()->superadmin == 1)
+                            @if (Auth::user()->superadmin == 1)
                                 <div class="flex flex-col w-1/2 ml-1">
                                     <label for="admin"
                                         class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">
