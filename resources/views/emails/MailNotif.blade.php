@@ -40,12 +40,16 @@
             width: 230px;
             color: #870b26;
         }
+        img a{
+            width:24px;
+            height:24px;
+        }
     </style>
 
 
 
 <br>
-    <h1 style="color:#870b26;">Bonjour {{$modo->name}},</h1>
+    <h1>Bonjour {{$modo->name}},</h1>
 
     <p>     L'utilisateur <em>{{$actualUser}}</em> a demandé la validation de sa note de frais de <strong>{{$monthNDF}}.</strong></p>
     <p>     Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace Administration.</p>
@@ -66,21 +70,11 @@
 
             <tr>
                 <td>
-                    <a href="https://www.facebook.com/carpeDiem.itservicestelecom" target="_blank"> <img
-                            src="{{ asset('./images/iconFacebook.png') }}" alt="fb" width="24px"
-                            height="24px"></a>
-                    <a href="https://twitter.com/Carpe_Diem_Pro" target="_blank"> <img
-                            src="{{ asset('./images/Twitter-b@5x.png') }}" alt="tw" width="24px"
-                            height="24px"></a>
-                    <a href="https://www.linkedin.com/company/carpe-diem-informatique/" target="_blank"> <img
-                            src="{{ asset('./images/Linkedin-b@5x.png') }}" alt="ln" width="24px"
-                            height="24px"></a>
-                    <a href="https://www.youtube.com/channel/UCTI2dHTGS9VrwKxGJf5MW7A" target="_blank"> <img
-                            src="{{ asset('./images/Youtube-b@5x.png') }}" alt="yt" width="24px"
-                            height="24px"></a>
-                    <a href="https://www.carpediem.pro/" target="_blank"> <img
-                            src="{{ asset('./images/Link-b@5x.png') }}" alt="link" width="24px"
-                            height="24px"></a>
+                    <a href="https://www.facebook.com/carpeDiem.itservicestelecom" target="_blank"> <img src="{{ asset('./images/iconFacebook.png') }}" alt="fb"></a>
+                    <a href="https://twitter.com/Carpe_Diem_Pro" target="_blank"> <img src="{{ asset('./images/Twitter-b@5x.png') }}" alt="tw"></a>
+                    <a href="https://www.linkedin.com/company/carpe-diem-informatique/" target="_blank"> <img src="{{ asset('./images/Linkedin-b@5x.png') }}" alt="ln"></a>
+                    <a href="https://www.youtube.com/channel/UCTI2dHTGS9VrwKxGJf5MW7A" target="_blank"> <img src="{{ asset('./images/Youtube-b@5x.png') }}" alt="yt"></a>
+                    <a href="https://www.carpediem.pro/" target="_blank"> <img src="{{ asset('./images/Link-b@5x.png') }}" alt="link"></a>
                 </td>
                 <td style="font-size: 10px;">LD : 0170.809.809 - Mob : 06.60.67.33.46</td>
             </tr>
