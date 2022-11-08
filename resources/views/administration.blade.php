@@ -69,26 +69,27 @@
         }
         tbody tr td{
             font-family:'nunito',sans-serif;
+            white-space: nowrap;
         }
 
         @media screen and (max-width:1450px) {
 
             /* 1450PX */
             td {
-                font-size: 15px;
+                font-size: 12px;
                 width: 10%;
 
             }
 
             th {
-                font-size: 15px;
+                font-size: 12px;
                 width: 10%;
             }
 
             .responsiv-administration-buttons {
-                font-size: 8px;
+                font-size: 12px;
                 padding: 6px;
-                width: 140px;
+                width: 100px;
             }
 
             .th-table-admin {
@@ -155,6 +156,7 @@
             .responsiv-administration-buttons {
                 font-size: 10px;
                 padding:6px;
+                width:90px;
             }
 
             .th-table-admin {
