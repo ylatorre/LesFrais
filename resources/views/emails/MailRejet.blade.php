@@ -33,8 +33,23 @@
             /* permet au paragraphe de fit avec son conteneur */
             word-wrap: break-word;
         }
+        .table-footer {
+            width: 40%;
+            border: 2px solid #870b26;
+        }
 
+        .table-footer td {
+            text-align: center;
+            height: 76px;
+            font-family: 'nunito', sans-serif;
+            font-weight: bold;
+            color: #870b26;
+        }
 
+        .table-footer th {
+            width: 230px;
+            color: #870b26;
+        }
 
     </style>
     <h4>Bonjour {{$rejetUser[0]->name}},</h4><br><p>votre note de frais pour le mois de {{$moisNDF}} a été rejetée pour la raison suivante : </p>
@@ -46,8 +61,39 @@
 
     <div class="footer">
         <p>Très cordialement,</p>
+    </div>
+    <div class="signature">
+        <table class="table-footer">
+            <tr>
+                <th><img src="{{ asset('./images/logoCDIT.png') }}" alt="logoCDIT"></th>
+                <th>{{ $rejecter[0]->name }}</th>
+            </tr>
+            <tr>
+                <td style="font-style:italic; height:30px;">assistance@carpediem.pro</td>
+                <td style="font-style:italic; height:30px;">{{ $rejecter[0]->email }}</td>
+            </tr>
 
-        <p>{{$dernierRejet->RejectedBy}}</p>
+            <tr>
+                <td>
+                    <a href="https://www.facebook.com/carpeDiem.itservicestelecom" target="_blank"> <img
+                            src="{{ asset('./images/iconFacebook.png') }}" alt="fb" width="24px"
+                            height="24px"></a>
+                    <a href="https://twitter.com/Carpe_Diem_Pro" target="_blank"> <img
+                            src="{{ asset('./images/Twitter-b@5x.png') }}" alt="tw" width="24px"
+                            height="24px"></a>
+                    <a href="https://www.linkedin.com/company/carpe-diem-informatique/" target="_blank"> <img
+                            src="{{ asset('./images/Linkedin-b@5x.png') }}" alt="ln" width="24px"
+                            height="24px"></a>
+                    <a href="https://www.youtube.com/channel/UCTI2dHTGS9VrwKxGJf5MW7A" target="_blank"> <img
+                            src="{{ asset('./images/Youtube-b@5x.png') }}" alt="yt" width="24px"
+                            height="24px"></a>
+                    <a href="https://www.carpediem.pro/" target="_blank"> <img
+                            src="{{ asset('./images/Link-b@5x.png') }}" alt="link" width="24px"
+                            height="24px"></a>
+                </td>
+                <td style="font-size: 10px;">LD : 0170.809.809 - Mob : 06.60.67.33.46</td>
+            </tr>
+        </table>
     </div>
 
 </body>

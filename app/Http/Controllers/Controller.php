@@ -428,6 +428,7 @@ class Controller extends BaseController
 
         // - on récupère en base de données le dernier rejet que l'on viens de créer
             $rejet = DB::table("rejets")->where("UserID","=",$request->userID)->where("MoisNDF","=",$request->moisndf)->get();
+            $rejecter = DB::table("users")->where("id","=",$request->userID)->get();
             $dernierRejet = $rejet[sizeof($rejet) - 1];
 
         // - on récupère également le user concerné et surtout son adresse email pour l'envoi
@@ -481,7 +482,7 @@ class Controller extends BaseController
         $moisNDF = $moisDateNDF . " " . $dateNDF[0];
 
         // - on envoie un mail a l'utilisateur en question dans lequel on joint le text écrit par le moderateur
-        Mail::to($rejetUser[0]->email)->send(new MailRejet($dernierRejet,$rejetUser,$moisNDF));
+        Mail::to($rejetUser[0]->email)->send(new MailRejet($dernierRejet,$rejetUser,$moisNDF,$rejecter));
 
         // - on récupère la note de frais concernée et on la supprime pour dévérrouiller le mois de l'utilisateur
         DB::table('infosndfs')->where('MoisEnCours','=',$request->moisndf)->where('Utilisateur','=',$rejetUser[0]->name)->delete();
@@ -509,7 +510,7 @@ class Controller extends BaseController
 
     public function createEvent(Request $request)
     {
-        
+
 
 
 

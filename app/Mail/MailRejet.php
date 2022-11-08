@@ -13,17 +13,21 @@ class MailRejet extends Mailable
 
     public $dernierRejet = [];
     public $rejetUser = [];
+    public $rejecter = [];
     public $moisNDF;
+
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($dernierRejet,$rejetUser,$moisNDF)
+    public function __construct($dernierRejet,$rejetUser,$rejecter,$moisNDF)
     {
         $this->dernierRejet = $dernierRejet;
         $this->rejetUser = $rejetUser;
         $this->moisNDF = $moisNDF;
+        $this->rejecter = $rejecter;
 
     }
 

@@ -12,7 +12,6 @@ label{
     width:80px;
     background:url('/images/boutonPDF.Png') no-repeat center;
     transition: 70ms ease;
-
 }
 .buttonPDFgenerator:hover{
     transform: scale(1.1);
