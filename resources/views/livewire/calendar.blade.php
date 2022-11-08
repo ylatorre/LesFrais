@@ -103,8 +103,6 @@
                     }
                 })
 
-
-
                 modifKilometrage.addEventListener('click', () => {
                     if (modifEssence.value == 0) {
                         modifKilometrage.readOnly = false;
@@ -115,12 +113,6 @@
                         modifEssence.readOnly = false;
                     }
                 })
-
-
-
-
-
-
 
                 $('#essence').change(function() {
                     $("#kilometrage").prop('readonly', true);
@@ -137,6 +129,8 @@
                 $('#2kilometrage').change(function() {
                     $("#2essence").prop('readonly', true);
                 });
+
+
 
 
                 /* vérrouillage des inputs de péages dans la création d'évènement*/
@@ -495,6 +489,8 @@
 
                         initialView: 'dayGridMonth',
                         // Block pour la création d'événement
+
+
 
                         dateClick: function(info) {
                             let zero = 0;
@@ -1223,11 +1219,13 @@
 
                     calendar.render();
 
-
-
+                const titleHTML = $(".fc-toolbar-title").html();
+                const calendarTitle = $(".fc-toolbar-title");
+                calendarTitle.html("<h1 style='font-size:20px; margin:0px;'>Saisie de vos frais pour " + titleHTML + "</h1>");
 
 
                 });
+
             </script>
 
 
