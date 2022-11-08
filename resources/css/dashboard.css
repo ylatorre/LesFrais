@@ -331,12 +331,10 @@ label{
     #calendar-container #calendar{
         height:450px;
         width:100%;
-
     }
     .errorsDashboard{
         font-size: 10px;
     }
-
     .fc-daygrid{
         height:400px;
     }
@@ -347,7 +345,6 @@ label{
     .labels-responsiv{
         height:20px;
     }
-
 }
 @media screen and (max-width:420px){
    .responsiv-administration-buttons{
@@ -375,7 +372,6 @@ label{
     #calendar-container #calendar{
         height:350px;
         width:100%;
-
     }
     #calendar{
         height:350px;
@@ -386,7 +382,7 @@ label{
 }
 
 /*/////////////////////////////////////////////////////////////////////////////*/
-/* RESPONSIVE DE L'ADMINISTRATION"*/
+/*                     RESPONSIVE DE L'ADMINISTRATION                          */
 /*/////////////////////////////////////////////////////////////////////////////*/
 
 .button-visu{
@@ -412,7 +408,6 @@ label{
     .tchao900{
         display:none;
     }
-
 }
 @media screen and (max-width:900px){
     .TH-gestion{
