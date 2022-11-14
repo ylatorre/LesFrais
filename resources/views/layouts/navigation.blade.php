@@ -27,16 +27,15 @@
                     $infosEnCoursValidation = DB::table('infosndfs')
                         ->where('ValidationEnCours', '=', '1')
                         ->get();
-
                 @endphp
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
                     <a href="{{ route('dashboard') }}" style="text-decoration:none;"
-                        class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                        class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 border-b-transparent hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
                         Calendrier</a>
                     @if (Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
                         <a href="{{ route('gestionaireUser') }}" style="text-decoration:none;"
-                            class="hidden  md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                            class="hidden  md:inline-flex items-center px-1 pt-1 border-b-2 border-b-transparent hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
                             Gestion
                             @if (count($infosEnCoursValidation) != 0)
                                 <div class="flex flex-row justify-around items-center"
@@ -46,7 +45,7 @@
                         </a>
                     @endif
                     <a href="{{ route('mesNDF') }}" style="text-decoration:none;"
-                        class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">Mes
+                        class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 border-b-transparent hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">Mes
                         Notes de frais validées</a>
                 </div>
 
