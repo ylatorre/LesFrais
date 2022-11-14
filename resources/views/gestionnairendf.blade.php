@@ -34,13 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (count($ndfsemploye) == 0)
-                    <td></td>
-                    <td class="w-full text-center font-bold TD-gestion">Désolé, cet utilisateur n'a aucune note de
-                        frais...</td>
-                    <td></td>
-                    <td></td>
-                @else
+
                     @for ($i = 0; $i < count($ndfsemploye); $i++)
                      <tr>
 
@@ -137,12 +131,16 @@
 
 
                     @endfor
-                @endif
+
 
             </tbody>
 
         </table>
+
     </div>
+    @if(count($ndfsemploye) == 0)
+        <div class="w-full flex  flex-row text-center items-center justify-around border-2 border-gray-800 py-2">Désolé , {{$utilisateurSelectionne}} n'a pas de notes de frais enregistrées.</div>
+    @endif
 
 
 

@@ -464,7 +464,7 @@
 
 
                         <td class="py-1 overflow-visible text-right">
-                            <div class=" flex justify-start overflow-visible ">
+                            <div class=" flex justify-start overflow-visible mr-1">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
                                 @if ($user->vehicule != null || $user->chevauxFiscaux != null)
                                     <form method="POST" action="{{ route('gestionnairendf') }}"
