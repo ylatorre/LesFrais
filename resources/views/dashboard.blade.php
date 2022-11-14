@@ -71,13 +71,54 @@
     </script>
     <style>
         .fc-toolbar-title{
-                font-size: 5px;
+                font-size:20px !important;
+                margin-left:5px !important;
+                transition:100ms;
+            }
+        .fc-toolbar-pretitle{
+                font-size:20px !important;
+                margin-bottom:0px !important;
+                margin-left:2px !important;
+                transition:100ms;
+            }
+            .fc-toolbar-chunk{
+                text-align:center;
             }
         .divInput {
             padding: 4px;
         }
+        @media screen and (max-width:800px) {
+            .fc-toolbar-title{
+                font-size:15px !important;
+            }
+        .fc-toolbar-pretitle{
+                font-size:15px !important;
+            }
+        }
+        @media screen and (max-width:600px) {
+            .fc-toolbar-title{
+                font-size:12px !important;
+            }
+        .fc-toolbar-pretitle{
+                font-size:12px !important;
+            }
+        }
+        @media screen and (max-width:400px) {
+            .fc-toolbar-title{
+                font-size:8px !important;
+            }
+        .fc-toolbar-pretitle{
+                font-size:8px !important;
+            }
+        }
 
-        @media screen and (max-width:300px) {
+        @media screen and (max-width:320px) {
+            .fc-toolbar-title{
+                font-size:6px !important;
+            }
+        .fc-toolbar-pretitle{
+                font-size:6px !important;
+            }
             input {
                 font-size: 6px;
                 padding: 0px;
