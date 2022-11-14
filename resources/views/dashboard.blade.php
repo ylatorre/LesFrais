@@ -70,6 +70,7 @@
         });
     </script>
     <style>
+        /* responsive du titre du calendrier .fc-toolbar-title et .fc-toolbar-pretitle*/
         .fc-toolbar-title{
                 font-size:20px !important;
                 margin-left:5px !important;

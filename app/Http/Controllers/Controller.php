@@ -411,6 +411,8 @@ class Controller extends BaseController
 
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->delete();
 
+        Session::flash('deleteNDF','la note de frais à bien été supprimée !');
+
         return redirect(route('gestionaireUser'));
     }
 

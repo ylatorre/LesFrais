@@ -1,7 +1,7 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{asset('css/mesndfs.css')}}">
     <x-slot name="header">
-        <h1 class="font-bold text-base py-5 w-full" style="border-bottom: 4px solid black">Vos notes de frais : </h1>
+        <h1 class="font-bold text-base py-5 w-full" style="border-bottom: 4px solid black">Vos notes de frais validées : </h1>
     </x-slot>
 <style>
     td{
@@ -13,14 +13,15 @@
     @media screen and (max-width:860px){
         td{
             font-size: 0.5rem;
-
-
         }
         th{
             font-size: 0.5rem;
         }
         .bye860{
             display:none;
+        }
+        h1{
+            font-size:12px;
         }
     }
 </style>
