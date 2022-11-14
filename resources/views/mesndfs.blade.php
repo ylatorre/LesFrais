@@ -109,5 +109,8 @@
         </tbody>
 
     </table>
+    @if(count($authInfosndfs) == 0)
+        <div class="w-full flex flex-row text-center justify-around py-2 border-b-2 border-gray-800">Vous n'avez pas encore de note de frais validée</div>
+    @endif
 
 </x-app-layout>
