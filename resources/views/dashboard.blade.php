@@ -70,6 +70,9 @@
         });
     </script>
     <style>
+        .fc-toolbar-title{
+                font-size: 5px;
+            }
         .divInput {
             padding: 4px;
         }

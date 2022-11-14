@@ -45,7 +45,7 @@
         {{-- Close your eyes. Count to one. That is how long forever feels. --}}
         <style>
 
-
+            
             #essence {
                 transition: 100ms;
             }
@@ -1219,9 +1219,14 @@
 
                     calendar.render();
 
-                const titleHTML = $(".fc-toolbar-title").html();
-                const calendarTitle = $(".fc-toolbar-title");
-                calendarTitle.html("<h1 style='font-size:20px; margin:0px;'>Saisie de vos frais pour " + titleHTML + "</h1>");
+                const titleHTML = $(".fc-toolbar-title").parent();
+                const newElement = document.createElement("h3");
+                newElement.style.fontSize = "28px";
+                newElement.textContent = "Saisie de vos déplacements pour"
+                titleHTML.prepend(newElement);
+
+                const toolbarTitle = $(".fc-toolbar-title");
+
 
 
                 });
