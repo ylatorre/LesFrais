@@ -55,7 +55,7 @@
 
 
     <br>
-    <h1>Bonjour {{ $superadmin[0]->name }},</h1>
+    <h1 style="font-size:16px;">Bonjour {{ $superadmin[0]->name }},</h1>
 
     <p> L'utilisateur <em>{{ $actualUser }}</em> a demandé la validation de sa note de frais de
         <em>{{ $monthNDF }}.</em></p>
@@ -72,7 +72,7 @@
     <div class="signature">
         <table class="table-footer">
             <tr>
-                <th><img src="{{ asset('./images/logoCDIT.png') }}" alt="logoCDIT"></th>
+                <th><img src="{{ asset('images/logoCDIT.png') }}" alt="logoCDIT"></th>
                 <th>{{ $superadmin[0]->name }}</th>
             </tr>
             <tr>
@@ -82,11 +82,11 @@
 
             <tr>
                 <td>
-                    <a href="https://www.facebook.com/carpeDiem.itservicestelecom" target="_blank"> <img src="{{ asset('./images/iconFacebook.png') }}" alt="fb"></a>
-                    <a href="https://twitter.com/Carpe_Diem_Pro" target="_blank"> <img src="{{ asset('./images/Twitter-b@5x.png') }}" alt="tw"></a>
-                    <a href="https://www.linkedin.com/company/carpe-diem-informatique/" target="_blank"> <img src="{{ asset('./images/Linkedin-b@5x.png') }}" alt="ln"></a>
-                    <a href="https://www.youtube.com/channel/UCTI2dHTGS9VrwKxGJf5MW7A" target="_blank"> <img src="{{ asset('./images/Youtube-b@5x.png') }}" alt="yt"></a>
-                    <a href="https://www.carpediem.pro/" target="_blank"> <img src="{{ asset('./images/Link-b@5x.png') }}" alt="link"></a>
+                    <a href="https://www.facebook.com/carpeDiem.itservicestelecom" target="_blank"> <img src="{{ asset('images/iconFacebook.png') }}" alt="fb"></a>
+                    <a href="https://twitter.com/Carpe_Diem_Pro" target="_blank"> <img src="{{ asset('images/Twitter-b@5x.png') }}" alt="tw"></a>
+                    <a href="https://www.linkedin.com/company/carpe-diem-informatique/" target="_blank"> <img src="{{ asset('images/Linkedin-b@5x.png') }}" alt="ln"></a>
+                    <a href="https://www.youtube.com/channel/UCTI2dHTGS9VrwKxGJf5MW7A" target="_blank"> <img src="{{ asset('images/Youtube-b@5x.png') }}" alt="yt"></a>
+                    <a href="https://www.carpediem.pro/" target="_blank"> <img src="{{ asset('images/Link-b@5x.png') }}" alt="link"></a>
                 </td>
                 <td style="font-size: 10px;">LD : 0170.809.809 - Mob : 06.60.67.33.46</td>
             </tr>
