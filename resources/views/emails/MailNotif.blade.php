@@ -40,7 +40,7 @@
             width: 230px;
             color: #870b26;
         }
-        img a{
+        a img{
             width:24px;
             height:24px;
         }
