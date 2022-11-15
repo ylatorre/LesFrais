@@ -191,14 +191,15 @@ class Controller extends BaseController
 
     public function supuser(Request $request)
     {
-        $modifUserDB = DB::table("users")->where("email", "=", "$request->email")->update(['locked'=>'1']);
-        Session::flash('lockedUser',"L'utilisateur a été désactivé avec succès.");
+        $userEnQuestion = DB::table("users")->where("email", "=", "$request->email")->get();
+        DB::table("users")->where("email", "=", "$request->email")->update(['locked'=>'1']);
+        Session::flash('lockedUser',"Le compte de l'utilisateur " . $userEnQuestion[0]->name . " a été désactivé avec succès.");
         return redirect(route("gestionaireUser"));
     }
     public function activerUser(Request $request){
-
+        $userEnQuestion2 = DB::table("users")->where("email", "=", "$request->email")->get();
         DB::table("users")->where("email", "=", $request->email)->where("id" , "=" , $request->id)->update(['locked'=>'0']);
-        Session::flash('unlockedUser',"L'utilisateur a été activé avec succès.");
+        Session::flash('unlockedUser',"Le compte de l'utilisateur " . $userEnQuestion2[0]->name . " a été réactivé avec succès.");
         return redirect(route('gestionaireUser'));
     }
 
