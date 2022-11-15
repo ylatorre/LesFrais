@@ -52,6 +52,7 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+        /* - je vérifie également que le compte ne soit pas vérrouillé */
 
         RateLimiter::clear($this->throttleKey());
     }

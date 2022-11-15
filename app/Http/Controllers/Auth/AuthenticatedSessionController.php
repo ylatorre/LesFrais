@@ -31,20 +31,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $locked = DB::table('users')->where('email','=',$request->email)->get();
-        if($locked[0]->locked == 1){
-            Session::flash('locked','. Ce compte à été désactivé par un administrateur');
-            return back();
-        }
-        else{
+
         $request->authenticate();
 
         $request->session()->regenerate();
-        // dd(Auth::user()->locked);
 
+        if(Auth::user()->locked == 1){
+            Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        Session::flash('locked','. Ce compte à été désactivé par un administrateur');
+        return redirect('/');
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
-    }
+    // }
     }
 
     /**
@@ -55,6 +58,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
