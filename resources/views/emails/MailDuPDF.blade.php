@@ -23,8 +23,8 @@
 </style>
 <body>
     <br>
-    <h1 style="margin:0px;">Bonjour,</h1><br>
-    <h2 style="margin:0px;">Ci-joint le PDF de l'ensemble des Factures de {{$username}} pour le mois de {{$mois}}.</h2>
+    <h1 style="margin:0px; color:#002060;">Bonjour,</h1><br>
+    <h2 style="margin:0px; color:#002060;">Ci-joint le PDF de l'ensemble des Factures de {{$username}} pour le mois de {{$mois}}.</h2>
 </body>
 </html>
 
