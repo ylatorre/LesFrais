@@ -11,6 +11,7 @@
     <style>
         body{
             font-family: 'arial',sans-serif;
+            color:#002060;
         }
         .textRejet{
             width:80%;
@@ -63,9 +64,7 @@
     <p>Merci de bien vouloir apporter les modifications nécessaires dans vos déplacements en vous connectant à votre espace <a href="https://www.carpediem.pro/LesFrais/public">Frais - Carpe Diem.</a></p>
     <br><br>
 
-    <div class="footer">
-        <p>Très cordialement,</p>
-    </div>
+
 
 
 </body>

@@ -102,6 +102,7 @@
 
             border: 1px solid #11306e !important;
         }
+        .fc-daygrid
 
         .divInput {
             padding: 4px;

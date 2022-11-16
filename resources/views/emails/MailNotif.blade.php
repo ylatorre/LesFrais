@@ -10,6 +10,7 @@
     <style>
         body{
             font-family:'nunito',sans-serif;
+            color:#002060;
         }
         em{
             font-style: normal;
@@ -54,10 +55,8 @@
     <p>     L'utilisateur <em>{{$actualUser}}</em> a demandé la validation de sa note de frais de <strong>{{$monthNDF}}.</strong></p>
     <p>     Pour valider cette note de frais, merci de bien vouloir vous connecter à  <a href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace Administration.</p>
 
-    <footer>
-        <p>Très cordialement.</p><br>
-    </footer>
-    
+
+
 
 
 
