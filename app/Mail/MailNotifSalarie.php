@@ -33,6 +33,6 @@ class MailNotifSalarie extends Mailable
      */
     public function build()
     {
-        return $this->from('compta@carpediem.pro')->subject('noreply Votre note de frais a été validée')->view('emails.MailNotifSalarie');
+        return $this->from('ComptaWeb@carpediem.pro')->subject('noreply Votre note de frais a été validée')->view('emails.MailNotifSalarie');
     }
 }

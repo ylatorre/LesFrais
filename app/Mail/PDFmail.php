@@ -47,7 +47,7 @@ class PDFmail extends Mailable
             array_push($piecesJointes,"public/pdf/".$filename.$k.'.pdf');
         }
         // - On génère le mail
-        $email = $this->from('compta@carpediem.pro')
+        $email = $this->from('ComptaWeb@carpediem.pro')
                     ->view('emails.MailDuPDF')
                     ->subject('PDF de post-vadidation');
 

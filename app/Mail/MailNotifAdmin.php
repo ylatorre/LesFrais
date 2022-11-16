@@ -35,6 +35,6 @@ class MailNotifAdmin extends Mailable
      */
     public function build()
     {
-        return $this->from('compta@carpediem.pro')->subject('Demande de validation de Note de frais')->view('emails.MailNotifAdmin');
+        return $this->from('Comptaweb@carpediem.pro')->subject('Demande de validation de Note de frais')->view('emails.MailNotifAdmin');
     }
 }

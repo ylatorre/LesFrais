@@ -38,6 +38,6 @@ class MailRejet extends Mailable
      */
     public function build()
     {
-        return $this->from('compta@carpediem.pro')->subject('noreply Votre note de frais a été rejetée')->view('emails.MailRejet');
+        return $this->from('ComptaWeb@carpediem.pro')->subject('noreply Votre note de frais a été rejetée')->view('emails.MailRejet');
     }
 }
