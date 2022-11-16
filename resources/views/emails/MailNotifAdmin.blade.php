@@ -38,5 +38,4 @@
             href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace
         Administration.</p>
 </body>
-
 </html>

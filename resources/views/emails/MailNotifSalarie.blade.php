@@ -27,6 +27,6 @@
         <h1 style="font-size:16px;">Bonjour {{$salarie[0]->name}} ,</h1>
 
         <p>Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée .</p>
-        <p>Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public/Mes-notes-de-frais">Carpe Diem</a> . </p><br>
+        <p>Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public/Mes-notes-de-frais">Carpe Diem</a> . </p>
 </body>
 </html>

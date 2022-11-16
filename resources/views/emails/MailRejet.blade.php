@@ -41,6 +41,5 @@
 
     <div class="textRejet"><p class="paragrapheRejet">{{$dernierRejet->TextRejet}}<p></div>
     <p>Merci de bien vouloir apporter les modifications nécessaires dans vos déplacements en vous connectant à votre espace <a href="https://www.carpediem.pro/LesFrais/public">Frais - Carpe Diem.</a></p>
-    <br><br>
 </body>
 </html>
