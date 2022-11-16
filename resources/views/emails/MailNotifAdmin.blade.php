@@ -29,9 +29,6 @@
         }
 
     </style>
-
-
-    <br>
     <h1 style="font-size:16px; margin:0px; color:#002060;" >Bonjour {{ $superadmin[0]->name }},</h1>
 
     <p style="margin:0px; color:#002060;"> L'utilisateur <em>{{ $actualUser }}</em> a demandé la validation de sa note de frais de

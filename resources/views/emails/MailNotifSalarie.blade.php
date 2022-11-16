@@ -25,7 +25,6 @@
 
 </style>
 <body>
-
         <h1 style="font-size:16px; margin:0px; color:#002060;">Bonjour {{$salarie[0]->name}} ,</h1>
 
         <p style="margin:0px; color:#002060;">Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée .</p>

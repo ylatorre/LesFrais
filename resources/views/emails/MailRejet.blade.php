@@ -7,7 +7,7 @@
     <title>Refus de note de frais</title>
 </head>
 
-<body>
+
     <style>
         body{
             font-family: 'arial',sans-serif;
@@ -35,9 +35,8 @@
             /* permet au paragraphe de fit avec son conteneur */
             word-wrap: break-word;
         }
-
-
     </style>
+    <body>
     <h4 style="margin:0px; color:#002060;">Bonjour {{$rejetUser[0]->name}},</h4><br><p>votre note de frais pour le mois de {{$moisNDF}} a été rejetée pour la raison suivante : </p>
 
     <div class="textRejet"><p class="paragrapheRejet" style="margin:0px; color:#002060;">{{$dernierRejet->TextRejet}}<p></div>
