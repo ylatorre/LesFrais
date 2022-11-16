@@ -70,7 +70,9 @@
         });
     </script>
     <style>
-        /* responsive du titre du calendrier .fc-toolbar-title et .fc-toolbar-pretitle*/
+        /* responsive du titre du calendrier .fc-toolbar-title et .fc-toolbar-pretitle */
+
+        /* - Toutes les classes commencants par fc- sont des classe appartenant au calendrier (fc = fullcalendar)*/
         .fc-toolbar-title {
             font-family: 'nunito', 'Arial', sans-serif;
             font-size: 20px !important;
@@ -78,6 +80,9 @@
             margin-left: 5px !important;
             transition: 100ms;
             color: #AE0B30;
+        }
+        .fc-day-today{
+            background:rgb(221, 220, 255) !important;
         }
 
         .fc-toolbar-pretitle {
@@ -102,7 +107,22 @@
 
             border: 1px solid #11306e !important;
         }
-        .fc-daygrid
+        .fc-daygrid-event{
+            background:#7068da !important;
+            border-radius:0.50rem !important;
+            color:white !important;
+            font-family:'nunito','Arial',sans-serif;
+            border:2px solid black !important;
+            transition:60ms ;
+        }
+        .fc-daygrid-event:hover{
+            transform: scale(1.050);
+            background:#5148d3 !important;
+
+        }
+        .fc-daygrid-event-dot{
+            border:4px solid black !important;
+        }
 
         .divInput {
             padding: 4px;
