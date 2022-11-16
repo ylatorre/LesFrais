@@ -71,60 +71,81 @@
     </script>
     <style>
         /* responsive du titre du calendrier .fc-toolbar-title et .fc-toolbar-pretitle*/
-        .fc-toolbar-title{
-                font-family:'nunito','Arial',sans-serif;
-                font-size:20px !important;
-                font-weight: bold;
-                margin-left:5px !important;
-                transition:100ms;
-                color:#AE0B30;
-            }
-        .fc-toolbar-pretitle{
-                font-family:'nunito','Arial',sans-serif;
-                font-size:20px !important;
-                font-weight: bold;
-                margin-bottom:0px !important;
-                margin-left:2px !important;
-                transition:100ms;
-            }
-            .fc-toolbar-chunk{
-                text-align:center;
-            }
+        .fc-toolbar-title {
+            font-family: 'nunito', 'Arial', sans-serif;
+            font-size: 20px !important;
+            font-weight: bold;
+            margin-left: 5px !important;
+            transition: 100ms;
+            color: #AE0B30;
+        }
+
+        .fc-toolbar-pretitle {
+            font-family: 'nunito', 'Arial', sans-serif;
+            font-size: 20px !important;
+            font-weight: bold;
+            margin-bottom: 0px !important;
+            margin-left: 2px !important;
+            transition: 100ms;
+        }
+        .fc-daygrid-day-number{
+            font-family:'nunito','Arial',sans-serif;
+        }
+        .fc-col-header-cell-cushion{
+            font-family:'nunito','Arial',sans-serif;
+        }
+
+        .fc-toolbar-chunk {
+            text-align: center;
+        }
+        .fc-view-harness {
+
+            border: 2px solid #11306e !important;
+        }
+
         .divInput {
             padding: 4px;
         }
+
         @media screen and (max-width:800px) {
-            .fc-toolbar-title{
-                font-size:15px !important;
+            .fc-toolbar-title {
+                font-size: 15px !important;
             }
-        .fc-toolbar-pretitle{
-                font-size:15px !important;
+
+            .fc-toolbar-pretitle {
+                font-size: 15px !important;
             }
         }
+
         @media screen and (max-width:600px) {
-            .fc-toolbar-title{
-                font-size:12px !important;
+            .fc-toolbar-title {
+                font-size: 12px !important;
             }
-        .fc-toolbar-pretitle{
-                font-size:12px !important;
+
+            .fc-toolbar-pretitle {
+                font-size: 12px !important;
             }
         }
+
         @media screen and (max-width:400px) {
-            .fc-toolbar-title{
-                font-size:8px !important;
+            .fc-toolbar-title {
+                font-size: 8px !important;
             }
-        .fc-toolbar-pretitle{
-                font-size:8px !important;
+
+            .fc-toolbar-pretitle {
+                font-size: 8px !important;
             }
         }
 
         @media screen and (max-width:320px) {
-            .fc-toolbar-title{
-                font-size:6px !important;
+            .fc-toolbar-title {
+                font-size: 6px !important;
             }
-        .fc-toolbar-pretitle{
-                font-size:6px !important;
+
+            .fc-toolbar-pretitle {
+                font-size: 6px !important;
             }
+
             input {
                 font-size: 6px;
                 padding: 0px;
@@ -139,128 +160,128 @@
 
         /*permet de cacher les petites fleches présent sur les inpout type number*/
 
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-}
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
 
-/* Chrome */
-input::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-	margin:0;
-}
+        /* Chrome */
+        input::-webkit-inner-spin-button,
+        input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-/* Opéra*/
-input::-o-inner-spin-button,
-input::-o-outer-spin-button {
-	-o-appearance: none;
-	margin:0
-}
+        /* Opéra*/
+        input::-o-inner-spin-button,
+        input::-o-outer-spin-button {
+            -o-appearance: none;
+            margin: 0
+        }
     </style>
 
     {{-- ensembles des erreurs possibles lorceque l'utilisateur admin ou employé soumet sa note de frais pour inspection --}}
-        @if(Session::has("emptyInput"))
+    @if (Session::has('emptyInput'))
         <div style="width:90%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('emptyInput') }}</div>
-        @endif
-        @if(Session::has("noPathParking"))
+    @endif
+    @if (Session::has('noPathParking'))
         <div style="width:90%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathParking') }}</div>
-        @endif
-        @if(Session::has("noPathPeage"))
+    @endif
+    @if (Session::has('noPathPeage'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathPeage') }}</div>
-        @endif
-        @if(Session::has("noPathPeage2"))
+    @endif
+    @if (Session::has('noPathPeage2'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathPeage2') }}</div>
-        @endif
-        @if(Session::has("noPathPeage3"))
+    @endif
+    @if (Session::has('noPathPeage3'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathPeage3') }}</div>
-        @endif
-        @if(Session::has("noPathPeage4"))
+    @endif
+    @if (Session::has('noPathPeage4'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathPeage4') }}</div>
-        @endif
-        @if(Session::has("noPathDivers"))
+    @endif
+    @if (Session::has('noPathDivers'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathDivers') }}</div>
-        @endif
-        @if(Session::has("noPathPetitDej"))
+    @endif
+    @if (Session::has('noPathPetitDej'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathPetitDej') }}</div>
-        @endif
-        @if(Session::has("noPathDejeuner"))
+    @endif
+    @if (Session::has('noPathDejeuner'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathDejeuner') }}</div>
-        @endif
-        @if(Session::has("noPathDiner"))
+    @endif
+    @if (Session::has('noPathDiner'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathiner') }}</div>
-        @endif
-        @if(Session::has("noPathAemporter"))
+    @endif
+    @if (Session::has('noPathAemporter'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathPAemporter') }}</div>
-        @endif
-        @if(Session::has("noPathHotel"))
+    @endif
+    @if (Session::has('noPathHotel'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathHotel') }}</div>
-        @endif
-        @if(Session::has("noPathEssence"))
+    @endif
+    @if (Session::has('noPathEssence'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathEssence') }}</div>
-        @endif
+    @endif
 
-        @if(Session::has("noParking"))
+    @if (Session::has('noParking'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noParking') }}</div>
-        @endif
-        @if(Session::has("noPeage"))
+    @endif
+    @if (Session::has('noPeage'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPeage') }}</div>
-        @endif
-        @if(Session::has("noPeage2"))
+    @endif
+    @if (Session::has('noPeage2'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPeage2') }}</div>
-        @endif
-        @if(Session::has("noPeage3"))
+    @endif
+    @if (Session::has('noPeage3'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPeage3') }}</div>
-        @endif
-        @if(Session::has("noPeage4"))
+    @endif
+    @if (Session::has('noPeage4'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPeage4') }}</div>
-        @endif
-        @if(Session::has("noDivers"))
+    @endif
+    @if (Session::has('noDivers'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noDivers') }}</div>
-        @endif
-        @if(Session::has("noPetitDej"))
+    @endif
+    @if (Session::has('noPetitDej'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPetitDej') }}</div>
-        @endif
-        @if(Session::has("noDejeuner"))
+    @endif
+    @if (Session::has('noDejeuner'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noDejeuner') }}</div>
-        @endif
-        @if(Session::has("noDiner"))
+    @endif
+    @if (Session::has('noDiner'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noDiner') }}</div>
-        @endif
-        @if(Session::has("noAemporter"))
+    @endif
+    @if (Session::has('noAemporter'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noAemporter') }}</div>
-        @endif
-        @if(Session::has("noHotel"))
+    @endif
+    @if (Session::has('noHotel'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noPathHotel') }}</div>
-        @endif
-        @if(Session::has("noEssence"))
+    @endif
+    @if (Session::has('noEssence'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
             {{ Session::get('noEssence') }}</div>
-        @endif
+    @endif
 
 
     <!---------------------------------->
@@ -270,31 +291,38 @@ input::-o-outer-spin-button {
             {{ Session::get('pasevents') }}</div>
     @endif
     @if (Session::has('dejasoumis'))
-        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard"
+            style="width:95%; margin-left:1%; color:rgb(0, 60, 255); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('dejasoumis') }}</div>
     @endif
     @if (Session::has('dejavalide'))
-        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard"
+            style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('dejavalide') }}</div>
     @endif
     @if (Session::has('NDFcreee'))
-        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard"
+            style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('NDFcreee') }}</div>
     @endif
     @if (Session::has('NDFsuppr'))
-        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard"
+            style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('NDFsuppr') }}</div>
     @endif
     @if (Session::has('supprEvent'))
-        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard"
+            style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('supprEvent') }}</div>
     @endif
     @if (Session::has('createEvent'))
-        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard"
+            style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('createEvent') }}</div>
     @endif
     @if (Session::has('modifEvent'))
-        <div class="errorsDashboard" style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
+        <div class="errorsDashboard"
+            style="width:95%; margin-left:1%; color:rgb(15, 170, 15); margin-bottom:3px; font-weight:bold;">
             {{ Session::get('modifEvent') }}</div>
     @endif
     @if (Session::has('nondf'))
@@ -318,7 +346,8 @@ input::-o-outer-spin-button {
                     </div>
                     {{-- modul body --}}
                     <div class="overflow-hidden block p-[10px]">
-                        <form action="{{ route('createEvent') }}" method="POST" id="formEvent" enctype="multipart/form-data">
+                        <form action="{{ route('createEvent') }}" method="POST" id="formEvent"
+                            enctype="multipart/form-data">
                             @csrf
                             {{-- Input client --}}
                             <div class="row">
@@ -333,7 +362,7 @@ input::-o-outer-spin-button {
                             {{-- Input Ville | Code Postal --}}
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2 ">
-                                    <label class="inline-block mb-0 labels-responsiv" for="code_postal" >
+                                    <label class="inline-block mb-0 labels-responsiv" for="code_postal">
                                         Code Postal
                                     </label>
                                     <input
@@ -360,7 +389,8 @@ input::-o-outer-spin-button {
                                             Parking
                                         </label>
                                         <input type="file" name="factureParking" id="factureParking"
-                                            accept=".png, .jpg, .jpeg" style="display:none;" class="inputFacture" capture>
+                                            accept=".png, .jpg, .jpeg" style="display:none;" class="inputFacture"
+                                            capture>
                                         <input id="buttonFactureParking" type="button" class="inputFacture"
                                             onclick="document.getElementById('factureParking').click();">
                                     </div>
@@ -393,8 +423,7 @@ input::-o-outer-spin-button {
                                             Péage 2</label>
                                         <input type="file" name="facturePeage2" id="facturePeage2"
                                             accept=".png, .jpg, .jpeg" style="display:none;" capture>
-                                        <input id="buttonFacturePeage2" class="inputFacture" type="button"
-                                             >
+                                        <input id="buttonFacturePeage2" class="inputFacture" type="button">
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -573,7 +602,8 @@ input::-o-outer-spin-button {
                                     </label>
                                     <input
                                         class="time standard shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="heureDebut" id="heure_debut" type="text" value="00:00" required="required">
+                                        name="heureDebut" id="heure_debut" type="text" value="00:00"
+                                        required="required">
                                 </div>
                                 <div class="mb-3 col">
                                     <label for="heure_fin" class="w-full inline-block">
@@ -581,7 +611,8 @@ input::-o-outer-spin-button {
                                     </label>
                                     <input
                                         class="time fin shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="heureFin" id="heure_fin" type="text" value="00:00" required="required">
+                                        name="heureFin" id="heure_fin" type="text" value="00:00"
+                                        required="required">
                                 </div>
                                 {{-- Empty div to align time input with the others --}}
                             </div>
@@ -592,7 +623,8 @@ input::-o-outer-spin-button {
                                     <label for="description" class="mb-[5px]">Description du déplacement</label>
                                     <textarea name="description" id="description" rows="3" maxlength="100"
                                         placeholder="ex : Câblage de baie de brassage"
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required="required"></textarea>
+                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]"
+                                        required="required"></textarea>
                                 </div>
                             </div>
                             <input name="start" id="starting" type="hidden">
@@ -605,8 +637,7 @@ input::-o-outer-spin-button {
                             <input name="iding6" id="iding6" type="hidden"> --}}
                             <input name="moisActuel" id="monthing" type="hidden">
 
-                            <button
-                                type="submit"
+                            <button type="submit"
                                 class="inline-block items-start bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0] mt-[10px] shadow-[0_2px_5px_0_rgba(0,0,0,0.2)] rounded-[2.5px] font-medium leading-[11.25px] overflow-hidden px-[15px] pb-[5px] pt-[6.25px] text-white"
                                 id="validation">VALIDATION</button>
                         </form>
@@ -617,11 +648,11 @@ input::-o-outer-spin-button {
         </div>
     </div>
 
-   {{-- <!--/////////////////////////////////////////////////////////////////-->
+    {{-- <!--/////////////////////////////////////////////////////////////////-->
 
     <!-- MODALE 2 POUR LA MODIFICATION -->
 
-    <!--/////////////////////////////////////////////////////////////////-->--}}
+    <!--/////////////////////////////////////////////////////////////////--> --}}
 
     <div class="container">
         <div class="modal fade" id="event-modal2" role="dialog">
@@ -641,7 +672,8 @@ input::-o-outer-spin-button {
                     </div>
                     {{-- modal body --}}
                     <div class="overflow-hidden block p-[10px]">
-                        <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent" enctype="multipart/form-data">
+                        <form action="{{ route('ModifierEvent') }}" method="POST" id="formModificationEvent"
+                            enctype="multipart/form-data">
                             @csrf
                             {{-- Input client --}}
                             <div class="row">
@@ -674,17 +706,19 @@ input::-o-outer-spin-button {
 
                                 </div>
 
-<!--llllll-->
+                                <!--llllll-->
                                 <div class="mb-3 col divInput pr-2">
-                                <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="parking">
-                                        Parking
-                                    </label>
-                                        <input id="pathFactureParking" type="hidden" name="pathFactureParking"  value="0">
+                                    <div class="flex flex-row justify-between">
+                                        <label class="inline-block mb-0" for="parking">
+                                            Parking
+                                        </label>
+                                        <input id="pathFactureParking" type="hidden" name="pathFactureParking"
+                                            value="0">
                                         <input id="buttonModifFactureParking" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureParking').click();">
-                                        <input type="file" id="modifFactureParking" accept=".png, .jpeg, .jpg" name="modifFactureParking" style="display:none;" capture>
-                                </div>
+                                        <input type="file" id="modifFactureParking" accept=".png, .jpeg, .jpg"
+                                            name="modifFactureParking" style="display:none;" capture>
+                                    </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="parking" id="2parking" type="number" value="0" min="0"
@@ -696,12 +730,14 @@ input::-o-outer-spin-button {
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2" id="div2peage">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="peage">Péage
-                                    </label>
-                                    <input id="pathFacturePeage" type="hidden" name="pathFacturePeage"  value="0">
+                                        <label class="inline-block mb-0" for="peage">Péage
+                                        </label>
+                                        <input id="pathFacturePeage" type="hidden" name="pathFacturePeage"
+                                            value="0">
                                         <input id="buttonModifFacturePeage" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFacturePeage').click();">
-                                        <input type="file" id="modifFacturePeage" accept=".png, .jpeg, .jpg" name="modifFacturePeage" style="display:none;" capture>
+                                        <input type="file" id="modifFacturePeage" accept=".png, .jpeg, .jpg"
+                                            name="modifFacturePeage" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -711,12 +747,14 @@ input::-o-outer-spin-button {
                                 </div>
                                 <div class="mb-3 col divInput " id="div2peage2">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0 " for="peage2">
-                                        Péage 2
-                                    </label>
-                                    <input id="pathFacturePeage2" type="hidden" name="pathFacturePeage2"  value="0">
+                                        <label class="inline-block mb-0 " for="peage2">
+                                            Péage 2
+                                        </label>
+                                        <input id="pathFacturePeage2" type="hidden" name="pathFacturePeage2"
+                                            value="0">
                                         <input id="buttonModifFacturePeage2" class="inputFacture" type="button">
-                                        <input type="file" id="modifFacturePeage2" accept=".png, .jpeg, .jpg" name="modifFacturePeage2" style="display:none;" capture>
+                                        <input type="file" id="modifFacturePeage2" accept=".png, .jpeg, .jpg"
+                                            name="modifFacturePeage2" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -725,12 +763,14 @@ input::-o-outer-spin-button {
                                 </div>
                                 <div class="mb-3 col divInput " id="div2peage3">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="peage3">
-                                        Péage 3
-                                    </label>
-                                    <input id="pathFacturePeage3" type="hidden" name="pathFacturePeage3"  value="0">
+                                        <label class="inline-block mb-0" for="peage3">
+                                            Péage 3
+                                        </label>
+                                        <input id="pathFacturePeage3" type="hidden" name="pathFacturePeage3"
+                                            value="0">
                                         <input id="buttonModifFacturePeage3" class="inputFacture" type="button">
-                                        <input type="file" id="modifFacturePeage3" accept=".png, .jpeg, .jpg" name="modifFacturePeage3" style="display:none;" capture>
+                                        <input type="file" id="modifFacturePeage3" accept=".png, .jpeg, .jpg"
+                                            name="modifFacturePeage3" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -739,12 +779,14 @@ input::-o-outer-spin-button {
                                 </div>
                                 <div class="mb-3 col divInput" id="div2peage4">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="peage4">
-                                        Péage 4
-                                    </label>
-                                    <input id="pathFacturePeage4" type="hidden" name="pathFacturePeage4"  value="0">
+                                        <label class="inline-block mb-0" for="peage4">
+                                            Péage 4
+                                        </label>
+                                        <input id="pathFacturePeage4" type="hidden" name="pathFacturePeage4"
+                                            value="0">
                                         <input id="buttonModifFacturePeage4" class="inputFacture" type="button">
-                                        <input type="file" id="modifFacturePeage4" accept=".png, .jpeg, .jpg" name="modifFacturePeage4" style="display:none;" capture>
+                                        <input type="file" id="modifFacturePeage4" accept=".png, .jpeg, .jpg"
+                                            name="modifFacturePeage4" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -756,13 +798,15 @@ input::-o-outer-spin-button {
 
                                 <div class="mb-3 col divInput pr-2">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="divers">
-                                        Divers
-                                    </label>
-                                    <input id="pathFactureDivers" type="hidden" name="pathFactureDivers"  value="0">
+                                        <label class="inline-block mb-0" for="divers">
+                                            Divers
+                                        </label>
+                                        <input id="pathFactureDivers" type="hidden" name="pathFactureDivers"
+                                            value="0">
                                         <input id="buttonModifFactureDivers" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureDivers').click();">
-                                        <input type="file" id="modifFactureDivers" accept=".png, .jpeg, .jpg" name="modifFactureDivers" style="display:none;" capture>
+                                        <input type="file" id="modifFactureDivers" accept=".png, .jpeg, .jpg"
+                                            name="modifFactureDivers" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -775,13 +819,15 @@ input::-o-outer-spin-button {
                             <div class="row">
                                 <div class="mb-3 col divInput pl-2">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="2petitDej">
-                                        Pt déjeuner
-                                    </label>
-                                    <input id="pathFacturePetitDej" type="hidden" name="pathFacturePetitDej"  value="0">
+                                        <label class="inline-block mb-0" for="2petitDej">
+                                            Pt déjeuner
+                                        </label>
+                                        <input id="pathFacturePetitDej" type="hidden" name="pathFacturePetitDej"
+                                            value="0">
                                         <input id="buttonModifFacturePetitDej" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFacturePetitDej').click();">
-                                        <input type="file" id="modifFacturePetitDej" accept=".png, .jpeg, .jpg" name="modifFacturePetitDej" style="display:none;" capture>
+                                        <input type="file" id="modifFacturePetitDej" accept=".png, .jpeg, .jpg"
+                                            name="modifFacturePetitDej" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -793,13 +839,15 @@ input::-o-outer-spin-button {
                                 @csrf
                                 <div class="mb-3 col divInput" id="div2dejeuner">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="repas">
-                                        Déjeuner
-                                    </label>
-                                    <input id="pathFactureDejeuner" type="hidden" name="pathFactureDejeuner"  value="0">
+                                        <label class="inline-block mb-0" for="repas">
+                                            Déjeuner
+                                        </label>
+                                        <input id="pathFactureDejeuner" type="hidden" name="pathFactureDejeuner"
+                                            value="0">
                                         <input id="buttonModifFactureDejeuner" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureDejeuner').click();">
-                                        <input type="file" id="modifFactureDejeuner" accept=".png, .jpeg, .jpg" name="modifFactureDejeuner" style="display:none;" capture>
+                                        <input type="file" id="modifFactureDejeuner" accept=".png, .jpeg, .jpg"
+                                            name="modifFactureDejeuner" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -808,13 +856,15 @@ input::-o-outer-spin-button {
                                 </div>
                                 <div class="mb-3 col divInput" id="div2diner">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="repas">
-                                        Dîner
-                                    </label>
-                                    <input id="pathFactureDiner" type="hidden" name="pathFactureDiner"  value="0">
+                                        <label class="inline-block mb-0" for="repas">
+                                            Dîner
+                                        </label>
+                                        <input id="pathFactureDiner" type="hidden" name="pathFactureDiner"
+                                            value="0">
                                         <input id="buttonModifFactureDiner" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureDiner').click();">
-                                        <input type="file" id="modifFactureDiner" accept=".png, .jpeg, .jpg" name="modifFactureDiner" style="display:none;" capture>
+                                        <input type="file" id="modifFactureDiner" accept=".png, .jpeg, .jpg"
+                                            name="modifFactureDiner" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -824,13 +874,15 @@ input::-o-outer-spin-button {
                                 </div>
                                 <div class="mb-3 col divInput pr-2" id="div2aEmporter">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="2aEmporter">
-                                        à emporter
-                                    </label>
-                                    <input id="pathFactureAemporter" type="hidden" name="pathFactureAemporter"  value="0">
+                                        <label class="inline-block mb-0" for="2aEmporter">
+                                            à emporter
+                                        </label>
+                                        <input id="pathFactureAemporter" type="hidden" name="pathFactureAemporter"
+                                            value="0">
                                         <input id="buttonModifFactureAemporter" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureAemporter').click();">
-                                        <input type="file" id="modifFactureAemporter" accept=".png, .jpeg, .jpg" name="modifFactureAemporter" style="display:none;" capture>
+                                        <input type="file" id="modifFactureAemporter" accept=".png, .jpeg, .jpg"
+                                            name="modifFactureAemporter" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -842,13 +894,15 @@ input::-o-outer-spin-button {
 
                                 <div class="mb-3 col divInput pl-2">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="hotel">
-                                        Hôtel
-                                    </label>
-                                    <input id="pathFactureHotel" type="hidden" name="pathFactureHotel"  value="0">
+                                        <label class="inline-block mb-0" for="hotel">
+                                            Hôtel
+                                        </label>
+                                        <input id="pathFactureHotel" type="hidden" name="pathFactureHotel"
+                                            value="0">
                                         <input id="buttonModifFactureHotel" class="inputFacture" type="button"
                                             onclick="document.getElementById('modifFactureHotel').click();">
-                                        <input type="file" id="modifFactureHotel" accept=".png, .jpeg, .jpg" name="modifFactureHotel" style="display:none;" capture>
+                                        <input type="file" id="modifFactureHotel" accept=".png, .jpeg, .jpg"
+                                            name="modifFactureHotel" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
@@ -858,12 +912,14 @@ input::-o-outer-spin-button {
                                 </div>
                                 <div id="div2Essence"class="mb-3 col divInput">
                                     <div class="flex flex-row justify-between">
-                                    <label class="inline-block mb-0" for="2essence">
-                                        Essence
-                                    </label>
-                                    <input id="pathFactureEssence" type="hidden" name="pathFactureEssence"  value="0">
+                                        <label class="inline-block mb-0" for="2essence">
+                                            Essence
+                                        </label>
+                                        <input id="pathFactureEssence" type="hidden" name="pathFactureEssence"
+                                            value="0">
                                         <input id="buttonModifFactureEssence" class="inputFacture" type="button">
-                                        <input type="file" id="modifFactureEssence" accept=".png, .jpeg, .jpg" name="modifFactureEssence" style="display:none;" capture>
+                                        <input type="file" id="modifFactureEssence" accept=".png, .jpeg, .jpg"
+                                            name="modifFactureEssence" style="display:none;" capture>
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
@@ -949,7 +1005,7 @@ input::-o-outer-spin-button {
     <div class="container">
         <div class="row">
 
-            <div id="calendrier-externe" class="col-12" >
+            <div id="calendrier-externe" class="col-12">
                 @if (\Session::has('failure'))
                     <div
                         class="block mb-[16px] py-3 px-5 text-[16px] text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
@@ -1028,7 +1084,8 @@ input::-o-outer-spin-button {
                 <input id="inputmonthsalarie" type="hidden" name="moisNDF">
                 <input id="inputemployesalarie" type="hidden" name="employe" value="{{ Auth::user()->name }}">
 
-                <x-button type="button" id="salarievisuNDF" style="font-family:'nunito','arial',sans-serif">Visualiser ma note de frais</x-button>
+                <x-button type="button" id="salarievisuNDF" style="font-family:'nunito','arial',sans-serif">
+                    Visualiser ma note de frais</x-button>
             </form>
         @endif
 

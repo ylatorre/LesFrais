@@ -1,12 +1,18 @@
-/*---Feuille de style du dashboard---*/
+/*---Feuille de style du dashboard ---*/
+
+
+/*- partie page , bouttons etc (hors calendrier) */
+
 
 .input-dashboard{
     height:5rem;
 }
 
+
 label{
     white-space: nowrap;
 }
+
 
 .buttonPDFgenerator
 {
@@ -14,12 +20,13 @@ label{
     width:80px;
     background:url('/images/boutonPDF.Png') no-repeat center;
     transition: 70ms ease;
-
 }
+
 
 .buttonPDFgenerator:hover{
     transform: scale(1.1);
 }
+
 
 .buttonSUPPR{
     justify-content: right;
@@ -29,16 +36,19 @@ label{
     border-radius:5px;
 }
 
+
 .dropdownMonth{
     display: inline-block;
     margin-right: 0.5rem;
     overflow: visible;
 }
 
+
 .dropdownMonth:hover .dropdownMonthContent{
     overflow: visible;
     display: block;
 }
+
 
 .dropdownMonthBtn{
     border-radius: 0.375rem;
@@ -50,6 +60,7 @@ label{
     white-space: nowrap;
   }
 
+
 .dropdownMonthContent{
     display: none;
     position:absolute;
@@ -59,11 +70,13 @@ label{
     z-index: 1;
 }
 
+
 .dropdownMonthContent button:focus {
     background-color: #3e8e41;
     color: white;
     outline: none;
 }
+
 
 .dropdownMonth:hover .dropdownMonthBtn{
     background-color: #3e8e41;
@@ -71,9 +84,11 @@ label{
     border-bottom-left-radius: 0rem ;
 }
 
+
 .dropdownMonthBtn:focus{
     outline: none;
 }
+
 
 .dropdownYear{
     overflow: visible;
@@ -85,10 +100,12 @@ label{
     position: relative;
 }
 
+
 .dropdownYear:hover{
     background-color: #3e8e41;
     color: white;
 }
+
 
 .dropdownYear:hover .dropdownYearContent{
     overflow: visible;
@@ -96,12 +113,14 @@ label{
     color: black;
 }
 
+
 .dropdownYearBtn{
     background-color: white;
     padding: 12px 16px;
     border: none;
     cursor: pointer;
   }
+
 
 .dropdownYearContent{
     display: none;
@@ -113,6 +132,7 @@ label{
     overflow: visible;
     z-index: 1;
 }
+
 
 .dropdownYearContent button{
     background-color: white;
@@ -126,10 +146,12 @@ label{
     white-space: nowrap;
 }
 
+
 .dropdownYearContent button:hover {
     background-color: #3e8e41;
     color: white;
 }
+
 
 .dropdownYearContent button:focus {
     background-color: #3e8e41;
@@ -137,15 +159,18 @@ label{
     outline: none;
 }
 
+
 .dropdownYear:hover .dropdownYearBtn{
     background-color: #3e8e41;
     border-bottom-right-radius: 0rem;
     border-bottom-left-radius: 0rem ;
 }
 
+
 .dropdownYearBtn:focus{
    outline: none;
 }
+
 
 .dropdownUser{
     display: inline-block;
@@ -153,11 +178,13 @@ label{
     overflow: visible;
 }
 
+
 .dropdownUser:hover .dropdownUserContent{
     overflow: visible;
     display: block;
     position: absolute;
 }
+
 
 .dropdownSelectBtn {
     border-radius: 0.375rem;
@@ -168,6 +195,7 @@ label{
     cursor: pointer;
     white-space: nowrap;
 }
+
 
 .dropdownUserContent{
     display: none;
@@ -180,11 +208,13 @@ label{
 
 }
 
+
 .dropdownUserContent button:focus{
     background-color: #3e8e41;
     color: white;
     outline: none;
 }
+
 
 .dropdownUser:hover .dropdownSelectBtn{
     background-color: #3e8e41;
@@ -192,15 +222,18 @@ label{
     border-bottom-left-radius: 0rem ;
 }
 
+
 .dropdownSelectBtn:focus{
     outline: none;
 }
+
 
 .dropdownUserBtn{
     padding: 12px 16px;
     border: none;
     cursor: pointer;
 }
+
 
 .dropdownUserContent button{
     overflow: visible;
@@ -213,10 +246,12 @@ label{
     white-space: nowrap;
 }
 
+
 .dropdownUserContent button:hover{
     background-color: #3e8e41;
     color: white;
 }
+
 
 .dropdownUserContent button:focus{
     background-color: #3e8e41;
@@ -224,13 +259,16 @@ label{
     outline: none;
 }
 
+
 .modal-dialog input{
     width:100%
 }
 
+
 .modal-dialog2 input{
     width:100%
 }
+
 
 #prevMonthButton{
     align-items: center;
@@ -238,15 +276,18 @@ label{
     padding-top:10px;
 }
 
+
 #nextMonthButton{
     display:flex;
     align-items: center;
     padding-top:10px;
 }
 
+
 #calendar-container {
     cursor: pointer;
 }
+
 
 .inputFacture{
     width: 24px !important;
@@ -257,9 +298,11 @@ label{
        object-fit: contain;
 }
 
+
 .labels-responsiv{
     height:24px;
 }
+
 
 #calendrier-externe{
     border:4px solid transparent;
@@ -267,49 +310,65 @@ label{
     transition:200ms ease;
 }
 
+
 /* inputs peage -readonly */
+
 
 #peage:-moz-read-only{
     border:1px solid rgb(192, 44, 44);
 }
 
+
 #peage:read-only{
     border:1px solid rgb(192, 44, 44);
 }
+
 
 #peage2:-moz-read-only{
     border:1px solid rgb(192, 44, 44);
 }
 
+
 #peage2:read-only{
     border:1px solid rgb(192, 44, 44);
 }
+
 
 #peage3:-moz-read-only{
     border:1px solid rgb(192, 44, 44);
 }
 
+
 #peage3:read-only{
     border:1px solid rgb(192, 44, 44);
 }
+
 
 #peage4:-moz-read-only{
     border:1px solid rgb(192, 44, 44);
 }
 
+
 #peage4:read-only{
     border:1px solid rgb(192, 44, 44);
 }
+
 
 .peagemodif:-moz-read-only{
     border:1px solid rgb(192, 44, 44);
 }
 
+
 .peagemodif:read-only{
     border:1px solid rgb(192, 44, 44);
 }
 
+
+/* - Feuille de style du calendrier */
+
+
 /* - responsive du calendrier */
+
 
 @media screen and(max-width:300px){
     input{
@@ -324,7 +383,9 @@ label{
     }
 }
 
+
 /* responsive administration buttons*/
+
 
 @media screen and (max-width:1450px){
     .responsiv-administration-buttons{
@@ -332,11 +393,13 @@ label{
     }
 }
 
+
 @media screen and (max-width:1024px){
    .responsiv-administration-buttons{
         font-size:10px ;
     }
 }
+
 
 @media screen and (max-width:780px){
    .responsiv-administration-buttons{
@@ -359,6 +422,7 @@ label{
 }
 }
 
+
 @media screen and (max-width:540px){
    .responsiv-administration-buttons{
         font-size:8px ;
@@ -371,12 +435,10 @@ label{
     #calendar-container #calendar{
         height:450px;
         width:100%;
-
     }
     .errorsDashboard{
         font-size: 10px;
     }
-
     .fc-daygrid{
         height:400px;
     }
@@ -387,8 +449,8 @@ label{
     .labels-responsiv{
         height:20px;
     }
-
 }
+
 
 @media screen and (max-width:420px){
    .responsiv-administration-buttons{
@@ -408,6 +470,7 @@ label{
 }
 }
 
+
 @media screen and (max-width:300px){
     #calendar-container {
         height:350px;
@@ -417,7 +480,6 @@ label{
     #calendar-container #calendar{
         height:350px;
         width:100%;
-
     }
     #calendar{
         height:350px;
@@ -427,11 +489,15 @@ label{
     }
 }
 
-/*/////////////////////////////////////////////////////////////////////////////*/
-
-/* RESPONSIVE DE L'ADMINISTRATION"*/
 
 /*/////////////////////////////////////////////////////////////////////////////*/
+
+
+/*                     RESPONSIVE DE L'ADMINISTRATION                          */
+
+
+/*/////////////////////////////////////////////////////////////////////////////*/
+
 
 .button-visu{
     height:100%;
@@ -442,15 +508,18 @@ label{
     transition:200ms ease;
 }
 
+
 .check{
     margin-top: 12px;
 }
+
 
 @media screen and (max-width:1260px){
     .button-visu{
         font-size:14px;
     }
 }
+
 
 @media screen and (max-width:900px){
     .button-visu{
@@ -476,8 +545,8 @@ label{
     .check{
         margin-top:4px;
     }
-
 }
+
 
 @media screen and (max-width:340px){
     .TH-gestion{
