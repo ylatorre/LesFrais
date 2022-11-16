@@ -20,30 +20,7 @@
         font-size:16px;
         margin-bottom:20px;
     }
-    footer{
-        margin-top:20px;
-    }
-    .table-footer {
-        width: 40%;
-        border: 2px solid #870b26;
-    }
 
-    .table-footer td {
-        text-align: center;
-        height: 76px;
-        font-family: 'nunito', sans-serif;
-        font-weight: bold;
-        color: #870b26;
-    }
-
-    .table-footer th {
-        width: 230px;
-        color: #870b26;
-    }
-    a img{
-        width:24px;
-        height:24px;
-    }
 </style>
 <body>
 
@@ -51,9 +28,5 @@
 
         <p>Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée .</p>
         <p>Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public/Mes-notes-de-frais">Carpe Diem</a> . </p><br>
-
-
-
-
 </body>
 </html>

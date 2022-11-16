@@ -26,32 +26,6 @@
             margin-bottom: 20px;
         }
 
-        footer {
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .table-footer {
-            width: 40%;
-            border: 2px solid #870b26;
-        }
-
-        .table-footer td {
-            text-align: center;
-            height: 76px;
-            font-family: 'nunito', sans-serif;
-            font-weight: bold;
-            color: #870b26;
-        }
-
-        .table-footer th {
-            width: 230px;
-            color: #870b26;
-        }
-        a img{
-            width:24px;
-            height:24px;
-        }
     </style>
 
 
@@ -63,14 +37,6 @@
     <p> Pour valider cette note de frais, merci de bien vouloir vous connecter à <a
             href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace
         Administration.</p>
-
-
-
-
-
-
-
-
 </body>
 
 </html>
