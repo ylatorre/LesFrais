@@ -127,6 +127,10 @@
         .divInput {
             padding: 4px;
         }
+        .dashboard-buttons:hover{
+            opacity:0.9;
+            transform: scale(1.05);
+        }
 
         @media screen and (max-width:800px) {
             .fc-toolbar-title {
@@ -1075,7 +1079,7 @@
                 <input id="inputdatelock" type="hidden" name="lockedmonth">
                 <input type="hidden" id="locked" value="false">
                 <button type="button" id="lockMonth"
-                    style="font-size:12px; font-family:'nunito','arial',sans-serif;"class="sm:text-sm md:text-base lg:text-lg  items-center px-2 py-1 bg-[#1266f1] focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Soumettre
+                    style="font-size:12px; font-family:'nunito','arial',sans-serif; background:#11306e; font-weight:bold;" class="dashboard-buttons sm:text-sm md:text-base lg:text-lg  items-center px-2 py-1  focus:bg-[#0c56d0] hover:bg-[#0c56d0]  active:bg-[#0c56d0] border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Soumettre
                     le mois à inspection</button>
             </form>
             <!-- permet aux utilisateurs de visualiser leurs note de frais et ca c'est régale -->
@@ -1085,7 +1089,7 @@
                 <input id="inputemployesalarie" type="hidden" name="employe" value="{{ Auth::user()->name }}">
 
                 <button type="button" id="salarievisuNDF"
-                    style="font-size:12px; font-family:'nunito','arial',sans-serif;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-1 bg-gray-700 focus:bg-gray-800 hover:bg-gray-800  active:bg-red-gray border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Visualiser
+                    style="font-size:12px; font-family:'nunito','arial',sans-serif; font-weight:bold;" class="dashboard-buttons sm:text-sm md:text-base lg:text-lg items-center px-2 py-1 bg-gray-700 focus:bg-gray-800 hover:bg-gray-800  active:bg-red-gray border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Visualiser
                     ma note de frais</button>
             </form>
 
@@ -1094,7 +1098,7 @@
                 <input id="inputdateunlock" type="hidden" name="unlockedmonth">
                 <input name="userId" type="hidden" id="userId" value="{{ Auth::user()->id }}">
                 <button type="button" id="unlockMonth"
-                    style="font-size:12px; font-family:'nunito','arial',sans-serif;"class="sm:text-sm md:text-base lg:text-lg items-center px-2 py-1 bg-red-700 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler
+                    style="font-size:12px; font-family:'nunito','arial',sans-serif; background:#AE0B30; font-weight:bold;" class="dashboard-buttons sm:text-sm md:text-base lg:text-lg items-center px-2 py-1 focus:bg-red-800 hover:bg-red-800  active:bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest  focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Annuler
                     ma demande de validation
                 </button>
             </form>
