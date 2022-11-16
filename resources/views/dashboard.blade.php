@@ -100,7 +100,7 @@
         }
         .fc-view-harness {
 
-            border: 2px solid #11306e !important;
+            border: 1px solid #11306e !important;
         }
 
         .divInput {
