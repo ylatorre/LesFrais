@@ -12,6 +12,7 @@
     <style>
         body {
             font-family: 'nunito', sans-serif;
+            color:#002060;
         }
 
         em {
@@ -65,9 +66,7 @@
 
 
 
-    <footer>
-        <p>Très cordialement.</p><br>
-    </footer>
+
 
 
 
