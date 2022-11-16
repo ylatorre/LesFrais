@@ -72,12 +72,17 @@
     <style>
         /* responsive du titre du calendrier .fc-toolbar-title et .fc-toolbar-pretitle*/
         .fc-toolbar-title{
+                font-family:'nunito','Arial',sans-serif;
                 font-size:20px !important;
+                font-weight: bold;
                 margin-left:5px !important;
                 transition:100ms;
+                color:#AE0B30;
             }
         .fc-toolbar-pretitle{
+                font-family:'nunito','Arial',sans-serif;
                 font-size:20px !important;
+                font-weight: bold;
                 margin-bottom:0px !important;
                 margin-left:2px !important;
                 transition:100ms;
