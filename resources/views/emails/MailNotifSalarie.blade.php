@@ -26,9 +26,9 @@
 </style>
 <body>
 
-        <h1 style="font-size:16px;">Bonjour {{$salarie[0]->name}} ,</h1>
+        <h1 style="font-size:16px; margin:0px; color:#002060;">Bonjour {{$salarie[0]->name}} ,</h1>
 
-        <p>Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée .</p>
-        <p>Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public/Mes-notes-de-frais">Carpe Diem</a> . </p>
+        <p style="margin:0px; color:#002060;">Votre note de frais pour le mois de <em>{{$moisNDF}}</em> a été validée .</p>
+        <p style="margin:0px; color:#002060;">Pour la consulter en ligne, rendez-vous sur le site de <a href="https://www.carpediem.pro/LesFrais/public/Mes-notes-de-frais">Carpe Diem</a> . </p>
 </body>
 </html>

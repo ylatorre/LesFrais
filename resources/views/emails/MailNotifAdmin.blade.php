@@ -32,11 +32,11 @@
 
 
     <br>
-    <h1 style="font-size:16px;">Bonjour {{ $superadmin[0]->name }},</h1>
+    <h1 style="font-size:16px; margin:0px; color:#002060;" >Bonjour {{ $superadmin[0]->name }},</h1>
 
-    <p> L'utilisateur <em>{{ $actualUser }}</em> a demandé la validation de sa note de frais de
+    <p style="margin:0px; color:#002060;"> L'utilisateur <em>{{ $actualUser }}</em> a demandé la validation de sa note de frais de
         <em>{{ $monthNDF }}.</em></p>
-    <p> Pour valider cette note de frais, merci de bien vouloir vous connecter à <a
+    <p style="margin:0px; color:#002060;"> Pour valider cette note de frais, merci de bien vouloir vous connecter à <a
             href="https://www.carpediem.pro/LesFrais/public">Carpe Diem</a> afin de la valider dans votre espace
         Administration.</p>
 </body>

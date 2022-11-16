@@ -38,9 +38,9 @@
 
 
     </style>
-    <h4>Bonjour {{$rejetUser[0]->name}},</h4><br><p>votre note de frais pour le mois de {{$moisNDF}} a été rejetée pour la raison suivante : </p>
+    <h4 style="margin:0px; color:#002060;">Bonjour {{$rejetUser[0]->name}},</h4><br><p>votre note de frais pour le mois de {{$moisNDF}} a été rejetée pour la raison suivante : </p>
 
-    <div class="textRejet"><p class="paragrapheRejet">{{$dernierRejet->TextRejet}}<p></div>
-    <p>Merci de bien vouloir apporter les modifications nécessaires dans vos déplacements en vous connectant à votre espace <a href="https://www.carpediem.pro/LesFrais/public">Frais - Carpe Diem.</a></p>
+    <div class="textRejet"><p class="paragrapheRejet" style="margin:0px; color:#002060;">{{$dernierRejet->TextRejet}}<p></div>
+    <p style="margin:0px; color:#002060;">Merci de bien vouloir apporter les modifications nécessaires dans vos déplacements en vous connectant à votre espace <a href="https://www.carpediem.pro/LesFrais/public">Frais - Carpe Diem.</a></p>
 </body>
 </html>
