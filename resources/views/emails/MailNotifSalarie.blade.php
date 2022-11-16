@@ -18,7 +18,9 @@
     }
     h1{
         font-size:16px;
-        margin-bottom:20px;
+    }
+    p{
+        margin:0px;
     }
 
 </style>

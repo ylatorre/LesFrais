@@ -29,6 +29,7 @@
         }
         p{
             padding-left:1rem;
+            margin:0px;
         }
         .paragrapheRejet{
             /* permet au paragraphe de fit avec son conteneur */
