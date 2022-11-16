@@ -269,14 +269,12 @@
                 padding-top: 4px;
                 padding-bottom: 4px;
             }
-
             th {
                 font-size: 8px;
                 width: 10%;
                 padding-top: 4px;
                 padding-bottom: 4px;
             }
-
             .responsiv-administration-buttons {
                 font-size: 8px;
                 padding-left: 5px;
