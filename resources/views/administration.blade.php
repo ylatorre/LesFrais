@@ -88,8 +88,8 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 12px;
-                padding: 6px;
+                font-size: 10px;
+                padding: 4px;
                 width: 100px;
             }
 
@@ -119,7 +119,7 @@
 
             .responsiv-administration-buttons {
                 font-size: 8px;
-                padding: 6px;
+                padding: 5px;
                 width: 80px
             }
 
@@ -155,8 +155,8 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 10px;
-                padding: 6px;
+                font-size: 9px;
+                padding: 5px;
                 width: 90px;
             }
 
@@ -218,11 +218,9 @@
                 padding-top: 2px !important;
                 padding-bottom: 2px !important;
             }
-
             label {
                 font-size: 10px;
             }
-
             th {
                 font-size: 8px;
                 width: 10%;
@@ -231,11 +229,11 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 9px;
-                padding-left: 5px;
-                padding-right: 5px;
-                padding-top: 4px;
-                padding-bottom: 4px;
+                font-size: 8px;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 5px;
+                padding-bottom: 5px;
                 margin-right: 2px !important;
                 width: 80px;
             }
@@ -259,7 +257,6 @@
             }
 
         }
-
         @media screen and (max-width:420px) {
 
             /*--------------------------------- 420PX */
@@ -619,7 +616,7 @@
                                             <div class="w-1/3 pr-1">
                                                 <label for="vehicule"
                                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle
-                                                    du Vehicule</label>
+                                                    du Véhicule</label>
                                                 <input type="text" name="vehicule" id="vehicule"
                                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
@@ -679,7 +676,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Etes-vous sur
+                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Etes-vous sûr
                                         de bien
                                         vouloir désactiver cet utilisateur ?</h3>
                                     <form methode="post" action="{{ route('supuser') }}">
@@ -687,7 +684,7 @@
                                         <input type="hidden"value="{{ $user->email }}" name="email">
                                         <button type="submit"
                                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                            Oui, Je suis sur
+                                            Oui, je suis sûr
                                         </button>
                                     </form>
                                     <button data-modal-toggle="popup-modal{{ $i }}" type="button"
@@ -809,7 +806,7 @@
                             <div class="w-1/3 pr-1">
                                 <label for="vehicule"
                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle du
-                                    Vehicule</label>
+                                    Véhicule</label>
                                 <input type="text" name="vehicule" id="vehicule"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="ex : 308" required autofocus>
