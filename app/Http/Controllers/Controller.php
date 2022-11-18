@@ -302,6 +302,13 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
+
+        $NDFvalidated = DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->get();
+        if($NDFvalidated[0]->Valide == 1){
+            Session::flash('alreadyValidated', "Cette note de frais a déjà été validée");
+            return redirect(route('gestionaireUser'));
+        }
+
         $concernedUser = DB::table('users')->where('name','=',$request->username)->get();
         $concernedEvents = DB::table('events')->where('idUser','=',$concernedUser[0]->id)->where("mois","=",$request->moisndf)->get();
         $longueurEvents = sizeof($concernedEvents);
@@ -405,8 +412,8 @@ class Controller extends BaseController
 
 
         Session::flash('validatesuccess', "La note de frais a été validée ! Un mail vous a été envoyé avec les factures de cette note de frais !");
-
         return redirect(route('gestionaireUser'));
+
     }
     public function supprimerNDF(Request $request)
     {
