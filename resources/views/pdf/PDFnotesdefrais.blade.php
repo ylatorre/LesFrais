@@ -66,7 +66,7 @@
 
         .TD-table-2 {
             font-size: 7px;
-            border: 2px solid black;
+            border-bottom: 2px solid black;
             padding-right: 6px;
             padding-left: 6px;
         }
@@ -147,7 +147,7 @@
         <div>
             <table class="tablepdf">
                 <thead>
-                    <th class="TH-table text-center BGjour" style="border:2px solid black;">Jours</th>
+                    <th class="TH-table text-center BGjour" style="border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;border-bottom:1px solid black;">Jours</th>
                     <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Client / Prospect</th>
                     <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Code Postal</th>
                     <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Ville</th>
@@ -223,7 +223,7 @@
 
                         <tr>
                             <!-- Valeurs dans le tableau -->
-                            <td class="TD-table-2 text-center BGjour" style="white-space: nowrap;">du
+                            <td class="TD-table-2 text-center BGjour" style="white-space: nowrap; border-left:2px solid black; border-right:2px solid black;">du
                                 {{ $datedebut }}<br> au {{ $datefin }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->title }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
@@ -262,7 +262,7 @@
                         @php
                             $compteur = $compteur + 1;
                         @endphp
-                        @if ($compteur > 14)
+                        @if ($compteur > 13)
                 </tbody>
             </table>
 
@@ -273,7 +273,7 @@
             <div style="page-break-after: always;"></div>
             <table class="tablepdf">
                 <thead>
-                    <th class="TH-table text-center BGjour">Jours</th>
+                    <th class="TH-table text-center BGjour"style="border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;border-bottom:1px solid black;">Jours</th>
                     <th class="TH-table text-center w-10">Client / Prospect</th>
                     <th class="TH-table text-center w-10">Ville</th>
                     <th class="TH-table text-center w-10">Code Postal</th>
@@ -316,32 +316,32 @@
 {{-- Totaux par input --}}
                     <td colspan="5" style="background: rgb(175, 175, 175) !important; border :2px solid black"></td>
                     <td colspan="4" class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important;">
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black; ">
                         {{ $totalPeage }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
+                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalParking }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
+                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalEssence }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
+                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalDivers }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
+                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:2px solid black;">
                         {{ $totalTVA20 }} </td>
                     <td colspan="3" class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important;">
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalRepas }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important;">
+                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalHotels }} </td>
                     <td class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black; border-right:2px solid black;">
                         {{ $totalTVA10 }} </td>
                     <td class="TD-table text-center"
-                        style="background: rgb(175, 175, 175) !important; border:2px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalaEmporter }} </td>
                     <td class="TD-table text-center"
-                        style="background: rgb(175, 175, 175) !important; border-top:2px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
                         {{ $totalTVA55 }} </td>
                     <td class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black; border-right:2px solid black;">
                         {{ $totalKilometres }} </td>
 
 {{-- Bas du tableau du PDF avec les totaux --}}
