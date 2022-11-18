@@ -938,37 +938,37 @@
                                 <td rowspan="1" colspan="5"
                                     style="background: rgb(175, 175, 175) !important; border:2px solid black; "></td>
                                 <td colspan="4" class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:1px solid black;">
                                     {{ $totalPeage }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:1px solid black;">
                                     {{ $totalParking }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:1px solid black;">
                                     {{ $totalEssence }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:1px solid black;">
                                     {{ $totalDivers }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:2px solid black;">
                                     {{ $totalTVA20 }} </td>
                                 <td colspan="3" class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:1px solid black;">
                                     {{ $totalRepas }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:1px solid black;">
                                     {{ $totalHotels }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:2px solid black;">
                                     {{ $totalTVA10 }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:1px solid black;">
                                     {{ $totalaEmporter }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:2px solid black;">
                                     {{ $totalTVA55 }} </td>
                                 <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    style="background: rgb(175, 175, 175) !important; border-top:2px solid black; border-right:2px solid black;">
                                     {{ $totalKilometres }}
                                 </td>
 
