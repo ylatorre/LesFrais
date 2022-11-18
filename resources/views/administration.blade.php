@@ -218,11 +218,9 @@
                 padding-top: 2px !important;
                 padding-bottom: 2px !important;
             }
-
             label {
                 font-size: 10px;
             }
-
             th {
                 font-size: 8px;
                 width: 10%;
@@ -259,7 +257,6 @@
             }
 
         }
-
         @media screen and (max-width:420px) {
 
             /*--------------------------------- 420PX */
@@ -619,7 +616,7 @@
                                             <div class="w-1/3 pr-1">
                                                 <label for="vehicule"
                                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle
-                                                    du Vehicule</label>
+                                                    du Véhicule</label>
                                                 <input type="text" name="vehicule" id="vehicule"
                                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
@@ -809,7 +806,7 @@
                             <div class="w-1/3 pr-1">
                                 <label for="vehicule"
                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle du
-                                    Vehicule</label>
+                                    Véhicule</label>
                                 <input type="text" name="vehicule" id="vehicule"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="ex : 308" required autofocus>
