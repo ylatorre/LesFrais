@@ -364,7 +364,7 @@
                         Véhicule
                     </th>
                     <th scope="col" class="tchao780 th-table-admin  text-center">
-                        chevaux Fiscaux
+                        Chevaux fiscaux
                     </th>
                     <th scope="col" class="th-table-admin  text-center tchao400 ">
                         Taux/Km
@@ -616,7 +616,7 @@
                                             <div class="w-1/3 pr-1">
                                                 <label for="vehicule"
                                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle
-                                                    du Véhicule</label>
+                                                    du véhicule</label>
                                                 <input type="text" name="vehicule" id="vehicule"
                                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="voiture" value="{{ $user->vehicule }}" autofocus>
@@ -633,7 +633,7 @@
                                             <div class="w-1/3 pl-1">
                                                 <label for="ChevauxFiscaux"
                                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Chevaux
-                                                    Fiscaux</label>
+                                                    fiscaux</label>
                                                 <input type="number" name="ChevauxFiscaux" id="ChevauxFiscaux"
                                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                     placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
@@ -806,7 +806,7 @@
                             <div class="w-1/3 pr-1">
                                 <label for="vehicule"
                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle du
-                                    Véhicule</label>
+                                    véhicule</label>
                                 <input type="text" name="vehicule" id="vehicule"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="ex : 308" required autofocus>
@@ -822,7 +822,7 @@
                             <div class="w-1/3 pl-1">
                                 <label for="ChevauxFiscaux"
                                     class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Chevaux
-                                    Fiscaux</label>
+                                    fiscaux</label>
                                 <input type="text" name="ChevauxFiscaux" id="ChevauxFiscaux"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                     placeholder="ex : 6" autofocus>
