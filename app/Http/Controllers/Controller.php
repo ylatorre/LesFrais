@@ -636,7 +636,7 @@ class Controller extends BaseController
 
         Session::flash('createEvent',"L'évènement a été ajouté à votre calendrier !");
 
-        return redirect(route('dashboard'));
+        return redirect(route('calendrier'));
     }
 
     public function supprimerEvent(Request $request)

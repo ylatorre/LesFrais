@@ -130,7 +130,7 @@
         .TD-table {
 
             font-size: 13px;
-
+            border:1.5px solid black;
             padding-left: 2px;
             padding-right: 2px;
             white-space: nowrap;

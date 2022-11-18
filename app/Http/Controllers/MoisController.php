@@ -245,7 +245,7 @@ class MoisController extends Controller
         $monthvalidated = DB::table('infosndfs')->select('MoisEnCours')->where('Utilisateur', '=', Auth::user()->name)->where("Valide", "=", "1");
         Session::flash('NDFcreee', 'La note de frais à été envoyée pour inspection ! ;)');
 
-        return redirect(route(route("calendrier")));
+        return redirect(route("calendrier"));
         // dd($events);
     }
     public function unlockMonth(Request $request)
