@@ -148,29 +148,29 @@
             <table class="tablepdf">
                 <thead>
                     <th class="TH-table text-center BGjour" style="border:2px solid black;">Jours</th>
-                    <th class="TH-table text-center w-10">Client / Prospect</th>
-                    <th class="TH-table text-center w-10">Code Postal</th>
-                    <th class="TH-table text-center w-10">Ville</th>
-                    <th class="TH-table text-center " style="width:100px; border-right:2px solid black">description</th>
+                    <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Client / Prospect</th>
+                    <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Code Postal</th>
+                    <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Ville</th>
+                    <th class="TH-table text-center " style="width:100px; border-right:2px solid black; border-bottom:1px solid black;">description</th>
                     {{--            <tr colspan="4">TTC            </tr> --}}
 
 
-                    <th colspan="4" class="TH-table text-center BGblue" style="padding-left:50px; padding-right:50px; ">Péages</th>
-                    <th class="TH-table text-center BGblue">Parking</th>
-                    <th class="TH-table text-center BGblue">Essence</th>
-                    <th class="TH-table text-center BGblue">Divers</th>
-                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border-right:2px solid black; ">TVA
+                    <th colspan="4" class="TH-table text-center BGblue" style="padding-left:50px; padding-right:50px; border-bottom:1px solid black; ">Péages</th>
+                    <th class="TH-table text-center BGblue" style="border-bottom:1px solid black;">Parking</th>
+                    <th class="TH-table text-center BGblue" style="border-bottom:1px solid black;">Essence</th>
+                    <th class="TH-table text-center BGblue" style="border-bottom:1px solid black;">Divers</th>
+                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border-right:2px solid black; border-bottom:1px solid black; ">TVA
                         (20%)</th>
-                    <th class="TH-table text-center BGyellow">Petit Déjeuner</th>
-                    <th class="TH-table text-center BGyellow">Déjeuner</th>
-                    <th class="TH-table text-center BGyellow">Dîner</th>
-                    <th class="TH-table text-center BGyellow">Hotels</th>
-                    <th class="TH-table text-center BGyellow" style="border-right:2px solid black;">TVA (10%)</th>
+                    <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Petit Déjeuner</th>
+                    <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Déjeuner</th>
+                    <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Dîner</th>
+                    <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Hotels</th>
+                    <th class="TH-table text-center BGyellow" style="border-right:2px solid black; border-bottom:1px solid black;">TVA (10%)</th>
 
-                    <th class="TH-table text-center BGred">A emporter</th>
-                    <th class="TH-table text-center BGred">TVA (5,5%)</th>
+                    <th class="TH-table text-center BGred" style="border-bottom:1px solid black;">A emporter</th>
+                    <th class="TH-table text-center BGred" style="border-bottom:1px solid black; border-right:2px solid black;">TVA (5,5%)</th>
 
-                    <th class="TH-table text-center BGgreen w-16" style="white-space:nowrap;border:2px solid black;">
+                    <th class="TH-table text-center BGgreen w-16" style="white-space:nowrap; border-bottom:1px solid black; border-right:2px solid black;">
                        Km
                     </th>
 
@@ -254,7 +254,7 @@
                             <td class="TD-table text-center BGgrisclair" style="border-right:2px solid black; border-left:1px solid black;">
                                 {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }}</td>
 
-                            <td class=" col-table text-center" style="width:60px; border: 2px solid black">
+                            <td class=" col-table text-center" style="width:60px; border-right:2px solid black; ">
                                 {{ $utilisateur->kilometrage}} </td>
 
 
@@ -348,10 +348,24 @@
 
                 </tr>
                 <tr>
-                    <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:8px;"
+                    @if ($utilisateurs[0]->chevauxFiscaux > 1)
+                        <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:7px;"
                         colspan="2" rowspan="1">Puissance fiscale de
-                        {{ $utilisateurs[0]->chevauxFiscaux }} ch. fiscaux <br> pour un taux de
+                        {{ $utilisateurs[0]->chevauxFiscaux }} chevaux fiscaux <br> pour un taux de
+                        {{ $utilisateurs[0]->taux }} € / km</td> style="border-bottom:1px solid black;"
+                    @endif
+                    @if ($utilisateurs[0]->chevauxFiscaux == 1)
+                        <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:7px;"
+                        colspan="2" rowspan="1">Puissance fiscale de
+                        {{ $utilisateurs[0]->chevauxFiscaux }} cheval fiscal <br> pour un taux de
                         {{ $utilisateurs[0]->taux }} € / km</td>
+                    @endif
+                    @if ($utilisateurs[0]->chevauxFiscaux == 0)
+                        <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:8px;"
+                        colspan="2" rowspan="1">Puissance fiscale
+                        nulle <br> pour un taux de
+                        {{ $utilisateurs[0]->taux }} € / km</td>
+                    @endif
 
 
                     <td class="BGyellow pl-1 text-center" colspan="3"
