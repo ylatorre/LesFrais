@@ -615,7 +615,7 @@
                                         <div class="flex items-end justify-between">
                                             <div class="w-1/3 pr-1">
                                                 <label for="vehicule"
-                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle
+                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300 text-center">Modèle
                                                     du véhicule</label>
                                                 <input type="text" name="vehicule" id="vehicule"
                                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -623,7 +623,7 @@
                                             </div>
                                             <div class="w-1/3">
                                                 <label for="taux"
-                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Taux
+                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300 text-center">Taux
                                                 </label>
                                                 <input type="number" name="taux" id="taux" step="any"
                                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -632,7 +632,7 @@
                                             </div>
                                             <div class="w-1/3 pl-1">
                                                 <label for="ChevauxFiscaux"
-                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Chevaux
+                                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300 text-center">Chevaux
                                                     fiscaux</label>
                                                 <input type="number" name="ChevauxFiscaux" id="ChevauxFiscaux"
                                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -805,7 +805,7 @@
                         <div class="flex items-end justify-between">
                             <div class="w-1/3 pr-1">
                                 <label for="vehicule"
-                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Modèle du
+                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300 text-center">Modèle du
                                     véhicule</label>
                                 <input type="text" name="vehicule" id="vehicule"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -813,7 +813,7 @@
                             </div>
                             <div class="w-1/3">
                                 <label for="taux"
-                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Taux
+                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300 text-center">Taux
                                 </label>
                                 <input type="number" name="taux" id="taux" step="any"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -821,7 +821,7 @@
                             </div>
                             <div class="w-1/3 pl-1">
                                 <label for="ChevauxFiscaux"
-                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300">Chevaux
+                                    class="block mb-1 mt-1 font-medium text-gray-900 dark:text-gray-300 text-center">Chevaux
                                     fiscaux</label>
                                 <input type="text" name="ChevauxFiscaux" id="ChevauxFiscaux"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"

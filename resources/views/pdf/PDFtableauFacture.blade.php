@@ -13,11 +13,6 @@
     body{
         font-family: 'nunito',sans-serif
     }
-
-
-
-
-
     .table-top-PDF h2{
         padding-left:50px;
     }
