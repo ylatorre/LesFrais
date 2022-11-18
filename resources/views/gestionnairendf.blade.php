@@ -145,7 +145,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Etes-vous sur
+                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Etes-vous sûr
                                         de bien
                                         vouloir supprimer cette note de frais ?</h3>
                                     <form action="{{ route('supprimerNDF') }}" method="POST">
@@ -156,7 +156,7 @@
                                             value="{{ $ndfsemploye[$i]->MoisEnCours }}">
                                         <button type="submit"
                                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                            Oui, Je suis sur
+                                            Oui, je suis sûr
                                         </button>
 
                                     <button data-modal-toggle="sure-modal{{ $i }}" type="button"
