@@ -639,7 +639,7 @@
                                                     placeholder="exemple: 6" value="{{ $user->chevauxFiscaux }}"
                                                     autofocus>
                                             </div>
-                                            <!-- si c'ets le super admin qui est connecté-->
+                                            <!-- si c'est le super admin qui est connecté-->
 
                                         </div>
 
