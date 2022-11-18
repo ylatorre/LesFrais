@@ -73,7 +73,7 @@
             <a href="{{ route('calendrier') }}"><button type="submit" class="validerNDF">retourner à mon
                     calendrier</button></a>
         </div>
-    @elseif(Auth::user()->superadmin == 1)
+    @elseif(Auth::user()->superadmin == 1 && $utilisateurs[0]->superadmin == 1)
         @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
             explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre')
@@ -97,6 +97,20 @@
 
 
         </div>
+        </div>
+        @elseif (Auth::user()->superadmin == 1 && ($utilisateurs[0]->admin == 1 && $utilisateurs[0]->superadmin == 0))
+        <div class="flex flex-row justify-around">
+            <button class="supprimerNDF" type="button" data-modal-toggle="modalRejet">
+                Rejeter la note de frais
+            </button>
+            <form method="POST" action="{{ route('validerNDF') }}">
+                @csrf
+                <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
+                <input type="hidden" name="username" value="{{ $utilisateurs[0]->name }}">
+                <button type="submit" class="validerNDF">Valider la note de frais</button>
+            </form>
+
+
         </div>
     @endif
 
