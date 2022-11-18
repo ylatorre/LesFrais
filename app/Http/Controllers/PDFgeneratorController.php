@@ -20,10 +20,10 @@ class PDFgeneratorController extends Controller
         $user = Auth::user();
         // dd($user);
         if($user->vehicule == null || $user->chevauxFiscaux == null){
-            return redirect(route("dashboard"))->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
+            return redirect(route("calendrier"))->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
         };
         if ($utilisateurs->isEmpty()) {
-            return redirect(route("dashboard"))->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
+            return redirect(route("calendrier"))->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
 
@@ -45,15 +45,15 @@ class PDFgeneratorController extends Controller
 
         if(count($utilisateurs) == 0){
             Session::flash("noevents","Il n'y a aucun évènements pour ce mois-ci !");
-            return redirect(route("dashboard"));
+            return redirect(route("calendrier"));
         }
         if($utilisateurs[0]->chevauxFiscaux == null){
             Session::flash("noCHF","Cet utilisateur n'a pas de puissance fiscal enregistrée !");
-            return redirect(route("dashboard"));
+            return redirect(route("calendrier"));
         }
         if($utilisateurs[0]->vehicule == null){
             Session::flash("novehicule","Cet utilisateur n'a pas de véhicule enregistré !");
-            return redirect(route("dashboard"));
+            return redirect(route("calendrier"));
         }
 
         $ndf = DB::table('infosndfs')->where('MoisEnCours','=',$request->selectedMonth)->where("Utilisateur", "=", $utilisateurs[0]->name)->get();

@@ -33,7 +33,7 @@ Route::get('/', function () {
 Route::resource('mission', MissionController::class);
 Route::get('mission_export',[MissionController::class, 'get_mission_data'])->name('mission.export');
 
-Route::get('/calendrier', [Controller::class, 'displayDashboard'])->name('dashboard')->middleware(['auth']);
+Route::get('/calendrier', [Controller::class, 'displayDashboard'])->name('calendrier')->middleware(['auth']);
 Route::post('/calendrier',[FullCalenderController::class,'store'])->middleware(['auth']);
 Route::post('creationevenement',[Controller::class,'createEvent'])->name('createEvent')->middleware(['auth']);
 

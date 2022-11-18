@@ -70,7 +70,7 @@
         </div>
     @elseif(Auth::user()->salarie == 1 || (Auth::user()->admin == 1 && Auth::user()->superadmin != 1))
         <div class="flex flex-row items-center justify-around w-full h-20 px-4 font-bold">
-            <a href="{{ route('dashboard') }}"><button type="submit" class="validerNDF">retourner à mon
+            <a href="{{ route('calendrier') }}"><button type="submit" class="validerNDF">retourner à mon
                     calendrier</button></a>
         </div>
     @elseif(Auth::user()->superadmin == 1)
@@ -92,7 +92,7 @@
                     frais</button>
             </form>
 
-            <a href="{{ route('dashboard') }}"><button type="submit" class="validerNDF">retourner à mon
+            <a href="{{ route('calendrier') }}"><button type="submit" class="validerNDF">retourner à mon
                     calendrier</button></a>
 
 

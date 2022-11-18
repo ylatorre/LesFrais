@@ -8,7 +8,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center" id="logoAPP">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('calendrier') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600 " />
                     </a>
                 </div>
@@ -30,7 +30,7 @@
                 @endphp
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
-                    <a href="{{ route('dashboard') }}" style="text-decoration:none;"
+                    <a href="{{ route('calendrier') }}" style="text-decoration:none;"
                         class="hidden md:inline-flex items-center px-1 pt-1 border-b-2 border-b-transparent hover:border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
                         Calendrier</a>
                     @if (Auth::user()->admin == 1 || Auth::user()->superadmin == 1)
@@ -105,7 +105,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('calendrier')" :active="request()->routeIs('calendrier')">
                 {{ __('Calendrier') }}
             </x-responsive-nav-link>
 
