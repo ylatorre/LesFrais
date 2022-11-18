@@ -8,7 +8,7 @@
         <div class="flex flex-row justify-around">
             <button class="supprimerNDF" type="button" data-modal-toggle="modalRejet">
                 Rejeter la note de frais
-              </button>
+            </button>
             <form method="POST" action="{{ route('validerNDF') }}">
                 @csrf
                 <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
@@ -18,48 +18,56 @@
 
 
         </div>
-        {{--modal tailwind pour ajouter du text au rejet de la ndf--}}
+        {{-- modal tailwind pour ajouter du text au rejet de la ndf --}}
 
 
-          <!-- Main modal -->
-          <div id="modalRejet" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-              <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
-                  <!-- Modal content -->
-                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                      <!-- Modal header -->
-                      <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-                          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                              Rejet de note de frais
-                          </h3>
-                          <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="modalRejet">
-                              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                              <span class="sr-only">Close modal</span>
-                          </button>
-                      </div>
-                      <!-- Modal body -->
-                       <form method="POST" action="{{ route('rejeterNDF') }}" id="rejeterNDF">
-                      <div class="p-6 space-y-6">
+        <!-- Main modal -->
+        <div id="modalRejet" tabindex="-1" aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+            <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Rejet de note de frais
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="modalRejet">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <form method="POST" action="{{ route('rejeterNDF') }}" id="rejeterNDF">
+                        <div class="p-6 space-y-6">
 
                             @csrf
                             <input type="hidden" name="moisndf" value="{{ $utilisateurs[0]->mois }}">
                             <input type="hidden" name="username" value="{{ $utilisateurs[0]->name }}">
                             <input type="hidden" name="userID" value="{{ $utilisateurs[0]->idUser }}">
-                            <textarea name="rejetText" rows="3"
-                                        placeholder="Contenu du mail de rejet..."
-                                        class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
+                            <textarea name="rejetText" rows="3" placeholder="Contenu du mail de rejet..."
+                                class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start px-[7.5px] pt-[4px]  w-full rounded-[2.5px]" required></textarea>
 
-                      </div>
-                      <!-- Modal footer -->
-                      <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                          <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" >Rejeter</button>
-                          <button data-modal-toggle="modalRejet" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Annuler</button>
-                      </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div
+                            class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+                            <button type="submit"
+                                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Rejeter</button>
+                            <button data-modal-toggle="modalRejet" type="button"
+                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Annuler</button>
+                        </div>
                     </form>
-                  </div>
-              </div>
-          </div>
-
-
+                </div>
+            </div>
+        </div>
     @elseif(Auth::user()->salarie == 1 || (Auth::user()->admin == 1 && Auth::user()->superadmin != 1))
         <div class="flex flex-row items-center justify-around w-full h-20 px-4 font-bold">
             <a href="{{ route('dashboard') }}"><button type="submit" class="validerNDF">retourner à mon
@@ -120,9 +128,9 @@
         }
 
         .TD-table {
-            play: flex;
-            */ font-size: 13px;
-            border: 2px solid black;
+
+            font-size: 13px;
+
             padding-left: 2px;
             padding-right: 2px;
             white-space: nowrap;
@@ -130,11 +138,12 @@
 
         .TD-table-3 {
             font-size: 13px;
-            border: 2px solid black;
+
             padding-top: 6px;
             padding-bottom: 6px;
             white-space: nowrap;
         }
+
         .col-table {
             font-size: 13px;
             border: 1px solid black;
@@ -194,11 +203,11 @@
 
         .validerNDF {
             padding: 0.7rem;
-            margin-bottom:5px;
+            margin-bottom: 5px;
             border: 4px solid black;
             border-radius: 0.75rem;
             background: #17458a;
-            color:white;
+            color: white;
             font-family: 'nunito', sans-serif;
             font-weight: bold;
             font-size: 16px;
@@ -207,11 +216,11 @@
 
         .supprimerNDF {
             padding: 0.7rem;
-            margin-bottom:5px;
+            margin-bottom: 5px;
             border: 4px solid black;
             border-radius: 0.75rem;
             background: #a51818;
-            color:white;
+            color: white;
             font-family: 'nunito', sans-serif;
             font-weight: bold;
             font-size: 16px;
@@ -244,9 +253,10 @@
         .disparait:hover {
             border: 6px solid rgb(122, 16, 16);
         }
-        .buttonsImage{
-            width:24px;
-            height:24px;
+
+        .buttonsImage {
+            width: 24px;
+            height: 24px;
         }
 
 
@@ -276,10 +286,11 @@
             .td-sous-total {
                 font-size: 11px;
             }
-            .buttonsImage{
-            width:20px;
-            height:20px;
-        }
+
+            .buttonsImage {
+                width: 20px;
+                height: 20px;
+            }
         }
 
         @media screen and (max-width:1200px) {
@@ -316,9 +327,10 @@
             .td-sous-total {
                 font-size: 11px;
             }
-            .buttonsImage{
-            width:16px;
-            height:16px;
+
+            .buttonsImage {
+                width: 16px;
+                height: 16px;
             }
         }
 
@@ -348,9 +360,10 @@
             .td-sous-total {
                 font-size: 9px;
             }
-            .buttonsImage{
-            width:12px;
-            height:12px;
+
+            .buttonsImage {
+                width: 12px;
+                height: 12px;
             }
 
 
@@ -363,9 +376,10 @@
             .phrases {
                 font-size: 6px;
             }
-            .logoCDIT{
-                width:130px;
-                height:40px;
+
+            .logoCDIT {
+                width: 130px;
+                height: 40px;
             }
 
             .mission-effectuees {
@@ -406,10 +420,11 @@
 
             .supprimerNDF {
                 font-size: 10px;
-           }
-           .H1ndf{
-            font-size:10px;
-           }
+            }
+
+            .H1ndf {
+                font-size: 10px;
+            }
         }
 
         @media screen and (max-width:560px) {
@@ -517,8 +532,9 @@
             .button-image {
                 background: url('./images/iconDL.png');
             }
-            .H1ndf{
-                font-size:8px;
+
+            .H1ndf {
+                font-size: 8px;
             }
         }
     </style>
@@ -563,7 +579,7 @@
                             <th class="TH-table text-center ">Code Postal</th>
                             <th class="TH-table text-center ">Ville</th>
                             <th class="TH-table text-center TH-description"
-                                style=" overflow:hidden; border-left: 2px solid black;border-right: 2px solid black">
+                                style=" overflow:hidden; border-left: 1px solid black; border-right: 2px solid black">
                                 Description</th>
                             {{--            <tr colspan="4">TTC            </tr> --}}
 
@@ -573,20 +589,23 @@
                             <th class="TH-table text-center BGblue">Parking</th>
                             <th class="TH-table text-center BGblue">Essence</th>
                             <th class="TH-table text-center BGblue">Divers</th>
-                            <th class="TH-table text-center BGblue" style="border-left: 2px solid black">TVA
+                            <th class="TH-table text-center BGblue" style="border-left: 1px solid black">TVA
                                 (20%)
                             </th>
                             <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Petit
                                 déjeuner</th>
-                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Déjeuner</th>
-                            <th class="TH-table text-center BGyellow" style="border-left: 2px solid black">Dîner</th>
+                            <th class="TH-table text-center BGyellow" style="border-left: 1px solid black">Déjeuner
+                            </th>
+                            <th class="TH-table text-center BGyellow" style="border-left: 1px solid black">Dîner</th>
 
                             <th class="TH-table text-center BGyellow">Hotels</th>
                             <th class="TH-table text-center BGyellow">TVA (10%)</th>
-                            <th class="TH-table text-center BGred">A emporter</th>
+                            <th class="TH-table text-center BGred " style="border-left: 2px solid black">A emporter
+                            </th>
                             <th class="TH-table text-center BGred">TVA (5,5%)</th>
 
-                            <th class="TH-table text-center BGgreen" style="border-left: 2px solid black">
+                            <th class="TH-table text-center BGgreen"
+                                style="border-left: 2px solid black; border-right: 2px solid black;">
                                 km
                             </th>
 
@@ -627,15 +646,20 @@
                                         /* régler le probleme de la tva et du total tva içi*/
 
                                     @endphp
-                                    <td class="TD-table text-center BGjour pl-1 pr-1">du {{ $datedebut }}<br> au
+                                    <td class="TD-table text-center BGjour pl-1 pr-1"
+                                        style="border-left:2px solid black; border-right:2px solid black;">du
+                                        {{ $datedebut }}<br> au
                                         {{ $datefin }}</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->title }}</td>
-                                    <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
+                                    <td class="TD-table text-center" style="border-right:1px solid black">
+                                        {{ $utilisateur->title }}</td>
+                                    <td class="TD-table text-center" style="border-right:1px solid black">
+                                        {{ $utilisateur->code_postal }}</td>
                                     <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                                     <td class="TD-table col-table text-center TD-description"
                                         style="white-space:nowrap; overflow:hidden; border-bottom:2px solid black">
                                         {{ $utilisateur->description }}</td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center "
+                                        style="border-right:1px solid black; border-left:2px solid">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->peage }}
                                             @if ($utilisateur->pathPeage != '0')
                                                 <button class="buttonsImage" id="button{{ $utilisateur->pathPeage }}"
@@ -644,7 +668,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->peage2 }}
                                             @if ($utilisateur->pathPeage2 != '0')
                                                 <button class="buttonsImage"
@@ -654,7 +678,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->peage3 }}
                                             @if ($utilisateur->pathPeage3 != '0')
                                                 <button class="buttonsImage"
@@ -664,7 +688,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->peage4 }}
                                             @if ($utilisateur->pathPeage4 != '0')
                                                 <button class="buttonsImage"
@@ -674,7 +698,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->parking }}
                                             @if ($utilisateur->pathParking != '0')
                                                 <button class="buttonsImage"
@@ -684,7 +708,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->essence }}
                                             @if ($utilisateur->pathEssence != '0')
                                                 <button class="buttonsImage"
@@ -694,7 +718,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->divers }}
                                             @if ($utilisateur->pathDivers != '0')
                                                 <button class="buttonsImage"
@@ -704,10 +728,11 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center BGgrisclair">
+                                    <td class="TD-table text-center BGgrisclair"
+                                        style="border-right:2px solid black;">
                                         {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->petitDej }}
                                             @if ($utilisateur->pathPetitDej != '0')
                                                 <button class="buttonsImage"
@@ -717,7 +742,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->dejeuner }}
                                             @if ($utilisateur->pathDejeuner != '0')
                                                 <button class="buttonsImage"
@@ -727,7 +752,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->diner }}
                                             @if ($utilisateur->pathDiner != '0')
                                                 <button class="buttonsImage" id="button{{ $utilisateur->pathDiner }}"
@@ -736,7 +761,7 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->hotel }}
                                             @if ($utilisateur->pathHotel != '0')
                                                 <button class="buttonsImage" id="button{{ $utilisateur->pathHotel }}"
@@ -745,11 +770,12 @@
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="TD-table text-center BGgrisclair">
+                                    <td class="TD-table text-center BGgrisclair"
+                                        style="border-right:2px solid black;">
                                         {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
 
                                     </td>
-                                    <td class="TD-table text-center">
+                                    <td class="TD-table text-center" style="border-right:1px solid black;">
                                         <div class="flex flex-row justify-center">{{ $utilisateur->aEmporter }}
                                             @if ($utilisateur->pathAemporter != '0')
                                                 <button class="buttonsImage"
@@ -762,7 +788,8 @@
                                     <td class="TD-table text-center BGgrisclair">
                                         {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }} </td>
 
-                                    <td class="TD-table col-table text-center" style="border-left: 2px solid black">
+                                    <td class="TD-table col-table text-center"
+                                        style="border-left: 2px solid black; border-right: 2px solid black;">
                                         {{ $utilisateur->kilometrage }} </td>
 
 
@@ -773,74 +800,86 @@
                                 @if ($utilisateur->pathPeage != '0')
                                     <div id="{{ $utilisateur->pathPeage }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage }}').style.display = 'none'  ; ">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathPeage2 != '0')
                                     <div id="{{ $utilisateur->pathPeage2 }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage2 }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage2) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage2) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathPeage3 != '0')
                                     <div id="{{ $utilisateur->pathPeage3 }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage3 }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage3) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage3) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathPeage4 != '0')
                                     <div id="{{ $utilisateur->pathPeage4 }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPeage4 }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage4) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPeage4) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathParking != '0')
                                     <div id="{{ $utilisateur->pathParking }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathParking }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathParking) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathParking) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathEssence != '0')
                                     <div id="{{ $utilisateur->pathEssence }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathEssence }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathEssence) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathEssence) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathDivers != '0')
                                     <div id="{{ $utilisateur->pathDivers }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathDivers }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDivers) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDivers) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathPetitDej != '0')
                                     <div id="{{ $utilisateur->pathPetitDej }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathPetitDej }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPetitDej) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathPetitDej) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathDejeuner != '0')
                                     <div id="{{ $utilisateur->pathDejeuner }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathDejeuner }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDejeuner) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDejeuner) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathDiner != '0')
                                     <div id="{{ $utilisateur->pathDiner }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathDiner }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDiner) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathDiner) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathHotel != '0')
                                     <div id="{{ $utilisateur->pathHotel }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathHotel }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathHotel) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathHotel) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
                                 @if ($utilisateur->pathAemporter != '0')
                                     <div id="{{ $utilisateur->pathAemporter }}" class="disparait"
                                         onclick="document.getElementById('{{ $utilisateur->pathAemporter }}').style.display = 'none'">
-                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathAemporter) }}" alt="facture"
-                                            class="w-full h-full" style="object-fit:contain;"></div>
+                                        <img src="/LesFrais/public{{ Storage::url($utilisateur->pathAemporter) }}"
+                                            alt="facture" class="w-full h-full" style="object-fit:contain;">
+                                    </div>
                                 @endif
 
 
@@ -874,7 +913,6 @@
                                     const buttonDiner{{ $i }} = document.getElementById('button{{ $utilisateur->pathDiner }}');
                                     const buttonHotel{{ $i }} = document.getElementById('button{{ $utilisateur->pathHotel }}');
                                     const buttonAemporter{{ $i }} = document.getElementById('button{{ $utilisateur->pathAemporter }}');
-
                                 </script>
                                 @php
                                     $i++;
@@ -893,62 +931,91 @@
                                 $total = round($SousTotalTransport + $SousTotalRepasHotels + $totalKilometres * $utilisateurs[0]->taux, 2);
                             @endphp
                             <tr>
-                                <td class="BGyellow pl-1 text-center phrases" style="border:2px solid black;"
-                                    colspan="2" rowspan="2">Puissance fiscale de
-                                    {{ $utilisateurs[0]->chevauxFiscaux }} ch. fiscaux <br> pour un taux de
-                                    {{ $utilisateurs[0]->taux }} € / km</td>
+
+
+
+
+                                <td rowspan="1" colspan="5"
+                                    style="background: rgb(175, 175, 175) !important; border:2px solid black; "></td>
+                                <td colspan="4" class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    {{ $totalPeage }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    {{ $totalParking }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    {{ $totalEssence }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    {{ $totalDivers }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    {{ $totalTVA20 }} </td>
+                                <td colspan="3" class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    {{ $totalRepas }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    {{ $totalHotels }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    {{ $totalTVA10 }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1px solid black;">
+                                    {{ $totalaEmporter }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    {{ $totalTVA55 }} </td>
+                                <td class="TD-table text-center"
+                                    style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                                    {{ $totalKilometres }}
+                                </td>
+
+
+
+                                {{-- <td class="TD-table">{{$totalParking}}</td> --}}
+                                {{-- <td class="TD-table">{{$totalEssence}}</td> --}}
+                                {{-- <td class="TD-table">{{$totalDivers}} </td> --}}
+                            </tr>
+                            <tr>
+                                @if ($utilisateurs[0]->chevauxFiscaux == 0)
+                                    <td class="BGyellow pl-1 text-center phrases" style="border:2px solid black;"
+                                        colspan="2" rowspan="2">Puissance fiscale nulle
+                                        <br> pour un taux de
+                                        {{ $utilisateurs[0]->taux }} € / km
+                                    </td>
+                                @endif
+                                @if ($utilisateurs[0]->chevauxFiscaux == 1)
+                                    <td class="BGyellow pl-1 text-center phrases" style="border:2px solid black;"
+                                        colspan="2" rowspan="2">Puissance fiscale de
+                                        {{ $utilisateurs[0]->chevauxFiscaux }} cheval fiscal <br> pour un taux de
+                                        {{ $utilisateurs[0]->taux }} € / km</td>
+                                @endif
+                                @if ($utilisateurs[0]->chevauxFiscaux > 1)
+                                    <td class="BGyellow pl-1 text-center phrases" style="border:2px solid black;"
+                                        colspan="2" rowspan="2">Puissance fiscale de
+                                        {{ $utilisateurs[0]->chevauxFiscaux }} chevaux fiscaux <br> pour un taux de
+                                        {{ $utilisateurs[0]->taux }} € / km</td>
+                                @endif
+
 
                                 <td class="BGyellow pl-1 text-center phrases" colspan="3" rowspan="2"
                                     style="border:2px solid black;">Cette note de frais n'a pas encore été soumise à
                                     inspection</td>
 
-
-
-
-                                <td colspan="4" class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalPeage }} </td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalParking }} </td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalEssence }} </td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalDivers }} </td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalTVA20 }} </td>
-                                <td colspan="3" class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalRepas }} </td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalHotels }} </td>
-
-                                <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
-                                    {{ $totalTVA10 }} </td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalaEmporter }} </td>
-                                <td class="TD-table text-center" style="background: rgb(175, 175, 175) !important;">
-                                    {{ $totalTVA55 }} </td>
-                                <td class="TD-table text-center"
-                                    style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black;">
-                                    {{ $totalKilometres }} </td>
-
-
-                                {{--        <td class="TD-table">{{$totalParking}}</td> --}}
-                                {{--        <td class="TD-table">{{$totalEssence}}</td> --}}
-                                {{--        <td class="TD-table">{{$totalDivers}}</td> --}}
-                            </tr>
-                            <tr>
-                                <td class="TD-table-3 text-center" rowspan="2" colspan="5">Total HT :
+                                <td class="TD-table-3 text-center" rowspan="2" colspan="5"
+                                    style="border: 2px solid black;">Total HT :
                                     {{ $SousTotalTransport - $totalTVA20 + ($SousTotalRepasHotels - $totalTVA10) + ($totalaEmporter - $totalTVA55) }}
                                     €</td>
-                                <td class="TD-table-3 text-center" rowspan="2" colspan="3">Total TVA :
+                                <td class="TD-table-3 text-center" rowspan="2" colspan="3"
+                                    style="border: 2px solid black;">Total TVA :
                                     {{ $totalTVA20 + $totalTVA10 + $totalTVA55 }} €</td>
                                 <td class="TD-table-3 text-center" rowspan="2" colspan="3"
-                                    style="border-right:2px solid black">Total TTC :
-                                    {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter }} € </td>
+                                    style="border: 2px solid black;">Total TTC :
+                                    {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter }} €</td>
                                 <td class="TD-table-3 text-center" rowspan="2" colspan="3"
-                                    style="border:2px solid black">
+                                    style="border: 2px solid black;">
                                     Indemn. Km : {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €</td>
                                 <td class="TD-table-3 text-center font-bold" rowspan="2" colspan="2"
                                     style="border:2px solid black">
