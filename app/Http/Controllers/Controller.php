@@ -230,7 +230,7 @@ class Controller extends BaseController
 
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
-            return redirect('dashboard');
+            return redirect(route("dashboard"));
         }
 
         $dateNDF = explode("-", $utilisateurs[0]->mois);
@@ -282,10 +282,11 @@ class Controller extends BaseController
         $user = Auth::user();
 
         if ($user->vehicule == null || $user->chevauxFiscaux == null) {
-            return redirect('dashboard')->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
+            return redirect(route("dashboard"))->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
         };
         if ($utilisateurs->isEmpty()) {
-            return redirect('dashboard')->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
+            return redirect(route("dashboard")
+            )->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', $request->employe)->where('MoisEnCours', '=', $request->moisNDF)->get();
@@ -650,7 +651,7 @@ class Controller extends BaseController
 
         DB::table('events')->where('id', '=', $request->eventID)->delete();
         Session::flash("supprEvent", "L'évènement à bien été supprimé");
-        return redirect("/dashboard");
+        return redirect(route("dashboard"));
     }
 
     public function ModifierEvent(Request $request)
@@ -778,6 +779,6 @@ class Controller extends BaseController
 
         Session::flash("modifEvent", "L'évènement a bien été modifié !");
 
-        return redirect("/dashboard");
+        return redirect(route("dashboard"));
     }
 };
