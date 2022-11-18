@@ -66,14 +66,16 @@
 
         .TD-table-2 {
             font-size: 7px;
-            border-bottom: 2px solid black;
+            border-bottom: 1.5px solid black;
+            border-top: 1.5px solid black;
             padding-right: 6px;
             padding-left: 6px;
         }
 
         .TD-table-3 {
             font-size: 10px;
-            border: 2px solid black;
+            border-bottom: 2px solid black;
+            border-top: 2px solid black;
             padding-right: 6px;
             padding-left: 6px;
         }
@@ -86,6 +88,7 @@
 
         .tablepdf {
             border-collapse: collapse;
+            border:2px solid black;
 
         }
 
@@ -108,8 +111,9 @@
         .BGgris {
             background: rgba(157, 157, 157, 0.7);
         }
-        .BGgrisclair{
-            background : rgb(190,190,190);
+
+        .BGgrisclair {
+            background: rgb(190, 190, 190);
         }
 
         .BGnuit {
@@ -128,7 +132,7 @@
         }
     </style>
     {{-- <div class="text-center"> --}}
-    <table style="margin-bottom:20px; width:100%;" >
+    <table style="margin-bottom:20px; width:100%;">
         <tr>
             <td>
                 <img src="./images/logoCDIT.png" alt="logoCDIT" width="200px" height="50px">
@@ -140,38 +144,48 @@
         </tr>
 
     </table>
-     <h1 style="position:fixed; right:0px; top:20px; text-center">Note de frais de {{ $utilisateurs[0]->name }} pour {{ $dateNDFpourPDFetVISU }} <br><em style="font-size:10px;">( Les valeurs sont exprimées en euros )</em></h1>
+    <h1 style="position:fixed; right:0px; top:20px; text-center">Note de frais de {{ $utilisateurs[0]->name }} pour
+        {{ $dateNDFpourPDFetVISU }} <br><em style="font-size:10px;">( Les valeurs sont exprimées en euros )</em></h1>
 
     {{--    <h1 class="">dawd</h1> --}}
     <div class="w-full flex flex-row justify-around">
         <div>
             <table class="tablepdf">
                 <thead>
-                    <th class="TH-table text-center BGjour" style="border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;border-bottom:1px solid black;">Jours</th>
+                    <th class="TH-table text-center BGjour"
+                        style="border-top:2px solid black; border-left:2px solid black; border-right:1.5px solid black;border-bottom:1px solid black;">
+                        Jours</th>
                     <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Client / Prospect</th>
                     <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Code Postal</th>
                     <th class="TH-table text-center w-10" style="border-bottom:1px solid black;">Ville</th>
-                    <th class="TH-table text-center " style="width:100px; border-right:2px solid black; border-bottom:1px solid black;">description</th>
+                    <th class="TH-table text-center "
+                        style="width:100px; border-right:1.5px solid black; border-bottom:1px solid black;">Description
+                    </th>
                     {{--            <tr colspan="4">TTC            </tr> --}}
 
 
-                    <th colspan="4" class="TH-table text-center BGblue" style="padding-left:50px; padding-right:50px; border-bottom:1px solid black; ">Péages</th>
+                    <th colspan="4" class="TH-table text-center BGblue"
+                        style="padding-left:50px; padding-right:50px; border-bottom:1px solid black; ">Péages</th>
                     <th class="TH-table text-center BGblue" style="border-bottom:1px solid black;">Parking</th>
                     <th class="TH-table text-center BGblue" style="border-bottom:1px solid black;">Essence</th>
                     <th class="TH-table text-center BGblue" style="border-bottom:1px solid black;">Divers</th>
-                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border-right:2px solid black; border-bottom:1px solid black; ">TVA
+                    <th class="TH-table text-center BGblue"
+                        style="white-space:nowrap; border-right:1.5px solid black; border-bottom:1px solid black; ">TVA
                         (20%)</th>
                     <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Petit Déjeuner</th>
                     <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Déjeuner</th>
                     <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Dîner</th>
                     <th class="TH-table text-center BGyellow" style="border-bottom:1px solid black;">Hotels</th>
-                    <th class="TH-table text-center BGyellow" style="border-right:2px solid black; border-bottom:1px solid black;">TVA (10%)</th>
+                    <th class="TH-table text-center BGyellow"
+                        style="border-right:1.5px solid black; border-bottom:1px solid black;">TVA (10%)</th>
 
-                    <th class="TH-table text-center BGred" style="border-bottom:1px solid black;">A emporter</th>
-                    <th class="TH-table text-center BGred" style="border-bottom:1px solid black; border-right:2px solid black;">TVA (5,5%)</th>
+                    <th class="TH-table text-center BGred" style="border-bottom:1px solid black;">Repas à emporter</th>
+                    <th class="TH-table text-center BGred"
+                        style="border-bottom:1px solid black; border-right:1.5px solid black;">TVA (5,5%)</th>
 
-                    <th class="TH-table text-center BGgreen w-16" style="white-space:nowrap; border-bottom:1px solid black; border-right:2px solid black;">
-                       Km
+                    <th class="TH-table text-center BGgreen w-16"
+                        style="white-space:nowrap; border-bottom:1px solid black; border-right:2px solid black;">
+                        Km
                     </th>
 
                 </thead>
@@ -223,13 +237,15 @@
 
                         <tr>
                             <!-- Valeurs dans le tableau -->
-                            <td class="TD-table-2 text-center BGjour" style="white-space: nowrap; border-left:2px solid black; border-right:2px solid black;">du
+                            <td class="TD-table-2 text-center BGjour"
+                                style="white-space: nowrap; border-left:2px solid black; border-right:1.5px solid black; border-top:1px solid black;">
+                                du
                                 {{ $datedebut }}<br> au {{ $datefin }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->title }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->code_postal }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->ville }}</td>
                             <td class="TD-table col-table text-center"
-                                style="white-space:nowrap; max-width: 10px; overflow:hidden; border-right:2px solid black;">
+                                style="white-space:nowrap; max-width: 10px; overflow:hidden; border-right:1.5px solid black;">
                                 {{ $utilisateur->description }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->peage }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->peage2 }}</td>
@@ -239,23 +255,27 @@
                             <td class="TD-table text-center">{{ $utilisateur->essence }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->divers }}</td>
                             <td class="TD-table text-center BGgrisclair"
-                                style="border-right:2px solid black; border-left:1px solid black;">
+                                style="border-right:1.5px solid black; border-left:1px solid black;">
                                 {{ round((($utilisateur->divers + $utilisateur->peage + $utilisateur->peage2 + $utilisateur->peage3 + $utilisateur->peage4 + $utilisateur->essence + $utilisateur->parking) / 1.2) * 0.2, 2) }}
                             </td>
                             <td class="TD-table text-center">{{ $utilisateur->petitDej }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->dejeuner }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->diner }}</td>
                             <td class="TD-table text-center">{{ $utilisateur->hotel }}</td>
-                            <td class="TD-table text-center BGgrisclair" style="border-left:1px solid black; border-right:2px solid black;">
+                            <td class="TD-table text-center BGgrisclair"
+                                style="border-left:1px solid black; border-right:1.5px solid black;">
                                 {{ round((($utilisateur->petitDej + $utilisateur->dejeuner + $utilisateur->diner + $utilisateur->hotel) / 1.1) * 0.1, 2) }}
                             </td>
 
-                            <td class="TD-table text-center">{{ $utilisateur->aEmporter }}</td>
-                            <td class="TD-table text-center BGgrisclair" style="border-right:2px solid black; border-left:1px solid black;">
+                            <td class="TD-table text-center" style="border-top:1px solid black; ">
+                                {{ $utilisateur->aEmporter }}</td>
+                            <td class="TD-table text-center BGgrisclair"
+                                style="border-right:1.5px solid black; border-left:1px solid black;border-top:1px solid black;">
                                 {{ round(($utilisateur->aEmporter / 1.055) * 0.055, 2) }}</td>
 
-                            <td class=" col-table text-center" style="width:60px; border-right:2px solid black; ">
-                                {{ $utilisateur->kilometrage}} </td>
+                            <td class=" col-table text-center"
+                                style="width:60px; border-right:2px solid black; border-bottom:1.5px solid black; ">
+                                {{ $utilisateur->kilometrage }} </td>
 
 
                         </tr>
@@ -273,24 +293,28 @@
             <div style="page-break-after: always;"></div>
             <table class="tablepdf">
                 <thead>
-                    <th class="TH-table text-center BGjour"style="border-top:2px solid black; border-left:2px solid black; border-right:2px solid black;border-bottom:1px solid black;">Jours</th>
+                    <th
+                        class="TH-table text-center BGjour"style="border-top:2px solid black; border-left:2px solid black; border-right:1.5px solid black;border-bottom:1px solid black;">
+                        Jours</th>
                     <th class="TH-table text-center w-10">Client / Prospect</th>
                     <th class="TH-table text-center w-10">Ville</th>
                     <th class="TH-table text-center w-10">Code Postal</th>
-                    <th class="TH-table text-center w-16" style="border-right:2px solid black">Description</th>
-                    <th colspan="4" class="TH-table text-center BGblue" >Péages</th>
+                    <th class="TH-table text-center w-16" style="border-right:1.5px solid black">Description</th>
+                    <th colspan="4" class="TH-table text-center BGblue">Péages</th>
                     <th class="TH-table text-center BGblue">Parking</th>
                     <th class="TH-table text-center BGblue">Essence</th>
                     <th class="TH-table text-center BGblue">Divers</th>
-                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border-right:2px solid black">TVA
-                        (20%)</th>
-                    <th class="TH-table text-center BGyellow" >Petit Déjeuner</th>
-                    <th class="TH-table text-center BGyellow" >Déjeuner</th>
-                    <th class="TH-table text-center BGyellow" >Diner</th>
-                    <th class="TH-table text-center BGyellow" >Hotels</th>
-                    <th class="TH-table text-center BGyellow" style="border-right:2px solid black">TVA (10%)</th>
-                    <th class="TH-table text-center BGred" >à emporter</th>
-                    <th class="TH-table text-center BGred" >TVA (5,5%)</th>
+                    <th class="TH-table text-center BGblue" style="white-space:nowrap; border-right:1.5px solid black">
+                        TVA
+                        (20%)
+                    </th>
+                    <th class="TH-table text-center BGyellow">Petit Déjeuner</th>
+                    <th class="TH-table text-center BGyellow">Déjeuner</th>
+                    <th class="TH-table text-center BGyellow">Diner</th>
+                    <th class="TH-table text-center BGyellow">Hotels</th>
+                    <th class="TH-table text-center BGyellow" style="border-right:1.5px solid black">TVA (10%)</th>
+                    <th class="TH-table text-center BGred">Repas à emporter</th>
+                    <th class="TH-table text-center BGred">TVA (5,5%)</th>
 
                     <th class="TH-table text-center BGgreen">
                         {{ $infosNDF[0]->tauxKM }}
@@ -313,77 +337,97 @@
                 @endphp
                 <tr>
 
-{{-- Totaux par input --}}
-                    <td colspan="5" style="background: rgb(175, 175, 175) !important; border :2px solid black"></td>
+                    {{-- Totaux par input --}}
+                    <td colspan="5"
+                        style="background: rgb(175, 175, 175) !important; border-left :1.5px solid black; border-right :1.5px solid black; border-top :1.5px solid black; border-bottom :1.5px solid black;">
+                    </td>
                     <td colspan="4" class="TD-table-2 text-center"
                         style="background: rgb(175, 175, 175) !important; border-right:1px solid black; ">
                         {{ $totalPeage }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
+                    <td class="TD-table-2 text-center"
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalParking }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
+                    <td class="TD-table-2 text-center"
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalEssence }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
+                    <td class="TD-table-2 text-center"
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalDivers }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:2px solid black;">
+                    <td class="TD-table-2 text-center"
+                        style="background: rgb(175, 175, 175) !important; border-right:1.5px solid black;">
                         {{ $totalTVA20 }} </td>
                     <td colspan="3" class="TD-table-2 text-center"
                         style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalRepas }} </td>
-                    <td class="TD-table-2 text-center" style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
+                    <td class="TD-table-2 text-center"
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
                         {{ $totalHotels }} </td>
                     <td class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black; border-right:2px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-bottom:1.5px solid black; border-right:1.5px solid black;">
                         {{ $totalTVA10 }} </td>
                     <td class="TD-table text-center"
-                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-right:1px solid black; border-top:1.5px solid black;">
                         {{ $totalaEmporter }} </td>
                     <td class="TD-table text-center"
-                        style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:2px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-top:1px solid black; border-right:1.5px solid black; border-top:1.5px solid black;">
                         {{ $totalTVA55 }} </td>
                     <td class="TD-table-2 text-center"
-                        style="background: rgb(175, 175, 175) !important; border-bottom:2px solid black; border-right:2px solid black;">
+                        style="background: rgb(175, 175, 175) !important; border-bottom:1.5px solid black; border-right:2px solid black;">
                         {{ $totalKilometres }} </td>
 
-{{-- Bas du tableau du PDF avec les totaux --}}
+                    {{-- Bas du tableau du PDF avec les totaux --}}
 
                 </tr>
                 <tr>
                     @if ($utilisateurs[0]->chevauxFiscaux > 1)
-                        <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:7px;"
-                        colspan="2" rowspan="1">Puissance fiscale de
-                        {{ $utilisateurs[0]->chevauxFiscaux }} chevaux fiscaux <br> pour un taux de
-                        {{ $utilisateurs[0]->taux }} € / km</td> style="border-bottom:1px solid black;"
+                        <td class=" pl-1 text-center"
+                            style="border-top:1.5px solid black; font-size:7px; border-right:1.5px solid black; border-bottom:1.5px solid black; border-left:2px solid black"
+                            colspan="2" rowspan="1">Puissance fiscale de
+                            {{ $utilisateurs[0]->chevauxFiscaux }} chevaux fiscaux <br> pour un taux de
+                            {{ $utilisateurs[0]->taux }} € / km</td>
                     @endif
                     @if ($utilisateurs[0]->chevauxFiscaux == 1)
-                        <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:7px;"
-                        colspan="2" rowspan="1">Puissance fiscale de
-                        {{ $utilisateurs[0]->chevauxFiscaux }} cheval fiscal <br> pour un taux de
-                        {{ $utilisateurs[0]->taux }} € / km</td>
+                        <td class=" pl-1 text-center"
+                            style="border-top:1.5px solid black; font-size:7px; border-right:2px solid black; border-bottom:1.5px solid black; border-left:2px solid black"
+                            colspan="2" rowspan="1">Puissance fiscale de
+                            {{ $utilisateurs[0]->chevauxFiscaux }} cheval fiscal <br> pour un taux de
+                            {{ $utilisateurs[0]->taux }} € / km</td>
                     @endif
                     @if ($utilisateurs[0]->chevauxFiscaux == 0)
-                        <td class="BGyellow pl-1 text-center" style="border:2px solid black; font-size:8px;"
-                        colspan="2" rowspan="1">Puissance fiscale
-                        nulle <br> pour un taux de
-                        {{ $utilisateurs[0]->taux }} € / km</td>
+                        <td class=" pl-1 text-center"
+                            style="border-top:1.5px solid black; font-size:7px; border-right:2px solid black; border-bottom:1.5px solid black; border-left:2px solid black"
+                            colspan="2" rowspan="1">Puissance fiscale
+                            nulle <br> pour un taux de
+                            {{ $utilisateurs[0]->taux }} € / km</td>
                     @endif
 
 
-                    <td class="BGyellow pl-1 text-center" colspan="3"
-                        rowspan="1"style="border:2px solid black; font-size:8px;">Vous avez soumis cette note de frais le
-                        {{ $infosNDF[0]->DateSoumission }}<br>et elle a été validée le {{ $infosNDF[0]->DateValidation }}
+                    <td class=" pl-1 text-center" colspan="3"
+                        rowspan="1"style="border-top:1.5px solid black; font-size:8px; border-right:1.5px solid black; border-bottom:1.5px solid black; border-left:1.5px solid black">
+                        Vous avez soumis cette note de frais le
+                        {{ $infosNDF[0]->DateSoumission }}<br>et elle a été validée le
+                        {{ $infosNDF[0]->DateValidation }}
                         par {{ $infosNDF[0]->ValideePar }}</td>
 
-                    <td class="TD-table-3 text-center" rowspan="2" colspan="5">Total HT :
+                    <td class="TD-table-3 text-center"
+                        style="border-right:1.5px solid black; border-top:1.5px solid black;" rowspan="2"
+                        colspan="5">Total HT :
                         {{ $SousTotalTransport - $totalTVA20 + ($SousTotalRepasHotels - $totalTVA10) + ($totalaEmporter - $totalTVA55) }}
                         €</td>
-                    <td class="TD-table-3 text-center" rowspan="2" colspan="3">Total TVA :
+                    <td class="TD-table-3 text-center"
+                        style="border-right:1.5px solid black; border-top:1.5px solid black;" rowspan="2"
+                        colspan="3">Total TVA :
                         {{ $totalTVA20 + $totalTVA10 + $totalTVA55 }} €</td>
-                    <td class="TD-table-3 text-center" rowspan="2" colspan="3"
-                        style="border-right:2px solid black">Total TTC :
+                    <td class="TD-table-3 text-center"
+                        style="border-right:1.5px solid black; border-top:1.5px solid black;" rowspan="2"
+                        colspan="3" style="border-right:2px solid black">Total TTC :
                         {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter }} € </td>
-                    <td class="TD-table-3 text-center" rowspan="2" colspan="3" style="border:2px solid black">
-                        Indemn. Km : {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €</td>
-                    <td class="TD-table-3 text-center font-bold" rowspan="2" colspan="2" style="border:2px solid black">
+                    <td class="TD-table-3 text-center"
+                        style="border-right:1.5px solid black; border-top:1.5px solid black;" rowspan="2"
+                        colspan="3">
+                        Indemnité Km : {{ round($totalKilometres * $utilisateurs[0]->taux, 2) }} €</td>
+                    <td class="TD-table-3 text-center font-bold" rowspan="2" colspan="2"
+                        style="border-right:2px solid black; border-top:1.5px solid black;">
                         Total dû :
                         {{ $SousTotalRepasHotels + $SousTotalTransport + $totalaEmporter + $totalKilometres * $utilisateurs[0]->taux }}
                         €
@@ -391,16 +435,43 @@
                 </tr>
 
                 <tr>
-                    @if ((explode(' ', $dateNDFpourPDFetVISU)[0] == 'Août' ||
-                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'Avril' ||
-                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'Octobre'))
-                        <td class="BGyellow pl-1 text-center" colspan="5"
-                            style="border:2px solid black; font-size:10px;">Vous avez fait {{count($utilisateurs)}} déplacements au mois
+                    @if (explode(' ', $dateNDFpourPDFetVISU)[0] == 'août' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'avril' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'octobre')
+                        <td class=" pl-1 text-center" colspan="5" style="border:1.5px solid black; font-size:10px;">
+                            Vous avez fait {{ count($utilisateurs) }} déplacements au mois
                             d'{{ $dateNDFpourPDFetVISU }}
                         </td>
+                    @elseif((explode(' ', $dateNDFpourPDFetVISU)[0] == 'août' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'avril' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'octobre') &&
+                        count($utilisateurs) == 1)
+                        <td class=" pl-1 text-center" colspan="5" style="border:1.5px solid black; font-size:10px;">
+                            Vous avez fait {{ count($utilisateurs) }} déplacement au mois
+                            d'{{ $dateNDFpourPDFetVISU }}
+                        </td>
+                    @elseif((explode(' ', $dateNDFpourPDFetVISU)[0] == 'août' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'avril' ||
+                        explode(' ', $dateNDFpourPDFetVISU)[0] == 'octobre') &&
+                        count($utilisateurs) == 0)
+                        <td class=" pl-1 text-center" colspan="5" style="border:1.5px solid black; font-size:10px;">
+                            Vous n'avez pas fait de déplacement au mois
+                            d'{{ $dateNDFpourPDFetVISU }}
+                        </td>
+                    @elseif(count($utilisateurs) == 0)
+                        <td class=" pl-1 text-center" colspan="5" style="border:1.5px solid black; font-size:10px;">
+                            Vous n'avez pas fait de déplacement au mois de
+                            {{ $dateNDFpourPDFetVISU }}
+                        </td>
+                    @elseif(count($utilisateurs) == 1)
+                        <td class=" pl-1 text-center" colspan="5" style="border:1.5px solid black; font-size:10px;">
+                            Vous avez fait {{ count($utilisateurs) }} déplacement au mois de
+                            {{ $dateNDFpourPDFetVISU }}
+                        </td>
                     @else
-                        <td class="BGyellow pl-1 text-center" colspan="5"
-                            style="border:2px solid black; font-size:10px;">Vous avez fait {{count($utilisateurs)}} déplacements au mois de {{ $dateNDFpourPDFetVISU}}
+                        <td class=" pl-1 text-center" colspan="5" style="border:1.5px solid black; font-size:10px;">
+                            Vous avez fait {{ count($utilisateurs) }} déplacements au mois de
+                            {{ $dateNDFpourPDFetVISU }}
                         </td>
                     @endif
                 </tr>
