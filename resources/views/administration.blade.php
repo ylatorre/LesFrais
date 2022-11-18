@@ -88,8 +88,8 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 12px;
-                padding: 6px;
+                font-size: 10px;
+                padding: 4px;
                 width: 100px;
             }
 
@@ -119,7 +119,7 @@
 
             .responsiv-administration-buttons {
                 font-size: 8px;
-                padding: 6px;
+                padding: 5px;
                 width: 80px
             }
 
@@ -155,8 +155,8 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 10px;
-                padding: 6px;
+                font-size: 9px;
+                padding: 5px;
                 width: 90px;
             }
 
@@ -231,11 +231,11 @@
             }
 
             .responsiv-administration-buttons {
-                font-size: 9px;
-                padding-left: 5px;
-                padding-right: 5px;
-                padding-top: 4px;
-                padding-bottom: 4px;
+                font-size: 8px;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 5px;
+                padding-bottom: 5px;
                 margin-right: 2px !important;
                 width: 80px;
             }
