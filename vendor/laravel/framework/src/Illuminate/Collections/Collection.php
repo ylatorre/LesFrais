@@ -104,9 +104,8 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     public function median($key = null)
     {
         $values = (isset($key) ? $this->pluck($key) : $this)
-            ->filter(function ($item) {
-                return ! is_null($item);
-            })->sort()->values();
+            ->filter(fn ($item) => ! is_null($item))
+            ->sort()->values();
 
         $count = $values->count();
 
@@ -141,17 +140,14 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
 
         $counts = new static;
 
-        $collection->each(function ($value) use ($counts) {
-            $counts[$value] = isset($counts[$value]) ? $counts[$value] + 1 : 1;
-        });
+        $collection->each(fn ($value) => $counts[$value] = isset($counts[$value]) ? $counts[$value] + 1 : 1);
 
         $sorted = $counts->sort();
 
         $highestValue = $sorted->last();
 
-        return $sorted->filter(function ($value) use ($highestValue) {
-            return $value == $highestValue;
-        })->sort()->keys()->all();
+        return $sorted->filter(fn ($value) => $value == $highestValue)
+            ->sort()->keys()->all();
     }
 
     /**
@@ -811,7 +807,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
      * @template TCombineValue
      *
      * @param  \Illuminate\Contracts\Support\Arrayable<array-key, TCombineValue>|iterable<array-key, TCombineValue>  $values
-     * @return static<TKey, TCombineValue>
+     * @return static<TValue, TCombineValue>
      */
     public function combine($values)
     {
@@ -978,7 +974,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Get one or a specified number of items randomly from the collection.
      *
-     * @param  int|null  $number
+     * @param  (callable(self<TKey, TValue>): int)|int|null  $number
      * @return static<int, TValue>|TValue
      *
      * @throws \InvalidArgumentException
@@ -987,6 +983,10 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     {
         if (is_null($number)) {
             return Arr::random($this->items);
+        }
+
+        if (is_callable($number)) {
+            return new static(Arr::random($this->items, $number($this)));
         }
 
         return new static(Arr::random($this->items, $number));
@@ -1321,7 +1321,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Sort the collection using the given callback.
      *
-     * @param  array<array-key, (callable(TValue, TKey): mixed)|string|array{string, string}>|(callable(TValue, TKey): mixed)|string  $callback
+     * @param  array<array-key, (callable(TValue, TValue): mixed)|(callable(TValue, TKey): mixed)|string|array{string, string}>|(callable(TValue, TKey): mixed)|string  $callback
      * @param  int  $options
      * @param  bool  $descending
      * @return static
@@ -1359,14 +1359,14 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Sort the collection using multiple comparisons.
      *
-     * @param  array<array-key, (callable(TValue, TKey): mixed)|string|array{string, string}>  $comparisons
+     * @param  array<array-key, (callable(TValue, TValue): mixed)|(callable(TValue, TKey): mixed)|string|array{string, string}>  $comparisons
      * @return static
      */
     protected function sortByMany(array $comparisons = [])
     {
         $items = $this->items;
 
-        usort($items, function ($a, $b) use ($comparisons) {
+        uasort($items, function ($a, $b) use ($comparisons) {
             foreach ($comparisons as $comparison) {
                 $comparison = Arr::wrap($comparison);
 
@@ -1401,7 +1401,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Sort the collection in descending order using the given callback.
      *
-     * @param  array<array-key, (callable(TValue, TKey): mixed)|string|array{string, string}>|(callable(TValue, TKey): mixed)|string  $callback
+     * @param  array<array-key, (callable(TValue, TValue): mixed)|(callable(TValue, TKey): mixed)|string|array{string, string}>|(callable(TValue, TKey): mixed)|string  $callback
      * @param  int  $options
      * @return static
      */

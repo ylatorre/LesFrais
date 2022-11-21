@@ -30,7 +30,7 @@ class HandleInertiaRequests extends Middleware
      * Define the props that are shared by default.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return mixed[]
      */
     public function share(Request $request)
     {
@@ -38,8 +38,10 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'ziggy' => function () {
-                return (new Ziggy)->toArray();
+            'ziggy' => function () use ($request) {
+                return array_merge((new Ziggy)->toArray(), [
+                    'location' => $request->url(),
+                ]);
             },
         ]);
     }
