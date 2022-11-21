@@ -735,6 +735,7 @@ class Controller extends BaseController
 
         /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
         if ($request->hasFile('factureParking')) {
+            
             $pathParking = Storage::disk('public')->put($folderName, $request->file("factureParking"));
         } else {
             $pathParking = "0";
