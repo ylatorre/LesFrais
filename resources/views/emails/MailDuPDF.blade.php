@@ -24,7 +24,7 @@
 <body>
     <br>
     <h1 style="margin:0px; color:#002060;">Bonjour,</h1><br>
-    <h2 style="margin:0px; color:#002060;">Ci-joint le PDF de l'ensemble des Factures de {{$username}} pour le mois de {{$mois}}.</h2>
+    <h2 style="margin:0px; color:#002060;">Ci-joints l'ensemble des factures de l'utilisateur {{$username}} pour {{$mois}}.<br> Le fichier "recap ..." est un fichier au format PDF contenant l'ensemble des factures de cet utilisateur pour {{$mois}}.</h2>
 </body>
 </html>
 

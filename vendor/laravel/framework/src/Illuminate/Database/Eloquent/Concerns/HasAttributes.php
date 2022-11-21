@@ -2,6 +2,7 @@
 
 namespace Illuminate\Database\Eloquent\Concerns;
 
+use BackedEnum;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 use DateTimeImmutable;
@@ -11,9 +12,12 @@ use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
+use Illuminate\Database\Eloquent\Casts\AsEncryptedArrayObject;
+use Illuminate\Database\Eloquent\Casts\AsEncryptedCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\InvalidCastException;
 use Illuminate\Database\Eloquent\JsonEncodingException;
+use Illuminate\Database\Eloquent\MissingAttributeException;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\LazyLoadingViolationException;
 use Illuminate\Support\Arr;
@@ -164,6 +168,13 @@ trait HasAttributes
     protected static $setAttributeMutatorCache = [];
 
     /**
+     * The cache of the converted cast types.
+     *
+     * @var array
+     */
+    protected static $castTypeCache = [];
+
+    /**
      * The encrypter instance that is used to encrypt attributes.
      *
      * @var \Illuminate\Contracts\Encryption\Encrypter
@@ -279,11 +290,11 @@ trait HasAttributes
             // If the attribute cast was a date or a datetime, we will serialize the date as
             // a string. This allows the developers to customize how dates are serialized
             // into an array without affecting how they are persisted into the storage.
-            if ($attributes[$key] && in_array($value, ['date', 'datetime', 'immutable_date', 'immutable_datetime'])) {
+            if (isset($attributes[$key]) && in_array($value, ['date', 'datetime', 'immutable_date', 'immutable_datetime'])) {
                 $attributes[$key] = $this->serializeDate($attributes[$key]);
             }
 
-            if ($attributes[$key] && ($this->isCustomDateTimeCast($value) ||
+            if (isset($attributes[$key]) && ($this->isCustomDateTimeCast($value) ||
                 $this->isImmutableCustomDateTimeCast($value))) {
                 $attributes[$key] = $attributes[$key]->format(explode(':', $value, 2)[1]);
             }
@@ -293,12 +304,12 @@ trait HasAttributes
                 $attributes[$key] = $this->serializeDate($attributes[$key]);
             }
 
-            if ($attributes[$key] && $this->isClassSerializable($key)) {
+            if (isset($attributes[$key]) && $this->isClassSerializable($key)) {
                 $attributes[$key] = $this->serializeClassCastableAttribute($key, $attributes[$key]);
             }
 
             if ($this->isEnumCastable($key) && (! ($attributes[$key] ?? null) instanceof Arrayable)) {
-                $attributes[$key] = isset($attributes[$key]) ? $attributes[$key]->value : null;
+                $attributes[$key] = isset($attributes[$key]) ? $this->getStorableEnumValue($attributes[$key]) : null;
             }
 
             if ($attributes[$key] instanceof Arrayable) {
@@ -435,10 +446,35 @@ trait HasAttributes
         // since we don't want to treat any of those methods as relationships because
         // they are all intended as helper methods and none of these are relations.
         if (method_exists(self::class, $key)) {
-            return;
+            return $this->throwMissingAttributeExceptionIfApplicable($key);
         }
 
-        return $this->getRelationValue($key);
+        return $this->isRelation($key) || $this->relationLoaded($key)
+                    ? $this->getRelationValue($key)
+                    : $this->throwMissingAttributeExceptionIfApplicable($key);
+    }
+
+    /**
+     * Either throw a missing attribute exception or return null depending on Eloquent's configuration.
+     *
+     * @param  string  $key
+     * @return null
+     *
+     * @throws \Illuminate\Database\Eloquent\MissingAttributeException
+     */
+    protected function throwMissingAttributeExceptionIfApplicable($key)
+    {
+        if ($this->exists &&
+            ! $this->wasRecentlyCreated &&
+            static::preventsAccessingMissingAttributes()) {
+            if (isset(static::$missingAttributeViolationCallback)) {
+                return call_user_func(static::$missingAttributeViolationCallback, $this, $key);
+            }
+
+            throw new MissingAttributeException($this, $key);
+        }
+
+        return null;
     }
 
     /**
@@ -805,7 +841,7 @@ trait HasAttributes
             return $value;
         }
 
-        return $castType::from($value);
+        return $this->getEnumCaseFromValue($castType, $value);
     }
 
     /**
@@ -816,19 +852,23 @@ trait HasAttributes
      */
     protected function getCastType($key)
     {
-        if ($this->isCustomDateTimeCast($this->getCasts()[$key])) {
-            return 'custom_datetime';
+        $castType = $this->getCasts()[$key];
+
+        if (isset(static::$castTypeCache[$castType])) {
+            return static::$castTypeCache[$castType];
         }
 
-        if ($this->isImmutableCustomDateTimeCast($this->getCasts()[$key])) {
-            return 'immutable_custom_datetime';
+        if ($this->isCustomDateTimeCast($castType)) {
+            $convertedCastType = 'custom_datetime';
+        } elseif ($this->isImmutableCustomDateTimeCast($castType)) {
+            $convertedCastType = 'immutable_custom_datetime';
+        } elseif ($this->isDecimalCast($castType)) {
+            $convertedCastType = 'decimal';
+        } else {
+            $convertedCastType = trim(strtolower($castType));
         }
 
-        if ($this->isDecimalCast($this->getCasts()[$key])) {
-            return 'decimal';
-        }
-
-        return trim(strtolower($this->getCasts()[$key]));
+        return static::$castTypeCache[$castType] = $convertedCastType;
     }
 
     /**
@@ -880,8 +920,8 @@ trait HasAttributes
      */
     protected function isImmutableCustomDateTimeCast($cast)
     {
-        return strncmp($cast, 'immutable_date:', 15) === 0 ||
-               strncmp($cast, 'immutable_datetime:', 19) === 0;
+        return str_starts_with($cast, 'immutable_date:') ||
+                str_starts_with($cast, 'immutable_datetime:');
     }
 
     /**
@@ -916,7 +956,7 @@ trait HasAttributes
         // If an attribute is listed as a "date", we'll convert it from a DateTime
         // instance into a form proper for storage on the database tables using
         // the connection grammar's date format. We will auto set the values.
-        elseif ($value && $this->isDateAttribute($key)) {
+        elseif (! is_null($value) && $this->isDateAttribute($key)) {
             $value = $this->fromDateTime($value);
         }
 
@@ -1097,7 +1137,7 @@ trait HasAttributes
      * Set the value of an enum castable attribute.
      *
      * @param  string  $key
-     * @param  \BackedEnum  $value
+     * @param  \UnitEnum|string|int  $value
      * @return void
      */
     protected function setEnumCastableAttribute($key, $value)
@@ -1106,11 +1146,40 @@ trait HasAttributes
 
         if (! isset($value)) {
             $this->attributes[$key] = null;
-        } elseif ($value instanceof $enumClass) {
-            $this->attributes[$key] = $value->value;
+        } elseif (is_object($value)) {
+            $this->attributes[$key] = $this->getStorableEnumValue($value);
         } else {
-            $this->attributes[$key] = $enumClass::from($value)->value;
+            $this->attributes[$key] = $this->getStorableEnumValue(
+                $this->getEnumCaseFromValue($enumClass, $value)
+            );
         }
+    }
+
+    /**
+     * Get an enum case instance from a given class and value.
+     *
+     * @param  string  $enumClass
+     * @param  string|int  $value
+     * @return \UnitEnum|\BackedEnum
+     */
+    protected function getEnumCaseFromValue($enumClass, $value)
+    {
+        return is_subclass_of($enumClass, BackedEnum::class)
+                ? $enumClass::from($value)
+                : constant($enumClass.'::'.$value);
+    }
+
+    /**
+     * Get the storable value from the given enum.
+     *
+     * @param  \UnitEnum|\BackedEnum  $value
+     * @return string|int
+     */
+    protected function getStorableEnumValue($value)
+    {
+        return $value instanceof BackedEnum
+                ? $value->value
+                : $value->name;
     }
 
     /**
@@ -1187,7 +1256,7 @@ trait HasAttributes
      */
     public function fromJson($value, $asObject = false)
     {
-        return json_decode($value, ! $asObject);
+        return json_decode($value ?? '', ! $asObject);
     }
 
     /**
@@ -1489,11 +1558,13 @@ trait HasAttributes
      */
     protected function isClassCastable($key)
     {
-        if (! array_key_exists($key, $this->getCasts())) {
+        $casts = $this->getCasts();
+
+        if (! array_key_exists($key, $casts)) {
             return false;
         }
 
-        $castType = $this->parseCasterClass($this->getCasts()[$key]);
+        $castType = $this->parseCasterClass($casts[$key]);
 
         if (in_array($castType, static::$primitiveCastTypes)) {
             return false;
@@ -1514,11 +1585,13 @@ trait HasAttributes
      */
     protected function isEnumCastable($key)
     {
-        if (! array_key_exists($key, $this->getCasts())) {
+        $casts = $this->getCasts();
+
+        if (! array_key_exists($key, $casts)) {
             return false;
         }
 
-        $castType = $this->getCasts()[$key];
+        $castType = $casts[$key];
 
         if (in_array($castType, static::$primitiveCastTypes)) {
             return false;
@@ -1856,7 +1929,19 @@ trait HasAttributes
     }
 
     /**
-     * Determine if the model or any of the given attribute(s) have been modified.
+     * Discard attribute changes and reset the attributes to their original state.
+     *
+     * @return $this
+     */
+    public function discardChanges()
+    {
+        [$this->attributes, $this->changes] = [$this->original, []];
+
+        return $this;
+    }
+
+    /**
+     * Determine if the model or any of the given attribute(s) were changed when the model was last saved.
      *
      * @param  array|string|null  $attributes
      * @return bool
@@ -1869,7 +1954,7 @@ trait HasAttributes
     }
 
     /**
-     * Determine if any of the given attributes were changed.
+     * Determine if any of the given attributes were changed when the model was last saved.
      *
      * @param  array  $changes
      * @param  array|string|null  $attributes
@@ -1915,7 +2000,7 @@ trait HasAttributes
     }
 
     /**
-     * Get the attributes that were changed.
+     * Get the attributes that were changed when the model was last saved.
      *
      * @return array
      */
@@ -1960,6 +2045,8 @@ trait HasAttributes
                 $this->castAttribute($key, $original);
         } elseif ($this->isClassCastable($key) && in_array($this->getCasts()[$key], [AsArrayObject::class, AsCollection::class])) {
             return $this->fromJson($attribute) === $this->fromJson($original);
+        } elseif ($this->isClassCastable($key) && $original !== null && in_array($this->getCasts()[$key], [AsEncryptedArrayObject::class, AsEncryptedCollection::class])) {
+            return $this->fromEncryptedString($attribute) === $this->fromEncryptedString($original);
         }
 
         return is_numeric($attribute) && is_numeric($original)
@@ -2018,6 +2105,16 @@ trait HasAttributes
     }
 
     /**
+     * Get the accessors that are being appended to model arrays.
+     *
+     * @return array
+     */
+    public function getAppends()
+    {
+        return $this->appends;
+    }
+
+    /**
      * Set the accessors to append to model arrays.
      *
      * @param  array  $appends
@@ -2048,25 +2145,27 @@ trait HasAttributes
      */
     public function getMutatedAttributes()
     {
-        $class = static::class;
-
-        if (! isset(static::$mutatorCache[$class])) {
-            static::cacheMutatedAttributes($class);
+        if (! isset(static::$mutatorCache[static::class])) {
+            static::cacheMutatedAttributes($this);
         }
 
-        return static::$mutatorCache[$class];
+        return static::$mutatorCache[static::class];
     }
 
     /**
      * Extract and cache all the mutated attributes of a class.
      *
-     * @param  string  $class
+     * @param  object|string  $classOrInstance
      * @return void
      */
-    public static function cacheMutatedAttributes($class)
+    public static function cacheMutatedAttributes($classOrInstance)
     {
+        $reflection = new ReflectionClass($classOrInstance);
+
+        $class = $reflection->getName();
+
         static::$getAttributeMutatorCache[$class] =
-            collect($attributeMutatorMethods = static::getAttributeMarkedMutatorMethods($class))
+            collect($attributeMutatorMethods = static::getAttributeMarkedMutatorMethods($classOrInstance))
                     ->mapWithKeys(function ($match) {
                         return [lcfirst(static::$snakeAttributes ? Str::snake($match) : $match) => true];
                     })->all();

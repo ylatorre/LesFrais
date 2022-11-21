@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import Button from '@/Components/Button';
-import Guest from '@/Layouts/Guest';
-import Input from '@/Components/Input';
-import Label from '@/Components/Label';
-import ValidationErrors from '@/Components/ValidationErrors';
+import GuestLayout from '@/Layouts/GuestLayout';
+import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
+import PrimaryButton from '@/Components/PrimaryButton';
+import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 export default function Register() {
@@ -31,16 +31,14 @@ export default function Register() {
     };
 
     return (
-        <Guest>
+        <GuestLayout>
             <Head title="Register" />
-
-            <ValidationErrors errors={errors} />
 
             <form onSubmit={submit}>
                 <div>
-                    <Label forInput="name" value="Name" />
+                    <InputLabel forInput="name" value="Name" />
 
-                    <Input
+                    <TextInput
                         type="text"
                         name="name"
                         value={data.name}
@@ -50,12 +48,14 @@ export default function Register() {
                         handleChange={onHandleChange}
                         required
                     />
+
+                    <InputError message={errors.name} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="email" value="Email" />
+                    <InputLabel forInput="email" value="Email" />
 
-                    <Input
+                    <TextInput
                         type="email"
                         name="email"
                         value={data.email}
@@ -64,12 +64,14 @@ export default function Register() {
                         handleChange={onHandleChange}
                         required
                     />
+
+                    <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="password" value="Password" />
+                    <InputLabel forInput="password" value="Password" />
 
-                    <Input
+                    <TextInput
                         type="password"
                         name="password"
                         value={data.password}
@@ -78,12 +80,14 @@ export default function Register() {
                         handleChange={onHandleChange}
                         required
                     />
+
+                    <InputError message={errors.password} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="password_confirmation" value="Confirm Password" />
+                    <InputLabel forInput="password_confirmation" value="Confirm Password" />
 
-                    <Input
+                    <TextInput
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
@@ -91,18 +95,23 @@ export default function Register() {
                         handleChange={onHandleChange}
                         required
                     />
+
+                    <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    <Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">
+                    <Link
+                        href={route('login')}
+                        className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    >
                         Already registered?
                     </Link>
 
-                    <Button className="ml-4" processing={processing}>
+                    <PrimaryButton className="ml-4" processing={processing}>
                         Register
-                    </Button>
+                    </PrimaryButton>
                 </div>
             </form>
-        </Guest>
+        </GuestLayout>
     );
 }

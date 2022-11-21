@@ -26,6 +26,7 @@ use PHPUnit\Framework\Assert as PHPUnit;
  * @method \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
  * @method \Illuminate\Http\Client\PendingRequest dd()
  * @method \Illuminate\Http\Client\PendingRequest dump()
+ * @method \Illuminate\Http\Client\PendingRequest maxRedirects(int $max)
  * @method \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleepMilliseconds = 0, ?callable $when = null, bool $throw = true)
  * @method \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
  * @method \Illuminate\Http\Client\PendingRequest stub(callable $callback)
@@ -153,7 +154,7 @@ class Factory
     /**
      * Register a stub callable that will intercept requests and be able to return stub responses.
      *
-     * @param  callable|array  $callback
+     * @param  callable|array|null  $callback
      * @return $this
      */
     public function fake($callback = null)
@@ -230,7 +231,7 @@ class Factory
     }
 
     /**
-     * Indicate that an exception should not be thrown if any request is not faked.
+     * Indicate that an exception should be thrown if any request is not faked.
      *
      * @param  bool  $prevent
      * @return $this

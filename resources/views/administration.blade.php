@@ -273,9 +273,9 @@
                 padding-bottom: 4px;
             }
             .responsiv-administration-buttons {
-                font-size: 8px;
-                padding-left: 5px;
-                padding-right: 5px;
+                font-size: 7px;
+                padding-left: 3px;
+                padding-right: 3px;
                 padding-top: 4px;
                 padding-bottom: 4px;
                 width: 70px;
@@ -547,7 +547,7 @@
                                         <input type="hidden" name="id" value="{{ $user->id }}">
                                         <input type="hidden" name="email" value="{{ $user->email }}">
                                         <button
-                                            class="responsiv-administration-buttons block text-white bg-gray-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            class="responsiv-administration-buttons h-full block text-white bg-gray-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="submit">
                                             Activer
                                         </button>

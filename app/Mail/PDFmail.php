@@ -13,18 +13,19 @@ class PDFmail extends Mailable
 
     public $username;
     public $mois;
-    public $i;
+    public $tableauChemins = [];
+
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($username,$mois,$i)
+    public function __construct($username,$mois,$tableauChemins)
     {
         $this->username = $username;
         $this->mois = $mois;
-        $this->i = $i;
+        $this->tableauChemins = $tableauChemins;
     }
 
     /**
@@ -34,29 +35,29 @@ class PDFmail extends Mailable
      */
     public function build()
     {
-        //- On récupere les variables dont on a besoin
-        $i = $this->i;
+        // - On récupere les variables dont on a besoin
+
         $username = $this->username;
         $mois = $this->mois;
-        $filename = $username.' - '.$mois;
+        $tableauChemins = $this->tableauChemins;
+        
 
-        //on crée un tableau piècesJointes et on lui met les chemins exact de tous les évènements
+        // - On récupère le tableau contenant tous les chemins de cette ndf et on lui met les chemins exact de tous les évènements
         $piecesJointes = [];
 
-        for ($k=0; $k < $i ; $k++) {
-            array_push($piecesJointes,"public/pdf/".$filename.$k.'.pdf');
-        }
         // - On génère le mail
         $email = $this->from('ComptaWeb@carpediem.pro')
-                    ->view('emails.MailDuPDF')
-                    ->subject('PDF de post-vadidation');
+                      ->view('emails.MailDuPDF')
+                      ->subject('PDF de post-vadidation');
 
-        // on lui attache tous les chemi présents dans le tableau que l'on a implémenté précédement
-        foreach ($piecesJointes as $piecesJointe) {
-            $email->attachFromStorage($piecesJointe);
+
+
+        // - On lui attache tous les chemins présents dans le tableau que l'on a implémenté dans "Controller"
+        $email->attachFromStorage('public/PDFrecapitulatifs/recap-'. $username . '-' . $mois . '.pdf');
+        foreach ($tableauChemins as $tableauChemin) {
+            $email->attachFromStorage($tableauChemin);
         }
 
         return $email;
-
     }
 }
