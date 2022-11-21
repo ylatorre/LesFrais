@@ -40,6 +40,7 @@ class PDFmail extends Mailable
         $username = $this->username;
         $mois = $this->mois;
         $tableauChemins = $this->tableauChemins;
+        
 
         // - On récupère le tableau contenant tous les chemins de cette ndf et on lui met les chemins exact de tous les évènements
         $piecesJointes = [];
@@ -49,10 +50,14 @@ class PDFmail extends Mailable
                       ->view('emails.MailDuPDF')
                       ->subject('PDF de post-vadidation');
 
-        // - On lui attache tous les chemins présents dans le tableau que l'on a implémenté précédement
+
+
+        // - On lui attache tous les chemins présents dans le tableau que l'on a implémenté dans "Controller"
+        $email->attachFromStorage('public/PDFrecapitulatifs/recap-'. $username . '-' . $mois . '.pdf');
         foreach ($tableauChemins as $tableauChemin) {
             $email->attachFromStorage($tableauChemin);
         }
+
         return $email;
     }
 }

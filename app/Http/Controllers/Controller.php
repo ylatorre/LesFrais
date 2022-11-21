@@ -315,6 +315,7 @@ class Controller extends BaseController
         $concernedEvents = DB::table('events')->where('idUser', '=', $concernedUser[0]->id)->where("mois", "=", $request->moisndf)->get();
         $longueurEvents = sizeof($concernedEvents);
         $tableauChemins = [];
+        $tableauImages = [];
 
         // pour chaque évènement, on génère un pdf et on le joint au mail
         for ($i = 0; $i < $longueurEvents; $i++) {
@@ -334,6 +335,7 @@ class Controller extends BaseController
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
 
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'parking:'.$concernedEvents[$i]->pathParking);
                 $compteur++;
 
             };
@@ -352,6 +354,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'peage:'.$concernedEvents[$i]->pathPeage);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPeage2 != 0) {
@@ -369,6 +372,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'peage2:'.$concernedEvents[$i]->pathPeage2);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPeage3 != 0) {
@@ -386,6 +390,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'peage3:'.$concernedEvents[$i]->pathPeage3);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPeage4 != 0) {
@@ -403,6 +408,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'peage4:'.$concernedEvents[$i]->pathPeage4);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPetitDej != 0) {
@@ -420,6 +426,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'petitDej:'.$concernedEvents[$i]->pathPetitDej);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathDejeuner != 0) {
@@ -437,6 +444,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'dejeuner:'.$concernedEvents[$i]->pathDejeuner);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathDiner != 0) {
@@ -454,6 +462,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'diner:'.$concernedEvents[$i]->pathDiner);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathDivers != 0) {
@@ -471,6 +480,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'divers:'.$concernedEvents[$i]->pathDivers);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathAemporter != 0) {
@@ -488,6 +498,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'a emporter:'.$concernedEvents[$i]->pathAemporter);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathHotel != 0) {
@@ -505,6 +516,7 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'hotel:'.$concernedEvents[$i]->pathHotel);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathEssence != 0) {
@@ -519,19 +531,77 @@ class Controller extends BaseController
                     'client',
                     'dateDebut',
                 ]));
+
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
                 array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages,'essence:'.$concernedEvents[$i]->pathEssence);
                 $compteur++;
             }
             // Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.$i.'.pdf' , $PDF->output());
         }
+         // création du PDF récapitulatif des factures
+         $dateNDF = explode("-", $request->moisndf);
+
+                // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
+                $moisDateNDF = "";
+
+                switch ($dateNDF[1]) {
+                    case "01";
+                        $moisDateNDF = "Janvier";
+                        break;
+                    case "02";
+                        $moisDateNDF = "Février";
+                        break;
+                    case "03";
+                        $moisDateNDF = "Mars";
+                        break;
+                    case "04";
+                        $moisDateNDF = "Avril";
+                        break;
+                    case "05";
+                        $moisDateNDF = "Mai";
+                        break;
+                    case "06";
+                        $moisDateNDF = "Juin";
+                        break;
+                    case "07";
+                        $moisDateNDF = "Juillet";
+                        break;
+                    case "08";
+                        $moisDateNDF = "Août ";
+                        break;
+                    case "09";
+                        $moisDateNDF = "Septembre";
+                        break;
+                    case "10";
+                        $moisDateNDF = "Octobre";
+                        break;
+                    case "11";
+                        $moisDateNDF = "Novembre";
+                        break;
+                    case "12";
+                        $moisDateNDF = "Décembre";
+                        break;
+                };
+
+                $moisNDF = $moisDateNDF . " " . $dateNDF[0];
+
+        $compteur = 0;
+        $PDF = PDF::loadview('pdf.PDFrecap',compact([
+            'NDFvalidated',
+            'tableauChemins',
+            'tableauImages',
+            'moisNDF',
+        ]));
+        Storage::put('public/PDFrecapitulatifs/recap-' . $request->username . '-' . $request->moisndf . '.pdf',$PDF->output());
+
 
 
         // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de valider
         Mail::to(Auth::user()->email)->send(new PDFmail($request->username, $request->moisndf, $tableauChemins));
 
-        dd('le mail a été envoyé');
+        dd('le mail a été envoyé !');
 
         // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
@@ -540,51 +610,7 @@ class Controller extends BaseController
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['DateValidation' => date('d/m/Y')]);
 
         $salarie = DB::table('users')->where('name', '=', $request->username)->get();
-        $dateNDF = explode("-", $request->moisndf);
 
-        // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
-        $moisDateNDF = "";
-
-        switch ($dateNDF[1]) {
-            case "01";
-                $moisDateNDF = "Janvier";
-                break;
-            case "02";
-                $moisDateNDF = "Février";
-                break;
-            case "03";
-                $moisDateNDF = "Mars";
-                break;
-            case "04";
-                $moisDateNDF = "Avril";
-                break;
-            case "05";
-                $moisDateNDF = "Mai";
-                break;
-            case "06";
-                $moisDateNDF = "Juin";
-                break;
-            case "07";
-                $moisDateNDF = "Juillet";
-                break;
-            case "08";
-                $moisDateNDF = "Août ";
-                break;
-            case "09";
-                $moisDateNDF = "Septembre";
-                break;
-            case "10";
-                $moisDateNDF = "Octobre";
-                break;
-            case "11";
-                $moisDateNDF = "Novembre";
-                break;
-            case "12";
-                $moisDateNDF = "Décembre";
-                break;
-        };
-
-        $moisNDF = $moisDateNDF . " " . $dateNDF[0];
         $moderator = DB::table('users')->where('id', '=', Auth::user()->id)->get();
 
         // - notification au salarié de la validation de sa note de frais
@@ -625,7 +651,6 @@ class Controller extends BaseController
         // - on récupère également le user concerné et surtout son adresse email pour l'envoi
 
         $rejetUser = DB::table('users')->where("id", "=", $request->userID)->get();
-
         $dateNDF = explode("-", $request->moisndf);
 
         // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
