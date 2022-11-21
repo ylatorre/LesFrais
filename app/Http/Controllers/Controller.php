@@ -33,7 +33,7 @@ class Controller extends BaseController
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                                                                       //
-    //    Ce controller centraliser les fonctionnalitées liées aux évènement ainsi qu'à la gestion des notes de frais et aux utilisateus     //
+    //    Ce controller centralise les fonctionnalitées liées aux évènement ainsi qu'à la gestion des notes de frais et aux utilisateus      //
     //                                                                                                                                       //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -192,14 +192,15 @@ class Controller extends BaseController
     public function supuser(Request $request)
     {
         $userEnQuestion = DB::table("users")->where("email", "=", "$request->email")->get();
-        DB::table("users")->where("email", "=", "$request->email")->update(['locked'=>'1']);
-        Session::flash('lockedUser',"Le compte de l'utilisateur " . $userEnQuestion[0]->name . " a été désactivé avec succès.");
+        DB::table("users")->where("email", "=", "$request->email")->update(['locked' => '1']);
+        Session::flash('lockedUser', "Le compte de l'utilisateur " . $userEnQuestion[0]->name . " a été désactivé avec succès.");
         return redirect(route("gestionaireUser"));
     }
-    public function activerUser(Request $request){
+    public function activerUser(Request $request)
+    {
         $userEnQuestion2 = DB::table("users")->where("email", "=", "$request->email")->get();
-        DB::table("users")->where("email", "=", $request->email)->where("id" , "=" , $request->id)->update(['locked'=>'0']);
-        Session::flash('unlockedUser',"Le compte de l'utilisateur " . $userEnQuestion2[0]->name . " a été réactivé avec succès.");
+        DB::table("users")->where("email", "=", $request->email)->where("id", "=", $request->id)->update(['locked' => '0']);
+        Session::flash('unlockedUser', "Le compte de l'utilisateur " . $userEnQuestion2[0]->name . " a été réactivé avec succès.");
         return redirect(route('gestionaireUser'));
     }
 
@@ -285,7 +286,8 @@ class Controller extends BaseController
             return redirect(route("calendrier"))->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
         };
         if ($utilisateurs->isEmpty()) {
-            return redirect(route("calendrier")
+            return redirect(
+                route("calendrier")
             )->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
         };
 
@@ -302,56 +304,234 @@ class Controller extends BaseController
 
     public function validerNDF(Request $request)
     {
-
         $NDFvalidated = DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->get();
-        if($NDFvalidated[0]->Valide == 1){
+        if ($NDFvalidated[0]->Valide == 1) {
             Session::flash('alreadyValidated', "Cette note de frais a déjà été validée");
             return redirect(route('gestionaireUser'));
         }
 
-        $concernedUser = DB::table('users')->where('name','=',$request->username)->get();
-        $concernedEvents = DB::table('events')->where('idUser','=',$concernedUser[0]->id)->where("mois","=",$request->moisndf)->get();
+        $compteur = 0;
+        $concernedUser = DB::table('users')->where('name', '=', $request->username)->get();
+        $concernedEvents = DB::table('events')->where('idUser', '=', $concernedUser[0]->id)->where("mois", "=", $request->moisndf)->get();
         $longueurEvents = sizeof($concernedEvents);
+        $tableauChemins = [];
 
-    // pour chaque évènement, on génère un pdf et on le joint au mail
-            for ($i=0; $i < $longueurEvents ; $i++) {
-
-                $PDFpathParking = $concernedEvents[$i]->pathParking;
-                $PDFpathPeage = $concernedEvents[$i]->pathPeage;
-                $PDFpathPeage2 = $concernedEvents[$i]->pathPeage2;
-                $PDFpathPeage3 = $concernedEvents[$i]->pathPeage3;
-                $PDFpathPeage4 = $concernedEvents[$i]->pathPeage4;
-                $PDFpathDivers = $concernedEvents[$i]->pathDivers;
-                $PDFpathPetitDej = $concernedEvents[$i]->pathPetitDej;
-                $PDFpathDejeuner = $concernedEvents[$i]->pathDejeuner;
-                $PDFpathDiner = $concernedEvents[$i]->pathDiner;
-                $PDFpathAemporter = $concernedEvents[$i]->pathAemporter;
-                $PDFpathHotel = $concernedEvents[$i]->pathHotel;
-                $PDFpathEssence = $concernedEvents[$i]->pathEssence;
-
-                $PDF = PDF::loadView('pdf.PDFtableauFacture',
-                compact([
-                    'concernedEvents',
-                    'concernedUser',
-                    'PDFpathParking',
-                    'PDFpathPeage',
-                    'PDFpathPeage2',
-                    'PDFpathPeage3',
-                    'PDFpathPeage4',
-                    'PDFpathDivers',
-                    'PDFpathPetitDej',
-                    'PDFpathDejeuner',
-                    'PDFpathDiner',
-                    'PDFpathAemporter',
-                    'PDFpathHotel',
-                    'PDFpathEssence',
+        // pour chaque évènement, on génère un pdf et on le joint au mail
+        for ($i = 0; $i < $longueurEvents; $i++) {
+            if ($concernedEvents[$i]->pathParking != 0) {
+                $image = $concernedEvents[$i]->pathParking;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Parking';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
-                Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.$i.'.pdf' , $PDF->output());
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+
+            };
+            if ($concernedEvents[$i]->pathPeage != 0) {
+                $image = $concernedEvents[$i]->pathPeage;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Peage';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
             }
+            if ($concernedEvents[$i]->pathPeage2 != 0) {
+                $image = $concernedEvents[$i]->pathPeage2;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Peage2';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathPeage3 != 0) {
+                $image = $concernedEvents[$i]->pathPeage3;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'peage3';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathPeage4 != 0) {
+                $image = $concernedEvents[$i]->pathPeage4;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Peage4';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathPetitDej != 0) {
+                $image = $concernedEvents[$i]->pathPetitDej;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'PetitDej';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathDejeuner != 0) {
+                $image = $concernedEvents[$i]->pathDejeuner;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Dejeuner';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathDiner != 0) {
+                $image = $concernedEvents[$i]->pathDiner;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Diner';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathDivers != 0) {
+                $image = $concernedEvents[$i]->pathDivers;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Divers';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathAemporter != 0) {
+                $image = $concernedEvents[$i]->pathAemporter;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Aemporter';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathHotel != 0) {
+                $image = $concernedEvents[$i]->pathHotel;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Hotel';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            if ($concernedEvents[$i]->pathEssence != 0) {
+                $image = $concernedEvents[$i]->pathEssence;
+                $client =  $concernedEvents[$i]->title;
+                $dateDebut = explode(' ', $concernedEvents[$i]->start)[0];
+                $titre = 'Essence';
+                $PDF = PDF::loadView('pdf.PDFimage', compact([
+                    'NDFvalidated',
+                    'image',
+                    'titre',
+                    'client',
+                    'dateDebut',
+                ]));
+                // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
+                Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
+                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                $compteur++;
+            }
+            // Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.$i.'.pdf' , $PDF->output());
+        }
+
 
         // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de valider
-        Mail::to(Auth::user()->email)->send(new PDFmail($request->username,$request->moisndf,$i));
+        Mail::to(Auth::user()->email)->send(new PDFmail($request->username, $request->moisndf, $tableauChemins));
+
+        dd('le mail a été envoyé');
 
         // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
@@ -359,7 +539,7 @@ class Controller extends BaseController
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValideePar' => Auth::user()->name]);
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['DateValidation' => date('d/m/Y')]);
 
-        $salarie = DB::table('users')->where('name','=',$request->username)->get();
+        $salarie = DB::table('users')->where('name', '=', $request->username)->get();
         $dateNDF = explode("-", $request->moisndf);
 
         // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
@@ -405,48 +585,48 @@ class Controller extends BaseController
         };
 
         $moisNDF = $moisDateNDF . " " . $dateNDF[0];
-        $moderator = DB::table('users')->where('id','=',Auth::user()->id)->get();
+        $moderator = DB::table('users')->where('id', '=', Auth::user()->id)->get();
 
         // - notification au salarié de la validation de sa note de frais
-        Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator,$salarie,$moisNDF));
+        Mail::to($salarie[0]->email)->send(new MailNotifSalarie($moderator, $salarie, $moisNDF));
 
 
         Session::flash('validatesuccess', "La note de frais a été validée ! Un mail vous a été envoyé avec les factures de cette note de frais !");
         return redirect(route('gestionaireUser'));
-
     }
     public function supprimerNDF(Request $request)
     {
 
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->delete();
 
-        Session::flash('deleteNDF','la note de frais à bien été supprimée !');
+        Session::flash('deleteNDF', 'la note de frais à bien été supprimée !');
 
         return redirect(route('gestionaireUser'));
     }
 
 
-    public function rejeterNDF(Request $request){
+    public function rejeterNDF(Request $request)
+    {
 
         // - on créer un rejet dans la base de donnée
-            Rejet::create([
-                'TextRejet' => $request->rejetText,
-                'UserID' => $request->userID,
-                'UserName' => $request->username,
-                'MoisNDF' => $request->moisndf,
-                'RejectedBy' => Auth::user()->name,
-            ]);
+        Rejet::create([
+            'TextRejet' => $request->rejetText,
+            'UserID' => $request->userID,
+            'UserName' => $request->username,
+            'MoisNDF' => $request->moisndf,
+            'RejectedBy' => Auth::user()->name,
+        ]);
 
         // - on récupère en base de données le dernier rejet que l'on viens de créer
-            $rejet = DB::table("rejets")->where("UserID","=",$request->userID)->where("MoisNDF","=",$request->moisndf)->get();
-            $rejecter = DB::table("users")->where("id","=",$request->userID)->get();
-            $dernierRejet = $rejet[sizeof($rejet) - 1];
+        $rejet = DB::table("rejets")->where("UserID", "=", $request->userID)->where("MoisNDF", "=", $request->moisndf)->get();
+        $rejecter = DB::table("users")->where("id", "=", $request->userID)->get();
+        $dernierRejet = $rejet[sizeof($rejet) - 1];
 
         // - on récupère également le user concerné et surtout son adresse email pour l'envoi
 
-            $rejetUser = DB::table('users')->where("id","=",$request->userID)->get();
+        $rejetUser = DB::table('users')->where("id", "=", $request->userID)->get();
 
-            $dateNDF = explode("-", $request->moisndf);
+        $dateNDF = explode("-", $request->moisndf);
 
         // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
         $moisDateNDF = "";
@@ -493,11 +673,11 @@ class Controller extends BaseController
         $moisNDF = $moisDateNDF . " " . $dateNDF[0];
 
         // - on envoie un mail a l'utilisateur en question dans lequel on joint le text écrit par le moderateur
-        Mail::to($rejetUser[0]->email)->send(new MailRejet($dernierRejet,$rejetUser,$moisNDF,$rejecter));
+        Mail::to($rejetUser[0]->email)->send(new MailRejet($dernierRejet, $rejetUser, $moisNDF, $rejecter));
 
         // - on récupère la note de frais concernée et on la supprime pour dévérrouiller le mois de l'utilisateur
-        DB::table('infosndfs')->where('MoisEnCours','=',$request->moisndf)->where('Utilisateur','=',$rejetUser[0]->name)->delete();
-        Session::flash('rejetValidate',"La note de frais a bien été rejetée et l'utilisateur a été prévenu par mail.");
+        DB::table('infosndfs')->where('MoisEnCours', '=', $request->moisndf)->where('Utilisateur', '=', $rejetUser[0]->name)->delete();
+        Session::flash('rejetValidate', "La note de frais a bien été rejetée et l'utilisateur a été prévenu par mail.");
 
         return redirect(route('gestionaireUser'));
     }
@@ -526,72 +706,71 @@ class Controller extends BaseController
 
 
         /* - création du nom du dossier dans lequel les images seront stockées */
-        $folderName = Auth::user()->name."-".$request->moisActuel;
+        $folderName = Auth::user()->name . "-" . $request->moisActuel;
 
         /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
-        if($request->hasFile('factureParking')){
-        $pathParking = Storage::disk('public')->put($folderName ,$request->file("factureParking"));
-        }else{
+        if ($request->hasFile('factureParking')) {
+            $pathParking = Storage::disk('public')->put($folderName, $request->file("factureParking"));
+        } else {
             $pathParking = "0";
         }
-        if($request->hasFile('facturePeage')){
-        $pathPeage = Storage::disk('public')->put($folderName ,$request->file("facturePeage"));
-        }else{
+        if ($request->hasFile('facturePeage')) {
+            $pathPeage = Storage::disk('public')->put($folderName, $request->file("facturePeage"));
+        } else {
             $pathPeage = "0";
         }
-        if($request->hasFile('facturePeage2')){
-        $pathPeage2 = Storage::disk('public')->put($folderName ,$request->file("facturePeage2"));
-        }else{
+        if ($request->hasFile('facturePeage2')) {
+            $pathPeage2 = Storage::disk('public')->put($folderName, $request->file("facturePeage2"));
+        } else {
             $pathPeage2 = "0";
         }
-        if($request->hasFile('facturePeage3')){
-        $pathPeage3 = Storage::disk('public')->put($folderName ,$request->file("facturePeage3"));
-        }else{
+        if ($request->hasFile('facturePeage3')) {
+            $pathPeage3 = Storage::disk('public')->put($folderName, $request->file("facturePeage3"));
+        } else {
             $pathPeage3 = "0";
         }
-        if($request->hasFile('facturePeage4')){
-        $pathPeage4 = Storage::disk('public')->put($folderName ,$request->file("facturePeage4"));
-        }else{
+        if ($request->hasFile('facturePeage4')) {
+            $pathPeage4 = Storage::disk('public')->put($folderName, $request->file("facturePeage4"));
+        } else {
             $pathPeage4 = "0";
         }
-        if($request->hasFile('factureDivers')){
-        $pathDivers = Storage::disk('public')->put($folderName ,$request->file("factureDivers"));
-        }else{
+        if ($request->hasFile('factureDivers')) {
+            $pathDivers = Storage::disk('public')->put($folderName, $request->file("factureDivers"));
+        } else {
             $pathDivers = "0";
         }
-        if($request->hasFile('facturePetitDej')){
-        $pathPetitDej = Storage::disk('public')->put($folderName ,$request->file("facturePetitDej"));
-        }else{
+        if ($request->hasFile('facturePetitDej')) {
+            $pathPetitDej = Storage::disk('public')->put($folderName, $request->file("facturePetitDej"));
+        } else {
             $pathPetitDej = "0";
         }
-        if($request->hasFile('factureDejeuner')){
-        $pathDejeuner = Storage::disk('public')->put($folderName ,$request->file("factureDejeuner"));
-        }else{
+        if ($request->hasFile('factureDejeuner')) {
+            $pathDejeuner = Storage::disk('public')->put($folderName, $request->file("factureDejeuner"));
+        } else {
             $pathDejeuner = "0";
         }
-        if($request->hasFile('factureDiner')){
-        $pathDiner = Storage::disk('public')->put($folderName ,$request->file("factureDiner"));
-        }else{
+        if ($request->hasFile('factureDiner')) {
+            $pathDiner = Storage::disk('public')->put($folderName, $request->file("factureDiner"));
+        } else {
             $pathDiner = "0";
         }
-        if($request->hasFile('factureAemporter')){
-        $pathAemporter = Storage::disk('public')->put($folderName ,$request->file("factureAemporter"));
-        }else{
+        if ($request->hasFile('factureAemporter')) {
+            $pathAemporter = Storage::disk('public')->put($folderName, $request->file("factureAemporter"));
+        } else {
             $pathAemporter = "0";
         }
-        if($request->hasFile('factureHotel')){
-        $pathHotel = Storage::disk('public')->put($folderName ,$request->file("factureHotel"));
-        }else{
+        if ($request->hasFile('factureHotel')) {
+            $pathHotel = Storage::disk('public')->put($folderName, $request->file("factureHotel"));
+        } else {
             $pathHotel = "0";
         }
-        if($request->hasFile('factureEssence')){
-        $pathEssence = Storage::disk('public')->put($folderName ,$request->file("factureEssence"));
-        }
-        else{
-        $pathEssence = "0";
+        if ($request->hasFile('factureEssence')) {
+            $pathEssence = Storage::disk('public')->put($folderName, $request->file("factureEssence"));
+        } else {
+            $pathEssence = "0";
         }
 
-/* - Importation des données en base de donnée */
+        /* - Importation des données en base de donnée */
 
         // EVENT DE BASE
         Event::create([
@@ -634,14 +813,14 @@ class Controller extends BaseController
             "pathEssence" => $pathEssence,
         ]);
 
-        Session::flash('createEvent',"L'évènement a été ajouté à votre calendrier !");
+        Session::flash('createEvent', "L'évènement a été ajouté à votre calendrier !");
 
         return redirect(route('calendrier'));
     }
 
     public function supprimerEvent(Request $request)
     {
-       $eventSelected = DB::table('events')->where('id', '=', $request->eventID)->get();
+        $eventSelected = DB::table('events')->where('id', '=', $request->eventID)->get();
 
         Storage::disk('public')->delete($eventSelected[0]->pathParking);
         Storage::disk('public')->delete($eventSelected[0]->pathPeage);
@@ -664,83 +843,83 @@ class Controller extends BaseController
     public function ModifierEvent(Request $request)
     {
 
-        $userEvent = DB::table('users')->where('id','=',$request->idUser)->get();
-        $folderName = $userEvent[0]->name."-".$request->mois;
+        $userEvent = DB::table('users')->where('id', '=', $request->idUser)->get();
+        $folderName = $userEvent[0]->name . "-" . $request->mois;
 
-/////////////////////////
-// - Si une image a été entrée dans la modif, on supprime l'ancienne, on sauvegarde la nouvelle avec storage puis on modifie le chemin en BDD //
-/////////////////////////
+        /////////////////////////
+        // - Si une image a été entrée dans la modif, on supprime l'ancienne, on sauvegarde la nouvelle avec storage puis on modifie le chemin en BDD //
+        /////////////////////////
 
-        if($request->modifFactureParking != null ){
+        if ($request->modifFactureParking != null) {
             Storage::disk('public')->delete($request->pathFactureParking);
-            $newPathParking = Storage::disk('public')->put($folderName,$request->file('modifFactureParking'));
-        }else{
+            $newPathParking = Storage::disk('public')->put($folderName, $request->file('modifFactureParking'));
+        } else {
             $newPathParking = "0";
         }
-        if($request->modifFacturePeage != null ){
+        if ($request->modifFacturePeage != null) {
             Storage::disk('public')->delete($request->pathFacturePeage);
-            $newPathPeage = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage'));
-        }else{
+            $newPathPeage = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage'));
+        } else {
             $newPathPeage = "0";
         }
-        if($request->modifFacturePeage2 != null ){
+        if ($request->modifFacturePeage2 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage2);
-            $newPathPeage2 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage2'));
-        }else{
+            $newPathPeage2 = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage2'));
+        } else {
             $newPathPeage2 = "0";
         }
-        if($request->modifFacturePeage3 != null ){
+        if ($request->modifFacturePeage3 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage3);
-            $newPathPeage3 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage3'));
-        }else{
-            $newPathPeage3= "0";
+            $newPathPeage3 = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage3'));
+        } else {
+            $newPathPeage3 = "0";
         }
-        if($request->modifFacturePeage4 != null ){
+        if ($request->modifFacturePeage4 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage4);
-            $newPathPeage4 = Storage::disk('public')->put($folderName,$request->file('modifFacturePeage4'));
-        }else{
+            $newPathPeage4 = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage4'));
+        } else {
             $newPathPeage4 = "0";
         }
-        if($request->modifFactureDivers != null ){
+        if ($request->modifFactureDivers != null) {
             Storage::disk('public')->delete($request->pathFactureDivers);
-            $newPathDivers = Storage::disk('public')->put($folderName,$request->file('modifFactureDivers'));
-        }else{
+            $newPathDivers = Storage::disk('public')->put($folderName, $request->file('modifFactureDivers'));
+        } else {
             $newPathDivers = "0";
         }
-        if($request->modifFacturePetitDej != null ){
+        if ($request->modifFacturePetitDej != null) {
             Storage::disk('public')->delete($request->pathFacturePetitDej);
-            $newPathPetitDej = Storage::disk('public')->put($folderName,$request->file('modifFacturePetitDej'));
-        }else{
+            $newPathPetitDej = Storage::disk('public')->put($folderName, $request->file('modifFacturePetitDej'));
+        } else {
             $newPathPetitDej = "0";
         }
-        if($request->modifFactureDejeuner != null ){
+        if ($request->modifFactureDejeuner != null) {
             Storage::disk('public')->delete($request->pathFactureDejeuner);
-            $newPathDejeuner = Storage::disk('public')->put($folderName,$request->file('modifFactureDejeuner'));
-        }else{
+            $newPathDejeuner = Storage::disk('public')->put($folderName, $request->file('modifFactureDejeuner'));
+        } else {
             $newPathDejeuner = "0";
         }
-        if($request->modifFactureDiner != null ){
+        if ($request->modifFactureDiner != null) {
             Storage::disk('public')->delete($request->pathFactureDiner);
-            $newPathDiner = Storage::disk('public')->put($folderName,$request->file('modifFactureDiner'));
-        }else{
+            $newPathDiner = Storage::disk('public')->put($folderName, $request->file('modifFactureDiner'));
+        } else {
             $newPathDiner = "0";
         }
-        if($request->modifFactureAemporter != null ){
+        if ($request->modifFactureAemporter != null) {
             Storage::disk('public')->delete($request->pathFactureAemporter);
-            $newPathAemporter = Storage::disk('public')->put($folderName,$request->file('modifFactureAemporter'));
-        }else{
+            $newPathAemporter = Storage::disk('public')->put($folderName, $request->file('modifFactureAemporter'));
+        } else {
             $newPathAemporter = "0";
         }
-        if($request->modifFactureHotel != null ){
+        if ($request->modifFactureHotel != null) {
             Storage::disk('public')->delete($request->pathFactureHotel);
-            $newPathHotel = Storage::disk('public')->put($folderName,$request->file('modifFactureHotel'));
-        }else{
+            $newPathHotel = Storage::disk('public')->put($folderName, $request->file('modifFactureHotel'));
+        } else {
             $newPathHotel = "0";
         }
-        if($request->modifFactureEssence != null ){
+        if ($request->modifFactureEssence != null) {
             Storage::disk('public')->delete($request->pathFactureEssence);
-            $newPathEssence = Storage::disk('public')->put($folderName,$request->file('modifFactureEssence'));
-        }else{
+            $newPathEssence = Storage::disk('public')->put($folderName, $request->file('modifFactureEssence'));
+        } else {
             $newPathEssence = "0";
         }
 
