@@ -30,7 +30,7 @@ class MoisController extends Controller
         $chFiscaux = DB::table('users')->select('chevauxFiscaux')->where('name', '=', Auth::user()->name)->get();
         $NBevents = DB::table('events')->where('mois', '=', $request->lockedmonth)->where('idUser', '=', Auth::user()->id)->get();
 
-        // dd($NBevents);
+        
 
         if (count($NBevents) == 0) {
             Session::flash('pasevents', "Vous n'avez pas d'évènements enregistrés pour ce mois !");
