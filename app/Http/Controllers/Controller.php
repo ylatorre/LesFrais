@@ -602,7 +602,7 @@ class Controller extends BaseController
         // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de valider
         Mail::to(Auth::user()->email)->send(new PDFmail($request->username, $request->moisndf, $tableauChemins));
 
-        dd('le mail a été envoyé !');
+        
 
         // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
@@ -965,7 +965,7 @@ class Controller extends BaseController
 
         $userEvent = DB::table('users')->where('id', '=', $request->idUser)->get();
         $folderName = $userEvent[0]->name . "-" . $request->mois;
-        
+
 
         /////////////////////////
         // - Si une image a été entrée dans la modif, on supprime l'ancienne, on sauvegarde la nouvelle avec storage puis on modifie le chemin en BDD //
