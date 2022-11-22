@@ -1,6 +1,6 @@
 public/storage
 storage/app
-.env.php
+.env
 config
 
 

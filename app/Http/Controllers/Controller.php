@@ -965,6 +965,7 @@ class Controller extends BaseController
 
         $userEvent = DB::table('users')->where('id', '=', $request->idUser)->get();
         $folderName = $userEvent[0]->name . "-" . $request->mois;
+        
 
         /////////////////////////
         // - Si une image a été entrée dans la modif, on supprime l'ancienne, on sauvegarde la nouvelle avec storage puis on modifie le chemin en BDD //
@@ -972,73 +973,172 @@ class Controller extends BaseController
 
         if ($request->modifFactureParking != null) {
             Storage::disk('public')->delete($request->pathFactureParking);
-            $newPathParking = Storage::disk('public')->put($folderName, $request->file('modifFactureParking'));
+
+            $imageParking = $request->file('modifFactureParking');
+            $input['modifFactureParking'] = $request->eventID. 'parking'.'.'.$imageParking->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgParking = Image::make($imageParking->path());
+            $imgParking->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFactureParking']);
+            $newPathParking = $folderName.'/'.$input['modifFactureParking'];
+
+
         } else {
             $newPathParking = "0";
         }
         if ($request->modifFacturePeage != null) {
             Storage::disk('public')->delete($request->pathFacturePeage);
-            $newPathPeage = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage'));
+            $imagePeage = $request->file('modifFacturePeage');
+            $input['modifFacturePeage'] = $request->eventID. 'peage'.'.'.$imagePeage->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgPeage = Image::make($imagePeage->path());
+            $imgPeage->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFacturePeage']);
+            $newPathPeage = $folderName.'/'.$input['modifFacturePeage'];
         } else {
             $newPathPeage = "0";
         }
         if ($request->modifFacturePeage2 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage2);
-            $newPathPeage2 = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage2'));
+            $imagePeage = $request->file('modifFacturePeage');
+            $input['modifFacturePeage'] = $request->eventID. 'peage2'.'.'.$imagePeage->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgPeage = Image::make($imagePeage->path());
+            $imgPeage->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFacturePeage']);
+            $newPathPeage = $folderName.'/'.$input['modifFacturePeage'];
         } else {
             $newPathPeage2 = "0";
         }
         if ($request->modifFacturePeage3 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage3);
-            $newPathPeage3 = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage3'));
+            $imagePeage3 = $request->file('modifFacturePeage3');
+            $input['modifFacturePeage3'] = $request->eventID. 'peage3'.'.'.$imagePeage3->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgPeage3 = Image::make($imagePeage3->path());
+            $imgPeage3->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFacturePeage3']);
+            $newPathPeage3 = $folderName.'/'.$input['modifFacturePeage3'];
         } else {
             $newPathPeage3 = "0";
         }
         if ($request->modifFacturePeage4 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage4);
-            $newPathPeage4 = Storage::disk('public')->put($folderName, $request->file('modifFacturePeage4'));
+            $imagePeage4 = $request->file('modifFacturePeage4');
+            $input['modifFacturePeage4'] = $request->eventID. 'peage4'.'.'.$imagePeage4->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgPeage4 = Image::make($imagePeage4->path());
+            $imgPeage4->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFacturePeage4']);
+            $newPathPeage4 = $folderName.'/'.$input['modifFacturePeage4'];
         } else {
             $newPathPeage4 = "0";
         }
         if ($request->modifFactureDivers != null) {
             Storage::disk('public')->delete($request->pathFactureDivers);
-            $newPathDivers = Storage::disk('public')->put($folderName, $request->file('modifFactureDivers'));
+            $imageDivers = $request->file('modifFactureDivers');
+            $input['modifFactureDivers'] = $request->eventID. 'divers'.'.'.$imageDivers->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgDivers = Image::make($imageDivers->path());
+            $imgDivers->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFactureDivers']);
+            $newPathDivers = $folderName.'/'.$input['modifFactureDivers'];
         } else {
             $newPathDivers = "0";
         }
         if ($request->modifFacturePetitDej != null) {
             Storage::disk('public')->delete($request->pathFacturePetitDej);
-            $newPathPetitDej = Storage::disk('public')->put($folderName, $request->file('modifFacturePetitDej'));
+            $imagePetitDej = $request->file('modifFacturePetitDej');
+            $input['modifFacturePetitDej'] = $request->eventID. 'petitdej'.'.'.$imagePetitDej->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgPetitDej = Image::make($imagePetitDej->path());
+            $imgPetitDej->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFacturePetitDej']);
+            $newPathPetitDej = $folderName.'/'.$input['modifFacturePetitDej'];
         } else {
             $newPathPetitDej = "0";
         }
         if ($request->modifFactureDejeuner != null) {
             Storage::disk('public')->delete($request->pathFactureDejeuner);
-            $newPathDejeuner = Storage::disk('public')->put($folderName, $request->file('modifFactureDejeuner'));
+            $imageDejeuner = $request->file('modifFactureDejeuner');
+            $input['modifFactureDejeuner'] = $request->eventID. 'dejeuner'.'.'.$imageDejeuner->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgDejeuner = Image::make($imageDejeuner->path());
+            $imgDejeuner->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFactureDejeuner']);
+            $newPathDejeuner = $folderName.'/'.$input['modifFactureDejeuner'];
         } else {
             $newPathDejeuner = "0";
         }
         if ($request->modifFactureDiner != null) {
             Storage::disk('public')->delete($request->pathFactureDiner);
-            $newPathDiner = Storage::disk('public')->put($folderName, $request->file('modifFactureDiner'));
+            $imageDiner = $request->file('modifFactureDiner');
+            $input['modifFactureDiner'] = $request->eventID. 'diner'.'.'.$imageDiner->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgDiner = Image::make($imageDiner->path());
+            $imgDiner->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFactureDiner']);
+            $newPathDiner = $folderName.'/'.$input['modifFactureDiner'];
         } else {
             $newPathDiner = "0";
         }
         if ($request->modifFactureAemporter != null) {
             Storage::disk('public')->delete($request->pathFactureAemporter);
-            $newPathAemporter = Storage::disk('public')->put($folderName, $request->file('modifFactureAemporter'));
+            $imageAemporter = $request->file('modifFactureAemporter');
+            $input['modifFactureAemporter'] = $request->eventID. 'aemporter'.'.'.$imageAemporter->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgAemporter = Image::make($imageAemporter->path());
+            $imgAemporter->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFactureAemporter']);
+            $newPathAemporter = $folderName.'/'.$input['modifFactureAemporter'];
         } else {
             $newPathAemporter = "0";
         }
         if ($request->modifFactureHotel != null) {
             Storage::disk('public')->delete($request->pathFactureHotel);
-            $newPathHotel = Storage::disk('public')->put($folderName, $request->file('modifFactureHotel'));
+            $imageHotel = $request->file('modifFactureHotel');
+            $input['modifFactureHotel'] = $request->eventID. 'hotel'.'.'.$imageHotel->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgHotel = Image::make($imageHotel->path());
+            $imgHotel->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFactureHotel']);
+            $newPathHotel = $folderName.'/'.$input['modifFactureHotel'];
         } else {
             $newPathHotel = "0";
         }
         if ($request->modifFactureEssence != null) {
             Storage::disk('public')->delete($request->pathFactureEssence);
-            $newPathEssence = Storage::disk('public')->put($folderName, $request->file('modifFactureEssence'));
+            $imageEssence = $request->file('modifFactureEssence');
+            $input['modifFactureEssence'] = $request->eventID. 'essence'.'.'.$imageEssence->extension();
+
+            $filePath = storage_path('app/public/' . $folderName);
+            $imgEssence = Image::make($imageEssence->path());
+            $imgEssence->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$input['modifFactureEssence']);
+            $newPathEssence = $folderName.'/'.$input['modifFactureEssence'];
         } else {
             $newPathEssence = "0";
         }
