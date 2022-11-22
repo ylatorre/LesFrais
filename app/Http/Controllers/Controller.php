@@ -602,7 +602,7 @@ class Controller extends BaseController
         // - Une fois le fichier sauvegardé on envoi le mail à l'utilisateur qui viens de valider
         Mail::to(Auth::user()->email)->send(new PDFmail($request->username, $request->moisndf, $tableauChemins));
 
-        
+
 
         // - Validation de la note de frais en base de données
         DB::table('infosndfs')->where('Utilisateur', '=', $request->username)->where('MoisEnCours', '=', $request->moisndf)->update(['ValidationEnCours' => 0]);
@@ -737,15 +737,15 @@ class Controller extends BaseController
 
         /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
         if ($request->hasFile('factureParking')) {
-
-            $imageParking = $request->file('factureParking');
-        $input['factureParking'] = $request->iding.'parking'.'.'.$imageParking->extension();
-        $filePath = storage_path('app/public/' . $folderName);
-        $imgParking = Image::make($imageParking->path());
-        $imgParking->resize(300, 300, function ($const) {
-            $const->aspectRatio();
-        })->save($filePath.'/'.$input['factureParking']);
-        $pathParking = $folderName.'/'.$input['factureParking'];
+            $imageParking = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureParking'));
+            $filePath = storage_path('app/public/' . $folderName);
+            $fileName = $request->iding.'peage'.'.'. $request->file('factureParking')->extension();
+            $imgParking = Image::make(storage_path('app/public/' . $imageParking));
+            $imgParking->resize(300, 300, function ($const) {
+                $const->aspectRatio();
+            })->save($filePath.'/'.$fileName);
+            Storage::disk('public')->delete($imageParking);
+            $pathParking = $folderName.'/'.$fileName;
         } else {
             $pathParking = "0";
         }
