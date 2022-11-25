@@ -25,6 +25,7 @@
     <br>
     <h1 style="margin:0px; color:#002060;">Bonjour,</h1><br>
     <h2 style="margin:0px; color:#002060;">Ci-joints l'ensemble des factures de l'utilisateur {{$username}} pour {{$mois}}.<br> Le fichier "recap ..." est un fichier au format PDF contenant l'ensemble des factures de cet utilisateur pour {{$mois}}.</h2>
+    <h1 style="font-size:16px; color:#002060; font-family:Arial, Helvetica, sans-serif;">Afin de consulter cette note de frais, merci de vous connecter à <a target="_blank" href="https://www.carpediem.pro/LesFrais/public/gestionaireUser" >Carpe Diem</a></h1>
 </body>
 </html>
 
