@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="..\public\images\favicon.ico">
+    <title>Carpe Diem IT - Note de frais</title>
 
 
 
