@@ -244,7 +244,7 @@
     @endif
     @if (Session::has('noPathDiner'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
-            {{ Session::get('noPathiner') }}</div>
+            {{ Session::get('noPathDiner') }}</div>
     @endif
     @if (Session::has('noPathAemporter'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
@@ -301,7 +301,7 @@
     @endif
     @if (Session::has('noHotel'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
-            {{ Session::get('noPathHotel') }}</div>
+            {{ Session::get('noHotel') }}</div>
     @endif
     @if (Session::has('noEssence'))
         <div class="errorsDashboard" style="width:95%; margin-left:1%; color:red; margin-bottom:3px; font-weight:bold;">
