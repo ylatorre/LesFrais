@@ -6,6 +6,10 @@
             </a>
 
         </x-slot>
+        @php
+            Auth::guard('web')->logout();
+        @endphp
+
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
