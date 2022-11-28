@@ -486,7 +486,7 @@
                         <td class="py-1 overflow-visible text-right">
                             <div class=" flex justify-start overflow-visible mr-1">
                                 {{-- <a href="#" id="{{$i}}"class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
-                                @if ($user->vehicule != null || $user->chevauxFiscaux != null)
+                                
                                     <form method="POST" action="{{ route('gestionnairendf') }}"
                                         class="flex justify-end">
                                         @csrf
@@ -526,7 +526,7 @@
                                             @endif
                                         </button>
                                     </form>
-                                @endif
+
                                 @if (Auth::user()->admin == 1 && $user->superadmin != 1)
                                     <button
                                         class="responsiv-administration-buttons block mr-1 border-4 border-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-md text-blue-900 text-center dark:focus:ring-blue-800"

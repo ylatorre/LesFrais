@@ -229,7 +229,7 @@ class Controller extends BaseController
     public function ValidationNDF(Request $request)
     {
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start", "asc")->orderBy("title", "asc")->get();
-        
+
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect(route("calendrier"));
@@ -283,10 +283,7 @@ class Controller extends BaseController
 
 
 
-        if ($utilisateurs[0]->vehicule == null || $utilisateurs[0]->chevauxFiscaux == null) {
-            Session::flash("missingInfos", "Les données \" Véhicule \" ou \" Puissance fiscal \" ne sont pas renseignées");
-            return redirect(route("gestionaireUser"));
-        };
+       
         if ($utilisateurs->isEmpty()) {
             Session::flash("missingEvent", "L'utilisateur n'a pas d'événement enregistré pour ce mois !");
             return redirect(route("gestionaireUser"));

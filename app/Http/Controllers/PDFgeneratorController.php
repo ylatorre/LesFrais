@@ -47,14 +47,7 @@ class PDFgeneratorController extends Controller
             Session::flash("noevents","Il n'y a aucun évènements pour ce mois-ci !");
             return redirect(route("calendrier"));
         }
-        if($utilisateurs[0]->chevauxFiscaux == null){
-            Session::flash("noCHF","Cet utilisateur n'a pas de puissance fiscal enregistrée !");
-            return redirect(route("calendrier"));
-        }
-        if($utilisateurs[0]->vehicule == null){
-            Session::flash("novehicule","Cet utilisateur n'a pas de véhicule enregistré !");
-            return redirect(route("calendrier"));
-        }
+        
 
         $ndf = DB::table('infosndfs')->where('MoisEnCours','=',$request->selectedMonth)->where("Utilisateur", "=", $utilisateurs[0]->name)->get();
         $dateDuJour = date('d/m/Y');

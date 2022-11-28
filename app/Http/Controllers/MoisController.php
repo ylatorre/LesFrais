@@ -30,7 +30,7 @@ class MoisController extends Controller
         $chFiscaux = DB::table('users')->select('chevauxFiscaux')->where('name', '=', Auth::user()->name)->get();
         $NBevents = DB::table('events')->where('mois', '=', $request->lockedmonth)->where('idUser', '=', Auth::user()->id)->get();
 
-        
+
 
         if (count($NBevents) == 0) {
             Session::flash('pasevents', "Vous n'avez pas d'évènements enregistrés pour ce mois !");
@@ -162,6 +162,18 @@ class MoisController extends Controller
         $dateDuJour = date('d/m/Y');
 
         if (count($infosNDF) == 0) {
+
+            if ($chFiscaux[0]->chevauxFiscaux == 0 || $chFiscaux[0]->chevauxFiscaux == null) {
+                infosndf::create([
+                "Utilisateur" => Auth::user()->name,
+                "MoisEnCours" => $request->lockedmonth,
+                "DateSoumission" => $dateDuJour,
+                "NombreEvenement" => count($NBevents),
+                "Valide" => 0,
+                "ChevauxFiscaux" => "0",
+                "tauxKM" => Auth::user()->taux,
+            ]);
+            }else{
             infosndf::create([
                 "Utilisateur" => Auth::user()->name,
                 "MoisEnCours" => $request->lockedmonth,
@@ -171,6 +183,8 @@ class MoisController extends Controller
                 "ChevauxFiscaux" => $chFiscaux[0]->chevauxFiscaux,
                 "tauxKM" => Auth::user()->taux,
             ]);
+        }
+
 
             /* - Envois des mails suite à la validation de la note de frais */
 
