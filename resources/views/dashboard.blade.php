@@ -421,7 +421,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="parking" id="parking" type="number" value="0" min="0"
+                                        name="parking" id="parking" type="number" value="0" min="0" step="0.01"
                                         required="required">
 
                                 </div>
@@ -438,7 +438,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage" id="peage" type="number" value="0" min="0"
+                                        name="peage" id="peage" type="number" value="0" min="0" step="0.01"
                                         required="required">
 
                                 </div>
@@ -452,7 +452,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage2" id="peage2" type="number" value="0" min="0"
+                                        name="peage2" id="peage2" type="number" value="0" min="0" step="0.01"
                                         required="required">
                                 </div>
                                 <div class="mb-3 col divInput ">
@@ -478,7 +478,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="peage4" id="peage4" type="number" value="0" min="0"
+                                        name="peage4" id="peage4" type="number" value="0" min="0" step="0.01"
                                         required="required">
                                 </div>
 
@@ -497,7 +497,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="divers" id="divers" type="number" value="0" min="0"
+                                        name="divers" id="divers" type="number" value="0" min="0" step="0.01"
                                         required="required">
 
                                 </div>
@@ -518,7 +518,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="petitDej" id="petitDej" type="number" value="0" min="0"
+                                        name="petitDej" id="petitDej" type="number" value="0" min="0" step="0.01"
                                         required="required">
 
                                 </div>
@@ -536,7 +536,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="dejeuner" id="dejeuner" type="number" value="0" min="0"
+                                        name="dejeuner" id="dejeuner" type="number" value="0" min="0" step="0.01"
                                         required="required">
                                 </div>
                                 <div class="mb-3 col divInput" id="diner">
@@ -551,7 +551,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="diner" id="diner" type="number" value="0" min="0"
+                                        name="diner" id="diner" type="number" value="0" min="0" step="0.01"
                                         required="required">
 
                                 </div>
@@ -568,7 +568,7 @@
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
                                         name="aEmporter" id="aEmporter" type="number" lang="en"
-                                        value="0" min="0" required="required">
+                                        value="0" min="0" step="0.01" required="required">
 
                                 </div>
 
@@ -588,7 +588,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="hotel" id="hotel" type="number" value="0" min="0"
+                                        name="hotel" id="hotel" type="number" value="0" min="0" step="0.01"
                                         required="required">
 
                                 </div>
@@ -603,7 +603,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
-                                        id="essence" name="essence" type="number" min="0" value="0"
+                                        id="essence" name="essence" type="number" min="0" value="0" step="0.01"
                                         required="required">
                                 </div>
                                 <div id="divKilometrage" class="mb-3 col divInput pr-2">
@@ -746,7 +746,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="parking" id="2parking" type="number" value="0" min="0"
+                                        name="parking" id="2parking" type="number" value="0" min="0" step="0.01"
                                         required>
 
                                 </div>
@@ -766,7 +766,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
-                                        name="peage" id="2peage" type="number" value="0" min="0"
+                                        name="peage" id="2peage" type="number" value="0" min="0" step="0.01"
                                         required>
 
                                 </div>
@@ -783,7 +783,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
-                                        name="peage2" id="2peage2" type="number" value="0" min="0"
+                                        name="peage2" id="2peage2" type="number" value="0" min="0" step="0.01"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput " id="div2peage3">
@@ -799,7 +799,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
-                                        name="peage3" id="2peage3" type="number" value="0" min="0"
+                                        name="peage3" id="2peage3" type="number" value="0" min="0" step="0.01"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput" id="div2peage4">
@@ -815,7 +815,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
-                                        name="peage4" id="2peage4" type="number" value="0" min="0"
+                                        name="peage4" id="2peage4" type="number" value="0" min="0" step="0.01"
                                         required>
                                 </div>
 
@@ -835,7 +835,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="divers" id="2divers" type="number" value="0" min="0"
+                                        name="divers" id="2divers" type="number" value="0" min="0" step="0.01"
                                         required>
 
                                 </div>
@@ -856,7 +856,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="petitDej" id="2petitDej" type="number" value="0" min="0"
+                                        name="petitDej" id="2petitDej" type="number" value="0" min="0" step="0.01"
                                         required>
 
                                 </div>
@@ -876,7 +876,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="dejeuner" id="2dejeuner" type="number" value="0" min="0"
+                                        name="dejeuner" id="2dejeuner" type="number" value="0" min="0" step="0.01"
                                         required>
                                 </div>
                                 <div class="mb-3 col divInput" id="div2diner">
@@ -893,7 +893,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="diner" id="2diner" type="number" value="0" min="0"
+                                        name="diner" id="2diner" type="number" value="0" min="0" step="0.01"
                                         required>
 
                                 </div>
@@ -911,7 +911,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="aEmporter" id="2aEmporter" type="number" value="0"
+                                        name="aEmporter" id="2aEmporter" type="number" value="0" step="0.01"
                                         min="0" required>
                                 </div>
                             </div>
@@ -931,7 +931,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px]"
-                                        name="hotel" id="2hotel" type="number" value="0" min="0"
+                                        name="hotel" id="2hotel" type="number" value="0" min="0" step="0.01"
                                         required>
 
                                 </div>
@@ -948,7 +948,7 @@
                                     </div>
                                     <input
                                         class="shadow-[#2563eb] border-[rgb(189,189,189)] text-start h-[38px] px-[7.5px] pt-[4px] pb-[3.28px] w-full rounded-[2.5px] peagemodif"
-                                        id="2essence" name="essence" type="number" min="0" value="0"
+                                        id="2essence" name="essence" type="number" min="0" value="0" step="0.01"
                                         required>
                                 </div>
                                 <div id="div2Kilometrage" class="mb-3 col divInput pr-2">
