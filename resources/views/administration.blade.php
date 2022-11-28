@@ -296,22 +296,34 @@
         }
     </style>
     <div>
-        @if (\Session::has('failure'))
+        @if (Session::has('failure'))
             <div
                 class="block mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
-                <p>{{ \Session::get('failure') }}</p>
+                <p>{{ Session::get('failure') }}</p>
             </div>
         @endif
-        @if (\Session::has('alreadyValidated'))
+        @if (Session::has('alreadyValidated'))
             <div
                 class="block mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(169,68,66)] bg-[rgb(242,222,222)] border-[rgb(235,204,204)] border ">
-                <p>{{ \Session::get('alreadyValidated') }}</p>
+                <p>{{ Session::get('alreadyValidated') }}</p>
             </div>
         @endif
         @if (Session::has('validatesuccess'))
             <div
                 class="font-bold mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(30,122,30)] bg-[rgb(167,209,176)] border-[rgb(188,219,193)] border ">
                 <p>{{ Session::get('validatesuccess') }}</p>
+            </div>
+        @endif
+        @if (Session::has('missingInfos'))
+            <div
+                class="font-bold mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(30,122,30)] bg-[rgb(167,209,176)] border-[rgb(188,219,193)] border ">
+                <p>{{ Session::get('missingInfos') }}</p>
+            </div>
+        @endif
+        @if (Session::has('missingEvent'))
+            <div
+                class="font-bold mb-[16px] py-3 px-5 text-[16px] leading-6 text-[rgb(30,122,30)] bg-[rgb(167,209,176)] border-[rgb(188,219,193)] border ">
+                <p>{{ Session::get('missingEvent') }}</p>
             </div>
         @endif
         @if (Session::has('deleteNDF'))

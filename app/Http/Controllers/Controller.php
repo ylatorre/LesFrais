@@ -229,7 +229,7 @@ class Controller extends BaseController
     public function ValidationNDF(Request $request)
     {
         $utilisateurs = DB::table('users')->RightJoin("events", "events.idUser", "users.id")->where("name", "=", $request->employe)->where('mois', '=', $request->moisNDF)->orderBy("start", "asc")->orderBy("title", "asc")->get();
-
+        
         if (count($utilisateurs) == 0) {
             Session::flash('pasevents', "il n'y a pas d'évènements pour ce mois !");
             return redirect(route("calendrier"));
@@ -281,15 +281,15 @@ class Controller extends BaseController
         };
         $dateNDFpourPDFetVISU = $moisDateNDF . " " . $dateNDF[0];
 
-        $user = Auth::user();
 
-        if ($user->vehicule == null || $user->chevauxFiscaux == null) {
-            return redirect(route("calendrier"))->with('failure', 'Le PDF n\'a pas pu être généré car les données "Type de vehicule" ou "Chevaux fiscaux" ne sont pas rempli.');
+
+        if ($utilisateurs[0]->vehicule == null || $utilisateurs[0]->chevauxFiscaux == null) {
+            Session::flash("missingInfos", "Les données \" Véhicule \" ou \" Puissance fiscal \" ne sont pas renseignées");
+            return redirect(route("gestionaireUser"));
         };
         if ($utilisateurs->isEmpty()) {
-            return redirect(
-                route("calendrier")
-            )->with('failure', 'L\'utilisateur n\'a pas d\'événement enregistré pour ce mois !');
+            Session::flash("missingEvent", "L'utilisateur n'a pas d'événement enregistré pour ce mois !");
+            return redirect(route("gestionaireUser"));
         };
 
         $infosNDF = DB::table('infosndfs')->where('Utilisateur', '=', $request->employe)->where('MoisEnCours', '=', $request->moisNDF)->get();
@@ -335,10 +335,9 @@ class Controller extends BaseController
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
 
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'parking:'.$concernedEvents[$i]->pathParking);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'parking:' . $concernedEvents[$i]->pathParking);
                 $compteur++;
-
             };
             if ($concernedEvents[$i]->pathPeage != 0) {
                 $image = $concernedEvents[$i]->pathPeage;
@@ -354,8 +353,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'peage:'.$concernedEvents[$i]->pathPeage);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'peage:' . $concernedEvents[$i]->pathPeage);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPeage2 != 0) {
@@ -372,8 +371,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'peage2:'.$concernedEvents[$i]->pathPeage2);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'peage2:' . $concernedEvents[$i]->pathPeage2);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPeage3 != 0) {
@@ -390,8 +389,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'peage3:'.$concernedEvents[$i]->pathPeage3);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'peage3:' . $concernedEvents[$i]->pathPeage3);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPeage4 != 0) {
@@ -408,8 +407,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'peage4:'.$concernedEvents[$i]->pathPeage4);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'peage4:' . $concernedEvents[$i]->pathPeage4);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathPetitDej != 0) {
@@ -426,8 +425,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'petitDej:'.$concernedEvents[$i]->pathPetitDej);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'petitDej:' . $concernedEvents[$i]->pathPetitDej);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathDejeuner != 0) {
@@ -444,8 +443,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'dejeuner:'.$concernedEvents[$i]->pathDejeuner);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'dejeuner:' . $concernedEvents[$i]->pathDejeuner);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathDiner != 0) {
@@ -462,8 +461,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'diner:'.$concernedEvents[$i]->pathDiner);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'diner:' . $concernedEvents[$i]->pathDiner);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathDivers != 0) {
@@ -480,8 +479,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'divers:'.$concernedEvents[$i]->pathDivers);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'divers:' . $concernedEvents[$i]->pathDivers);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathAemporter != 0) {
@@ -498,8 +497,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'a emporter:'.$concernedEvents[$i]->pathAemporter);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'a emporter:' . $concernedEvents[$i]->pathAemporter);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathHotel != 0) {
@@ -516,8 +515,8 @@ class Controller extends BaseController
                 ]));
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'hotel:'.$concernedEvents[$i]->pathHotel);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'hotel:' . $concernedEvents[$i]->pathHotel);
                 $compteur++;
             }
             if ($concernedEvents[$i]->pathEssence != 0) {
@@ -535,67 +534,67 @@ class Controller extends BaseController
 
                 // - On utilise la facade Storage pour sauvegarder notre fichier sur le disk public avec output
                 Storage::put('public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf', $PDF->output());
-                array_push($tableauChemins,'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
-                array_push($tableauImages,'essence:'.$concernedEvents[$i]->pathEssence);
+                array_push($tableauChemins, 'public/pdf/' . $request->username . ' - ' . $request->moisndf . '/' . $request->username . '-' . $client . '-' . $dateDebut . '-' . $titre . $compteur . '.pdf');
+                array_push($tableauImages, 'essence:' . $concernedEvents[$i]->pathEssence);
                 $compteur++;
             }
             // Storage::put('public/pdf/'.$request->username.' - '.$request->moisndf.$i.'.pdf' , $PDF->output());
         }
-         // création du PDF récapitulatif des factures
-         $dateNDF = explode("-", $request->moisndf);
+        // création du PDF récapitulatif des factures
+        $dateNDF = explode("-", $request->moisndf);
 
-                // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
-                $moisDateNDF = "";
+        // - Le switch case permet d'écrire sur le mail le mois en fonction du numéro du mois.
+        $moisDateNDF = "";
 
-                switch ($dateNDF[1]) {
-                    case "01";
-                        $moisDateNDF = "Janvier";
-                        break;
-                    case "02";
-                        $moisDateNDF = "Février";
-                        break;
-                    case "03";
-                        $moisDateNDF = "Mars";
-                        break;
-                    case "04";
-                        $moisDateNDF = "Avril";
-                        break;
-                    case "05";
-                        $moisDateNDF = "Mai";
-                        break;
-                    case "06";
-                        $moisDateNDF = "Juin";
-                        break;
-                    case "07";
-                        $moisDateNDF = "Juillet";
-                        break;
-                    case "08";
-                        $moisDateNDF = "Août ";
-                        break;
-                    case "09";
-                        $moisDateNDF = "Septembre";
-                        break;
-                    case "10";
-                        $moisDateNDF = "Octobre";
-                        break;
-                    case "11";
-                        $moisDateNDF = "Novembre";
-                        break;
-                    case "12";
-                        $moisDateNDF = "Décembre";
-                        break;
-                };
+        switch ($dateNDF[1]) {
+            case "01";
+                $moisDateNDF = "Janvier";
+                break;
+            case "02";
+                $moisDateNDF = "Février";
+                break;
+            case "03";
+                $moisDateNDF = "Mars";
+                break;
+            case "04";
+                $moisDateNDF = "Avril";
+                break;
+            case "05";
+                $moisDateNDF = "Mai";
+                break;
+            case "06";
+                $moisDateNDF = "Juin";
+                break;
+            case "07";
+                $moisDateNDF = "Juillet";
+                break;
+            case "08";
+                $moisDateNDF = "Août ";
+                break;
+            case "09";
+                $moisDateNDF = "Septembre";
+                break;
+            case "10";
+                $moisDateNDF = "Octobre";
+                break;
+            case "11";
+                $moisDateNDF = "Novembre";
+                break;
+            case "12";
+                $moisDateNDF = "Décembre";
+                break;
+        };
 
-                $moisNDF = $moisDateNDF . " " . $dateNDF[0];
+        $moisNDF = $moisDateNDF . " " . $dateNDF[0];
 
         $compteur = 0;
-        $PDF = PDF::loadview('pdf.PDFrecap',compact([
+        $PDF = PDF::loadview('pdf.PDFrecap', compact([
             'NDFvalidated',
             'tableauChemins',
             'tableauImages',
             'moisNDF',
         ]));
-        Storage::put('public/PDFrecapitulatifs/recap-' . $request->username . '-' . $request->moisndf . '.pdf',$PDF->output());
+        Storage::put('public/PDFrecapitulatifs/recap-' . $request->username . '-' . $request->moisndf . '.pdf', $PDF->output());
 
 
 
@@ -734,169 +733,158 @@ class Controller extends BaseController
 
         /* - stockage des image ainsi que de leur chemin pour ensuite les envoyer en bdd*/
         if ($request->hasFile('factureParking')) {
-            $imageParking = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureParking'));
+            $imageParking = Storage::disk('public')->put($folderName . '/tmp', $request->file('factureParking'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'parking'.'.'. $request->file('factureParking')->extension();
+            $fileName = $request->iding . 'parking' . '.' . $request->file('factureParking')->extension();
             $imgParking = Image::make(storage_path('app/public/' . $imageParking));
             $imgParking->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageParking);
-            $pathParking = $folderName.'/'.$fileName;
+            $pathParking = $folderName . '/' . $fileName;
         } else {
             $pathParking = "0";
         }
         if ($request->hasFile('facturePeage')) {
-             $imagePeage = Storage::disk('public')->put($folderName .'/tmp' , $request->file('facturePeage'));
+            $imagePeage = Storage::disk('public')->put($folderName . '/tmp', $request->file('facturePeage'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'peage'.'.'. $request->file('facturePeage')->extension();
+            $fileName = $request->iding . 'peage' . '.' . $request->file('facturePeage')->extension();
             $imgPeage = Image::make(storage_path('app/public/' . $imagePeage));
             $imgPeage->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage);
-            $pathPeage = $folderName.'/'.$fileName;
-
+            $pathPeage = $folderName . '/' . $fileName;
         } else {
             $pathPeage = "0";
         }
         if ($request->hasFile('facturePeage2')) {
-             $imagePeage2 = Storage::disk('public')->put($folderName .'/tmp' , $request->file('facturePeage2'));
+            $imagePeage2 = Storage::disk('public')->put($folderName . '/tmp', $request->file('facturePeage2'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'peage2'.'.'. $request->file('facturePeage2')->extension();
+            $fileName = $request->iding . 'peage2' . '.' . $request->file('facturePeage2')->extension();
             $imgPeage2 = Image::make(storage_path('app/public/' . $imagePeage2));
             $imgPeage2->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage2);
-            $pathPeage2 = $folderName.'/'.$fileName;
-
+            $pathPeage2 = $folderName . '/' . $fileName;
         } else {
             $pathPeage2 = "0";
         }
         if ($request->hasFile('facturePeage3')) {
-             $imagePeage3 = Storage::disk('public')->put($folderName .'/tmp' , $request->file('facturePeage3'));
+            $imagePeage3 = Storage::disk('public')->put($folderName . '/tmp', $request->file('facturePeage3'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'peage3'.'.'. $request->file('facturePeage3')->extension();
+            $fileName = $request->iding . 'peage3' . '.' . $request->file('facturePeage3')->extension();
             $imgPeage3 = Image::make(storage_path('app/public/' . $imagePeage3));
             $imgPeage3->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage3);
-            $pathPeage3 = $folderName.'/'.$fileName;
-
+            $pathPeage3 = $folderName . '/' . $fileName;
         } else {
             $pathPeage3 = "0";
         }
         if ($request->hasFile('facturePeage4')) {
-             $imagePeage4 = Storage::disk('public')->put($folderName .'/tmp' , $request->file('facturePeage4'));
+            $imagePeage4 = Storage::disk('public')->put($folderName . '/tmp', $request->file('facturePeage4'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'peage4'.'.'. $request->file('facturePeage4')->extension();
+            $fileName = $request->iding . 'peage4' . '.' . $request->file('facturePeage4')->extension();
             $imgPeage4 = Image::make(storage_path('app/public/' . $imagePeage4));
             $imgPeage4->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage4);
-            $pathPeage4 = $folderName.'/'.$fileName;
-
+            $pathPeage4 = $folderName . '/' . $fileName;
         } else {
             $pathPeage4 = "0";
         }
         if ($request->hasFile('factureDivers')) {
-             $imageDivers = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureDivers'));
+            $imageDivers = Storage::disk('public')->put($folderName . '/tmp', $request->file('factureDivers'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'divers'.'.'. $request->file('factureDivers')->extension();
+            $fileName = $request->iding . 'divers' . '.' . $request->file('factureDivers')->extension();
             $imgDivers = Image::make(storage_path('app/public/' . $imageDivers));
             $imgDivers->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageDivers);
-            $pathDivers = $folderName.'/'.$fileName;
-
+            $pathDivers = $folderName . '/' . $fileName;
         } else {
             $pathDivers = "0";
         }
         if ($request->hasFile('facturePetitDej')) {
-             $imagePetitDej = Storage::disk('public')->put($folderName .'/tmp' , $request->file('facturePetitDej'));
+            $imagePetitDej = Storage::disk('public')->put($folderName . '/tmp', $request->file('facturePetitDej'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'petitdej'.'.'. $request->file('facturePetitDej')->extension();
+            $fileName = $request->iding . 'petitdej' . '.' . $request->file('facturePetitDej')->extension();
             $imgPetitDej = Image::make(storage_path('app/public/' . $imagePetitDej));
             $imgPetitDej->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePetitDej);
-            $pathPetitDej = $folderName.'/'.$fileName;
-
+            $pathPetitDej = $folderName . '/' . $fileName;
         } else {
             $pathPetitDej = "0";
         }
         if ($request->hasFile('factureDejeuner')) {
-             $imageDejeuner = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureDejeuner'));
+            $imageDejeuner = Storage::disk('public')->put($folderName . '/tmp', $request->file('factureDejeuner'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'dejeuner'.'.'. $request->file('factureDejeuner')->extension();
+            $fileName = $request->iding . 'dejeuner' . '.' . $request->file('factureDejeuner')->extension();
             $imgDejeuner = Image::make(storage_path('app/public/' . $imageDejeuner));
             $imgDejeuner->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageDejeuner);
-            $pathDejeuner = $folderName.'/'.$fileName;
-
+            $pathDejeuner = $folderName . '/' . $fileName;
         } else {
             $pathDejeuner = "0";
         }
         if ($request->hasFile('factureDiner')) {
-             $imageDiner = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureDiner'));
+            $imageDiner = Storage::disk('public')->put($folderName . '/tmp', $request->file('factureDiner'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'diner'.'.'. $request->file('factureDiner')->extension();
+            $fileName = $request->iding . 'diner' . '.' . $request->file('factureDiner')->extension();
             $imgDiner = Image::make(storage_path('app/public/' . $imageDiner));
             $imgDiner->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageDiner);
-            $pathDiner = $folderName.'/'.$fileName;
-
+            $pathDiner = $folderName . '/' . $fileName;
         } else {
             $pathDiner = "0";
         }
         if ($request->hasFile('factureAemporter')) {
-             $imageAemporter = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureAemporter'));
+            $imageAemporter = Storage::disk('public')->put($folderName . '/tmp', $request->file('factureAemporter'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'aemporter'.'.'. $request->file('factureAemporter')->extension();
+            $fileName = $request->iding . 'aemporter' . '.' . $request->file('factureAemporter')->extension();
             $imgAemporter = Image::make(storage_path('app/public/' . $imageAemporter));
             $imgAemporter->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageAemporter);
-            $pathAemporter = $folderName.'/'.$fileName;
-
+            $pathAemporter = $folderName . '/' . $fileName;
         } else {
             $pathAemporter = "0";
         }
         if ($request->hasFile('factureHotel')) {
-            $imageHotel = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureHotel'));
+            $imageHotel = Storage::disk('public')->put($folderName . '/tmp', $request->file('factureHotel'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'hotel'.'.'. $request->file('factureHotel')->extension();
+            $fileName = $request->iding . 'hotel' . '.' . $request->file('factureHotel')->extension();
             $imgHotel = Image::make(storage_path('app/public/' . $imageHotel));
             $imgHotel->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageHotel);
-            $pathHotel = $folderName.'/'.$fileName;
-
+            $pathHotel = $folderName . '/' . $fileName;
         } else {
             $pathHotel = "0";
         }
         if ($request->hasFile('factureEssence')) {
-            $imageEssence = Storage::disk('public')->put($folderName .'/tmp' , $request->file('factureEssence'));
+            $imageEssence = Storage::disk('public')->put($folderName . '/tmp', $request->file('factureEssence'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->iding.'essence'.'.'. $request->file('factureEssence')->extension();
+            $fileName = $request->iding . 'essence' . '.' . $request->file('factureEssence')->extension();
             $imgEssence = Image::make(storage_path('app/public/' . $imageEssence));
             $imgEssence->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageEssence);
-            $pathEssence = $folderName.'/'.$fileName;
-
+            $pathEssence = $folderName . '/' . $fileName;
         } else {
             $pathEssence = "0";
         }
@@ -986,182 +974,169 @@ class Controller extends BaseController
         if ($request->modifFactureParking != null) {
             Storage::disk('public')->delete($request->pathFactureParking);
 
-            $imageParking = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFactureParking'));
+            $imageParking = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFactureParking'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'parking'.'.'. $request->file('modifFactureParking')->extension();
+            $fileName = $request->eventID . 'parking' . '.' . $request->file('modifFactureParking')->extension();
             $imgParking = Image::make(storage_path('app/public/' . $imageParking));
             $imgParking->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageParking);
-            $newPathParking = $folderName.'/'.$fileName;
-
-
+            $newPathParking = $folderName . '/' . $fileName;
         } else {
             $newPathParking = $request->pathFactureParking;
         }
         if ($request->modifFacturePeage != null) {
             Storage::disk('public')->delete($request->pathFacturePeage);
-            $imagePeage = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFacturePeage'));
+            $imagePeage = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFacturePeage'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'peage'.'.'. $request->file('modifFacturePeage')->extension();
+            $fileName = $request->eventID . 'peage' . '.' . $request->file('modifFacturePeage')->extension();
             $imgPeage = Image::make(storage_path('app/public/' . $imagePeage));
             $imgPeage->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage);
-            $newPathPeage = $folderName.'/'.$fileName;
-
+            $newPathPeage = $folderName . '/' . $fileName;
         } else {
             $newPathPeage = $request->pathFacturePeage;
         }
         if ($request->modifFacturePeage2 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage2);
-            $imagePeage2 = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFacturePeage2'));
+            $imagePeage2 = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFacturePeage2'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'peage2'.'.'. $request->file('modifFacturePeage2')->extension();
+            $fileName = $request->eventID . 'peage2' . '.' . $request->file('modifFacturePeage2')->extension();
             $imgPeage2 = Image::make(storage_path('app/public/' . $imagePeage2));
             $imgPeage2->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage2);
-            $newPathPeage2 = $folderName.'/'.$fileName;
-
+            $newPathPeage2 = $folderName . '/' . $fileName;
         } else {
             $newPathPeage2 = $request->pathFacturePeage2;
         }
         if ($request->modifFacturePeage3 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage3);
-            $imagePeage3 = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFacturePeage3'));
+            $imagePeage3 = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFacturePeage3'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'peage3'.'.'. $request->file('modifFacturePeage3')->extension();
+            $fileName = $request->eventID . 'peage3' . '.' . $request->file('modifFacturePeage3')->extension();
             $imgPeage3 = Image::make(storage_path('app/public/' . $imagePeage3));
             $imgPeage3->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage3);
-            $newPathPeage3 = $folderName.'/'.$fileName;
-
+            $newPathPeage3 = $folderName . '/' . $fileName;
         } else {
             $newPathPeage3 = $request->pathFacturePeage3;
         }
         if ($request->modifFacturePeage4 != null) {
             Storage::disk('public')->delete($request->pathFacturePeage4);
-            $imagePeage4 = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFacturePeage4'));
+            $imagePeage4 = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFacturePeage4'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'peage4'.'.'. $request->file('modifFacturePeage4')->extension();
+            $fileName = $request->eventID . 'peage4' . '.' . $request->file('modifFacturePeage4')->extension();
             $imgPeage4 = Image::make(storage_path('app/public/' . $imagePeage4));
             $imgPeage4->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePeage4);
-            $newPathPeage4 = $folderName.'/'.$fileName;
-
+            $newPathPeage4 = $folderName . '/' . $fileName;
         } else {
             $newPathPeage4 = $request->pathFacturePeage4;
         }
         if ($request->modifFactureDivers != null) {
             Storage::disk('public')->delete($request->pathFactureDivers);
-            $imageDivers = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFactureDivers'));
+            $imageDivers = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFactureDivers'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'divers'.'.'. $request->file('modifFactureDivers')->extension();
+            $fileName = $request->eventID . 'divers' . '.' . $request->file('modifFactureDivers')->extension();
             $imgDivers = Image::make(storage_path('app/public/' . $imageDivers));
             $imgDivers->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageDivers);
-            $newPathDivers = $folderName.'/'.$fileName;
-
+            $newPathDivers = $folderName . '/' . $fileName;
         } else {
             $newPathDivers = $request->pathFactureDivers;
         }
         if ($request->modifFacturePetitDej != null) {
             Storage::disk('public')->delete($request->pathFacturePetitDej);
-            $imagePetitDej = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFacturePetitDej'));
+            $imagePetitDej = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFacturePetitDej'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'petitdej'.'.'. $request->file('modifFacturePetitDej')->extension();
+            $fileName = $request->eventID . 'petitdej' . '.' . $request->file('modifFacturePetitDej')->extension();
             $imgPetitDej = Image::make(storage_path('app/public/' . $imagePetitDej));
             $imgPetitDej->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imagePetitDej);
-            $newPathPetitDej = $folderName.'/'.$fileName;
-
+            $newPathPetitDej = $folderName . '/' . $fileName;
         } else {
             $newPathPetitDej = $request->pathFacturePetitDej;
         }
         if ($request->modifFactureDejeuner != null) {
             Storage::disk('public')->delete($request->pathFactureDejeuner);
-            $imageDejeuner = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFactureDejeuner'));
+            $imageDejeuner = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFactureDejeuner'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'dejeuner'.'.'. $request->file('modifFactureDejeuner')->extension();
+            $fileName = $request->eventID . 'dejeuner' . '.' . $request->file('modifFactureDejeuner')->extension();
             $imgDejeuner = Image::make(storage_path('app/public/' . $imageDejeuner));
             $imgDejeuner->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageDejeuner);
-            $newPathDejeuner = $folderName.'/'.$fileName;
-
+            $newPathDejeuner = $folderName . '/' . $fileName;
         } else {
             $newPathDejeuner = $request->pathFactureDejeuner;
         }
         if ($request->modifFactureDiner != null) {
             Storage::disk('public')->delete($request->pathFactureDiner);
-            $imageDiner = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFactureDiner'));
+            $imageDiner = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFactureDiner'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'diner'.'.'. $request->file('modifFactureDiner')->extension();
+            $fileName = $request->eventID . 'diner' . '.' . $request->file('modifFactureDiner')->extension();
             $imgDiner = Image::make(storage_path('app/public/' . $imageDiner));
             $imgDiner->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageDiner);
-            $newPathDiner = $folderName.'/'.$fileName;
-
+            $newPathDiner = $folderName . '/' . $fileName;
         } else {
             $newPathDiner = $request->pathFactureDiner;
         }
         if ($request->modifFactureAemporter != null) {
             Storage::disk('public')->delete($request->pathFactureAemporter);
-            $imageAemporter = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFactureAemporter'));
+            $imageAemporter = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFactureAemporter'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'aemporter'.'.'. $request->file('modifFactureAemporter')->extension();
+            $fileName = $request->eventID . 'aemporter' . '.' . $request->file('modifFactureAemporter')->extension();
             $imgAemporter = Image::make(storage_path('app/public/' . $imageAemporter));
             $imgAemporter->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageAemporter);
-            $newPathAemporter = $folderName.'/'.$fileName;
-
+            $newPathAemporter = $folderName . '/' . $fileName;
         } else {
             $newPathAemporter = $request->pathFactureAemporter;
         }
         if ($request->modifFactureHotel != null) {
             Storage::disk('public')->delete($request->pathFactureHotel);
-            $imageHotel = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFactureHotel'));
+            $imageHotel = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFactureHotel'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'hotel'.'.'. $request->file('modifFactureHotel')->extension();
+            $fileName = $request->eventID . 'hotel' . '.' . $request->file('modifFactureHotel')->extension();
             $imgHotel = Image::make(storage_path('app/public/' . $imageHotel));
             $imgHotel->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageHotel);
-            $newPathHotel = $folderName.'/'.$fileName;
-
+            $newPathHotel = $folderName . '/' . $fileName;
         } else {
             $newPathHotel = $request->pathFactureHotel;
         }
         if ($request->modifFactureEssence != null) {
             Storage::disk('public')->delete($request->pathFactureEssence);
-            $imageEssence = Storage::disk('public')->put($folderName .'/tmp' , $request->file('modifFactureEssence'));
+            $imageEssence = Storage::disk('public')->put($folderName . '/tmp', $request->file('modifFactureEssence'));
             $filePath = storage_path('app/public/' . $folderName);
-            $fileName = $request->eventID.'essence'.'.'. $request->file('modifFactureEssence')->extension();
+            $fileName = $request->eventID . 'essence' . '.' . $request->file('modifFactureEssence')->extension();
             $imgEssence = Image::make(storage_path('app/public/' . $imageEssence));
             $imgEssence->resize(300, 300, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath.'/'.$fileName);
+            })->save($filePath . '/' . $fileName);
             Storage::disk('public')->delete($imageEssence);
-            $newPathEssence = $folderName.'/'.$fileName;
-
+            $newPathEssence = $folderName . '/' . $fileName;
         } else {
             $newPathEssence = $request->pathFactureEssence;
         }
