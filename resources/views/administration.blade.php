@@ -827,7 +827,7 @@
                                     véhicule</label>
                                 <input type="text" name="vehicule" id="vehicule"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    placeholder="ex : 308" required autofocus>
+                                    placeholder="ex : 308" autofocus>
                             </div>
                             <div class="w-1/3">
                                 <label for="taux"
@@ -835,7 +835,7 @@
                                 </label>
                                 <input type="number" name="taux" id="taux" step="any"
                                     class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                    placeholder="ex : 0.542" required autofocus>
+                                    placeholder="ex : 0.542" autofocus>
                             </div>
                             <div class="w-1/3 pl-1">
                                 <label for="ChevauxFiscaux"
