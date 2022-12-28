@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => "https://www.carpediem.pro/LesFrais/public",
+    'asset_url' => "https://www.carpediem.pro/Carpe-Diem-Notes-De-Frais/public",
 
     /*
     |--------------------------------------------------------------------------
